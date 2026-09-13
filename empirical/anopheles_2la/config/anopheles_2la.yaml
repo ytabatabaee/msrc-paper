@@ -1,0 +1,66 @@
+project:
+  analysis_name: anopheles_2la
+  data_root: data/anopheles_2la
+  empirical_root: empirical/anopheles_2la
+  stage: 0
+
+reference:
+  assembly: AgamP4_for_MalariaGEN_Ag3
+  chromosome: "2L"
+  coordinate_system: "1-based inclusive coordinates on chromosome arm 2L"
+  notes: "Exact 2La breakpoints were originally reported in PEST/AgamP3/anoGam3-style coordinates; confirm equivalence or lift-over before Stage 1."
+
+regions:
+  inversion:
+    region_name: "2La"
+    start: 20524058
+    end: 42165532
+    source: "White et al. 2007/Fontaine et al. 2015 table S11 lineage of coordinates; reused in Ag1000G/Ag3 examples as 2L:20524058-42165532."
+  flanks:
+    left_flank:
+      start: null
+      end: 20524057
+      status: "candidate"
+      rationale: "Bounded by the distal 2La breakpoint; no Stage-0 scientific flank length is frozen."
+    right_flank:
+      start: 42165533
+      end: null
+      status: "candidate"
+      rationale: "Bounded by the proximal 2La breakpoint; no Stage-0 scientific flank length is frozen."
+    candidate_window_bp:
+      - 250000
+      - 500000
+      - 1000000
+    candidate_window_status: "configurable only; not selected for inference in Stage 0"
+
+karyotypes:
+  structural_states:
+    A0: "standard 2L+a arrangement"
+    A1: "inverted 2La arrangement"
+  allowed_2La_state:
+    - A0_homozygous
+    - A1_homozygous
+    - heterokaryotype
+    - unknown
+  strict_test_states:
+    - A0_homozygous
+    - A1_homozygous
+  minimum_karyotype_confidence: documented_or_high_confidence_computational_call
+
+candidate_datasets:
+  - dataset: Fontaine et al. phylogenomic sampling / Ag3.10 fontaine-2015-rebuild
+    priority: proof_of_principle
+    purpose: cross-species strict quartet search before topology inspection
+  - dataset: MalariaGEN Ag3
+    priority: stage1_expansion
+    purpose: population-scale homozygous 2La contrasts after metadata/karyotype retrieval
+
+future_windows:
+  local_tree_window_bp:
+    - 5000
+    - 10000
+    - 50000
+  quartet_support_window_bp:
+    - 100000
+    - 250000
+  status: "recorded for later planning only; no Stage-0 topology analysis"
