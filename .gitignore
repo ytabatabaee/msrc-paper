@@ -3,6 +3,13 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# macOS
+.DS_Store
+
+# Local editor/project settings
+.idea/
+.vscode/
+
 # C extensions
 *.so
 
