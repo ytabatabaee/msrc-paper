@@ -1,0 +1,9 @@
+metric	value
+species_specific_intervals_before_canonicalization	39
+canonical_regions_after_clustering	11
+regions_with_one_anchor	0
+regions_with_one_min_informative_anchor	0
+clean_two_state_candidate_regions	
+insufficient_information_regions	CR_02,CR_03,CR_09
+stable_regions_50_100_200kb	CR_04,CR_05,CR_06,CR_07,CR_08,CR_09,CR_11
+low_pairwise_similarity_threshold	0.5

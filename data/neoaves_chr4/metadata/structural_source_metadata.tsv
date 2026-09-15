@@ -1,0 +1,9 @@
+key	value
+main_coordinate_reference	GCF_000002315.5_GalGal6.chr4
+main_coordinate_reference_assembly	GCF_000002315.5_GalGal6
+structural_analysis_reference	GCA_017639555.1_bCicMag1.pri CM030196.1
+primary_block_source	rearrangements/totab_chr4.csv.xz
+published_structural_block_source	rearrangements/outlier-regions-by-maf2synteny.tsv
+published_summary_source	rearrangements/outlier-regions-by-maf2synteny-summary.tsv
+interval_merge_gap_bp	1000000
+coordinate_caveat	Main coordinates are exact GalGal6 chr4 only; chr4_*_random scaffolds are not used as chr4 coordinates.

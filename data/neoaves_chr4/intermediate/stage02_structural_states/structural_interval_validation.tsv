@@ -1,0 +1,19 @@
+species	published_chrom	published_start	published_end	reconstructed_interval_id	reconstructed_reference_chrom	reconstructed_start	reconstructed_end	comparison_coordinate_space	start_difference_bp	end_difference_bp	status	published_description
+Stork	pri.CM030196.2	50603936	51158040					query			no_reconstructed_interval	Maybe
+Stork	pri.CM030196.1	60750296	85430662	SI_Stork_04	chr4	75964555	85500792	query	15214259	70130	different	
+Cuckoo	pri.CM030640.1	47766514	48347479	SI_Cuckoo_06	chr4	47737545	48347479	query	-28969	0	approximate_match	Maybe
+Cuckoo	pri.CM030640.1	57792077	79945563	SI_Cuckoo_04	chr4	71592633	79960683	query	13800556	15120	different	
+Turaco	pri.chr5	0	20298300	SI_Turaco_04	chr4	237127	9081346	query	237127	-11216954	different	
+Turaco	pri.chr5	82403249	85295629	SI_Turaco_06	chr4	82403249	85302472	query	0	6843	approximate_match	
+Turaco	pri.chr5	71784262	72391176	SI_Turaco_07	chr4	71784262	72417297	query	0	26121	approximate_match	Maybe
+Flamingo	pri.chr4	50844001	51430490	SI_Flamingo_05	chr4	50814713	51430490	query	-29288	0	approximate_match	Maybe
+Flamingo	pri.chr4	57314230	82066519	SI_Flamingo_04	chr4	57314230	66921512	query	0	-15145007	different	
+Dove	1.LR594554.2	425884	1300644	SI_Dove_06	chr4	401905	1197907	query	-23979	-102737	approximate_match	Maybe
+Dove	1.LR594554.2	9157566	31337916	SI_Dove_01	chr4	15786768	24403999	query	6629202	-6933917	different	
+Dove	1.LR594554.2	31830000	32453776	SI_Dove_05	chr4	24520371	32453776	query	-7309629	0	different	Maybe
+Sandgrouse	pri.chr15	0	15374064	SI_Sandgrouse_01	chr4	2048293	9706756	query	2048293	-5667308	different	
+Sandgrouse	pri.chr15	18301388	23630118	SI_Sandgrouse_04	chr4	18301388	23654925	query	0	24807	approximate_match	
+Sandgrouse	pri.chr5	47195817	47696776	SI_Sandgrouse_06	chr4	47167576	47696776	query	-28241	0	approximate_match	Maybe
+Chicken	chr4	25555144	33202185	SI_Stork_01	chr4	25559924	33188482	reference	4780	-13703	approximate_match	
+Chicken	chr4	34230207	34999560	SI_Stork_03	chr4	34595896	34979864	reference	365689	-19696	approximate_match	
+Chicken	chr4	44689897	57179311	SI_Turaco_04	chr4	44701591	57120130	reference	11694	-59181	approximate_match	
