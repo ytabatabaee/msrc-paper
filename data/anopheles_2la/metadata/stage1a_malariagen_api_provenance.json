@@ -1,0 +1,16 @@
+{
+  "command": "empirical/anopheles_2la/scripts/01_fetch_sample_karyotypes.py --run-tests --anonymous-credentials",
+  "date_retrieved": "2026-09-14",
+  "documented_sample_set_identifier": "fontaine-2015-rebuild",
+  "error": "Anonymous caller does not have storage.objects.get access to the Google Cloud Storage object. Permission 'storage.objects.get' denied on resource '//storage.googleapis.com/projects/_/buckets/vo_agam_release/objects/v3-config.json' (or it may not exist)., 401",
+  "error_type": "HttpError",
+  "expected_total": 72,
+  "malariagen_data_package_version": "12.0.1",
+  "n_samples_retrieved": 0,
+  "note": "No sample-level state assignments were fabricated; strict quartet generation remains empty until official API access succeeds.",
+  "release_requested": "3.10",
+  "retrieval_status": "blocked",
+  "sample_set_query": "fontaine",
+  "script": "empirical/anopheles_2la/scripts/01_fetch_sample_karyotypes.py",
+  "topology_data_embargo": "haplotypes/snp_calls/njt/topology methods not called"
+}

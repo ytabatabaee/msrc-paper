@@ -62,17 +62,17 @@ directory.
 
 ## Reference and regions
 
-Stage 0 records MalariaGEN Ag3 as AgamP4-aligned data, but the exact breakpoint
-coordinates trace back to PEST/AgamP3/anoGam3-style reporting. The working 2La
-interval is recorded provisionally as:
+Stage 0 treated assembly equivalence conservatively because the original
+breakpoint structure was reported on PEST/AgamP3 scaffolds. Stage 1A records
+explicit Ag1000G/AgamP4-based use of the same 2La interval:
 
 ```text
 2L:20524058-42165532
 ```
 
-This is based on White et al. 2007/Fontaine et al. 2015 table S11 lineage of
-coordinates and reuse in Ag1000G examples. Exact AgamP4 equivalence should be
-confirmed from a machine-readable source or lift-over before Stage 1.
+The coordinates are recorded as 1-based inclusive in TSV manifests. Any later
+conversion to 0-based half-open intervals must be explicit and must not silently
+shift the stored coordinates.
 
 The left and right flanking regions are represented in
 `data/anopheles_2la/metadata/region_manifest.tsv`, but no flank length is frozen
@@ -141,3 +141,66 @@ populate and freeze `sample_manifest.tsv`, rerun Stage 0, and only then inspect
 sequence/haplotype/local-tree resources. The first topology test should use the
 cleanest frozen strict 2:2 design, not a design chosen after inspecting local
 tree support.
+
+## Stage 1A metadata freeze
+
+Stage 1A uses the official MalariaGEN Python API as the authoritative route for
+sample identifiers, sample metadata, and 2La karyotypes:
+
+```bash
+python3 empirical/anopheles_2la/scripts/01_check_malariagen_access.py
+python3 empirical/anopheles_2la/scripts/01_fetch_sample_karyotypes.py --run-tests
+python3 empirical/anopheles_2la/scripts/00_audit_samples.py --run-tests --freeze-stage1a
+```
+
+In the current environment, `malariagen-data==12.0.1` imports after dependency
+repair, but `malariagen_data.Ag3()` cannot read the package config object
+`gs://vo_agam_release/v3-config.json` anonymously. The failure is recorded in
+`data/anopheles_2la/metadata/stage1a_malariagen_api_provenance.json`.
+
+No sample-level states were fabricated from aggregate counts. The Stage-1A
+frozen quartet table is therefore a deterministic empty table until official API
+access succeeds.
+
+Stage-1A outputs:
+
+- `data/anopheles_2la/metadata/stage1a_malariagen_api_provenance.json`
+- `empirical/anopheles_2la/results/stage1a_sample_reconciliation.tsv`
+- `data/anopheles_2la/processed/frozen_strict_quartets_stage1a.tsv`
+- `data/anopheles_2la/processed/frozen_strict_quartets_stage1a.sha256`
+- `empirical/anopheles_2la/results/stage1a_quartet_design_summary.tsv`
+- `empirical/anopheles_2la/results/stage1a_quartet_design_summary.md`
+- `empirical/anopheles_2la/results/stage1a_metadata_karyotype_freeze.md`
+
+## Running Stage 1A with MalariaGEN authentication
+
+The blocked local run was an authentication failure, not a biological result and
+not a reason to change package versions. Keep `malariagen-data==12.0.1` for the
+first authenticated rerun.
+
+From a local machine with Google Cloud SDK installed:
+
+```bash
+gcloud auth application-default login
+python empirical/anopheles_2la/scripts/01_check_malariagen_access.py
+```
+
+Only if the check reaches Ag3 sample-set metadata and reports `SUCCESS`, run:
+
+```bash
+python empirical/anopheles_2la/scripts/01_fetch_sample_karyotypes.py --run-tests
+python empirical/anopheles_2la/scripts/00_audit_samples.py --run-tests --freeze-stage1a
+```
+
+`01_fetch_sample_karyotypes.py` writes timestamped attempt summaries under
+`empirical/anopheles_2la/results/provenance/`. Failed attempts do not replace a
+previously successful sample manifest or frozen quartet table. Authentication
+messages deliberately avoid printing account identifiers, tokens, or credential
+paths.
+
+For Google Colab, use
+`empirical/anopheles_2la/notebooks/stage1a_metadata_freeze_colab.ipynb`. The
+notebook installs the pinned package, uses standard Colab Google
+authentication, runs the same check and Stage-1A freeze commands, and packages
+only small metadata/result files for transfer back to this repository. It does
+not retrieve chromosome-wide SNPs, haplotypes, trees, or topology statistics.

@@ -1,0 +1,7 @@
+taxon	expected_stage0_count	retrieved_count	difference	status	notes
+arabiensis	12	0	-12	blocked	Official API retrieval did not complete; Stage-0 aggregate count retained for expectation only.
+coluzzii	11	0	-11	blocked	Official API retrieval did not complete; Stage-0 aggregate count retained for expectation only.
+gambiae	26	0	-26	blocked	Official API retrieval did not complete; Stage-0 aggregate count retained for expectation only.
+melas	4	0	-4	blocked	Official API retrieval did not complete; Stage-0 aggregate count retained for expectation only.
+merus	9	0	-9	blocked	Official API retrieval did not complete; Stage-0 aggregate count retained for expectation only.
+quadriannulatus	10	0	-10	blocked	Official API retrieval did not complete; Stage-0 aggregate count retained for expectation only.

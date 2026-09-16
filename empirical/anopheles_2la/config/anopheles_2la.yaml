@@ -5,17 +5,17 @@ project:
   stage: 0
 
 reference:
-  assembly: AgamP4_for_MalariaGEN_Ag3
+  assembly: AgamP4
   chromosome: "2L"
   coordinate_system: "1-based inclusive coordinates on chromosome arm 2L"
-  notes: "Exact 2La breakpoints were originally reported in PEST/AgamP3/anoGam3-style coordinates; confirm equivalence or lift-over before Stage 1."
+  notes: "Stage 0 treated AgamP3/AgamP4 equivalence conservatively. Stage 1A records explicit Ag1000G/AgamP4-based use of 2L:20524058-42165532 while preserving original breakpoint-structure provenance."
 
 regions:
   inversion:
     region_name: "2La"
     start: 20524058
     end: 42165532
-    source: "White et al. 2007/Fontaine et al. 2015 table S11 lineage of coordinates; reused in Ag1000G/Ag3 examples as 2L:20524058-42165532."
+    source: "Ag1000G/AgamP4-based 2La analyses using interval 2L:20524058-42165532; original breakpoint-structure provenance from Sharakhov et al. 2006."
   flanks:
     left_flank:
       start: null

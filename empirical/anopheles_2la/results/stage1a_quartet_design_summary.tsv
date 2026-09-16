@@ -1,0 +1,15 @@
+metric	value	notes
+total_samples	0	sample_manifest.tsv rows
+A0_homozygotes	0	
+A1_homozygotes	0	
+heterokaryotypes	0	
+unknown_or_unresolved	0	
+strict_2_to_2_candidate_quartets	0	
+four_distinct_species_quartets	0	
+direct_sample_level_only_quartets	0	
+quartets_relying_partly_on_species_fixed_state	0	
+geography_matched_quartets	0	
+recommended_primary_quartets	0	
+independence_groups	0	
+direct_sample_karyotype_states	0	resolved homokaryotypic samples
+species_fixed_states	0	resolved homokaryotypic samples
