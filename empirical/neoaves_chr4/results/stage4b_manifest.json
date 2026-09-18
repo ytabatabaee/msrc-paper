@@ -1,0 +1,54 @@
+{
+  "stage": "4B",
+  "git_commit": "c04eac5092fc34b9ad8c3117d3cbd8c68ba7668b",
+  "date_utc": "2026-09-18T19:19:24.955789+00:00",
+  "seed": 41729,
+  "bootstrap_replicates": 1000,
+  "stage4a_manifest_checksum": "31958a2edf6c8ef20e123a468c64ba7b354580e5b899c81922b97b3df4935cb7",
+  "treatments": {
+    "T0": "all resolved windows, weight 1",
+    "T1": "each consecutive identical-topology run has total weight 1",
+    "T2": "frozen-mask windows excluded; background weight 1",
+    "T3": "frozen-mask windows weight 0.5; background weight 1"
+  },
+  "t3_topology_neutral": true,
+  "structural_masks": {
+    "stringent": {
+      "merged_intervals": 15,
+      "span_bp": 7846083
+    },
+    "primary": {
+      "merged_intervals": 23,
+      "span_bp": 12521582
+    },
+    "inclusive": {
+      "merged_intervals": 30,
+      "span_bp": 19247660
+    }
+  },
+  "full_species_tree_inference": {
+    "performed": false,
+    "reason": "no per-locus multi-taxon gene trees or fixed empirical estimator configuration in repository"
+  },
+  "inputs": {
+    "data/neoaves_chr4/processed/locus_table_chr4.tsv": "52493ab4aadd4bce6dff84540ee8b27ad7a2fadfe1cd718cc4e2a859585beccb",
+    "data/neoaves_chr4/processed/denovo_breakpoint_sets.tsv": "f716d3d00d8e68b4956bac18cf98c7d697acd2eb4054ea6fdb63b6e2865f4031",
+    "data/neoaves_chr4/processed/stage3b_v2_structural_events.tsv": "def1d79b4b940aa101014d918c13d79e65bb7b35a688a2c59f854b0b405692b6",
+    "data/neoaves_chr4/processed/stage3b_v2_summary.tsv": "e36fb98336e78ba468ffd668f7136257df7a6b3b77e64bfd3f1fbdc464887eb8",
+    "empirical/neoaves_chr4/results/stage4a_manifest.json": "31958a2edf6c8ef20e123a468c64ba7b354580e5b899c81922b97b3df4935cb7",
+    "empirical/neoaves_chr4/results/stage4a_window_vs_block_support.tsv": "123ddb26ab2bfcb5787e32313426111922a1f7f64c593f204b8309fb76daa2ff"
+  },
+  "outputs": {
+    "empirical/neoaves_chr4/results/stage4b_inference_treatments.tsv": "8f84bcf08a1f805b06a4541d2c8ddc92020efe558b9402fe70a607a16750e933",
+    "empirical/neoaves_chr4/results/stage4b_leave_one_event_out.tsv": "878cadcd3c57170a1b849d25ccd13dd86b077196280f892c85a7700bd066369f",
+    "empirical/neoaves_chr4/results/stage4b_report.md": "0ebdd6697c7754ed53cbaeb9609f4d0c0065e03228a4217e696267f5e04ea03f",
+    "empirical/neoaves_chr4/figures/stage4b_figure_A_treatment_support.pdf": "c91f2e768cfb109016e3f3c4c17c19e65ce31b824d357fdda928a6e2855add59",
+    "empirical/neoaves_chr4/figures/stage4b_figure_A_treatment_support.png": "af57eef3f97e0241f081fe2ffb5f1ef98a0a94c4a2be1b15ceda199af654e171",
+    "empirical/neoaves_chr4/figures/stage4b_figure_B_species_margin.pdf": "1c28984cdee7953ace3f9cc2801caab14ee56f73e57b1cc75a47ebd26884ca5d",
+    "empirical/neoaves_chr4/figures/stage4b_figure_B_species_margin.png": "92a359ff0b4720747f50b8a81cfc3361c0862c42f73c6c0ac4e6e743be793a18",
+    "empirical/neoaves_chr4/figures/stage4b_figure_C_N61_leave_one_event_out.pdf": "1fb6ef09a0aeeddbfb65185809b88e7d69857263b523d07da76642e48b68dcaa",
+    "empirical/neoaves_chr4/figures/stage4b_figure_C_N61_leave_one_event_out.png": "75ab4c11ce118a8bb32521ae56903aa8bfbeb8a3db476c03a6b7692e53f605cc",
+    "PROJECT_STATUS.md": "48d0f288c750c142e3da9e112738e9686dd3721f11314d4dd7b8dacacf164c57"
+  },
+  "stage3b_eligibility_relaxed": false
+}
