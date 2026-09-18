@@ -1,0 +1,21 @@
+{
+  "stage": "4A",
+  "seed": 1729,
+  "permutations": 10000,
+  "mask_rule": "union of +/-250 kb neighborhoods around frozen breakpoints",
+  "species_topology": {
+    "Columbea": "q1",
+    "N61": "q1",
+    "N62": "q1"
+  },
+  "inputs": {
+    "data/neoaves_chr4/processed/locus_table_chr4.tsv": "52493ab4aadd4bce6dff84540ee8b27ad7a2fadfe1cd718cc4e2a859585beccb",
+    "data/neoaves_chr4/processed/denovo_breakpoint_sets.tsv": "f716d3d00d8e68b4956bac18cf98c7d697acd2eb4054ea6fdb63b6e2865f4031",
+    "data/neoaves_chr4/processed/stage3b_v2_structural_events.tsv": "def1d79b4b940aa101014d918c13d79e65bb7b35a688a2c59f854b0b405692b6",
+    "data/neoaves_chr4/processed/stage3b_v2_summary.tsv": "e36fb98336e78ba468ffd668f7136257df7a6b3b77e64bfd3f1fbdc464887eb8",
+    "data/neoaves_chr4/processed/stage3b_stringent_structural_segments.tsv": "f6b00789c9ce9f728565ddcf55b169b033e1188f7b245cca9c4f6709825d756a",
+    "data/neoaves_chr4/processed/stage3b_primary_structural_segments.tsv": "ccab25cda1f1de34649c17dc592ebf3f07f19e83589919113f2b7430c178ff82",
+    "data/neoaves_chr4/processed/stage3b_inclusive_structural_segments.tsv": "f1e730c92f0282fdabb332d5a3a6bec5a56f96295c96c72e0b7fe66139cebba3"
+  },
+  "stage3b_eligibility_relaxed": false
+}

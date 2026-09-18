@@ -1,0 +1,12 @@
+canonical_region_id	start	end	length_bp	n_source_species	n_species_evaluated	n_normalized_states	state_partition	mean_informative_anchor_count	min_informative_anchor_count	missingness	ambiguity	n_anchors	complexity_class	usable_for_simple_two_state_test
+CR_01	25559924	33188482	7628558	6	6	5	A0:Stork;A1:Flamingo;A2:Dove,Turaco;A3:Sandgrouse;A4:Cuckoo	72.3333333333	69	0.0584415584416	0.0021645021645	77	multistate_with_shared_state	false
+CR_02	34237192	34593634	356442	6	6	6	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	4	4	0	0	4	insufficient_information	false
+CR_03	34595896	35025265	429369	6	6	6	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	4.33333333333	4	0.0666666666667	0.0666666666667	5	insufficient_information	false
+CR_04	44701591	57121020	12419429	3	6	6	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	97.8333333333	90	0.206989247312	0.00403225806452	124	structurally_complex	false
+CR_05	44742091	51780864	7038773	3	6	6	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	52.5	44	0.258215962441	0.00234741784038	71	structurally_complex	false
+CR_06	45582233	47009757	1427524	2	6	6	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	9	7	0.388888888889	0.0111111111111	15	structurally_complex	false
+CR_07	45619857	51785943	6166086	2	6	6	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	46.6666666667	40	0.233870967742	0.0134408602151	62	structurally_complex	false
+CR_08	47448092	51769535	4321443	1	6	6	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	37	32	0.131782945736	0.0077519379845	43	structurally_complex	false
+CR_09	49165617	49619656	454039	5	6	6	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	3.16666666667	3	0.366666666667	0	5	insufficient_information	false
+CR_10	49627488	50431424	803936	1	6	3	A0:Stork,Flamingo,Turaco,Cuckoo;A1:Dove;A2:Sandgrouse	7.33333333333	6	0.0416666666667	0.0416666666667	8	multistate_with_shared_state	false
+CR_11	51797871	57153336	5355465	3	6	3	A0:Stork,Flamingo,Sandgrouse,Cuckoo;A1:Dove;A2:Turaco	50.8333333333	47	0.0586419753086	0	54	multistate_with_shared_state	false

@@ -1,0 +1,15 @@
+boundary_id	position	source_regions	boundary_type	nearest_change_point_distance_Columbea	nearest_change_point_distance_N61	nearest_change_point_distance_N62
+SB_001	25559924	CR_01	canonical_start	524924	544924	224924
+SB_002	33188482	CR_01	canonical_end	276518	76518	376518
+SB_003	34237192	CR_02	canonical_start	267808	297808	277808
+SB_004	34594765	CR_02;CR_03	canonical_end;canonical_start	89765	59765	79765
+SB_005	35025265	CR_03	canonical_end	520265	389735	240265
+SB_006	44721841	CR_04;CR_05	canonical_start	586841	586841	326841
+SB_007	45601045	CR_06;CR_07	canonical_start	1466045	1466045	1206045
+SB_008	47009757	CR_06	canonical_end	1615243	1615243	1555243
+SB_009	47448092	CR_08	canonical_start	1176908	1176908	1116908
+SB_010	49165617	CR_09	canonical_start	110617	540617	600617
+SB_011	49623572	CR_09;CR_10	canonical_end;canonical_start	381428	381428	1058572
+SB_012	50431424	CR_10	canonical_end	426424	426424	1866424
+SB_013	51783553	CR_05;CR_07;CR_08;CR_11	canonical_end;canonical_start	1778553	1778553	3218553
+SB_014	57137178	CR_04;CR_11	canonical_end	312178	312178	312178
