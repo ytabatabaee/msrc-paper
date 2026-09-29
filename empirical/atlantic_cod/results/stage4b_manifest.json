@@ -1,0 +1,72 @@
+{
+  "boundary_rule": "Primary excludes partial boundary-overlap windows",
+  "global_test_n_monte_carlo": 100000,
+  "global_test_rng_seed": 20260929,
+  "inversion_coordinates_used": {
+    "LG01": {
+      "coordinate_system": "author_reported_linkage_group_bp_positions_no_bed_conversion",
+      "end": 26192386,
+      "region_name": "LG01_supergene",
+      "start": 9114741
+    },
+    "LG02": {
+      "coordinate_system": "author_reported_linkage_group_bp_positions_no_bed_conversion",
+      "end": 24048607,
+      "region_name": "LG02_supergene",
+      "start": 18489307
+    },
+    "LG07": {
+      "coordinate_system": "author_reported_linkage_group_bp_positions_no_bed_conversion",
+      "end": 23019113,
+      "region_name": "LG07_supergene",
+      "start": 13610591
+    },
+    "LG12": {
+      "coordinate_system": "author_reported_linkage_group_bp_positions_no_bed_conversion",
+      "end": 14327837,
+      "region_name": "LG12_supergene",
+      "start": 638100
+    }
+  },
+  "local_windows_checksum": "26ed195ee26cb860ca0885c76d768d427639a4338b74a787d9421498e10dfb0b",
+  "number_exact_circular_shifts": {
+    "LG01": 109,
+    "LG02": 91,
+    "LG07": 117,
+    "LG12": 104
+  },
+  "number_windows_per_lg": {
+    "LG01": 110,
+    "LG02": 92,
+    "LG07": 119,
+    "LG12": 105
+  },
+  "output_checksums": {
+    "data/atlantic_cod/processed/stage4b_window_topology_ids.tsv": "7528f2188224e027d5b069ea2b990d5ee6c58e61db003936297d251b27aeb574",
+    "empirical/atlantic_cod/figures/stage4b_LG01_null.pdf": "f9d3f06a8ba947a1c3cf3ba809b1b44fc3abf3b457c4c150bed4793656f3aa3a",
+    "empirical/atlantic_cod/figures/stage4b_LG02_null.pdf": "a50d359d65624e9131b96dd8d773844ae0ab37e5f65bc1a2010a2d759ce378fb",
+    "empirical/atlantic_cod/figures/stage4b_LG07_null.pdf": "c45e0a7fa88c799bb8099b32a9477da456db3778613acca73ce9e132e085cb93",
+    "empirical/atlantic_cod/figures/stage4b_LG12_null.pdf": "11395ee01544283f84217d9fde91bec89d0c633ae63888e557e337996d3461d2",
+    "empirical/atlantic_cod/figures/stage4b_effect_summary.pdf": "f7bc90c1d2727abab8afd22d30b4ea1a80736f5e0304ed5a39faaeffb53d9027",
+    "empirical/atlantic_cod/results/stage4b_block_placement_null.tsv": "62d59688db9654602996c9215ce41f3fb6f8c8ae1804b702b91fdcde694cef3c",
+    "empirical/atlantic_cod/results/stage4b_block_placement_summary.tsv": "64349d0b72bf9c55f41c11f6860591f40205d2ee0f6e6d269b1e10b8db00dc9f",
+    "empirical/atlantic_cod/results/stage4b_boundary_sensitivity.tsv": "424c6da5b87f4c74246f65ca47aa0be02a0d2f3e906e9c37000c49470a7e8a45",
+    "empirical/atlantic_cod/results/stage4b_circular_shift_null.tsv": "2353e37e9597e01ec8d62aaad99ab1df658651f6858031b23138a2cacf1f539e",
+    "empirical/atlantic_cod/results/stage4b_circular_shift_summary.tsv": "f7da6937b9381866b1242e80365666ca564046f46c1728e45fdc096187b05e9c",
+    "empirical/atlantic_cod/results/stage4b_component_tests.tsv": "688b104624df506215a75fb922cbeb32b899b9b719850a6f138cbb08607159a0",
+    "empirical/atlantic_cod/results/stage4b_global_test.tsv": "409f9cd2af8ad97550857c2ae1cec8bb5713cbd1dd38f26bb48017f581cf2be8",
+    "empirical/atlantic_cod/results/stage4b_leave_one_population_out.tsv": "b15a5e3f2555a42b13c611fdce8cfefda39b3d3c1a03c531670aa5a0f23d587f",
+    "empirical/atlantic_cod/results/stage4b_primary_pvalues.tsv": "3226214bbdcad9f2d55b657b89db6804116165198c9b811321e8eca0d85341bc",
+    "empirical/atlantic_cod/results/stage4b_report.md": "e35fc69dc2c048893175e5cbe2d1f63556512af115a928da1fca7bf6c8732d50",
+    "empirical/atlantic_cod/results/stage4b_topology_run_summary.tsv": "8c47af9bd7eccb4f18c573d155dc7ef61d18ff33782e170ba9f5fc596f835a59"
+  },
+  "primary_null": "Exact circular shifts of ordered D vector with fixed inversion mask, per LG",
+  "primary_statistic": "Delta_D = mean(D_inside) - mean(D_outside), D = fraction_arrangement - fraction_baseline",
+  "script": "empirical/atlantic_cod/scripts/04b_spatial_null_tests.py",
+  "script_sha256": "0254c387c636e78238f47775b4786080012ce72957516864a4f0a817c00593a2",
+  "stage": "4B",
+  "stage2_checksum": "303d9eb563fc6b5c0dd953b0d9f4c4b363baf83061f32fa37fb2f4e4a0f1a72c",
+  "stage3_checksum": "5af7eea33f8c998556a140a4e14facb87322e58043632e7b04c15de3eab64bc1",
+  "stage4a_local_quartets_checksum": "8ae82f803294a47854a8eecf907dc2684dc89cf6407362beaf9a4e7616d306f2",
+  "stage4a_window_scores_checksum": "3ef09caa4edddd247ad986ff168a4fc86b79d66559293bec51d291ee8cf9328e"
+}

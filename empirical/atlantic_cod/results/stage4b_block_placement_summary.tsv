@@ -1,0 +1,5 @@
+lg	null_type	n_shifts	observed_delta_D	null_mean	null_sd	null_min	null_max	observed_rank	percentile	p_one_sided	minimum_possible_p
+LG01	contiguous_block	44	1.232766	0.500938	0.510096	-0.393030	1.232766	1	1.000000	0.022727	0.022727
+LG02	contiguous_block	71	0.892332	-0.094397	0.355442	-0.444651	0.892332	1	1.000000	0.014085	0.014085
+LG07	contiguous_block	82	-0.005981	0.009362	0.038971	-0.061346	0.081730	51	0.390244	0.621951	0.012195
+LG12	contiguous_block	52	1.043170	0.029851	0.631549	-1.082617	1.052789	2	0.980769	0.038462	0.019231

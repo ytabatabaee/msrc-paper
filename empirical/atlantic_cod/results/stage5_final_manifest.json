@@ -1,0 +1,137 @@
+{
+  "analysis_status": "frozen_for_manuscript_use",
+  "final_output_checksums": {
+    "empirical/atlantic_cod/figures/atlantic_cod_main.pdf": "8b9f3db1961b8c55bc802488eeb2ecd4827e60671deed22859238dd42b4b5e89",
+    "empirical/atlantic_cod/figures/atlantic_cod_main.png": "1a7cd44c99812787aadae5596b64fc3cb6f06bac284743e4bb87a5e38d3328bc",
+    "empirical/atlantic_cod/figures/atlantic_cod_supplement.pdf": "22e6f743377056e4c717d10981af5bfe89955d6233968a74021f643987408b84",
+    "empirical/atlantic_cod/figures/atlantic_cod_supplement.png": "64c9dc829bf15d99c3a6b4c833fd7a41a51582869ec545f30448d0524c1f328f",
+    "empirical/atlantic_cod/results/FINAL_ANALYSIS.md": "9d95f2f0af164cdbc921e32576e301f1e5c5eda5efb401313cebe0f3f4ad5f7d",
+    "empirical/atlantic_cod/results/atlantic_cod_bornholm_note.md": "5e9bf5d1401328a05e91e8c8155447387f575d6d6ffa93b680bd2a8c1c4188c6",
+    "empirical/atlantic_cod/results/atlantic_cod_main_figure_caption.md": "b7e051061f484ea4ee82e5d125e2e1a68352b1e3acf1296fec1d8d59ddd37cc3",
+    "empirical/atlantic_cod/results/atlantic_cod_main_table.md": "3ffae8a9f844d0d76f2618f79f8edd747d88e4b8351dc5c786336e7f002a7479",
+    "empirical/atlantic_cod/results/atlantic_cod_main_table.tsv": "4f951522765e2efbd19cafbeb70dfaa6b85a8d15b4f1897d9a2d79bd359e6fd1",
+    "empirical/atlantic_cod/results/atlantic_cod_methods_text.md": "e4edfe439e6de9ec58ae4109339f048c0fdffb992ad631821c3096408f82d22b",
+    "empirical/atlantic_cod/results/atlantic_cod_results_text.md": "da45673265d43a041768f224158a80cdac1188e7a70d32a5d11f3e860e4f12d1",
+    "empirical/atlantic_cod/results/stage5_physical_coordinate_null.tsv": "54c3d4d0dd95a921c6a1ce177047a707b61f1285a93adcfc28e70673a18697ef",
+    "empirical/atlantic_cod/results/stage5_physical_coordinate_summary.tsv": "275194f8e0a8145780cbf5486cc2a7c47c13ebe5c8a0d09db4a2c91d2a65083c",
+    "empirical/atlantic_cod/results/stage5_robustness_summary.tsv": "d5fceed2e2bf9f84d4a031939fcff83f9a8b6d0aa9de8463fcf049bc3f87dac2"
+  },
+  "frozen_input_checksums": {
+    "data/atlantic_cod/processed/cod_window_trees.tsv": "26ed195ee26cb860ca0885c76d768d427639a4338b74a787d9421498e10dfb0b",
+    "data/atlantic_cod/processed/stage2_structural_quartet_candidates.tsv": "303d9eb563fc6b5c0dd953b0d9f4c4b363baf83061f32fa37fb2f4e4a0f1a72c",
+    "data/atlantic_cod/processed/stage3_baseline_quartets.tsv": "5af7eea33f8c998556a140a4e14facb87322e58043632e7b04c15de3eab64bc1",
+    "data/atlantic_cod/processed/stage4a_local_quartets.tsv": "8ae82f803294a47854a8eecf907dc2684dc89cf6407362beaf9a4e7616d306f2",
+    "data/atlantic_cod/processed/stage4a_window_topology_scores.tsv": "3ef09caa4edddd247ad986ff168a4fc86b79d66559293bec51d291ee8cf9328e"
+  },
+  "informative_quartet_counts": {
+    "LG01": 112,
+    "LG02": 77,
+    "LG07": 129,
+    "LG12": 16
+  },
+  "inversion_coordinates": {
+    "LG01": {
+      "coordinate_system": "author_reported_linkage_group_bp_positions_no_bed_conversion",
+      "end": 26192386,
+      "region_name": "LG01_supergene",
+      "start": 9114741
+    },
+    "LG02": {
+      "coordinate_system": "author_reported_linkage_group_bp_positions_no_bed_conversion",
+      "end": 24048607,
+      "region_name": "LG02_supergene",
+      "start": 18489307
+    },
+    "LG07": {
+      "coordinate_system": "author_reported_linkage_group_bp_positions_no_bed_conversion",
+      "end": 23019113,
+      "region_name": "LG07_supergene",
+      "start": 13610591
+    },
+    "LG12": {
+      "coordinate_system": "author_reported_linkage_group_bp_positions_no_bed_conversion",
+      "end": 14327837,
+      "region_name": "LG12_supergene",
+      "start": 638100
+    }
+  },
+  "number_windows_per_lg": {
+    "LG01": 110,
+    "LG02": 92,
+    "LG07": 119,
+    "LG12": 105
+  },
+  "physical_coordinate_summary": {
+    "LG01": {
+      "lg": "LG01",
+      "minimum_observed_inside_required": 33,
+      "n_valid_positions": 45,
+      "observed_delta_D": 1.2327657906976743,
+      "observed_rank": 1,
+      "p_one_sided": 0.022222222222222223,
+      "physical_null_max": 1.2327657906976743,
+      "physical_null_min": -0.3775446588486141
+    },
+    "LG02": {
+      "lg": "LG02",
+      "minimum_observed_inside_required": 11,
+      "n_valid_positions": 74,
+      "observed_delta_D": 0.8923315095238096,
+      "observed_rank": 1,
+      "p_one_sided": 0.013513513513513514,
+      "physical_null_max": 0.8923315095238096,
+      "physical_null_min": -0.44613474761904764
+    },
+    "LG07": {
+      "lg": "LG07",
+      "minimum_observed_inside_required": 18,
+      "n_valid_positions": 88,
+      "observed_delta_D": -0.005981305555555559,
+      "observed_rank": 55,
+      "p_one_sided": 0.6136363636363636,
+      "physical_null_max": 0.08255809328743545,
+      "physical_null_min": -0.05458641124661247
+    },
+    "LG12": {
+      "lg": "LG12",
+      "minimum_observed_inside_required": 27,
+      "n_valid_positions": 55,
+      "observed_delta_D": 1.0431696263411026,
+      "observed_rank": 4,
+      "p_one_sided": 0.07272727272727272,
+      "physical_null_max": 1.1053921568627452,
+      "physical_null_min": -1.0885127635960044
+    }
+  },
+  "primary_null": "exact circular shifts of the ordered Stage-4A D(w) track with fixed inversion mask",
+  "primary_statistic": "Delta_D = mean(D_inside) - mean(D_outside), D = f_A - f_B",
+  "reproducibility_commands": [
+    "python3 empirical/atlantic_cod/scripts/05_finalize_cod_analysis.py --run-tests",
+    "python3 empirical/atlantic_cod/scripts/05_finalize_cod_analysis.py"
+  ],
+  "sensitivity_nulls": [
+    "contiguous-block placement",
+    "boundary treatment",
+    "leave-one-population-out",
+    "physical-coordinate-aware interval shift"
+  ],
+  "software_versions": {
+    "biopython": "1.88",
+    "matplotlib": "3.11.2",
+    "python": "3.12.11"
+  },
+  "stage": 5,
+  "stage4b_output_checksums": {
+    "empirical/atlantic_cod/results/stage4b_block_placement_summary.tsv": "64349d0b72bf9c55f41c11f6860591f40205d2ee0f6e6d269b1e10b8db00dc9f",
+    "empirical/atlantic_cod/results/stage4b_boundary_sensitivity.tsv": "424c6da5b87f4c74246f65ca47aa0be02a0d2f3e906e9c37000c49470a7e8a45",
+    "empirical/atlantic_cod/results/stage4b_circular_shift_null.tsv": "2353e37e9597e01ec8d62aaad99ab1df658651f6858031b23138a2cacf1f539e",
+    "empirical/atlantic_cod/results/stage4b_circular_shift_summary.tsv": "f7da6937b9381866b1242e80365666ca564046f46c1728e45fdc096187b05e9c",
+    "empirical/atlantic_cod/results/stage4b_component_tests.tsv": "688b104624df506215a75fb922cbeb32b899b9b719850a6f138cbb08607159a0",
+    "empirical/atlantic_cod/results/stage4b_global_test.tsv": "409f9cd2af8ad97550857c2ae1cec8bb5713cbd1dd38f26bb48017f581cf2be8",
+    "empirical/atlantic_cod/results/stage4b_leave_one_population_out.tsv": "b15a5e3f2555a42b13c611fdce8cfefda39b3d3c1a03c531670aa5a0f23d587f",
+    "empirical/atlantic_cod/results/stage4b_primary_pvalues.tsv": "3226214bbdcad9f2d55b657b89db6804116165198c9b811321e8eca0d85341bc",
+    "empirical/atlantic_cod/results/stage4b_topology_run_summary.tsv": "8c47af9bd7eccb4f18c573d155dc7ef61d18ff33782e170ba9f5fc596f835a59"
+  },
+  "stage5_script": "empirical/atlantic_cod/scripts/05_finalize_cod_analysis.py",
+  "stage5_script_sha256": "a843ddb35a8d70d7d08fd61efff75a231c58bfda47604c08594aa50b12ae8d8f"
+}

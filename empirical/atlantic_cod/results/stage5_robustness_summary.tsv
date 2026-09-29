@@ -1,0 +1,5 @@
+lg	delta_D	circular_p	circular_rank	block_p	block_rank	physical_coordinate_p	physical_coordinate_rank	boundary_robust	leave_one_population_out_robust	final_interpretation
+LG01	1.232766	0.009174	1	0.022727	1	0.022222	1	true	true	robust_positive
+LG02	0.892332	0.010989	1	0.014085	1	0.013514	1	true	true	robust_positive
+LG07	-0.005981	0.555556	65	0.621951	51	0.613636	55	true	true	weak_or_null
+LG12	1.043170	0.038462	4	0.038462	2	0.072727	4	true	true	supportive_positive

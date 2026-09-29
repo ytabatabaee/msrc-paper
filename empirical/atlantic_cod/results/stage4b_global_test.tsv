@@ -1,0 +1,2 @@
+statistic	observed_global_delta_D	n_monte_carlo	seed	null_mean	null_min	null_max	p_one_sided
+equal_weight_mean_delta_D	0.790571	100000	20260929	0.000539	-0.592959	0.792148	0.000010

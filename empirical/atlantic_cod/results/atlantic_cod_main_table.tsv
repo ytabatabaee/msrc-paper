@@ -1,0 +1,5 @@
+lg	n_windows_inside	n_windows_outside	n_informative_quartets	mean_D_inside	mean_D_outside	delta_D	delta_A	delta_B	circular_p	BH_p	block_p	physical_coordinate_p	fraction_quartets_positive	final_interpretation
+LG01	66	43	112	1.000000	-0.232766	1.232766	0.741071	-0.491694	0.009174	0.021978	0.022727	0.022222	1.000000	robust_positive
+LG02	21	70	77	0.919604	0.027273	0.892332	0.580520	-0.311812	0.010989	0.021978	0.014085	0.013514	1.000000	robust_positive
+LG07	36	81	129	0.046942	0.052924	-0.005981	-0.026797	-0.020815	0.555556	0.555556	0.621951	0.613636	0.465116	weak_or_null
+LG12	53	51	16	0.930425	-0.112745	1.043170	0.641093	-0.402076	0.038462	0.051282	0.038462	0.072727	1.000000	supportive_positive

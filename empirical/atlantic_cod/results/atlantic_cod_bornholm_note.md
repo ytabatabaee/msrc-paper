@@ -1,0 +1,3 @@
+# Bornholm LG12 validation note
+
+The targeted Bornholm positive-control window is `LG12_007500001_007750000`. This check was performed only after Stage-2 structural predictions and Stage-3 baseline predictions were frozen. In Stage 4A, Bornholm's closest local relationship in the target window differed from the immediate neighboring windows (`LG12_007250001_007500000` and `LG12_007750001_008000000`), recovering the local-switch behavior expected from the exchanged LG12 segment reported by Matschiner et al. This validation was not used to tune arrangement states, baseline splits, quartet definitions, or any spatial-null statistic.

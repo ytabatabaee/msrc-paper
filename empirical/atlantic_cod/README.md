@@ -33,7 +33,11 @@ baseline population-history prediction
 
 Stage 4A is complete. It is the first unblinded local-tree stage: it compares the published 250-kb window trees with the frozen Stage-2 arrangement prediction and frozen Stage-3 baseline prediction, writes descriptive quartet/window summaries, and generates topology-track figures. Stage 4A is descriptive only; no spatial-null test, permutation test, P-value, formal MSRC model fit, or SNAPP/BEAST rerun has been performed.
 
-These analyses still do not claim statistical significance or prove MSRC. Stage 4B is reserved for testing whether the spatial association exceeds an appropriate linked-genome null.
+Stage 4B is complete. It tests whether the Stage-4A topology-alignment signal is unusually aligned with the independently frozen inversion intervals using exact circular shifts of the local-topology track, with boundary, block-placement, leave-one-population-out, topology-run, and global secondary summaries. Stage 4B does not fit MSRC parameters, infer inversion ages, rerun SNAPP/BEAST, or establish causal inversion effects.
+
+Stage 5 is complete. It adds the final physical-coordinate-aware sensitivity check, writes manuscript-ready figures/tables/text, and freezes the Atlantic cod empirical analysis for manuscript use in `results/FINAL_ANALYSIS.md` and `results/stage5_final_manifest.json`.
+
+These analyses still do not prove MSRC. The final Atlantic cod freeze provides spatial-null support for the predeclared topology-alignment signal on some linkage groups.
 
 ## Conceptual role
 
@@ -220,10 +224,11 @@ Stage 4A
 Extract local quartets from published 250-kb trees and report descriptive inside/outside topology alignment. Completed in `results/stage4a_report.md`.
 
 Stage 4B
-Test the descriptive Stage-4A pattern against spatially valid nulls.
+Test the descriptive Stage-4A pattern against spatially valid nulls. Completed in `results/stage4b_report.md`.
 
 Stage 5
 Test arrangement-concordant topology enrichment inside versus outside inversions.
+Completed as final robustness, analysis freeze, and manuscript-ready output generation in `results/FINAL_ANALYSIS.md`.
 
 Stage 6
 Test whether topology transitions align with inversion boundaries using spatially valid nulls.

@@ -1,0 +1,5 @@
+lg	n_unique_topologies_inside	n_unique_topologies_outside	most_common_topology_id	most_common_topology_frequency	maximum_consecutive_run_length	number_of_topology_transitions
+LG01	61	43	topology_0196	2	1	109
+LG02	21	70	topology_0253	1	1	91
+LG07	36	81	topology_0360	1	1	118
+LG12	53	51	topology_0410	1	1	104

@@ -1,0 +1,5 @@
+lg	observed_delta_D	n_valid_positions	minimum_observed_inside_required	physical_null_min	physical_null_max	observed_rank	p_one_sided
+LG01	1.232766	45	33	-0.377545	1.232766	1	0.022222
+LG02	0.892332	74	11	-0.446135	0.892332	1	0.013514
+LG07	-0.005981	88	18	-0.054586	0.082558	55	0.613636
+LG12	1.043170	55	27	-1.088513	1.105392	4	0.072727
