@@ -1,0 +1,35 @@
+{
+  "anti_circularity_declaration": "No 250-kb local window tree, Source Data Fig. 4 topology, Bornholm local topology, or local quartet support was read or used during Stage 3.",
+  "baseline_tree_source": "data/atlantic_cod/raw/nature_source_data/41559_2022_1661_MOESM4_ESM_source_data_fig2.txt",
+  "baseline_tree_source_sha256": "7cb2256e1f48b8e883914569c8da31642f045a31010f232a71c44ebf2ca5ddcf",
+  "canonical_baseline_tree": "data/atlantic_cod/processed/baseline_population_tree.nwk",
+  "canonical_baseline_tree_sha256": "e54b7102080b9d36c21ec0c7d003dccbdf353bcefb718cc2abfa4bc0bd7b666a",
+  "expected_stage2_input_sha256": "303d9eb563fc6b5c0dd953b0d9f4c4b363baf83061f32fa37fb2f4e4a0f1a72c",
+  "forbidden_inputs": [
+    "data/atlantic_cod/processed/cod_window_trees.tsv",
+    "Source Data Fig. 4 topology",
+    "tree_newick",
+    "local quartet support"
+  ],
+  "local_window_tree_data_read": false,
+  "number_informative_per_lg": {
+    "LG01": 112,
+    "LG02": 77,
+    "LG07": 129,
+    "LG12": 16
+  },
+  "number_of_quartets": 654,
+  "number_unresolved_per_lg": {
+    "LG01": 0,
+    "LG02": 0,
+    "LG07": 0,
+    "LG12": 0
+  },
+  "script": "empirical/atlantic_cod/scripts/03_freeze_baseline_quartets.py",
+  "script_sha256": "32db9e141599ed95f706975a5f4ce400b15754643e28125b4759b62f8bdee8b5",
+  "stage": 3,
+  "stage2_input": "data/atlantic_cod/processed/stage2_structural_quartet_candidates.tsv",
+  "stage2_input_sha256": "303d9eb563fc6b5c0dd953b0d9f4c4b363baf83061f32fa37fb2f4e4a0f1a72c",
+  "stage3_output": "data/atlantic_cod/processed/stage3_baseline_quartets.tsv",
+  "stage3_output_sha256": "5af7eea33f8c998556a140a4e14facb87322e58043632e7b04c15de3eab64bc1"
+}

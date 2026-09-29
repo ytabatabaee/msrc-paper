@@ -1,0 +1,16 @@
+source_label	canonical_label	present_in_stage2	notes
+Gadcha_spc		false	Outgroup or non-Stage-2 taxon in Fig. 2 baseline tree
+Gadmac_spc		false	Outgroup or non-Stage-2 taxon in Fig. 2 baseline tree
+Gadmor_avc_spc	More_stationary	true	Stage-2 Atlantic cod population
+Gadmor_avo_spc	More_migratory	true	Stage-2 Atlantic cod population
+Gadmor_bat_spc	Labrador	true	Stage-2 Atlantic cod population
+Gadmor_bor_spc	Bornholm_Basin	true	Stage-2 Atlantic cod population
+Gadmor_icc_spc	Iceland_stationary	true	Stage-2 Atlantic cod population
+Gadmor_ico_spc	Iceland_migratory	true	Stage-2 Atlantic cod population
+Gadmor_kie_spc	Kiel_Bight	true	Stage-2 Atlantic cod population
+Gadmor_lfc_spc	Lofoten_stationary	true	Stage-2 Atlantic cod population
+Gadmor_lfo_spc	Lofoten_migratory	true	Stage-2 Atlantic cod population
+Gadmor_low_spc	Suffolk	true	Stage-2 Atlantic cod population
+Gadmor_twc_spc	Newfoundland_stationary	true	Stage-2 Atlantic cod population
+Gadmor_two_spc	Newfoundland_migratory	true	Stage-2 Atlantic cod population
+Gadoga_spc		false	Outgroup or non-Stage-2 taxon in Fig. 2 baseline tree

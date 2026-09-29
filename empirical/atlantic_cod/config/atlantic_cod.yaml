@@ -2,7 +2,7 @@ project:
   analysis_name: atlantic_cod
   data_root: data/atlantic_cod
   empirical_root: empirical/atlantic_cod
-  stage: 2
+  stage: 3
 
 reference:
   species: Gadus_morhua

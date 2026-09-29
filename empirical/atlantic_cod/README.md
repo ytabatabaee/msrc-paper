@@ -21,6 +21,18 @@ Frozen Stage-2 structural candidate checksum:
 303d9eb563fc6b5c0dd953b0d9f4c4b363baf83061f32fa37fb2f4e4a0f1a72c
 ```
 
+Stage 3 is complete. It extracts the independently inferred outside-supergene population tree from Nature Source Data Fig. 2, writes the canonical baseline tree to `../../data/atlantic_cod/processed/baseline_population_tree.nwk`, and freezes baseline population-history splits for every Stage-2 quartet in `../../data/atlantic_cod/processed/stage3_baseline_quartets.tsv`.
+
+Stage 3 now gives each quartet two independent predictions:
+
+```text
+structural arrangement prediction
++
+baseline population-history prediction
+```
+
+The local 250-kb window trees remain untouched for the actual Stage-4 test.
+
 These are arrangement-derived predictions only. No support for MSRC, topology enrichment, quartet frequency, or inside/outside comparison has been calculated.
 
 ## Conceptual role
@@ -202,7 +214,7 @@ Stage 2
 Freeze population arrangement states independently of local topology. Completed in `results/stage2_report.md`.
 
 Stage 3
-Define baseline population tree from collinear/non-supergene regions.
+Define baseline population tree from collinear/non-supergene regions. Completed in `results/stage3_report.md`.
 
 Stage 4
 Enumerate informative four-population subsets and extract local quartets.
