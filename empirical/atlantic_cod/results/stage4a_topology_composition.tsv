@@ -1,0 +1,13 @@
+lg	region_class	n_windows	mean_fraction_arrangement	mean_fraction_baseline	mean_fraction_third
+LG01	inside	66	1.000000	0.000000	0.000000
+LG01	outside	43	0.258929	0.491694	0.249377
+LG01	boundary-overlap	1	1.000000	0.000000	0.000000
+LG02	inside	21	0.946197	0.026592	0.027211
+LG02	outside	70	0.365677	0.338404	0.295918
+LG02	boundary-overlap	1	1.000000	0.000000	0.000000
+LG07	inside	36	0.342808	0.295866	0.361326
+LG07	outside	81	0.369605	0.316681	0.313714
+LG07	boundary-overlap	2	0.334804	0.289094	0.376103
+LG12	inside	53	0.964623	0.034198	0.001179
+LG12	outside	51	0.323529	0.436275	0.240196
+LG12	boundary-overlap	1	0.250000	0.375000	0.375000

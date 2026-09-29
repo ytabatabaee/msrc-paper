@@ -31,9 +31,9 @@ structural arrangement prediction
 baseline population-history prediction
 ```
 
-The local 250-kb window trees remain untouched for the actual Stage-4 test.
+Stage 4A is complete. It is the first unblinded local-tree stage: it compares the published 250-kb window trees with the frozen Stage-2 arrangement prediction and frozen Stage-3 baseline prediction, writes descriptive quartet/window summaries, and generates topology-track figures. Stage 4A is descriptive only; no spatial-null test, permutation test, P-value, formal MSRC model fit, or SNAPP/BEAST rerun has been performed.
 
-These are arrangement-derived predictions only. No support for MSRC, topology enrichment, quartet frequency, or inside/outside comparison has been calculated.
+These analyses still do not claim statistical significance or prove MSRC. Stage 4B is reserved for testing whether the spatial association exceeds an appropriate linked-genome null.
 
 ## Conceptual role
 
@@ -216,8 +216,11 @@ Freeze population arrangement states independently of local topology. Completed 
 Stage 3
 Define baseline population tree from collinear/non-supergene regions. Completed in `results/stage3_report.md`.
 
-Stage 4
-Enumerate informative four-population subsets and extract local quartets.
+Stage 4A
+Extract local quartets from published 250-kb trees and report descriptive inside/outside topology alignment. Completed in `results/stage4a_report.md`.
+
+Stage 4B
+Test the descriptive Stage-4A pattern against spatially valid nulls.
 
 Stage 5
 Test arrangement-concordant topology enrichment inside versus outside inversions.

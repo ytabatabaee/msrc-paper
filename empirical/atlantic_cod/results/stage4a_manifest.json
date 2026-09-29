@@ -1,0 +1,62 @@
+{
+  "anti_circularity_note": "Stage 4A used only frozen Stage-2/3 predictions and published local trees after checksum verification; no permutation/spatial-null tests were run.",
+  "inversion_coordinates_used": {
+    "LG01": {
+      "coordinate_system": "author_reported_linkage_group_bp_positions_no_bed_conversion",
+      "end": 26192386,
+      "region_name": "LG01_supergene",
+      "start": 9114741
+    },
+    "LG02": {
+      "coordinate_system": "author_reported_linkage_group_bp_positions_no_bed_conversion",
+      "end": 24048607,
+      "region_name": "LG02_supergene",
+      "start": 18489307
+    },
+    "LG07": {
+      "coordinate_system": "author_reported_linkage_group_bp_positions_no_bed_conversion",
+      "end": 23019113,
+      "region_name": "LG07_supergene",
+      "start": 13610591
+    },
+    "LG12": {
+      "coordinate_system": "author_reported_linkage_group_bp_positions_no_bed_conversion",
+      "end": 14327837,
+      "region_name": "LG12_supergene",
+      "start": 638100
+    }
+  },
+  "local_window_table": "data/atlantic_cod/processed/cod_window_trees.tsv",
+  "local_window_table_sha256": "26ed195ee26cb860ca0885c76d768d427639a4338b74a787d9421498e10dfb0b",
+  "number_informative_quartets_per_lg": {
+    "LG01": 112,
+    "LG02": 77,
+    "LG07": 129,
+    "LG12": 16
+  },
+  "number_of_local_quartet_observations": 70266,
+  "number_of_windows": 426,
+  "output_checksums": {
+    "data/atlantic_cod/processed/stage4a_local_quartets.tsv": "8ae82f803294a47854a8eecf907dc2684dc89cf6407362beaf9a4e7616d306f2",
+    "data/atlantic_cod/processed/stage4a_window_topology_scores.tsv": "3ef09caa4edddd247ad986ff168a4fc86b79d66559293bec51d291ee8cf9328e",
+    "empirical/atlantic_cod/figures/stage4a_LG01_topology_track.pdf": "cc2d804f8c313337b9f171131632e910285d00750b53887506c94ce031aa3d83",
+    "empirical/atlantic_cod/figures/stage4a_LG02_topology_track.pdf": "a4377ff5aea818edf1afe85421f1b7a6d71bb25a96130e0820e26846866a7475",
+    "empirical/atlantic_cod/figures/stage4a_LG07_topology_track.pdf": "12ebb26c73805a807af9a87a1c0ad5eac4b0a27017ef4a0aa12aa8ceb71dabde",
+    "empirical/atlantic_cod/figures/stage4a_LG12_topology_track.pdf": "39bb6129cb6bf4722065625d3560d425451f3b64878aa18ab7fb9f8cde2281b2",
+    "empirical/atlantic_cod/figures/stage4a_four_LG_summary.pdf": "aa748e1592934af9a8d52dbdc4d22a754831a1d77c84ac01263a30e09e5c7075",
+    "empirical/atlantic_cod/results/stage4a_LG_effect_summary.tsv": "40d2c4e7e199145bc396332d796e861cd56f0d90f8aeb5932d5a243373d01939",
+    "empirical/atlantic_cod/results/stage4a_bornholm_check.md": "e96981f829c7150a884fe6d5a612473b281ccce1d34968dc27e5b65dbe0a53f8",
+    "empirical/atlantic_cod/results/stage4a_boundary_descriptive.tsv": "db8e55d6da9ade5862ab558650b7188fc0f792ef943e502b59296ffcd62a696c",
+    "empirical/atlantic_cod/results/stage4a_boundary_sensitivity.tsv": "2d6cb6ff88d9a6e155ebeea6397c118dfee5e3518054261faeab728b5e7fb3f5",
+    "empirical/atlantic_cod/results/stage4a_inside_outside_summary.tsv": "e273a84221e15dc62058b53215fddbd1d0bc795612e8edb028dcbb3059fdc7fc",
+    "empirical/atlantic_cod/results/stage4a_quartet_effects.tsv": "47de5fab2d6cfa47aceadd84af71af1ae383f31dd9bfd2813bf2f5fa744f9c1c",
+    "empirical/atlantic_cod/results/stage4a_report.md": "c35371b984b1b9b3c972de9d0d949e5adeb5801e8fc4b6f7d3c76f9b9c532159",
+    "empirical/atlantic_cod/results/stage4a_topology_composition.tsv": "eebb71ab17b29d1eb1b6c44c276799fce450d249dccccb12c595bfb7e3c74b1f"
+  },
+  "script": "empirical/atlantic_cod/scripts/04a_analyze_local_quartets.py",
+  "script_sha256": "b8c497988ff915d248860b408d137a039e87fd74cb45d086ecb52a5fe8b36b8c",
+  "significance_tests_run": false,
+  "stage": "4A",
+  "stage2_checksum": "303d9eb563fc6b5c0dd953b0d9f4c4b363baf83061f32fa37fb2f4e4a0f1a72c",
+  "stage3_checksum": "5af7eea33f8c998556a140a4e14facb87322e58043632e7b04c15de3eab64bc1"
+}

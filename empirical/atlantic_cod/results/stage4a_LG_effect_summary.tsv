@@ -1,0 +1,5 @@
+lg	n_informative_quartets	n_inside_windows	n_outside_windows	mean_D_inside	mean_D_outside	delta_D	median_D_inside	median_D_outside	fraction_quartets_positive_effect
+LG01	112	66	43	1.000000	-0.232766	1.232766	1.000000	-0.250000	1.000000
+LG02	77	21	70	0.919604	0.027273	0.892331	1.000000	-0.019481	1.000000
+LG07	129	36	81	0.046942	0.052924	-0.005981	0.015504	0.007752	0.465116
+LG12	16	53	51	0.930425	-0.112745	1.043170	1.000000	-0.062500	1.000000
