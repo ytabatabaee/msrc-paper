@@ -1,0 +1,2 @@
+source_name	source_type	path	tree_present	tree_type	used_for_stage3	notes
+Nature Source Data Fig. 2	published_source_data	data/atlantic_cod/raw/nature_source_data/41559_2022_1661_MOESM4_ESM_source_data_fig2.txt	true	maximum_credibility_population_tree_outside_supergenes	false	Located for source discovery only; Stage 3 baseline classification has not been performed.

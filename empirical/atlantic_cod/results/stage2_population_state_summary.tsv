@@ -1,0 +1,5 @@
+lg	n_atlantic_cod_populations	n_ancestral	n_derived	n_unknown	n_strict_2_2_quartets	orientation_evidence
+LG01	12	8	4	0	168	direct_outgroup_alignment
+LG02	12	8	4	0	168	direct_outgroup_alignment
+LG07	12	5	7	0	210	direct_outgroup_alignment
+LG12	12	9	3	0	108	demographic_inference

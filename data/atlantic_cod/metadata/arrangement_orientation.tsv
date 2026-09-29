@@ -1,0 +1,5 @@
+lg	gadMor2_state	gadMor_Stat_state	evidence_type	source	confidence	notes
+LG01	derived	ancestral	outgroup_and_contig_alignment	Matschiner et al. 2022 Table 1 and main-text orientation statement	direct_outgroup_alignment	Haddock outgroup/assembly evidence indicates gadMor2 carries the derived arrangement for LG01.
+LG02	ancestral	derived	outgroup_colinearity_and_assembly_comparison	Matschiner et al. 2022 Table 1 and main-text orientation statement	direct_outgroup_alignment	A melAeg contig colinear with gadMor2 near an LG02 end indicates the derived arrangement is carried by gadMor_Stat.
+LG07	derived	ancestral	outgroup_and_contig_alignment	Matschiner et al. 2022 Table 1 and main-text orientation statement	direct_outgroup_alignment	Haddock outgroup/assembly evidence indicates gadMor2 carries the derived arrangement for LG07.
+LG12	ancestral	derived	demographic_inference_after_contig_mapping_was_uninformative	Matschiner et al. 2022 Table 1, Supplementary Note 2, and Supplementary Table 5 footnote	demographic_inference	Contig mapping did not identify orientation; demographic inference suggested the Lofoten stationary/Suffolk/Kiel Bight haplotype is derived.

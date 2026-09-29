@@ -1,0 +1,75 @@
+{
+  "anti_circularity_declaration": "No local tree topology, Source Data Fig. 4 tree grouping, quartet support, or window topology information was used to construct the Stage-2 arrangement predictions.",
+  "candidate_table": "data/atlantic_cod/processed/stage2_structural_quartet_candidates.tsv",
+  "candidate_table_sha256": "303d9eb563fc6b5c0dd953b0d9f4c4b363baf83061f32fa37fb2f4e4a0f1a72c",
+  "excluded_downloaded_files": [
+    {
+      "path": "data/atlantic_cod/raw/nature_source_data/41559_2022_1661_MOESM5_ESM_source_data_fig3.txt",
+      "reason": "Downloaded during discovery but excluded because it contains topology.",
+      "sha256": "2f4697beddcf1023f81fe0c44d6776140817199714ec68ee52434fb9f3f6c9dd"
+    }
+  ],
+  "forbidden_inputs": [
+    "data/atlantic_cod/processed/cod_window_trees.tsv",
+    "Source Data Fig. 4 tree_newick",
+    "quartet support",
+    "window topology"
+  ],
+  "known_states_per_lg": {
+    "LG01": 12,
+    "LG02": 12,
+    "LG07": 12,
+    "LG12": 12
+  },
+  "local_tree_topology_data_read": false,
+  "number_of_populations": 12,
+  "script": "empirical/atlantic_cod/scripts/02_freeze_arrangement_states.py",
+  "script_sha256": "ce9508a97086b2932c5d81a5add973a48ac659c2efa41f51f6526058a365ccd9",
+  "stage": 2,
+  "strict_2_2_quartet_candidates_per_lg": {
+    "LG01": 168,
+    "LG02": 168,
+    "LG07": 210,
+    "LG12": 108
+  },
+  "structural_metadata_inputs": [
+    {
+      "path": "data/atlantic_cod/metadata/population_name_mapping.tsv",
+      "sha256": "ef168ea199b8717e2f9b04789f8dbf0709903776c4dcbf4b7f3fb3ccfd8bac9f"
+    },
+    {
+      "path": "data/atlantic_cod/raw/nature_supplement/41559_2022_1661_MOESM1_ESM_supplementary_information.pdf",
+      "sha256": "5ea7eeb4b40493ad5839ca67f70e2a9b2237ea6ca58f701b8eeaebb98290a88d"
+    },
+    {
+      "path": "data/atlantic_cod/raw/github_supergenes/tables/include_ids.txt",
+      "sha256": "602d0c470761e51bf98dd2fb925273fb814d158eb71b02dee7cdb5ebb51872ed"
+    },
+    {
+      "path": "data/atlantic_cod/raw/github_supergenes/tables/dsuite_order_colinear.txt",
+      "sha256": "444cb44bab749218a3390e23bca53a9b7ced5f1fed3a36ca046f8e4ea776d11f"
+    },
+    {
+      "path": "data/atlantic_cod/raw/github_supergenes/tables/dsuite_order_inversion_lg01.txt",
+      "sha256": "ae075a475443d1cfe7350296b509212a1fe4bda3417f9bd490ac2c6677f62ebf"
+    },
+    {
+      "path": "data/atlantic_cod/raw/github_supergenes/tables/dsuite_order_inversion_lg02.txt",
+      "sha256": "6ab8e41b8dafe8307d503e11e3b6b59c891d7b5f782bdc6ef4da13fd2a247fd6"
+    },
+    {
+      "path": "data/atlantic_cod/raw/github_supergenes/tables/dsuite_order_inversion_lg07.txt",
+      "sha256": "41c16e71d342c45b01b556bcb683d5929bc38821f686954d980e8ded72b9fefe"
+    },
+    {
+      "path": "data/atlantic_cod/raw/github_supergenes/tables/dsuite_order_inversion_lg12.txt",
+      "sha256": "d2abf7ab30564fbfb7bb83306f270b20ea48fe6a65ef477df563d1bc9c26e40e"
+    }
+  ],
+  "unknown_states_per_lg": {
+    "LG01": 0,
+    "LG02": 0,
+    "LG07": 0,
+    "LG12": 0
+  }
+}

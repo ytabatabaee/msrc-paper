@@ -1,0 +1,5 @@
+lg	windows_present	first_window	last_window	fully_inside_inversion	outside_inversion	boundary_overlapping	expected_nonoverlapping_windows_1_to_last_observed	missing_or_excluded_windows
+LG01	110	LG01_000000001_000250000	LG01_028000001_028250000	66	43	1	113	3
+LG02	92	LG02_000000001_000250000	LG02_023750001_024000000	21	70	1	96	4
+LG07	119	LG07_000000001_000250000	LG07_031000001_031250000	36	81	2	125	6
+LG12	105	LG12_000000001_000250000	LG12_027000001_027250000	53	51	1	109	4

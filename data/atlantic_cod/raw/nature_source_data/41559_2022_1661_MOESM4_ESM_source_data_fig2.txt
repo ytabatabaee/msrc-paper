@@ -1,0 +1,1503 @@
+### Maximum-credibility population tree (b)
+((Gadcha_spc:1.80115714,((((Gadmor_avc_spc:0.01744330294,Gadmor_lfo_spc:0.01744330294):0.01187001885,(((Gadmor_bor_spc:0.004489794128,Gadmor_kie_spc:0.004489794128):0.01024608329,(Gadmor_lfc_spc:0.007931678732,Gadmor_low_spc:0.007931678732):0.006804198683):0.006067040715,(Gadmor_icc_spc:0.00884197248,Gadmor_ico_spc:0.00884197248):0.01196094565):0.008510403669):0.005312215052,Gadmor_avo_spc:0.03462553685):0.03075369363,(Gadmor_bat_spc:0.02109311826,(Gadmor_twc_spc:0.009964970552,Gadmor_two_spc:0.009964970552):0.01112814771):0.04428611222):1.735777909):0.7621731527,(Gadmac_spc:0.02131529323,Gadoga_spc:0.02131529323):2.542014999);
+
+### D_BBAA (c)
+P1	P2	P3	Dstatistic	p-value	f_G
+Gadcha	Gadmac	Arcgla	0.00281724	0.197851	0.000312673
+Gadmor_avc	Gadcha	Arcgla	0.0153966	5.63993e-14	0.0010159
+Gadmor_avo	Gadcha	Arcgla	0.015784	1.11022e-15	0.00103663
+Gadmor_bat	Gadcha	Arcgla	0.0141245	1.16885e-11	0.000928059
+Gadmor_bor	Gadcha	Arcgla	0.0158504	2.21156e-13	0.00105111
+Gadmor_icc	Gadcha	Arcgla	0.0143118	7.72375e-09	0.000939755
+Gadmor_ico	Gadcha	Arcgla	0.0158649	5.22915e-14	0.00104172
+Gadmor_kie	Gadcha	Arcgla	0.0173341	2.29039e-13	0.00113782
+Gadmor_lfc	Gadcha	Arcgla	0.0180675	2.22045e-16	0.00120849
+Gadmor_lfo	Gadcha	Arcgla	0.0196672	0	0.00132016
+Gadmor_low	Gadcha	Arcgla	0.0166326	6.73905e-14	0.00109349
+Gadmor_twc	Gadcha	Arcgla	0.0139573	1.82395e-08	0.00091143
+Gadmor_two	Gadcha	Arcgla	0.0144136	2.95723e-08	0.000941296
+Gadcha	Gadoga	Arcgla	0.00315138	0.142549	0.000348391
+Gadmor_avc	Gadmac	Arcgla	0.0125821	3.7885e-05	0.00144425
+Gadmor_avo	Gadmac	Arcgla	0.0128445	2.0217e-05	0.0014712
+Gadmor_bat	Gadmac	Arcgla	0.0123615	1.78436e-05	0.00141837
+Gadmor_bor	Gadmac	Arcgla	0.0136529	2.95561e-06	0.00157561
+Gadmor_icc	Gadmac	Arcgla	0.0120974	0.000137195	0.00138805
+Gadmor_ico	Gadmac	Arcgla	0.0125984	3.61321e-05	0.00144319
+Gadmor_kie	Gadmac	Arcgla	0.0135495	1.23416e-05	0.00155144
+Gadmor_lfc	Gadmac	Arcgla	0.0129349	2.33427e-05	0.00149922
+Gadmor_lfo	Gadmac	Arcgla	0.0143639	2.66821e-07	0.00166542
+Gadmor_low	Gadmac	Arcgla	0.0130388	6.52817e-06	0.00149493
+Gadmor_twc	Gadmac	Arcgla	0.0107883	0.000258634	0.00123378
+Gadmor_two	Gadmac	Arcgla	0.0113395	0.00015786	0.00129665
+Gadmac	Gadoga	Arcgla	0.000685956	0.467954	5.7069e-06
+Gadmor_avc	Gadmor_avo	Arcgla	0.00554989	0.130802	5.79855e-05
+Gadmor_avc	Gadmor_bat	Arcgla	0.00994361	0.0135633	0.00011465
+Gadmor_avc	Gadmor_bor	Arcgla	0.0044043	0.14722	4.82303e-05
+Gadmor_avc	Gadmor_icc	Arcgla	0.0101103	0.0049725	0.000104349
+Gadmor_avc	Gadmor_ico	Arcgla	0.00657102	0.0587766	6.84415e-05
+Gadmor_kie	Gadmor_avc	Arcgla	0.000880677	0.43216	9.10262e-06
+Gadmor_lfc	Gadmor_avc	Arcgla	0.00628874	0.0760201	7.13623e-05
+Gadmor_lfo	Gadmor_avc	Arcgla	0.0144406	0.00226	0.000170561
+Gadmor_avc	Gadmor_low	Arcgla	0.00141153	0.390166	1.47976e-05
+Gadmor_avc	Gadmor_twc	Arcgla	0.0179789	5.14568e-05	0.000199938
+Gadmor_avc	Gadmor_two	Arcgla	0.0139254	0.00339041	0.000154508
+Gadmor_avc	Gadoga	Arcgla	0.0128406	3.40601e-06	0.00145839
+Gadmor_avo	Gadmor_bat	Arcgla	0.00597115	0.105581	6.70264e-05
+Gadmor_bor	Gadmor_avo	Arcgla	0.000745898	0.429112	7.97156e-06
+Gadmor_avo	Gadmor_icc	Arcgla	0.0070874	0.0579639	7.13106e-05
+Gadmor_avo	Gadmor_ico	Arcgla	0.000955324	0.417158	9.64339e-06
+Gadmor_kie	Gadmor_avo	Arcgla	0.00840209	0.0506056	8.45597e-05
+Gadmor_lfc	Gadmor_avo	Arcgla	0.0112805	0.00174933	0.000126006
+Gadmor_lfo	Gadmor_avo	Arcgla	0.0208796	0.000370524	0.000240677
+Gadmor_low	Gadmor_avo	Arcgla	0.00369024	0.2233	3.75858e-05
+Gadmor_avo	Gadmor_twc	Arcgla	0.0132451	0.0108411	0.000143249
+Gadmor_avo	Gadmor_two	Arcgla	0.00914131	0.0392125	9.86132e-05
+Gadmor_avo	Gadoga	Arcgla	0.0134947	9.71929e-07	0.00153082
+Gadmor_bor	Gadmor_bat	Arcgla	0.00625149	0.0266314	7.35692e-05
+Gadmor_icc	Gadmor_bat	Arcgla	0.000733666	0.447661	8.1146e-06
+Gadmor_ico	Gadmor_bat	Arcgla	0.00482907	0.135652	5.3758e-05
+Gadmor_kie	Gadmor_bat	Arcgla	0.0125935	0.00517162	0.000141542
+Gadmor_lfc	Gadmor_bat	Arcgla	0.0142214	0.000811575	0.000173876
+Gadmor_lfo	Gadmor_bat	Arcgla	0.0237078	4.46762e-09	0.000300051
+Gadmor_low	Gadmor_bat	Arcgla	0.00832543	0.0458997	9.41804e-05
+Gadmor_bat	Gadmor_twc	Arcgla	0.00662959	0.0606469	6.77845e-05
+Gadmor_bat	Gadmor_two	Arcgla	0.00407798	0.14514	4.15377e-05
+Gadmor_bat	Gadoga	Arcgla	0.0127618	1.46386e-06	0.0014489
+Gadmor_bor	Gadmor_icc	Arcgla	0.00474031	0.181297	5.0256e-05
+Gadmor_ico	Gadmor_bor	Arcgla	1.08734e-05	0.498969	1.1628e-07
+Gadmor_kie	Gadmor_bor	Arcgla	0.00876136	0.0158156	9.1321e-05
+Gadmor_lfc	Gadmor_bor	Arcgla	0.00917322	0.00385372	0.000106282
+Gadmor_lfo	Gadmor_bor	Arcgla	0.0212085	1.90583e-05	0.000257481
+Gadmor_low	Gadmor_bor	Arcgla	0.00451059	0.156054	4.84261e-05
+Gadmor_bor	Gadmor_twc	Arcgla	0.0115764	0.0106623	0.00013201
+Gadmor_bor	Gadmor_two	Arcgla	0.0089774	0.0320749	0.000102
+Gadmor_bor	Gadoga	Arcgla	0.0145492	1.75481e-07	0.00166058
+Gadmor_ico	Gadmor_icc	Arcgla	0.00579345	0.089784	5.7595e-05
+Gadmor_kie	Gadmor_icc	Arcgla	0.0118671	0.0100027	0.000119264
+Gadmor_lfc	Gadmor_icc	Arcgla	0.0144806	0.000190565	0.000160168
+Gadmor_lfo	Gadmor_icc	Arcgla	0.0246262	2.34333e-08	0.000281489
+Gadmor_low	Gadmor_icc	Arcgla	0.00775943	0.0838485	7.81295e-05
+Gadmor_icc	Gadmor_twc	Arcgla	0.00761983	0.047233	8.07791e-05
+Gadmor_icc	Gadmor_two	Arcgla	0.00541231	0.147179	5.75043e-05
+Gadmor_icc	Gadoga	Arcgla	0.0128991	7.78682e-06	0.00146504
+Gadmor_kie	Gadmor_ico	Arcgla	0.00756636	0.0583362	7.62487e-05
+Gadmor_lfc	Gadmor_ico	Arcgla	0.0111935	0.00550006	0.000125078
+Gadmor_lfo	Gadmor_ico	Arcgla	0.0204542	2.31697e-05	0.000235226
+Gadmor_low	Gadmor_ico	Arcgla	0.00451009	0.174742	4.57422e-05
+Gadmor_ico	Gadmor_twc	Arcgla	0.0113232	0.000514056	0.000120895
+Gadmor_ico	Gadmor_two	Arcgla	0.0104415	0.0228193	0.000111451
+Gadmor_ico	Gadoga	Arcgla	0.0131815	2.08574e-06	0.00149485
+Gadmor_lfc	Gadmor_kie	Arcgla	0.00328675	0.23796	3.63139e-05
+Gadmor_lfo	Gadmor_kie	Arcgla	0.0134758	0.00191844	0.000154902
+Gadmor_kie	Gadmor_low	Arcgla	0.00310869	0.258719	3.14722e-05
+Gadmor_kie	Gadmor_twc	Arcgla	0.0189893	2.62889e-06	0.000204683
+Gadmor_kie	Gadmor_two	Arcgla	0.0163081	0.000349342	0.000175203
+Gadmor_kie	Gadoga	Arcgla	0.0142264	1.10306e-06	0.00161245
+Gadmor_lfo	Gadmor_lfc	Arcgla	0.00869463	0.0332137	0.000108932
+Gadmor_lfc	Gadmor_low	Arcgla	0.00753999	0.0653578	8.44675e-05
+Gadmor_lfc	Gadmor_twc	Arcgla	0.0194538	2.21393e-05	0.0002305
+Gadmor_lfc	Gadmor_two	Arcgla	0.0188308	4.91686e-05	0.000221821
+Gadmor_lfc	Gadoga	Arcgla	0.0134733	3.91429e-07	0.0015456
+Gadmor_lfo	Gadmor_low	Arcgla	0.0157196	0.000856834	0.000181785
+Gadmor_lfo	Gadmor_twc	Arcgla	0.0298072	3.20299e-13	0.000363786
+Gadmor_lfo	Gadmor_two	Arcgla	0.0287468	7.35551e-09	0.000349039
+Gadmor_lfo	Gadoga	Arcgla	0.0149004	3.74037e-08	0.00171096
+Gadmor_low	Gadmor_twc	Arcgla	0.013017	0.00997654	0.000141654
+Gadmor_low	Gadmor_two	Arcgla	0.0122105	0.00713313	0.00013287
+Gadmor_low	Gadoga	Arcgla	0.0132558	3.13584e-07	0.00150448
+Gadmor_two	Gadmor_twc	Arcgla	0.00240721	0.301774	2.3371e-05
+Gadmor_twc	Gadoga	Arcgla	0.0114725	3.6484e-05	0.00129872
+Gadmor_two	Gadoga	Arcgla	0.0124218	1.47512e-05	0.00140551
+Gadmor_avc	Gadcha	Gadmac	0.0743002	0	0.00939886
+Gadmor_avo	Gadcha	Gadmac	0.0745394	0	0.00937536
+Gadmor_bat	Gadcha	Gadmac	0.0724528	0	0.00912795
+Gadmor_bor	Gadcha	Gadmac	0.0742834	0	0.00942939
+Gadmor_icc	Gadcha	Gadmac	0.0738328	0	0.00931624
+Gadmor_ico	Gadcha	Gadmac	0.0746109	0	0.00937775
+Gadmor_kie	Gadcha	Gadmac	0.0754546	0	0.00948701
+Gadmor_lfc	Gadcha	Gadmac	0.0763832	0	0.00977261
+Gadmor_lfo	Gadcha	Gadmac	0.0783534	0	0.00999446
+Gadmor_low	Gadcha	Gadmac	0.0747516	0	0.00941799
+Gadmor_twc	Gadcha	Gadmac	0.0728502	0	0.00912825
+Gadmor_two	Gadcha	Gadmac	0.0732485	0	0.00918591
+Gadmac	Gadoga	Gadcha	0.0923942	0	0.00137635
+Gadmor_avc	Gadmor_avo	Gadcha	0.00780107	0.00676426	0.000239204
+Gadmor_avc	Gadmor_bat	Gadcha	0.0272628	5.3047e-09	0.000931318
+Gadmor_avc	Gadmor_bor	Gadcha	0.00169089	0.326424	5.42739e-05
+Gadmor_avc	Gadmor_icc	Gadcha	0.0110845	9.80761e-05	0.000335455
+Gadmor_avc	Gadmor_ico	Gadcha	0.00315127	0.139707	9.62751e-05
+Gadmor_kie	Gadmor_avc	Gadcha	0.00366626	0.128725	0.000110524
+Gadmor_lfc	Gadmor_avc	Gadcha	0.0054754	0.0577131	0.000181127
+Gadmor_lfo	Gadmor_avc	Gadcha	0.0304318	0	0.00103369
+Gadmor_avc	Gadmor_low	Gadcha	0.00215141	0.304727	6.58287e-05
+Gadmor_avc	Gadmor_twc	Gadcha	0.02669	6.77236e-15	0.000876738
+Gadmor_avc	Gadmor_two	Gadcha	0.028385	1.56894e-09	0.000931739
+Gadmor_avc	Gadcha	Gadoga	0.0419204	1.45379e-10	0.00544416
+Gadmor_avo	Gadmor_bat	Gadcha	0.0220773	0.00011021	0.000739932
+Gadmor_bor	Gadmor_avo	Gadcha	0.00664443	0.0996737	0.000210557
+Gadmor_avo	Gadmor_icc	Gadcha	0.00428927	0.131616	0.000127476
+Gadmor_ico	Gadmor_avo	Gadcha	0.00304727	0.228624	9.06961e-05
+Gadmor_kie	Gadmor_avo	Gadcha	0.0106399	0.00341019	0.00031545
+Gadmor_lfc	Gadmor_avo	Gadcha	0.0108695	0.00179621	0.000357743
+Gadmor_lfo	Gadmor_avo	Gadcha	0.0389582	1.4988e-13	0.00129697
+Gadmor_low	Gadmor_avo	Gadcha	0.00579076	0.143331	0.00017442
+Gadmor_avo	Gadmor_twc	Gadcha	0.0207456	5.70795e-07	0.00066934
+Gadmor_avo	Gadmor_two	Gadcha	0.021855	6.7377e-05	0.000702753
+Gadmor_avo	Gadcha	Gadoga	0.0421768	8.08343e-11	0.00545571
+Gadmor_bor	Gadmor_bat	Gadcha	0.0281841	8.71614e-08	0.000990982
+Gadmor_icc	Gadmor_bat	Gadcha	0.0172239	0.000206794	0.000568551
+Gadmor_ico	Gadmor_bat	Gadcha	0.0249766	1.24689e-05	0.00083066
+Gadmor_kie	Gadmor_bat	Gadcha	0.0322224	6.46182e-09	0.00107276
+Gadmor_lfc	Gadmor_bat	Gadcha	0.0300266	9.7344e-11	0.00108551
+Gadmor_lfo	Gadmor_bat	Gadcha	0.0544641	0	0.00200729
+Gadmor_low	Gadmor_bat	Gadcha	0.0274132	2.97016e-07	0.000924121
+Gadmor_twc	Gadmor_bat	Gadcha	0.00284683	0.324596	8.7274e-05
+Gadmor_two	Gadmor_bat	Gadcha	0.00096564	0.387571	2.95084e-05
+Gadmor_bat	Gadcha	Gadoga	0.0402808	4.71119e-10	0.00521129
+Gadmor_bor	Gadmor_icc	Gadcha	0.0101312	0.0298636	0.000318126
+Gadmor_bor	Gadmor_ico	Gadcha	0.00234358	0.263335	7.41574e-05
+Gadmor_kie	Gadmor_bor	Gadcha	0.00546694	0.0249951	0.00016836
+Gadmor_lfc	Gadmor_bor	Gadcha	0.00517361	0.132538	0.0001766
+Gadmor_lfo	Gadmor_bor	Gadcha	0.0322002	0	0.00113088
+Gadmor_bor	Gadmor_low	Gadcha	0.000200183	0.482592	6.34426e-06
+Gadmor_bor	Gadmor_twc	Gadcha	0.0245497	1.83288e-11	0.000832842
+Gadmor_bor	Gadmor_two	Gadcha	0.0264275	1.00413e-07	0.000896001
+Gadmor_bor	Gadcha	Gadoga	0.0424681	3.30826e-11	0.00553576
+Gadmor_ico	Gadmor_icc	Gadcha	0.00860826	0.0170168	0.000252697
+Gadmor_kie	Gadmor_icc	Gadcha	0.0161617	0.00043601	0.000476204
+Gadmor_lfc	Gadmor_icc	Gadcha	0.0141989	0.00031188	0.000461777
+Gadmor_lfo	Gadmor_icc	Gadcha	0.0420371	0	0.00138098
+Gadmor_low	Gadmor_icc	Gadcha	0.0100382	0.0227547	0.000298954
+Gadmor_icc	Gadmor_twc	Gadcha	0.0171515	5.41395e-05	0.000544119
+Gadmor_icc	Gadmor_two	Gadcha	0.0177221	8.03044e-05	0.000562597
+Gadmor_icc	Gadcha	Gadoga	0.0420515	4.22866e-11	0.00544412
+Gadmor_kie	Gadmor_ico	Gadcha	0.00855897	0.00442334	0.000252651
+Gadmor_lfc	Gadmor_ico	Gadcha	0.00862468	0.0418781	0.000283429
+Gadmor_lfo	Gadmor_ico	Gadcha	0.0358396	0	0.00118632
+Gadmor_low	Gadmor_ico	Gadcha	0.00261573	0.302641	7.82123e-05
+Gadmor_ico	Gadmor_twc	Gadcha	0.0228579	1.26722e-09	0.000727621
+Gadmor_ico	Gadmor_two	Gadcha	0.0244926	3.89663e-06	0.000779388
+Gadmor_ico	Gadcha	Gadoga	0.0420859	1.57818e-10	0.00543895
+Gadmor_lfc	Gadmor_kie	Gadcha	0.000798498	0.422713	2.58418e-05
+Gadmor_lfo	Gadmor_kie	Gadcha	0.0279086	3.59601e-13	0.000921684
+Gadmor_kie	Gadmor_low	Gadcha	0.00408796	0.151067	0.000121416
+Gadmor_kie	Gadmor_twc	Gadcha	0.0312801	0	0.00100038
+Gadmor_kie	Gadmor_two	Gadcha	0.0328601	3.79262e-11	0.00104851
+Gadmor_kie	Gadcha	Gadoga	0.0423788	7.88634e-11	0.00548029
+Gadmor_lfo	Gadmor_lfc	Gadcha	0.0265902	6.14769e-10	0.000959703
+Gadmor_lfc	Gadmor_low	Gadcha	0.00584254	0.132807	0.00019237
+Gadmor_lfc	Gadmor_twc	Gadcha	0.0290042	2.28706e-14	0.00101684
+Gadmor_lfc	Gadmor_two	Gadcha	0.0315109	1.45092e-11	0.00110071
+Gadmor_lfc	Gadcha	Gadoga	0.0439744	9.51916e-12	0.00577453
+Gadmor_lfo	Gadmor_low	Gadcha	0.0324873	1.95177e-12	0.0010869
+Gadmor_lfo	Gadmor_twc	Gadcha	0.0546972	0	0.00193467
+Gadmor_lfo	Gadmor_two	Gadcha	0.0568314	0	0.00200582
+Gadmor_lfo	Gadcha	Gadoga	0.0449863	2.38953e-12	0.00590303
+Gadmor_low	Gadmor_twc	Gadcha	0.0247066	1.11022e-15	0.000800122
+Gadmor_low	Gadmor_two	Gadcha	0.0271031	2.39749e-09	0.000875951
+Gadmor_low	Gadcha	Gadoga	0.0424062	5.27711e-11	0.00549292
+Gadmor_twc	Gadmor_two	Gadcha	0.00283038	0.303201	8.23567e-05
+Gadmor_twc	Gadcha	Gadoga	0.0405686	4.18185e-10	0.00522169
+Gadmor_two	Gadcha	Gadoga	0.0415094	5.52034e-11	0.00534631
+Gadmor_avc	Gadmor_avo	Gadmac	0.00157843	0.347866	2.51095e-05
+Gadmor_avc	Gadmor_bat	Gadmac	0.0114418	0.00580255	0.000201857
+Gadmor_bor	Gadmor_avc	Gadmac	9.26381e-05	0.490994	1.53872e-06
+Gadmor_avc	Gadmor_icc	Gadmac	0.0113597	0.00340042	0.000178486
+Gadmor_avc	Gadmor_ico	Gadmac	0.0019164	0.324483	3.02899e-05
+Gadmor_avc	Gadmor_kie	Gadmac	0.000774999	0.421367	1.21788e-05
+Gadmor_lfc	Gadmor_avc	Gadmac	0.00818594	0.00796161	0.000140716
+Gadmor_lfo	Gadmor_avc	Gadmac	0.025972	1.05654e-07	0.00046121
+Gadmor_avc	Gadmor_low	Gadmac	0.00397199	0.155891	6.31008e-05
+Gadmor_avc	Gadmor_twc	Gadmac	0.0141381	8.1384e-06	0.000239904
+Gadmor_avc	Gadmor_two	Gadmac	0.0143631	0.000814344	0.000243014
+Gadmac	Gadoga	Gadmor_avc	0.247062	0	0.00655462
+Gadmor_avo	Gadmor_bat	Gadmac	0.0116695	0.00239826	0.000200282
+Gadmor_bor	Gadmor_avo	Gadmac	0.00139615	0.339712	2.27693e-05
+Gadmor_avo	Gadmor_icc	Gadmac	0.0138605	0.00161409	0.000212784
+Gadmor_avo	Gadmor_ico	Gadmac	7.91604e-05	0.487587	1.21271e-06
+Gadmor_kie	Gadmor_avo	Gadmac	0.00166897	0.287962	2.56002e-05
+Gadmor_lfc	Gadmor_avo	Gadmac	0.00845859	0.00950517	0.000144053
+Gadmor_lfo	Gadmor_avo	Gadmac	0.0288409	3.01846e-10	0.00049968
+Gadmor_avo	Gadmor_low	Gadmac	0.00329159	0.189872	5.11302e-05
+Gadmor_avo	Gadmor_twc	Gadmac	0.012786	5.98327e-07	0.000211567
+Gadmor_avo	Gadmor_two	Gadmac	0.0137058	0.00445907	0.000225732
+Gadmac	Gadoga	Gadmor_avo	0.248032	0	0.00750189
+Gadmor_bor	Gadmor_bat	Gadmac	0.0119684	0.000332194	0.000215433
+Gadmor_icc	Gadmor_bat	Gadmac	6.91189e-06	0.499472	1.17136e-07
+Gadmor_ico	Gadmor_bat	Gadmac	0.0111155	0.000372076	0.000189087
+Gadmor_kie	Gadmor_bat	Gadmac	0.0130371	0.000625877	0.00022354
+Gadmor_lfc	Gadmor_bat	Gadmac	0.0185553	4.13721e-08	0.000346501
+Gadmor_lfo	Gadmor_bat	Gadmac	0.0372937	0	0.000712953
+Gadmor_low	Gadmor_bat	Gadmac	0.00958908	0.000857177	0.000166077
+Gadmor_twc	Gadmor_bat	Gadmac	0.000252674	0.472105	3.96303e-06
+Gadmor_bat	Gadmor_two	Gadmac	0.00145772	0.367885	2.28224e-05
+Gadmac	Gadoga	Gadmor_bat	0.246691	0	0.0066231
+Gadmor_bor	Gadmor_icc	Gadmac	0.0134544	0.00607102	0.0002176
+Gadmor_bor	Gadmor_ico	Gadmac	0.00100959	0.35484	1.64086e-05
+Gadmor_kie	Gadmor_bor	Gadmac	0.00138151	0.363218	2.19411e-05
+Gadmor_lfc	Gadmor_bor	Gadmac	0.00690442	0.0233344	0.00012181
+Gadmor_lfo	Gadmor_bor	Gadmac	0.0287031	0	0.000523849
+Gadmor_bor	Gadmor_low	Gadmac	0.00270749	0.199005	4.41923e-05
+Gadmor_bor	Gadmor_twc	Gadmac	0.0133264	3.07546e-06	0.000231763
+Gadmor_bor	Gadmor_two	Gadmac	0.0134949	0.000496433	0.000234038
+Gadmac	Gadoga	Gadmor_bor	0.247414	0	0.00601167
+Gadmor_ico	Gadmor_icc	Gadmac	0.0131493	0.00345864	0.000199058
+Gadmor_kie	Gadmor_icc	Gadmac	0.0151286	0.0012421	0.000231573
+Gadmor_lfc	Gadmor_icc	Gadmac	0.0183464	3.11647e-06	0.000308972
+Gadmor_lfo	Gadmor_icc	Gadmac	0.039633	1.43952e-12	0.000681362
+Gadmor_low	Gadmor_icc	Gadmac	0.00834133	0.0771515	0.000128389
+Gadmor_icc	Gadmor_twc	Gadmac	0.00126307	0.376795	2.055e-05
+Gadmor_icc	Gadmor_two	Gadmac	0.000714024	0.447557	1.16256e-05
+Gadmac	Gadoga	Gadmor_icc	0.245249	0	0.00428436
+Gadmor_kie	Gadmor_ico	Gadmac	0.00177792	0.269263	2.71628e-05
+Gadmor_lfc	Gadmor_ico	Gadmac	0.00903496	0.00330121	0.000153505
+Gadmor_lfo	Gadmor_ico	Gadmac	0.0283392	0	0.000489503
+Gadmor_ico	Gadmor_low	Gadmac	0.00284164	0.125375	4.37913e-05
+Gadmor_ico	Gadmor_twc	Gadmac	0.0122015	1.50386e-05	0.000198784
+Gadmor_ico	Gadmor_two	Gadmac	0.0138617	0.00210744	0.000225187
+Gadmac	Gadoga	Gadmor_ico	0.248487	0	0.00791148
+Gadmor_lfc	Gadmor_kie	Gadmac	0.00624813	0.0519067	0.000105089
+Gadmor_lfo	Gadmor_kie	Gadmac	0.028007	2.24434e-10	0.000483652
+Gadmor_kie	Gadmor_low	Gadmac	0.0040163	0.146593	6.17318e-05
+Gadmor_kie	Gadmor_twc	Gadmac	0.0146949	5.88059e-07	0.000241588
+Gadmor_kie	Gadmor_two	Gadmac	0.0151258	0.00052759	0.000247379
+Gadmac	Gadoga	Gadmor_kie	0.250272	0	0.00772606
+Gadmor_lfo	Gadmor_lfc	Gadmac	0.0200587	4.86556e-07	0.000377525
+Gadmor_lfc	Gadmor_low	Gadmac	0.0111559	0.00196764	0.000190062
+Gadmor_lfc	Gadmor_twc	Gadmac	0.0195484	6.05367e-10	0.000353338
+Gadmor_lfc	Gadmor_two	Gadmac	0.0202563	4.70245e-07	0.000364506
+Gadmac	Gadoga	Gadmor_lfc	0.248685	0	0.0076932
+Gadmor_lfo	Gadmor_low	Gadmac	0.0305905	2.66454e-15	0.00053326
+Gadmor_lfo	Gadmor_twc	Gadmac	0.0380854	0	0.000700346
+Gadmor_lfo	Gadmor_two	Gadmac	0.0394051	0	0.000722135
+Gadmac	Gadoga	Gadmor_lfo	0.249216	0	0.0056185
+Gadmor_low	Gadmor_twc	Gadmac	0.00959404	0.000645514	0.000159998
+Gadmor_low	Gadmor_two	Gadmac	0.0101792	0.00676742	0.000169011
+Gadmac	Gadoga	Gadmor_low	0.24727	0	0.00729539
+Gadmor_twc	Gadmor_two	Gadmac	0.00224688	0.26813	3.34696e-05
+Gadmac	Gadoga	Gadmor_twc	0.248628	0	0.00755297
+Gadmac	Gadoga	Gadmor_two	0.245732	0	0.00748675
+Gadmor_avc	Gadmor_avo	Gadmor_bat	0.00449684	0.0296321	0.00594045
+Gadmor_bor	Gadmor_avc	Gadmor_avo	0.00562907	0.000130832	0.0133403
+Gadmor_avc	Gadmor_avo	Gadmor_icc	0.0029489	0.0697307	0.00318555
+Gadmor_avc	Gadmor_avo	Gadmor_ico	0.00388212	0.0335013	0.00929634
+Gadmor_avc	Gadmor_kie	Gadmor_avo	6.66585e-05	0.487823	0.000149782
+Gadmor_lfc	Gadmor_avc	Gadmor_avo	0.00274625	0.0289385	0.0064169
+Gadmor_avc	Gadmor_avo	Gadmor_lfo	0.00232696	0.113777	0.0036275
+Gadmor_avc	Gadmor_low	Gadmor_avo	0.00033016	0.426424	0.000749207
+Gadmor_avc	Gadmor_avo	Gadmor_twc	0.00467258	0.00818344	0.00648588
+Gadmor_avc	Gadmor_avo	Gadmor_two	0.00357848	0.0433132	0.00503899
+Gadmor_avc	Gadmor_avo	Gadoga	0.00222102	0.273967	3.62313e-05
+Gadmor_bor	Gadmor_avc	Gadmor_bat	0.00181216	0.136027	0.00249862
+Gadmor_avc	Gadmor_icc	Gadmor_bat	0.0091993	4.52052e-05	0.0127927
+Gadmor_avc	Gadmor_ico	Gadmor_bat	0.0103682	4.97708e-08	0.0137312
+Gadmor_kie	Gadmor_avc	Gadmor_bat	0.000620671	0.374009	0.000809325
+Gadmor_avc	Gadmor_lfc	Gadmor_bat	0.000231119	0.452542	0.000315736
+Gadmor_lfo	Gadmor_avc	Gadmor_bat	0.014741	4.73457e-11	0.0175799
+Gadmor_avc	Gadmor_low	Gadmor_bat	0.000376147	0.442491	0.000498909
+Gadmor_twc	Gadmor_bat	Gadmor_avc	0.00608605	0.00811159	0.00850026
+Gadmor_two	Gadmor_bat	Gadmor_avc	0.00135765	0.237788	0.00190051
+Gadmor_avc	Gadmor_bat	Gadoga	0.00932137	0.0400929	0.000168596
+Gadmor_bor	Gadmor_avc	Gadmor_icc	0.00734855	0.00510628	0.00804892
+Gadmor_bor	Gadmor_avc	Gadmor_ico	0.00733786	2.46018e-05	0.0181443
+Gadmor_bor	Gadmor_kie	Gadmor_avc	0.007981	0.00026542	0.0150805
+Gadmor_bor	Gadmor_lfc	Gadmor_avc	0.00420583	0.0320292	0.00830282
+Gadmor_bor	Gadmor_avc	Gadmor_lfo	0.00689375	3.67317e-05	0.0109846
+Gadmor_low	Gadmor_avc	Gadmor_bor	0.00335941	0.0523013	0.00474832
+Gadmor_bor	Gadmor_avc	Gadmor_twc	0.00210459	0.179271	0.00305227
+Gadmor_bor	Gadmor_avc	Gadmor_two	0.0042909	0.0192059	0.00631386
+Gadmor_bor	Gadmor_avc	Gadoga	0.000262821	0.477642	4.47113e-06
+Gadmor_icc	Gadmor_ico	Gadmor_avc	0.000225634	0.464441	0.000418977
+Gadmor_kie	Gadmor_avc	Gadmor_icc	0.00211048	0.221319	0.00225121
+Gadmor_lfc	Gadmor_avc	Gadmor_icc	0.00273965	0.0783939	0.00308589
+Gadmor_icc	Gadmor_avc	Gadmor_lfo	0.00639818	0.00501777	0.00985845
+Gadmor_avc	Gadmor_low	Gadmor_icc	0.00311327	0.0833369	0.00336643
+Gadmor_avc	Gadmor_icc	Gadmor_twc	0.0122474	5.2526e-11	0.0180409
+Gadmor_avc	Gadmor_icc	Gadmor_two	0.0102207	1.18312e-07	0.0152827
+Gadmor_avc	Gadmor_icc	Gadoga	0.011915	0.00168152	0.000191939
+Gadmor_kie	Gadmor_avc	Gadmor_ico	0.00143352	0.246106	0.00330836
+Gadmor_lfc	Gadmor_avc	Gadmor_ico	0.00502163	0.00179017	0.0122398
+Gadmor_ico	Gadmor_avc	Gadmor_lfo	0.00757742	0.000578004	0.0115897
+Gadmor_avc	Gadmor_low	Gadmor_ico	0.00287589	0.0613276	0.00691734
+Gadmor_avc	Gadmor_ico	Gadmor_twc	0.0113803	1.25607e-08	0.0159293
+Gadmor_avc	Gadmor_ico	Gadmor_two	0.00866862	8.51377e-05	0.0123138
+Gadmor_avc	Gadmor_ico	Gadoga	0.00232125	0.301578	3.76445e-05
+Gadmor_avc	Gadmor_kie	Gadmor_lfc	0.00320288	0.0368208	0.00642923
+Gadmor_kie	Gadmor_avc	Gadmor_lfo	0.000275736	0.45042	0.000426311
+Gadmor_avc	Gadmor_kie	Gadmor_low	0.000395404	0.398416	0.00085428
+Gadmor_avc	Gadmor_kie	Gadmor_twc	0.00270397	0.0954837	0.00373785
+Gadmor_avc	Gadmor_kie	Gadmor_two	0.00139185	0.2135	0.00194654
+Gadmor_avc	Gadmor_kie	Gadoga	0.0039294	0.155742	6.32736e-05
+Gadmor_avc	Gadmor_lfc	Gadmor_lfo	0.00150193	0.197513	0.00247032
+Gadmor_lfc	Gadmor_avc	Gadmor_low	0.00385614	0.00208574	0.00858715
+Gadmor_lfc	Gadmor_avc	Gadmor_twc	0.000836477	0.318088	0.00120293
+Gadmor_lfc	Gadmor_avc	Gadmor_two	0.000786863	0.313852	0.00115145
+Gadmor_lfc	Gadmor_avc	Gadoga	0.0069557	0.00849334	0.000122108
+Gadmor_avc	Gadmor_low	Gadmor_lfo	0.000255874	0.453943	0.000401335
+Gadmor_lfo	Gadmor_avc	Gadmor_twc	0.0135527	6.10623e-14	0.0165165
+Gadmor_lfo	Gadmor_avc	Gadmor_two	0.0145694	3.44169e-15	0.0180111
+Gadmor_lfo	Gadmor_avc	Gadoga	0.0208986	1.29229e-05	0.000380911
+Gadmor_avc	Gadmor_low	Gadmor_twc	0.00316001	0.119979	0.00439445
+Gadmor_avc	Gadmor_low	Gadmor_two	0.00124009	0.269721	0.00175063
+Gadmor_avc	Gadmor_low	Gadoga	0.00363739	0.172718	5.92218e-05
+Gadmor_twc	Gadmor_two	Gadmor_avc	0.00467405	0.00319953	0.00632877
+Gadmor_avc	Gadmor_twc	Gadoga	0.0127048	0.00121803	0.000221175
+Gadmor_avc	Gadmor_two	Gadoga	0.0106209	0.0109046	0.000184508
+Gadmor_bor	Gadmor_avo	Gadmor_bat	0.00585745	0.00655438	0.0078826
+Gadmor_avo	Gadmor_icc	Gadmor_bat	0.00499443	0.0173939	0.00678967
+Gadmor_avo	Gadmor_ico	Gadmor_bat	0.00559026	0.0185876	0.00721463
+Gadmor_kie	Gadmor_avo	Gadmor_bat	0.00530838	0.0116972	0.00677612
+Gadmor_lfc	Gadmor_avo	Gadmor_bat	0.00372187	0.0171549	0.00504379
+Gadmor_lfo	Gadmor_avo	Gadmor_bat	0.0202146	0	0.0236659
+Gadmor_low	Gadmor_avo	Gadmor_bat	0.00410309	0.0805063	0.00525928
+Gadmor_twc	Gadmor_bat	Gadmor_avo	0.00669865	0.0055233	0.0112486
+Gadmor_two	Gadmor_bat	Gadmor_avo	0.00342574	0.0784528	0.00575708
+Gadmor_avo	Gadmor_bat	Gadoga	0.00979979	0.0117461	0.000172642
+Gadmor_bor	Gadmor_avo	Gadmor_icc	0.0102786	1.73861e-05	0.0111821
+Gadmor_bor	Gadmor_avo	Gadmor_ico	0.0114616	1.11892e-11	0.0278174
+Gadmor_bor	Gadmor_kie	Gadmor_avo	0.00501219	0.00180674	0.0113047
+Gadmor_bor	Gadmor_lfc	Gadmor_avo	0.00319706	0.0466378	0.00748633
+Gadmor_bor	Gadmor_avo	Gadmor_lfo	0.00906971	2.35849e-05	0.0143271
+Gadmor_avo	Gadmor_low	Gadmor_bor	0.00438309	0.0267338	0.00600303
+Gadmor_bor	Gadmor_avo	Gadmor_twc	0.00686183	0.00218528	0.00980385
+Gadmor_bor	Gadmor_avo	Gadmor_two	0.00727906	0.000572676	0.0104944
+Gadmor_bor	Gadmor_avo	Gadoga	0.00270361	0.254761	4.52244e-05
+Gadmor_ico	Gadmor_avo	Gadmor_icc	0.00185925	0.210095	0.00197827
+Gadmor_kie	Gadmor_avo	Gadmor_icc	0.00497785	0.0178069	0.00525977
+Gadmor_lfc	Gadmor_avo	Gadmor_icc	0.00586305	0.000668636	0.00655851
+Gadmor_icc	Gadmor_avo	Gadmor_lfo	0.00823181	0.000202772	0.0125413
+Gadmor_low	Gadmor_avo	Gadmor_icc	8.03726e-05	0.4809	8.61755e-05
+Gadmor_avo	Gadmor_icc	Gadmor_twc	0.00835492	0.000145244	0.0119589
+Gadmor_avo	Gadmor_icc	Gadmor_two	0.00817273	0.0010642	0.0119562
+Gadmor_avo	Gadmor_icc	Gadoga	0.0134582	0.00488901	0.000211932
+Gadmor_kie	Gadmor_avo	Gadmor_ico	0.00556939	0.00168761	0.0126252
+Gadmor_lfc	Gadmor_avo	Gadmor_ico	0.00870218	1.18979e-06	0.0208122
+Gadmor_ico	Gadmor_avo	Gadmor_lfo	0.00995953	1.75896e-08	0.0149033
+Gadmor_low	Gadmor_avo	Gadmor_ico	0.00054134	0.381756	0.00125508
+Gadmor_avo	Gadmor_ico	Gadmor_twc	0.00697359	0.00178838	0.00945396
+Gadmor_avo	Gadmor_ico	Gadmor_two	0.00575822	0.00176675	0.00792344
+Gadmor_avo	Gadmor_ico	Gadoga	0.000204391	0.466627	3.21986e-06
+Gadmor_lfc	Gadmor_kie	Gadmor_avo	0.00262403	0.130821	0.0059396
+Gadmor_kie	Gadmor_avo	Gadmor_lfo	0.00262456	0.0724795	0.00400289
+Gadmor_kie	Gadmor_low	Gadmor_avo	0.000958765	0.353614	0.00207226
+Gadmor_kie	Gadmor_avo	Gadmor_twc	0.00188008	0.232592	0.00254297
+Gadmor_kie	Gadmor_avo	Gadmor_two	0.00160505	0.255788	0.00219963
+Gadmor_avo	Gadmor_kie	Gadoga	0.00165083	0.293963	2.60098e-05
+Gadmor_lfc	Gadmor_avo	Gadmor_lfo	0.000546144	0.395681	0.000901077
+Gadmor_lfc	Gadmor_low	Gadmor_avo	0.00330834	0.0241432	0.00758492
+Gadmor_lfc	Gadmor_avo	Gadmor_twc	0.00539124	0.00648917	0.00766102
+Gadmor_lfc	Gadmor_avo	Gadmor_two	0.00412201	0.0273046	0.00596464
+Gadmor_lfc	Gadmor_avo	Gadoga	0.00816144	0.012096	0.000141988
+Gadmor_low	Gadmor_avo	Gadmor_lfo	0.00185309	0.20736	0.00284763
+Gadmor_lfo	Gadmor_avo	Gadmor_twc	0.0187413	0	0.0222623
+Gadmor_lfo	Gadmor_avo	Gadmor_two	0.0179639	0	0.0216713
+Gadmor_lfo	Gadmor_avo	Gadoga	0.0233489	7.11978e-08	0.000417153
+Gadmor_low	Gadmor_avo	Gadmor_twc	0.001099	0.356858	0.00149765
+Gadmor_low	Gadmor_avo	Gadmor_two	0.00122203	0.314795	0.00167727
+Gadmor_avo	Gadmor_low	Gadoga	0.00193831	0.257615	3.09305e-05
+Gadmor_twc	Gadmor_two	Gadmor_avo	0.00298515	0.0758317	0.00481559
+Gadmor_avo	Gadmor_twc	Gadoga	0.0116243	0.000300599	0.000197644
+Gadmor_avo	Gadmor_two	Gadoga	0.00903857	0.0212743	0.00015299
+Gadmor_bor	Gadmor_icc	Gadmor_bat	0.011085	3.22533e-06	0.0158201
+Gadmor_bor	Gadmor_ico	Gadmor_bat	0.0112361	9.85515e-08	0.0152181
+Gadmor_bor	Gadmor_kie	Gadmor_bat	0.000823187	0.342752	0.00108576
+Gadmor_bor	Gadmor_lfc	Gadmor_bat	0.00238014	0.12302	0.00331597
+Gadmor_lfo	Gadmor_bor	Gadmor_bat	0.0134285	3.24106e-08	0.0163639
+Gadmor_bor	Gadmor_low	Gadmor_bat	0.0018966	0.245389	0.00256186
+Gadmor_twc	Gadmor_bat	Gadmor_bor	0.00707768	0.00784748	0.00784441
+Gadmor_two	Gadmor_bat	Gadmor_bor	0.00458442	0.0168791	0.0050956
+Gadmor_bor	Gadmor_bat	Gadoga	0.010702	0.00143836	0.000197505
+Gadmor_icc	Gadmor_ico	Gadmor_bat	0.000948971	0.35001	0.00129047
+Gadmor_kie	Gadmor_icc	Gadmor_bat	0.0103105	0.000181053	0.0139262
+Gadmor_lfc	Gadmor_icc	Gadmor_bat	0.00806299	0.000135587	0.0114073
+Gadmor_lfo	Gadmor_icc	Gadmor_bat	0.022469	0	0.0266901
+Gadmor_low	Gadmor_icc	Gadmor_bat	0.00921177	0.00140694	0.0125133
+Gadmor_twc	Gadmor_bat	Gadmor_icc	0.00292023	0.174376	0.0025507
+Gadmor_bat	Gadmor_two	Gadmor_icc	0.000160854	0.471187	0.000141173
+Gadmor_bat	Gadmor_icc	Gadoga	0.00162926	0.394829	2.83057e-05
+Gadmor_kie	Gadmor_ico	Gadmor_bat	0.0110646	7.69429e-07	0.0141917
+Gadmor_lfc	Gadmor_ico	Gadmor_bat	0.00928946	3.24434e-06	0.0126391
+Gadmor_lfo	Gadmor_ico	Gadmor_bat	0.0249946	0	0.0293378
+Gadmor_low	Gadmor_ico	Gadmor_bat	0.00969435	1.10813e-05	0.0125907
+Gadmor_twc	Gadmor_bat	Gadmor_ico	0.0057593	0.00990677	0.0105331
+Gadmor_two	Gadmor_bat	Gadmor_ico	0.00362642	0.0245545	0.00662696
+Gadmor_ico	Gadmor_bat	Gadoga	0.00935823	0.0143421	0.000163481
+Gadmor_kie	Gadmor_lfc	Gadmor_bat	0.000836425	0.36462	0.00111049
+Gadmor_lfo	Gadmor_kie	Gadmor_bat	0.0143414	3.80596e-12	0.0168365
+Gadmor_kie	Gadmor_low	Gadmor_bat	0.000873434	0.384627	0.00111913
+Gadmor_twc	Gadmor_bat	Gadmor_kie	0.00337601	0.0793504	0.00553638
+Gadmor_bat	Gadmor_two	Gadmor_kie	0.000238278	0.444926	0.000394014
+Gadmor_kie	Gadmor_bat	Gadoga	0.00802179	0.0278799	0.000141194
+Gadmor_lfo	Gadmor_lfc	Gadmor_bat	0.0151281	0	0.0186545
+Gadmor_low	Gadmor_lfc	Gadmor_bat	4.87419e-05	0.489634	6.53935e-05
+Gadmor_twc	Gadmor_bat	Gadmor_lfc	0.00759869	0.00107684	0.0113317
+Gadmor_two	Gadmor_bat	Gadmor_lfc	0.00250752	0.101944	0.00376902
+Gadmor_lfc	Gadmor_bat	Gadoga	0.0169133	5.58199e-06	0.000323165
+Gadmor_lfo	Gadmor_low	Gadmor_bat	0.0155722	4.61371e-09	0.018391
+Gadmor_twc	Gadmor_bat	Gadmor_lfo	0.00411916	0.0279436	0.00483535
+Gadmor_two	Gadmor_bat	Gadmor_lfo	0.000929154	0.303769	0.0010999
+Gadmor_lfo	Gadmor_bat	Gadoga	0.030169	2.22045e-16	0.000593475
+Gadmor_twc	Gadmor_bat	Gadmor_low	0.00388709	0.091016	0.00622569
+Gadmor_two	Gadmor_bat	Gadmor_low	0.000488035	0.418322	0.000780632
+Gadmor_low	Gadmor_bat	Gadoga	0.00853623	0.00634859	0.000151816
+Gadmor_two	Gadmor_twc	Gadmor_bat	0.00057469	0.408369	0.00109888
+Gadmor_bat	Gadmor_twc	Gadoga	0.000783489	0.422485	1.26118e-05
+Gadmor_two	Gadmor_bat	Gadoga	0.00145749	0.357305	2.34079e-05
+Gadmor_ico	Gadmor_icc	Gadmor_bor	0.000287507	0.46077	0.000396819
+Gadmor_bor	Gadmor_kie	Gadmor_icc	0.00503915	0.0646805	0.00531557
+Gadmor_bor	Gadmor_lfc	Gadmor_icc	0.00396167	0.069779	0.00449071
+Gadmor_bor	Gadmor_icc	Gadmor_lfo	0.00110356	0.360855	0.00173615
+Gadmor_bor	Gadmor_low	Gadmor_icc	0.00972055	5.58762e-05	0.0105627
+Gadmor_bor	Gadmor_icc	Gadmor_twc	0.0150458	7.40408e-10	0.0228447
+Gadmor_bor	Gadmor_icc	Gadmor_two	0.0150325	2.22646e-09	0.0231157
+Gadmor_bor	Gadmor_icc	Gadoga	0.0127899	0.00701404	0.000212116
+Gadmor_bor	Gadmor_kie	Gadmor_ico	0.00540258	0.00167122	0.0128014
+Gadmor_bor	Gadmor_lfc	Gadmor_ico	0.00233061	0.138444	0.00566442
+Gadmor_ico	Gadmor_bor	Gadmor_lfo	0.000705872	0.376293	0.00110349
+Gadmor_bor	Gadmor_low	Gadmor_ico	0.00994526	1.01102e-07	0.0242961
+Gadmor_bor	Gadmor_ico	Gadmor_twc	0.0133018	1.02217e-10	0.019087
+Gadmor_bor	Gadmor_ico	Gadmor_two	0.0125348	3.20619e-11	0.01822
+Gadmor_bor	Gadmor_ico	Gadoga	0.00141683	0.33299	2.36307e-05
+Gadmor_kie	Gadmor_bor	Gadmor_lfc	0.000153262	0.470543	0.000309936
+Gadmor_bor	Gadmor_kie	Gadmor_lfo	0.00585362	0.00371626	0.00898784
+Gadmor_bor	Gadmor_kie	Gadmor_low	0.00530895	0.00224184	0.0113867
+Gadmor_bor	Gadmor_kie	Gadmor_twc	0.00430128	0.0253142	0.00598988
+Gadmor_bor	Gadmor_kie	Gadmor_two	0.00540141	0.000509037	0.00765335
+Gadmor_bor	Gadmor_kie	Gadoga	0.00242482	0.28516	3.94875e-05
+Gadmor_bor	Gadmor_lfc	Gadmor_lfo	0.00822732	5.84174e-05	0.0135257
+Gadmor_bor	Gadmor_lfc	Gadmor_low	0.00173371	0.167302	0.00386028
+Gadmor_bor	Gadmor_lfc	Gadmor_twc	0.00152012	0.248897	0.00219939
+Gadmor_bor	Gadmor_lfc	Gadmor_two	0.00331254	0.0573215	0.00490538
+Gadmor_lfc	Gadmor_bor	Gadoga	0.00579987	0.0153195	0.000104557
+Gadmor_bor	Gadmor_low	Gadmor_lfo	0.00642038	0.00318656	0.0100689
+Gadmor_lfo	Gadmor_bor	Gadmor_twc	0.0110751	9.36903e-07	0.0136704
+Gadmor_lfo	Gadmor_bor	Gadmor_two	0.0108719	3.991e-06	0.0136403
+Gadmor_lfo	Gadmor_bor	Gadoga	0.0224359	2.66574e-09	0.000421353
+Gadmor_bor	Gadmor_low	Gadmor_twc	0.00536311	0.0206605	0.00762247
+Gadmor_bor	Gadmor_low	Gadmor_two	0.00552404	0.00170007	0.00801279
+Gadmor_bor	Gadmor_low	Gadoga	0.00226184	0.243394	3.79041e-05
+Gadmor_twc	Gadmor_two	Gadmor_bor	0.00260235	0.0931807	0.00278753
+Gadmor_bor	Gadmor_twc	Gadoga	0.0124932	6.78385e-05	0.000223067
+Gadmor_bor	Gadmor_two	Gadoga	0.00933076	0.0149557	0.000165901
+Gadmor_icc	Gadmor_ico	Gadmor_kie	0.000327912	0.442463	0.000717704
+Gadmor_ico	Gadmor_icc	Gadmor_lfc	0.00167167	0.199879	0.00323246
+Gadmor_ico	Gadmor_icc	Gadmor_lfo	0.00184516	0.203556	0.00277289
+Gadmor_icc	Gadmor_low	Gadmor_ico	0.00203737	0.194427	0.00508944
+Gadmor_ico	Gadmor_icc	Gadmor_twc	0.0021463	0.198315	0.00310246
+Gadmor_ico	Gadmor_icc	Gadmor_two	0.00254003	0.14239	0.00371283
+Gadmor_ico	Gadmor_icc	Gadoga	0.0119271	0.0103653	0.000185689
+Gadmor_lfc	Gadmor_kie	Gadmor_icc	0.00113143	0.340271	0.00125562
+Gadmor_icc	Gadmor_kie	Gadmor_lfo	0.00564255	0.0285631	0.00858012
+Gadmor_kie	Gadmor_low	Gadmor_icc	0.00467548	0.0507141	0.00493564
+Gadmor_kie	Gadmor_icc	Gadmor_twc	0.0106535	0.000319782	0.015342
+Gadmor_kie	Gadmor_icc	Gadmor_two	0.01001	0.000291187	0.0146462
+Gadmor_kie	Gadmor_icc	Gadoga	0.0107695	0.0149509	0.000169114
+Gadmor_icc	Gadmor_lfc	Gadmor_lfo	0.00724141	0.00255447	0.0115907
+Gadmor_lfc	Gadmor_low	Gadmor_icc	0.0059479	0.000544262	0.00665949
+Gadmor_lfc	Gadmor_icc	Gadmor_twc	0.0128835	3.79696e-07	0.0191587
+Gadmor_lfc	Gadmor_icc	Gadmor_two	0.0106692	2.2189e-06	0.0162677
+Gadmor_lfc	Gadmor_icc	Gadoga	0.0173382	4.18806e-06	0.000298477
+Gadmor_icc	Gadmor_low	Gadmor_lfo	0.0069962	0.0115775	0.0106458
+Gadmor_lfo	Gadmor_icc	Gadmor_twc	0.0250463	0	0.0303439
+Gadmor_lfo	Gadmor_icc	Gadmor_two	0.024089	0	0.0295831
+Gadmor_lfo	Gadmor_icc	Gadoga	0.0343288	2.42263e-09	0.000606305
+Gadmor_low	Gadmor_icc	Gadmor_twc	0.00974351	0.00160905	0.0140941
+Gadmor_low	Gadmor_icc	Gadmor_two	0.00924488	0.00103972	0.0136705
+Gadmor_low	Gadmor_icc	Gadoga	0.00952623	0.0410465	0.000150451
+Gadmor_twc	Gadmor_two	Gadmor_icc	0.00322849	0.0847784	0.0027458
+Gadmor_icc	Gadmor_twc	Gadoga	0.0015211	0.379337	2.53681e-05
+Gadmor_two	Gadmor_icc	Gadoga	0.00276558	0.312173	4.61842e-05
+Gadmor_lfc	Gadmor_kie	Gadmor_ico	0.00385862	0.0364316	0.009186
+Gadmor_ico	Gadmor_kie	Gadmor_lfo	0.00714461	3.04755e-05	0.0107271
+Gadmor_kie	Gadmor_low	Gadmor_ico	0.00452088	0.00342209	0.0103562
+Gadmor_kie	Gadmor_ico	Gadmor_twc	0.00881989	0.000630178	0.0119781
+Gadmor_kie	Gadmor_ico	Gadmor_two	0.00739741	0.00305582	0.0101801
+Gadmor_ico	Gadmor_kie	Gadoga	0.00127603	0.348702	2.00467e-05
+Gadmor_ico	Gadmor_lfc	Gadmor_lfo	0.00898481	1.81382e-06	0.0143129
+Gadmor_lfc	Gadmor_low	Gadmor_ico	0.00856398	1.33722e-09	0.0206588
+Gadmor_lfc	Gadmor_ico	Gadmor_twc	0.0121595	2.09396e-07	0.0173522
+Gadmor_lfc	Gadmor_ico	Gadmor_two	0.00935853	1.9654e-05	0.0135743
+Gadmor_lfc	Gadmor_ico	Gadoga	0.00933108	0.00868047	0.000162254
+Gadmor_ico	Gadmor_low	Gadmor_lfo	0.00823457	2.62533e-05	0.0124828
+Gadmor_lfo	Gadmor_ico	Gadmor_twc	0.0248593	0	0.029787
+Gadmor_lfo	Gadmor_ico	Gadmor_two	0.0229128	0	0.0278263
+Gadmor_lfo	Gadmor_ico	Gadoga	0.0230072	6.39579e-09	0.000409066
+Gadmor_low	Gadmor_ico	Gadmor_twc	0.00806329	0.000511114	0.0110943
+Gadmor_low	Gadmor_ico	Gadmor_two	0.00693365	0.000534863	0.00958652
+Gadmor_ico	Gadmor_low	Gadoga	0.00146892	0.289105	2.33098e-05
+Gadmor_twc	Gadmor_two	Gadmor_ico	0.00192046	0.16475	0.00338115
+Gadmor_ico	Gadmor_twc	Gadoga	0.0109463	0.00121177	0.000183188
+Gadmor_ico	Gadmor_two	Gadoga	0.00823127	0.0319684	0.000137551
+Gadmor_kie	Gadmor_lfc	Gadmor_lfo	0.00204814	0.165791	0.00328665
+Gadmor_lfc	Gadmor_kie	Gadmor_low	0.00406203	0.00182786	0.0088229
+Gadmor_lfc	Gadmor_kie	Gadmor_twc	0.00400209	0.0176365	0.00564269
+Gadmor_lfc	Gadmor_kie	Gadmor_two	0.00277846	0.102135	0.00397991
+Gadmor_lfc	Gadmor_kie	Gadoga	0.0096789	0.00697506	0.000166441
+Gadmor_kie	Gadmor_low	Gadmor_lfo	0.0005302	0.387547	0.000806396
+Gadmor_lfo	Gadmor_kie	Gadmor_twc	0.0160961	9.89508e-12	0.0191563
+Gadmor_lfo	Gadmor_kie	Gadmor_two	0.0161461	3.31646e-12	0.0195538
+Gadmor_lfo	Gadmor_kie	Gadoga	0.0247921	4.72259e-10	0.000440326
+Gadmor_kie	Gadmor_low	Gadmor_twc	0.000293404	0.448292	0.000396704
+Gadmor_kie	Gadmor_low	Gadmor_two	0.00016879	0.46738	0.000231265
+Gadmor_low	Gadmor_kie	Gadoga	5.69273e-05	0.493453	8.9868e-07
+Gadmor_twc	Gadmor_two	Gadmor_kie	0.00330276	0.0244112	0.00522889
+Gadmor_kie	Gadmor_twc	Gadoga	0.0105235	0.000294374	0.00017774
+Gadmor_kie	Gadmor_two	Gadoga	0.00743819	0.0296748	0.000125094
+Gadmor_low	Gadmor_lfc	Gadmor_lfo	0.00100531	0.274368	0.00162884
+Gadmor_lfo	Gadmor_lfc	Gadmor_twc	0.0121891	1.90936e-12	0.0152397
+Gadmor_lfo	Gadmor_lfc	Gadmor_two	0.0134762	0	0.0170644
+Gadmor_lfo	Gadmor_lfc	Gadoga	0.0154482	1.72474e-05	0.000298241
+Gadmor_lfc	Gadmor_low	Gadmor_twc	0.0046852	0.00576776	0.00667939
+Gadmor_lfc	Gadmor_low	Gadmor_two	0.00278015	0.0406001	0.00403754
+Gadmor_lfc	Gadmor_low	Gadoga	0.00945879	0.00242121	0.000164903
+Gadmor_twc	Gadmor_two	Gadmor_lfc	0.00503371	0.00537048	0.00721675
+Gadmor_lfc	Gadmor_twc	Gadoga	0.0188487	8.08462e-07	0.000348927
+Gadmor_lfc	Gadmor_two	Gadoga	0.0168672	3.86348e-07	0.000311148
+Gadmor_lfo	Gadmor_low	Gadmor_twc	0.0166095	1.78746e-14	0.0198879
+Gadmor_lfo	Gadmor_low	Gadmor_two	0.016557	2.88747e-12	0.0200559
+Gadmor_lfo	Gadmor_low	Gadoga	0.0234113	8.28606e-11	0.000419893
+Gadmor_twc	Gadmor_two	Gadmor_lfo	0.00369055	0.0198991	0.00420039
+Gadmor_lfo	Gadmor_twc	Gadoga	0.0329498	6.32827e-15	0.000623328
+Gadmor_lfo	Gadmor_two	Gadoga	0.0302099	1.60982e-14	0.000570005
+Gadmor_twc	Gadmor_two	Gadmor_low	0.00305581	0.0777378	0.00473491
+Gadmor_low	Gadmor_twc	Gadoga	0.0088095	0.0017562	0.000150762
+Gadmor_low	Gadmor_two	Gadoga	0.00685032	0.0290552	0.000116892
+Gadmor_two	Gadmor_twc	Gadoga	0.00180558	0.31013	2.75965e-05
+
+### D_fix (c)
+P1	P2	P3	Dstatistic	p-value	f_G
+Gadcha	Gadmac	Arcgla	0.00281724	0.197851	0.000312673
+Gadmor_avc	Gadcha	Arcgla	0.0153966	5.63993e-14	0.0010159
+Gadmor_avo	Gadcha	Arcgla	0.015784	1.11022e-15	0.00103663
+Gadmor_bat	Gadcha	Arcgla	0.0141245	1.16885e-11	0.000928059
+Gadmor_bor	Gadcha	Arcgla	0.0158504	2.21156e-13	0.00105111
+Gadmor_icc	Gadcha	Arcgla	0.0143118	7.72375e-09	0.000939755
+Gadmor_ico	Gadcha	Arcgla	0.0158649	5.22915e-14	0.00104172
+Gadmor_kie	Gadcha	Arcgla	0.0173341	2.29039e-13	0.00113782
+Gadmor_lfc	Gadcha	Arcgla	0.0180675	2.22045e-16	0.00120849
+Gadmor_lfo	Gadcha	Arcgla	0.0196672	0	0.00132016
+Gadmor_low	Gadcha	Arcgla	0.0166326	6.73905e-14	0.00109349
+Gadmor_twc	Gadcha	Arcgla	0.0139573	1.82395e-08	0.00091143
+Gadmor_two	Gadcha	Arcgla	0.0144136	2.95723e-08	0.000941296
+Gadcha	Gadoga	Arcgla	0.00315138	0.142549	0.000348391
+Gadmor_avc	Gadmac	Arcgla	0.0125821	3.7885e-05	0.00144425
+Gadmor_avo	Gadmac	Arcgla	0.0128445	2.0217e-05	0.0014712
+Gadmor_bat	Gadmac	Arcgla	0.0123615	1.78436e-05	0.00141837
+Gadmor_bor	Gadmac	Arcgla	0.0136529	2.95561e-06	0.00157561
+Gadmor_icc	Gadmac	Arcgla	0.0120974	0.000137195	0.00138805
+Gadmor_ico	Gadmac	Arcgla	0.0125984	3.61321e-05	0.00144319
+Gadmor_kie	Gadmac	Arcgla	0.0135495	1.23416e-05	0.00155144
+Gadmor_lfc	Gadmac	Arcgla	0.0129349	2.33427e-05	0.00149922
+Gadmor_lfo	Gadmac	Arcgla	0.0143639	2.66821e-07	0.00166542
+Gadmor_low	Gadmac	Arcgla	0.0130388	6.52817e-06	0.00149493
+Gadmor_twc	Gadmac	Arcgla	0.0107883	0.000258634	0.00123378
+Gadmor_two	Gadmac	Arcgla	0.0113395	0.00015786	0.00129665
+Gadmac	Gadoga	Arcgla	0.000685956	0.467954	5.7069e-06
+Gadmor_avc	Gadmor_avo	Arcgla	0.00554989	0.130802	5.79855e-05
+Gadmor_avc	Gadmor_bat	Arcgla	0.00994361	0.0135633	0.00011465
+Gadmor_avc	Gadmor_bor	Arcgla	0.0044043	0.14722	4.82303e-05
+Gadmor_avc	Gadmor_icc	Arcgla	0.0101103	0.0049725	0.000104349
+Gadmor_avc	Gadmor_ico	Arcgla	0.00657102	0.0587766	6.84415e-05
+Gadmor_kie	Gadmor_avc	Arcgla	0.000880677	0.43216	9.10262e-06
+Gadmor_lfc	Gadmor_avc	Arcgla	0.00628874	0.0760201	7.13623e-05
+Gadmor_lfo	Gadmor_avc	Arcgla	0.0144406	0.00226	0.000170561
+Gadmor_avc	Gadmor_low	Arcgla	0.00141153	0.390166	1.47976e-05
+Gadmor_avc	Gadmor_twc	Arcgla	0.0179789	5.14568e-05	0.000199938
+Gadmor_avc	Gadmor_two	Arcgla	0.0139254	0.00339041	0.000154508
+Gadmor_avc	Gadoga	Arcgla	0.0128406	3.40601e-06	0.00145839
+Gadmor_avo	Gadmor_bat	Arcgla	0.00597115	0.105581	6.70264e-05
+Gadmor_bor	Gadmor_avo	Arcgla	0.000745898	0.429112	7.97156e-06
+Gadmor_avo	Gadmor_icc	Arcgla	0.0070874	0.0579639	7.13106e-05
+Gadmor_avo	Gadmor_ico	Arcgla	0.000955324	0.417158	9.64339e-06
+Gadmor_kie	Gadmor_avo	Arcgla	0.00840209	0.0506056	8.45597e-05
+Gadmor_lfc	Gadmor_avo	Arcgla	0.0112805	0.00174933	0.000126006
+Gadmor_lfo	Gadmor_avo	Arcgla	0.0208796	0.000370524	0.000240677
+Gadmor_low	Gadmor_avo	Arcgla	0.00369024	0.2233	3.75858e-05
+Gadmor_avo	Gadmor_twc	Arcgla	0.0132451	0.0108411	0.000143249
+Gadmor_avo	Gadmor_two	Arcgla	0.00914131	0.0392125	9.86132e-05
+Gadmor_avo	Gadoga	Arcgla	0.0134947	9.71929e-07	0.00153082
+Gadmor_bor	Gadmor_bat	Arcgla	0.00625149	0.0266314	7.35692e-05
+Gadmor_icc	Gadmor_bat	Arcgla	0.000733666	0.447661	8.1146e-06
+Gadmor_ico	Gadmor_bat	Arcgla	0.00482907	0.135652	5.3758e-05
+Gadmor_kie	Gadmor_bat	Arcgla	0.0125935	0.00517162	0.000141542
+Gadmor_lfc	Gadmor_bat	Arcgla	0.0142214	0.000811575	0.000173876
+Gadmor_lfo	Gadmor_bat	Arcgla	0.0237078	4.46762e-09	0.000300051
+Gadmor_low	Gadmor_bat	Arcgla	0.00832543	0.0458997	9.41804e-05
+Gadmor_bat	Gadmor_twc	Arcgla	0.00662959	0.0606469	6.77845e-05
+Gadmor_bat	Gadmor_two	Arcgla	0.00407798	0.14514	4.15377e-05
+Gadmor_bat	Gadoga	Arcgla	0.0127618	1.46386e-06	0.0014489
+Gadmor_bor	Gadmor_icc	Arcgla	0.00474031	0.181297	5.0256e-05
+Gadmor_ico	Gadmor_bor	Arcgla	1.08734e-05	0.498969	1.1628e-07
+Gadmor_kie	Gadmor_bor	Arcgla	0.00876136	0.0158156	9.1321e-05
+Gadmor_lfc	Gadmor_bor	Arcgla	0.00917322	0.00385372	0.000106282
+Gadmor_lfo	Gadmor_bor	Arcgla	0.0212085	1.90583e-05	0.000257481
+Gadmor_low	Gadmor_bor	Arcgla	0.00451059	0.156054	4.84261e-05
+Gadmor_bor	Gadmor_twc	Arcgla	0.0115764	0.0106623	0.00013201
+Gadmor_bor	Gadmor_two	Arcgla	0.0089774	0.0320749	0.000102
+Gadmor_bor	Gadoga	Arcgla	0.0145492	1.75481e-07	0.00166058
+Gadmor_ico	Gadmor_icc	Arcgla	0.00579345	0.089784	5.7595e-05
+Gadmor_kie	Gadmor_icc	Arcgla	0.0118671	0.0100027	0.000119264
+Gadmor_lfc	Gadmor_icc	Arcgla	0.0144806	0.000190565	0.000160168
+Gadmor_lfo	Gadmor_icc	Arcgla	0.0246262	2.34333e-08	0.000281489
+Gadmor_low	Gadmor_icc	Arcgla	0.00775943	0.0838485	7.81295e-05
+Gadmor_icc	Gadmor_twc	Arcgla	0.00761983	0.047233	8.07791e-05
+Gadmor_icc	Gadmor_two	Arcgla	0.00541231	0.147179	5.75043e-05
+Gadmor_icc	Gadoga	Arcgla	0.0128991	7.78682e-06	0.00146504
+Gadmor_kie	Gadmor_ico	Arcgla	0.00756636	0.0583362	7.62487e-05
+Gadmor_lfc	Gadmor_ico	Arcgla	0.0111935	0.00550006	0.000125078
+Gadmor_lfo	Gadmor_ico	Arcgla	0.0204542	2.31697e-05	0.000235226
+Gadmor_low	Gadmor_ico	Arcgla	0.00451009	0.174742	4.57422e-05
+Gadmor_ico	Gadmor_twc	Arcgla	0.0113232	0.000514056	0.000120895
+Gadmor_ico	Gadmor_two	Arcgla	0.0104415	0.0228193	0.000111451
+Gadmor_ico	Gadoga	Arcgla	0.0131815	2.08574e-06	0.00149485
+Gadmor_lfc	Gadmor_kie	Arcgla	0.00328675	0.23796	3.63139e-05
+Gadmor_lfo	Gadmor_kie	Arcgla	0.0134758	0.00191844	0.000154902
+Gadmor_kie	Gadmor_low	Arcgla	0.00310869	0.258719	3.14722e-05
+Gadmor_kie	Gadmor_twc	Arcgla	0.0189893	2.62889e-06	0.000204683
+Gadmor_kie	Gadmor_two	Arcgla	0.0163081	0.000349342	0.000175203
+Gadmor_kie	Gadoga	Arcgla	0.0142264	1.10306e-06	0.00161245
+Gadmor_lfo	Gadmor_lfc	Arcgla	0.00869463	0.0332137	0.000108932
+Gadmor_lfc	Gadmor_low	Arcgla	0.00753999	0.0653578	8.44675e-05
+Gadmor_lfc	Gadmor_twc	Arcgla	0.0194538	2.21393e-05	0.0002305
+Gadmor_lfc	Gadmor_two	Arcgla	0.0188308	4.91686e-05	0.000221821
+Gadmor_lfc	Gadoga	Arcgla	0.0134733	3.91429e-07	0.0015456
+Gadmor_lfo	Gadmor_low	Arcgla	0.0157196	0.000856834	0.000181785
+Gadmor_lfo	Gadmor_twc	Arcgla	0.0298072	3.20299e-13	0.000363786
+Gadmor_lfo	Gadmor_two	Arcgla	0.0287468	7.35551e-09	0.000349039
+Gadmor_lfo	Gadoga	Arcgla	0.0149004	3.74037e-08	0.00171096
+Gadmor_low	Gadmor_twc	Arcgla	0.013017	0.00997654	0.000141654
+Gadmor_low	Gadmor_two	Arcgla	0.0122105	0.00713313	0.00013287
+Gadmor_low	Gadoga	Arcgla	0.0132558	3.13584e-07	0.00150448
+Gadmor_two	Gadmor_twc	Arcgla	0.00240721	0.301774	2.3371e-05
+Gadmor_twc	Gadoga	Arcgla	0.0114725	3.6484e-05	0.00129872
+Gadmor_two	Gadoga	Arcgla	0.0124218	1.47512e-05	0.00140551
+Gadmor_avc	Gadcha	Gadmac	0.0743002	0	0.00939886
+Gadmor_avo	Gadcha	Gadmac	0.0745394	0	0.00937536
+Gadmor_bat	Gadcha	Gadmac	0.0724528	0	0.00912795
+Gadmor_bor	Gadcha	Gadmac	0.0742834	0	0.00942939
+Gadmor_icc	Gadcha	Gadmac	0.0738328	0	0.00931624
+Gadmor_ico	Gadcha	Gadmac	0.0746109	0	0.00937775
+Gadmor_kie	Gadcha	Gadmac	0.0754546	0	0.00948701
+Gadmor_lfc	Gadcha	Gadmac	0.0763832	0	0.00977261
+Gadmor_lfo	Gadcha	Gadmac	0.0783534	0	0.00999446
+Gadmor_low	Gadcha	Gadmac	0.0747516	0	0.00941799
+Gadmor_twc	Gadcha	Gadmac	0.0728502	0	0.00912825
+Gadmor_two	Gadcha	Gadmac	0.0732485	0	0.00918591
+Gadmac	Gadoga	Gadcha	0.0923942	0	0.00137635
+Gadmor_avc	Gadmor_avo	Gadcha	0.00780107	0.00676426	0.000239204
+Gadmor_avc	Gadmor_bat	Gadcha	0.0272628	5.3047e-09	0.000931318
+Gadmor_avc	Gadmor_bor	Gadcha	0.00169089	0.326424	5.42739e-05
+Gadmor_avc	Gadmor_icc	Gadcha	0.0110845	9.80761e-05	0.000335455
+Gadmor_avc	Gadmor_ico	Gadcha	0.00315127	0.139707	9.62751e-05
+Gadmor_kie	Gadmor_avc	Gadcha	0.00366626	0.128725	0.000110524
+Gadmor_lfc	Gadmor_avc	Gadcha	0.0054754	0.0577131	0.000181127
+Gadmor_lfo	Gadmor_avc	Gadcha	0.0304318	0	0.00103369
+Gadmor_avc	Gadmor_low	Gadcha	0.00215141	0.304727	6.58287e-05
+Gadmor_avc	Gadmor_twc	Gadcha	0.02669	6.77236e-15	0.000876738
+Gadmor_avc	Gadmor_two	Gadcha	0.028385	1.56894e-09	0.000931739
+Gadmor_avc	Gadcha	Gadoga	0.0419204	1.45379e-10	0.00544416
+Gadmor_avo	Gadmor_bat	Gadcha	0.0220773	0.00011021	0.000739932
+Gadmor_bor	Gadmor_avo	Gadcha	0.00664443	0.0996737	0.000210557
+Gadmor_avo	Gadmor_icc	Gadcha	0.00428927	0.131616	0.000127476
+Gadmor_ico	Gadmor_avo	Gadcha	0.00304727	0.228624	9.06961e-05
+Gadmor_kie	Gadmor_avo	Gadcha	0.0106399	0.00341019	0.00031545
+Gadmor_lfc	Gadmor_avo	Gadcha	0.0108695	0.00179621	0.000357743
+Gadmor_lfo	Gadmor_avo	Gadcha	0.0389582	1.4988e-13	0.00129697
+Gadmor_low	Gadmor_avo	Gadcha	0.00579076	0.143331	0.00017442
+Gadmor_avo	Gadmor_twc	Gadcha	0.0207456	5.70795e-07	0.00066934
+Gadmor_avo	Gadmor_two	Gadcha	0.021855	6.7377e-05	0.000702753
+Gadmor_avo	Gadcha	Gadoga	0.0421768	8.08343e-11	0.00545571
+Gadmor_bor	Gadmor_bat	Gadcha	0.0281841	8.71614e-08	0.000990982
+Gadmor_icc	Gadmor_bat	Gadcha	0.0172239	0.000206794	0.000568551
+Gadmor_ico	Gadmor_bat	Gadcha	0.0249766	1.24689e-05	0.00083066
+Gadmor_kie	Gadmor_bat	Gadcha	0.0322224	6.46182e-09	0.00107276
+Gadmor_lfc	Gadmor_bat	Gadcha	0.0300266	9.7344e-11	0.00108551
+Gadmor_lfo	Gadmor_bat	Gadcha	0.0544641	0	0.00200729
+Gadmor_low	Gadmor_bat	Gadcha	0.0274132	2.97016e-07	0.000924121
+Gadmor_twc	Gadmor_bat	Gadcha	0.00284683	0.324596	8.7274e-05
+Gadmor_two	Gadmor_bat	Gadcha	0.00096564	0.387571	2.95084e-05
+Gadmor_bat	Gadcha	Gadoga	0.0402808	4.71119e-10	0.00521129
+Gadmor_bor	Gadmor_icc	Gadcha	0.0101312	0.0298636	0.000318126
+Gadmor_bor	Gadmor_ico	Gadcha	0.00234358	0.263335	7.41574e-05
+Gadmor_kie	Gadmor_bor	Gadcha	0.00546694	0.0249951	0.00016836
+Gadmor_lfc	Gadmor_bor	Gadcha	0.00517361	0.132538	0.0001766
+Gadmor_lfo	Gadmor_bor	Gadcha	0.0322002	0	0.00113088
+Gadmor_bor	Gadmor_low	Gadcha	0.000200183	0.482592	6.34426e-06
+Gadmor_bor	Gadmor_twc	Gadcha	0.0245497	1.83288e-11	0.000832842
+Gadmor_bor	Gadmor_two	Gadcha	0.0264275	1.00413e-07	0.000896001
+Gadmor_bor	Gadcha	Gadoga	0.0424681	3.30826e-11	0.00553576
+Gadmor_ico	Gadmor_icc	Gadcha	0.00860826	0.0170168	0.000252697
+Gadmor_kie	Gadmor_icc	Gadcha	0.0161617	0.00043601	0.000476204
+Gadmor_lfc	Gadmor_icc	Gadcha	0.0141989	0.00031188	0.000461777
+Gadmor_lfo	Gadmor_icc	Gadcha	0.0420371	0	0.00138098
+Gadmor_low	Gadmor_icc	Gadcha	0.0100382	0.0227547	0.000298954
+Gadmor_icc	Gadmor_twc	Gadcha	0.0171515	5.41395e-05	0.000544119
+Gadmor_icc	Gadmor_two	Gadcha	0.0177221	8.03044e-05	0.000562597
+Gadmor_icc	Gadcha	Gadoga	0.0420515	4.22866e-11	0.00544412
+Gadmor_kie	Gadmor_ico	Gadcha	0.00855897	0.00442334	0.000252651
+Gadmor_lfc	Gadmor_ico	Gadcha	0.00862468	0.0418781	0.000283429
+Gadmor_lfo	Gadmor_ico	Gadcha	0.0358396	0	0.00118632
+Gadmor_low	Gadmor_ico	Gadcha	0.00261573	0.302641	7.82123e-05
+Gadmor_ico	Gadmor_twc	Gadcha	0.0228579	1.26722e-09	0.000727621
+Gadmor_ico	Gadmor_two	Gadcha	0.0244926	3.89663e-06	0.000779388
+Gadmor_ico	Gadcha	Gadoga	0.0420859	1.57818e-10	0.00543895
+Gadmor_lfc	Gadmor_kie	Gadcha	0.000798498	0.422713	2.58418e-05
+Gadmor_lfo	Gadmor_kie	Gadcha	0.0279086	3.59601e-13	0.000921684
+Gadmor_kie	Gadmor_low	Gadcha	0.00408796	0.151067	0.000121416
+Gadmor_kie	Gadmor_twc	Gadcha	0.0312801	0	0.00100038
+Gadmor_kie	Gadmor_two	Gadcha	0.0328601	3.79262e-11	0.00104851
+Gadmor_kie	Gadcha	Gadoga	0.0423788	7.88634e-11	0.00548029
+Gadmor_lfo	Gadmor_lfc	Gadcha	0.0265902	6.14769e-10	0.000959703
+Gadmor_lfc	Gadmor_low	Gadcha	0.00584254	0.132807	0.00019237
+Gadmor_lfc	Gadmor_twc	Gadcha	0.0290042	2.28706e-14	0.00101684
+Gadmor_lfc	Gadmor_two	Gadcha	0.0315109	1.45092e-11	0.00110071
+Gadmor_lfc	Gadcha	Gadoga	0.0439744	9.51916e-12	0.00577453
+Gadmor_lfo	Gadmor_low	Gadcha	0.0324873	1.95177e-12	0.0010869
+Gadmor_lfo	Gadmor_twc	Gadcha	0.0546972	0	0.00193467
+Gadmor_lfo	Gadmor_two	Gadcha	0.0568314	0	0.00200582
+Gadmor_lfo	Gadcha	Gadoga	0.0449863	2.38953e-12	0.00590303
+Gadmor_low	Gadmor_twc	Gadcha	0.0247066	1.11022e-15	0.000800122
+Gadmor_low	Gadmor_two	Gadcha	0.0271031	2.39749e-09	0.000875951
+Gadmor_low	Gadcha	Gadoga	0.0424062	5.27711e-11	0.00549292
+Gadmor_twc	Gadmor_two	Gadcha	0.00283038	0.303201	8.23567e-05
+Gadmor_twc	Gadcha	Gadoga	0.0405686	4.18185e-10	0.00522169
+Gadmor_two	Gadcha	Gadoga	0.0415094	5.52034e-11	0.00534631
+Gadmor_avc	Gadmor_avo	Gadmac	0.00157843	0.347866	2.51095e-05
+Gadmor_avc	Gadmor_bat	Gadmac	0.0114418	0.00580255	0.000201857
+Gadmor_bor	Gadmor_avc	Gadmac	9.26381e-05	0.490994	1.53872e-06
+Gadmor_avc	Gadmor_icc	Gadmac	0.0113597	0.00340042	0.000178486
+Gadmor_avc	Gadmor_ico	Gadmac	0.0019164	0.324483	3.02899e-05
+Gadmor_avc	Gadmor_kie	Gadmac	0.000774999	0.421367	1.21788e-05
+Gadmor_lfc	Gadmor_avc	Gadmac	0.00818594	0.00796161	0.000140716
+Gadmor_lfo	Gadmor_avc	Gadmac	0.025972	1.05654e-07	0.00046121
+Gadmor_avc	Gadmor_low	Gadmac	0.00397199	0.155891	6.31008e-05
+Gadmor_avc	Gadmor_twc	Gadmac	0.0141381	8.1384e-06	0.000239904
+Gadmor_avc	Gadmor_two	Gadmac	0.0143631	0.000814344	0.000243014
+Gadmac	Gadoga	Gadmor_avc	0.247062	0	0.00655462
+Gadmor_avo	Gadmor_bat	Gadmac	0.0116695	0.00239826	0.000200282
+Gadmor_bor	Gadmor_avo	Gadmac	0.00139615	0.339712	2.27693e-05
+Gadmor_avo	Gadmor_icc	Gadmac	0.0138605	0.00161409	0.000212784
+Gadmor_avo	Gadmor_ico	Gadmac	7.91604e-05	0.487587	1.21271e-06
+Gadmor_kie	Gadmor_avo	Gadmac	0.00166897	0.287962	2.56002e-05
+Gadmor_lfc	Gadmor_avo	Gadmac	0.00845859	0.00950517	0.000144053
+Gadmor_lfo	Gadmor_avo	Gadmac	0.0288409	3.01846e-10	0.00049968
+Gadmor_avo	Gadmor_low	Gadmac	0.00329159	0.189872	5.11302e-05
+Gadmor_avo	Gadmor_twc	Gadmac	0.012786	5.98327e-07	0.000211567
+Gadmor_avo	Gadmor_two	Gadmac	0.0137058	0.00445907	0.000225732
+Gadmac	Gadoga	Gadmor_avo	0.248032	0	0.00750189
+Gadmor_bor	Gadmor_bat	Gadmac	0.0119684	0.000332194	0.000215433
+Gadmor_icc	Gadmor_bat	Gadmac	6.91189e-06	0.499472	1.17136e-07
+Gadmor_ico	Gadmor_bat	Gadmac	0.0111155	0.000372076	0.000189087
+Gadmor_kie	Gadmor_bat	Gadmac	0.0130371	0.000625877	0.00022354
+Gadmor_lfc	Gadmor_bat	Gadmac	0.0185553	4.13721e-08	0.000346501
+Gadmor_lfo	Gadmor_bat	Gadmac	0.0372937	0	0.000712953
+Gadmor_low	Gadmor_bat	Gadmac	0.00958908	0.000857177	0.000166077
+Gadmor_twc	Gadmor_bat	Gadmac	0.000252674	0.472105	3.96303e-06
+Gadmor_bat	Gadmor_two	Gadmac	0.00145772	0.367885	2.28224e-05
+Gadmac	Gadoga	Gadmor_bat	0.246691	0	0.0066231
+Gadmor_bor	Gadmor_icc	Gadmac	0.0134544	0.00607102	0.0002176
+Gadmor_bor	Gadmor_ico	Gadmac	0.00100959	0.35484	1.64086e-05
+Gadmor_kie	Gadmor_bor	Gadmac	0.00138151	0.363218	2.19411e-05
+Gadmor_lfc	Gadmor_bor	Gadmac	0.00690442	0.0233344	0.00012181
+Gadmor_lfo	Gadmor_bor	Gadmac	0.0287031	0	0.000523849
+Gadmor_bor	Gadmor_low	Gadmac	0.00270749	0.199005	4.41923e-05
+Gadmor_bor	Gadmor_twc	Gadmac	0.0133264	3.07546e-06	0.000231763
+Gadmor_bor	Gadmor_two	Gadmac	0.0134949	0.000496433	0.000234038
+Gadmac	Gadoga	Gadmor_bor	0.247414	0	0.00601167
+Gadmor_ico	Gadmor_icc	Gadmac	0.0131493	0.00345864	0.000199058
+Gadmor_kie	Gadmor_icc	Gadmac	0.0151286	0.0012421	0.000231573
+Gadmor_lfc	Gadmor_icc	Gadmac	0.0183464	3.11647e-06	0.000308972
+Gadmor_lfo	Gadmor_icc	Gadmac	0.039633	1.43952e-12	0.000681362
+Gadmor_low	Gadmor_icc	Gadmac	0.00834133	0.0771515	0.000128389
+Gadmor_icc	Gadmor_twc	Gadmac	0.00126307	0.376795	2.055e-05
+Gadmor_icc	Gadmor_two	Gadmac	0.000714024	0.447557	1.16256e-05
+Gadmac	Gadoga	Gadmor_icc	0.245249	0	0.00428436
+Gadmor_kie	Gadmor_ico	Gadmac	0.00177792	0.269263	2.71628e-05
+Gadmor_lfc	Gadmor_ico	Gadmac	0.00903496	0.00330121	0.000153505
+Gadmor_lfo	Gadmor_ico	Gadmac	0.0283392	0	0.000489503
+Gadmor_ico	Gadmor_low	Gadmac	0.00284164	0.125375	4.37913e-05
+Gadmor_ico	Gadmor_twc	Gadmac	0.0122015	1.50386e-05	0.000198784
+Gadmor_ico	Gadmor_two	Gadmac	0.0138617	0.00210744	0.000225187
+Gadmac	Gadoga	Gadmor_ico	0.248487	0	0.00791148
+Gadmor_lfc	Gadmor_kie	Gadmac	0.00624813	0.0519067	0.000105089
+Gadmor_lfo	Gadmor_kie	Gadmac	0.028007	2.24434e-10	0.000483652
+Gadmor_kie	Gadmor_low	Gadmac	0.0040163	0.146593	6.17318e-05
+Gadmor_kie	Gadmor_twc	Gadmac	0.0146949	5.88059e-07	0.000241588
+Gadmor_kie	Gadmor_two	Gadmac	0.0151258	0.00052759	0.000247379
+Gadmac	Gadoga	Gadmor_kie	0.250272	0	0.00772606
+Gadmor_lfo	Gadmor_lfc	Gadmac	0.0200587	4.86556e-07	0.000377525
+Gadmor_lfc	Gadmor_low	Gadmac	0.0111559	0.00196764	0.000190062
+Gadmor_lfc	Gadmor_twc	Gadmac	0.0195484	6.05367e-10	0.000353338
+Gadmor_lfc	Gadmor_two	Gadmac	0.0202563	4.70245e-07	0.000364506
+Gadmac	Gadoga	Gadmor_lfc	0.248685	0	0.0076932
+Gadmor_lfo	Gadmor_low	Gadmac	0.0305905	2.66454e-15	0.00053326
+Gadmor_lfo	Gadmor_twc	Gadmac	0.0380854	0	0.000700346
+Gadmor_lfo	Gadmor_two	Gadmac	0.0394051	0	0.000722135
+Gadmac	Gadoga	Gadmor_lfo	0.249216	0	0.0056185
+Gadmor_low	Gadmor_twc	Gadmac	0.00959404	0.000645514	0.000159998
+Gadmor_low	Gadmor_two	Gadmac	0.0101792	0.00676742	0.000169011
+Gadmac	Gadoga	Gadmor_low	0.24727	0	0.00729539
+Gadmor_twc	Gadmor_two	Gadmac	0.00224688	0.26813	3.34696e-05
+Gadmac	Gadoga	Gadmor_twc	0.248628	0	0.00755297
+Gadmac	Gadoga	Gadmor_two	0.245732	0	0.00748675
+Gadmor_avc	Gadmor_avo	Gadmor_bat	0.00449684	0.0296321	0.00594045
+Gadmor_bor	Gadmor_avc	Gadmor_avo	0.00562907	0.000130832	0.0133403
+Gadmor_icc	Gadmor_avc	Gadmor_avo	0.00797121	1.4179e-05	0.0188907
+Gadmor_ico	Gadmor_avc	Gadmor_avo	0.00643685	0.00387643	0.0141884
+Gadmor_avc	Gadmor_kie	Gadmor_avo	6.66585e-05	0.487823	0.000149782
+Gadmor_lfc	Gadmor_avc	Gadmor_avo	0.00274625	0.0289385	0.0064169
+Gadmor_lfo	Gadmor_avc	Gadmor_avo	0.0187946	0	0.0338816
+Gadmor_avc	Gadmor_low	Gadmor_avo	0.00033016	0.426424	0.000749207
+Gadmor_avc	Gadmor_avo	Gadmor_twc	0.00467258	0.00818344	0.00648588
+Gadmor_avc	Gadmor_avo	Gadmor_two	0.00357848	0.0433132	0.00503899
+Gadmor_avc	Gadmor_avo	Gadoga	0.00222102	0.273967	3.62313e-05
+Gadmor_bor	Gadmor_avc	Gadmor_bat	0.00181216	0.136027	0.00249862
+Gadmor_avc	Gadmor_icc	Gadmor_bat	0.0091993	4.52052e-05	0.0127927
+Gadmor_avc	Gadmor_ico	Gadmor_bat	0.0103682	4.97708e-08	0.0137312
+Gadmor_kie	Gadmor_avc	Gadmor_bat	0.000620671	0.374009	0.000809325
+Gadmor_avc	Gadmor_lfc	Gadmor_bat	0.000231119	0.452542	0.000315736
+Gadmor_lfo	Gadmor_avc	Gadmor_bat	0.014741	4.73457e-11	0.0175799
+Gadmor_avc	Gadmor_low	Gadmor_bat	0.000376147	0.442491	0.000498909
+Gadmor_twc	Gadmor_bat	Gadmor_avc	0.00608605	0.00811159	0.00850026
+Gadmor_two	Gadmor_bat	Gadmor_avc	0.00135765	0.237788	0.00190051
+Gadmor_avc	Gadmor_bat	Gadoga	0.00932137	0.0400929	0.000168596
+Gadmor_icc	Gadmor_bor	Gadmor_avc	0.012211	1.71233e-05	0.0240687
+Gadmor_ico	Gadmor_bor	Gadmor_avc	0.0121901	2.70701e-09	0.0225476
+Gadmor_bor	Gadmor_kie	Gadmor_avc	0.007981	0.00026542	0.0150805
+Gadmor_bor	Gadmor_lfc	Gadmor_avc	0.00420583	0.0320292	0.00830282
+Gadmor_lfo	Gadmor_avc	Gadmor_bor	0.0290457	0	0.0373038
+Gadmor_bor	Gadmor_low	Gadmor_avc	0.00214386	0.124942	0.00413658
+Gadmor_bor	Gadmor_avc	Gadmor_twc	0.00210459	0.179271	0.00305227
+Gadmor_bor	Gadmor_avc	Gadmor_two	0.0042909	0.0192059	0.00631386
+Gadmor_bor	Gadmor_avc	Gadoga	0.000262821	0.477642	4.47113e-06
+Gadmor_icc	Gadmor_ico	Gadmor_avc	0.000225634	0.464441	0.000418977
+Gadmor_icc	Gadmor_kie	Gadmor_avc	0.020723	5.80045e-11	0.0390192
+Gadmor_icc	Gadmor_lfc	Gadmor_avc	0.0170688	0	0.0330549
+Gadmor_lfo	Gadmor_avc	Gadmor_icc	0.0160691	3.74945e-12	0.01819
+Gadmor_icc	Gadmor_low	Gadmor_avc	0.0154383	2.28269e-08	0.0290381
+Gadmor_avc	Gadmor_icc	Gadmor_twc	0.0122474	5.2526e-11	0.0180409
+Gadmor_avc	Gadmor_icc	Gadmor_two	0.0102207	1.18312e-07	0.0152827
+Gadmor_avc	Gadmor_icc	Gadoga	0.011915	0.00168152	0.000191939
+Gadmor_ico	Gadmor_kie	Gadmor_avc	0.0210142	0	0.0372925
+Gadmor_ico	Gadmor_lfc	Gadmor_avc	0.0164796	0	0.0304269
+Gadmor_lfo	Gadmor_avc	Gadmor_ico	0.0184956	0	0.0340797
+Gadmor_ico	Gadmor_low	Gadmor_avc	0.015279	2.07145e-12	0.0271813
+Gadmor_avc	Gadmor_ico	Gadmor_twc	0.0113803	1.25607e-08	0.0159293
+Gadmor_avc	Gadmor_ico	Gadmor_two	0.00866862	8.51377e-05	0.0123138
+Gadmor_avc	Gadmor_ico	Gadoga	0.00232125	0.301578	3.76445e-05
+Gadmor_lfc	Gadmor_kie	Gadmor_avc	0.00402245	0.0490944	0.00777415
+Gadmor_lfo	Gadmor_avc	Gadmor_kie	0.0309067	0	0.0541678
+Gadmor_low	Gadmor_kie	Gadmor_avc	0.005942	0.00341747	0.0108586
+Gadmor_avc	Gadmor_kie	Gadmor_twc	0.00270397	0.0954837	0.00373785
+Gadmor_avc	Gadmor_kie	Gadmor_two	0.00139185	0.2135	0.00194654
+Gadmor_avc	Gadmor_kie	Gadoga	0.0039294	0.155742	6.32736e-05
+Gadmor_lfo	Gadmor_avc	Gadmor_lfc	0.0241544	0	0.0399975
+Gadmor_low	Gadmor_lfc	Gadmor_avc	0.00142817	0.212547	0.00271176
+Gadmor_lfc	Gadmor_avc	Gadmor_twc	0.000836477	0.318088	0.00120293
+Gadmor_lfc	Gadmor_avc	Gadmor_two	0.000786863	0.313852	0.00115145
+Gadmor_lfc	Gadmor_avc	Gadoga	0.0069557	0.00849334	0.000122108
+Gadmor_lfo	Gadmor_avc	Gadmor_low	0.0242849	0	0.0422984
+Gadmor_lfo	Gadmor_avc	Gadmor_twc	0.0135527	6.10623e-14	0.0165165
+Gadmor_lfo	Gadmor_avc	Gadmor_two	0.0145694	3.44169e-15	0.0180111
+Gadmor_lfo	Gadmor_avc	Gadoga	0.0208986	1.29229e-05	0.000380911
+Gadmor_avc	Gadmor_low	Gadmor_twc	0.00316001	0.119979	0.00439445
+Gadmor_avc	Gadmor_low	Gadmor_two	0.00124009	0.269721	0.00175063
+Gadmor_avc	Gadmor_low	Gadoga	0.00363739	0.172718	5.92218e-05
+Gadmor_twc	Gadmor_two	Gadmor_avc	0.00467405	0.00319953	0.00632877
+Gadmor_avc	Gadmor_twc	Gadoga	0.0127048	0.00121803	0.000221175
+Gadmor_avc	Gadmor_two	Gadoga	0.0106209	0.0109046	0.000184508
+Gadmor_bor	Gadmor_avo	Gadmor_bat	0.00585745	0.00655438	0.0078826
+Gadmor_avo	Gadmor_icc	Gadmor_bat	0.00499443	0.0173939	0.00678967
+Gadmor_avo	Gadmor_ico	Gadmor_bat	0.00559026	0.0185876	0.00721463
+Gadmor_kie	Gadmor_avo	Gadmor_bat	0.00530838	0.0116972	0.00677612
+Gadmor_lfc	Gadmor_avo	Gadmor_bat	0.00372187	0.0171549	0.00504379
+Gadmor_lfo	Gadmor_avo	Gadmor_bat	0.0202146	0	0.0236659
+Gadmor_low	Gadmor_avo	Gadmor_bat	0.00410309	0.0805063	0.00525928
+Gadmor_twc	Gadmor_bat	Gadmor_avo	0.00669865	0.0055233	0.0112486
+Gadmor_two	Gadmor_bat	Gadmor_avo	0.00342574	0.0784528	0.00575708
+Gadmor_avo	Gadmor_bat	Gadoga	0.00979979	0.0117461	0.000172642
+Gadmor_icc	Gadmor_bor	Gadmor_avo	0.00133185	0.223596	0.00323566
+Gadmor_ico	Gadmor_bor	Gadmor_avo	0.000452103	0.415081	0.00101163
+Gadmor_bor	Gadmor_kie	Gadmor_avo	0.00501219	0.00180674	0.0113047
+Gadmor_bor	Gadmor_lfc	Gadmor_avo	0.00319706	0.0466378	0.00748633
+Gadmor_lfo	Gadmor_bor	Gadmor_avo	0.0141937	0	0.0258499
+Gadmor_bor	Gadmor_low	Gadmor_avo	0.00586625	0.000693248	0.0135535
+Gadmor_bor	Gadmor_avo	Gadmor_twc	0.00686183	0.00218528	0.00980385
+Gadmor_bor	Gadmor_avo	Gadmor_two	0.00727906	0.000572676	0.0104944
+Gadmor_bor	Gadmor_avo	Gadoga	0.00270361	0.254761	4.52244e-05
+Gadmor_icc	Gadmor_ico	Gadmor_avo	0.000536156	0.413391	0.00122481
+Gadmor_icc	Gadmor_kie	Gadmor_avo	0.00700613	0.0021127	0.0160812
+Gadmor_icc	Gadmor_lfc	Gadmor_avo	0.00471252	0.0190119	0.010993
+Gadmor_lfo	Gadmor_icc	Gadmor_avo	0.0120604	1.02141e-13	0.0215687
+Gadmor_icc	Gadmor_low	Gadmor_avo	0.00816503	3.53913e-05	0.0189215
+Gadmor_avo	Gadmor_icc	Gadmor_twc	0.00835492	0.000145244	0.0119589
+Gadmor_avo	Gadmor_icc	Gadmor_two	0.00817273	0.0010642	0.0119562
+Gadmor_avo	Gadmor_icc	Gadoga	0.0134582	0.00488901	0.000211932
+Gadmor_ico	Gadmor_kie	Gadmor_avo	0.005611	0.0142544	0.0119128
+Gadmor_ico	Gadmor_lfc	Gadmor_avo	0.00365241	0.0679896	0.00798825
+Gadmor_lfo	Gadmor_ico	Gadmor_avo	0.0139099	2.4103e-10	0.0243678
+Gadmor_ico	Gadmor_low	Gadmor_avo	0.00738339	0.00127943	0.0157813
+Gadmor_avo	Gadmor_ico	Gadmor_twc	0.00697359	0.00178838	0.00945396
+Gadmor_avo	Gadmor_ico	Gadmor_two	0.00575822	0.00176675	0.00792344
+Gadmor_avo	Gadmor_ico	Gadoga	0.000204391	0.466627	3.21986e-06
+Gadmor_lfc	Gadmor_kie	Gadmor_avo	0.00262403	0.130821	0.0059396
+Gadmor_lfo	Gadmor_kie	Gadmor_avo	0.0194906	0	0.034264
+Gadmor_kie	Gadmor_low	Gadmor_avo	0.000958765	0.353614	0.00207226
+Gadmor_kie	Gadmor_avo	Gadmor_twc	0.00188008	0.232592	0.00254297
+Gadmor_kie	Gadmor_avo	Gadmor_two	0.00160505	0.255788	0.00219963
+Gadmor_avo	Gadmor_kie	Gadoga	0.00165083	0.293963	2.60098e-05
+Gadmor_lfo	Gadmor_lfc	Gadmor_avo	0.0160822	2.22045e-16	0.0297225
+Gadmor_lfc	Gadmor_low	Gadmor_avo	0.00330834	0.0241432	0.00758492
+Gadmor_lfc	Gadmor_avo	Gadmor_twc	0.00539124	0.00648917	0.00766102
+Gadmor_lfc	Gadmor_avo	Gadmor_two	0.00412201	0.0273046	0.00596464
+Gadmor_lfc	Gadmor_avo	Gadoga	0.00816144	0.012096	0.000141988
+Gadmor_lfo	Gadmor_low	Gadmor_avo	0.0201305	0	0.0356618
+Gadmor_lfo	Gadmor_avo	Gadmor_twc	0.0187413	0	0.0222623
+Gadmor_lfo	Gadmor_avo	Gadmor_two	0.0179639	0	0.0216713
+Gadmor_lfo	Gadmor_avo	Gadoga	0.0233489	7.11978e-08	0.000417153
+Gadmor_low	Gadmor_avo	Gadmor_twc	0.001099	0.356858	0.00149765
+Gadmor_low	Gadmor_avo	Gadmor_two	0.00122203	0.314795	0.00167727
+Gadmor_avo	Gadmor_low	Gadoga	0.00193831	0.257615	3.09305e-05
+Gadmor_twc	Gadmor_two	Gadmor_avo	0.00298515	0.0758317	0.00481559
+Gadmor_avo	Gadmor_twc	Gadoga	0.0116243	0.000300599	0.000197644
+Gadmor_avo	Gadmor_two	Gadoga	0.00903857	0.0212743	0.00015299
+Gadmor_bor	Gadmor_icc	Gadmor_bat	0.011085	3.22533e-06	0.0158201
+Gadmor_bor	Gadmor_ico	Gadmor_bat	0.0112361	9.85515e-08	0.0152181
+Gadmor_bor	Gadmor_kie	Gadmor_bat	0.000823187	0.342752	0.00108576
+Gadmor_bor	Gadmor_lfc	Gadmor_bat	0.00238014	0.12302	0.00331597
+Gadmor_lfo	Gadmor_bor	Gadmor_bat	0.0134285	3.24106e-08	0.0163639
+Gadmor_bor	Gadmor_low	Gadmor_bat	0.0018966	0.245389	0.00256186
+Gadmor_twc	Gadmor_bat	Gadmor_bor	0.00707768	0.00784748	0.00784441
+Gadmor_two	Gadmor_bat	Gadmor_bor	0.00458442	0.0168791	0.0050956
+Gadmor_bor	Gadmor_bat	Gadoga	0.010702	0.00143836	0.000197505
+Gadmor_icc	Gadmor_ico	Gadmor_bat	0.000948971	0.35001	0.00129047
+Gadmor_kie	Gadmor_icc	Gadmor_bat	0.0103105	0.000181053	0.0139262
+Gadmor_lfc	Gadmor_icc	Gadmor_bat	0.00806299	0.000135587	0.0114073
+Gadmor_lfo	Gadmor_icc	Gadmor_bat	0.022469	0	0.0266901
+Gadmor_low	Gadmor_icc	Gadmor_bat	0.00921177	0.00140694	0.0125133
+Gadmor_twc	Gadmor_bat	Gadmor_icc	0.00292023	0.174376	0.0025507
+Gadmor_bat	Gadmor_two	Gadmor_icc	0.000160854	0.471187	0.000141173
+Gadmor_bat	Gadmor_icc	Gadoga	0.00162926	0.394829	2.83057e-05
+Gadmor_kie	Gadmor_ico	Gadmor_bat	0.0110646	7.69429e-07	0.0141917
+Gadmor_lfc	Gadmor_ico	Gadmor_bat	0.00928946	3.24434e-06	0.0126391
+Gadmor_lfo	Gadmor_ico	Gadmor_bat	0.0249946	0	0.0293378
+Gadmor_low	Gadmor_ico	Gadmor_bat	0.00969435	1.10813e-05	0.0125907
+Gadmor_twc	Gadmor_bat	Gadmor_ico	0.0057593	0.00990677	0.0105331
+Gadmor_two	Gadmor_bat	Gadmor_ico	0.00362642	0.0245545	0.00662696
+Gadmor_ico	Gadmor_bat	Gadoga	0.00935823	0.0143421	0.000163481
+Gadmor_kie	Gadmor_lfc	Gadmor_bat	0.000836425	0.36462	0.00111049
+Gadmor_lfo	Gadmor_kie	Gadmor_bat	0.0143414	3.80596e-12	0.0168365
+Gadmor_kie	Gadmor_low	Gadmor_bat	0.000873434	0.384627	0.00111913
+Gadmor_twc	Gadmor_bat	Gadmor_kie	0.00337601	0.0793504	0.00553638
+Gadmor_bat	Gadmor_two	Gadmor_kie	0.000238278	0.444926	0.000394014
+Gadmor_kie	Gadmor_bat	Gadoga	0.00802179	0.0278799	0.000141194
+Gadmor_lfo	Gadmor_lfc	Gadmor_bat	0.0151281	0	0.0186545
+Gadmor_low	Gadmor_lfc	Gadmor_bat	4.87419e-05	0.489634	6.53935e-05
+Gadmor_twc	Gadmor_bat	Gadmor_lfc	0.00759869	0.00107684	0.0113317
+Gadmor_two	Gadmor_bat	Gadmor_lfc	0.00250752	0.101944	0.00376902
+Gadmor_lfc	Gadmor_bat	Gadoga	0.0169133	5.58199e-06	0.000323165
+Gadmor_lfo	Gadmor_low	Gadmor_bat	0.0155722	4.61371e-09	0.018391
+Gadmor_twc	Gadmor_bat	Gadmor_lfo	0.00411916	0.0279436	0.00483535
+Gadmor_two	Gadmor_bat	Gadmor_lfo	0.000929154	0.303769	0.0010999
+Gadmor_lfo	Gadmor_bat	Gadoga	0.030169	2.22045e-16	0.000593475
+Gadmor_twc	Gadmor_bat	Gadmor_low	0.00388709	0.091016	0.00622569
+Gadmor_two	Gadmor_bat	Gadmor_low	0.000488035	0.418322	0.000780632
+Gadmor_low	Gadmor_bat	Gadoga	0.00853623	0.00634859	0.000151816
+Gadmor_two	Gadmor_twc	Gadmor_bat	0.00057469	0.408369	0.00109888
+Gadmor_bat	Gadmor_twc	Gadoga	0.000783489	0.422485	1.26118e-05
+Gadmor_two	Gadmor_bat	Gadoga	0.00145749	0.357305	2.34079e-05
+Gadmor_ico	Gadmor_icc	Gadmor_bor	0.000287507	0.46077	0.000396819
+Gadmor_bor	Gadmor_kie	Gadmor_icc	0.00503915	0.0646805	0.00531557
+Gadmor_bor	Gadmor_lfc	Gadmor_icc	0.00396167	0.069779	0.00449071
+Gadmor_bor	Gadmor_icc	Gadmor_lfo	0.00110356	0.360855	0.00173615
+Gadmor_bor	Gadmor_low	Gadmor_icc	0.00972055	5.58762e-05	0.0105627
+Gadmor_bor	Gadmor_icc	Gadmor_twc	0.0150458	7.40408e-10	0.0228447
+Gadmor_bor	Gadmor_icc	Gadmor_two	0.0150325	2.22646e-09	0.0231157
+Gadmor_bor	Gadmor_icc	Gadoga	0.0127899	0.00701404	0.000212116
+Gadmor_bor	Gadmor_kie	Gadmor_ico	0.00540258	0.00167122	0.0128014
+Gadmor_bor	Gadmor_lfc	Gadmor_ico	0.00233061	0.138444	0.00566442
+Gadmor_ico	Gadmor_bor	Gadmor_lfo	0.000705872	0.376293	0.00110349
+Gadmor_bor	Gadmor_low	Gadmor_ico	0.00994526	1.01102e-07	0.0242961
+Gadmor_bor	Gadmor_ico	Gadmor_twc	0.0133018	1.02217e-10	0.019087
+Gadmor_bor	Gadmor_ico	Gadmor_two	0.0125348	3.20619e-11	0.01822
+Gadmor_bor	Gadmor_ico	Gadoga	0.00141683	0.33299	2.36307e-05
+Gadmor_kie	Gadmor_bor	Gadmor_lfc	0.000153262	0.470543	0.000309936
+Gadmor_bor	Gadmor_kie	Gadmor_lfo	0.00585362	0.00371626	0.00898784
+Gadmor_bor	Gadmor_kie	Gadmor_low	0.00530895	0.00224184	0.0113867
+Gadmor_bor	Gadmor_kie	Gadmor_twc	0.00430128	0.0253142	0.00598988
+Gadmor_bor	Gadmor_kie	Gadmor_two	0.00540141	0.000509037	0.00765335
+Gadmor_bor	Gadmor_kie	Gadoga	0.00242482	0.28516	3.94875e-05
+Gadmor_bor	Gadmor_lfc	Gadmor_lfo	0.00822732	5.84174e-05	0.0135257
+Gadmor_low	Gadmor_lfc	Gadmor_bor	0.0102794	4.65342e-08	0.014912
+Gadmor_bor	Gadmor_lfc	Gadmor_twc	0.00152012	0.248897	0.00219939
+Gadmor_bor	Gadmor_lfc	Gadmor_two	0.00331254	0.0573215	0.00490538
+Gadmor_lfc	Gadmor_bor	Gadoga	0.00579987	0.0153195	0.000104557
+Gadmor_bor	Gadmor_low	Gadmor_lfo	0.00642038	0.00318656	0.0100689
+Gadmor_lfo	Gadmor_bor	Gadmor_twc	0.0110751	9.36903e-07	0.0136704
+Gadmor_lfo	Gadmor_bor	Gadmor_two	0.0108719	3.991e-06	0.0136403
+Gadmor_lfo	Gadmor_bor	Gadoga	0.0224359	2.66574e-09	0.000421353
+Gadmor_bor	Gadmor_low	Gadmor_twc	0.00536311	0.0206605	0.00762247
+Gadmor_bor	Gadmor_low	Gadmor_two	0.00552404	0.00170007	0.00801279
+Gadmor_bor	Gadmor_low	Gadoga	0.00226184	0.243394	3.79041e-05
+Gadmor_twc	Gadmor_two	Gadmor_bor	0.00260235	0.0931807	0.00278753
+Gadmor_bor	Gadmor_twc	Gadoga	0.0124932	6.78385e-05	0.000223067
+Gadmor_bor	Gadmor_two	Gadoga	0.00933076	0.0149557	0.000165901
+Gadmor_icc	Gadmor_ico	Gadmor_kie	0.000327912	0.442463	0.000717704
+Gadmor_ico	Gadmor_icc	Gadmor_lfc	0.00167167	0.199879	0.00323246
+Gadmor_ico	Gadmor_icc	Gadmor_lfo	0.00184516	0.203556	0.00277289
+Gadmor_ico	Gadmor_icc	Gadmor_low	0.00014513	0.48043	0.000311343
+Gadmor_ico	Gadmor_icc	Gadmor_twc	0.0021463	0.198315	0.00310246
+Gadmor_ico	Gadmor_icc	Gadmor_two	0.00254003	0.14239	0.00371283
+Gadmor_ico	Gadmor_icc	Gadoga	0.0119271	0.0103653	0.000185689
+Gadmor_lfc	Gadmor_kie	Gadmor_icc	0.00113143	0.340271	0.00125562
+Gadmor_icc	Gadmor_kie	Gadmor_lfo	0.00564255	0.0285631	0.00858012
+Gadmor_kie	Gadmor_low	Gadmor_icc	0.00467548	0.0507141	0.00493564
+Gadmor_kie	Gadmor_icc	Gadmor_twc	0.0106535	0.000319782	0.015342
+Gadmor_kie	Gadmor_icc	Gadmor_two	0.01001	0.000291187	0.0146462
+Gadmor_kie	Gadmor_icc	Gadoga	0.0107695	0.0149509	0.000169114
+Gadmor_icc	Gadmor_lfc	Gadmor_lfo	0.00724141	0.00255447	0.0115907
+Gadmor_lfc	Gadmor_low	Gadmor_icc	0.0059479	0.000544262	0.00665949
+Gadmor_lfc	Gadmor_icc	Gadmor_twc	0.0128835	3.79696e-07	0.0191587
+Gadmor_lfc	Gadmor_icc	Gadmor_two	0.0106692	2.2189e-06	0.0162677
+Gadmor_lfc	Gadmor_icc	Gadoga	0.0173382	4.18806e-06	0.000298477
+Gadmor_icc	Gadmor_low	Gadmor_lfo	0.0069962	0.0115775	0.0106458
+Gadmor_lfo	Gadmor_icc	Gadmor_twc	0.0250463	0	0.0303439
+Gadmor_lfo	Gadmor_icc	Gadmor_two	0.024089	0	0.0295831
+Gadmor_lfo	Gadmor_icc	Gadoga	0.0343288	2.42263e-09	0.000606305
+Gadmor_low	Gadmor_icc	Gadmor_twc	0.00974351	0.00160905	0.0140941
+Gadmor_low	Gadmor_icc	Gadmor_two	0.00924488	0.00103972	0.0136705
+Gadmor_low	Gadmor_icc	Gadoga	0.00952623	0.0410465	0.000150451
+Gadmor_twc	Gadmor_two	Gadmor_icc	0.00322849	0.0847784	0.0027458
+Gadmor_icc	Gadmor_twc	Gadoga	0.0015211	0.379337	2.53681e-05
+Gadmor_two	Gadmor_icc	Gadoga	0.00276558	0.312173	4.61842e-05
+Gadmor_lfc	Gadmor_kie	Gadmor_ico	0.00385862	0.0364316	0.009186
+Gadmor_ico	Gadmor_kie	Gadmor_lfo	0.00714461	3.04755e-05	0.0107271
+Gadmor_kie	Gadmor_low	Gadmor_ico	0.00452088	0.00342209	0.0103562
+Gadmor_kie	Gadmor_ico	Gadmor_twc	0.00881989	0.000630178	0.0119781
+Gadmor_kie	Gadmor_ico	Gadmor_two	0.00739741	0.00305582	0.0101801
+Gadmor_ico	Gadmor_kie	Gadoga	0.00127603	0.348702	2.00467e-05
+Gadmor_ico	Gadmor_lfc	Gadmor_lfo	0.00898481	1.81382e-06	0.0143129
+Gadmor_lfc	Gadmor_low	Gadmor_ico	0.00856398	1.33722e-09	0.0206588
+Gadmor_lfc	Gadmor_ico	Gadmor_twc	0.0121595	2.09396e-07	0.0173522
+Gadmor_lfc	Gadmor_ico	Gadmor_two	0.00935853	1.9654e-05	0.0135743
+Gadmor_lfc	Gadmor_ico	Gadoga	0.00933108	0.00868047	0.000162254
+Gadmor_ico	Gadmor_low	Gadmor_lfo	0.00823457	2.62533e-05	0.0124828
+Gadmor_lfo	Gadmor_ico	Gadmor_twc	0.0248593	0	0.029787
+Gadmor_lfo	Gadmor_ico	Gadmor_two	0.0229128	0	0.0278263
+Gadmor_lfo	Gadmor_ico	Gadoga	0.0230072	6.39579e-09	0.000409066
+Gadmor_low	Gadmor_ico	Gadmor_twc	0.00806329	0.000511114	0.0110943
+Gadmor_low	Gadmor_ico	Gadmor_two	0.00693365	0.000534863	0.00958652
+Gadmor_ico	Gadmor_low	Gadoga	0.00146892	0.289105	2.33098e-05
+Gadmor_twc	Gadmor_two	Gadmor_ico	0.00192046	0.16475	0.00338115
+Gadmor_ico	Gadmor_twc	Gadoga	0.0109463	0.00121177	0.000183188
+Gadmor_ico	Gadmor_two	Gadoga	0.00823127	0.0319684	0.000137551
+Gadmor_kie	Gadmor_lfc	Gadmor_lfo	0.00204814	0.165791	0.00328665
+Gadmor_low	Gadmor_lfc	Gadmor_kie	0.00483611	0.000154976	0.0107214
+Gadmor_lfc	Gadmor_kie	Gadmor_twc	0.00400209	0.0176365	0.00564269
+Gadmor_lfc	Gadmor_kie	Gadmor_two	0.00277846	0.102135	0.00397991
+Gadmor_lfc	Gadmor_kie	Gadoga	0.0096789	0.00697506	0.000166441
+Gadmor_kie	Gadmor_low	Gadmor_lfo	0.0005302	0.387547	0.000806396
+Gadmor_lfo	Gadmor_kie	Gadmor_twc	0.0160961	9.89508e-12	0.0191563
+Gadmor_lfo	Gadmor_kie	Gadmor_two	0.0161461	3.31646e-12	0.0195538
+Gadmor_lfo	Gadmor_kie	Gadoga	0.0247921	4.72259e-10	0.000440326
+Gadmor_kie	Gadmor_low	Gadmor_twc	0.000293404	0.448292	0.000396704
+Gadmor_kie	Gadmor_low	Gadmor_two	0.00016879	0.46738	0.000231265
+Gadmor_low	Gadmor_kie	Gadoga	5.69273e-05	0.493453	8.9868e-07
+Gadmor_twc	Gadmor_two	Gadmor_kie	0.00330276	0.0244112	0.00522889
+Gadmor_kie	Gadmor_twc	Gadoga	0.0105235	0.000294374	0.00017774
+Gadmor_kie	Gadmor_two	Gadoga	0.00743819	0.0296748	0.000125094
+Gadmor_low	Gadmor_lfc	Gadmor_lfo	0.00100531	0.274368	0.00162884
+Gadmor_lfo	Gadmor_lfc	Gadmor_twc	0.0121891	1.90936e-12	0.0152397
+Gadmor_lfo	Gadmor_lfc	Gadmor_two	0.0134762	0	0.0170644
+Gadmor_lfo	Gadmor_lfc	Gadoga	0.0154482	1.72474e-05	0.000298241
+Gadmor_lfc	Gadmor_low	Gadmor_twc	0.0046852	0.00576776	0.00667939
+Gadmor_lfc	Gadmor_low	Gadmor_two	0.00278015	0.0406001	0.00403754
+Gadmor_lfc	Gadmor_low	Gadoga	0.00945879	0.00242121	0.000164903
+Gadmor_twc	Gadmor_two	Gadmor_lfc	0.00503371	0.00537048	0.00721675
+Gadmor_lfc	Gadmor_twc	Gadoga	0.0188487	8.08462e-07	0.000348927
+Gadmor_lfc	Gadmor_two	Gadoga	0.0168672	3.86348e-07	0.000311148
+Gadmor_lfo	Gadmor_low	Gadmor_twc	0.0166095	1.78746e-14	0.0198879
+Gadmor_lfo	Gadmor_low	Gadmor_two	0.016557	2.88747e-12	0.0200559
+Gadmor_lfo	Gadmor_low	Gadoga	0.0234113	8.28606e-11	0.000419893
+Gadmor_twc	Gadmor_two	Gadmor_lfo	0.00369055	0.0198991	0.00420039
+Gadmor_lfo	Gadmor_twc	Gadoga	0.0329498	6.32827e-15	0.000623328
+Gadmor_lfo	Gadmor_two	Gadoga	0.0302099	1.60982e-14	0.000570005
+Gadmor_twc	Gadmor_two	Gadmor_low	0.00305581	0.0777378	0.00473491
+Gadmor_low	Gadmor_twc	Gadoga	0.0088095	0.0017562	0.000150762
+Gadmor_low	Gadmor_two	Gadoga	0.00685032	0.0290552	0.000116892
+Gadmor_two	Gadmor_twc	Gadoga	0.00180558	0.31013	2.75965e-05
+
+### Demography (d)
+group1	epoch.start	haploid.coalescence.rate	popsize
+Gadmor_avc	0	0	Inf
+Gadmor_avc	1000	0	Inf
+Gadmor_avc	1389.5	8.25907e-08	6053950.38424423
+Gadmor_avc	1930.7	1.08991e-07	4587534.75057574
+Gadmor_avc	2682.7	1.92512e-07	2597240.69148936
+Gadmor_avc	3727.59	3.33555e-07	1499003.16289667
+Gadmor_avc	5179.48	5.87477e-07	851097.149335208
+Gadmor_avc	7196.86	5.8001e-07	862054.102515474
+Gadmor_avc	10000	6.62666e-07	754527.922060284
+Gadmor_avc	13895	8.53533e-07	585800.431852078
+Gadmor_avc	19307	1.02871e-06	486045.629963741
+Gadmor_avc	26827	1.39077e-06	359513.075490556
+Gadmor_avc	37275.9	2.03197e-06	246066.624999385
+Gadmor_avc	51794.8	2.98124e-06	167715.447263555
+Gadmor_avc	71968.6	6.64356e-06	75260.8541203812
+Gadmor_avc	1e+05	2.03975e-05	24512.8079421498
+Gadmor_avc	138950	3.14928e-05	15876.6448204034
+Gadmor_avc	193070	3.78701e-05	13203.0282465586
+Gadmor_avc	268270	5.02169e-05	9956.80736963054
+Gadmor_avc	372759	7.02196e-05	7120.51905735721
+Gadmor_avc	517948	7.46426e-05	6698.5876697757
+Gadmor_avc	719686	4.36143e-05	11464.1298840059
+Gadmor_avc	1e+06	2.0495e-05	24396.1941937058
+Gadmor_avc	1389500	1.03932e-05	48108.3785552092
+Gadmor_avc	1930700	1.15239e-05	43388.0891017798
+Gadmor_avc	2682700	8.82866e-06	56633.7360369524
+Gadmor_avc	3727590	3.069e-06	162919.517758227
+Gadmor_avc	5179480	1.65057e-05	30292.5655985508
+Gadmor_avc	7196860	0.000497304	1005.42123127906
+Gadmor_avc	1e+07	0	Inf
+Gadmor_avc	1e+08	0	Inf
+Gadmor_avo	0	0	Inf
+Gadmor_avo	1000	0	Inf
+Gadmor_avo	1389.5	0	Inf
+Gadmor_avo	1930.7	5.94487e-08	8410612.84771576
+Gadmor_avo	2682.7	8.55561e-08	5844118.65430986
+Gadmor_avo	3727.59	1.89851e-07	2633644.27893453
+Gadmor_avo	5179.48	3.43512e-07	1455553.22667039
+Gadmor_avo	7196.86	3.11088e-07	1607262.25376742
+Gadmor_avo	10000	6.04822e-07	826689.505342068
+Gadmor_avo	13895	9.59433e-07	521141.132314607
+Gadmor_avo	19307	1.10621e-06	451993.744406577
+Gadmor_avo	26827	1.30085e-06	384364.069646769
+Gadmor_avo	37275.9	1.83398e-06	272631.108299981
+Gadmor_avo	51794.8	2.79363e-06	178978.604897571
+Gadmor_avo	71968.6	6.73925e-06	74192.2320733019
+Gadmor_avo	1e+05	2.13667e-05	23400.899530578
+Gadmor_avo	138950	3.22131e-05	15521.6356078738
+Gadmor_avo	193070	3.78489e-05	13210.4235525999
+Gadmor_avo	268270	5.06215e-05	9877.22607982774
+Gadmor_avo	372759	7.06879e-05	7073.34635772176
+Gadmor_avo	517948	7.57225e-05	6603.05721549077
+Gadmor_avo	719686	4.37971e-05	11416.2809866407
+Gadmor_avo	1e+06	1.99571e-05	25053.7402728853
+Gadmor_avo	1389500	1.13778e-05	43945.2266694792
+Gadmor_avo	1930700	1.21036e-05	41310.0234640933
+Gadmor_avo	2682700	7.72452e-06	64728.941086307
+Gadmor_avo	3727590	2.71337e-06	184272.694103642
+Gadmor_avo	5179480	1.75595e-05	28474.6148808337
+Gadmor_avo	7196860	1.73012e-05	28899.7294985319
+Gadmor_avo	1e+07	0	Inf
+Gadmor_avo	1e+08	0	Inf
+Gadmor_bat	0	0	Inf
+Gadmor_bat	1000	1.91295e-08	26137640.8165399
+Gadmor_bat	1389.5	8.25901e-08	6053994.36494204
+Gadmor_bat	1930.7	1.08991e-07	4587534.75057574
+Gadmor_bat	2682.7	2.35285e-07	2125082.34694094
+Gadmor_bat	3727.59	2.82212e-07	1771717.71575978
+Gadmor_bat	5179.48	6.75959e-07	739689.833259118
+Gadmor_bat	7196.86	7.39287e-07	676327.326194022
+Gadmor_bat	10000	1.06282e-06	470446.547863232
+Gadmor_bat	13895	1.52987e-06	326825.155078536
+Gadmor_bat	19307	2.30331e-06	217078.899496811
+Gadmor_bat	26827	3.2333e-06	154640.769492469
+Gadmor_bat	37275.9	4.57968e-06	109177.933829438
+Gadmor_bat	51794.8	6.36275e-06	78582.3739735177
+Gadmor_bat	71968.6	1.23267e-05	40562.3565106638
+Gadmor_bat	1e+05	2.75269e-05	18164.0504379353
+Gadmor_bat	138950	2.97936e-05	16782.127705279
+Gadmor_bat	193070	3.21466e-05	15553.7444084289
+Gadmor_bat	268270	4.45668e-05	11219.1137797643
+Gadmor_bat	372759	6.72504e-05	7434.90001546459
+Gadmor_bat	517948	7.44492e-05	6715.98888906798
+Gadmor_bat	719686	4.25604e-05	11748.0098871251
+Gadmor_bat	1e+06	2.02933e-05	24638.6738480188
+Gadmor_bat	1389500	1.06897e-05	46773.9973993657
+Gadmor_bat	1930700	1.14078e-05	43829.6604077912
+Gadmor_bat	2682700	7.26641e-06	68809.7698863675
+Gadmor_bat	3727590	2.63917e-06	189453.502426899
+Gadmor_bat	5179480	1.64284e-05	30435.1001923498
+Gadmor_bat	7196860	0.000132601	3770.71062812498
+Gadmor_bat	1e+07	3.40362e-06	146902.415663323
+Gadmor_bat	1e+08	0	Inf
+Gadmor_bor	0	1.04303e-07	4793725.97144857
+Gadmor_bor	1000	7.65232e-07	653396.616973676
+Gadmor_bor	1389.5	2.2168e-06	225550.342836521
+Gadmor_bor	1930.7	5.79284e-06	86313.4490163719
+Gadmor_bor	2682.7	1.12322e-05	44514.8768718506
+Gadmor_bor	3727.59	1.21413e-05	41181.7515422566
+Gadmor_bor	5179.48	2.01172e-05	24854.3534885571
+Gadmor_bor	7196.86	1.56513e-05	31946.2281088472
+Gadmor_bor	10000	1.39598e-05	35817.1320506024
+Gadmor_bor	13895	1.36541e-05	36619.0375052182
+Gadmor_bor	19307	1.19017e-05	42010.8051790921
+Gadmor_bor	26827	1.0916e-05	45804.3239281788
+Gadmor_bor	37275.9	1.11044e-05	45027.1964266417
+Gadmor_bor	51794.8	1.13403e-05	44090.5443418604
+Gadmor_bor	71968.6	1.51131e-05	33083.8808715618
+Gadmor_bor	1e+05	2.72726e-05	18333.4188892882
+Gadmor_bor	138950	3.31217e-05	15095.8435104478
+Gadmor_bor	193070	3.75455e-05	13317.1751608049
+Gadmor_bor	268270	4.94465e-05	10111.939166574
+Gadmor_bor	372759	6.94238e-05	7202.14105249208
+Gadmor_bor	517948	7.41711e-05	6741.17007837284
+Gadmor_bor	719686	4.29414e-05	11643.7750050068
+Gadmor_bor	1e+06	2.00981e-05	24877.9735397873
+Gadmor_bor	1389500	1.05718e-05	47295.6355587506
+Gadmor_bor	1930700	1.14984e-05	43484.3108606415
+Gadmor_bor	2682700	8.8346e-06	56595.6579811197
+Gadmor_bor	3727590	2.74357e-06	182244.302131894
+Gadmor_bor	5179480	1.2815e-05	39016.7772142021
+Gadmor_bor	7196860	0.000133009	3759.1441180672
+Gadmor_bor	1e+07	3.40362e-06	146902.415663323
+Gadmor_bor	1e+08	0	Inf
+Gadmor_icc	0	0	Inf
+Gadmor_icc	1000	0	Inf
+Gadmor_icc	1389.5	0	Inf
+Gadmor_icc	1930.7	1.78346e-07	2803539.18787077
+Gadmor_icc	2682.7	2.56669e-07	1948034.23864978
+Gadmor_icc	3727.59	4.00208e-07	1249350.33782433
+Gadmor_icc	5179.48	1.19671e-06	417812.168361591
+Gadmor_icc	7196.86	7.49838e-07	666810.697777387
+Gadmor_icc	10000	1.24044e-06	403082.777079101
+Gadmor_icc	13895	1.5138e-06	330294.622803541
+Gadmor_icc	19307	1.78775e-06	279681.16347364
+Gadmor_icc	26827	2.41036e-06	207437.893094807
+Gadmor_icc	37275.9	3.53603e-06	141401.515258638
+Gadmor_icc	51794.8	4.43966e-06	112621.236761374
+Gadmor_icc	71968.6	8.64888e-06	57810.9535569924
+Gadmor_icc	1e+05	2.43221e-05	20557.4354188166
+Gadmor_icc	138950	3.49545e-05	14304.3098885694
+Gadmor_icc	193070	3.96457e-05	12611.7082054296
+Gadmor_icc	268270	5.14468e-05	9718.77745554631
+Gadmor_icc	372759	7.0681e-05	7074.03686988017
+Gadmor_icc	517948	7.48199e-05	6682.71409076997
+Gadmor_icc	719686	4.32356e-05	11564.5440331579
+Gadmor_icc	1e+06	1.97212e-05	25353.4267691621
+Gadmor_icc	1389500	1.12587e-05	44410.100633288
+Gadmor_icc	1930700	1.24551e-05	40144.197959069
+Gadmor_icc	2682700	8.96913e-06	55746.7669662498
+Gadmor_icc	3727590	2.87346e-06	174006.250304511
+Gadmor_icc	5179480	2.17379e-05	23001.3018736861
+Gadmor_icc	7196860	0	Inf
+Gadmor_icc	1e+07	0	Inf
+Gadmor_icc	1e+08	0	Inf
+Gadmor_ico	0	0	Inf
+Gadmor_ico	1000	0	Inf
+Gadmor_ico	1389.5	2.753e-08	18162005.0853614
+Gadmor_ico	1930.7	0	Inf
+Gadmor_ico	2682.7	2.13885e-08	23377048.4138673
+Gadmor_ico	3727.59	9.74845e-08	5129020.51095302
+Gadmor_ico	5179.48	4.02595e-07	1241942.89546567
+Gadmor_ico	7196.86	4.52123e-07	1105893.75015206
+Gadmor_ico	10000	5.70555e-07	876339.704322984
+Gadmor_ico	13895	5.78861e-07	863765.22170262
+Gadmor_ico	19307	6.92617e-07	721899.69348139
+Gadmor_ico	26827	1.05079e-06	475832.468904348
+Gadmor_ico	37275.9	1.65222e-06	302623.13735459
+Gadmor_ico	51794.8	2.7785e-06	179953.212164837
+Gadmor_ico	71968.6	6.90797e-06	72380.1637818346
+Gadmor_ico	1e+05	2.10563e-05	23745.8622834971
+Gadmor_ico	138950	3.15269e-05	15859.4723870726
+Gadmor_ico	193070	3.78358e-05	13214.9974362905
+Gadmor_ico	268270	5.04687e-05	9907.13055814792
+Gadmor_ico	372759	7.05532e-05	7086.85077360063
+Gadmor_ico	517948	7.5221e-05	6647.07993778333
+Gadmor_ico	719686	4.29077e-05	11652.9201052492
+Gadmor_ico	1e+06	2.05925e-05	24280.684715309
+Gadmor_ico	1389500	1.06484e-05	46955.41114158
+Gadmor_ico	1930700	1.29563e-05	38591.264481372
+Gadmor_ico	2682700	8.0813e-06	61871.2335886553
+Gadmor_ico	3727590	2.61213e-06	191414.669254593
+Gadmor_ico	5179480	1.50636e-05	33192.5967232269
+Gadmor_ico	7196860	3.23195e-05	15470.5363634957
+Gadmor_ico	1e+07	0	Inf
+Gadmor_ico	1e+08	0	Inf
+Gadmor_kie	0	0	Inf
+Gadmor_kie	1000	1.91295e-08	26137640.8165399
+Gadmor_kie	1389.5	1.10123e-07	4540377.57779937
+Gadmor_kie	1930.7	2.57623e-07	1940820.50127512
+Gadmor_kie	2682.7	7.48737e-07	667791.227093091
+Gadmor_kie	3727.59	1.12936e-06	442728.625061982
+Gadmor_kie	5179.48	2.38467e-06	209672.617175542
+Gadmor_kie	7196.86	2.60056e-06	192266.281108684
+Gadmor_kie	10000	2.8183e-06	177411.91498421
+Gadmor_kie	13895	2.40127e-06	208223.148583874
+Gadmor_kie	19307	2.11512e-06	236393.207004804
+Gadmor_kie	26827	2.23711e-06	223502.644036279
+Gadmor_kie	37275.9	2.74004e-06	182479.087896527
+Gadmor_kie	51794.8	3.75952e-06	132995.701578925
+Gadmor_kie	71968.6	8.00266e-06	62479.2256574689
+Gadmor_kie	1e+05	2.20797e-05	22645.2352160582
+Gadmor_kie	138950	3.21711e-05	15541.8994066103
+Gadmor_kie	193070	3.78678e-05	13203.8301670549
+Gadmor_kie	268270	5.04725e-05	9906.38466491654
+Gadmor_kie	372759	7.03618e-05	7106.12860955803
+Gadmor_kie	517948	7.49533e-05	6670.82036414674
+Gadmor_kie	719686	4.30204e-05	11622.3930972283
+Gadmor_kie	1e+06	2.03232e-05	24602.4248149898
+Gadmor_kie	1389500	1.06521e-05	46939.10121009
+Gadmor_kie	1930700	1.14179e-05	43790.8897432978
+Gadmor_kie	2682700	8.91187e-06	56104.9476709153
+Gadmor_kie	3727590	2.83593e-06	176309.006216656
+Gadmor_kie	5179480	1.69234e-05	29544.8905066358
+Gadmor_kie	7196860	6.07878e-06	82253.3468886849
+Gadmor_kie	1e+07	0	Inf
+Gadmor_kie	1e+08	0	Inf
+Gadmor_lfc	0	5.9601e-09	83891209.8790289
+Gadmor_lfc	1000	1.07126e-07	4667401.0044247
+Gadmor_lfc	1389.5	4.57079e-07	1093902.80454801
+Gadmor_lfc	1930.7	9.99396e-07	500302.182518241
+Gadmor_lfc	2682.7	1.93366e-06	258576.99905878
+Gadmor_lfc	3727.59	2.00791e-06	249015.145101125
+Gadmor_lfc	5179.48	3.41686e-06	146333.183097932
+Gadmor_lfc	7196.86	1.22771e-06	407262.301357813
+Gadmor_lfc	10000	9.84047e-07	508105.812019141
+Gadmor_lfc	13895	1.12852e-06	443058.164675859
+Gadmor_lfc	19307	1.2844e-06	389286.82653379
+Gadmor_lfc	26827	1.60511e-06	311505.130489499
+Gadmor_lfc	37275.9	2.2013e-06	227138.509062827
+Gadmor_lfc	51794.8	3.25979e-06	153384.113700576
+Gadmor_lfc	71968.6	6.93449e-06	72103.3558343872
+Gadmor_lfc	1e+05	1.97771e-05	25281.7652739785
+Gadmor_lfc	138950	3.09921e-05	16133.1436075645
+Gadmor_lfc	193070	3.7713e-05	13258.027735794
+Gadmor_lfc	268270	5.04466e-05	9911.47074332066
+Gadmor_lfc	372759	7.02904e-05	7113.34691508371
+Gadmor_lfc	517948	7.51703e-05	6651.56318386384
+Gadmor_lfc	719686	4.35416e-05	11483.2711705587
+Gadmor_lfc	1e+06	2.03869e-05	24525.5531738518
+Gadmor_lfc	1389500	1.04891e-05	47668.5320952227
+Gadmor_lfc	1930700	1.19502e-05	41840.3039279677
+Gadmor_lfc	2682700	8.62364e-06	57980.1568711124
+Gadmor_lfc	3727590	2.82881e-06	176752.768832124
+Gadmor_lfc	5179480	1.72791e-05	28936.6923045761
+Gadmor_lfc	7196860	0.000117438	4257.56569423866
+Gadmor_lfc	1e+07	0	Inf
+Gadmor_lfc	1e+08	0	Inf
+Gadmor_lfo	0	0	Inf
+Gadmor_lfo	1000	3.8259e-08	13068820.4082699
+Gadmor_lfo	1389.5	8.25924e-08	6053825.77573724
+Gadmor_lfo	1930.7	1.58539e-07	3153798.1190748
+Gadmor_lfo	2682.7	2.99476e-07	1669582.87141541
+Gadmor_lfo	3727.59	3.95138e-07	1265380.70243814
+Gadmor_lfo	5179.48	7.16665e-07	697676.041107072
+Gadmor_lfo	7196.86	8.11115e-07	616435.400652189
+Gadmor_lfo	10000	8.0034e-07	624734.487842667
+Gadmor_lfo	13895	8.28637e-07	603400.523993015
+Gadmor_lfo	19307	1.05733e-06	472889.258793376
+Gadmor_lfo	26827	1.39527e-06	358353.580310621
+Gadmor_lfo	37275.9	2.00621e-06	249226.15279557
+Gadmor_lfo	51794.8	2.95302e-06	169318.189514463
+Gadmor_lfo	71968.6	6.37409e-06	78442.5698413421
+Gadmor_lfo	1e+05	1.94131e-05	25755.8040704473
+Gadmor_lfo	138950	3.06868e-05	16293.650690199
+Gadmor_lfo	193070	3.75438e-05	13317.7781684326
+Gadmor_lfo	268270	5.05016e-05	9900.67641421262
+Gadmor_lfo	372759	7.05665e-05	7085.51508151885
+Gadmor_lfo	517948	7.52909e-05	6640.90879508679
+Gadmor_lfo	719686	4.28769e-05	11661.2908116025
+Gadmor_lfo	1e+06	1.98373e-05	25205.0430250084
+Gadmor_lfo	1389500	1.02862e-05	48608.8156948144
+Gadmor_lfo	1930700	1.20806e-05	41388.6727480423
+Gadmor_lfo	2682700	8.45783e-06	59116.8183801282
+Gadmor_lfo	3727590	2.87464e-06	173934.823143072
+Gadmor_lfo	5179480	1.6693e-05	29952.6747738573
+Gadmor_lfo	7196860	0.000372978	1340.56164170541
+Gadmor_lfo	1e+07	0	Inf
+Gadmor_lfo	1e+08	0	Inf
+Gadmor_low	0	0	Inf
+Gadmor_low	1000	5.73885e-08	8712546.93884663
+Gadmor_low	1389.5	4.12954e-08	12107886.1083801
+Gadmor_low	1930.7	1.58534e-07	3153897.58663757
+Gadmor_low	2682.7	2.85204e-07	1753131.09213055
+Gadmor_low	3727.59	4.61871e-07	1082553.35364203
+Gadmor_low	5179.48	7.72204e-07	647497.293461313
+Gadmor_low	7196.86	8.19402e-07	610201.097873815
+Gadmor_low	10000	9.50107e-07	526256.516371314
+Gadmor_low	13895	1.13955e-06	438769.689789829
+Gadmor_low	19307	1.40064e-06	356979.6664382
+Gadmor_low	26827	1.52259e-06	328387.812871489
+Gadmor_low	37275.9	1.97449e-06	253229.947986569
+Gadmor_low	51794.8	3.05567e-06	163630.234940291
+Gadmor_low	71968.6	7.22146e-06	69238.0765108441
+Gadmor_low	1e+05	2.1343e-05	23426.8846928735
+Gadmor_low	138950	3.25503e-05	15360.8415283423
+Gadmor_low	193070	3.8483e-05	12992.7500454746
+Gadmor_low	268270	5.10977e-05	9785.17624080927
+Gadmor_low	372759	7.05683e-05	7085.33434984263
+Gadmor_low	517948	7.48059e-05	6683.96476748492
+Gadmor_low	719686	4.3089e-05	11603.8896238019
+Gadmor_low	1e+06	1.99202e-05	25100.1495968916
+Gadmor_low	1389500	1.01833e-05	49099.9970540002
+Gadmor_low	1930700	1.11846e-05	44704.3255905441
+Gadmor_low	2682700	8.22761e-06	60770.9893881698
+Gadmor_low	3727590	2.69036e-06	185848.733998424
+Gadmor_low	5179480	1.56191e-05	32012.0877643398
+Gadmor_low	7196860	1.5677e-05	31893.857243095
+Gadmor_low	1e+07	0	Inf
+Gadmor_low	1e+08	0	Inf
+Gadmor_twc	0	0	Inf
+Gadmor_twc	1000	0	Inf
+Gadmor_twc	1389.5	0	Inf
+Gadmor_twc	1930.7	6.93566e-08	7209119.2474833
+Gadmor_twc	2682.7	1.28333e-07	3896114.01588056
+Gadmor_twc	3727.59	1.69319e-07	2953005.86466965
+Gadmor_twc	5179.48	4.17375e-07	1197963.46211441
+Gadmor_twc	7196.86	5.584e-07	895415.47277937
+Gadmor_twc	10000	7.27473e-07	687310.731807229
+Gadmor_twc	13895	1.17342e-06	426104.889979717
+Gadmor_twc	19307	1.55457e-06	321632.348495082
+Gadmor_twc	26827	2.22383e-06	224837.330191606
+Gadmor_twc	37275.9	3.45847e-06	144572.600022553
+Gadmor_twc	51794.8	5.63618e-06	88712.5677320455
+Gadmor_twc	71968.6	1.22029e-05	40973.8668677118
+Gadmor_twc	1e+05	2.84926e-05	17548.4160799646
+Gadmor_twc	138950	3.09153e-05	16173.2216734109
+Gadmor_twc	193070	3.2173e-05	15540.9815683959
+Gadmor_twc	268270	4.45984e-05	11211.1645260817
+Gadmor_twc	372759	6.7398e-05	7418.61776313837
+Gadmor_twc	517948	7.57052e-05	6604.5661328416
+Gadmor_twc	719686	4.29754e-05	11634.5630290818
+Gadmor_twc	1e+06	2.03662e-05	24550.4806984121
+Gadmor_twc	1389500	1.01537e-05	49243.1330450969
+Gadmor_twc	1930700	1.19676e-05	41779.471239012
+Gadmor_twc	2682700	7.1192e-06	70232.6104056636
+Gadmor_twc	3727590	2.9538e-06	169273.478231431
+Gadmor_twc	5179480	1.60565e-05	31140.0367452434
+Gadmor_twc	7196860	1.13695e-05	43977.307709222
+Gadmor_twc	1e+07	3.40362e-06	146902.415663323
+Gadmor_twc	1e+08	0	Inf
+Gadmor_two	0	0	Inf
+Gadmor_two	1000	0	Inf
+Gadmor_two	1389.5	0	Inf
+Gadmor_two	1930.7	0	Inf
+Gadmor_two	2682.7	4.99069e-08	10018654.7351168
+Gadmor_two	3727.59	9.23512e-08	5414114.81388439
+Gadmor_two	5179.48	1.95729e-07	2554552.46795314
+Gadmor_two	7196.86	3.40258e-07	1469473.16448107
+Gadmor_two	10000	5.87496e-07	851069.624303825
+Gadmor_two	13895	9.31447e-07	536799.195230647
+Gadmor_two	19307	1.64268e-06	304380.646260988
+Gadmor_two	26827	2.58213e-06	193638.585199041
+Gadmor_two	37275.9	3.75305e-06	133224.977018691
+Gadmor_two	51794.8	5.59445e-06	89374.2905915684
+Gadmor_two	71968.6	1.16034e-05	43090.8182084561
+Gadmor_two	1e+05	2.74506e-05	18214.5381157425
+Gadmor_two	138950	3.02841e-05	16510.3139931515
+Gadmor_two	193070	3.23311e-05	15464.9857258182
+Gadmor_two	268270	4.47376e-05	11176.2812488824
+Gadmor_two	372759	6.76248e-05	7393.73720883463
+Gadmor_two	517948	7.52504e-05	6644.48295291454
+Gadmor_two	719686	4.27221e-05	11703.544535498
+Gadmor_two	1e+06	1.98498e-05	25189.1706717448
+Gadmor_two	1389500	1.03563e-05	48279.7910450644
+Gadmor_two	1930700	1.13274e-05	44140.7560428695
+Gadmor_two	2682700	7.24887e-06	68976.2680252232
+Gadmor_two	3727590	2.83568e-06	176324.550019748
+Gadmor_two	5179480	1.67533e-05	29844.8663845332
+Gadmor_two	7196860	1.20822e-05	41383.1918028174
+Gadmor_two	1e+07	3.40362e-06	146902.415663323
+Gadmor_two	1e+08	0	Inf

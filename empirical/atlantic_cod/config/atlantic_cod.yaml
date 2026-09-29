@@ -1,0 +1,59 @@
+project:
+  analysis_name: atlantic_cod
+  data_root: data/atlantic_cod
+  empirical_root: empirical/atlantic_cod
+  stage: 2
+
+reference:
+  species: Gadus_morhua
+  focal_linkage_groups:
+    - LG01
+    - LG02
+    - LG07
+    - LG12
+
+published_analysis:
+  window_size_bp: 250000
+  minimum_sites_per_window: 500
+  phylogenetic_method: SNAPP
+  source_repository: https://github.com/mmatschiner/supergenes
+
+coordinate_convention:
+  system: author_reported_linkage_group_bp_positions
+  bed_conversion_applied: false
+  notes: >
+    Stage 0 preserves the original author-reported coordinates. No conversion
+    to 0-based half-open BED intervals has been applied.
+
+regions:
+  LG01:
+    start: 9114741
+    end: 26192386
+    status: confirmed_for_cod_phylogenomics
+  LG02:
+    start: 18489307
+    end: 24048607
+    status: confirmed_for_cod_phylogenomics
+  LG07:
+    start: 13610591
+    end: 23019113
+    status: confirmed_for_cod_phylogenomics
+  LG12:
+    start: 638100
+    end: 14327837
+    status: confirmed_for_cod_phylogenomics
+
+coordinate_set_provenance:
+  source: https://github.com/mmatschiner/supergenes/blob/main/cod_phylogenomics/src/split_vcf.sh
+  frozen_for: cod_phylogenomics_window_tree_analysis
+  caution: >
+    Other sub-workflows in the source repository, especially demography, use
+    slightly different inversion limits. Do not harmonize or mix those
+    alternative coordinate sets silently.
+
+future_tests:
+  primary_prediction: arrangement_partition_predicts_local_topology
+  baseline_comparison: collinear_population_tree
+  inside_outside_comparison: true
+  boundary_test: true
+  posterior_quartet_probabilities: optional
