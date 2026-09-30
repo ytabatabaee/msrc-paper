@@ -1,0 +1,58 @@
+{
+  "ASTER_commit": "ddc3dc6b28b20cecfec18cede8c6247decc82b77",
+  "ASTRAL4_executable": "/Users/ytabatabaee/Desktop/ASTER/bin/astral4",
+  "ASTRAL4_executable_sha256": "2dc864161f7a80188f37fd6b39abc53c38aee548c20b534f274708b508a99b4c",
+  "downweighting_m_values": [
+    1,
+    2,
+    5,
+    10,
+    20,
+    40,
+    "ALL"
+  ],
+  "downweighting_replicates_per_finite_m": 100,
+  "frozen_input_checksums": {
+    "data/atlantic_cod/processed/cod_window_trees.tsv": "26ed195ee26cb860ca0885c76d768d427639a4338b74a787d9421498e10dfb0b",
+    "data/atlantic_cod/processed/stage2_structural_quartet_candidates.tsv": "303d9eb563fc6b5c0dd953b0d9f4c4b363baf83061f32fa37fb2f4e4a0f1a72c",
+    "data/atlantic_cod/processed/stage3_baseline_quartets.tsv": "5af7eea33f8c998556a140a4e14facb87322e58043632e7b04c15de3eab64bc1",
+    "data/atlantic_cod/processed/stage4a_local_quartets.tsv": "8ae82f803294a47854a8eecf907dc2684dc89cf6407362beaf9a4e7616d306f2",
+    "data/atlantic_cod/processed/stage4a_window_topology_scores.tsv": "3ef09caa4edddd247ad986ff168a4fc86b79d66559293bec51d291ee8cf9328e"
+  },
+  "manifest_generation_note": "Reconstructed from existing Stage-6 outputs after the original run completed without writing stage6_manifest.json.",
+  "output_checksums": {
+    "data/atlantic_cod/processed/baseline_population_tree_12taxa.nwk": "752ae5c0e0da7317ce66650d74ad51d3f29b7dd138f4dd4e5fe9836243c78cc2",
+    "data/atlantic_cod/processed/stage6_local_quartet_support.tsv": "9fe8bfafc06c5cd24028d686e0aea7f0b599f0dc0612479393e0208e94d1824a",
+    "empirical/atlantic_cod/figures/atlantic_cod_astral4_branch_support.pdf": "5a20d74ae1ad15b1954ecefeb7dcb0075efbee09ad426369a584a1c89a2defe4",
+    "empirical/atlantic_cod/figures/atlantic_cod_astral4_branch_support.png": "53ea9bdbac2e42895993da5683f8364f78ffd242619a182cef9a72362e326246",
+    "empirical/atlantic_cod/figures/atlantic_cod_astral4_sensitivity.pdf": "c971355666f3f779bb233bd85bbab38372c9c3c7e0910e56d9b99137e13e52e2",
+    "empirical/atlantic_cod/figures/atlantic_cod_astral4_sensitivity.png": "724c45b37a11ffcc8619d98565d40745f4e10969246f026481dc826f35524692",
+    "empirical/atlantic_cod/figures/atlantic_cod_quartet_support_tracks.pdf": "0351734d5516f24a4a29f9c8b8ad6bd7ab96d8662f5b1b7ee3b4491eff7dbaf7",
+    "empirical/atlantic_cod/figures/atlantic_cod_quartet_support_tracks.png": "7ae5c4494711d167a21c25c93530537ca9fed3a7871a199b0596acf478e9d75d",
+    "empirical/atlantic_cod/results/stage6_aster_provenance.md": "a467805bafd117699a77db383b2e744cbe97f7d141ab9462535c6137ad4e3fdf",
+    "empirical/atlantic_cod/results/stage6_astral4_baseline_branch_support.tsv": "2ce8c41f75253311948d08c1295ee2f4844bedbfd62bebdb5e4c97baf4c018da",
+    "empirical/atlantic_cod/results/stage6_astral4_downweighting.tsv": "9fad8c3f3c91f596f44a9a4cae67d0febcf2e4ec90ed35453f6e6675e07b5fe9",
+    "empirical/atlantic_cod/results/stage6_astral4_split_changes.tsv": "8d6d3acca209704c77fd6ad90f29581422a8a3c2dfa741af7cb1f74812345ea1",
+    "empirical/atlantic_cod/results/stage6_astral4_treatment_summary.tsv": "6a1271b9f3cceaaf6c0bc31b13543591609d00cad463cbbd312982169281a7db",
+    "empirical/atlantic_cod/results/stage6_local_quartet_support_summary.tsv": "79ee733ec68150033c0ed5a7e74ad0ac56ea3ec9625983bd3742d0a1ba4917f6",
+    "empirical/atlantic_cod/results/stage6_methods_text.md": "e88a3578f37a11396d3fdd2e47d316edd5f3834d5c2d3a94cccf9b2ca1a1a1ad",
+    "empirical/atlantic_cod/results/stage6_report.md": "31323ee7a1e48f11655ca6225ddd078523494fb743d02835075bc3b9fb070d2e",
+    "empirical/atlantic_cod/results/stage6_results_text.md": "cb4ce06361b19b16d8a6d258ceedb5b4c5aeb3f348960f5a478af923093557e2"
+  },
+  "seed_rule": "seed = 20260929 + 1000*m + replicate_id",
+  "stage": 6,
+  "threads": 2,
+  "treatment_definitions": {
+    "LG01_inside": 66,
+    "LG02_inside": 21,
+    "LG07_inside": 36,
+    "LG12_inside": 53,
+    "T0_all": 426,
+    "T1_outside": 245,
+    "T2_inside": 176,
+    "T_drop_LG01": 360,
+    "T_drop_LG02": 405,
+    "T_drop_LG07": 390,
+    "T_drop_LG12": 373
+  }
+}
