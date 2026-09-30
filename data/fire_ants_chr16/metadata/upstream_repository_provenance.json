@@ -1,0 +1,9 @@
+{
+  "repository_url": "https://github.com/wurmlab/2021-fire-ant-social-supergene-introgression",
+  "repository_clone_url": "https://github.com/wurmlab/2021-fire-ant-social-supergene-introgression.git",
+  "default_branch": "master",
+  "head_commit_sha": "bdc7823941680fa560e61b6467af9f77950f64b0",
+  "retrieval_date": "2026-09-30",
+  "retrieval_method": "git ls-remote --symref for default branch and HEAD; raw.githubusercontent.com downloads for explicitly allowed small non-topological files",
+  "stage0_scope": "No full repository clone. No TWISST weights, topology outputs, input trees, Newick trees, quartet support files, or sequencing files retrieved."
+}

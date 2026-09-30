@@ -1,0 +1,5 @@
+canonical_group	upstream_group_label	species_group	haplotype	role	source	notes
+inv_mac_SB	invicta/macdonaghi_SB	invicta/macdonaghi	SB	A	data/fire_ants_chr16/raw/upstream/Topology weighting/supergene/README.md	SB state is biologically defined from the upstream group label and social-chromosome haplotype vocabulary, not inferred from local topology.
+inv_mac_Sb	invicta/macdonaghi_Sb	invicta/macdonaghi	Sb	B	data/fire_ants_chr16/raw/upstream/Topology weighting/supergene/README.md	Sb is the alternative social-chromosome haplotype carrying major rearrangements/inversions.
+richteri_SB	richteri_SB	richteri	SB	C	data/fire_ants_chr16/raw/upstream/Topology weighting/supergene/README.md	SB state is biologically defined from the upstream group label and social-chromosome haplotype vocabulary, not inferred from local topology.
+richteri_Sb	richteri_Sb	richteri	Sb	D	data/fire_ants_chr16/raw/upstream/Topology weighting/supergene/README.md	Sb is the alternative social-chromosome haplotype carrying major rearrangements/inversions.

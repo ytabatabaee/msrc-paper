@@ -1,0 +1,5 @@
+region_id	chromosome	window_count	observed_window_span_start	observed_window_span_end	first_window_id	last_window_id	coordinate_definition
+chr1	chr1	117	289334	29185097	1	465	author-designated analysis region / observed BUSCO-window span
+chr16A	chr16	42	23916	7386513	1	165	author-designated analysis region / observed BUSCO-window span
+chr16B	chr16	2	28498399	28943581	1	5	author-designated analysis region / observed BUSCO-window span
+chr16_supergene	chr16	52	11680438	27917498	1	205	author-designated analysis region / observed BUSCO-window span
