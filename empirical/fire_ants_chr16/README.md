@@ -2,7 +2,9 @@
 
 This directory scaffolds a staged empirical analysis for the chromosome-16 social supergene in fire ants of the genus `Solenopsis`.
 
-Stage 0 is a design and provenance freeze only. It does not parse TWISST weights, inspect local trees, run ASTRAL/ASTER, calculate quartet support, compare topology frequencies, fit MSRC parameters, or draw new biological conclusions.
+Stage 0 design/provenance freeze is complete.
+
+Stage 1 public local-tree/TWISST dataset retrieval and normalization is complete. It creates canonical topology-neutral tables for the 213 published windows. It does not classify topologies into the focal quartet, calculate support statistics, compare regions, run ASTRAL/ASTER, fit MSRC parameters, or draw biological conclusions.
 
 ## Biological system
 
@@ -172,6 +174,19 @@ From the repository root:
 
 ```bash
 python3 empirical/fire_ants_chr16/scripts/00_freeze_analysis_design.py --run-tests
+python3 empirical/fire_ants_chr16/scripts/01_retrieve_normalize_twisst.py --skip-download --run-tests
 ```
 
-The script validates the Stage-0 manifests, verifies the upstream coordinate table, counts author-defined regions, validates focal groups and quartet resolutions, writes the focal-quartet checksum, and enforces forbidden-input guards.
+The Stage-0 script validates the manifests, verifies the upstream coordinate table, counts author-defined regions, validates focal groups and quartet resolutions, writes the focal-quartet checksum, and enforces forbidden-input guards.
+
+The Stage-1 script verifies the frozen Stage-0 checksums, validates the immutable raw local-tree/TWISST files, and regenerates:
+
+- `../../data/fire_ants_chr16/processed/stage1_window_trees.tsv`
+- `../../data/fire_ants_chr16/processed/stage1_twisst_topologies.tsv`
+- `../../data/fire_ants_chr16/processed/stage1_twisst_weights_sparse.tsv`
+- `../../data/fire_ants_chr16/processed/stage1_twisst_weight_summary.tsv`
+- `../../data/fire_ants_chr16/processed/stage1_window_index.tsv`
+- `results/stage1_topology_crosscheck.tsv`
+- `results/stage1_validation_summary.tsv`
+- `results/stage1_source_provenance.md`
+- `results/stage1_manifest.json`

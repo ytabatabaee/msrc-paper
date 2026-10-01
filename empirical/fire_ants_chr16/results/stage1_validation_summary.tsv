@@ -1,0 +1,17 @@
+metric	value	notes
+coordinate_rows	213	
+local_tree_rows	213	
+weight_rows	213	
+weight_columns	945	
+twisst_topologies	945	
+unique_twisst_topologies	945	
+chr1_windows	117	
+chr16A_windows	42	
+chr16B_windows	2	
+chr16_supergene_windows	52	
+min_tree_tips	267	
+max_tree_tips	267	
+n_distinct_tip_sets	1	
+min_total_weight	155843072	
+max_total_weight	155843072	
+topology_crosscheck_mismatches	0	
