@@ -1,0 +1,77 @@
+{
+  "background_species_relationship": {
+    "individual_tree_literal_split_check": "not_used_for_stage3_partition",
+    "invicta_macdonaghi_tips": 95,
+    "notes": "Literal _ric-, _inv-, and _mac- labels were counted as a sanity check only. Stage 3 does not derive a new individual-level quartet or require SB/Sb subclades in the chr1-15 tree.",
+    "relationship": "invicta/macdonaghi|richteri",
+    "relationship_basis": "published chromosome 1-15 species/background interpretation plus frozen Stage-2 group membership",
+    "richteri_tips": 56
+  },
+  "background_tree_metrics": {
+    "has_duplicate_tips": "false",
+    "n_tips": 368,
+    "tip_set_sha256": "faf6eda946406c3949a5f2ef9c1ea120ebd4e86ec250968d9e71ac1e18353e96",
+    "tree_sha256": "64c032bf646c1bdef4699d419bd19686f0d9713a57755f0c77b30aea27668638"
+  },
+  "background_tree_provenance_checksum": "923565cc086e7d0009c2888658b3328b76774317b112416eab86dd7f9241869c",
+  "description": "Freeze independent chromosome 1-15 background species-history relationship without local TWISST support analysis.",
+  "normalized_background_tree_checksum": "64c032bf646c1bdef4699d419bd19686f0d9713a57755f0c77b30aea27668638",
+  "outputs": [
+    "data/fire_ants_chr16/processed/stage3_background_tree.nwk",
+    "data/fire_ants_chr16/processed/stage3_background_tree.sha256",
+    "data/fire_ants_chr16/metadata/background_tree_provenance.tsv",
+    "data/fire_ants_chr16/processed/stage3_background_partition.tsv",
+    "data/fire_ants_chr16/processed/stage3_background_partition.sha256",
+    "empirical/fire_ants_chr16/results/stage3_report.md",
+    "empirical/fire_ants_chr16/results/stage3_manifest.json"
+  ],
+  "processing_script": {
+    "path": "empirical/fire_ants_chr16/scripts/03_freeze_background_history.py",
+    "sha256": "7634bd5a3d4d4c092e93f7c2b7aec9b16e5430e3ff7f06da1e190c216de42ea3"
+  },
+  "q_support_statistics_calculated": false,
+  "raw_chr1_15_astral_tree": {
+    "path": "data/fire_ants_chr16/raw/upstream/Trees in newick format/Astral.10SNP-genes.chr1-15.nwk",
+    "sha256": "64c032bf646c1bdef4699d419bd19686f0d9713a57755f0c77b30aea27668638",
+    "source_url": "https://raw.githubusercontent.com/wurmlab/2021-fire-ant-social-supergene-introgression/bdc7823941680fa560e61b6467af9f77950f64b0/Trees%20in%20newick%20format/Astral.10SNP-genes.chr1-15.nwk"
+  },
+  "stage": "Stage 3",
+  "stage0_focal_quartet_checksum": "5ea280c1f035d539d82156f201022b2cb4ff1c90bff1a63f93c91a31fcf9d4f6",
+  "stage1_manifest_checksum": "fd62bc80d707e89bafc9afe139259b063f6fd48b1435f69e58ffc83c11a14e2b",
+  "stage1_prior_manifest_reference": {
+    "path": "empirical/fire_ants_chr16/results/stage1_manifest.json",
+    "recorded_metrics": {
+      "chr16A_windows": "42",
+      "chr16B_windows": "2",
+      "chr16_supergene_windows": "52",
+      "chr1_windows": "117",
+      "coordinate_rows": "213",
+      "local_tree_rows": "213",
+      "max_total_weight": "155843072",
+      "max_tree_tips": "267",
+      "min_total_weight": "155843072",
+      "min_tree_tips": "267",
+      "n_distinct_tip_sets": "1",
+      "topology_crosscheck_mismatches": "0",
+      "twisst_topologies": "945",
+      "unique_twisst_topologies": "945",
+      "weight_columns": "945",
+      "weight_rows": "213"
+    }
+  },
+  "stage2_focal_partition_checksum": "52c0cea7ccf1622cc7ed3edd85dda5f4c88c253ca782866f7f5a729bab454002",
+  "stage2_manifest_checksum": "2b56ac7ea4a4d0a31588b803b30896522af4e90bc1e91bf23db6d0b9db80e427",
+  "stage2_prior_manifest_reference": {
+    "focal_haplotype_partition": "AC|BD",
+    "focal_species_partition": "AB|CD",
+    "path": "empirical/fire_ants_chr16/results/stage2_manifest.json"
+  },
+  "stage3_background_partition_checksum": "fa4cc04afcc40deb5e6b3d5ca76dc55b3720dfe070f7d90c3939e253b8006286",
+  "stage3_background_partition_matches_stage0_species_split": true,
+  "supergene_astral_tree_read": false,
+  "twisst_topology_files_read": false,
+  "twisst_weight_files_read": false,
+  "upstream_branch": "master",
+  "upstream_commit": "bdc7823941680fa560e61b6467af9f77950f64b0",
+  "upstream_repository": "https://github.com/wurmlab/2021-fire-ant-social-supergene-introgression"
+}

@@ -8,6 +8,8 @@ Stage 1 public local-tree/TWISST dataset retrieval and normalization is complete
 
 Stage 2 biological group/state provenance freeze is complete. It records the upstream `Species` + `Supergene.Variant` rule used to construct the seven TWISST groups, freezes the focal species and haplotype partitions, and audits sample labels without using topology support.
 
+Stage 3 independent background species-history freeze is complete. It records the published chromosome 1-15 ASTRAL species-history baseline, maps it to the frozen Stage-2 focal groups, and confirms the resulting background split matches the Stage-0 `species_split`.
+
 ## Biological system
 
 The focal system is the fire-ant social chromosome described in:
@@ -178,6 +180,7 @@ From the repository root:
 python3 empirical/fire_ants_chr16/scripts/00_freeze_analysis_design.py --run-tests
 python3 empirical/fire_ants_chr16/scripts/01_retrieve_normalize_twisst.py --skip-download --run-tests
 python3 empirical/fire_ants_chr16/scripts/02_freeze_group_states.py --skip-download --run-tests
+python3 empirical/fire_ants_chr16/scripts/03_freeze_background_history.py --skip-download --run-tests
 ```
 
 The Stage-0 script validates the manifests, verifies the upstream coordinate table, counts author-defined regions, validates focal groups and quartet resolutions, writes the focal-quartet checksum, and enforces forbidden-input guards.
@@ -203,3 +206,15 @@ The Stage-2 script verifies the frozen Stage-0 and Stage-1 checksums, validates 
 - `../../data/fire_ants_chr16/processed/stage2_focal_partition.sha256`
 - `results/stage2_report.md`
 - `results/stage2_manifest.json`
+
+The Stage-3 script verifies the frozen Stage-0, Stage-1, and Stage-2 checksums, validates the published chromosome 1-15 ASTRAL background tree, and regenerates:
+
+- `../../data/fire_ants_chr16/metadata/background_tree_provenance.tsv`
+- `../../data/fire_ants_chr16/processed/stage3_background_tree.nwk`
+- `../../data/fire_ants_chr16/processed/stage3_background_tree.sha256`
+- `../../data/fire_ants_chr16/processed/stage3_background_partition.tsv`
+- `../../data/fire_ants_chr16/processed/stage3_background_partition.sha256`
+- `results/stage3_report.md`
+- `results/stage3_manifest.json`
+
+Stage 4A is the first formal unblinded local-topology stage.

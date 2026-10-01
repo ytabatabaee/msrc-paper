@@ -1,0 +1,5 @@
+group	species_partition	role	background_side	background_tree_source	evidence_type	notes
+inv_mac_SB	invicta/macdonaghi	A	side_1	data/fire_ants_chr16/processed/stage3_background_tree.nwk	published chr1-15 species/background relationship plus frozen Stage-2 group membership	SB/Sb state not inferred from tree topology.
+inv_mac_Sb	invicta/macdonaghi	B	side_1	data/fire_ants_chr16/processed/stage3_background_tree.nwk	published chr1-15 species/background relationship plus frozen Stage-2 group membership	SB/Sb state not inferred from tree topology.
+richteri_SB	richteri	C	side_2	data/fire_ants_chr16/processed/stage3_background_tree.nwk	published chr1-15 species/background relationship plus frozen Stage-2 group membership	SB/Sb state not inferred from tree topology.
+richteri_Sb	richteri	D	side_2	data/fire_ants_chr16/processed/stage3_background_tree.nwk	published chr1-15 species/background relationship plus frozen Stage-2 group membership	SB/Sb state not inferred from tree topology.
