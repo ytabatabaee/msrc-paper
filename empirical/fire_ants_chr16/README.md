@@ -10,6 +10,8 @@ Stage 2 biological group/state provenance freeze is complete. It records the ups
 
 Stage 3 independent background species-history freeze is complete. It records the published chromosome 1-15 ASTRAL species-history baseline, maps it to the frozen Stage-2 focal groups, and confirms the resulting background split matches the Stage-0 `species_split`.
 
+Stage 4A first formal unblinded local quartet-support analysis is complete. It classifies the 945 published TWISST group topologies by the frozen focal quartet, aggregates TWISST weights for the 213 published windows, calculates `q_S`, `q_H`, `q_3`, and `D`, and writes descriptive summaries and raw support figures. It does not perform spatial-null inference, calculate P-values, smooth support tracks, optimize boundaries, run ASTRAL/ASTER, or draw causal conclusions.
+
 ## Biological system
 
 The focal system is the fire-ant social chromosome described in:
@@ -50,7 +52,7 @@ Stage 0 stores only selected small non-topological upstream files under `../../d
 
 - `scripts/`: executable stage scripts.
 - `results/`: stage reports and frozen design summaries.
-- `figures/`: reserved for later rendered figures.
+- `figures/`: rendered Stage-4A descriptive support figures.
 - `config/`: reserved for later stage configuration.
 - `tests/`: test fixtures or notes if later stages need them.
 - `../../data/fire_ants_chr16/`: data tree with `raw/`, `metadata/`, `intermediate/`, and `processed/`.
@@ -181,6 +183,7 @@ python3 empirical/fire_ants_chr16/scripts/00_freeze_analysis_design.py --run-tes
 python3 empirical/fire_ants_chr16/scripts/01_retrieve_normalize_twisst.py --skip-download --run-tests
 python3 empirical/fire_ants_chr16/scripts/02_freeze_group_states.py --skip-download --run-tests
 python3 empirical/fire_ants_chr16/scripts/03_freeze_background_history.py --skip-download --run-tests
+python3 empirical/fire_ants_chr16/scripts/04a_local_quartet_support.py --run-tests
 ```
 
 The Stage-0 script validates the manifests, verifies the upstream coordinate table, counts author-defined regions, validates focal groups and quartet resolutions, writes the focal-quartet checksum, and enforces forbidden-input guards.
@@ -218,3 +221,21 @@ The Stage-3 script verifies the frozen Stage-0, Stage-1, and Stage-2 checksums, 
 - `results/stage3_manifest.json`
 
 Stage 4A is the first formal unblinded local-topology stage.
+
+The Stage-4A script verifies the frozen Stage-0 through Stage-3 checksum chain, classifies the 945 grouped TWISST topologies by the independently frozen focal quartet, aggregates published weights into local quartet support quantities, and regenerates:
+
+- `../../data/fire_ants_chr16/processed/stage4a_topology_classes.tsv`
+- `../../data/fire_ants_chr16/processed/stage4a_window_quartet_support.tsv`
+- `results/stage4a_region_summary.tsv`
+- `results/stage4a_primary_contrast.tsv`
+- `results/stage4a_report.md`
+- `results/stage4a_figure_caption.md`
+- `results/stage4a_manifest.json`
+- `figures/fire_ants_chr16_quartet_support.pdf`
+- `figures/fire_ants_chr16_quartet_support.png`
+- `figures/fire_ants_chr1_quartet_support_control.pdf`
+- `figures/fire_ants_chr1_quartet_support_control.png`
+- `figures/fire_ants_chr16_D_track.pdf`
+- `figures/fire_ants_chr16_D_track.png`
+
+Stage 4B will perform the predeclared spatial-null inference.

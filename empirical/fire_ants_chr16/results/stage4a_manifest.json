@@ -1,0 +1,75 @@
+{
+  "class_counts": {
+    "haplotype": 315,
+    "species": 315,
+    "third": 315
+  },
+  "description": "First formal unblinded local quartet-support analysis; descriptive only.",
+  "figure_checksums": {
+    "empirical/fire_ants_chr16/figures/fire_ants_chr16_D_track.pdf": "d4e6c5416ef041919e986c7f6357ef1c08021be0aa4f31b198efdf7ced29578f",
+    "empirical/fire_ants_chr16/figures/fire_ants_chr16_D_track.png": "98ef2d91feb141d9df0c98755f39d9072e792ae7c5d1e8bcc477825e84bb3caf",
+    "empirical/fire_ants_chr16/figures/fire_ants_chr16_quartet_support.pdf": "e8994836cd612548ce6ad579ce24235659aa8fd776d9d77a221dcbbefc23d4e0",
+    "empirical/fire_ants_chr16/figures/fire_ants_chr16_quartet_support.png": "8942f32a867cf79c5aef392138c16b300dcddf00d18f319e73bf253fc78f0af8",
+    "empirical/fire_ants_chr16/figures/fire_ants_chr1_quartet_support_control.pdf": "e967924b79fcbe249854c9fd5d3730df4172aa90a53b3d398fe78efdf7b6850b",
+    "empirical/fire_ants_chr16/figures/fire_ants_chr1_quartet_support_control.png": "9b3385390b91bf2461b352087bf5c1b706e52431e790b02845618ad87caa46bf"
+  },
+  "inferential_tests_performed": false,
+  "n_windows": 213,
+  "p_values_calculated": false,
+  "processing_script": {
+    "path": "empirical/fire_ants_chr16/scripts/04a_local_quartet_support.py",
+    "sha256": "10592637cdbea986016e43b6c04568379a50f2775600ceb1246323f417910408"
+  },
+  "q_sum_tolerance": 1e-12,
+  "region_counts": {
+    "chr1": 117,
+    "chr16A": 42,
+    "chr16B": 2,
+    "chr16_supergene": 52
+  },
+  "smoothing_applied_to_figures": false,
+  "stage": "Stage 4A",
+  "stage0_focal_quartet_checksum": "5ea280c1f035d539d82156f201022b2cb4ff1c90bff1a63f93c91a31fcf9d4f6",
+  "stage1_manifest_checksum": "fd62bc80d707e89bafc9afe139259b063f6fd48b1435f69e58ffc83c11a14e2b",
+  "stage1_manifest_reference": {
+    "chr16A_windows": "42",
+    "chr16B_windows": "2",
+    "chr16_supergene_windows": "52",
+    "chr1_windows": "117",
+    "coordinate_rows": "213",
+    "local_tree_rows": "213",
+    "max_total_weight": "155843072",
+    "max_tree_tips": "267",
+    "min_total_weight": "155843072",
+    "min_tree_tips": "267",
+    "n_distinct_tip_sets": "1",
+    "topology_crosscheck_mismatches": "0",
+    "twisst_topologies": "945",
+    "unique_twisst_topologies": "945",
+    "weight_columns": "945",
+    "weight_rows": "213"
+  },
+  "stage1_sparse_weight_checksum": "b9686750586419ae48e445c9c021991fa25eee6dc4957e55f4a12f0128ce9e58",
+  "stage1_topology_table_checksum": "030f6fb41d708fab2856b01b9f460f27e66a5171f7ba85084a6a7bf5e3a97ec0",
+  "stage1_window_index_checksum": "96ed3fcca3d351a96b2434f17aa7510349d94138d11d60ccb56d45d1b57e237d",
+  "stage2_focal_partition_checksum": "52c0cea7ccf1622cc7ed3edd85dda5f4c88c253ca782866f7f5a729bab454002",
+  "stage2_manifest_checksum": "2b56ac7ea4a4d0a31588b803b30896522af4e90bc1e91bf23db6d0b9db80e427",
+  "stage2_manifest_reference": {
+    "focal_haplotype_partition": "AC|BD",
+    "focal_species_partition": "AB|CD"
+  },
+  "stage3_background_partition_checksum": "fa4cc04afcc40deb5e6b3d5ca76dc55b3720dfe070f7d90c3939e253b8006286",
+  "stage3_manifest_checksum": "4ed41d1558dcc055efbb6522efe11b273062a187a7335a2975597fdbe0216fd7",
+  "stage3_manifest_reference": {
+    "stage3_background_partition_matches_stage0_species_split": true
+  },
+  "stage4a_output_checksums": {
+    "data/fire_ants_chr16/processed/stage4a_topology_classes.tsv": "509dbf8968e128df70224da2e4a68a53c250dd812a8659c8f316426cb8b3a10b",
+    "data/fire_ants_chr16/processed/stage4a_window_quartet_support.tsv": "b8ff3ea95ba31ae5553f56f0aeb45a393bdb0ba2b19081fc1aca822dfdd70758",
+    "empirical/fire_ants_chr16/results/stage4a_figure_caption.md": "ddaf0d94d1720827a0cab09d58ffb8621ea629b43273413441dede19bf7d7024",
+    "empirical/fire_ants_chr16/results/stage4a_primary_contrast.tsv": "b95e01fc55c7eb086464bf6dad2fd591944cd4d187bfc9a6a3ffcea5370c7b40",
+    "empirical/fire_ants_chr16/results/stage4a_region_summary.tsv": "b902d6cdc472fbe2b5749d56e3edb44a093129d8dc418fae05078f55f5bbabca",
+    "empirical/fire_ants_chr16/results/stage4a_report.md": "c33ed1f68ee23321e67e3033c94f15da25a7002d20884278ca3b057cc501c719"
+  },
+  "tie_tolerance": 1e-12
+}
