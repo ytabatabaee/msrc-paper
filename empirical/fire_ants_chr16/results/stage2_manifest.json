@@ -1,0 +1,64 @@
+{
+  "description": "Freeze biological TWISST group definitions and SB/Sb state provenance without topology classification.",
+  "focal_haplotype_partition": "AC|BD",
+  "focal_species_partition": "AB|CD",
+  "processing_script": {
+    "path": "empirical/fire_ants_chr16/scripts/02_freeze_group_states.py",
+    "sha256": "a65b483802441672c1ea1d3233a30e19bec9ba72fe4936756fbbb5b02eb4e5ea"
+  },
+  "sample_label_inventory_rows": 267,
+  "stage": "Stage 2",
+  "stage0_focal_quartet_checksum": "5ea280c1f035d539d82156f201022b2cb4ff1c90bff1a63f93c91a31fcf9d4f6",
+  "stage1_manifest_checksum": "fd62bc80d707e89bafc9afe139259b063f6fd48b1435f69e58ffc83c11a14e2b",
+  "stage1_manifest_path": "empirical/fire_ants_chr16/results/stage1_manifest.json",
+  "stage1_recorded_checksums": {
+    "processed_output_checksums": {
+      "data/fire_ants_chr16/processed/stage1_twisst_topologies.tsv": "030f6fb41d708fab2856b01b9f460f27e66a5171f7ba85084a6a7bf5e3a97ec0",
+      "data/fire_ants_chr16/processed/stage1_twisst_weight_summary.tsv": "7df2198149a456db8b80cb4d1d3c5d71c1aa3743821c1cdf408bf5c4432c7273",
+      "data/fire_ants_chr16/processed/stage1_twisst_weights_sparse.tsv": "b9686750586419ae48e445c9c021991fa25eee6dc4957e55f4a12f0128ce9e58",
+      "data/fire_ants_chr16/processed/stage1_window_index.tsv": "96ed3fcca3d351a96b2434f17aa7510349d94138d11d60ccb56d45d1b57e237d",
+      "data/fire_ants_chr16/processed/stage1_window_trees.tsv": "f14bf03fdeefe060d9446745d3b9eafb73bc1af7997b694ebb3f858265bfaaad",
+      "empirical/fire_ants_chr16/results/stage1_source_provenance.md": "b7af7e435117517dd0eb704b05bd5c33ca0419878c6b9ccfafb79ced8c278b4a",
+      "empirical/fire_ants_chr16/results/stage1_topology_crosscheck.tsv": "a57ee8f96a2100061d5296e4579fa631636e884ae64e383b7f3f23cab8df6545",
+      "empirical/fire_ants_chr16/results/stage1_validation_summary.tsv": "3a7cd3cca505d2cd06cc7aaf81d740ab4e5df5e04808e1fb268011f852e77783"
+    },
+    "processing_script": {
+      "path": "empirical/fire_ants_chr16/scripts/01_retrieve_normalize_twisst.py",
+      "sha256": "d28b9752590b6fc684b1ac5de8fe61197be3bb809d89e863cf5cf6350418a84c"
+    },
+    "raw_topology_file_checksums": {
+      "data/fire_ants_chr16/raw/upstream/Topology weighting/results/2021-08-07-twisst/input.tree": "0b0d64217170610b2bd3e8dd1481138b032ef033589887b18a883099c1780e66",
+      "data/fire_ants_chr16/raw/upstream/Topology weighting/results/2021-08-07-twisst/topologies_output.trees": "36a58a44eb730972bc5e4c2003fc9cdd9d1f8681c9ba2c14e053daa2706bd57c",
+      "data/fire_ants_chr16/raw/upstream/Topology weighting/results/2021-08-07-twisst/weights_output.csv": "617edfa9a1d0ae35ed7b0203c73e8a4eb78a6bb40bf32cdaae80ddb5b4182c7c"
+    }
+  },
+  "stage2_output_checksums": {
+    "data/fire_ants_chr16/metadata/twisst_group_definition_rules.tsv": "c8665a06a360039cf84a21db7c49bc182bd70e82578ecbc466f7f26d463b4abe",
+    "data/fire_ants_chr16/processed/stage2_focal_partition.sha256": "62db1b670e9ae85f9299009c61ccc48613296f25e0c6d4268a9e766af12e4914",
+    "data/fire_ants_chr16/processed/stage2_focal_partition.tsv": "52c0cea7ccf1622cc7ed3edd85dda5f4c88c253ca782866f7f5a729bab454002",
+    "data/fire_ants_chr16/processed/stage2_sample_label_inventory.tsv": "4f72f88ad980cc250a2dfaaa56fdc002b856bc5451a02d72cb0738582173e0bf",
+    "data/fire_ants_chr16/processed/stage2_twisst_groups.tsv": "072ed25285cd00298dcceb1a718496538399d62d3d7395e6555ff22d61d1b4a3",
+    "empirical/fire_ants_chr16/results/stage2_report.md": "b40dd323a3d6e2d509cb5d4e55f3a73282f5f7718163adb308b4f4266ea8e6b0"
+  },
+  "topology_files_not_used_for_classification": [
+    "data/fire_ants_chr16/processed/stage1_twisst_topologies.tsv",
+    "data/fire_ants_chr16/processed/stage1_twisst_weights_sparse.tsv",
+    "data/fire_ants_chr16/raw/upstream/Topology weighting/results/2021-08-07-twisst/topologies_output.trees",
+    "data/fire_ants_chr16/raw/upstream/Topology weighting/results/2021-08-07-twisst/weights_output.csv"
+  ],
+  "twisst_groups": [
+    "geminata",
+    "saevissima",
+    "pusillignis",
+    "invicta/macdonaghi_Sb",
+    "invicta/macdonaghi_SB",
+    "richteri_Sb",
+    "richteri_SB"
+  ],
+  "upstream_group_definition_script": {
+    "path": "data/fire_ants_chr16/raw/upstream/Topology weighting/supergene/filter_samples_by_missing.R",
+    "sha256": "419cb7839521a9e3326d80c32b3d77445b79d7e171df77449e570cf89bb65065",
+    "source_commit": "bdc7823941680fa560e61b6467af9f77950f64b0",
+    "source_url": "https://raw.githubusercontent.com/wurmlab/2021-fire-ant-social-supergene-introgression/bdc7823941680fa560e61b6467af9f77950f64b0/Topology%20weighting/supergene/filter_samples_by_missing.R"
+  }
+}

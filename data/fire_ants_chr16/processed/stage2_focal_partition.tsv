@@ -1,0 +1,5 @@
+group	species_partition	haplotype_partition	role
+inv_mac_SB	invicta/macdonaghi	SB	A
+inv_mac_Sb	invicta/macdonaghi	Sb	B
+richteri_SB	richteri	SB	C
+richteri_Sb	richteri	Sb	D

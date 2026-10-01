@@ -2,9 +2,11 @@
 
 This directory scaffolds a staged empirical analysis for the chromosome-16 social supergene in fire ants of the genus `Solenopsis`.
 
-Stage 0 design/provenance freeze is complete.
+Stage 0 design freeze is complete.
 
 Stage 1 public local-tree/TWISST dataset retrieval and normalization is complete. It creates canonical topology-neutral tables for the 213 published windows. It does not classify topologies into the focal quartet, calculate support statistics, compare regions, run ASTRAL/ASTER, fit MSRC parameters, or draw biological conclusions.
+
+Stage 2 biological group/state provenance freeze is complete. It records the upstream `Species` + `Supergene.Variant` rule used to construct the seven TWISST groups, freezes the focal species and haplotype partitions, and audits sample labels without using topology support.
 
 ## Biological system
 
@@ -175,6 +177,7 @@ From the repository root:
 ```bash
 python3 empirical/fire_ants_chr16/scripts/00_freeze_analysis_design.py --run-tests
 python3 empirical/fire_ants_chr16/scripts/01_retrieve_normalize_twisst.py --skip-download --run-tests
+python3 empirical/fire_ants_chr16/scripts/02_freeze_group_states.py --skip-download --run-tests
 ```
 
 The Stage-0 script validates the manifests, verifies the upstream coordinate table, counts author-defined regions, validates focal groups and quartet resolutions, writes the focal-quartet checksum, and enforces forbidden-input guards.
@@ -190,3 +193,13 @@ The Stage-1 script verifies the frozen Stage-0 checksums, validates the immutabl
 - `results/stage1_validation_summary.tsv`
 - `results/stage1_source_provenance.md`
 - `results/stage1_manifest.json`
+
+The Stage-2 script verifies the frozen Stage-0 and Stage-1 checksums, validates the upstream group-construction script, and regenerates:
+
+- `../../data/fire_ants_chr16/metadata/twisst_group_definition_rules.tsv`
+- `../../data/fire_ants_chr16/processed/stage2_twisst_groups.tsv`
+- `../../data/fire_ants_chr16/processed/stage2_sample_label_inventory.tsv`
+- `../../data/fire_ants_chr16/processed/stage2_focal_partition.tsv`
+- `../../data/fire_ants_chr16/processed/stage2_focal_partition.sha256`
+- `results/stage2_report.md`
+- `results/stage2_manifest.json`
