@@ -1,0 +1,2 @@
+test	observed_delta_D	n_exact_alignments	observed_rank	n_ge_observed	p_one_sided	alternative	null_description	comparison_tolerance	observed_delta_q_S	observed_delta_q_H	observed_delta_q_3
+exact_circular_shift_null	1.610109863495346	96	2	2	0.0208333333	Delta_D > 0; D higher inside the independently frozen supergene region	exact 96-alignment circular-shift null rotating the physical chr16 D track while keeping the frozen 52-window supergene mask fixed	1E-12	-0.809862515711663	0.800247347783683	0.009615167927980

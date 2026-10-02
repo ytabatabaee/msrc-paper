@@ -2,15 +2,17 @@
 
 This directory scaffolds a staged empirical analysis for the chromosome-16 social supergene in fire ants of the genus `Solenopsis`.
 
-Stage 0 design freeze is complete.
+Stage 0 complete.
 
-Stage 1 public local-tree/TWISST dataset retrieval and normalization is complete. It creates canonical topology-neutral tables for the 213 published windows. It does not classify topologies into the focal quartet, calculate support statistics, compare regions, run ASTRAL/ASTER, fit MSRC parameters, or draw biological conclusions.
+Stage 1 complete.
 
-Stage 2 biological group/state provenance freeze is complete. It records the upstream `Species` + `Supergene.Variant` rule used to construct the seven TWISST groups, freezes the focal species and haplotype partitions, and audits sample labels without using topology support.
+Stage 2 complete.
 
-Stage 3 independent background species-history freeze is complete. It records the published chromosome 1-15 ASTRAL species-history baseline, maps it to the frozen Stage-2 focal groups, and confirms the resulting background split matches the Stage-0 `species_split`.
+Stage 3 complete.
 
-Stage 4A first formal unblinded local quartet-support analysis is complete. It classifies the 945 published TWISST group topologies by the frozen focal quartet, aggregates TWISST weights for the 213 published windows, calculates `q_S`, `q_H`, `q_3`, and `D`, and writes descriptive summaries and raw support figures. It does not perform spatial-null inference, calculate P-values, smooth support tracks, optimize boundaries, run ASTRAL/ASTER, or draw causal conclusions.
+Stage 4A complete.
+
+Stage 4B complete — spatial-null inference. It implements the frozen exact circular-shift null and the frozen physical-coordinate-aware same-width interval sensitivity. It does not optimize supergene boundaries, run ASTRAL/ASTER, fit MSRC parameters, or identify a historical mechanism.
 
 ## Biological system
 
@@ -168,11 +170,11 @@ Stage 3: Freeze the background species-history topology using the published chro
 
 Stage 4A: First formal local-topology stage: derive `q_species`, `q_haplotype`, `q_third`, and `D` from TWISST weights.
 
-Stage 4B: Spatial-null testing of supergene enrichment on chromosome 16.
+Stage 4B: Complete — spatial-null testing of supergene enrichment on chromosome 16.
 
-Stage 5: Robustness/final manuscript figure and analysis freeze.
+Stage 5: Robustness/manuscript freeze.
 
-Stage 6: ASTER/ASTRAL4 inference-sensitivity analysis: background versus supergene versus all local windows and progressive supergene downweighting.
+Stage 6: ASTER/ASTRAL4 inference-sensitivity analysis, run separately after Stage 5: background versus supergene versus all local windows and progressive supergene downweighting.
 
 ## Reproduction
 
@@ -184,6 +186,7 @@ python3 empirical/fire_ants_chr16/scripts/01_retrieve_normalize_twisst.py --skip
 python3 empirical/fire_ants_chr16/scripts/02_freeze_group_states.py --skip-download --run-tests
 python3 empirical/fire_ants_chr16/scripts/03_freeze_background_history.py --skip-download --run-tests
 python3 empirical/fire_ants_chr16/scripts/04a_local_quartet_support.py --run-tests
+python3 empirical/fire_ants_chr16/scripts/04b_spatial_null_tests.py --run-tests
 ```
 
 The Stage-0 script validates the manifests, verifies the upstream coordinate table, counts author-defined regions, validates focal groups and quartet resolutions, writes the focal-quartet checksum, and enforces forbidden-input guards.
@@ -238,4 +241,4 @@ The Stage-4A script verifies the frozen Stage-0 through Stage-3 checksum chain, 
 - `figures/fire_ants_chr16_D_track.pdf`
 - `figures/fire_ants_chr16_D_track.png`
 
-Stage 4B will perform the predeclared spatial-null inference.
+The Stage-4B script verifies the frozen Stage-0 through Stage-4A checksum chain, reconstructs physical chromosome-16 order by midpoint, runs the exact circular-shift null and physical-coordinate same-width interval sensitivity, and regenerates the Stage-4B tables, report, manifest, and spatial-null figures.

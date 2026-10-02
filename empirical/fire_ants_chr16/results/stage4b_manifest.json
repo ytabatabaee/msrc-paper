@@ -1,0 +1,108 @@
+{
+  "arbitrary_coordinate_grid_used": false,
+  "astER_or_astral_run": false,
+  "boundaries_optimized": false,
+  "comparison_tolerance": "1E-12",
+  "coordinate_null_enumeration_rule": "unique candidate starts induced by s=x_i and s=x_i-L boundary events, chr16 domain boundaries, observed interval, and deterministic between-event representatives; exact inside-window sets deduplicated",
+  "coordinate_sensitivity_p_value": "0.0309278351",
+  "coordinate_width_source": "data/fire_ants_chr16/metadata/region_manifest.tsv",
+  "description": "Predeclared spatial-null inference for frozen fire-ant chromosome-16 Stage-4A support track.",
+  "exact_circular_p_value": "0.0208333333",
+  "figure_checksums": {
+    "empirical/fire_ants_chr16/figures/fire_ants_chr16_circular_null.pdf": "45798879bc6620fc4cc3cc52b30c9438018eac40980d0ae97bc8ca6f8132cc98",
+    "empirical/fire_ants_chr16/figures/fire_ants_chr16_circular_null.png": "5341ea0dc172852a883067e9c134174753728c3e5bd6d2610897d8ef87e6ad34",
+    "empirical/fire_ants_chr16/figures/fire_ants_chr16_coordinate_null.pdf": "4f557e51dfa190caeece1f3d51c423c002d81d7c24a0d3a72924996cd94cf0c0",
+    "empirical/fire_ants_chr16/figures/fire_ants_chr16_coordinate_null.png": "9fcd81ff52ba4bc63e13b95cf8e559d3d2247183dd32c4aa2262413f6c7d8970",
+    "empirical/fire_ants_chr16/figures/fire_ants_chr16_spatial_test.pdf": "a6ee9153672bd40f7e1a8de84bad46a53081d2285948c4e0b15b484c9965156c",
+    "empirical/fire_ants_chr16/figures/fire_ants_chr16_spatial_test.png": "5490ae88b6ea89987da39e6bdff28cb2ae5fc36a379933fdb39901ad160d34a2"
+  },
+  "inferential_tests_performed": [
+    "exact_circular_shift_null_primary",
+    "physical_coordinate_same_width_interval_sensitivity"
+  ],
+  "msrc_model_fit": false,
+  "n_chr16_windows": 96,
+  "n_circular_shifts": 96,
+  "number_unique_coordinate_placements": 97,
+  "observed_circular_rank": 2,
+  "observed_delta_D": "1.610109863495346",
+  "output_checksums": {
+    "empirical/fire_ants_chr16/README.md": "384bb2ecaba75cf93a94b3cd62321b1b3ede328b36ea8a9b499c29911807e8da",
+    "empirical/fire_ants_chr16/results/stage4b_boundary_context.tsv": "e3799be629d62a2b0c9b98b52c3cd70113d8c497d174c0328f723c6b78e375d2",
+    "empirical/fire_ants_chr16/results/stage4b_chr16_physical_order.tsv": "4535ccfe0fcac24f3b7e1f43d59242a5dd25c090813b61e114be8712f3d04eed",
+    "empirical/fire_ants_chr16/results/stage4b_circular_shifts.tsv": "ec6a8a65a962ed7957c77305ada7d05ba4832ab14a5a6a50891ec358262469a4",
+    "empirical/fire_ants_chr16/results/stage4b_coordinate_placements.tsv": "3e3e36877f2e391365324d7971e48365827889e9921d9e20fb24d659a28b70bf",
+    "empirical/fire_ants_chr16/results/stage4b_coordinate_summary.tsv": "ead076f022e4637ee58ac3ba88c036d1420d8001b61aa436171f405094c060b4",
+    "empirical/fire_ants_chr16/results/stage4b_main_table.tsv": "0cd5434315d9a3a16249752452c6b49c72d3935f81c246095d778983143cbc15",
+    "empirical/fire_ants_chr16/results/stage4b_primary_test.tsv": "310fe14c9cdb0e4d4ba6b1b9355498cfa1e845e56de119061f395c7011d9ec8b",
+    "empirical/fire_ants_chr16/results/stage4b_report.md": "c1e9d7136d2b869c5615fa913d7a7d997dd77d2b0f6f5a90d33ac075abc09782"
+  },
+  "parent_checksums": {
+    "stage0_focal_quartet": "5ea280c1f035d539d82156f201022b2cb4ff1c90bff1a63f93c91a31fcf9d4f6",
+    "stage1_manifest": "fd62bc80d707e89bafc9afe139259b063f6fd48b1435f69e58ffc83c11a14e2b",
+    "stage2_focal_partition": "52c0cea7ccf1622cc7ed3edd85dda5f4c88c253ca782866f7f5a729bab454002",
+    "stage2_manifest": "2b56ac7ea4a4d0a31588b803b30896522af4e90bc1e91bf23db6d0b9db80e427",
+    "stage3_background_partition": "fa4cc04afcc40deb5e6b3d5ca76dc55b3720dfe070f7d90c3939e253b8006286",
+    "stage3_manifest": "4ed41d1558dcc055efbb6522efe11b273062a187a7335a2975597fdbe0216fd7",
+    "stage4a_manifest": "d1fa79815bbe4d1f45a2af7f5a1d5487d39fe3041ccac4f79f961a998ab99bf1",
+    "stage4a_window_support": "b8ff3ea95ba31ae5553f56f0aeb45a393bdb0ba2b19081fc1aca822dfdd70758"
+  },
+  "physical_chr16_ordering_rule": "chrom == chr16; sort ascending by physical midpoint; do not use Stage-1 concatenation order",
+  "physical_chr16_region_sequence": [
+    "chr16A",
+    "chr16_supergene",
+    "chr16B"
+  ],
+  "physical_interval_width": "16237060",
+  "processing_script": {
+    "path": "empirical/fire_ants_chr16/scripts/04b_spatial_null_tests.py",
+    "sha256": "872f408e94db65d4497196029fb814b1b1ac3e58d352c3ade51bbfe802c7242f"
+  },
+  "stage": "Stage 4B",
+  "stage1_recorded_checksums": {
+    "processed_output_checksums": {
+      "data/fire_ants_chr16/processed/stage1_twisst_topologies.tsv": "030f6fb41d708fab2856b01b9f460f27e66a5171f7ba85084a6a7bf5e3a97ec0",
+      "data/fire_ants_chr16/processed/stage1_twisst_weight_summary.tsv": "7df2198149a456db8b80cb4d1d3c5d71c1aa3743821c1cdf408bf5c4432c7273",
+      "data/fire_ants_chr16/processed/stage1_twisst_weights_sparse.tsv": "b9686750586419ae48e445c9c021991fa25eee6dc4957e55f4a12f0128ce9e58",
+      "data/fire_ants_chr16/processed/stage1_window_index.tsv": "96ed3fcca3d351a96b2434f17aa7510349d94138d11d60ccb56d45d1b57e237d",
+      "data/fire_ants_chr16/processed/stage1_window_trees.tsv": "f14bf03fdeefe060d9446745d3b9eafb73bc1af7997b694ebb3f858265bfaaad",
+      "empirical/fire_ants_chr16/results/stage1_source_provenance.md": "b7af7e435117517dd0eb704b05bd5c33ca0419878c6b9ccfafb79ced8c278b4a",
+      "empirical/fire_ants_chr16/results/stage1_topology_crosscheck.tsv": "a57ee8f96a2100061d5296e4579fa631636e884ae64e383b7f3f23cab8df6545",
+      "empirical/fire_ants_chr16/results/stage1_validation_summary.tsv": "3a7cd3cca505d2cd06cc7aaf81d740ab4e5df5e04808e1fb268011f852e77783"
+    },
+    "raw_topology_file_checksums": {
+      "data/fire_ants_chr16/raw/upstream/Topology weighting/results/2021-08-07-twisst/input.tree": "0b0d64217170610b2bd3e8dd1481138b032ef033589887b18a883099c1780e66",
+      "data/fire_ants_chr16/raw/upstream/Topology weighting/results/2021-08-07-twisst/topologies_output.trees": "36a58a44eb730972bc5e4c2003fc9cdd9d1f8681c9ba2c14e053daa2706bd57c",
+      "data/fire_ants_chr16/raw/upstream/Topology weighting/results/2021-08-07-twisst/weights_output.csv": "617edfa9a1d0ae35ed7b0203c73e8a4eb78a6bb40bf32cdaae80ddb5b4182c7c"
+    }
+  },
+  "stage2_recorded_checksums": {
+    "data/fire_ants_chr16/metadata/twisst_group_definition_rules.tsv": "c8665a06a360039cf84a21db7c49bc182bd70e82578ecbc466f7f26d463b4abe",
+    "data/fire_ants_chr16/processed/stage2_focal_partition.sha256": "62db1b670e9ae85f9299009c61ccc48613296f25e0c6d4268a9e766af12e4914",
+    "data/fire_ants_chr16/processed/stage2_focal_partition.tsv": "52c0cea7ccf1622cc7ed3edd85dda5f4c88c253ca782866f7f5a729bab454002",
+    "data/fire_ants_chr16/processed/stage2_sample_label_inventory.tsv": "4f72f88ad980cc250a2dfaaa56fdc002b856bc5451a02d72cb0738582173e0bf",
+    "data/fire_ants_chr16/processed/stage2_twisst_groups.tsv": "072ed25285cd00298dcceb1a718496538399d62d3d7395e6555ff22d61d1b4a3",
+    "empirical/fire_ants_chr16/results/stage2_report.md": "b40dd323a3d6e2d509cb5d4e55f3a73282f5f7718163adb308b4f4266ea8e6b0"
+  },
+  "stage3_recorded_checksums": {
+    "background_tree_provenance": "923565cc086e7d0009c2888658b3328b76774317b112416eab86dd7f9241869c",
+    "normalized_background_tree": "64c032bf646c1bdef4699d419bd19686f0d9713a57755f0c77b30aea27668638",
+    "stage3_background_partition": "fa4cc04afcc40deb5e6b3d5ca76dc55b3720dfe070f7d90c3939e253b8006286"
+  },
+  "stage4a_figure_checksums": {
+    "empirical/fire_ants_chr16/figures/fire_ants_chr16_D_track.pdf": "d4e6c5416ef041919e986c7f6357ef1c08021be0aa4f31b198efdf7ced29578f",
+    "empirical/fire_ants_chr16/figures/fire_ants_chr16_D_track.png": "98ef2d91feb141d9df0c98755f39d9072e792ae7c5d1e8bcc477825e84bb3caf",
+    "empirical/fire_ants_chr16/figures/fire_ants_chr16_quartet_support.pdf": "e8994836cd612548ce6ad579ce24235659aa8fd776d9d77a221dcbbefc23d4e0",
+    "empirical/fire_ants_chr16/figures/fire_ants_chr16_quartet_support.png": "8942f32a867cf79c5aef392138c16b300dcddf00d18f319e73bf253fc78f0af8",
+    "empirical/fire_ants_chr16/figures/fire_ants_chr1_quartet_support_control.pdf": "e967924b79fcbe249854c9fd5d3730df4172aa90a53b3d398fe78efdf7b6850b",
+    "empirical/fire_ants_chr16/figures/fire_ants_chr1_quartet_support_control.png": "9b3385390b91bf2461b352087bf5c1b706e52431e790b02845618ad87caa46bf"
+  },
+  "stage4a_output_checksums": {
+    "data/fire_ants_chr16/processed/stage4a_topology_classes.tsv": "509dbf8968e128df70224da2e4a68a53c250dd812a8659c8f316426cb8b3a10b",
+    "data/fire_ants_chr16/processed/stage4a_window_quartet_support.tsv": "b8ff3ea95ba31ae5553f56f0aeb45a393bdb0ba2b19081fc1aca822dfdd70758",
+    "empirical/fire_ants_chr16/results/stage4a_figure_caption.md": "ddaf0d94d1720827a0cab09d58ffb8621ea629b43273413441dede19bf7d7024",
+    "empirical/fire_ants_chr16/results/stage4a_primary_contrast.tsv": "b95e01fc55c7eb086464bf6dad2fd591944cd4d187bfc9a6a3ffcea5370c7b40",
+    "empirical/fire_ants_chr16/results/stage4a_region_summary.tsv": "b902d6cdc472fbe2b5749d56e3edb44a093129d8dc418fae05078f55f5bbabca",
+    "empirical/fire_ants_chr16/results/stage4a_report.md": "c33ed1f68ee23321e67e3033c94f15da25a7002d20884278ca3b057cc501c719"
+  }
+}
