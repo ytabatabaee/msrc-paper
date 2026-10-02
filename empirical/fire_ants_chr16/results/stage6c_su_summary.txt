@@ -18,8 +18,8 @@ Shared-branch SU changes:
 - focal_invicta_macdonaghi_SB_Sb_pair (inv_mac_SB,inv_mac_Sb): 0.000603369 -> 0.00108534 ; delta = 0.000481971 ; percent = 79.87997394629157
 
 CU vs SU focal-pair comparison:
-- focal_richteri_SB_Sb_pair: CU percent change = -70.00519736000001; SU percent change = -1.0530180745010391
-- focal_invicta_macdonaghi_SB_Sb_pair: CU percent change = -54.49683703; SU percent change = 79.87997394629157
+- focal_richteri_SB_Sb_pair: CU percent change = -59.78514153766007; SU percent change = -1.0530180745010391
+- focal_invicta_macdonaghi_SB_Sb_pair: CU percent change = -43.22335145635668; SU percent change = 79.87997394629157
 
 Free-topology individual-level mapped ASTRAL4:
 - T_background: same topology as free background = True; RF = 0; recovered background splits = 4/4

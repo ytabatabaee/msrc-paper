@@ -331,8 +331,8 @@ def summary_lines(rows: list[dict[str, object]]) -> list[str]:
             f"median CU combined: {fmt(median(r['cu_combined'] for r in shared))}",
             f"median absolute CU change: {fmt(median(abs(r['delta_cu']) for r in shared if r['delta_cu'] is not None))}",
         ])
-        decreases = sorted([r for r in shared if r["delta_cu"] is not None], key=lambda r: r["delta_cu"])
-        increases = sorted([r for r in shared if r["delta_cu"] is not None], key=lambda r: r["delta_cu"], reverse=True)
+        decreases = sorted([r for r in shared if r["delta_cu"] is not None and r["delta_cu"] < 0], key=lambda r: r["delta_cu"])
+        increases = sorted([r for r in shared if r["delta_cu"] is not None and r["delta_cu"] > 0], key=lambda r: r["delta_cu"], reverse=True)
         lines.append("largest CU decreases:")
         for r in decreases[:3]:
             lines.append(f"  {r['branch_role']} [{r['taxa_side']}]: {fmt(r['cu_background'])} -> {fmt(r['cu_combined'])}; delta {fmt(r['delta_cu'])}; relative {fmt(r['relative_delta_cu'])}")

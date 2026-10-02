@@ -265,4 +265,14 @@ Stage 6 does not alter the Stage-5 primary empirical analysis.
 Stage 6 CU branch-length extension outputs: `results/stage6_cu_branch_length_comparison.tsv`, `results/stage6_cu_branch_length_summary.txt`, `figures/fire_ants_stage6_cu_background_vs_combined.pdf`, and `figures/fire_ants_stage6_cu_delta.pdf`.
 
 
-Stage 6C complete — mapped individual-level ASTRAL4/CASTLES-II SU branch-length sensitivity. The exact 267-tip mapping was recovered from Stolle et al. 2022 Supplementary Data 1 without guessing. Original RAxML local-tree substitution branch lengths were preserved, fixed-topology background versus all-window SULengths were estimated, and CU/SU changes were compared. Stage 5 remains frozen and the existing Stage 6/CU result is unchanged. See `results/stage6c_su_summary.txt`, `results/stage6c_su_branch_length_comparison.tsv`, and `results/stage6c_cu_vs_su_comparison.tsv`.
+Stage 6C complete — mapped individual-level ASTRAL4/CASTLES-II SU branch-length sensitivity. The exact 267-tip mapping was recovered from Stolle et al. 2022 Supplementary Data 1 without guessing. Original RAxML local-tree branch lengths were preserved, fixed-topology background versus all-window CULength and SULength values were estimated from the same individual-level inputs, and CU/SU changes were compared. Stage 6C supersedes Stage 6B for direct CU-vs-SU comparison because CU and SU are estimated from identical individual-level inputs and the identical fixed background topology. Stage 6B remains an independent grouped/modal-topology CU sensitivity. Stage 5 remains frozen. See `results/stage6c_su_summary.txt`, `results/stage6c_su_branch_length_comparison.tsv`, and `results/stage6c_cu_vs_su_comparison.tsv`.
+
+## Final fire-ant result hierarchy
+
+Primary empirical result: Stages 4A-5 show a localized chromosome-16 shift from the background species-history quartet outside the supergene to the cross-species SB/Sb haplotype quartet inside the independently defined supergene region.
+
+Post-freeze sensitivity: Stage 6 tests grouped TWISST/modal-tree ASTRAL4 summary-tree behavior. It remains a topology and grouped-CU robustness analysis and does not alter the Stage-5 primary empirical result.
+
+Strongest branch-length follow-up: Stage 6C uses the original 267-individual RAxML trees, the exact metadata-derived seven-group mapping, and ASTRAL4/CASTLES-II. Stage 6C supersedes Stage 6B for direct CU-vs-SU comparison because CU and SU are estimated from identical individual-level inputs and the identical fixed background topology. Stage 6B remains documented as an independent grouped/modal-topology CU sensitivity analysis.
+
+Final manuscript-facing outputs: `results/fire_ants_final_summary.tsv`, `results/fire_ants_final_methods.md`, `results/fire_ants_final_results.md`, and `figures/fire_ants_final_summary.pdf`.

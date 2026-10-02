@@ -1,0 +1,26 @@
+{
+  "authoritative_focal_percent_changes": {
+    "invicta_macdonaghi_CU_percent": -43.22335145635668,
+    "invicta_macdonaghi_SU_percent": 79.87997394629157,
+    "richteri_CU_percent": -59.78514153766007,
+    "richteri_SU_percent": -1.0530180745010391
+  },
+  "checks": {
+    "background_all_free_rf_zero": true,
+    "background_windows_161": true,
+    "exact_metadata_matches_267": true,
+    "final_summary_rows_present": true,
+    "individuals_267": true,
+    "invicta_cu_percent_recomputed": true,
+    "methods_contains_cu_su": true,
+    "readme_hierarchy_mentions_stage6c_supersedes_stage6b": true,
+    "results_contains_introgression_caveat": true,
+    "richteri_cu_percent_recomputed": true,
+    "seven_groups": true,
+    "supergene_only_haplotype": true,
+    "supergene_windows_52": true,
+    "total_windows_213": true
+  },
+  "failed_checks": [],
+  "status": "passed"
+}

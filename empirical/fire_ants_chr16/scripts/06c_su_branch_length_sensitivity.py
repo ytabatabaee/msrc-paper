@@ -53,6 +53,11 @@ INPUT_TREE = RAW_UPSTREAM / "Topology weighting" / "results" / "2021-08-07-twiss
 FILTER_SCRIPT = RAW_UPSTREAM / "Topology weighting" / "supergene" / "filter_samples_by_missing.R"
 TOPO_README = RAW_UPSTREAM / "Topology weighting" / "README.md"
 WINDOW_INDEX = PROCESSED / "stage1_window_index.tsv"
+STAGE4A_WINDOW_SUPPORT = PROCESSED / "stage4a_window_quartet_support.tsv"
+STAGE4A_REGION_SUMMARY = RESULTS / "stage4a_region_summary.tsv"
+STAGE4B_PRIMARY = RESULTS / "stage4b_primary_test.tsv"
+STAGE4B_COORD_UNIQUE = RESULTS / "stage4b_coordinate_summary.tsv"
+STAGE4B_COORD_LENGTH = RESULTS / "stage4b_coordinate_length_weighted_summary.tsv"
 STAGE5_MANIFEST = RESULTS / "stage5_final_manifest.json"
 STAGE6_MANIFEST = RESULTS / "stage6_manifest.json"
 STAGE6_CU_MANIFEST = RESULTS / "stage6_cu_manifest.json"
@@ -80,6 +85,10 @@ SU_COMPARISON = RESULTS / "stage6c_su_branch_length_comparison.tsv"
 CU_VS_SU_COMPARISON = RESULTS / "stage6c_cu_vs_su_comparison.tsv"
 SU_SUMMARY = RESULTS / "stage6c_su_summary.txt"
 FREE_TOPOLOGY_SUMMARY = RESULTS / "stage6c_free_topology_summary.tsv"
+FINAL_SUMMARY_TABLE = RESULTS / "fire_ants_final_summary.tsv"
+FINAL_METHODS = RESULTS / "fire_ants_final_methods.md"
+FINAL_RESULTS = RESULTS / "fire_ants_final_results.md"
+FINAL_CONSISTENCY_AUDIT = RESULTS / "fire_ants_final_consistency_audit.json"
 MANIFEST = RESULTS / "stage6c_manifest.json"
 
 FIG_SU_SCATTER_PDF = FIGURES / "fire_ants_stage6c_su_background_vs_all.pdf"
@@ -88,6 +97,8 @@ FIG_CU_VS_SU_PDF = FIGURES / "fire_ants_stage6c_cu_vs_su_change.pdf"
 FIG_CU_VS_SU_PNG = FIGURES / "fire_ants_stage6c_cu_vs_su_change.png"
 FIG_FOCAL_PDF = FIGURES / "fire_ants_stage6c_focal_branch_lengths.pdf"
 FIG_FOCAL_PNG = FIGURES / "fire_ants_stage6c_focal_branch_lengths.png"
+FIG_FINAL_SUMMARY_PDF = FIGURES / "fire_ants_final_summary.pdf"
+FIG_FINAL_SUMMARY_PNG = FIGURES / "fire_ants_final_summary.png"
 
 LABELS = {
     "geminata": "geminata",
@@ -719,14 +730,18 @@ def compare_fixed_background_all() -> tuple[list[dict[str, object]], list[dict[s
             "split_id": r["split_id"],
             "taxa_side": r["taxa_side"],
             "branch_role": r["branch_role"],
-            "cu_background_stage6": parse_float_safe(c.get("cu_background")) if c else None,
-            "cu_all_stage6": parse_float_safe(c.get("cu_combined")) if c else None,
-            "delta_cu_stage6": parse_float_safe(c.get("delta_cu")) if c else None,
-            "relative_delta_cu_stage6": parse_float_safe(c.get("relative_delta_cu")) if c else None,
-            "su_background_stage6c": r["su_background"],
-            "su_all_stage6c": r["su_all"],
-            "delta_su_stage6c": r["delta_su"],
-            "relative_delta_su_stage6c": r["relative_delta_su"],
+            "cu_background": r["cu_background_fixed_su_run"],
+            "cu_all": r["cu_all_fixed_su_run"],
+            "delta_cu": r["delta_cu_fixed_su_run"],
+            "relative_delta_cu": r["relative_delta_cu_fixed_su_run"],
+            "su_background": r["su_background"],
+            "su_all": r["su_all"],
+            "delta_su": r["delta_su"],
+            "relative_delta_su": r["relative_delta_su"],
+            "secondary_grouped_stage6_cu_background": parse_float_safe(c.get("cu_background")) if c else None,
+            "secondary_grouped_stage6_cu_all": parse_float_safe(c.get("cu_combined")) if c else None,
+            "secondary_grouped_stage6_delta_cu": parse_float_safe(c.get("delta_cu")) if c else None,
+            "secondary_grouped_stage6_relative_delta_cu": parse_float_safe(c.get("relative_delta_cu")) if c else None,
         })
     topology_same = set(bg) == set(allb)
     meta = {"n_background_internal_branches": len(bg), "n_all_internal_branches": len(allb), "n_shared": len(set(bg) & set(allb)), "n_background_only": len(set(bg) - set(allb)), "n_all_only": len(set(allb) - set(bg)), "topology_same": topology_same}
@@ -890,8 +905,8 @@ def write_su_summary(rows: list[dict[str, object]], cuvs: list[dict[str, object]
     lines.extend(["", "CU vs SU focal-pair comparison:"])
     for r in cuvs:
         if r["branch_role"] in {"focal_invicta_macdonaghi_SB_Sb_pair", "focal_richteri_SB_Sb_pair"}:
-            cu_pct = None if r["relative_delta_cu_stage6"] is None else 100 * r["relative_delta_cu_stage6"]
-            su_pct = None if r["relative_delta_su_stage6c"] is None else 100 * r["relative_delta_su_stage6c"]
+            cu_pct = None if r["relative_delta_cu"] is None else 100 * r["relative_delta_cu"]
+            su_pct = None if r["relative_delta_su"] is None else 100 * r["relative_delta_su"]
             lines.append(f"- {r['branch_role']}: CU percent change = {cu_pct}; SU percent change = {su_pct}")
     lines.extend(["", "Free-topology individual-level mapped ASTRAL4:"])
     for r in free_rows:
@@ -919,17 +934,18 @@ def make_figures(rows: list[dict[str, object]], cuvs: list[dict[str, object]]) -
     plt.savefig(FIG_SU_SCATTER_PNG, dpi=300)
     plt.close()
 
-    cu_shared = [r for r in cuvs if r["relative_delta_cu_stage6"] is not None and r["relative_delta_su_stage6c"] is not None]
+    cu_shared = [r for r in cuvs if r["relative_delta_cu"] is not None and r["relative_delta_su"] is not None]
     plt.figure(figsize=(5, 4.5))
     plt.axhline(0, color="0.7", lw=1)
     plt.axvline(0, color="0.7", lw=1)
     for r in cu_shared:
         color = "#d95f02" if "focal_" in r["branch_role"] else "#1b9e77"
-        plt.scatter(r["relative_delta_cu_stage6"], r["relative_delta_su_stage6c"], color=color, s=55)
-        plt.text(r["relative_delta_cu_stage6"], r["relative_delta_su_stage6c"], r["taxa_side"], fontsize=7, ha="left", va="bottom")
-    plt.xlabel("relative CU change (Stage 6 modal ASTRAL)")
-    plt.ylabel("relative SU change (Stage 6C individual ASTRAL)")
-    plt.title("CU versus SU branch-length response")
+        label = r["taxa_side"].replace("inv_mac_SB,inv_mac_Sb", "invicta/macdonaghi").replace("richteri_SB,richteri_Sb", "richteri")
+        plt.scatter(100 * r["relative_delta_cu"], 100 * r["relative_delta_su"], color=color, s=60)
+        plt.text(100 * r["relative_delta_cu"], 100 * r["relative_delta_su"], label, fontsize=8, ha="left", va="bottom")
+    plt.xlabel("CULength change (%)")
+    plt.ylabel("SULength change (%)")
+    plt.title("Stage 6C fixed-topology CU versus SU response")
     plt.tight_layout()
     plt.savefig(FIG_CU_VS_SU_PDF)
     plt.savefig(FIG_CU_VS_SU_PNG, dpi=300)
@@ -940,13 +956,13 @@ def make_figures(rows: list[dict[str, object]], cuvs: list[dict[str, object]]) -
     x = range(len(focal))
     fig, axes = plt.subplots(1, 2, figsize=(8, 4))
     width = 0.35
-    axes[0].bar([i - width/2 for i in x], [r["cu_background_stage6"] for r in focal], width, label="background")
-    axes[0].bar([i + width/2 for i in x], [r["cu_all_stage6"] for r in focal], width, label="all")
+    axes[0].bar([i - width/2 for i in x], [r["cu_background"] for r in focal], width, label="background")
+    axes[0].bar([i + width/2 for i in x], [r["cu_all"] for r in focal], width, label="all")
     axes[0].set_title("CULength")
     axes[0].set_xticks(list(x), labels, rotation=20, ha="right")
     axes[0].legend(frameon=False)
-    axes[1].bar([i - width/2 for i in x], [r["su_background_stage6c"] for r in focal], width, label="background")
-    axes[1].bar([i + width/2 for i in x], [r["su_all_stage6c"] for r in focal], width, label="all")
+    axes[1].bar([i - width/2 for i in x], [r["su_background"] for r in focal], width, label="background")
+    axes[1].bar([i + width/2 for i in x], [r["su_all"] for r in focal], width, label="all")
     axes[1].set_title("SULength")
     axes[1].set_xticks(list(x), labels, rotation=20, ha="right")
     axes[1].legend(frameon=False)
@@ -957,16 +973,281 @@ def make_figures(rows: list[dict[str, object]], cuvs: list[dict[str, object]]) -
     plt.close(fig)
 
 
+def pct(x: float | None) -> float | None:
+    return None if x is None else 100.0 * x
+
+
+def first_row(path: Path) -> dict[str, str]:
+    rows = read_tsv(path)
+    if len(rows) != 1:
+        raise ValueError(f"Expected one row in {path}, observed {len(rows)}")
+    return rows[0]
+
+
+def collect_final_context(cuvs: list[dict[str, object]], free_rows: list[dict[str, object]], mapping: dict[str, object], branch_stats: dict[str, object]) -> dict[str, object]:
+    region = {r["region"]: r for r in read_tsv(STAGE4A_REGION_SUMMARY)}
+    primary = first_row(STAGE4B_PRIMARY)
+    coord_unique = first_row(STAGE4B_COORD_UNIQUE)
+    coord_length = first_row(STAGE4B_COORD_LENGTH)
+    free = {r["treatment"]: r for r in free_rows}
+    cuv_by_role = {r["branch_role"]: r for r in cuvs}
+    return {
+        "region": region,
+        "primary": primary,
+        "coord_unique": coord_unique,
+        "coord_length": coord_length,
+        "free": free,
+        "cuv_by_role": cuv_by_role,
+        "mapping": mapping,
+        "branch_stats": branch_stats,
+    }
+
+
+def write_final_summary_table(ctx: dict[str, object]) -> list[dict[str, object]]:
+    region = ctx["region"]
+    primary = ctx["primary"]
+    unique = ctx["coord_unique"]
+    length = ctx["coord_length"]
+    free = ctx["free"]
+    cuv = ctx["cuv_by_role"]
+    outside = region["chr16_outside"]
+    supergene = region["chr16_supergene"]
+    rows = [
+        {
+            "analysis": "local_topology_support",
+            "comparison": "chr16_outside_vs_supergene",
+            "metric": "mean_D=q_H-q_S",
+            "background": outside["mean_D"],
+            "supergene_or_combined": supergene["mean_D"],
+            "change": primary["observed_delta_D"],
+            "interpretation": "localized_shift_from_species_history_to_haplotype_history_inside_supergene",
+        },
+        {
+            "analysis": "dominant_topology_counts",
+            "comparison": "chr16_outside_vs_supergene",
+            "metric": "dominant_class",
+            "background": f"{outside['n_species_dominant']}/{outside['n_windows']} species",
+            "supergene_or_combined": f"{supergene['n_haplotype_dominant']}/{supergene['n_windows']} haplotype",
+            "change": "species_dominant_outside_haplotype_dominant_supergene",
+            "interpretation": "supergene_windows_are_not_merely_more_discordant_but_shift_toward_SB_Sb_haplotype_topology",
+        },
+        {
+            "analysis": "spatial_null",
+            "comparison": "exact_circular_shift",
+            "metric": "Delta_D_rank_and_p",
+            "background": f"rank {primary['observed_rank']}/{primary['n_exact_alignments']}",
+            "supergene_or_combined": f"p={primary['p_one_sided']}",
+            "change": primary["observed_delta_D"],
+            "interpretation": "positive_spatial_alignment_with_frozen_supergene_region",
+        },
+        {
+            "analysis": "coordinate_sensitivity",
+            "comparison": "unique_membership_states",
+            "metric": "p_unique_membership",
+            "background": f"rank {unique['rank_unique_membership']}/{unique['n_unique_membership_states']}",
+            "supergene_or_combined": f"p={unique['p_unique_membership']}",
+            "change": unique["observed_delta_D"],
+            "interpretation": "supportive_equal_weight_state_sensitivity",
+        },
+        {
+            "analysis": "coordinate_sensitivity",
+            "comparison": "continuous_uniform_physical_start",
+            "metric": "p_length_weighted",
+            "background": f"extreme_length={length['extreme_start_domain_length']}",
+            "supergene_or_combined": f"p={length['p_length_weighted']}",
+            "change": length["observed_delta_D"],
+            "interpretation": "more_conservative_physical_start_sensitivity",
+        },
+        {
+            "analysis": "summary_tree_topology",
+            "comparison": "T_background_vs_T_all",
+            "metric": "free_topology_RF",
+            "background": free["T_background"]["individual_free_focal_class"],
+            "supergene_or_combined": free["T_all"]["individual_free_focal_class"],
+            "change": f"RF={free['T_all']['unrooted_RF_to_free_background']}",
+            "interpretation": "adding_supergene_does_not_change_overall_species_topology",
+        },
+        {
+            "analysis": "summary_tree_topology",
+            "comparison": "T_supergene_only",
+            "metric": "focal_topology",
+            "background": free["T_background"]["individual_free_focal_class"],
+            "supergene_or_combined": free["T_supergene"]["individual_free_focal_class"],
+            "change": f"RF={free['T_supergene']['unrooted_RF_to_free_background']}",
+            "interpretation": "supergene_only_recovers_haplotype_topology",
+        },
+    ]
+    for role, label in [
+        ("focal_richteri_SB_Sb_pair", "richteri_SB_plus_richteri_Sb"),
+        ("focal_invicta_macdonaghi_SB_Sb_pair", "inv_mac_SB_plus_inv_mac_Sb"),
+    ]:
+        r = cuv[role]
+        rows.append({
+            "analysis": "fixed_topology_branch_lengths",
+            "comparison": label,
+            "metric": "CULength",
+            "background": r["cu_background"],
+            "supergene_or_combined": r["cu_all"],
+            "change": pct(r["relative_delta_cu"]),
+            "interpretation": "coalescent_unit_branch_shortening_after_adding_supergene",
+        })
+        rows.append({
+            "analysis": "fixed_topology_branch_lengths",
+            "comparison": label,
+            "metric": "SULength",
+            "background": r["su_background"],
+            "supergene_or_combined": r["su_all"],
+            "change": pct(r["relative_delta_su"]),
+            "interpretation": "substitution_unit_response_not_consistent_with_uniform_focal_shortening",
+        })
+    write_tsv(FINAL_SUMMARY_TABLE, rows, ["analysis", "comparison", "metric", "background", "supergene_or_combined", "change", "interpretation"])
+    return rows
+
+
+def write_final_methods_results(ctx: dict[str, object]) -> None:
+    region = ctx["region"]
+    primary = ctx["primary"]
+    unique = ctx["coord_unique"]
+    length = ctx["coord_length"]
+    free = ctx["free"]
+    cuv = ctx["cuv_by_role"]
+    mapping = ctx["mapping"]
+    branch = ctx["branch_stats"]
+    rich = cuv["focal_richteri_SB_Sb_pair"]
+    inv = cuv["focal_invicta_macdonaghi_SB_Sb_pair"]
+    methods = f"""# Fire-ant chromosome-16 empirical analysis: final Methods text
+
+We analyzed the published fire-ant dataset from Stolle et al. (2022), “Recurring adaptive introgression of a supergene variant that determines social organization” (Nature Communications; DOI 10.1038/s41467-022-28806-7), using the upstream local RAxML-NG/TWISST files from the frozen repository snapshot. The local input consisted of {branch['n_trees']} four-BUSCO-gene RAxML-NG trees, each with {branch['unique_tip_count']} individual tips, and the corresponding published TWISST topology weights. Windows were assigned to the author-defined regions chr1, chr16A, chr16B, and the chromosome-16 supergene analysis interval using the frozen Stage-1 window index.
+
+The grouped TWISST analysis used seven published source groups: geminata, saevissima, pusillignis, invicta/macdonaghi_SB, invicta/macdonaghi_Sb, richteri_SB, and richteri_Sb. The focal quartet was A = invicta/macdonaghi_SB, B = invicta/macdonaghi_Sb, C = richteri_SB, and D = richteri_Sb. We classified each seven-group topology by its induced unrooted quartet as the background species split AB|CD, the cross-species SB/Sb haplotype split AC|BD, or the third split AD|BC, and aggregated TWISST weights into q_S, q_H, and q_3. The primary local statistic was D = q_H - q_S, and the primary contrast was Delta_D = mean(D_supergene) - mean(D_chr16_outside).
+
+Spatial inference used the predeclared chromosome-16 physical order, sorting windows by physical midpoint because the upstream TWISST concatenation order was not physical chromosome order. The primary null was the exact 96-alignment circular-shift null, rotating the ordered D track relative to the independently frozen supergene mask. Coordinate-aware sensitivities used the same frozen physical interval width as the author-designated supergene region, first weighting each distinct sampled-window membership state equally and then weighting constant-membership start-coordinate intervals by their physical length.
+
+Post-freeze Stage 6 analyses assessed downstream summary-tree sensitivity. The grouped/modal ASTRAL4 analysis represented each window by its modal seven-group TWISST topology and is retained as a topology and grouped-CU robustness analysis. For the direct CU-vs-SU comparison, we recovered the exact {mapping['n_tree_tips']}-tip to seven-group mapping from Stolle et al. Supplementary Data 1 without topology-based inference: {len(mapping['individual_rows'])}/{mapping['n_tree_tips']} tree tips matched published metadata exactly, with species and supergene-variant fields available for all mapped samples. We then used the original individual-level RAxML-NG trees, preserving their substitution branch lengths, with ASTRAL4/CASTLES-II and the recovered mapping.
+
+The primary branch-length follow-up used a fixed background topology for both the {EXPECTED_TREATMENT_N['T_background']}-window background set and the {EXPECTED_TREATMENT_N['T_all']}-window all-window set. This fixed-topology design isolates changes in ASTRAL4/CASTLES-II branch-length estimates caused by adding the supergene windows while holding the species-tree topology constant. We report both coalescent-unit lengths (CULength) and substitution-unit lengths (SULength) from the same individual-level inputs and the same fixed topology.
+"""
+    FINAL_METHODS.write_text(methods)
+
+    results = f"""# Fire-ant chromosome-16 empirical analysis: final Results text
+
+Outside the chromosome-16 supergene, local genealogies overwhelmingly supported the independently defined species-history quartet. Across chr16 outside-supergene windows, mean q_S = {float(region['chr16_outside']['mean_q_S']):.3f}, mean q_H = {float(region['chr16_outside']['mean_q_H']):.3f}, and {region['chr16_outside']['n_species_dominant']}/{region['chr16_outside']['n_windows']} windows were species-dominant. Inside the supergene region, support shifted strongly toward the cross-species SB/Sb haplotype partition: mean q_S = {float(region['chr16_supergene']['mean_q_S']):.3f}, mean q_H = {float(region['chr16_supergene']['mean_q_H']):.3f}, and {region['chr16_supergene']['n_haplotype_dominant']}/{region['chr16_supergene']['n_windows']} windows were haplotype-dominant. The resulting Delta_D was {float(primary['observed_delta_D']):.4f}.
+
+The spatial alignment was unusual under the predeclared exact circular-shift null. The observed alignment ranked {primary['observed_rank']}/{primary['n_exact_alignments']} among all circular alignments, giving a one-sided exact p = {float(primary['p_one_sided']):.4f}. Coordinate-aware sensitivities were concordant but differed in interpretation: the equal-weight unique-membership sensitivity gave p = {float(unique['p_unique_membership']):.4f}, whereas the continuous uniform physical-start sensitivity gave p = {float(length['p_length_weighted']):.4f}.
+
+The post-freeze individual-level ASTRAL4/CASTLES-II topology sensitivity preserved the background topology when the supergene windows were added. The free-topology background and all-window analyses both recovered the focal species split and had RF = {free['T_all']['unrooted_RF_to_free_background']} relative to one another. In contrast, the supergene-only analysis recovered the haplotype focal split and differed from the background topology (RF = {free['T_supergene']['unrooted_RF_to_free_background']}), consistent with the local TWISST signal.
+
+Even with the topology fixed, adding the supergene windows substantially changed focal coalescent-unit branch lengths. The richteri SB/Sb branch decreased from {rich['cu_background']:.5g} CU to {rich['cu_all']:.5g} CU ({100*rich['relative_delta_cu']:.1f}%), while its SULength was nearly unchanged, {rich['su_background']:.6g} to {rich['su_all']:.6g} ({100*rich['relative_delta_su']:.1f}%). The invicta/macdonaghi SB/Sb branch decreased from {inv['cu_background']:.5g} CU to {inv['cu_all']:.5g} CU ({100*inv['relative_delta_cu']:.1f}%), while its SULength increased from {inv['su_background']:.6g} to {inv['su_all']:.6g} ({100*inv['relative_delta_su']:.1f}%). Thus, the inclusion of the localized supergene genealogy regime can leave the inferred topology unchanged while substantially affecting coalescent-unit branch-length estimates.
+
+These results demonstrate the phylogenetic consequences of the chromosome-16 supergene region: it is a spatially localized alternative genealogy regime associated with the recombination-suppressed SB/Sb haplotype. The original source study interprets the shared supergene history as recurrent adaptive introgression. Our analysis does not establish MSRC without gene flow, nor does it rule out introgression; it shows that the localized genealogy regime has clear effects on local quartet support and on downstream coalescent-unit branch-length estimates.
+"""
+    FINAL_RESULTS.write_text(results)
+
+
+def make_final_summary_figure(ctx: dict[str, object]) -> None:
+    support = [r for r in read_tsv(STAGE4A_WINDOW_SUPPORT) if r["chrom"] == "chr16"]
+    support.sort(key=lambda r: float(r["mid"]))
+    free = ctx["free"]
+    cuv = ctx["cuv_by_role"]
+    fig, axes = plt.subplots(1, 3, figsize=(14, 4.2))
+    ax = axes[0]
+    for region_name, subset in [(k, [r for r in support if r["region"] == k]) for k in ["chr16A", "chr16_supergene", "chr16B"]]:
+        x = [float(r["mid"]) / 1e6 for r in subset]
+        ax.plot(x, [float(r["q_S"]) for r in subset], color="#1b9e77", lw=1, marker="o", ms=2, label="q_S" if region_name == "chr16A" else None)
+        ax.plot(x, [float(r["q_H"]) for r in subset], color="#d95f02", lw=1, marker="o", ms=2, label="q_H" if region_name == "chr16A" else None)
+    sg = [r for r in support if r["region"] == "chr16_supergene"]
+    ax.axvspan(min(float(r["mid"]) for r in sg) / 1e6, max(float(r["mid"]) for r in sg) / 1e6, color="#d95f02", alpha=0.12)
+    ax.set_ylim(-0.03, 1.03)
+    ax.set_xlabel("chr16 position (Mb)")
+    ax.set_ylabel("TWISST quartet support")
+    ax.set_title("A. Local quartet support")
+    ax.legend(frameon=False, loc="center left", fontsize=8)
+
+    ax = axes[1]
+    treatments = ["T_background", "T_all", "T_supergene"]
+    labels = ["background", "all", "supergene"]
+    colors = {"species": "#1b9e77", "haplotype": "#d95f02", "third": "#7570b3"}
+    classes = [free[t]["individual_free_focal_class"] for t in treatments]
+    ax.bar(labels, [1, 1, 1], color=[colors[c] for c in classes])
+    for i, c in enumerate(classes):
+        ax.text(i, 0.5, c, ha="center", va="center", color="white", fontweight="bold")
+    ax.set_ylim(0, 1)
+    ax.set_yticks([])
+    ax.set_title("B. ASTRAL4 focal topology")
+    ax.set_ylabel("free topology class")
+
+    ax = axes[2]
+    roles = [("focal_richteri_SB_Sb_pair", "richteri"), ("focal_invicta_macdonaghi_SB_Sb_pair", "invicta/macdonaghi")]
+    x = list(range(len(roles)))
+    width = 0.36
+    cu_pct = [100 * cuv[role]["relative_delta_cu"] for role, _ in roles]
+    su_pct = [100 * cuv[role]["relative_delta_su"] for role, _ in roles]
+    ax.axhline(0, color="0.6", lw=1)
+    ax.bar([i - width/2 for i in x], cu_pct, width, color="#4c78a8", label="CU")
+    ax.bar([i + width/2 for i in x], su_pct, width, color="#f58518", label="SU")
+    for i, val in enumerate(cu_pct):
+        ax.text(i - width/2, val, f"{val:.0f}%", ha="center", va="bottom" if val >= 0 else "top", fontsize=8)
+    for i, val in enumerate(su_pct):
+        ax.text(i + width/2, val, f"{val:.0f}%", ha="center", va="bottom" if val >= 0 else "top", fontsize=8)
+    ax.set_xticks(x, [label for _, label in roles], rotation=15, ha="right")
+    ax.set_ylabel("change after adding supergene (%)")
+    ax.set_title("C. Fixed-topology branch lengths")
+    ax.legend(frameon=False, fontsize=8)
+    fig.tight_layout()
+    fig.savefig(FIG_FINAL_SUMMARY_PDF)
+    fig.savefig(FIG_FINAL_SUMMARY_PNG, dpi=300)
+    plt.close(fig)
+
+
+def write_consistency_audit(ctx: dict[str, object], final_rows: list[dict[str, object]]) -> dict[str, object]:
+    branch = ctx["branch_stats"]
+    mapping = ctx["mapping"]
+    free = ctx["free"]
+    cuv = ctx["cuv_by_role"]
+    checks = {
+        "total_windows_213": sum(branch["treatment_counts"][k] for k in ["T_chr1", "T_supergene"]) + branch["treatment_counts"]["T_chr16_outside"] == 213,
+        "background_windows_161": branch["treatment_counts"]["T_background"] == 161,
+        "supergene_windows_52": branch["treatment_counts"]["T_supergene"] == 52,
+        "individuals_267": branch["unique_tip_count"] == 267,
+        "seven_groups": sorted(mapping["group_counts"]) == sorted(EXPECTED_GROUPS),
+        "exact_metadata_matches_267": mapping["match_type_counts"].get("exact") == 267,
+        "background_all_free_rf_zero": int(free["T_all"]["unrooted_RF_to_free_background"]) == 0,
+        "supergene_only_haplotype": free["T_supergene"]["individual_free_focal_class"] == "haplotype",
+        "richteri_cu_percent_recomputed": abs(100 * cuv["focal_richteri_SB_Sb_pair"]["relative_delta_cu"] - ((cuv["focal_richteri_SB_Sb_pair"]["cu_all"] - cuv["focal_richteri_SB_Sb_pair"]["cu_background"]) / cuv["focal_richteri_SB_Sb_pair"]["cu_background"] * 100)) < 1e-9,
+        "invicta_cu_percent_recomputed": abs(100 * cuv["focal_invicta_macdonaghi_SB_Sb_pair"]["relative_delta_cu"] - ((cuv["focal_invicta_macdonaghi_SB_Sb_pair"]["cu_all"] - cuv["focal_invicta_macdonaghi_SB_Sb_pair"]["cu_background"]) / cuv["focal_invicta_macdonaghi_SB_Sb_pair"]["cu_background"] * 100)) < 1e-9,
+        "final_summary_rows_present": len(final_rows) >= 11,
+        "methods_contains_cu_su": "CULength" in FINAL_METHODS.read_text() and "SULength" in FINAL_METHODS.read_text(),
+        "results_contains_introgression_caveat": "introgression" in FINAL_RESULTS.read_text() and "does not establish MSRC without gene flow" in FINAL_RESULTS.read_text(),
+        "readme_hierarchy_mentions_stage6c_supersedes_stage6b": "Stage 6C supersedes Stage 6B for direct CU-vs-SU comparison" in README.read_text(),
+    }
+    failed = [k for k, v in checks.items() if not v]
+    audit = {
+        "status": "passed" if not failed else "failed",
+        "checks": checks,
+        "failed_checks": failed,
+        "authoritative_focal_percent_changes": {
+            "richteri_CU_percent": 100 * cuv["focal_richteri_SB_Sb_pair"]["relative_delta_cu"],
+            "richteri_SU_percent": 100 * cuv["focal_richteri_SB_Sb_pair"]["relative_delta_su"],
+            "invicta_macdonaghi_CU_percent": 100 * cuv["focal_invicta_macdonaghi_SB_Sb_pair"]["relative_delta_cu"],
+            "invicta_macdonaghi_SU_percent": 100 * cuv["focal_invicta_macdonaghi_SB_Sb_pair"]["relative_delta_su"],
+        },
+    }
+    FINAL_CONSISTENCY_AUDIT.write_text(json.dumps(audit, indent=2, sort_keys=True) + "\n")
+    if failed:
+        raise RuntimeError(f"Final consistency audit failed: {failed}")
+    return audit
+
+
 def update_docs(mapping: dict[str, object], rows: list[dict[str, object]], cuvs: list[dict[str, object]], free_rows: list[dict[str, object]]) -> None:
     focal_lines = []
     for r in cuvs:
         if r["branch_role"] in {"focal_invicta_macdonaghi_SB_Sb_pair", "focal_richteri_SB_Sb_pair"}:
-            focal_lines.append(f"{r['branch_role']}: SU {r['su_background_stage6c']:.6g} -> {r['su_all_stage6c']:.6g} ({100*r['relative_delta_su_stage6c']:.2f}%), CU {r['cu_background_stage6']:.6g} -> {r['cu_all_stage6']:.6g} ({100*r['relative_delta_cu_stage6']:.2f}%)")
+            focal_lines.append(f"{r['branch_role']}: SU {r['su_background']:.6g} -> {r['su_all']:.6g} ({100*r['relative_delta_su']:.2f}%), CU {r['cu_background']:.6g} -> {r['cu_all']:.6g} ({100*r['relative_delta_cu']:.2f}%)")
     block = (
         "\nStage 6C complete — mapped individual-level ASTRAL4/CASTLES-II SU branch-length sensitivity. "
         "The exact 267-tip mapping was recovered from Stolle et al. 2022 Supplementary Data 1 without guessing. "
-        "Original RAxML local-tree substitution branch lengths were preserved, fixed-topology background versus all-window SULengths were estimated, and CU/SU changes were compared. "
-        "Stage 5 remains frozen and the existing Stage 6/CU result is unchanged. See `results/stage6c_su_summary.txt`, `results/stage6c_su_branch_length_comparison.tsv`, and `results/stage6c_cu_vs_su_comparison.tsv`.\n"
+        "Original RAxML local-tree branch lengths were preserved, fixed-topology background versus all-window CULength and SULength values were estimated from the same individual-level inputs, and CU/SU changes were compared. "
+        "Stage 6C supersedes Stage 6B for direct CU-vs-SU comparison because CU and SU are estimated from identical individual-level inputs and the identical fixed background topology. Stage 6B remains an independent grouped/modal-topology CU sensitivity. Stage 5 remains frozen. See `results/stage6c_su_summary.txt`, `results/stage6c_su_branch_length_comparison.tsv`, and `results/stage6c_cu_vs_su_comparison.tsv`.\n"
     )
     readme = README.read_text()
     if "06c_su_branch_length_sensitivity.py --run-tests" not in readme:
@@ -976,18 +1257,42 @@ def update_docs(mapping: dict[str, object], rows: list[dict[str, object]], cuvs:
         readme += block
     else:
         readme = re.sub(r"\nStage 6C complete — mapped individual-level.*?\n", block, readme, flags=re.S)
+    hierarchy = (
+        "\n## Final fire-ant result hierarchy\n\n"
+        "Primary empirical result: Stages 4A-5 show a localized chromosome-16 shift from the background species-history quartet outside the supergene to the cross-species SB/Sb haplotype quartet inside the independently defined supergene region.\n\n"
+        "Post-freeze sensitivity: Stage 6 tests grouped TWISST/modal-tree ASTRAL4 summary-tree behavior. It remains a topology and grouped-CU robustness analysis and does not alter the Stage-5 primary empirical result.\n\n"
+        "Strongest branch-length follow-up: Stage 6C uses the original 267-individual RAxML trees, the exact metadata-derived seven-group mapping, and ASTRAL4/CASTLES-II. Stage 6C supersedes Stage 6B for direct CU-vs-SU comparison because CU and SU are estimated from identical individual-level inputs and the identical fixed background topology. Stage 6B remains documented as an independent grouped/modal-topology CU sensitivity analysis.\n\n"
+        "Final manuscript-facing outputs: `results/fire_ants_final_summary.tsv`, `results/fire_ants_final_methods.md`, `results/fire_ants_final_results.md`, and `figures/fire_ants_final_summary.pdf`.\n"
+    )
+    readme = re.sub(r"\n## Final fire-ant result hierarchy\n\n.*?\n(?=## |\Z)", "\n", readme, flags=re.S)
+    readme += hierarchy
     README.write_text(readme)
 
     if PROJECT_STATUS.exists():
         status = PROJECT_STATUS.read_text()
-        status_block = "## Fire-ant chromosome 16 Stage 6C SU branch-length sensitivity\n\n" + block.strip() + "\n\nFocal branch changes:\n" + "\n".join(f"- {x}" for x in focal_lines) + "\n\n"
+        status_block = (
+            "## Fire ants — analysis complete\n\n"
+            "Biological question: how the chromosome-16 social-supergene region affects local quartet support, summary-tree topology, and species-tree branch lengths in the Stolle et al. fire-ant dataset.\n\n"
+            f"Dataset size: 213 four-BUSCO windows, 267 individual tree tips, seven recovered TWISST/ASTRAL groups, and {len(mapping['individual_rows'])}/{mapping['n_tree_tips']} exact metadata matches from Supplementary Data 1.\n\n"
+            "Primary Stage-4/5 result: local chromosome-16 genealogy support shifts from the background species-history quartet outside the supergene to the cross-species SB/Sb haplotype quartet inside the independently defined supergene region.\n\n"
+            "Summary-tree result: background and all-window individual-level ASTRAL4 analyses retain the species focal topology, whereas the supergene-only analysis recovers the haplotype focal topology.\n\n"
+            "CU/SU result: fixed-topology Stage 6C shows strong focal CULength decreases when supergene windows are added, while SULength responses differ between focal branches.\n\n"
+            "Focal branch changes:\n" + "\n".join(f"- {x}" for x in focal_lines) + "\n\n"
+            "Interpretation: topology can remain stable while branch-length estimates, especially coalescent-unit estimates, are affected by a localized alternative genealogy regime.\n\n"
+            "Caveat: the source study attributes the shared supergene history to recurrent adaptive introgression. This analysis demonstrates phylogenetic consequences of the localized genealogy regime and does not establish MSRC without gene flow.\n\n"
+            "Manuscript-ready outputs: `empirical/fire_ants_chr16/results/fire_ants_final_summary.tsv`, `empirical/fire_ants_chr16/results/fire_ants_final_methods.md`, `empirical/fire_ants_chr16/results/fire_ants_final_results.md`, and `empirical/fire_ants_chr16/figures/fire_ants_final_summary.pdf`.\n\n"
+            "Status: complete / frozen unless manuscript review requires changes.\n\n"
+            "## Fire-ant chromosome 16 Stage 6C SU branch-length sensitivity\n\n"
+            + block.strip() + "\n\n"
+        )
+        status = re.sub(r"## Fire ants — analysis complete\n\n.*?(?=## |\Z)", "", status, flags=re.S)
         status = re.sub(r"## Fire-ant chromosome 16 Stage 6C SU branch-length gate\n\n.*?(?=## |\Z)", "", status, flags=re.S)
         status = re.sub(r"## Fire-ant chromosome 16 Stage 6C SU branch-length sensitivity\n\n.*?(?=## |\Z)", "", status, flags=re.S)
         PROJECT_STATUS.write_text(status_block + status)
 
 
 def write_manifest(mapping: dict[str, object], branch_stats: dict[str, object], treatment_files: dict[str, object], prov: dict[str, object]) -> None:
-    output_paths = [TREE_TIP_INVENTORY, MATCH_AUDIT, INDIVIDUAL_TO_GROUP, ASTRAL_MAPPING, GROUP_LABEL_MAP, FIXED_BACKGROUND_TOPOLOGY, MAPPING_REPORT, BRANCH_AUDIT, PROVENANCE, SU_COMPARISON, CU_VS_SU_COMPARISON, SU_SUMMARY, FREE_TOPOLOGY_SUMMARY, FIG_SU_SCATTER_PDF, FIG_SU_SCATTER_PNG, FIG_CU_VS_SU_PDF, FIG_CU_VS_SU_PNG, FIG_FOCAL_PDF, FIG_FOCAL_PNG, README]
+    output_paths = [TREE_TIP_INVENTORY, MATCH_AUDIT, INDIVIDUAL_TO_GROUP, ASTRAL_MAPPING, GROUP_LABEL_MAP, FIXED_BACKGROUND_TOPOLOGY, MAPPING_REPORT, BRANCH_AUDIT, PROVENANCE, SU_COMPARISON, CU_VS_SU_COMPARISON, SU_SUMMARY, FREE_TOPOLOGY_SUMMARY, FINAL_SUMMARY_TABLE, FINAL_METHODS, FINAL_RESULTS, FINAL_CONSISTENCY_AUDIT, FIG_SU_SCATTER_PDF, FIG_SU_SCATTER_PNG, FIG_CU_VS_SU_PDF, FIG_CU_VS_SU_PNG, FIG_FOCAL_PDF, FIG_FOCAL_PNG, FIG_FINAL_SUMMARY_PDF, FIG_FINAL_SUMMARY_PNG, README]
     if PROJECT_STATUS.exists():
         output_paths.append(PROJECT_STATUS)
     astral_outputs = sorted(ASTRAL_SU_RESULTS.glob("*")) if ASTRAL_SU_RESULTS.exists() else []
@@ -1003,7 +1308,7 @@ def write_manifest(mapping: dict[str, object], branch_stats: dict[str, object], 
         "modal_zero_length_trees_used_for_su": False,
         "supplementary_data_1": {"url": SUPP_DATA1_URL, "sha256": sha256(SUPP_DATA1), "worksheet_names": mapping["supplement_meta"]["worksheet_names"], "n_rows": mapping["supplement_meta"]["n_rows"]},
         "group_counts": mapping["group_counts"],
-        "input_checksums": {rel(p): sha256(p) for p in [INPUT_TREE, SUPP_DATA1, FILTER_SCRIPT, TOPO_README, WINDOW_INDEX, STAGE5_MANIFEST, STAGE6_MANIFEST, STAGE6_CU_MANIFEST, STAGE6_CU_COMPARISON] if p.exists()},
+        "input_checksums": {rel(p): sha256(p) for p in [INPUT_TREE, SUPP_DATA1, FILTER_SCRIPT, TOPO_README, WINDOW_INDEX, STAGE4A_WINDOW_SUPPORT, STAGE4A_REGION_SUMMARY, STAGE4B_PRIMARY, STAGE4B_COORD_UNIQUE, STAGE4B_COORD_LENGTH, STAGE5_MANIFEST, STAGE6_MANIFEST, STAGE6_CU_MANIFEST, STAGE6_CU_COMPARISON] if p.exists()},
         "raxml_branch_length_audit": branch_stats,
         "treatment_tree_files": {k: {"path": rel(v["path"]), "n_windows": v["n_windows"], "sha256": v["sha256"]} for k, v in treatment_files.items()},
         "astral4": {"executable": str(prov["astral4_path"]), "executable_sha256": prov["astral4_sha256"], "aster_commit": prov["aster_commit"], "threads": THREADS},
@@ -1028,13 +1333,18 @@ def run_stage6c() -> dict[str, object]:
     prov = run_astral_analyses(treatment_files)
     rows, cuvs, meta = compare_fixed_background_all()
     write_tsv(SU_COMPARISON, rows, ["split_id", "taxa_side", "n_taxa_side", "branch_role", "su_background", "su_all", "delta_su", "relative_delta_su", "cu_background_fixed_su_run", "cu_all_fixed_su_run", "delta_cu_fixed_su_run", "relative_delta_cu_fixed_su_run", "status"])
-    write_tsv(CU_VS_SU_COMPARISON, cuvs, ["split_id", "taxa_side", "branch_role", "cu_background_stage6", "cu_all_stage6", "delta_cu_stage6", "relative_delta_cu_stage6", "su_background_stage6c", "su_all_stage6c", "delta_su_stage6c", "relative_delta_su_stage6c"])
+    write_tsv(CU_VS_SU_COMPARISON, cuvs, ["split_id", "taxa_side", "branch_role", "cu_background", "cu_all", "delta_cu", "relative_delta_cu", "su_background", "su_all", "delta_su", "relative_delta_su", "secondary_grouped_stage6_cu_background", "secondary_grouped_stage6_cu_all", "secondary_grouped_stage6_delta_cu", "secondary_grouped_stage6_relative_delta_cu"])
     free_rows = summarize_free_topologies(prov)
     write_tsv(FREE_TOPOLOGY_SUMMARY, free_rows, ["treatment", "n_internal_splits", "same_topology_as_free_background", "unrooted_RF_to_free_background", "n_background_splits_recovered", "fraction_background_splits_recovered", "individual_free_focal_split", "individual_free_focal_class", "grouped_stage6_focal_class", "matches_grouped_stage6_focal_class", "tree_file", "runtime_seconds"])
     write_provenance(prov)
     write_su_summary(rows, cuvs, meta, free_rows)
     make_figures(rows, cuvs)
     update_docs(mapping, rows, cuvs, free_rows)
+    ctx = collect_final_context(cuvs, free_rows, mapping, branch_stats)
+    final_rows = write_final_summary_table(ctx)
+    write_final_methods_results(ctx)
+    make_final_summary_figure(ctx)
+    write_consistency_audit(ctx, final_rows)
     write_manifest(mapping, branch_stats, treatment_files, prov)
     return {
         "mapping_recovered_without_guessing": True,
@@ -1086,6 +1396,29 @@ class Stage6CTests(unittest.TestCase):
         self.assertEqual(len(shared), 4)
         self.assertTrue(all(float(r["su_background"]) > 0 for r in shared))
         self.assertTrue(all(float(r["su_all"]) > 0 for r in shared))
+
+    def test_authoritative_cu_vs_su_uses_fixed_stage6c_values(self):
+        rows = read_tsv(CU_VS_SU_COMPARISON)
+        self.assertEqual(len(rows), 4)
+        self.assertIn("cu_background", rows[0])
+        self.assertIn("secondary_grouped_stage6_cu_background", rows[0])
+        rich = next(r for r in rows if r["branch_role"] == "focal_richteri_SB_Sb_pair")
+        inv = next(r for r in rows if r["branch_role"] == "focal_invicta_macdonaghi_SB_Sb_pair")
+        self.assertAlmostEqual(float(rich["cu_background"]), 2.84094, places=5)
+        self.assertAlmostEqual(float(rich["cu_all"]), 1.14248, places=5)
+        self.assertAlmostEqual(float(inv["cu_background"]), 1.68846, places=5)
+        self.assertAlmostEqual(float(inv["cu_all"]), 0.958651, places=6)
+        self.assertAlmostEqual(float(rich["relative_delta_cu"]), (1.14248 - 2.84094) / 2.84094, places=5)
+        self.assertAlmostEqual(float(inv["relative_delta_cu"]), (0.958651 - 1.68846) / 1.68846, places=5)
+
+    def test_final_manuscript_outputs_and_audit(self):
+        for path in [FINAL_SUMMARY_TABLE, FINAL_METHODS, FINAL_RESULTS, FINAL_CONSISTENCY_AUDIT, FIG_FINAL_SUMMARY_PDF, FIG_FINAL_SUMMARY_PNG]:
+            self.assertTrue(path.exists(), path)
+        audit = json.loads(FINAL_CONSISTENCY_AUDIT.read_text())
+        self.assertEqual(audit["status"], "passed")
+        self.assertEqual(audit["failed_checks"], [])
+        self.assertIn("Stage 6C supersedes Stage 6B for direct CU-vs-SU comparison", README.read_text())
+        self.assertIn("Fire ants — analysis complete", PROJECT_STATUS.read_text())
 
     def test_free_outputs_parse(self):
         for treatment in FREE_TREATMENTS:

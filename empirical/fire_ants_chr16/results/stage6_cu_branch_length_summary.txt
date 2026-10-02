@@ -18,8 +18,6 @@ largest CU decreases:
   focal_related_internal_branch [geminata,pusillignis]: 2.88418 -> 2.7586; delta -0.12558; relative -0.04354097178
 largest CU increases:
   focal_four_vs_outgroups [geminata,pusillignis,saevissima]: 3.98279 -> 4.26268; delta 0.27989; relative 0.07027485757
-  focal_related_internal_branch [geminata,pusillignis]: 2.88418 -> 2.7586; delta -0.12558; relative -0.04354097178
-  focal_invicta_macdonaghi_SB_Sb_pair [inv_mac_SB,inv_mac_Sb]: 2.73003 -> 1.24225; delta -1.48778; relative -0.5449683703
 focal/supergene-associated branch CU changes:
   focal_richteri_SB_Sb_pair [richteri_SB,richteri_Sb]: 3.98279 -> 1.19463; delta -2.78816; relative -0.7000519736
   focal_invicta_macdonaghi_SB_Sb_pair [inv_mac_SB,inv_mac_Sb]: 2.73003 -> 1.24225; delta -1.48778; relative -0.5449683703
@@ -44,8 +42,6 @@ largest CU decreases:
   focal_related_internal_branch [geminata,pusillignis]: 2.88418 -> 2.36712; delta -0.51706; relative -0.1792745252
 largest CU increases:
   focal_four_vs_outgroups [geminata,pusillignis,saevissima]: 3.98279 -> 4.15888; delta 0.17609; relative 0.04421272525
-  focal_related_internal_branch [geminata,pusillignis]: 2.88418 -> 2.36712; delta -0.51706; relative -0.1792745252
-  focal_invicta_macdonaghi_SB_Sb_pair [inv_mac_SB,inv_mac_Sb]: 2.73003 -> 0.521297; delta -2.208733; relative -0.8090508163
 focal/supergene-associated branch CU changes:
   focal_richteri_SB_Sb_pair [richteri_SB,richteri_Sb]: 3.98279 -> 0.421213; delta -3.561577; relative -0.894241725
   focal_invicta_macdonaghi_SB_Sb_pair [inv_mac_SB,inv_mac_Sb]: 2.73003 -> 0.521297; delta -2.208733; relative -0.8090508163
@@ -68,8 +64,6 @@ largest CU decreases:
   focal_related_internal_branch [geminata,pusillignis]: 2.88418 -> 2.17853; delta -0.70565; relative -0.244662261
   focal_four_vs_outgroups [geminata,pusillignis,saevissima]: 3.98279 -> 3.56483; delta -0.41796; relative -0.1049415109
 largest CU increases:
-  focal_four_vs_outgroups [geminata,pusillignis,saevissima]: 3.98279 -> 3.56483; delta -0.41796; relative -0.1049415109
-  focal_related_internal_branch [geminata,pusillignis]: 2.88418 -> 2.17853; delta -0.70565; relative -0.244662261
 focal/supergene-associated branch CU changes:
   focal_four_vs_outgroups [geminata,pusillignis,saevissima]: 3.98279 -> 3.56483; delta -0.41796; relative -0.1049415109
   focal_related_internal_branch [geminata,pusillignis]: 2.88418 -> 2.17853; delta -0.70565; relative -0.244662261
