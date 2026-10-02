@@ -14,6 +14,8 @@ Stage 4A complete.
 
 Stage 4B complete — spatial-null inference. It implements the frozen exact circular-shift null and the frozen physical-coordinate-aware same-width interval sensitivity. It does not optimize supergene boundaries, run ASTRAL/ASTER, fit MSRC parameters, or identify a historical mechanism.
 
+Stage 5 complete — frozen for manuscript use.
+
 ## Biological system
 
 The focal system is the fire-ant social chromosome described in:
@@ -242,3 +244,14 @@ The Stage-4A script verifies the frozen Stage-0 through Stage-3 checksum chain, 
 - `figures/fire_ants_chr16_D_track.png`
 
 The Stage-4B script verifies the frozen Stage-0 through Stage-4A checksum chain, reconstructs physical chromosome-16 order by midpoint, runs the exact circular-shift null and physical-coordinate same-width interval sensitivity, and regenerates the Stage-4B tables, report, manifest, and spatial-null figures.
+
+## Stage 5 manuscript freeze
+
+- `results/FINAL_ANALYSIS.md`
+- `results/fire_ants_main_table.tsv`
+- `results/fire_ants_methods_text.md`
+- `results/fire_ants_results_text.md`
+- `figures/fire_ants_main.pdf`
+- `figures/fire_ants_supplement.pdf`
+
+Stage 6, if performed, is a post-freeze ASTER/ASTRAL4 summary-tree sensitivity analysis and does not alter the Stage-5 primary empirical result.

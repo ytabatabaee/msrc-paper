@@ -1,0 +1,4 @@
+analysis	observed_delta_D	n_or_domain	rank	p_value	role	preserves	interpretation
+exact_circular_shift	1.610109863495346	96 exact circular alignments	2	0.0208333333	primary	ordered chr16 D track; 52 inside and 44 outside mask positions	positive_spatial_alignment
+unique_membership_coordinate	1.610109863495346	97 unique sampled-window membership states	3	0.0309278351	secondary_sensitivity	physical interval width; irregular sampled-window coordinates; equal state weights	positive_spatial_alignment
+continuous_uniform_physical_start	1.610109863495346	12682605 bp valid start-coordinate domain		0.0783290184	secondary_sensitivity	physical interval width; uniform physical start coordinate; length-weighted states	positive_spatial_alignment

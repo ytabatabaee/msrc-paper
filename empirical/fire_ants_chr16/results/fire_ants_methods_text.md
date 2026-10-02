@@ -1,0 +1,9 @@
+# Fire-ant Methods text
+
+We analyzed the fire-ant chromosome-16 social-supergene dataset from Stolle et al. (2022) using the public repository `wurmlab/2021-fire-ant-social-supergene-introgression`. We used the published local RAxML/TWISST analysis rather than reanalyzing raw sequence data. The normalized dataset contained 213 published four-BUSCO-gene windows: 117 on chr1, 42 in chr16A, 2 in chr16B, and 52 in the author-designated chr16 supergene interval. The TWISST analysis used seven grouped taxa.
+
+The focal quartet was frozen as A = `invicta/macdonaghi_SB`, B = `invicta/macdonaghi_Sb`, C = `richteri_SB`, and D = `richteri_Sb`. The species-history split was AB|CD, the haplotype split was AC|BD, and the third split was AD|BC. Each grouped TWISST topology was classified by its induced unrooted focal quartet, and topology weights were aggregated per window into `q_S`, `q_H`, and `q_3`. We defined `D = q_H - q_S` and the primary contrast as `Delta_D = mean(D_supergene) - mean(D_chr16 outside)`.
+
+For spatial inference, chromosome-16 windows were reordered by increasing physical midpoint because the upstream TWISST concatenation order was not physical chromosome order. The primary null was the predeclared exact circular-shift null over all 96 physically ordered chromosome-16 windows, keeping the frozen 52-window supergene mask fixed. The one-sided direction, higher `D` inside the supergene, was predeclared. We also report two coordinate-aware sensitivities using the same frozen interval width: an equal-weight unique-membership-state sensitivity and a continuous length-weighted uniform physical-start sensitivity. No arbitrary coordinate grid was used.
+
+No raw-sequence reanalysis was performed, no new local trees were inferred, no ASTRAL/ASTER analysis was run in Stage 5, no MSRC parameters were fit, and no supergene boundary was optimized.
