@@ -1,0 +1,71 @@
+## Bash code in this script represents bioinformatic processing tasks carried out on each PIP from each species independently
+## Paths to programs, input, and output files are not defined here and would depend on the user
+## The bash variable $SP represents the name of the species undergoing each step. 
+## The bash variable $REGN represents the name of the PIP undergoing each step. 
+## The bash variable $REG represents the name of the chromosome corresponding to the PIP.
+## The bash variable $REF is a path to the corresponding reference genome.
+## The user must provide a list of bam files from individuals being analyzed, represented by the bash variable $BAMPATH
+## The user must provide a bed file containing the sites for analysis on the PIP ($PSITES) and the sites for analysis on the COMP ($CSITES)
+## The code also assumes that the user has a list of individuals analyzed for each PIP, which is represented by the bash variable $INDS
+## Other bash variables are described below.
+## Please note that bioinformatic program commands are given according to how they work on the authors' computing cluster accounts. 
+## Users replicating these steps would need to proceed according to how the programs are installed in their specific computing environment
+## This code can be run on many species and many PIPs in parallel if it is formatted for a SLURM array job, for example.
+
+
+# ANGSD version: 0.941-6-g67b6b3b (htslib: 1.15-1-gf307dfb)
+# winsfs version: 0.7.0
+# R version: 4.2.0 
+
+
+# create 1d SFS for each individual in the PIP region
+
+PSAFOUT=$SP"_"$REGN"_PIP"
+PSFSOUT=$SP"_"$REGN"_PIP.sfs"
+
+
+angsd sites index $PSITES
+
+# make the SAF
+
+angsd -bam $BAMPATH -out $PSAFOUT \
+-dosaf 1 -GL 2 -minMapQ 30 -minQ 30 -r $REG -sites $PSITES \
+-anc $REF \
+-doCounts 1 -doDepth 1
+
+
+# make the SFS
+
+winsfs $PSAFOUT.saf.idx > $PSFSOUT
+
+
+
+
+# create 1d SFS for each individual in the COMP region
+
+
+CSAFOUT=$SP"_"$REGN"_COMP"
+CSFSOUT=$SP"_"$REGN"_COMP.sfs"
+
+
+angsd sites index $CSITES
+
+# make the SAF
+
+angsd -bam $BAMPATH -out $CSAFOUT \
+-dosaf 1 -GL 2 -minMapQ 30 -minQ 30 -r $REG -sites $CSITES \
+-anc $REF \
+-doCounts 1 -doDepth 1
+
+
+# make the SFS
+
+winsfs $CSAFOUT.saf.idx > $CSFSOUT
+
+# Use SFS's to estimate heterozygosity for each individual at the PIP and the COMP
+
+HETOUT=$SP"_"$REGN"_Hets.csv"
+
+Rscript --vanilla Process_IndHets.R $INDS $HETOUT $REGN $REG 
+
+

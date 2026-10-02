@@ -1,0 +1,45 @@
+## Bash code in this script represents bioinformatic processing tasks carried out on each PIP from each species independently
+## Paths to programs, input, and output files are not defined here and would depend on the user
+## The bash variable $SP represents the name of the species undergoing each step. 
+## The bash variable $REGN represents the name of the PIP undergoing each step. 
+## Other bash variables are described below.
+## The code assumes that the user has prepared a beagle file for each PIP (identified in script A2) and user's chosen COMP region.
+## Users can subset chromosome-level beagle files to these specific regions using bash e.g. with awk.
+## The code also assumes that the user has a list of individuals analyzed for each PIP, which is represented by the bash variable $INDS
+## The weights objects generated here are used later in script A4.
+## D3 from Fig. S1 is determined based on plots produced by the R script.
+
+
+
+# python version 3.10.4
+# PCAngsd version: 1.11
+# R version: 4.2.0
+
+
+PBIN=$SP"_"$REGN"_PIP.beagle.gz"
+CBIN=$SP"_"$REGN"_COMP.beagle.gz"
+
+
+pcangsd -b $PBIN -o $SP"_"$REGN"_PIP" --snp_weights --sites_save
+
+pcangsd -b $CBIN -o $SP"_"$REGN"_COMP" --snp_weights --sites_save
+
+INPY=$SP"_"$REGN"_PIP.weights.npy"
+OUTCSV=$SP"_"$REGN"_PIP.weights.csv"
+
+python npy_to_csv.py $INPY $OUTCSV
+
+
+INPUT=$SP"_"$REGN"_PIP.cov"
+OUTCSV=$SP"_"$REGN"_PIP_PCs.csv"
+OUTPDF=$SP"_"$REGN"_PIP.pdf"
+
+Rscript --vanilla PCANGSD_process.R $INPUT $INDS $OUTCSV $OUTPDF
+
+INPUT=$SP"_"$REGN"_COMP.cov"
+OUTCSV=$SP"_"$REGN"_COMP_PCs.csv"
+OUTPDF=$SP"_"$REGN"_COMP.pdf"
+
+
+Rscript --vanilla PCANGSD_process.R $INPUT $INDS $OUTCSV $OUTPDF
+

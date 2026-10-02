@@ -1,0 +1,448 @@
+## Bash code in this script represents bioinformatic processing tasks carried out on each PIP from each species independently
+## Paths to programs, input, and output files are not defined here and would depend on the user
+## IMPORTANT: This script requires information about genotypes, so script B1 needs to be run first.
+## Script B1 makes a csv of genotypes, and for the purposes of this script it must have the following columns:
+## "species", "regn" (i.e. pip name), "sample" and "genotype"
+## This spreadsheet is represented below by the bash variable $GENOS.
+## The user will need to edit the script below to specify the column number of the genotype column in $GENOS.
+## To find this spot, command+f "factor_column = xxx"
+## The bash variable $SP represents the name of the species undergoing each step. 
+## The bash variable $REGN represents the name of the PIP undergoing each step. 
+## The bash variable $REG represents the name of the chromosome corresponding to the PIP.
+## Other bash variables are described below.
+## The code assumes that the user has prepared a beagle file for each PIP and COMP region (i.e. the same as the input for script A3).
+## It also assumes that the user has a beagle file with the entire chromosome involved (i.e. the same as the input for script A1).
+## The code also assumes that the user has a list of individuals analyzed for each PIP, which is represented by the bash variable $INDS
+## Please note that bioinformatic program commands are given according to how they work on the authors' computing cluster accounts. 
+## Users replicating these steps would need to proceed according to how the programs are installed in their specific computing environment
+## This code can be run on many species and many PIPs in parallel if it is formatted for a SLURM array job, for example.
+## IMPORTANT: one component of this script involves random sampling, and it will therefore produce different results each time it is run
+## Proceed to script A4b to create plots that are the basis of D4 and D6 in Fig. S1.
+
+
+# R v 4.2.0
+# ngsLD v 1.1.0
+
+
+PICKS=$SP"_"$REGN".LDpicks"
+
+
+PBEAG=$SP"_"$REGN"_PIP.beagle.gz"
+CBEAG=$SP"_"$REGN"_COMP.beagle.gz"
+BEAG=$SP"_"$REG".beagle.gz"
+PPOS=$SP"_"$REGN"_pip.loci"
+CPOS=$SP"_"$REG"_comp.loci"
+
+
+zcat $PBEAG | awk '{print $1}' | awk -v FS="_" '{print $2}' > $PPOS
+zcat $CBEAG | awk '{print $1}' | awk -v FS="_" '{print $2}' > $CPOS
+
+# these 4 files are output of script A3
+PIPWEIGHTS=$SP"_"$REGN"_PIP.weights.csv"
+COMPWEIGHTS=$SP"_"$REGN"_COMP.weights.csv"
+
+PSITES=$SP"_"$REGN"_PIP.sites"
+CSITES=$SP"_"$REGN"_COMP.sites"
+
+COMPLINES=$(cat $CPOS | wc -l)
+
+if [[ $COMPLINES > 0 ]]
+then
+echo $COMPLINES
+
+
+Rscript -e '
+library(tidyverse)
+args <- commandArgs(trailingOnly = TRUE)
+pip <- read.csv(args[1], header=F)
+comp <- read.csv(args[2], header=F)
+pippos <- read.table(args[3])
+comppos <- read.table(args[4])
+reg <- args[5]
+psites <- read.table(args[7])
+csites <- read.table(args[8])
+
+colnames(psites) <- "used"
+colnames(csites) <- "used"
+
+colnames(pippos) <- "pos"
+colnames(comppos) <- "pos"
+
+head(pippos)
+head(comppos)
+
+length(pippos$pos)
+length(comppos$pos)
+length(psites$used)
+length(csites$used)
+length(pip[,1])
+length(comp[,1])
+
+
+
+pippos <- data.frame(pos=pippos[psites$used==1,]); length(pippos$pos)
+comppos <- data.frame(pos=comppos[csites$used==1,]); length(comppos$pos)
+
+
+
+pip <- cbind(pip, pippos)
+pip <- arrange(pip, -V1)
+pip_picks <- pip$pos[1:1000]
+
+
+
+comp <- cbind(comp, comppos)
+comp <- arrange(comp, -V1)
+comp_picks <- comp$pos[1:1000]
+
+picks <- c(pip_picks, comp_picks)
+picks <- sort(picks)
+picks <- paste0(reg, "_", picks)
+
+picks <- c("marker", picks)
+
+
+
+write.table(picks, quote=F, row.names=F,col.names=F,
+            file=args[6])
+' $PIPWEIGHTS $COMPWEIGHTS $PPOS $CPOS $REG $PICKS $PSITES $CSITES
+
+
+
+
+
+else 
+echo "no comp file"
+
+Rscript -e '
+library(tidyverse)
+args <- commandArgs(trailingOnly = TRUE)
+pip <- read.csv(args[1], header=F)
+pippos <- read.table(args[3])
+reg <- args[5]
+psites <- read.table(args[7])
+
+colnames(psites) <- "used"
+
+
+colnames(pippos) <- "pos"
+
+
+head(pippos)
+
+
+length(pippos$pos)
+
+length(psites$used)
+
+length(pip[,1])
+
+
+
+
+
+pippos <- data.frame(pos=pippos[psites$used==1,]); length(pippos$pos)
+
+
+
+pip <- cbind(pip, pippos)
+pip <- arrange(pip, -V1)
+pip_picks <- pip$pos[1:1000]
+
+
+
+
+picks <- c(pip_picks)
+picks <- sort(picks)
+picks <- paste0(reg, "_", picks)
+
+picks <- c("marker", picks)
+
+
+
+write.table(picks, quote=F, row.names=F,col.names=F,
+            file=args[6])
+' $PIPWEIGHTS $COMPWEIGHTS $PPOS $CPOS $REG $PICKS $PSITES $CSITES
+
+
+
+
+fi
+
+LDBEAG=$SP"_"$REGN"_LD.beagle.gz"
+LDPOS=$SP"_"$REGN"_LD.pos"
+
+
+zcat $BEAG | awk 'NR == FNR {a[$1]; next} (($1) in a)' $PICKS - | gzip > $LDBEAG
+
+
+# we here need to keep only the major allele
+# in biallelic pips this is homozygotes for the major allele
+# in pips with 2 or >3 clusters, it is just the genotype category with the highest frequency
+
+CUTIND=$SP"_"$REGN"_MajOnly_LD.cuts"
+
+
+Rscript -e '
+library(tidyverse)
+args <- commandArgs(trailingOnly = TRUE)
+
+inds <- read.table(args[1])
+genos <- read.csv(args[4], header=T)
+sp <- args[2]
+regn <- args[3]
+
+colnames(inds) <- "sample"
+
+tempgeno <- genos[genos$species==sp&genos$regn==regn,]
+
+tempgeno <- left_join(inds, tempgeno, by="sample")
+
+
+gentab <- table(tempgeno$genotype)
+
+
+
+majoraf <- max(gentab[names(gentab)!="AB"])
+majora <- names(gentab[gentab==majoraf])[1] # if the major and minor homozygotes have the same frequency, then we just pick the first one
+
+print(paste("major allele is", majora))
+
+cuts <- tempgeno$sample[tempgeno$genotype!=majora]
+
+print(cuts)
+print("length of cuts is")
+length(cuts)
+if(length(cuts>0)){
+
+cutind <- inds$sample[inds$sample%in%cuts]
+print(cutind)
+
+write.table(cutind,quote=F, row.names=F,col.names=F,
+            file=args[4])
+
+
+} else {NULL}
+' $INDS $SP $REGN $CUTIND $GENOS
+
+BEAGMAP=$SP"_MajOnly_Indedit.beagle.map"
+
+LDBEAGMA=$SP"_"$REGN"_MajOnly_LD.beagle.gz"
+
+
+
+if test -f "$CUTIND"
+then
+echo "indcut file exists"
+awk '{print $0, NR, NR-1}' $INDS | awk '{print $0, 1+($2*3)}' | awk '{print $0, $4+1, $4+2}' > $BEAGMAP
+
+wc -l $INDS
+CUT=$(cat $BEAGMAP | awk 'NR==FNR {a[$1]++; next} $1 in a' $CUTIND - | awk -v OFS="," 'BEGIN { ORS="," }; {print $4, $5, $6}' | sed 's/,$//')
+
+zcat $LDBEAG | cut -f$CUT --complement | gzip > $LDBEAGMA
+
+
+
+else 
+echo "indcut file does not exist"
+fi
+
+
+
+LDPOSMA=$SP"_"$REGN"_MajOnly.pos"
+
+zcat $LDBEAGMA | awk '{print $1}' | awk 'BEGIN {FS="_"}; {OFS="\t"}; {print $1,$2}' > $LDPOSMA
+
+
+
+
+
+
+
+NCOL=$(zcat $LDBEAGMA | head -1 | awk '{print NF}')
+
+NIND=$((($NCOL/3)-1))
+
+
+WC=$(cat $LDPOSMA | wc -l)
+
+NSITES=$(($WC - 1))
+
+
+
+LDOUT=$SP"_"$REGN"_MajOnly.ngsLD"
+
+
+ngsLD \
+--geno $LDBEAGMA \
+--probs \
+--posH $LDPOSMA \
+--n_ind $NIND \
+--n_sites $NSITES \
+--max_kb_dist 0 \
+--n_threads 1 \
+--out $LDOUT
+
+
+
+
+# next making a subsampled full version to match the sample number of the major allele
+# we want the subsample to be as balanced as possible for all genotypes that are not AB,
+# which are being excluded 
+# IMPORTANT -- the script includes a function that needs to know which column of the given dataframe to run on
+# below the object "factor_col" is defined as "factor_column = xxx"
+# user would need to update this to specify the applicable column
+
+mkdir -p LDinds
+
+SSCUTIND=$SP"_"$REGN"_Subsamp_LD.cuts"
+PICKSOUT=$SP"_"$REGN"_LDmeta.csv"
+
+Rscript -e '
+library(tidyverse)
+args <- commandArgs(trailingOnly = TRUE)
+
+inds <- read.table(args[1])
+genos <- read.csv(args[7], header=T)
+sp <- args[2]
+regn <- args[3]
+nind <- args[5]
+picksout <- args[6]
+
+factor_column = xxx
+
+colnames(inds) <- "sample"
+
+tempgeno <- genos[genos$species==sp&genos$regn==regn,]
+
+
+tempgeno <- left_join(inds, tempgeno, by="sample")
+
+tempgeno <- tempgeno[tempgeno$genotype!="AB",]
+
+
+
+
+colnames(tempgeno)
+
+# I developed this function with interaction with chatGPT, which wrote the little comments within the function
+balance_factor_sampling <- function(df, factor_column) {
+  # Ensure that the specified column is a factor
+  df[[factor_column]] <- as.factor(df[[factor_column]])
+  
+  # Calculate how much each factor level can contribute
+  factor_levels <- levels(df[[factor_column]])
+  n_levels <- length(factor_levels)
+  counts <- table(df[[factor_column]])
+  
+  # Get the maximum counts across factor levels. This is also our target
+  max_count <- max(counts)
+  target_n <- max_count
+  
+  # Calculate the initial number of samples to take from each factor level
+  sample_sizes <- rep(0, n_levels)
+  names(sample_sizes) <- factor_levels
+  min_count <- min(min(counts),  target_n %/% n_levels)
+  for (lvl in factor_levels) {
+    # Each level contributes proportionally, without exceeding max_count
+    sample_sizes[lvl] <- min(counts[lvl], max(min_count, target_n %/% n_levels))
+  }
+  
+  # Adjust if the sum of initial sample_sizes is less than target_n
+  extra_needed <- target_n - sum(sample_sizes)
+  while (extra_needed > 0) {
+    for (lvl in factor_levels) {
+      if (extra_needed == 0) break
+      # We only add an extra sample if we have not exceeded the individual level count
+      if (sample_sizes[lvl] < counts[lvl]) {
+        sample_sizes[lvl] <- sample_sizes[lvl] + 1
+        extra_needed <- extra_needed - 1
+      }
+    }
+  }
+
+resample <- function(x, ...) x[sample.int(length(x), ...)]
+  
+  # Subset the dataframe for each level and combine
+  subsample_indices <- unlist(lapply(factor_levels, function(lvl) {
+    if (sample_sizes[lvl] > 0) {
+      resample(which(df[[factor_column]] == lvl), size = sample_sizes[lvl])
+    }
+  }))
+  
+  subsampled_df <- df[subsample_indices, , drop = FALSE]
+  
+  return(subsampled_df)
+}
+
+tempgeno_subsamp <- balance_factor_sampling(tempgeno, factor_column)
+
+table(tempgeno_subsamp$genotype)
+
+write.csv(tempgeno_subsamp, file=picksout)
+
+
+cutind <- inds$sample[!inds$sample%in%tempgeno_subsamp$sample]
+print(cutind)
+
+write.table(cutind,quote=F, row.names=F,col.names=F,
+            file=args[4])
+
+
+
+' $INDS $SP $REGN $SSCUTIND $NIND $PICKSOUT $GENOS
+
+
+
+BEAGMAPSS=$SP"_LDsubsamp_Indedit.beagle.map"
+
+LDBEAGSS=$SP"_"$REGN"_subsamp_LD.beagle.gz"
+
+
+
+if test -f "$SSCUTIND"
+then
+echo "indcut file exists"
+awk '{print $0, NR, NR-1}' $INDS | awk '{print $0, 1+($2*3)}' | awk '{print $0, $4+1, $4+2}' > $BEAGMAPSS
+
+
+CUT=$(cat $BEAGMAPSS | awk 'NR==FNR {a[$1]++; next} $1 in a' $SSCUTIND - | awk -v OFS="," 'BEGIN { ORS="," }; {print $4, $5, $6}' | sed 's/,$//')
+
+zcat $LDBEAG | cut -f$CUT --complement | gzip > $LDBEAGSS
+
+
+
+else 
+echo "indcut file does not exist"
+fi
+
+LDPOSSS=$SP"_"$REGN"_LDsubsamp.pos"
+
+zcat $LDBEAGSS | awk '{print $1}' | awk 'BEGIN {FS="_"}; {OFS="\t"}; {print $1,$2}' > $LDPOSSS
+
+
+
+SSNCOL=$(zcat $LDBEAGSS | head -1 | awk '{print NF}')
+
+SSNIND=$((($SSNCOL/3)-1))
+
+
+SSWC=$(cat $LDPOSSS | wc -l)
+
+SSNSITES=$(($SSWC - 1))
+
+NGSLD=/home/tmpegan/ngsLD
+
+LDOUTSS=$SP"_"$REGN"_subsamp.ngsLD"
+
+
+ngsLD \
+--geno $LDBEAGSS \
+--probs \
+--posH $LDPOSSS \
+--n_ind $SSNIND \
+--n_sites $SSNSITES \
+--max_kb_dist 0 \
+--n_threads 1 \
+--out $LDOUTSS
+

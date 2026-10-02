@@ -1,0 +1,9 @@
+## Bash code provided here shows how centroAnno was used to annotate HORs onto chromosomes for each reference genome
+## The code assumes the user has split the reference genome fasta file into separate fastas for each chromosome
+## and has created a list of these chromosomes ($CHRLIST) for use with a SLURM array job
+# centroAnno version: 1.0.1
+
+
+CHR=$(sed "${SLURM_ARRAY_TASK_ID}q;d" $CHRLIST)
+
+centroAnno $CHR".fasta" -o CentroAnno -G true

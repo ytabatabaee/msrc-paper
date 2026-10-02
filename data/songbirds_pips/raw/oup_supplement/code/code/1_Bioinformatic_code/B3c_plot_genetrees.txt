@@ -1,0 +1,113 @@
+## R code in this script uses a loop to create plot objects for each set of dxy values produced by script B3b.
+## The assumption is that genetic distance values underlying each tree (PIP and COMP separately) are stored in one file per tree
+## Each file should have a .dxy suffix and should contain the following columns:
+## samp1, samp2, sp1, sp2, geno1, geno2, gendist
+## The script assumes that the working directory is set to a folder where all these files are present.
+# R version: 4.2.0
+
+
+library(ape) # v 5.7-1
+library(reshape2) # v 1.4.4
+library(tidyverse) # v 2.0.0
+library(ggtree) # v 3.10.0
+library(phylobase) # v 0.8.10
+
+
+setwd()
+dxy.list <- list.files() %>%
+  as_tibble() %>%
+  filter(., grepl("dxy", value)) %>%
+  pull(value)
+
+
+shapeset <- data.frame(shape=c(19, 17, 15, 18, 8, 3, 4, 5, 13, 6))
+shapeset$geno <- c("AA","AB","BB","C","D","E","F","G","H", "no PIP")
+speciescolor <- rev(c("#FFBF7F","#FF7F00","#FFFF99",
+                            "#FFFF32","#B2FF8C","#32FF00",
+                            "#A5EDFF","#19B2FF","#CCBFFF",
+                            "#654CFF","#FF99BF"))
+
+
+
+
+
+
+
+gtmatlist <- matrix(list(), nrow=length(dxy.list), ncol=3)
+gtmatlist[,1] <- dxy.list
+
+
+for(i in 1:length(dxy.list)){
+  
+pip <- read.csv(dxy.list[i])
+
+pip <- pip[pip$samp1!=""&pip$samp2!="",]
+
+
+
+pip$tiplab1 <- paste(pip$samp1, pip$sp1, pip$geno1)
+pip$tiplab2 <- paste(pip$samp2, pip$sp2, pip$geno2)
+
+
+m <- acast(pip, tiplab1 ~ tiplab2, value.var="gendist")
+rownames(m) <- colnames(m)
+
+m[is.na(m)] <- 1
+
+
+
+njtree <- nj(m)
+
+plab1 <- gsub("_dxy.csv", "", dxy.list[i])
+plab <- gsub("_", " ", plab1)
+plab <- gsub("pip", "PIP", plab)
+plab <- gsub("comp", "COMP", plab)
+
+# some trees have unusual branch lengths, but we care about topology rather than branch length
+njtree$edge.length[njtree$edge.length<0] <- 0
+plot(njtree, main=plab)
+
+tip_metadata <- data.frame(label=njtree$tip.label)
+tip_metadata$species <- word(tip_metadata$label, start=2, sep=" ") 
+
+
+tip_metadata$PipGeno <- word(tip_metadata$label, start=3, sep=" ") 
+
+tip_metadata$PipGeno[is.na(tip_metadata$PipGeno)|tip_metadata$PipGeno==""] <- "no PIP"
+tip_metadata$PipGeno <- factor(tip_metadata$PipGeno, levels=c("AA","AB","BB","C","D","E","F","G","H", "no PIP"))
+
+
+rownames(tip_metadata) <- tip_metadata[,1]
+tip_metadata
+
+p <- ggtree(njtree)
+
+g1 <- as(njtree, "phylo4")
+g2 <- phylo4d(g1, tip.data=tip_metadata, merge.data=F)
+
+
+
+ugenos <- unique(tip_metadata$PipGeno)
+show.shapes <- shapeset$shape[shapeset$geno%in%ugenos]
+
+finaltree <- ggtree(g2) + geom_tippoint(aes(color = spname, shape=PipGeno), size=5) +
+  scale_color_manual(values=speciescolor, name="Species", guide =
+                       guide_legend(label.theme = element_text(angle = 0, face = "italic"))) +
+  scale_shape_manual(values=show.shapes, name="PIP genotype") + 
+  ggtitle(plab)
+
+
+pip$pip <- plab1
+
+print(finaltree)
+
+gtmatlist[[i,2]] <- finaltree
+gtmatlist[[i,3]] <- pip
+
+
+
+}
+
+
+
+

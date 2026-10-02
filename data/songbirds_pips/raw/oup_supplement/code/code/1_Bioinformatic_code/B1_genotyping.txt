@@ -1,0 +1,125 @@
+## R code in this script uses a loop to facilitate genotyping individuals in the species/chromosomes under analysis
+## Paths to programs, input, and output files are not defined here and would depend on the user
+## The script assumes that the user has completed script A3 and placed all of the output files of PC values ($SP"_"$REGN"_PIP_PCs.csv") into a folder, and setwd() to that folder
+## The script involves loops that assigns categorical designations to individuals based on which cluster they are in.
+## The most efficient way to run the script is to examine PCA plots from all PIPs and create a list of 2-cluster PIPs and a list of 3-cluster PIPs
+## Here, vectors for the filenames of 2-cluster and 3-cluster PIPs are called twoclust and threeclust respectively
+## Genotypes for PIPs with >3 clusters can be assigned also by changing the n.clust argument in the find.clusters() function, but since there are so
+## few of these they do not need their own loop and can be done by hand.
+# R version: 4.2.0
+
+
+
+
+library(adegenet) # v 2.1.10
+library(tidyverse) # v 2.0.0
+
+
+setwd()
+pipfiles <- list.files()
+
+
+
+
+piplist <-  matrix(list(), nrow=length(pipfiles), ncol=2)
+piplist[,1] <- pipfiles
+
+threeclust <- c()
+
+
+for(i in threeclust){
+  
+  temp <- read.csv(i)
+  
+  temp$genotype <- NA
+  
+  temp <- temp[order(temp$X1),]
+
+  myclusters <- find.clusters(matrix(temp$X1), n.pca = 1, n.clust = 3)
+  
+  temp$cluster <- myclusters$grp
+  hom1 <- temp$cluster[temp$X1==min(temp$X1)]
+  hom2 <- temp$cluster[temp$X1==max(temp$X1)]
+  
+  temp$genotype <- "AB"
+  
+  if(length(temp$genotype[temp$cluster==hom1])>length(temp$genotype[temp$cluster==hom2])
+  |length(temp$genotype[temp$cluster==hom1])==length(temp$genotype[temp$cluster==hom2])){
+  
+  temp$genotype[temp$cluster==hom1] <- "AA"
+  temp$genotype[temp$cluster==hom2] <- "BB"
+  } else {
+  
+  temp$genotype[temp$cluster==hom1] <- "BB"
+  temp$genotype[temp$cluster==hom2] <- "AA"
+  
+  }
+  
+  
+  
+  plot(temp$X1, temp$X2, main=i, col=factor(temp$genotype))
+  
+  
+  temp$species <- gsub(".csv", "", word(i, 1, sep="_"))
+  temp$regn <- gsub(".csv", "", word(i, 2, sep="_"))
+
+    
+  piplist[[which(piplist[,1]==i),2]] <- temp
+  
+  print(paste("done", i))
+  
+}
+
+
+
+
+
+twoclust <- c()
+
+for(i in twoclust){
+  
+  temp <- read.csv(i)
+  
+  temp$genotype <- NA
+  
+  temp <- temp[order(temp$X1),]
+  
+  myclusters <- find.clusters(matrix(temp$X1), n.pca = 1, n.clust = 2)
+  
+  temp$cluster <- myclusters$grp
+  hom1 <- temp$cluster[temp$X1==min(temp$X1)]
+  hom2 <- temp$cluster[temp$X1==max(temp$X1)]
+  
+  
+  temp$genotype[temp$cluster==hom1] <- "C"
+  temp$genotype[temp$cluster==hom2] <- "D"
+  
+  plot(temp$X1, temp$X2, main=i, col=factor(temp$genotype))
+  
+  
+  temp$species <- gsub(".csv", "", word(i, 1, sep="_"))
+  temp$regn <- gsub(".csv", "", word(i, 2, sep="_"))
+ 
+  
+  piplist[[which(piplist[,1]==i),2]] <- temp
+  
+  print(paste("done", i))
+  
+}
+
+
+# User should also make a list of PIPs with more than 3 clusters. The code above can then be adapted to assign genotypes accordingly
+# In this project, there were few enough that I did them by hand instead of in a loop
+# User should be sure to check the outcome of genotyping on plots to make sure it happened correctly
+
+
+# for later scripts, the output file needs the following columns:
+# ## "species", "regn" (i.e. pip name), "sample" and "genotype"
+# the "sample" information is included in each of the PC csv's that were output in script A3 
+# others are added in the loops above and must also be added for any PIPs genotyped individually outside of loops
+
+
+genos <- do.call(rbind, piplist[,2])
+
+
+# The object "genos" can now be written out as a csv and used in subsequent analyses

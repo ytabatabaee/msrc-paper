@@ -1,0 +1,68 @@
+## Bash code in this script represents bioinformatic processing tasks carried out on each possible shared PIP independently
+## Paths to programs, input, and output files are not defined here and would depend on the user.
+## The bash variable $PIP gives the name of the shared PIP and must be defined by the user.
+## The script is designed to be run in a SLURM job array with a the user must generate where each line contains each possible pair of samples in a given analysis
+## The bash variable $MAP represents this text list of possible pairs.
+## Other bash variables are described below.
+## After running this script, the pairwise genetic distance values for each PIP or COMP should be concatenated into a single csv file with the following columns:
+## samp1, samp2, sp1, sp2, geno1, geno2, gendist
+## Keep PIP and COMP genetic distances separate
+# winsfs version: 0.7.0
+# python version: 3.10.4
+
+
+
+MAP=$PIP".distmap"
+
+
+
+BASE1=$(awk -F" " -v n=$SLURM_ARRAY_TASK_ID 'NR == n {print $1}' $MAP)
+BASE2=$(awk -F" " -v n=$SLURM_ARRAY_TASK_ID 'NR == n {print $2}' $MAP)
+
+
+SAF1=$PIP"_pip_"$BASE1".saf.idx"
+SAF2=$PIP"_pip_"$BASE2".saf.idx"
+
+
+SFS=$PIP"_pip_"$BASE1"_"$BASE2".sfs"
+
+
+winsfs $SAF1 $SAF2 > $SFS
+
+winsfs view -f $SFS > $SFS.folded
+
+cat $SFS.folded | tail -1 > $SFS.folded.trimmed
+
+python3 dxy_sfs.py -m 1 -n 1 -s $SFS.folded.trimmed -o $PIP"_pip_"$BASE1"_"$BASE2".dxy"
+
+
+
+CSTART=$(awk -v pip=$PIP '$1==pip {print $6}' shared_pips_meta)
+
+
+if [[ $CSTART =~ ^-?[0-9]+$ ]] ;
+then
+echo "doing comp"
+
+
+
+
+CSAF1=$PIP"_comp_"$BASE1".saf.idx"
+CSAF2=$PIP"_comp_"$BASE2".saf.idx"
+
+
+
+CSFS=$PIP"_comp_"$BASE1"_"$BASE2".sfs"
+
+winsfs $CSAF1 $CSAF2 > $CSFS
+
+winsfs view -f $CSFS > $CSFS.folded
+
+cat $CSFS.folded | tail -1 > $CSFS.folded.trimmed
+
+python3 dxy_sfs.py -m 1 -n 1 -s $CSFS.folded.trimmed -o $PIP"_COMP_"$BASE1"_"$BASE2".dxy"
+
+else
+echo "not doing comp"
+fi
+

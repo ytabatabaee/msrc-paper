@@ -1,0 +1,34 @@
+## Bash code in this script represents bioinformatic processing tasks carried out on each chromosome from each species independently
+## Paths to programs, input, and output files are not defined here and would depend on the user
+## The bash variable $SP represents the name of the species undergoing each step. 
+## The bash variable $REG represents the name of the chromosome ("region") undergoing each step. 
+## Other bash variables are described below.
+## The script assumes that the user has used ANGSD to prepare a chromosome-specific beagle file for each value of $SP and $REG
+## Information about how genome-wide ANGSD beagle files were produced can be found in doi 10.6084/m9.figshare.27284553
+## Users can split genome-wide beagle files into chromosomes using bash e.g. with awk, 
+## or can use ANGSD with the -r argument to create chromosome-specific beagle files.
+## The bash code below runs the python script lostruct_pcangsd.py, provided in this repository, which is adapted from
+## https://github.com/alxsimon/local_pcangsd/blob/main/example.ipynb
+## Please see https://github.com/alxsimon/local_pcangsd for more information about how to run local_pcangsd.
+## Please note that bioinformatic program commands are given according to how they work on the authors' computing cluster accounts. 
+## Users replicating these steps would need to proceed according to how the programs are installed in their specific computing environment
+## This code can be run on many species and many chromosomes in parallel if it is formatted for a SLURM array job, for example.
+## D1 and D2 from Fig. S1 are determined based on the pdfs produced by the script as $PLOTOUT objects.
+
+
+BEAG=$SP"_"$REG".beagle.gz"
+ZARR1=$SP/$SP"_"$REG".zarr"
+ZARR2=lostruct/$SP/$SP"_"$REG".local_pcangsd.zarr"
+TEMP=lostruct/temp/$SP"_"$REG
+WINDFOUT=lostruct/$SP/$SP"_"$REG"_lswins.csv"
+PLOTOUT=lostruct/$SP/$SP"_"$REG"_lostruct.report.pdf"
+TUNE=0.3
+MDSOUT=lostruct/$SP/$SP"_"$REG"_window_MDS.csv"
+
+
+mkdir -p lostruct/$SP
+mkdir -p $TEMP
+
+# python verson 3.10.4
+
+python3 lostruct_pcangsd.py $BEAG $ZARR1 $ZARR2 $TEMP $WINDFOUT $PLOTOUT $TUNE $MDSOUT

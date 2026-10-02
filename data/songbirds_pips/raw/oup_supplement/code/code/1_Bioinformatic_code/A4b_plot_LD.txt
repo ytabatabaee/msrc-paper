@@ -1,0 +1,282 @@
+## R code in this script plots the LD output for all species/PIPs under analysis
+## Paths to programs, input, and output files are not defined here and would depend on the user
+## The script assumes that the user has a spreadsheet (invmeta) with the species, chromosome name (reg), PIP name (regn), and the locations of the breakpoints of the PIP (start and stop)
+## The script requires the same "genotypes" csv as in script A4a.
+## Users must also specify a path for output (LDoutpdf) and the species in the order in which they should appear in plots (plot.order)
+## Finally, the script assumes that the user has placed all of the output from A4a into a folder called "LDout_all"
+## D4 and D5 are based on visual examination of the plots produced here.
+# R version: 4.2.0
+
+
+
+
+
+library(tidyverse) # v 2.0.0
+library(gtools) # v 3.9.4
+library(reshape2) # v 1.4.4
+library(terra) # v 1.7-55
+
+LDoutpdf = xxx
+plot.order = xxx
+invmeta = read.csv(xxx)
+genotypes = read.csv(xxx)
+
+colnames(invmeta) <- c("species", "reg", "regn", "start", "stop")
+
+
+genotypes$u.record <- paste0(genotypes$species, "_", genotypes$regn)
+
+
+genos.only <- genotypes %>%
+  dplyr::select(species, sample, regn, genotype)
+
+
+
+
+
+
+
+#################################################################################################
+# file lists
+#################################################################################################
+
+
+setwd("LDout_all")
+
+LD.list <- list.files() %>%
+  as_tibble() %>%
+  filter(., grepl(".ngsLD", value)) %>%
+  pull(value)
+
+
+AllLD.list <- LD.list[grepl("subsamp", LD.list)]
+MajLD.list <- LD.list[grepl("MajOnly", LD.list)]
+
+
+
+Allsp.list <- word(AllLD.list, 1, sep="_")
+Majsp.list <- word(MajLD.list, 1, sep="_")
+
+AllLDreg.list <- word(AllLD.list, 2, sep="_")
+AllLDreg.list <- gsub(".ngsLD", "", AllLDreg.list)
+MajLDreg.list <- word(MajLD.list, 2, sep="_")
+MajLDreg.list <- gsub(".ngsLD", "", MajLDreg.list)
+
+
+table(Allsp.list==Majsp.list)
+table(AllLDreg.list==MajLDreg.list)
+
+
+
+
+#################################################################################################
+# Create the list object
+#################################################################################################
+
+
+LDmatlist <- matrix(list(), nrow=length(Allsp.list), ncol=3)
+LDmatlist[,1] <- Allsp.list
+LDmatlist[,2] <- AllLDreg.list
+
+
+#################################################################################################
+# Create the PCA plots
+#################################################################################################
+
+for(i in 1:length(Allsp.list)){
+
+    
+  
+  
+  mLD <- read.table(MajLD.list[i])
+  aLD <- read.table(AllLD.list[i])
+  sp <- Majsp.list[i]
+  regn <- MajLDreg.list[i]
+  regn <- gsub(".ngsLD", "", regn)
+  reg <- sub("*[A-Z]$", "", regn)
+  
+  indmeta <- read.csv(paste0(sp,
+                             "_", regn,
+                             "_LDmeta.csv"))
+  
+  
+  majcuts <- read.table(paste0(sp,
+                               "_", regn,
+                               "_MajOnly_LD.cuts"))
+  
+ colnames(majcuts) <- "sample"
+  
+  
+  
+  tempgeno <- genos.only[genos.only$species==sp&genos.only$regn==regn,]
+ 
+  homs <- tempgeno$sample[!tempgeno$sample%in%majcuts$sample] 
+ 
+  tempgeno[!tempgeno$sample%in%majcuts$sample,] 
+  
+  gentab <- table(tempgeno$genotype)
+  
+  gentab
+  
+  majoraf <- max(gentab[names(gentab)!="AB"])
+  majora <- names(gentab[gentab==majoraf])[1] # if the major and minor homozgotes have the same frequency, then we just pick the first one
+  
+
+  
+  if(majoraf!=length(homs)){
+    
+    stop("length of homozygotes from cut doc does not match majoraf")
+  }else{NULL}
+  
+  
+  
+  ssgentab <- table(indmeta$genotype)
+  seps <- c("=",",","=",",","=")
+  
+  raw <- c(rbind(names(ssgentab), ssgentab))
+  
+  indlabs <- paste(paste(raw, c("=",", "), sep=""), collapse="")
+  
+  upperlab <- paste0("Upper triangle: ", indlabs, "mixed genotypes")
+  
+  lowerlab <-  paste0("Lower triangle: ", majora, "=",majoraf, ", major allele only")
+  
+
+  
+colnames(mLD) <- c("snp1", "snp2", "dist", "r2")
+mLD$snp1 <- as.numeric(gsub(paste0(reg, ":"), "", mLD$snp1))
+mLD$snp2 <- as.numeric(gsub(paste0(reg, ":"), "", mLD$snp2))
+
+
+colnames(aLD) <- c("snp1", "snp2", "dist", "r2")
+aLD$snp1 <- as.numeric(gsub(paste0(reg, ":"), "", aLD$snp1))
+aLD$snp2 <- as.numeric(gsub(paste0(reg, ":"), "", aLD$snp2))
+
+start <- invmeta$start[invmeta$species==sp&invmeta$regn==regn]
+stop <- invmeta$stop[invmeta$species==sp&invmeta$regn==regn]
+
+
+
+aLD$snp1grp <- "COMP"
+aLD$snp2grp <- "COMP"
+aLD$snp1grp[aLD$snp1<stop&aLD$snp1>start] <- "PIP"
+aLD$snp2grp[aLD$snp2<stop&aLD$snp2>start] <- "PIP"
+aLD$grp <- paste0(aLD$snp1grp, "-", aLD$snp2grp)
+aLD$grp[aLD$grp=="PIP-COMP"] <- "COMP-PIP"
+table(aLD$grp)
+aLD$index <- 1:length(aLD[,1])
+aLD$grpnum <- as.numeric(factor(aLD$grp))
+
+IDm <- apply(acast(aLD, snp1 ~ snp2, value.var="grpnum", drop=FALSE),2,as.numeric)
+rownames(IDm) <- colnames(IDm)
+IDm <- IDm[mixedorder(rownames(IDm)),mixedorder(colnames(IDm))]
+id <- rownames(IDm)
+dist <- as.numeric(sub(".*:","",id))
+IDmras <- rast(IDm)
+if(length(unique(IDmras$lyr.1)[,1])>1){
+layout <- xyFromCell(IDmras, which(IDmras[]==3))
+vline1 <- min(layout[,1])
+vline2 <- max(layout[,1])
+hline1 <- min(layout[,2])
+hline2 <- max(layout[,2])
+} else {
+  layout <- xyFromCell(IDmras, which(IDmras[]==1))
+  vline1 <- min(layout[,1])
+  vline2 <- max(layout[,1])
+  hline1 <- min(layout[,2])
+  hline2 <- max(layout[,2])
+}
+
+am <- apply(acast(aLD, snp1 ~ snp2, value.var="r2", drop=FALSE),2,as.numeric)
+rownames(am) <- colnames(am)
+am <- am[mixedorder(rownames(am)),mixedorder(colnames(am))]
+aid <- rownames(am)
+adist <- as.numeric(sub(".*:","",aid))
+
+mm <- apply(acast(mLD, snp1 ~ snp2, value.var="r2", drop=FALSE),2,as.numeric)
+rownames(mm) <- colnames(mm)
+mm <- mm[mixedorder(rownames(mm)),mixedorder(colnames(mm))]
+mid <- rownames(mm)
+mdist <- as.numeric(sub(".*:","",mid))
+
+
+
+amras <- rast(am)
+mmras <- rast(mm)
+
+
+
+adownras <- aggregate(amras, fact = 20, na.rm=T)
+mdownras <- aggregate(mmras, fact = 20, na.rm=T)
+
+
+fullras <- sum(adownras, t(mdownras), na.rm=T)
+
+fullrasmat <- matrix(values(fullras), nrow=nrow(fullras))
+diag(fullrasmat) <- NA
+values(fullras) <- as.vector(fullrasmat)
+
+
+
+
+LDdownsamp <- as.data.frame(fullras, xy=T)
+
+colnames(LDdownsamp) <- c("x","y","r2")
+
+
+
+ 
+  
+linecolor="black"
+
+
+baseplot <- ggplot(LDdownsamp, aes(x=x,y=y)) +
+  geom_tile(aes(fill=r2)) +
+  scale_fill_gradientn(colors=c("blue", "white", "red"), name=expression(paste("LD ", r^2))) + 
+  ggtitle(paste(sp, regn)) + 
+  geom_segment(x=vline1, xend=vline1, y=hline1, yend=hline2, col=linecolor, lwd=2, lty=2) +
+  geom_segment(x=vline2, xend=vline2, y=hline1, yend=hline2, col=linecolor, lwd=2, lty=2) +
+  geom_segment(x=vline1, xend=vline2, y=hline1, yend=hline1, col=linecolor, lwd=2, lty=2) +
+  geom_segment(x=vline1, xend=vline2, y=hline2, yend=hline2, col=linecolor, lwd=2, lty=2) +
+  theme_minimal(base_size=15) +
+  theme(axis.title.x = element_text(vjust=5)) +
+  scale_x_continuous(sec.axis = sec_axis(~ . , name=upperlab)) +
+  theme(axis.text.y=element_blank()) +
+  theme(axis.text.x=element_blank()) +
+  xlab(lowerlab) +
+  ylab("") +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.title.x.top = element_text(margin = margin(t = 0, r = 0, b = -10, l = 0))
+        ); baseplot
+
+
+
+
+LDmatlist[[i,3]] <- baseplot
+  
+
+
+}
+
+
+
+
+pdf(file=LDoutpdf,
+    width=6,height=6)
+
+for(sp in plot.order){
+  
+  regs <- unique(melt(LDmatlist[which(LDmatlist[,1]==sp),2])$value)
+  
+  for(regn in regs){
+    
+    i=which(LDmatlist[,1]==sp&LDmatlist[,2]==regn)
+    
+    print(LDmatlist[[i,3]])
+    
+  }
+  
+  
+}
+dev.off()

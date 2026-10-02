@@ -1,0 +1,16 @@
+data_object	available	format	scope	sample_count	species_count	size	source	usable_for_local_phylogeny	notes
+existing local phylogenetic trees	partial_figures_only	supplementary plots/PDF, not reusable Newick	shared-PIP NJ visualizations reported by authors	representative subsets	varies	not machine-readable as trees	article Dataset S3 / methods	no_for_rigorous_MSRC_reanalysis	Do not use plotted topology for Stage-0 candidate selection.
+whole-genome trees	no	not found	none				OUP supplement/code audit	no	Background species topology must be estimated or sourced independently in Stage 1.
+SNP matrices	no	not packaged	authors generated genotype likelihood inputs	1660	35	large	supplement README/code	not_without_reprocessing	Scripts refer to BEAGLE/genotype-likelihood inputs but do not release them.
+VCF/BCF files	no	not packaged	none public in supplement				OUP supplement/code audit	no	No analysis-ready VCF was identified.
+genotype likelihoods	no	ANGSD/PCAngsd intermediate inputs referenced only	per species/chromosome	1660 if regenerated	35	large	author scripts	not_without_reprocessing	Cheaper than raw FASTQ only if authors can provide intermediate files; not public in supplement.
+phased haplotypes	no	not found	none				OUP supplement/code audit	no	The authors used low-coverage genotype likelihoods, not phased haplotypes.
+sequence alignments	no	not packaged	none				OUP supplement/code audit	no	Local alignments would need reconstruction from reads/BAMs.
+BAM/CRAM files	not_publicly_packaged	BAMs referenced as local inputs	all samples after preprocessing	1660	35	very large	supplement README and scripts	yes_if_obtained_or_regenerated	Authors' B3 pipeline requires BAM lists; no public BAM archive found in Stage 0.
+raw reads	yes	NCBI SRA FASTQ/raw reads	sequence reads	1660 used here; PRJNA1130443 has more experiments/samples	35	terabytes	PRJNA1043688; PRJNA1130443; DatasetS4 SRA accessions	yes_but_expensive	Reliable but costly route; avoid full reprocessing unless no intermediate data can be obtained.
+reference genomes	yes	GenBank assemblies/accessions	reference per mapped species group		28 PIP species in DatasetS1	large if downloaded	DatasetS1	yes	Coordinates are reference-specific and must not be merged across assemblies without liftover/homology evidence.
+PIP coordinates	yes	xlsx/TSV	174 PIPs		28 with PIPs	small	DatasetS1	yes	Approximate breakpoints mapped to reference chromosomes.
+inversion genotype assignments	yes	xlsx/TSV	sample-by-PIP assignments	1411	28 with PIPs	small	DatasetS4	yes_for_labeling_tests	AA/AB/BB for 3-cluster PIPs; C-H arbitrary labels for non-3-cluster PIPs.
+PCA classifications	yes	genotype labels and PCA cluster counts	174 PIPs	1411	28	small	DatasetS1/DatasetS4	labels_only	Not sufficient as phylogenetic input.
+LD evidence	yes	binary LD.supported field plus plots	174 PIPs		28	small	DatasetS1/Supplement	selection_metadata_only	139 PIPs are LD-supported.
+species/population metadata	partial	sample IDs, museum, coordinates, SRA	PIP species only in DatasetS4	1411	28	small	DatasetS4; no-PIP species metadata in Pegan et al. 2025 supplement	yes_for_covariates	Population labels and sex are not provided in DatasetS4.

@@ -1,0 +1,45 @@
+## R code in this script uses a loop to conduct changepoint analyses on the output of lostruct for all species/chromosomes under analysis
+## Paths to programs, input, and output files are not defined here and would depend on the user
+## The script assumes that the user has made a dataframe in R called "pip_meta" which contains a list of PIPs to analyze
+## The dataframe contains at least the columns "Species" containing the species name and "ChrName" containing the chromosome name
+## It is also assumed that the values in these columns correspond to the values applied to the MDS filename of the output of script A1.
+## The script involves an interactive loop where the user must view a plot and then enter a value of Q for the changepoint analysis for each plot.
+## The breakpoints identified in this script are then used to define PIP regions for script A3.
+## COMP regions are also chosen by the user to avoid the PIP region with an appropriate buffer, and each PIP should have a corresponding COMP.
+## At the end of this process, the user will have a preliminary list of PIPs for analysis. 
+## When there is more than one PIP on a chromosome, we assigned them names like ChrNameA, ChrNameB, etc.
+## All remaining scripts in this folder are conducted on each PIP in the dataset, rather than on each chromosome.
+# R version: 4.2.0
+
+library(changepoint) # v.2.2.4
+library(stringr) # v.1.5.0
+
+
+plist <-  matrix(list(), nrow=length(pip_meta), ncol=1)
+
+for(i in 1:length(pip_meta)){
+
+
+species <- pip_meta$Species[i]
+reg <- pip_meta$ChrName[i]
+  
+ tempath <- paste0("lostruct/",species,"/"species,"_",reg,"_window_MDS.csv")
+  
+
+ temp <- read.csv(tempath)
+  
+  
+  plot(temp$PC1, main=paste(species, reg))
+  
+  Q <- readline("enter Q ")
+  print(paste("Q =", Q))
+  Q <- as.numeric(Q)
+  fit_changepoint = cpt.mean(temp$PC1, method="BinSeg",minseglen=3,Q=Q,
+                             penalty = "None")
+  plot(fit_changepoint)
+  
+  Sys.sleep(1)
+  
+  plist[[i]] <- temp$window_center[cpts(fit_changepoint)]
+  
+  }
