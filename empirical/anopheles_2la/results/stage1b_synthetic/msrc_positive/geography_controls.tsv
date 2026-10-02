@@ -1,0 +1,8 @@
+quartet_id	all_country_present	country_matched	all_locality_present	locality_matched
+SYN_Q_A001	true	true	true	true
+SYN_Q_A002	true	true	true	false
+SYN_Q_B_POS_A	true	true	true	true
+SYN_Q_B_POS_B	true	true	true	true
+SYN_Q_B_NULL_A	true	true	true	false
+SYN_Q_B_NULL_B	true	true	true	false
+SYN_Q_C001	true	true	true	true

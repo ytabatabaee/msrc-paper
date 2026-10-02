@@ -204,3 +204,124 @@ notebook installs the pinned package, uses standard Colab Google
 authentication, runs the same check and Stage-1A freeze commands, and packages
 only small metadata/result files for transfer back to this repository. It does
 not retrieve chromosome-wide SNPs, haplotypes, trees, or topology statistics.
+
+## Stage 1B / Stage 2 synthetic validation
+
+Stage 1A remains waiting for authenticated MalariaGEN metadata access. During
+that waiting period, the downstream Stage 1B/Stage 2 machinery has been
+implemented and frozen using synthetic fixtures only. No real Anopheles
+sequence-derived genealogy/topology data were accessed.
+
+The prospective analysis plan is fixed in
+`empirical/anopheles_2la/config/stage1b_analysis_plan.yaml` and summarized in
+`empirical/anopheles_2la/results/stage1b_analysis_plan.md`.
+
+Fixed primary regions, AgamP4 2L, 1-based inclusive:
+
+- `left_flank`: `15,524,058-20,524,057`
+- `inversion_2La`: `20,524,058-42,165,532`
+- `right_flank`: `42,165,533-47,165,532`
+
+The primary flank width is 5 Mb. Sensitivity flank widths are 2 Mb and 10 Mb.
+The primary window scheme is fixed 100 kb non-overlapping physical windows, with
+50 kb and 200 kb sensitivity analyses.
+
+The core prospective test is not:
+
+```text
+Are gene trees unusual inside 2La?
+```
+
+It is:
+
+```text
+Does a topology predicted independently from structural arrangement state
+become specifically enriched inside 2La?
+```
+
+The stronger Design-B test is:
+
+```text
+When arrangement background changes while species identity is controlled,
+does the local genealogy change in the direction predicted from arrangement state?
+```
+
+Run the synthetic validation:
+
+```bash
+python3 empirical/anopheles_2la/scripts/run_stage1b_synthetic_validation.py --synthetic-validation --permutations 199
+python3 empirical/anopheles_2la/scripts/20_power_analysis.py --synthetic-validation --replicates 30 --permutations 49
+```
+
+Primary final analysis remains frozen at 10,000 block-aware circular-shift
+permutations. The smaller values above are only for repository validation
+runtime.
+
+Current synthetic validation summary:
+
+- Null/MSC-like scenario: not positive, `Delta_arr = -0.014`, block-aware
+  `p = 0.760`.
+- MSRC-positive scenario: positive, `Delta_arr = 0.422`, block-aware `p = 0.005`.
+- Broad alternative scenario: not positive for 2La-specific enrichment,
+  `Delta_arr = 0.014`, block-aware `p = 0.240`, flagged as broad-alternative-like.
+- Design-B synthetic validation: positive replacement contrast changes in the
+  predicted direction; null replacement contrast is `null_like`.
+
+Synthetic outputs are under
+`empirical/anopheles_2la/results/stage1b_synthetic/` and figures are under
+`empirical/anopheles_2la/figures/stage1b_synthetic/`. All reports and power
+outputs are labeled `SYNTHETIC_ONLY`.
+
+Freeze manifest:
+
+- `empirical/anopheles_2la/results/stage1b_synthetic/stage1b_analysis_freeze.json`
+- Previous SHA256:
+  `a4c366a9921ac11d3794bf29d7dbb102a278dda543a9650cd4ede1c985aa8fe2`
+- Current SHA256: see
+  `64c6b70f9046ea5b3b7f493150dfd68cd6ae454beb513c3147599e4d204a4274`
+- Reason for checksum change on 2026-09-16: pre-data hardening:
+  design-agnostic execution gate, tree-inference environment pinning, and
+  test-only network isolation.
+
+Real Stage 1B is gated. Stage 1B eligibility is design-agnostic. A
+scientifically complete Stage 1A may enable Design A, Design B, Design C, any
+combination, or no analysis if no prospectively eligible designs exist. Zero
+Design-A quartets is not itself a reason to alter the analysis plan.
+
+The local-tree ingestion and tree-inference scripts refuse real-mode execution
+until `data/anopheles_2la/processed/stage1a_freeze_complete.json` exists,
+Stage-1A freeze/provenance validation succeeds, and at least one prospectively
+frozen eligible Design A, Design B, or Design C table or repository-equivalent
+row set is nonempty. If all three designs are empty, Stage 1B stops before
+topology inspection with `NO_ELIGIBLE_PROSPECTIVE_DESIGNS`; this is
+inconclusive / underpowered, not evidence against MSRC.
+
+Future real execution should use the same interfaces:
+
+```bash
+python3 empirical/anopheles_2la/scripts/10_ingest_local_trees.py \
+  --real-mode \
+  --windows <frozen_window_table.tsv> \
+  --quartets data/anopheles_2la/processed/frozen_strict_quartets_stage1a.tsv \
+  --tree-dir <immutable_local_tree_dir> \
+  --out <stage2_spatial_topology_track.tsv>
+```
+
+Tree inference, if needed, is kept separate:
+
+```bash
+python3 empirical/anopheles_2la/scripts/11_infer_local_trees.py \
+  --real-mode \
+  --fasta-dir <window_alignment_dir> \
+  --windows <frozen_window_table.tsv> \
+  --outdir <immutable_tree_dir> \
+  --manifest <tree_inference_manifest.tsv>
+```
+
+The tree-inference environment is pinned before real sequence access:
+`bioconda::iqtree=2.4.0`, executable `iqtree2`, command template
+`iqtree2 -s WINDOW.fasta -seed 1729 -nt AUTO -pre OUTPUT_PREFIX -m MFP`. No
+bootstrap/support threshold is used for the primary quartet-classification
+analysis. Tree estimation reads only alignments/windows and fixed execution
+metadata; structural predictions enter only after local tree files are
+finalized.

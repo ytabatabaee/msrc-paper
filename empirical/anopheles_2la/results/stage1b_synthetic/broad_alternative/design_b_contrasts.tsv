@@ -1,0 +1,3 @@
+contrast_id	quartet_a	quartet_b	delta_a	delta_b	classification	synthetic_expected_result
+SYN_DESIGN_B_POSITIVE	SYN_Q_B_POS_A	SYN_Q_B_POS_B	0.0368536853685	0.000595892922626	changed_in_predicted_direction	positive
+SYN_DESIGN_B_NULL	SYN_Q_B_NULL_A	SYN_Q_B_NULL_B	0.0737073707371	0.000550055005501	null_like	null

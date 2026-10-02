@@ -1,0 +1,178 @@
+{
+  "2La_coordinates": {
+    "chromosome": "2L",
+    "coordinate_system": "1-based inclusive",
+    "end": 42165532,
+    "start": 20524058
+  },
+  "SYNTHETIC_ONLY": true,
+  "analysis_plan_version": "1.0.1",
+  "block_normalization_rule": "collapse consecutive windows with same local quartet state for a frozen comparison into one run of weight one",
+  "bootstrap_support_policy": "none for primary quartet-classification analysis; no support threshold is applied",
+  "breakpoint_analysis_rule": "fixed 2La breakpoints; topology transition distance to nearest breakpoint",
+  "checksum_supersession_reason": "pre-data hardening: design-agnostic execution gate, tree-inference environment pinning, test-only network isolation",
+  "date": "2026-09-16",
+  "design_agnostic_real_data_gate": {
+    "all_empty_interpretation": "inconclusive / underpowered empirical result, not evidence against MSRC",
+    "all_empty_status": "NO_ELIGIBLE_PROSPECTIVE_DESIGNS",
+    "design_A_enabled": "true iff a prospectively frozen Design-A table/row set is nonempty",
+    "design_A_table": "data/anopheles_2la/processed/frozen_strict_quartets_stage1a.tsv or repository-equivalent Design-A rows",
+    "design_B_enabled": "true iff a prospectively frozen Design-B table/row set is nonempty",
+    "design_B_tables": [
+      "data/anopheles_2la/processed/frozen_design_b_contrasts_stage1a.tsv",
+      "data/anopheles_2la/processed/frozen_arrangement_replacement_contrasts_stage1a.tsv",
+      "or repository-equivalent Design-B rows"
+    ],
+    "design_C_enabled": "true iff a prospectively frozen Design-C table/row set is nonempty",
+    "design_C_tables": [
+      "data/anopheles_2la/processed/frozen_design_c_geography_controls_stage1a.tsv",
+      "data/anopheles_2la/processed/frozen_geography_population_controls_stage1a.tsv",
+      "or repository-equivalent Design-C rows"
+    ],
+    "requires_stage1a_freeze_provenance_validation": true,
+    "stage1a_completion_marker": "data/anopheles_2la/processed/stage1a_freeze_complete.json"
+  },
+  "expected_tree_inference_outputs": [
+    "OUTPUT_PREFIX.treefile",
+    "OUTPUT_PREFIX.iqtree",
+    "OUTPUT_PREFIX.log",
+    "OUTPUT_PREFIX.ckp.gz",
+    "OUTPUT_PREFIX.model.gz"
+  ],
+  "figure_definitions": [
+    "prospective_design",
+    "spatial_topology_track",
+    "inside_outside_enrichment",
+    "arrangement_replacement"
+  ],
+  "final_permutations": 10000,
+  "git_commit": "844ed61673fc009e329242203a93dfcaec151396",
+  "missing_tip_policy": "record unusable with exclusion reason",
+  "model_selection_policy": "IQ-TREE ModelFinder Plus (-m MFP), frozen before sequence access",
+  "permutation_method": "block_aware_circular_shift",
+  "polytomy_policy": "unresolved quartet excluded from denominators but counted",
+  "previous_freeze_checksum": "a4c366a9921ac11d3794bf29d7dbb102a278dda543a9650cd4ede1c985aa8fe2",
+  "primary_flank_width_bp": 5000000,
+  "primary_statistic": "Delta_arr = f_in - f_out",
+  "primary_tree_estimator": "IQ-TREE",
+  "primary_window_size_bp": 100000,
+  "sensitivity_flank_widths_bp": [
+    2000000,
+    10000000
+  ],
+  "sensitivity_window_sizes_bp": [
+    50000,
+    200000
+  ],
+  "synthetic_scenarios": {
+    "broad_alternative": {
+      "block_aware_test": {
+        "method": "block_aware_circular_shift",
+        "n_permutations": 199,
+        "observed_delta": 0.014229399130389234,
+        "p_value": 0.24
+      },
+      "breakpoint_test": {
+        "method": "transition_distance_circular_position_null",
+        "n_transitions": 956,
+        "observed_mean_distance": 4422124.048117155,
+        "p_value": 0.245
+      },
+      "classification": "not_positive",
+      "figures": [
+        "empirical/anopheles_2la/figures/stage1b_synthetic/broad_alternative/figure_A_prospective_design.pdf",
+        "empirical/anopheles_2la/figures/stage1b_synthetic/broad_alternative/figure_B_spatial_topology_track.pdf",
+        "empirical/anopheles_2la/figures/stage1b_synthetic/broad_alternative/figure_C_inside_outside_enrichment.pdf",
+        "empirical/anopheles_2la/figures/stage1b_synthetic/broad_alternative/figure_D_arrangement_replacement.pdf"
+      ],
+      "naive_diagnostic": {
+        "method": "naive_per_window_label_permutation_diagnostic",
+        "n_permutations": 199,
+        "observed_delta": 0.014229399130389234,
+        "p_value": 0.23
+      },
+      "specificity": {
+        "broad_alternative_like": true
+      }
+    },
+    "msrc_positive": {
+      "block_aware_test": {
+        "method": "block_aware_circular_shift",
+        "n_permutations": 199,
+        "observed_delta": 0.4221868615432972,
+        "p_value": 0.005
+      },
+      "breakpoint_test": {
+        "method": "transition_distance_circular_position_null",
+        "n_transitions": 722,
+        "observed_mean_distance": 4377919.0,
+        "p_value": 0.185
+      },
+      "classification": "positive",
+      "figures": [
+        "empirical/anopheles_2la/figures/stage1b_synthetic/msrc_positive/figure_A_prospective_design.pdf",
+        "empirical/anopheles_2la/figures/stage1b_synthetic/msrc_positive/figure_B_spatial_topology_track.pdf",
+        "empirical/anopheles_2la/figures/stage1b_synthetic/msrc_positive/figure_C_inside_outside_enrichment.pdf",
+        "empirical/anopheles_2la/figures/stage1b_synthetic/msrc_positive/figure_D_arrangement_replacement.pdf"
+      ],
+      "naive_diagnostic": {
+        "method": "naive_per_window_label_permutation_diagnostic",
+        "n_permutations": 199,
+        "observed_delta": 0.4221868615432972,
+        "p_value": 0.005
+      },
+      "specificity": {
+        "broad_alternative_like": false
+      }
+    },
+    "null_msc_like": {
+      "block_aware_test": {
+        "method": "block_aware_circular_shift",
+        "n_permutations": 199,
+        "observed_delta": -0.013954371627638958,
+        "p_value": 0.76
+      },
+      "breakpoint_test": {
+        "method": "transition_distance_circular_position_null",
+        "n_transitions": 1106,
+        "observed_mean_distance": 4465785.17721519,
+        "p_value": 0.43
+      },
+      "classification": "not_positive",
+      "figures": [
+        "empirical/anopheles_2la/figures/stage1b_synthetic/null_msc_like/figure_A_prospective_design.pdf",
+        "empirical/anopheles_2la/figures/stage1b_synthetic/null_msc_like/figure_B_spatial_topology_track.pdf",
+        "empirical/anopheles_2la/figures/stage1b_synthetic/null_msc_like/figure_C_inside_outside_enrichment.pdf",
+        "empirical/anopheles_2la/figures/stage1b_synthetic/null_msc_like/figure_D_arrangement_replacement.pdf"
+      ],
+      "naive_diagnostic": {
+        "method": "naive_per_window_label_permutation_diagnostic",
+        "n_permutations": 199,
+        "observed_delta": -0.013954371627638958,
+        "p_value": 0.8
+      },
+      "specificity": {
+        "broad_alternative_like": false
+      }
+    }
+  },
+  "test_status": {
+    "00_audit_samples.py --run-tests": "passed during hardening",
+    "01_fetch_sample_karyotypes.py --run-tests": "passed during hardening with no live API path",
+    "10_ingest_local_trees.py --run-tests": "passed during hardening",
+    "11_infer_local_trees.py --run-tests": "passed during hardening",
+    "synthetic_end_to_end_validation": "passed during hardening",
+    "test_stage1b_synthetic.py": "passed during hardening"
+  },
+  "thread_policy": "-nt AUTO",
+  "tree_estimation_prediction_blind": true,
+  "tree_estimator_seed": 1729,
+  "tree_inference_command_template": "iqtree2 -s WINDOW.fasta -seed 1729 -nt AUTO -pre OUTPUT_PREFIX -m MFP",
+  "tree_inference_environment": {
+    "environment_file": "empirical/anopheles_2la/config/tree_inference_environment.yml",
+    "executable": "iqtree2",
+    "package": "bioconda::iqtree=2.4.0",
+    "version_verification_before_real_run": "iqtree2 --version must report IQ-TREE 2.4.0"
+  },
+  "validation_permutations_used": 199
+}

@@ -1,0 +1,21 @@
+{
+  "SYNTHETIC_ONLY": true,
+  "block_aware": {
+    "method": "block_aware_circular_shift",
+    "n_permutations": 199,
+    "observed_delta": 0.014229399130389234,
+    "p_value": 0.24
+  },
+  "breakpoint": {
+    "method": "transition_distance_circular_position_null",
+    "n_transitions": 956,
+    "observed_mean_distance": 4422124.048117155,
+    "p_value": 0.245
+  },
+  "naive_diagnostic": {
+    "method": "naive_per_window_label_permutation_diagnostic",
+    "n_permutations": 199,
+    "observed_delta": 0.014229399130389234,
+    "p_value": 0.23
+  }
+}

@@ -1,0 +1,138 @@
+analysis_plan:
+  name: anopheles_2la_stage1b_stage2_prospective
+  version: 1.0.0
+  status: prospective_pre_genealogy
+  topology_embargo: true
+  synthetic_validation_only_until_stage1a_complete: true
+
+coordinates:
+  reference_build: AgamP4
+  chromosome: "2L"
+  coordinate_system: "1-based inclusive"
+  inversion_2La:
+    start: 20524058
+    end: 42165532
+  primary_flank_width_bp: 5000000
+  sensitivity_flank_width_bp: [2000000, 10000000]
+  primary_regions:
+    left_flank:
+      start: 15524058
+      end: 20524057
+      clipping_policy: clip_to_chromosome_bounds_if_known
+    inversion_2La:
+      start: 20524058
+      end: 42165532
+    right_flank:
+      start: 42165533
+      end: 47165532
+      clipping_policy: clip_to_chromosome_bounds_if_known
+
+windows:
+  primary:
+    type: fixed_physical
+    size_bp: 100000
+    overlap_bp: 0
+  sensitivity:
+    - type: fixed_physical
+      size_bp: 50000
+      overlap_bp: 0
+    - type: fixed_physical
+      size_bp: 200000
+      overlap_bp: 0
+  required_columns:
+    - chromosome
+    - start
+    - end
+    - midpoint
+    - region_class
+    - distance_to_left_breakpoint
+    - distance_to_right_breakpoint
+  no_posthoc_tuning: true
+
+frozen_structural_predictions:
+  design_agnostic_eligibility: true
+  design_A_input_name: frozen_strict_quartets_stage1a.tsv
+  design_B_input_names:
+    - frozen_design_b_contrasts_stage1a.tsv
+    - frozen_arrangement_replacement_contrasts_stage1a.tsv
+    - repository_equivalent_design_B_rows
+  design_C_input_names:
+    - frozen_design_c_geography_controls_stage1a.tsv
+    - frozen_geography_population_controls_stage1a.tsv
+    - repository_equivalent_design_C_rows
+  required_gate_for_real_mode: stage1a_freeze_complete.json
+  no_eligible_designs_status: NO_ELIGIBLE_PROSPECTIVE_DESIGNS
+  no_eligible_designs_interpretation: inconclusive_underpowered_not_evidence_against_MSRC
+  zero_design_A_not_reason_to_alter_plan: true
+  prediction_source: structural_state_only
+  observed_tree_must_not_recompute_prediction: true
+  required_concepts:
+    - quartet_id
+    - sample_1
+    - sample_2
+    - sample_3
+    - sample_4
+    - species labels
+    - arrangement states
+    - predicted arrangement split
+    - design_class
+    - independence_group
+    - provenance fields
+
+tree_ingestion:
+  local_tree_format: Newick
+  topology_classification:
+    classes: [species, arrangement, other, unresolved, unusable]
+    raw_split_retained: true
+    q1_q2_q3_global_labels_forbidden: true
+  missing_tip_policy: record_unusable_with_missing_tip_reason
+  duplicate_tip_policy: record_unusable_with_duplicate_tip_reason
+  polytomy_policy: unresolved_quartet_excluded_from_frequency_denominators_but_reported
+
+primary_statistic:
+  name: Delta_arr
+  definition: P(arrangement topology inside 2La) - P(arrangement topology in flanks)
+  enrichment: f_in / f_out when f_out > 0
+  success_requires_specific_predicted_arrangement_topology: true
+
+statistical_tests:
+  alpha: 0.05
+  primary:
+    method: block_aware_circular_shift
+    final_permutations: 10000
+    preserves_spatial_structure: true
+  diagnostic_only:
+    method: naive_per_window_label_permutation
+    warning: anti_conservative_under_linkage
+
+pseudoreplication:
+  window_weighted: every_usable_window_counts_once
+  block_normalized: consecutive_windows_with_same_quartet_state_collapse_to_one_run_weight
+
+breakpoint_localization:
+  breakpoints: [20524058, 42165532]
+  transition_definition: consecutive_usable_windows_with_changed_topology_class
+  null: circular_shift_positions_within_valid_analyzed_span
+  do_not_move_breakpoints: true
+
+tree_inference:
+  primary_estimator: IQ-TREE
+  pinned_package: bioconda::iqtree=2.4.0
+  executable: iqtree2
+  command_template: iqtree2 -s WINDOW.fasta -seed 1729 -nt AUTO -pre OUTPUT_PREFIX -m MFP
+  deterministic_seed: 1729
+  model_policy: iqtree_model_selection_MFP_without_topology_feedback
+  thread_policy: -nt AUTO
+  bootstrap_support_policy: none_primary_analysis
+  support_threshold_for_unresolved: none
+  record_command_version_model_seed_exit_status_tree: true
+  structural_predictions_not_available_to_tree_estimation: true
+
+synthetic_validation:
+  required_flag: --synthetic-validation
+  allowed_input_root: empirical/anopheles_2la/tests/fixtures
+  reports_marked_synthetic_only: true
+  scenarios:
+    - null_msc_like
+    - msrc_positive
+    - broad_alternative

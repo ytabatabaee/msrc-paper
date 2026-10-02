@@ -1,0 +1,9 @@
+{
+  "tree_estimation_separate_from_quartet_interpretation": true,
+  "prediction_table_used": false,
+  "structural_prediction_inputs_forbidden": [
+    "predicted arrangement split",
+    "Design-A/B/C topology prediction",
+    "q1/q2/q3 expectation"
+  ]
+}

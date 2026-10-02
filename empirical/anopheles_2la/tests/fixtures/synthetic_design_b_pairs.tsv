@@ -1,0 +1,3 @@
+contrast_id	quartet_a	quartet_b	expected_change	expected_result
+SYN_DESIGN_B_POSITIVE	SYN_Q_B_POS_A	SYN_Q_B_POS_B	opposite_arrangement_prediction	positive
+SYN_DESIGN_B_NULL	SYN_Q_B_NULL_A	SYN_Q_B_NULL_B	opposite_arrangement_prediction	null

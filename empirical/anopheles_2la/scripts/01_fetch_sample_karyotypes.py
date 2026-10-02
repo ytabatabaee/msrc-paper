@@ -642,7 +642,7 @@ class FetchTests(unittest.TestCase):
         self.assertFalse(is_auth_error(RuntimeError("sample set missing")))
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Fetch MalariaGEN Ag3 Fontaine rebuild metadata and 2La karyotypes for Stage 1A.")
     parser.add_argument("--release", default=TARGET_RELEASE, help="Ag3 release number to inspect, default 3.10.")
     parser.add_argument("--sample-set-substring", default=TARGET_SAMPLE_SET_SUBSTRING, help="Substring used to discover the Fontaine rebuild sample set.")
@@ -650,11 +650,12 @@ def main() -> int:
     parser.add_argument("--anonymous-credentials", action="store_true", help="Use anonymous Google credentials for public GCS access when supported.")
     parser.add_argument("--allow-count-discrepancy", action="store_true", help="Permit an authenticated sample-count mismatch after documenting it in reconciliation output.")
     parser.add_argument("--run-tests", action="store_true", help="Run embedded tests before fetching.")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     if args.run_tests:
         result = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromTestCase(FetchTests))
         if not result.wasSuccessful():
             return 1
+        return 0
     return run(args)
 
 

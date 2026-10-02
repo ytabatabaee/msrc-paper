@@ -1,0 +1,14 @@
+{
+  "date": "2026-09-16",
+  "purpose": "pre-real-run IQ-TREE environment verification",
+  "environment_file": "empirical/anopheles_2la/config/tree_inference_environment.yml",
+  "conda_environment": "msrc-anopheles-2la-tree-inference",
+  "command": "conda run -n msrc-anopheles-2la-tree-inference iqtree2 --version",
+  "expected_version": "2.4.0",
+  "observed_version_output": "IQ-TREE multicore version 2.4.0 for MacOS Intel 64-bit built Feb 12 2025",
+  "verification_status": "PASS",
+  "real_sequence_derived_data_accessed": false,
+  "real_tree_inference_run": false,
+  "freeze_checksum_changed": false,
+  "freeze_checksum": "64c6b70f9046ea5b3b7f493150dfd68cd6ae454beb513c3147599e4d204a4274"
+}

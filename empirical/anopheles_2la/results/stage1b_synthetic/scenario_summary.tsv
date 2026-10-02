@@ -1,0 +1,4 @@
+scenario	classification	observed_delta	block_aware_p_value	broad_alternative_like	SYNTHETIC_ONLY
+null_msc_like	not_positive	-0.0139543716276	0.76	false	TRUE
+msrc_positive	positive	0.422186861543	0.005	false	TRUE
+broad_alternative	not_positive	0.0142293991304	0.24	true	TRUE
