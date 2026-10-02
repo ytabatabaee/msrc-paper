@@ -1,0 +1,7 @@
+treatment	n_windows	optimal_topology_id	optimal_topology_newick	n_tied_optima	normalized_expected_quartet_score	focal_split	focal_class	RF_to_background_reference	fraction_background_splits_recovered
+T_background	161	topo118	(geminata:0,(pusillignis:0,(saevissima:0,((inv_mac_Sb:0,inv_mac_SB:0):0,(richteri_Sb:0,richteri_SB:0):0):0):0):0):0;	1	0.967656127143	inv_mac_SB,inv_mac_Sb|richteri_SB,richteri_Sb	species	0	1
+T_chr1	117	topo118	(geminata:0,(pusillignis:0,(saevissima:0,((inv_mac_Sb:0,inv_mac_SB:0):0,(richteri_Sb:0,richteri_SB:0):0):0):0):0):0;	1	0.969273604356	inv_mac_SB,inv_mac_Sb|richteri_SB,richteri_Sb	species	0	1
+T_chr16_outside	44	topo118	(geminata:0,(pusillignis:0,(saevissima:0,((inv_mac_Sb:0,inv_mac_SB:0):0,(richteri_Sb:0,richteri_SB:0):0):0):0):0):0;	1	0.963355108189	inv_mac_SB,inv_mac_Sb|richteri_SB,richteri_Sb	species	0	1
+T_supergene	52	topo116	(geminata:0,(pusillignis:0,(saevissima:0,(richteri_SB:0,(inv_mac_SB:0,(inv_mac_Sb:0,richteri_Sb:0):0):0):0):0):0):0;	1	0.868186603328	inv_mac_SB,richteri_SB|inv_mac_Sb,richteri_Sb	haplotype	4	0.5
+T_chr16_all	96	topo118	(geminata:0,(pusillignis:0,(saevissima:0,((inv_mac_Sb:0,inv_mac_SB:0):0,(richteri_Sb:0,richteri_SB:0):0):0):0):0):0;	1	0.83321406995	inv_mac_SB,inv_mac_Sb|richteri_SB,richteri_Sb	species	0	1
+T_all	213	topo118	(geminata:0,(pusillignis:0,(saevissima:0,((inv_mac_Sb:0,inv_mac_SB:0):0,(richteri_Sb:0,richteri_SB:0):0):0):0):0):0;	1	0.9079509973	inv_mac_SB,inv_mac_Sb|richteri_SB,richteri_Sb	species	0	1

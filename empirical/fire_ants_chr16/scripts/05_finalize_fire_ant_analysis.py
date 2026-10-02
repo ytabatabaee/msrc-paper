@@ -131,6 +131,10 @@ def fmt3(value: str | Decimal) -> str:
     return f"{float(dec(value)):.3f}"
 
 
+def fmt4(value: str | Decimal) -> str:
+    return f"{float(dec(value)):.4f}"
+
+
 def check_sha(path: Path, expected: str, label: str) -> None:
     observed = sha256(path)
     if observed != expected:
@@ -267,6 +271,22 @@ def manuscript_rows(inputs: dict[str, object]) -> list[dict[str, object]]:
     ]
 
 
+def dominant_count_text(inputs: dict[str, object], region: str, class_name: str) -> str:
+    row = inputs["regions"][region]
+    field = f"n_{class_name}_dominant"
+    return f"{row[field]}/{row['n_windows']}"
+
+
+def circular_rank_text(inputs: dict[str, object]) -> str:
+    primary = inputs["primary_test"]
+    return f"{primary['observed_rank']}/{primary['n_exact_alignments']}"
+
+
+def unique_rank_text(inputs: dict[str, object]) -> str:
+    summary = inputs["coordinate_summary"]
+    return f"{summary['rank_unique_membership']}/{summary['n_unique_membership_states']}"
+
+
 def write_summary_tables(inputs: dict[str, object]) -> None:
     robust_rows = [
         {
@@ -383,7 +403,15 @@ def make_main_figure(inputs: dict[str, object]) -> None:
     axes[0].set_xlabel("chr16 physical midpoint (Mb)")
     axes[0].set_title("A. Chromosome-16 focal quartet support")
     axes[0].legend(frameon=False, fontsize=8, loc="center left", bbox_to_anchor=(1.01, 0.5))
-    axes[0].text(0.02, 0.06, "outside: 44/44 species-dominant\nsupergene: 43/52 haplotype-dominant", transform=axes[0].transAxes, fontsize=8, bbox={"facecolor": "white", "edgecolor": "#bbbbbb", "alpha": 0.85})
+    axes[0].text(
+        0.02,
+        0.06,
+        f"outside: {dominant_count_text(inputs, 'chr16_outside', 'species')} species-dominant\n"
+        f"supergene: {dominant_count_text(inputs, 'chr16_supergene', 'haplotype')} haplotype-dominant",
+        transform=axes[0].transAxes,
+        fontsize=8,
+        bbox={"facecolor": "white", "edgecolor": "#bbbbbb", "alpha": 0.85},
+    )
 
     circular = sorted(inputs["circular_rows"], key=lambda row: Decimal(row["delta_D"]))
     axes[1].scatter(range(1, len(circular) + 1), [float(Decimal(row["delta_D"])) for row in circular], s=24, color="#345995", linewidth=0)
@@ -392,7 +420,14 @@ def make_main_figure(inputs: dict[str, object]) -> None:
     axes[1].set_xlabel("ranked circular alignment")
     axes[1].set_ylabel("Delta_D")
     axes[1].grid(axis="y", color="#eeeeee", linewidth=0.6)
-    axes[1].text(0.03, 0.88, "observed rank = 2/96\nexact one-sided p = 0.0208", transform=axes[1].transAxes, fontsize=9, bbox={"facecolor": "white", "edgecolor": "#bbbbbb", "alpha": 0.85})
+    axes[1].text(
+        0.03,
+        0.88,
+        f"observed rank = {circular_rank_text(inputs)}\nexact one-sided p = {fmt4(inputs['primary_test']['p_one_sided'])}",
+        transform=axes[1].transAxes,
+        fontsize=9,
+        bbox={"facecolor": "white", "edgecolor": "#bbbbbb", "alpha": 0.85},
+    )
     axes[1].legend(frameon=False, loc="lower right")
     fig.tight_layout()
     with PdfPages(MAIN_FIG_PDF, metadata={"CreationDate": None, "ModDate": None}) as pdf:
@@ -435,7 +470,7 @@ def make_supplement_figure(inputs: dict[str, object]) -> None:
     ax.set_xlabel("candidate interval midpoint (Mb)")
     ax.set_ylabel("Delta_D")
     ax.set_title("C. Equal weight per distinct sampled-window membership state")
-    ax.text(0.03, 0.88, "p = 0.0309", transform=ax.transAxes, fontsize=9, bbox={"facecolor": "white", "edgecolor": "#bbbbbb", "alpha": 0.85})
+    ax.text(0.03, 0.88, f"p = {fmt4(inputs['coordinate_summary']['p_unique_membership'])}", transform=ax.transAxes, fontsize=9, bbox={"facecolor": "white", "edgecolor": "#bbbbbb", "alpha": 0.85})
     ax.grid(axis="y", color="#eeeeee", linewidth=0.6)
 
     ax = axes[1, 1]
@@ -450,7 +485,7 @@ def make_supplement_figure(inputs: dict[str, object]) -> None:
     ax.set_xlabel("interval start coordinate (Mb)")
     ax.set_ylabel("Delta_D")
     ax.set_title("D. Uniform physical interval-start sensitivity")
-    ax.text(0.03, 0.88, "p = 0.0783", transform=ax.transAxes, fontsize=9, bbox={"facecolor": "white", "edgecolor": "#bbbbbb", "alpha": 0.85})
+    ax.text(0.03, 0.88, f"p = {fmt4(inputs['length_summary']['p_length_weighted'])}", transform=ax.transAxes, fontsize=9, bbox={"facecolor": "white", "edgecolor": "#bbbbbb", "alpha": 0.85})
     ax.grid(axis="y", color="#eeeeee", linewidth=0.6)
     fig.tight_layout()
     with PdfPages(SUPP_FIG_PDF, metadata={"CreationDate": None, "ModDate": None}) as pdf:
@@ -460,6 +495,14 @@ def make_supplement_figure(inputs: dict[str, object]) -> None:
 
 
 def write_text_outputs(inputs: dict[str, object]) -> None:
+    regions = inputs["regions"]
+    chr16_outside = regions["chr16_outside"]
+    supergene = regions["chr16_supergene"]
+    chr1 = regions["chr1"]
+    delta_d_short = fmt3(inputs["primary_contrast"]["delta_D"])
+    circular_p_short = fmt4(inputs["primary_test"]["p_one_sided"])
+    unique_p_short = fmt4(inputs["coordinate_summary"]["p_unique_membership"])
+    length_p_short = fmt4(inputs["length_summary"]["p_length_weighted"])
     MAIN_CAPTION.write_text(
         "# Fire-ant main figure caption\n\n"
         "TWISST-derived focal quartet support across the fire-ant chromosome-16 social-supergene analysis. The focal quartet was defined as A = `invicta/macdonaghi_SB`, B = `invicta/macdonaghi_Sb`, C = `richteri_SB`, and D = `richteri_Sb`. `q_S` is support for the independently frozen species-history split AB|CD, `q_H` is support for the SB/Sb haplotype-partition split AC|BD, and `q_3` is support for the third unrooted quartet resolution AD|BC. Support values were obtained by aggregating the authors' published TWISST topology weights; structural/group definitions and the chromosome 1-15 background species split were frozen independently before formal local-support analysis. Each point is one published four-BUSCO-gene window. The shaded region is the author-designated supergene analysis interval / observed BUSCO-window span, not exact inversion breakpoints. Panel B shows the exact 96-alignment circular-shift null for the primary spatial statistic. These results do not rule out introgression.\n"
@@ -468,8 +511,8 @@ def write_text_outputs(inputs: dict[str, object]) -> None:
     RESULTS_TEXT.write_text(
         "# Fire-ant Results text\n\n"
         "Focal species and SB/Sb haplotype partitions were defined before inspecting local quartet support. The focal groups were `invicta/macdonaghi_SB`, `invicta/macdonaghi_Sb`, `richteri_SB`, and `richteri_Sb`, and the chromosome 1-15 ASTRAL species history independently defined the AB|CD species-history split. We then unblinded the published local RAxML/TWISST windows and aggregated the authors' topology weights into focal quartet support.\n\n"
-        "Collinear chromosome-16 windows outside the supergene were dominated by the species-history topology: mean `q_S = 0.978`, mean `q_H = 0.011`, and 44/44 windows were species-dominant. In the author-designated supergene region, support shifted toward the SB/Sb haplotype partition: mean `q_S = 0.168`, mean `q_H = 0.811`, and 43/52 windows were haplotype-dominant. The resulting `Delta_D` was 1.610. The chromosome-1 control remained species-dominant in 117/117 windows. Thus, the supergene does not simply increase arbitrary discordance; support shifts specifically toward the independently defined cross-species SB/Sb haplotype partition while the third topology remains low.\n\n"
-        "Under the primary exact circular-shift null, the observed supergene alignment ranked second among 96 possible circular alignments of the physically ordered chromosome-16 `D` track, giving a one-sided exact `p = 0.0208`. Coordinate-aware sensitivities gave `p = 0.0309` when equal weight was assigned to each unique sampled-window membership state and `p = 0.0783` when interval starts were distributed uniformly over physical coordinate space. The latter is more conservative because membership states are weighted by the amount of physical start-coordinate space over which they persist.\n\n"
+        f"Collinear chromosome-16 windows outside the supergene were dominated by the species-history topology: mean `q_S = {fmt3(chr16_outside['mean_q_S'])}`, mean `q_H = {fmt3(chr16_outside['mean_q_H'])}`, and {dominant_count_text(inputs, 'chr16_outside', 'species')} windows were species-dominant. In the author-designated supergene region, support shifted toward the SB/Sb haplotype partition: mean `q_S = {fmt3(supergene['mean_q_S'])}`, mean `q_H = {fmt3(supergene['mean_q_H'])}`, and {dominant_count_text(inputs, 'chr16_supergene', 'haplotype')} windows were haplotype-dominant. The resulting `Delta_D` was {delta_d_short}. The chromosome-1 control remained species-dominant in {dominant_count_text(inputs, 'chr1', 'species')} windows. Thus, the supergene does not simply increase arbitrary discordance; support shifts specifically toward the independently defined cross-species SB/Sb haplotype partition while the third topology remains low.\n\n"
+        f"Under the primary exact circular-shift null, the observed supergene alignment ranked {inputs['primary_test']['observed_rank']} among {inputs['primary_test']['n_exact_alignments']} possible circular alignments of the physically ordered chromosome-16 `D` track, giving a one-sided exact `p = {circular_p_short}`. Coordinate-aware sensitivities gave `p = {unique_p_short}` when equal weight was assigned to each unique sampled-window membership state and `p = {length_p_short}` when interval starts were distributed uniformly over physical coordinate space. The latter is more conservative because membership states are weighted by the amount of physical start-coordinate space over which they persist.\n\n"
         "The fire-ant supergene therefore defines a coherent alternative genealogy regime across species. The original source study infers recurrent adaptive introgression of `Sb`, and that interpretation remains a central caveat. These results establish association between the recombination-suppressed structural haplotype and local genealogy, but they do not identify whether shared structural ancestry, introgression, or their combination generated the historical pattern. This empirical case is consistent with the manuscript's broader point that structural history and gene flow can be difficult to distinguish from local quartet patterns alone.\n"
     )
 
@@ -485,6 +528,9 @@ def write_text_outputs(inputs: dict[str, object]) -> None:
 def write_final_analysis(inputs: dict[str, object], chain: dict[str, object]) -> None:
     rows = manuscript_rows(inputs)
     table = "\n".join(f"| {row['region']} | {row['n_windows']} | {fmt3(row['mean_q_S'])} | {fmt3(row['mean_q_H'])} | {fmt3(row['mean_q_3'])} | {fmt3(row['mean_D'])} |" for row in rows)
+    delta_d = fmt4(inputs["primary_contrast"]["delta_D"])
+    circular_rank = circular_rank_text(inputs)
+    unique_rank = unique_rank_text(inputs)
     FINAL_ANALYSIS.write_text(
         "# Fire-ant final analysis freeze\n\n"
         "Fire-ant empirical analysis is frozen for manuscript use.\n\n"
@@ -503,14 +549,14 @@ def write_final_analysis(inputs: dict[str, object], chain: dict[str, object]) ->
         "|---|---:|---:|---:|---:|---:|\n"
         f"{table}\n\n"
         "## Primary spatial result\n\n"
-        f"`Delta_D = 1.6101`; circular rank = 2/96; `p = {inputs['primary_test']['p_one_sided']}`.\n\n"
+        f"`Delta_D = {delta_d}`; circular rank = {circular_rank}; `p = {inputs['primary_test']['p_one_sided']}`.\n\n"
         "## Coordinate sensitivities\n\n"
-        f"Unique membership: 3/97, `p = {inputs['coordinate_summary']['p_unique_membership']}`.\n\n"
+        f"Unique membership: {unique_rank}, `p = {inputs['coordinate_summary']['p_unique_membership']}`.\n\n"
         f"Uniform physical-start: `p = {inputs['length_summary']['p_length_weighted']}`.\n\n"
         "## Dominant topology counts\n\n"
-        "- chr1: 117/117 species\n"
-        "- chr16 outside: 44/44 species\n"
-        "- supergene: 43/52 haplotype\n\n"
+        f"- chr1: {dominant_count_text(inputs, 'chr1', 'species')} species\n"
+        f"- chr16 outside: {dominant_count_text(inputs, 'chr16_outside', 'species')} species\n"
+        f"- supergene: {dominant_count_text(inputs, 'chr16_supergene', 'haplotype')} haplotype\n\n"
         "## Interpretation\n\n"
         "The chromosome-16 supergene is associated with a pronounced, spatially localized shift from the background species-history quartet toward the cross-species SB/Sb haplotype quartet.\n\n"
         "The source study's recurrent adaptive introgression interpretation remains an explicit caveat. These results do not identify whether shared structural ancestry, introgression, or their combination generated the historical pattern.\n\n"

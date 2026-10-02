@@ -176,7 +176,7 @@ Stage 4B: Complete — spatial-null testing of supergene enrichment on chromosom
 
 Stage 5: Robustness/manuscript freeze.
 
-Stage 6: ASTER/ASTRAL4 inference-sensitivity analysis, run separately after Stage 5: background versus supergene versus all local windows and progressive supergene downweighting.
+Stage 6: Complete — post-freeze grouped TWISST / ASTRAL4 summary-tree sensitivity analysis.
 
 ## Reproduction
 
@@ -189,6 +189,8 @@ python3 empirical/fire_ants_chr16/scripts/02_freeze_group_states.py --skip-downl
 python3 empirical/fire_ants_chr16/scripts/03_freeze_background_history.py --skip-download --run-tests
 python3 empirical/fire_ants_chr16/scripts/04a_local_quartet_support.py --run-tests
 python3 empirical/fire_ants_chr16/scripts/04b_spatial_null_tests.py --run-tests
+python3 empirical/fire_ants_chr16/scripts/05_finalize_fire_ant_analysis.py --run-tests
+python3 empirical/fire_ants_chr16/scripts/06_summary_tree_sensitivity.py --run-tests
 ```
 
 The Stage-0 script validates the manifests, verifies the upstream coordinate table, counts author-defined regions, validates focal groups and quartet resolutions, writes the focal-quartet checksum, and enforces forbidden-input guards.
@@ -254,4 +256,6 @@ The Stage-4B script verifies the frozen Stage-0 through Stage-4A checksum chain,
 - `figures/fire_ants_main.pdf`
 - `figures/fire_ants_supplement.pdf`
 
-Stage 6, if performed, is a post-freeze ASTER/ASTRAL4 summary-tree sensitivity analysis and does not alter the Stage-5 primary empirical result.
+Stage 6 is complete as a post-freeze grouped TWISST / ASTRAL4 summary-tree sensitivity analysis and does not alter the Stage-5 primary empirical result.
+
+Stage 6 does not alter the Stage-5 primary empirical analysis.

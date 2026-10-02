@@ -1,0 +1,8 @@
+m	n_replicates	fraction_astral_exact_background	mean_astral_fraction_background_splits_recovered	median_astral_normalized_RF	min_astral_fraction_background_splits_recovered	max_astral_fraction_background_splits_recovered	fraction_astral_species_focal	fraction_astral_haplotype_focal	fraction_astral_third_focal	fraction_weighted_species_focal	fraction_weighted_haplotype_focal	fraction_weighted_third_focal
+1	100	1	1	0	1	1	1	0	0	1	0	0
+2	100	1	1	0	1	1	1	0	0	1	0	0
+5	100	1	1	0	1	1	1	0	0	1	0	0
+10	100	1	1	0	1	1	1	0	0	1	0	0
+20	100	1	1	0	1	1	1	0	0	1	0	0
+40	100	1	1	0	1	1	1	0	0	1	0	0
+52	1	1	1	0	1	1	1	0	0	1	0	0

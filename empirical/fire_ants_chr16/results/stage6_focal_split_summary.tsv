@@ -1,0 +1,7 @@
+treatment	n_windows	weighted_optimum_focal_split	weighted_optimum_focal_class	astral4_focal_split	astral4_focal_class	agreement
+T_chr1	117	inv_mac_SB,inv_mac_Sb|richteri_SB,richteri_Sb	species	inv_mac_SB,inv_mac_Sb|richteri_SB,richteri_Sb	species	true
+T_chr16_outside	44	inv_mac_SB,inv_mac_Sb|richteri_SB,richteri_Sb	species	inv_mac_SB,inv_mac_Sb|richteri_SB,richteri_Sb	species	true
+T_background	161	inv_mac_SB,inv_mac_Sb|richteri_SB,richteri_Sb	species	inv_mac_SB,inv_mac_Sb|richteri_SB,richteri_Sb	species	true
+T_supergene	52	inv_mac_SB,richteri_SB|inv_mac_Sb,richteri_Sb	haplotype	inv_mac_SB,richteri_SB|inv_mac_Sb,richteri_Sb	haplotype	true
+T_chr16_all	96	inv_mac_SB,inv_mac_Sb|richteri_SB,richteri_Sb	species	inv_mac_SB,inv_mac_Sb|richteri_SB,richteri_Sb	species	true
+T_all	213	inv_mac_SB,inv_mac_Sb|richteri_SB,richteri_Sb	species	inv_mac_SB,inv_mac_Sb|richteri_SB,richteri_Sb	species	true

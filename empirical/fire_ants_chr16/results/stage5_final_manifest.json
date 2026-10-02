@@ -4,7 +4,7 @@
   "astral_or_aster_run": false,
   "boundaries_optimized": false,
   "final_output_checksums": {
-    "empirical/fire_ants_chr16/README.md": "7b6e3a993470e1116f21095ae2d46415d8d1731e90ef7d16d0baa2845c43e861",
+    "empirical/fire_ants_chr16/README.md": "532734ebdb2be9fb5a8450fdcbcbf86a798a559845ffdb4b3030f21656dc3089",
     "empirical/fire_ants_chr16/figures/fire_ants_main.pdf": "ee21e7a8ea40fa56e056eb056bf943cbf3d154afd4523025e318e5e0eb944377",
     "empirical/fire_ants_chr16/figures/fire_ants_main.png": "22373a38044546a72c1031fb161f83279394fd5262f868c3344dfacd674752f6",
     "empirical/fire_ants_chr16/figures/fire_ants_supplement.pdf": "5f99763aecaf4426b5318ed392750f9ae42f9e429065000960f1378e747e1535",
@@ -14,7 +14,7 @@
     "empirical/fire_ants_chr16/results/fire_ants_main_table.md": "c2d541b6f69ac1b851b6e9bba36da8ec12f849007bfa0f78e4bd285ae3a67857",
     "empirical/fire_ants_chr16/results/fire_ants_main_table.tsv": "babe49762d6f46dc6a86211d76296e15105147d14a1af5ce0fa2ed2d086b3ffd",
     "empirical/fire_ants_chr16/results/fire_ants_methods_text.md": "7a26bf026f24445995471c72deaa8f5e0b8e8481364a8cfdac5138ceb463cdcb",
-    "empirical/fire_ants_chr16/results/fire_ants_results_text.md": "3d634e10ab25a4c648119605915a622e9c03a376b9cf7d0fcd0920f708ae2a2c",
+    "empirical/fire_ants_chr16/results/fire_ants_results_text.md": "af5330c846b20a9b56860ed846383d6b39706f52bd624dc840db3aa06b69d431",
     "empirical/fire_ants_chr16/results/stage5_robustness_summary.tsv": "140b6c579bac2006897097df1c721ae21540ebd5ac4df64fda2ecfc92c5c479b"
   },
   "final_results": {
@@ -82,5 +82,5 @@
     "empirical/fire_ants_chr16/results/stage4b_primary_test.tsv": "310fe14c9cdb0e4d4ba6b1b9355498cfa1e845e56de119061f395c7011d9ec8b"
   },
   "stage5_script": "empirical/fire_ants_chr16/scripts/05_finalize_fire_ant_analysis.py",
-  "stage5_script_sha256": "16eec3e7f42a2b36090db71832631e0ae46abb3afc0e428b1ae60123a326e377"
+  "stage5_script_sha256": "27e6ea84e9dd79be4a9a38ecf57c850d53000fc999cdf040645c59641df5c77c"
 }
