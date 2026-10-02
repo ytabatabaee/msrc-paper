@@ -1,0 +1,82 @@
+Stage 6 CU branch-length comparison
+
+Comparison: background_vs_all
+background tree: empirical/fire_ants_chr16/results/astral4/T_background.inferred.nwk
+combined tree: empirical/fire_ants_chr16/results/astral4/T_all.inferred.nwk
+topology identical by CU-bearing internal bipartitions: true
+internal CU branches in background: 4
+internal CU branches in combined: 4
+shared bipartitions: 4
+background-only bipartitions: 0
+combined-only bipartitions: 0
+median CU background: 3.433485
+median CU combined: 2.000425
+median absolute CU change: 0.883835
+largest CU decreases:
+  focal_richteri_SB_Sb_pair [richteri_SB,richteri_Sb]: 3.98279 -> 1.19463; delta -2.78816; relative -0.7000519736
+  focal_invicta_macdonaghi_SB_Sb_pair [inv_mac_SB,inv_mac_Sb]: 2.73003 -> 1.24225; delta -1.48778; relative -0.5449683703
+  focal_related_internal_branch [geminata,pusillignis]: 2.88418 -> 2.7586; delta -0.12558; relative -0.04354097178
+largest CU increases:
+  focal_four_vs_outgroups [geminata,pusillignis,saevissima]: 3.98279 -> 4.26268; delta 0.27989; relative 0.07027485757
+  focal_related_internal_branch [geminata,pusillignis]: 2.88418 -> 2.7586; delta -0.12558; relative -0.04354097178
+  focal_invicta_macdonaghi_SB_Sb_pair [inv_mac_SB,inv_mac_Sb]: 2.73003 -> 1.24225; delta -1.48778; relative -0.5449683703
+focal/supergene-associated branch CU changes:
+  focal_richteri_SB_Sb_pair [richteri_SB,richteri_Sb]: 3.98279 -> 1.19463; delta -2.78816; relative -0.7000519736
+  focal_invicta_macdonaghi_SB_Sb_pair [inv_mac_SB,inv_mac_Sb]: 2.73003 -> 1.24225; delta -1.48778; relative -0.5449683703
+  focal_four_vs_outgroups [geminata,pusillignis,saevissima]: 3.98279 -> 4.26268; delta 0.27989; relative 0.07027485757
+  focal_related_internal_branch [geminata,pusillignis]: 2.88418 -> 2.7586; delta -0.12558; relative -0.04354097178
+
+Comparison: background_vs_chr16_all
+background tree: empirical/fire_ants_chr16/results/astral4/T_background.inferred.nwk
+combined tree: empirical/fire_ants_chr16/results/astral4/T_chr16_all.inferred.nwk
+topology identical by CU-bearing internal bipartitions: true
+internal CU branches in background: 4
+internal CU branches in combined: 4
+shared bipartitions: 4
+background-only bipartitions: 0
+combined-only bipartitions: 0
+median CU background: 3.433485
+median CU combined: 1.4442085
+median absolute CU change: 1.3628965
+largest CU decreases:
+  focal_richteri_SB_Sb_pair [richteri_SB,richteri_Sb]: 3.98279 -> 0.421213; delta -3.561577; relative -0.894241725
+  focal_invicta_macdonaghi_SB_Sb_pair [inv_mac_SB,inv_mac_Sb]: 2.73003 -> 0.521297; delta -2.208733; relative -0.8090508163
+  focal_related_internal_branch [geminata,pusillignis]: 2.88418 -> 2.36712; delta -0.51706; relative -0.1792745252
+largest CU increases:
+  focal_four_vs_outgroups [geminata,pusillignis,saevissima]: 3.98279 -> 4.15888; delta 0.17609; relative 0.04421272525
+  focal_related_internal_branch [geminata,pusillignis]: 2.88418 -> 2.36712; delta -0.51706; relative -0.1792745252
+  focal_invicta_macdonaghi_SB_Sb_pair [inv_mac_SB,inv_mac_Sb]: 2.73003 -> 0.521297; delta -2.208733; relative -0.8090508163
+focal/supergene-associated branch CU changes:
+  focal_richteri_SB_Sb_pair [richteri_SB,richteri_Sb]: 3.98279 -> 0.421213; delta -3.561577; relative -0.894241725
+  focal_invicta_macdonaghi_SB_Sb_pair [inv_mac_SB,inv_mac_Sb]: 2.73003 -> 0.521297; delta -2.208733; relative -0.8090508163
+  focal_four_vs_outgroups [geminata,pusillignis,saevissima]: 3.98279 -> 4.15888; delta 0.17609; relative 0.04421272525
+  focal_related_internal_branch [geminata,pusillignis]: 2.88418 -> 2.36712; delta -0.51706; relative -0.1792745252
+
+Comparison: background_vs_supergene
+background tree: empirical/fire_ants_chr16/results/astral4/T_background.inferred.nwk
+combined tree: empirical/fire_ants_chr16/results/astral4/T_supergene.inferred.nwk
+topology identical by CU-bearing internal bipartitions: false
+internal CU branches in background: 4
+internal CU branches in combined: 4
+shared bipartitions: 2
+background-only bipartitions: 2
+combined-only bipartitions: 2
+median CU background: 3.433485
+median CU combined: 2.87168
+median absolute CU change: 0.561805
+largest CU decreases:
+  focal_related_internal_branch [geminata,pusillignis]: 2.88418 -> 2.17853; delta -0.70565; relative -0.244662261
+  focal_four_vs_outgroups [geminata,pusillignis,saevissima]: 3.98279 -> 3.56483; delta -0.41796; relative -0.1049415109
+largest CU increases:
+  focal_four_vs_outgroups [geminata,pusillignis,saevissima]: 3.98279 -> 3.56483; delta -0.41796; relative -0.1049415109
+  focal_related_internal_branch [geminata,pusillignis]: 2.88418 -> 2.17853; delta -0.70565; relative -0.244662261
+focal/supergene-associated branch CU changes:
+  focal_four_vs_outgroups [geminata,pusillignis,saevissima]: 3.98279 -> 3.56483; delta -0.41796; relative -0.1049415109
+  focal_related_internal_branch [geminata,pusillignis]: 2.88418 -> 2.17853; delta -0.70565; relative -0.244662261
+supergene-only alternative splits absent from background:
+  supergene_haplotype_Sb_pair [inv_mac_Sb,richteri_Sb]: CU 1.3402
+  focal_related_internal_branch [inv_mac_SB,inv_mac_Sb,richteri_Sb]: CU 0.232622
+
+Interpretation:
+Adding chr16/supergene loci leaves the primary Stage-6 ASTRAL topology unchanged but shortens focal CU branches, with the largest focal decrease on focal_richteri_SB_Sb_pair [richteri_SB,richteri_Sb] from 3.98279 to 1.19463 CU.
+Across all shared primary branches, median absolute CU change is 0.883835; changes are branch-specific rather than a uniform genome-wide scaling.

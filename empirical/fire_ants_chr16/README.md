@@ -191,6 +191,7 @@ python3 empirical/fire_ants_chr16/scripts/04a_local_quartet_support.py --run-tes
 python3 empirical/fire_ants_chr16/scripts/04b_spatial_null_tests.py --run-tests
 python3 empirical/fire_ants_chr16/scripts/05_finalize_fire_ant_analysis.py --run-tests
 python3 empirical/fire_ants_chr16/scripts/06_summary_tree_sensitivity.py --run-tests
+python3 empirical/fire_ants_chr16/scripts/06b_compare_cu_branch_lengths.py --run-tests
 ```
 
 The Stage-0 script validates the manifests, verifies the upstream coordinate table, counts author-defined regions, validates focal groups and quartet resolutions, writes the focal-quartet checksum, and enforces forbidden-input guards.
@@ -259,3 +260,5 @@ The Stage-4B script verifies the frozen Stage-0 through Stage-4A checksum chain,
 Stage 6 is complete as a post-freeze grouped TWISST / ASTRAL4 summary-tree sensitivity analysis and does not alter the Stage-5 primary empirical result.
 
 Stage 6 does not alter the Stage-5 primary empirical analysis.
+
+Stage 6 CU branch-length extension outputs: `results/stage6_cu_branch_length_comparison.tsv`, `results/stage6_cu_branch_length_summary.txt`, `figures/fire_ants_stage6_cu_background_vs_combined.pdf`, and `figures/fire_ants_stage6_cu_delta.pdf`.

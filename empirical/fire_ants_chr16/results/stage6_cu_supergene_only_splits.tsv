@@ -1,0 +1,5 @@
+comparison	split_id	taxa_side	n_taxa_side	cu_background	cu_combined	status	branch_role	focal_related
+background_vs_supergene	geminata,inv_mac_SB,inv_mac_Sb,pusillignis,saevissima|richteri_SB,richteri_Sb	richteri_SB,richteri_Sb	2	3.98279	NA	background-only split	focal_richteri_SB_Sb_pair	true
+background_vs_supergene	geminata,inv_mac_SB,pusillignis,richteri_SB,saevissima|inv_mac_Sb,richteri_Sb	inv_mac_Sb,richteri_Sb	2	NA	1.3402	combined-only split	supergene_haplotype_Sb_pair	true
+background_vs_supergene	geminata,pusillignis,richteri_SB,richteri_Sb,saevissima|inv_mac_SB,inv_mac_Sb	inv_mac_SB,inv_mac_Sb	2	2.73003	NA	background-only split	focal_invicta_macdonaghi_SB_Sb_pair	true
+background_vs_supergene	geminata,pusillignis,richteri_SB,saevissima|inv_mac_SB,inv_mac_Sb,richteri_Sb	inv_mac_SB,inv_mac_Sb,richteri_Sb	3	NA	0.232622	combined-only split	focal_related_internal_branch	true

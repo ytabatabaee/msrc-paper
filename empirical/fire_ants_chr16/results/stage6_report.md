@@ -51,3 +51,7 @@ Modal-tree ASTRAL4 discards TWISST weight-distribution information, and the supe
 ## Stage boundary
 
 No MSRC model was fit, no raw sequences were reanalyzed, and Stage 5 was not analytically modified.
+
+## Stage 6 CU branch-length extension
+
+Existing Stage 6 ASTRAL4 inferred trees were parsed for `CULength` annotations to test whether adding chr16/supergene windows changes coalescent-unit branch lengths when topology is unchanged. The primary comparison is `T_background.inferred.nwk` versus `T_all.inferred.nwk`; `T_chr16_all` and `T_supergene` are secondary comparisons. `SULength` values were not analyzed. Outputs are `stage6_cu_branch_length_comparison.tsv`, `stage6_cu_branch_length_summary.txt`, and the two CU figures.

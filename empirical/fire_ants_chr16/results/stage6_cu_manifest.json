@@ -1,0 +1,29 @@
+{
+  "analysis_type": "post_freeze_cu_branch_length_sensitivity",
+  "astral_outputs_reused": true,
+  "astral_rerun": false,
+  "coalescent_unit_lengths_analyzed": true,
+  "input_checksums": {
+    "empirical/fire_ants_chr16/results/astral4/T_all.inferred.nwk": "6f87b062fb0102f751a63c1fc450ccdfa86a8372fe205897e58c5615acc747b3",
+    "empirical/fire_ants_chr16/results/astral4/T_background.inferred.nwk": "f6d75c4ed7bfd9c2162a166247d03b563b1f098c92638088c01fbd18bc23af66",
+    "empirical/fire_ants_chr16/results/astral4/T_chr16_all.inferred.nwk": "a408deab3b793fc8ad49ca853968278290ca059b49490a9d2bf05018f6efbb74",
+    "empirical/fire_ants_chr16/results/astral4/T_supergene.inferred.nwk": "c606646f4cdcde6874e4ecc149711cbf3a09f69b8dd4fe46517f70de0491b622",
+    "empirical/fire_ants_chr16/results/stage6_manifest.json": "c1a986b8d4110ab86e4bec8b822b6c7851198d81d8e34ccad8d72ac13702e85f"
+  },
+  "output_checksums": {
+    "PROJECT_STATUS.md": "000716e16c7958d0b69f2aa8ac223f90d918d5ae68dadff3203b84b70e1180b3",
+    "empirical/fire_ants_chr16/README.md": "c949c8f71fba29eed5b2b5f62de441de6766439182db606357d8f49661e9f560",
+    "empirical/fire_ants_chr16/figures/fire_ants_stage6_cu_background_vs_combined.pdf": "7c0f33f8c98f1094ed9a98d26fb375040613eabd5547034d0a6b17161d6b41cf",
+    "empirical/fire_ants_chr16/figures/fire_ants_stage6_cu_background_vs_combined.png": "d1568d9a3221b33b02143b9929a085e4d3c626dfee323ac785d7e09012fe3220",
+    "empirical/fire_ants_chr16/figures/fire_ants_stage6_cu_delta.pdf": "e0c17f9a2041d949d08e5b9a0548792d1d0784c750960d0ed7ddfbe16cc61d1e",
+    "empirical/fire_ants_chr16/figures/fire_ants_stage6_cu_delta.png": "6081b6c6836f64b67c6a400c119fb6a471ee1bd3085a8aa5ae0ff72c2bab2189",
+    "empirical/fire_ants_chr16/results/stage6_cu_branch_length_comparison.tsv": "ab13f0a0af2cf2d7eabd436bb51bb1408f2b04ac426a686cdafe3f6f7d6d337d",
+    "empirical/fire_ants_chr16/results/stage6_cu_branch_length_summary.txt": "a7b0510705db1e3304866c16b2eb5d05e4031ffe99404a9509a6f0290337f1d6",
+    "empirical/fire_ants_chr16/results/stage6_cu_supergene_only_splits.tsv": "c9e4e950f313205bbe54f65e894271ab540e2e224d3b53133e104dbcd9579b51",
+    "empirical/fire_ants_chr16/results/stage6_report.md": "ef9e0667852b9436e403dfb29842ab6e04993a8b3f5683891041bb842e14f3ab"
+  },
+  "primary_comparison": "background_vs_all",
+  "processing_script_checksum": "21192a704364104c42acb12377ee7b6294af6609083429c4495c1d89f7e67a14",
+  "stage": "6_cu_branch_length_extension",
+  "substitution_unit_lengths_analyzed": false
+}
