@@ -1,0 +1,34 @@
+Stage 6C original RAxML local-tree branch-length audit
+
+input_tree = data/fire_ants_chr16/raw/upstream/Topology weighting/results/2021-08-07-twisst/input.tree
+input_tree_sha256 = 0b0d64217170610b2bd3e8dd1481138b032ef033589887b18a883099c1780e66
+source = published upstream Topology weighting/results/2021-08-07-twisst/input.tree
+upstream construction = concatenated `*.raxml.bestTree` files from four-BUSCO windows as documented in Topology weighting/README.md
+branch_length_interpretation = RAxML-NG local best-tree branch lengths from GTR+G sequence alignments; these are substitution/site tree branch lengths
+
+n_trees = 213
+n_nonempty_trees = 213
+tips_per_tree_min = 267
+tips_per_tree_max = 267
+unique_tip_count = 267
+all_tree_tip_sets_identical = True
+n_branch_lengths = 113316
+n_positive_branch_lengths = 113103
+n_zero_branch_lengths = 213
+fraction_positive_branch_lengths = 0.9981203007518797
+fraction_zero_branch_lengths = 0.0018796992481203006
+median_branch_length = 0.000102
+median_positive_branch_length = 0.000103
+min_branch_length = 0.0
+max_branch_length = 0.184439
+tip_set_sha256 = 0715a4c6c1185ff3c06fe79d1b8fd7b40080b730520673f24f9e2128c41d10f8
+
+Treatment window counts from Stage-1 window index:
+T_chr1 = 117
+T_chr16_outside = 44
+T_background = 161
+T_supergene = 52
+T_chr16_all = 96
+T_all = 213
+
+Conclusion: the original RAxML local trees contain usable finite nonnegative substitution branch lengths; 99.812% of parsed branch lengths are positive.

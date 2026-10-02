@@ -192,6 +192,7 @@ python3 empirical/fire_ants_chr16/scripts/04b_spatial_null_tests.py --run-tests
 python3 empirical/fire_ants_chr16/scripts/05_finalize_fire_ant_analysis.py --run-tests
 python3 empirical/fire_ants_chr16/scripts/06_summary_tree_sensitivity.py --run-tests
 python3 empirical/fire_ants_chr16/scripts/06b_compare_cu_branch_lengths.py --run-tests
+python3 empirical/fire_ants_chr16/scripts/06c_su_branch_length_sensitivity.py --run-tests
 ```
 
 The Stage-0 script validates the manifests, verifies the upstream coordinate table, counts author-defined regions, validates focal groups and quartet resolutions, writes the focal-quartet checksum, and enforces forbidden-input guards.
@@ -262,3 +263,6 @@ Stage 6 is complete as a post-freeze grouped TWISST / ASTRAL4 summary-tree sensi
 Stage 6 does not alter the Stage-5 primary empirical analysis.
 
 Stage 6 CU branch-length extension outputs: `results/stage6_cu_branch_length_comparison.tsv`, `results/stage6_cu_branch_length_summary.txt`, `figures/fire_ants_stage6_cu_background_vs_combined.pdf`, and `figures/fire_ants_stage6_cu_delta.pdf`.
+
+
+Stage 6C complete — mapped individual-level ASTRAL4/CASTLES-II SU branch-length sensitivity. The exact 267-tip mapping was recovered from Stolle et al. 2022 Supplementary Data 1 without guessing. Original RAxML local-tree substitution branch lengths were preserved, fixed-topology background versus all-window SULengths were estimated, and CU/SU changes were compared. Stage 5 remains frozen and the existing Stage 6/CU result is unchanged. See `results/stage6c_su_summary.txt`, `results/stage6c_su_branch_length_comparison.tsv`, and `results/stage6c_cu_vs_su_comparison.tsv`.

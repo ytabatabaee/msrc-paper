@@ -1,0 +1,5 @@
+treatment	n_internal_splits	same_topology_as_free_background	unrooted_RF_to_free_background	n_background_splits_recovered	fraction_background_splits_recovered	individual_free_focal_split	individual_free_focal_class	grouped_stage6_focal_class	matches_grouped_stage6_focal_class	tree_file	runtime_seconds
+T_background	4	true	0	4	1	inv_mac_SB,inv_mac_Sb|richteri_SB,richteri_Sb	species	species	true	empirical/fire_ants_chr16/results/astral4_su/T_background.free_su.nwk	16.4526529312
+T_all	4	true	0	4	1	inv_mac_SB,inv_mac_Sb|richteri_SB,richteri_Sb	species	species	true	empirical/fire_ants_chr16/results/astral4_su/T_all.free_su.nwk	21.7012751102
+T_chr16_all	4	true	0	4	1	inv_mac_SB,inv_mac_Sb|richteri_SB,richteri_Sb	species	species	true	empirical/fire_ants_chr16/results/astral4_su/T_chr16_all.free_su.nwk	10.2278189659
+T_supergene	4	false	4	2	0.5	inv_mac_SB,richteri_SB|inv_mac_Sb,richteri_Sb	haplotype	haplotype	true	empirical/fire_ants_chr16/results/astral4_su/T_supergene.free_su.nwk	4.91154408455

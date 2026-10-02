@@ -1,0 +1,145 @@
+{
+  "analysis_type": "post_freeze_individual_level_astral4_castles_su_branch_length_sensitivity",
+  "astral4": {
+    "aster_commit": "ddc3dc6b28b20cecfec18cede8c6247decc82b77",
+    "executable": "/Users/ytabatabaee/Desktop/ASTER/bin/astral4",
+    "executable_sha256": "2dc864161f7a80188f37fd6b39abc53c38aee548c20b534f274708b508a99b4c",
+    "threads": 2
+  },
+  "astral_output_checksums": {
+    "empirical/fire_ants_chr16/results/astral4_su/T_all.fixed_background_su.log": "c55efbb4482e375c6b3d70bef35bfbbca1d8007cf7003c29d806d63f8097b323",
+    "empirical/fire_ants_chr16/results/astral4_su/T_all.fixed_background_su.nwk": "21a6d1fbbc66f2bd6f7489f178ecf6ac2d6bdff12ddf8a4f83b11d23d5b797ae",
+    "empirical/fire_ants_chr16/results/astral4_su/T_all.free_su.log": "ec9f32c8f12ef5cc6aacf562a0747bc87f717af5652ae6dc3cc3a64f4b15b6cc",
+    "empirical/fire_ants_chr16/results/astral4_su/T_all.free_su.nwk": "21a6d1fbbc66f2bd6f7489f178ecf6ac2d6bdff12ddf8a4f83b11d23d5b797ae",
+    "empirical/fire_ants_chr16/results/astral4_su/T_background.fixed_background_su.log": "6c4523dc2e5ab4f340f6035ef9884063a371214e9e9e2f28b4779ed50dc6a2a3",
+    "empirical/fire_ants_chr16/results/astral4_su/T_background.fixed_background_su.nwk": "446bd1dc69f977cd06bee64a5e883df4fa44fa031eeaad67b4de5f83a1a63d12",
+    "empirical/fire_ants_chr16/results/astral4_su/T_background.free_su.log": "7de83b6d950ee1ef6e9d73c5eff441f0d6e5c84260d6181f0d58097caa3b0aa5",
+    "empirical/fire_ants_chr16/results/astral4_su/T_background.free_su.nwk": "446bd1dc69f977cd06bee64a5e883df4fa44fa031eeaad67b4de5f83a1a63d12",
+    "empirical/fire_ants_chr16/results/astral4_su/T_chr16_all.fixed_background_su.log": "86fcbf4574d2d648d88e52dcfde4becf29e47432b7eea4123d4def5e3f5ddf8d",
+    "empirical/fire_ants_chr16/results/astral4_su/T_chr16_all.fixed_background_su.nwk": "f9b5a2b6feec80f493f65e382b7f2c6a4018d5c4c9a7e7c610c084ab06394e95",
+    "empirical/fire_ants_chr16/results/astral4_su/T_chr16_all.free_su.log": "f400a0b5b8695c1ca4619a88bfc607fd3dd958501de7b7139fa6c0516e235eb0",
+    "empirical/fire_ants_chr16/results/astral4_su/T_chr16_all.free_su.nwk": "e991bd8bb75362792069a027e237eb8b1c072f78fc028dedd0b7271bb4ef80c5",
+    "empirical/fire_ants_chr16/results/astral4_su/T_supergene.fixed_background_su.log": "7397c6bda1a2cba18f888cec0d1f1d5be4bab85dc89d426f44eebf4f7478933c",
+    "empirical/fire_ants_chr16/results/astral4_su/T_supergene.fixed_background_su.nwk": "c4f06b93ea109ad14009c4c50d558d0117232f61bb680a335390d0ce7fc063fb",
+    "empirical/fire_ants_chr16/results/astral4_su/T_supergene.free_su.log": "92943e030e79de00f4e5f81c924beb685fedba80ffd2bc854e82303883c45fc6",
+    "empirical/fire_ants_chr16/results/astral4_su/T_supergene.free_su.nwk": "620888773184c30a7a80ac84c13ebf21f79b583fb1671de647d02df2c50216eb"
+  },
+  "group_counts": {
+    "geminata": 1,
+    "invicta/macdonaghi_SB": 134,
+    "invicta/macdonaghi_Sb": 59,
+    "pusillignis": 2,
+    "richteri_SB": 28,
+    "richteri_Sb": 32,
+    "saevissima": 11
+  },
+  "individual_mapping_guessed": false,
+  "input_checksums": {
+    "data/fire_ants_chr16/processed/stage1_window_index.tsv": "96ed3fcca3d351a96b2434f17aa7510349d94138d11d60ccb56d45d1b57e237d",
+    "data/fire_ants_chr16/raw/upstream/Topology weighting/README.md": "ad5ffe7130c26cdca45f868639c7b89049264e299ad906a72968231dfd24e078",
+    "data/fire_ants_chr16/raw/upstream/Topology weighting/results/2021-08-07-twisst/input.tree": "0b0d64217170610b2bd3e8dd1481138b032ef033589887b18a883099c1780e66",
+    "data/fire_ants_chr16/raw/upstream/Topology weighting/supergene/filter_samples_by_missing.R": "419cb7839521a9e3326d80c32b3d77445b79d7e171df77449e570cf89bb65065",
+    "data/fire_ants_chr16/raw/upstream/nature_communications_2022/41467_2022_28806_MOESM4_ESM_supplementary_data_1.xlsx": "603578cc5c701d9e5955ee091ddded1f65db9895ccd9033894ea2f2e441f45c6",
+    "empirical/fire_ants_chr16/results/stage5_final_manifest.json": "b235bbdade85b5e9804d655ce5d8f20f9609615b6074da080238a34ea110d3fc",
+    "empirical/fire_ants_chr16/results/stage6_cu_branch_length_comparison.tsv": "ab13f0a0af2cf2d7eabd436bb51bb1408f2b04ac426a686cdafe3f6f7d6d337d",
+    "empirical/fire_ants_chr16/results/stage6_cu_manifest.json": "e24448e63a43a20867b84fe9d1ee798fc4222f7b71f55e6f5ab26fc98e3330ca",
+    "empirical/fire_ants_chr16/results/stage6_manifest.json": "c1a986b8d4110ab86e4bec8b822b6c7851198d81d8e34ccad8d72ac13702e85f"
+  },
+  "mapped_astral4_castles_su_run_performed": true,
+  "mapping_recovered_without_guessing": true,
+  "modal_zero_length_trees_used_for_su": false,
+  "output_checksums": {
+    "PROJECT_STATUS.md": "c39ed7fffdd898ad32d96ba08fb9864ef23cb3f469865802cc3f0c38443d1a97",
+    "data/fire_ants_chr16/processed/stage6c_astral4_mapping.txt": "27b417fadd857cb4597ff0e3f63190f6896ea28ca1b62497401c773bbb8cd476",
+    "data/fire_ants_chr16/processed/stage6c_fixed_background_topology.nwk": "2ad18277ef6b73599b677f7f7626fabb3726bbad8390d73bc0d75d2f27dc3e70",
+    "data/fire_ants_chr16/processed/stage6c_group_label_map.tsv": "e9bb5dd64239a98f8b102f94679b60fd9afed733479f420a67a5ca20d5f54a63",
+    "data/fire_ants_chr16/processed/stage6c_individual_to_group.tsv": "aa4aa23f1ae3d5a7f24aa083c9160951b578f442e1549c6d00c83b3f94305a81",
+    "data/fire_ants_chr16/processed/stage6c_tree_tip_inventory.tsv": "25cf9170cb4b6dd7e19b56bff397794a42691a1a892d351ee3bb4ae883e70ab7",
+    "data/fire_ants_chr16/processed/stage6c_tree_tip_supplement_match_audit.tsv": "25b04c2c3fe536f1e87414e0dae54f4f9d607f6a1417bcb14810228f8e8fdc19",
+    "empirical/fire_ants_chr16/README.md": "ab80aae2d497615b6a400b270cfba62a440af56196ac2f30f16761d083267848",
+    "empirical/fire_ants_chr16/figures/fire_ants_stage6c_cu_vs_su_change.pdf": "ace84fe9fff5856edb6f53a5d440a6964dea95c46d04236afba824c1dfc56313",
+    "empirical/fire_ants_chr16/figures/fire_ants_stage6c_cu_vs_su_change.png": "44a71af99324cbe99bda1dd01a153e0eafd56c7c680319882024e6e907a21794",
+    "empirical/fire_ants_chr16/figures/fire_ants_stage6c_focal_branch_lengths.pdf": "c303d78551b46f91b0d3dcb8361fe1619877925eb9a085717c8c51af58249939",
+    "empirical/fire_ants_chr16/figures/fire_ants_stage6c_focal_branch_lengths.png": "9ca49471e32cf256eb30342071752030e1283ce5571d2d37b1819af244b497a4",
+    "empirical/fire_ants_chr16/figures/fire_ants_stage6c_su_background_vs_all.pdf": "efd81917a2acb55f163cac62841bd9d13d11e982388ba1175fc2237b08ca8aa1",
+    "empirical/fire_ants_chr16/figures/fire_ants_stage6c_su_background_vs_all.png": "b0a7d07868ae2ae50a5a3036e2e0dffd0a6bfbf010c93e0b4074adb6cc107bcc",
+    "empirical/fire_ants_chr16/results/stage6c_astral4_provenance.md": "68a9a051f7d8c601191e40f4c5c2e5b04a3bb4bab6dbebfcc8f4dd49feb4aed0",
+    "empirical/fire_ants_chr16/results/stage6c_cu_vs_su_comparison.tsv": "76817c39d2398ebbb7df4310646c609180efe8d817195aaaf7cdcdbef2da1c73",
+    "empirical/fire_ants_chr16/results/stage6c_free_topology_summary.tsv": "aabe41bed180c484da09f921edd6483f022a3c543e90c524eb35549f13731e0f",
+    "empirical/fire_ants_chr16/results/stage6c_mapping_recovery_report.md": "84ba036a266c5433e6c99e5f54cf0d94345fb091917112d49b5ac92827fc9872",
+    "empirical/fire_ants_chr16/results/stage6c_raxml_branch_length_audit.txt": "8f902b36ff119fb44e74bbc7b03347f6a46af49acf7ade5099630f1cb0e01a85",
+    "empirical/fire_ants_chr16/results/stage6c_su_branch_length_comparison.tsv": "9c662239cd2767c1da200db7aabc102abd75fbe5233d13ca677ef32e039ee686",
+    "empirical/fire_ants_chr16/results/stage6c_su_summary.txt": "9616e3fb5c55ead3041af1e23259ee59d6045cdfdee1bab310b69d8405723380"
+  },
+  "processing_script_checksum": "2d1418403198e19d8a4ae87dd65eee87d3dbe47a150cfcbab22109cbdf59f8ca",
+  "raw_sequence_reanalysis": false,
+  "raxml_branch_length_audit": {
+    "all_tree_tip_sets_identical": true,
+    "fraction_positive_branch_lengths": 0.9981203007518797,
+    "fraction_zero_branch_lengths": 0.0018796992481203006,
+    "max_branch_length": 0.184439,
+    "median_branch_length": 0.000102,
+    "median_positive_branch_length": 0.000103,
+    "min_branch_length": 0.0,
+    "n_branch_lengths": 113316,
+    "n_nonempty_trees": 213,
+    "n_positive_branch_lengths": 113103,
+    "n_trees": 213,
+    "n_zero_branch_lengths": 213,
+    "tip_set_sha256": "0715a4c6c1185ff3c06fe79d1b8fd7b40080b730520673f24f9e2128c41d10f8",
+    "tips_per_tree_max": 267,
+    "tips_per_tree_min": 267,
+    "treatment_counts": {
+      "T_all": 213,
+      "T_background": 161,
+      "T_chr1": 117,
+      "T_chr16_all": 96,
+      "T_chr16_outside": 44,
+      "T_supergene": 52
+    },
+    "unique_tip_count": 267
+  },
+  "stage": "6C",
+  "stage5_modified": false,
+  "stage6_cu_modified": false,
+  "supplementary_data_1": {
+    "n_rows": 386,
+    "sha256": "603578cc5c701d9e5955ee091ddded1f65db9895ccd9033894ea2f2e441f45c6",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-022-28806-7/MediaObjects/41467_2022_28806_MOESM4_ESM.xlsx",
+    "worksheet_names": [
+      "Sheet1"
+    ]
+  },
+  "treatment_tree_files": {
+    "T_all": {
+      "n_windows": 213,
+      "path": "data/fire_ants_chr16/intermediate/astral4_su/all_213.trees",
+      "sha256": "0b0d64217170610b2bd3e8dd1481138b032ef033589887b18a883099c1780e66"
+    },
+    "T_background": {
+      "n_windows": 161,
+      "path": "data/fire_ants_chr16/intermediate/astral4_su/background_161.trees",
+      "sha256": "24924a88fedfcd49aec8267ef95ca7cc32e49f8657c48ae2d8a180749a8733f2"
+    },
+    "T_chr1": {
+      "n_windows": 117,
+      "path": "data/fire_ants_chr16/intermediate/astral4_su/chr1.trees",
+      "sha256": "5c26752fae1386253f07ee4ef473ac12cff267654fc68aca5779494f0b943da0"
+    },
+    "T_chr16_all": {
+      "n_windows": 96,
+      "path": "data/fire_ants_chr16/intermediate/astral4_su/chr16_all_96.trees",
+      "sha256": "c198dcb23e6f962ea250ab2f494148133555acc082f962d08517560c24f04b1d"
+    },
+    "T_chr16_outside": {
+      "n_windows": 44,
+      "path": "data/fire_ants_chr16/intermediate/astral4_su/chr16_outside.trees",
+      "sha256": "116e63f80fb3cacc1420a3af0986685db7705839520895056c3d11020daf9308"
+    },
+    "T_supergene": {
+      "n_windows": 52,
+      "path": "data/fire_ants_chr16/intermediate/astral4_su/supergene_52.trees",
+      "sha256": "42d48de9336cce02605f5edb5b692840594ad5cb0b2db2767b98c0a878d68b7e"
+    }
+  }
+}

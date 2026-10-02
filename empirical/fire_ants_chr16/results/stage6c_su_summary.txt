@@ -1,0 +1,28 @@
+Stage 6C ASTRAL4/CASTLES-II substitution-unit branch-length summary
+
+main_comparison = T_background fixed background topology vs T_all fixed background topology
+same_unrooted_topology = true
+n_background_internal_branches = 4
+n_all_internal_branches = 4
+n_shared_bipartitions = 4
+n_background_only_bipartitions = 0
+n_all_only_bipartitions = 0
+median_su_background = 0.000768638
+median_su_all = 0.000985447
+median_delta_su = -3.177650000000008e-05
+
+Shared-branch SU changes:
+- focal_related_internal_branch (geminata,pusillignis): 0.000578751 -> 0.000528286 ; delta = -5.046499999999997e-05 ; percent = -8.719639361314274
+- focal_four_vs_outgroups (geminata,pusillignis,saevissima): 0.000933907 -> 0.000885554 ; delta = -4.8353e-05 ; percent = -5.177496260334274
+- focal_richteri_SB_Sb_pair (richteri_SB,richteri_Sb): 0.00144347 -> 0.00142827 ; delta = -1.5200000000000153e-05 ; percent = -1.0530180745010391
+- focal_invicta_macdonaghi_SB_Sb_pair (inv_mac_SB,inv_mac_Sb): 0.000603369 -> 0.00108534 ; delta = 0.000481971 ; percent = 79.87997394629157
+
+CU vs SU focal-pair comparison:
+- focal_richteri_SB_Sb_pair: CU percent change = -70.00519736000001; SU percent change = -1.0530180745010391
+- focal_invicta_macdonaghi_SB_Sb_pair: CU percent change = -54.49683703; SU percent change = 79.87997394629157
+
+Free-topology individual-level mapped ASTRAL4:
+- T_background: same topology as free background = True; RF = 0; recovered background splits = 4/4
+- T_all: same topology as free background = True; RF = 0; recovered background splits = 4/4
+- T_chr16_all: same topology as free background = True; RF = 0; recovered background splits = 4/4
+- T_supergene: same topology as free background = False; RF = 4; recovered background splits = 2/4

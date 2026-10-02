@@ -1,0 +1,5 @@
+split_id	taxa_side	n_taxa_side	branch_role	su_background	su_all	delta_su	relative_delta_su	cu_background_fixed_su_run	cu_all_fixed_su_run	delta_cu_fixed_su_run	relative_delta_cu_fixed_su_run	status
+geminata,inv_mac_SB,inv_mac_Sb,pusillignis,saevissima|richteri_SB,richteri_Sb	richteri_SB,richteri_Sb	2	focal_richteri_SB_Sb_pair	0.00144347	0.00142827	-1.52e-05	-0.010530180745	2.84094	1.14248	-1.69846	-0.597851415377	shared
+geminata,pusillignis,richteri_SB,richteri_Sb,saevissima|inv_mac_SB,inv_mac_Sb	inv_mac_SB,inv_mac_Sb	2	focal_invicta_macdonaghi_SB_Sb_pair	0.000603369	0.00108534	0.000481971	0.798799739463	1.68846	0.958651	-0.729809	-0.432233514564	shared
+geminata,pusillignis,saevissima|inv_mac_SB,inv_mac_Sb,richteri_SB,richteri_Sb	geminata,pusillignis,saevissima	3	focal_four_vs_outgroups	0.000933907	0.000885554	-4.8353e-05	-0.0517749626033	3.91279	4.19117	0.27838	0.071146164246	shared
+geminata,pusillignis|inv_mac_SB,inv_mac_Sb,richteri_SB,richteri_Sb,saevissima	geminata,pusillignis	2	focal_related_internal_branch	0.000578751	0.000528286	-5.0465e-05	-0.0871963936131	2.74929	2.66706	-0.08223	-0.0299095402813	shared
