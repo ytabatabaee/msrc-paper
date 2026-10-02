@@ -1,2 +1,2 @@
-comparison	n_supergene	n_outside	mean_D_supergene	mean_D_outside	delta_D	circular_rank	circular_n	circular_p	coordinate_rank	coordinate_n	coordinate_p	interpretation
-chr16_supergene_vs_chr16_outside	52	44	0.643668243299358	-0.966441620195988	1.610109863495346	2	96	0.0208333333	3	97	0.0309278351	positive_spatial_alignment
+comparison	n_supergene	n_outside	mean_D_supergene	mean_D_outside	delta_D	circular_rank	circular_n	circular_p	coordinate_unique_rank	coordinate_unique_n	coordinate_unique_p	coordinate_length_weighted_p	interpretation
+chr16_supergene_vs_chr16_outside	52	44	0.643668243299358	-0.966441620195988	1.610109863495346	2	96	0.0208333333	3	97	0.0309278351	0.0783290184	positive_spatial_alignment

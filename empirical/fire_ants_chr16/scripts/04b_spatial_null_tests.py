@@ -58,6 +58,8 @@ CIRCULAR_SHIFTS = EMPIRICAL_ROOT / "results" / "stage4b_circular_shifts.tsv"
 PRIMARY_TEST = EMPIRICAL_ROOT / "results" / "stage4b_primary_test.tsv"
 COORDINATE_PLACEMENTS = EMPIRICAL_ROOT / "results" / "stage4b_coordinate_placements.tsv"
 COORDINATE_SUMMARY = EMPIRICAL_ROOT / "results" / "stage4b_coordinate_summary.tsv"
+COORDINATE_LENGTH_WEIGHTED = EMPIRICAL_ROOT / "results" / "stage4b_coordinate_length_weighted.tsv"
+COORDINATE_LENGTH_WEIGHTED_SUMMARY = EMPIRICAL_ROOT / "results" / "stage4b_coordinate_length_weighted_summary.tsv"
 BOUNDARY_CONTEXT = EMPIRICAL_ROOT / "results" / "stage4b_boundary_context.tsv"
 MAIN_TABLE = EMPIRICAL_ROOT / "results" / "stage4b_main_table.tsv"
 REPORT = EMPIRICAL_ROOT / "results" / "stage4b_report.md"
@@ -68,6 +70,8 @@ CIRCULAR_NULL_PDF = EMPIRICAL_ROOT / "figures" / "fire_ants_chr16_circular_null.
 CIRCULAR_NULL_PNG = EMPIRICAL_ROOT / "figures" / "fire_ants_chr16_circular_null.png"
 COORDINATE_NULL_PDF = EMPIRICAL_ROOT / "figures" / "fire_ants_chr16_coordinate_null.pdf"
 COORDINATE_NULL_PNG = EMPIRICAL_ROOT / "figures" / "fire_ants_chr16_coordinate_null.png"
+COORDINATE_LENGTH_WEIGHTED_PDF = EMPIRICAL_ROOT / "figures" / "fire_ants_chr16_coordinate_length_weighted.pdf"
+COORDINATE_LENGTH_WEIGHTED_PNG = EMPIRICAL_ROOT / "figures" / "fire_ants_chr16_coordinate_length_weighted.png"
 SPATIAL_TEST_PDF = EMPIRICAL_ROOT / "figures" / "fire_ants_chr16_spatial_test.pdf"
 SPATIAL_TEST_PNG = EMPIRICAL_ROOT / "figures" / "fire_ants_chr16_spatial_test.png"
 
@@ -86,6 +90,7 @@ EXPECTED_STAGE4A_MANIFEST_SHA = "d1fa79815bbe4d1f45a2af7f5a1d5487d39fe3041ccac4f
 EXPECTED_REGION_COUNTS = {"chr1": 117, "chr16A": 42, "chr16B": 2, "chr16_supergene": 52}
 EXPECTED_CLASS_COUNTS = {"species": 315, "haplotype": 315, "third": 315}
 EXPECTED_DELTA_D = Decimal("1.610109863495346")
+EXPECTED_LENGTH_WEIGHTED_P = Decimal("0.07832901837")
 
 DECIMAL_PLACES = Decimal("0.000000000000000")
 P_DECIMAL_PLACES = Decimal("0.0000000000")
@@ -107,6 +112,8 @@ class AnalysisResults:
     primary_row: dict[str, object]
     coordinate_rows: list[dict[str, object]]
     coordinate_summary: dict[str, object]
+    coordinate_length_weighted_rows: list[dict[str, object]]
+    coordinate_length_weighted_summary: dict[str, object]
     boundary_rows: list[dict[str, object]]
 
 
@@ -450,11 +457,10 @@ def membership_key(rows: list[dict[str, object]], start: Decimal, width: Decimal
     return tuple(row["window_index"] for row in rows if start <= row["mid"] <= end)
 
 
-def coordinate_null(
+def coordinate_domain_events(
     chr16_rows: list[dict[str, object]],
     region_spans: dict[str, dict[str, object]],
-    observed_delta: Decimal,
-) -> tuple[list[dict[str, object]], dict[str, object]]:
+) -> dict[str, object]:
     supergene_span = region_spans["chr16_supergene"]
     observed_start = supergene_span["coordinate_start"]
     observed_end = supergene_span["coordinate_end"]
@@ -470,12 +476,45 @@ def coordinate_null(
         raise Stage4BError("observed supergene interval is outside the chr16 analysis domain")
 
     mids = [row["mid"] for row in chr16_rows]
-    event_starts = sorted(set(mids + [mid - width for mid in mids]))
-    valid_events = [value for value in event_starts if min_start <= value <= max_start]
+    raw_events = sorted(set(mids + [mid - width for mid in mids]))
+    valid_events = [value for value in raw_events if min_start <= value <= max_start]
+    breakpoints = sorted(set([min_start, max_start, *valid_events]))
+    if breakpoints[0] != min_start or breakpoints[-1] != max_start:
+        raise Stage4BError("coordinate event partition does not include both start-domain endpoints")
+    return {
+        "observed_start": observed_start,
+        "observed_end": observed_end,
+        "width": width,
+        "domain_start": domain_start,
+        "domain_end": domain_end,
+        "min_start": min_start,
+        "max_start": max_start,
+        "mids": mids,
+        "raw_events": raw_events,
+        "valid_events": valid_events,
+        "breakpoints": breakpoints,
+    }
+
+
+def coordinate_null(
+    chr16_rows: list[dict[str, object]],
+    region_spans: dict[str, dict[str, object]],
+    observed_delta: Decimal,
+) -> tuple[list[dict[str, object]], dict[str, object]]:
+    domain = coordinate_domain_events(chr16_rows, region_spans)
+    observed_start = domain["observed_start"]
+    observed_end = domain["observed_end"]
+    width = domain["width"]
+    domain_start = domain["domain_start"]
+    domain_end = domain["domain_end"]
+    min_start = domain["min_start"]
+    max_start = domain["max_start"]
+    event_starts = domain["raw_events"]
+    valid_events = domain["valid_events"]
+    breakpoints = domain["breakpoints"]
     representative_starts: dict[Decimal, str] = {min_start: "domain_start", max_start: "domain_end_minus_width", observed_start: "observed_interval"}
     for value in valid_events:
         representative_starts[value] = "boundary_event"
-    breakpoints = sorted(set([min_start, max_start, *valid_events]))
     for left, right in zip(breakpoints, breakpoints[1:], strict=False):
         if left < right:
             representative_starts[(left + right) / Decimal("2")] = "between_boundary_events"
@@ -555,7 +594,7 @@ def coordinate_null(
     n_ge = sum(1 for row in placement_rows if row["exceeds_or_equals_observed"])
     p_coordinate = Decimal(n_ge) / Decimal(len(placement_rows))
     summary = {
-        "test": "physical_coordinate_same_width_interval_sensitivity",
+        "test": "unique_membership_state_coordinate_sensitivity",
         "observed_delta_D": fmt_decimal(observed_delta),
         "coordinate_width_source": rel(REGION_MANIFEST),
         "observed_interval_start": str(observed_start),
@@ -567,15 +606,87 @@ def coordinate_null(
         "candidate_boundary_events": len(event_starts),
         "valid_boundary_events": len(valid_events),
         "valid_starts_considered": len(valid_starts),
-        "unique_window_membership_sets": len(placement_rows),
-        "observed_rank": observed_rank,
+        "n_unique_membership_states": len(placement_rows),
+        "rank_unique_membership": observed_rank,
         "n_ge_observed": n_ge,
-        "p_coordinate": fmt_p(p_coordinate),
+        "p_unique_membership": fmt_p(p_coordinate),
         "alternative": "Delta_D > 0",
         "enumeration_rule": "unique candidate starts induced by s=x_i and s=x_i-L boundary events, chr16 domain boundaries, observed interval, and deterministic between-event representatives; exact inside-window sets deduplicated",
+        "weighting": "equal weight per distinct sampled-window membership state, regardless of the physical start-coordinate length producing that state",
         "arbitrary_grid_spacing_used": False,
     }
     return placement_rows, summary
+
+
+def coordinate_length_weighted_null(
+    chr16_rows: list[dict[str, object]],
+    region_spans: dict[str, dict[str, object]],
+    observed_delta: Decimal,
+) -> tuple[list[dict[str, object]], dict[str, object]]:
+    domain = coordinate_domain_events(chr16_rows, region_spans)
+    width = domain["width"]
+    min_start = domain["min_start"]
+    max_start = domain["max_start"]
+    breakpoints = domain["breakpoints"]
+    total_length = max_start - min_start
+    if total_length <= 0:
+        raise Stage4BError("coordinate start domain has non-positive length")
+
+    rows_by_index = {row["window_index"]: row for row in chr16_rows}
+    segment_rows: list[dict[str, object]] = []
+    extreme_length = Decimal("0")
+    for segment_id, (left, right) in enumerate(zip(breakpoints, breakpoints[1:]), start=1):
+        length = right - left
+        if length <= 0:
+            raise Stage4BError("coordinate event partition contains a non-positive segment")
+        representative_start = (left + right) / Decimal("2")
+        key = membership_key(chr16_rows, representative_start, width)
+        if not key or len(key) == len(chr16_rows):
+            raise Stage4BError("continuous coordinate segment has an invalid inside/outside split")
+        inside = [rows_by_index[index] for index in key]
+        outside = [row for row in chr16_rows if row["window_index"] not in set(key)]
+        delta, mean_inside, mean_outside = delta_for_rows(inside, outside, "D")
+        exceeds = delta >= observed_delta - TIE_TOLERANCE
+        if exceeds:
+            extreme_length += length
+        segment_rows.append(
+            {
+                "segment_id": segment_id,
+                "start_min": str(left),
+                "start_max": str(right),
+                "segment_length": str(length),
+                "representative_start": str(representative_start),
+                "n_inside_windows": len(inside),
+                "n_outside_windows": len(outside),
+                "inside_window_indices": ";".join(str(index) for index in key),
+                "delta_D": fmt_decimal(delta),
+                "mean_D_inside": fmt_decimal(mean_inside),
+                "mean_D_outside": fmt_decimal(mean_outside),
+                "exceeds_or_equals_observed": exceeds,
+            }
+        )
+
+    summed_length = sum((Decimal(row["segment_length"]) for row in segment_rows), Decimal("0"))
+    if summed_length != total_length:
+        raise Stage4BError(f"coordinate segments sum to {summed_length}, expected {total_length}")
+    p_length_weighted = extreme_length / total_length
+    if abs(p_length_weighted - EXPECTED_LENGTH_WEIGHTED_P) > Decimal("0.00000000001"):
+        raise Stage4BError(f"length-weighted p expected near {EXPECTED_LENGTH_WEIGHTED_P}, observed {p_length_weighted}")
+    summary = {
+        "observed_delta_D": fmt_decimal(observed_delta),
+        "interval_width": str(width),
+        "start_domain_min": str(min_start),
+        "start_domain_max": str(max_start),
+        "total_start_domain_length": str(total_length),
+        "n_constant_membership_segments": len(segment_rows),
+        "extreme_start_domain_length": str(extreme_length),
+        "p_length_weighted": fmt_p(p_length_weighted),
+        "alternative": "Delta_D > 0",
+        "null_description": "continuous coordinate sensitivity with interval start uniformly distributed on the valid physical start-coordinate domain; constant-membership segments weighted by physical start-coordinate length",
+        "event_rule": "events are generated only from chr16 window midpoints x_i, x_i-L, and the start-domain endpoints",
+        "arbitrary_grid_spacing_used": False,
+    }
+    return segment_rows, summary
 
 
 def boundary_context(chr16_rows: list[dict[str, object]], region_spans: dict[str, dict[str, object]]) -> list[dict[str, object]]:
@@ -683,13 +794,48 @@ def write_primary_outputs(results: AnalysisResults) -> None:
             "candidate_boundary_events",
             "valid_boundary_events",
             "valid_starts_considered",
-            "unique_window_membership_sets",
-            "observed_rank",
+            "n_unique_membership_states",
+            "rank_unique_membership",
             "n_ge_observed",
-            "p_coordinate",
+            "p_unique_membership",
             "alternative",
             "enumeration_rule",
+            "weighting",
             "arbitrary_grid_spacing_used",
+        ],
+    )
+    write_tsv(
+        COORDINATE_LENGTH_WEIGHTED,
+        results.coordinate_length_weighted_rows,
+        [
+            "segment_id",
+            "start_min",
+            "start_max",
+            "segment_length",
+            "representative_start",
+            "n_inside_windows",
+            "n_outside_windows",
+            "inside_window_indices",
+            "delta_D",
+            "mean_D_inside",
+            "mean_D_outside",
+            "exceeds_or_equals_observed",
+        ],
+    )
+    write_tsv(
+        COORDINATE_LENGTH_WEIGHTED_SUMMARY,
+        [results.coordinate_length_weighted_summary],
+        [
+            "observed_delta_D",
+            "interval_width",
+            "start_domain_min",
+            "start_domain_max",
+            "total_start_domain_length",
+            "n_constant_membership_segments",
+            "extreme_start_domain_length",
+            "p_length_weighted",
+            "alternative",
+            "null_description",
         ],
     )
     write_tsv(
@@ -720,9 +866,10 @@ def write_primary_outputs(results: AnalysisResults) -> None:
         "circular_rank": results.primary_row["observed_rank"],
         "circular_n": results.primary_row["n_exact_alignments"],
         "circular_p": results.primary_row["p_one_sided"],
-        "coordinate_rank": results.coordinate_summary["observed_rank"],
-        "coordinate_n": results.coordinate_summary["unique_window_membership_sets"],
-        "coordinate_p": results.coordinate_summary["p_coordinate"],
+        "coordinate_unique_rank": results.coordinate_summary["rank_unique_membership"],
+        "coordinate_unique_n": results.coordinate_summary["n_unique_membership_states"],
+        "coordinate_unique_p": results.coordinate_summary["p_unique_membership"],
+        "coordinate_length_weighted_p": results.coordinate_length_weighted_summary["p_length_weighted"],
         "interpretation": "positive_spatial_alignment",
     }
     write_tsv(
@@ -738,9 +885,10 @@ def write_primary_outputs(results: AnalysisResults) -> None:
             "circular_rank",
             "circular_n",
             "circular_p",
-            "coordinate_rank",
-            "coordinate_n",
-            "coordinate_p",
+            "coordinate_unique_rank",
+            "coordinate_unique_n",
+            "coordinate_unique_p",
+            "coordinate_length_weighted_p",
             "interpretation",
         ],
     )
@@ -788,6 +936,33 @@ def plot_coordinate_null(coordinate_rows: list[dict[str, object]], observed_delt
     plt.close(fig)
 
 
+def plot_coordinate_length_weighted(
+    segment_rows: list[dict[str, object]],
+    observed_delta: Decimal,
+    region_spans: dict[str, dict[str, object]],
+) -> None:
+    fig, ax = plt.subplots(figsize=(7.6, 4.3))
+    for row in segment_rows:
+        start = float(Decimal(row["start_min"])) / 1_000_000
+        end = float(Decimal(row["start_max"])) / 1_000_000
+        y = float(Decimal(row["delta_D"]))
+        color = "#b23a48" if row["exceeds_or_equals_observed"] else "#4c78a8"
+        ax.hlines(y, start, end, color=color, linewidth=2.0, alpha=0.88)
+    observed_start = float(region_spans["chr16_supergene"]["coordinate_start"]) / 1_000_000
+    ax.axhline(float(observed_delta), color="#b23a48", linewidth=1.2, label="observed Delta_D")
+    ax.axvline(observed_start, color="#222222", linewidth=1.0, linestyle=":", label="observed supergene start")
+    ax.set_xlabel("interval start coordinate on chr16 (Mb)")
+    ax.set_ylabel("Delta_D")
+    ax.set_title("Uniform physical-start coordinate sensitivity")
+    ax.grid(axis="y", color="#eeeeee", linewidth=0.6)
+    ax.legend(frameon=False, loc="best")
+    fig.tight_layout()
+    with PdfPages(COORDINATE_LENGTH_WEIGHTED_PDF, metadata={"CreationDate": None, "ModDate": None}) as pdf:
+        pdf.savefig(fig)
+    fig.savefig(COORDINATE_LENGTH_WEIGHTED_PNG, dpi=220)
+    plt.close(fig)
+
+
 def plot_spatial_summary(chr16_rows: list[dict[str, object]], circular_rows: list[dict[str, object]], region_spans: dict[str, dict[str, object]], observed_delta: Decimal) -> None:
     fig, axes = plt.subplots(2, 1, figsize=(8.2, 7.0))
     ax = axes[0]
@@ -824,6 +999,7 @@ def plot_spatial_summary(chr16_rows: list[dict[str, object]], circular_rows: lis
 def make_figures(results: AnalysisResults) -> None:
     plot_circular_null(results.circular_rows, results.observed["delta_D"])
     plot_coordinate_null(results.coordinate_rows, results.observed["delta_D"])
+    plot_coordinate_length_weighted(results.coordinate_length_weighted_rows, results.observed["delta_D"], results.region_spans)
     plot_spatial_summary(results.chr16_rows, results.circular_rows, results.region_spans, results.observed["delta_D"])
 
 
@@ -857,14 +1033,17 @@ def write_report(results: AnalysisResults) -> None:
         f"Observed rank among 96 shifts: `{results.primary_row['observed_rank']}`. `n_ge_observed = {results.primary_row['n_ge_observed']}`. Exact one-sided `p = {results.primary_row['p_one_sided']}`.\n\n"
         "## Physical-coordinate sensitivity\n\n"
         f"The same-width interval uses the frozen Stage-0 supergene span from `{rel(REGION_MANIFEST)}`: start `{results.coordinate_summary['observed_interval_start']}`, end `{results.coordinate_summary['observed_interval_end']}`, width `{results.coordinate_summary['interval_width']}` bp. The chr16 analysis domain is defined conservatively as the minimum source window start and maximum source window end among frozen chr16 Stage-4A windows: `{results.coordinate_summary['analysis_domain_start']}` to `{results.coordinate_summary['analysis_domain_end']}`.\n\n"
-        "The coordinate null enumerates starts induced by fixed-width interval boundary events `s=x_i` and `s=x_i-L`, plus domain boundaries, the observed interval, and deterministic between-event representatives, then deduplicates exact inside-window membership sets. No arbitrary sliding grid is used.\n\n"
-        f"Unique coordinate placements: `{results.coordinate_summary['unique_window_membership_sets']}`. Observed rank: `{results.coordinate_summary['observed_rank']}`. `n_ge_observed = {results.coordinate_summary['n_ge_observed']}`. Coordinate sensitivity `p = {results.coordinate_summary['p_coordinate']}`.\n\n"
-        "This sensitivity preserves physical interval width and irregularly spaced window coordinates, but the number of sampled windows inside candidate intervals may vary. It is not the primary P-value.\n\n"
+        "Secondary sensitivity 1 is the original unique-membership-state coordinate sensitivity. It enumerates starts induced by fixed-width interval boundary events `s=x_i` and `s=x_i-L`, plus domain boundaries, the observed interval, and deterministic between-event representatives, then deduplicates exact inside-window membership sets. Each distinct sampled-window membership pattern receives equal weight regardless of how much physical start-coordinate range produces it.\n\n"
+        f"Unique membership states: `{results.coordinate_summary['n_unique_membership_states']}`. Observed rank: `{results.coordinate_summary['rank_unique_membership']}`. `n_ge_observed = {results.coordinate_summary['n_ge_observed']}`. Equal-weight unique-membership `p = {results.coordinate_summary['p_unique_membership']}`.\n\n"
+        "Secondary sensitivity 2 is the continuous physical-coordinate null. It partitions the allowed interval-start domain exactly at events generated only by `x_i`, `x_i-L`, and the domain endpoints. Open intervals between adjacent events are weighted by their physical start-coordinate length, which corresponds to drawing the interval start uniformly over the valid physical domain.\n\n"
+        f"Continuous start domain: `{results.coordinate_length_weighted_summary['start_domain_min']}` to `{results.coordinate_length_weighted_summary['start_domain_max']}` bp, total length `{results.coordinate_length_weighted_summary['total_start_domain_length']}` bp. Extreme start-coordinate length: `{results.coordinate_length_weighted_summary['extreme_start_domain_length']}` bp. Length-weighted physical-coordinate `p = {results.coordinate_length_weighted_summary['p_length_weighted']}`.\n\n"
+        "No arbitrary coordinate grid is used in either coordinate sensitivity. These coordinate analyses are secondary sensitivities, not the primary P-value.\n\n"
         "## Boundary context\n\n"
         "Nearest-window context around the independently frozen supergene boundaries is reported without fitting a change point or moving boundaries:\n\n"
         f"{boundary_preview}\n\n"
         "## Results\n\n"
-        f"The primary circular null gives exact one-sided `p = {results.primary_row['p_one_sided']}` with observed `Delta_D = {fmt_decimal(results.observed['delta_D'])}`. The coordinate-aware sensitivity gives `p = {results.coordinate_summary['p_coordinate']}` over `{results.coordinate_summary['unique_window_membership_sets']}` unique same-width physical placements.\n\n"
+        f"Primary: exact 96-alignment circular shift, observed rank `{results.primary_row['observed_rank']}`, `p = {results.primary_row['p_one_sided']}`. Secondary sensitivity 1: equal-weight unique membership states, `p = {results.coordinate_summary['p_unique_membership']}`. Secondary sensitivity 2: continuous uniform physical interval start, `p = {results.coordinate_length_weighted_summary['p_length_weighted']}`.\n\n"
+        "The primary window-space circular null places the observed supergene alignment second among 96 possible alignments. A coordinate-aware analysis remains supportive but is more conservative when candidate placements are weighted by the amount of physical start-coordinate space producing each sampled-window membership pattern.\n\n"
         "Dominance-pattern summary is descriptive only. Chr16 outside windows are "
         f"{outside_dominance_counts['species']}/44 species-dominant. Chr16 supergene windows are species={dominance_counts['species']}, haplotype={dominance_counts['haplotype']}, third={dominance_counts['third']}.\n\n"
         "## Interpretation\n\n"
@@ -921,6 +1100,8 @@ def write_manifest(stage1: dict[str, object], stage2: dict[str, object], stage3:
         PRIMARY_TEST,
         COORDINATE_PLACEMENTS,
         COORDINATE_SUMMARY,
+        COORDINATE_LENGTH_WEIGHTED,
+        COORDINATE_LENGTH_WEIGHTED_SUMMARY,
         BOUNDARY_CONTEXT,
         MAIN_TABLE,
         REPORT,
@@ -931,6 +1112,8 @@ def write_manifest(stage1: dict[str, object], stage2: dict[str, object], stage3:
         CIRCULAR_NULL_PNG,
         COORDINATE_NULL_PDF,
         COORDINATE_NULL_PNG,
+        COORDINATE_LENGTH_WEIGHTED_PDF,
+        COORDINATE_LENGTH_WEIGHTED_PNG,
         SPATIAL_TEST_PDF,
         SPATIAL_TEST_PNG,
     ]
@@ -968,9 +1151,16 @@ def write_manifest(stage1: dict[str, object], stage2: dict[str, object], stage3:
         "observed_circular_rank": results.primary_row["observed_rank"],
         "coordinate_width_source": rel(REGION_MANIFEST),
         "physical_interval_width": results.coordinate_summary["interval_width"],
+        "coordinate_unique_membership_null": True,
+        "coordinate_uniform_start_null": True,
         "coordinate_null_enumeration_rule": results.coordinate_summary["enumeration_rule"],
-        "number_unique_coordinate_placements": results.coordinate_summary["unique_window_membership_sets"],
-        "coordinate_sensitivity_p_value": results.coordinate_summary["p_coordinate"],
+        "number_unique_coordinate_placements": results.coordinate_summary["n_unique_membership_states"],
+        "unique_membership_coordinate_p_value": results.coordinate_summary["p_unique_membership"],
+        "length_weighted_coordinate_p_value": results.coordinate_length_weighted_summary["p_length_weighted"],
+        "coordinate_start_domain_min": results.coordinate_length_weighted_summary["start_domain_min"],
+        "coordinate_start_domain_max": results.coordinate_length_weighted_summary["start_domain_max"],
+        "coordinate_total_start_domain_length": results.coordinate_length_weighted_summary["total_start_domain_length"],
+        "coordinate_extreme_start_domain_length": results.coordinate_length_weighted_summary["extreme_start_domain_length"],
         "output_checksums": {rel(path): sha256(path) for path in result_outputs},
         "figure_checksums": {rel(path): sha256(path) for path in figure_outputs},
         "processing_script": {
@@ -982,7 +1172,11 @@ def write_manifest(stage1: dict[str, object], stage2: dict[str, object], stage3:
         "msrc_model_fit": False,
         "boundaries_optimized": False,
         "arbitrary_coordinate_grid_used": False,
-        "inferential_tests_performed": ["exact_circular_shift_null_primary", "physical_coordinate_same_width_interval_sensitivity"],
+        "inferential_tests_performed": [
+            "exact_circular_shift_null_primary",
+            "unique_membership_state_coordinate_sensitivity",
+            "continuous_uniform_start_coordinate_sensitivity",
+        ],
     }
     MANIFEST.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n")
 
@@ -995,6 +1189,7 @@ def build_results() -> tuple[dict[str, object], dict[str, object], dict[str, obj
     chr16_rows = physical_chr16_rows(window_rows)
     circular_rows, primary_row = calculate_circular_null(chr16_rows, observed["delta_D"])
     coordinate_rows, coordinate_summary = coordinate_null(chr16_rows, region_spans, observed["delta_D"])
+    coordinate_length_weighted_rows, coordinate_length_weighted_summary = coordinate_length_weighted_null(chr16_rows, region_spans, observed["delta_D"])
     boundary_rows = boundary_context(chr16_rows, region_spans)
     results = AnalysisResults(
         window_rows=window_rows,
@@ -1005,6 +1200,8 @@ def build_results() -> tuple[dict[str, object], dict[str, object], dict[str, obj
         primary_row=primary_row,
         coordinate_rows=coordinate_rows,
         coordinate_summary=coordinate_summary,
+        coordinate_length_weighted_rows=coordinate_length_weighted_rows,
+        coordinate_length_weighted_summary=coordinate_length_weighted_summary,
         boundary_rows=boundary_rows,
     )
     return stage1, stage2, stage3, stage4a, results
@@ -1022,9 +1219,10 @@ def run_stage4b(update_readme_file: bool = True) -> dict[str, object]:
         "observed_delta_D": fmt_decimal(results.observed["delta_D"]),
         "circular_rank": results.primary_row["observed_rank"],
         "circular_p": results.primary_row["p_one_sided"],
-        "coordinate_rank": results.coordinate_summary["observed_rank"],
-        "coordinate_p": results.coordinate_summary["p_coordinate"],
-        "unique_coordinate_placements": results.coordinate_summary["unique_window_membership_sets"],
+        "coordinate_unique_rank": results.coordinate_summary["rank_unique_membership"],
+        "coordinate_unique_p": results.coordinate_summary["p_unique_membership"],
+        "unique_coordinate_placements": results.coordinate_summary["n_unique_membership_states"],
+        "coordinate_length_weighted_p": results.coordinate_length_weighted_summary["p_length_weighted"],
         "manifest_sha": sha256(MANIFEST),
     }
 
@@ -1060,6 +1258,8 @@ class Stage4BTests(unittest.TestCase):
     def test_circular_null_properties(self) -> None:
         self.assertEqual(len(self.results.circular_rows), 96)
         self.assertEqual(Decimal(self.results.circular_rows[0]["delta_D"]), EXPECTED_DELTA_D)
+        self.assertEqual(self.results.primary_row["observed_rank"], 2)
+        self.assertEqual(self.results.primary_row["p_one_sided"], "0.0208333333")
         mask = [row["region"] == "chr16_supergene" for row in self.results.chr16_rows]
         self.assertEqual(sum(mask), 52)
         self.assertEqual(len(mask) - sum(mask), 44)
@@ -1072,6 +1272,9 @@ class Stage4BTests(unittest.TestCase):
 
     def test_coordinate_sensitivity_properties(self) -> None:
         self.assertEqual(self.results.coordinate_summary["interval_width"], "16237060")
+        self.assertEqual(self.results.coordinate_summary["n_unique_membership_states"], 97)
+        self.assertEqual(self.results.coordinate_summary["rank_unique_membership"], 3)
+        self.assertEqual(self.results.coordinate_summary["p_unique_membership"], "0.0309278351")
         observed = [row for row in self.results.coordinate_rows if row["is_observed_interval"]]
         self.assertEqual(len(observed), 1)
         indices = set(int(value) for value in observed[0]["inside_window_indices"].split(";"))
@@ -1084,6 +1287,54 @@ class Stage4BTests(unittest.TestCase):
         self.assertEqual(len(membership_sets), len(set(membership_sets)))
         self.assertIn("s=x_i", self.results.coordinate_summary["enumeration_rule"])
         self.assertFalse(self.results.coordinate_summary["arbitrary_grid_spacing_used"])
+
+    def test_coordinate_length_weighted_properties(self) -> None:
+        domain = coordinate_domain_events(self.results.chr16_rows, self.results.region_spans)
+        self.assertEqual(domain["width"], Decimal("16237060"))
+        self.assertEqual(domain["min_start"], Decimal("23916"))
+        self.assertEqual(domain["max_start"], Decimal("12706521"))
+        expected_events = sorted(
+            set(
+                [domain["min_start"], domain["max_start"]]
+                + [
+                    event
+                    for row in self.results.chr16_rows
+                    for event in (row["mid"], row["mid"] - domain["width"])
+                    if domain["min_start"] <= event <= domain["max_start"]
+                ]
+            )
+        )
+        self.assertEqual(domain["breakpoints"], expected_events)
+        segment_lengths = [Decimal(row["segment_length"]) for row in self.results.coordinate_length_weighted_rows]
+        self.assertEqual(sum(segment_lengths, Decimal("0")), domain["max_start"] - domain["min_start"])
+        self.assertEqual(self.results.coordinate_length_weighted_summary["total_start_domain_length"], "12682605")
+        self.assertEqual(self.results.coordinate_length_weighted_summary["extreme_start_domain_length"], "993416")
+        self.assertEqual(self.results.coordinate_length_weighted_summary["p_length_weighted"], "0.0783290184")
+        self.assertAlmostEqual(
+            float(Decimal(self.results.coordinate_length_weighted_summary["p_length_weighted"])),
+            float(EXPECTED_LENGTH_WEIGHTED_P),
+            places=10,
+        )
+        extreme_segments = [row for row in self.results.coordinate_length_weighted_rows if row["exceeds_or_equals_observed"]]
+        self.assertEqual([(row["start_min"], row["start_max"]) for row in extreme_segments], [("11667901", "11700079"), ("11700079", "12432739"), ("12432739", "12661317")])
+        for row in self.results.coordinate_length_weighted_rows:
+            left = Decimal(row["start_min"])
+            right = Decimal(row["start_max"])
+            midpoint_key = membership_key(self.results.chr16_rows, (left + right) / Decimal("2"), domain["width"])
+            first_quarter_key = membership_key(self.results.chr16_rows, left + (right - left) / Decimal("4"), domain["width"])
+            third_quarter_key = membership_key(self.results.chr16_rows, left + (right - left) * Decimal("3") / Decimal("4"), domain["width"])
+            self.assertEqual(midpoint_key, first_quarter_key)
+            self.assertEqual(midpoint_key, third_quarter_key)
+        length_weighted_numerator = sum(Decimal(row["segment_length"]) for row in self.results.coordinate_length_weighted_rows if row["exceeds_or_equals_observed"])
+        count_weighted_numerator = sum(1 for row in self.results.coordinate_length_weighted_rows if row["exceeds_or_equals_observed"])
+        self.assertEqual(length_weighted_numerator, Decimal("993416"))
+        self.assertNotEqual(
+            Decimal(count_weighted_numerator) / Decimal(len(self.results.coordinate_length_weighted_rows)),
+            Decimal(self.results.coordinate_length_weighted_summary["p_length_weighted"]),
+        )
+        rows2, summary2 = coordinate_length_weighted_null(self.results.chr16_rows, self.results.region_spans, self.results.observed["delta_D"])
+        self.assertEqual(rows2, self.results.coordinate_length_weighted_rows)
+        self.assertEqual(summary2, self.results.coordinate_length_weighted_summary)
 
     def test_no_forbidden_stage4b_actions(self) -> None:
         script = Path(__file__).read_text()
@@ -1112,6 +1363,8 @@ class Stage4BTests(unittest.TestCase):
             PRIMARY_TEST,
             COORDINATE_PLACEMENTS,
             COORDINATE_SUMMARY,
+            COORDINATE_LENGTH_WEIGHTED,
+            COORDINATE_LENGTH_WEIGHTED_SUMMARY,
             BOUNDARY_CONTEXT,
             MAIN_TABLE,
             REPORT,
@@ -1119,6 +1372,8 @@ class Stage4BTests(unittest.TestCase):
             CIRCULAR_NULL_PNG,
             COORDINATE_NULL_PDF,
             COORDINATE_NULL_PNG,
+            COORDINATE_LENGTH_WEIGHTED_PDF,
+            COORDINATE_LENGTH_WEIGHTED_PNG,
             SPATIAL_TEST_PDF,
             SPATIAL_TEST_PNG,
             MANIFEST,

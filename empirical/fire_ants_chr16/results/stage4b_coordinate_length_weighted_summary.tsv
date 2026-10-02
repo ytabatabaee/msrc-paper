@@ -1,0 +1,2 @@
+observed_delta_D	interval_width	start_domain_min	start_domain_max	total_start_domain_length	n_constant_membership_segments	extreme_start_domain_length	p_length_weighted	alternative	null_description
+1.610109863495346	16237060	23916	12706521	12682605	97	993416	0.0783290184	Delta_D > 0	continuous coordinate sensitivity with interval start uniformly distributed on the valid physical start-coordinate domain; constant-membership segments weighted by physical start-coordinate length

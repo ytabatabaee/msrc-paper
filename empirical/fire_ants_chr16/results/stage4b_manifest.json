@@ -3,14 +3,21 @@
   "astER_or_astral_run": false,
   "boundaries_optimized": false,
   "comparison_tolerance": "1E-12",
+  "coordinate_extreme_start_domain_length": "993416",
   "coordinate_null_enumeration_rule": "unique candidate starts induced by s=x_i and s=x_i-L boundary events, chr16 domain boundaries, observed interval, and deterministic between-event representatives; exact inside-window sets deduplicated",
-  "coordinate_sensitivity_p_value": "0.0309278351",
+  "coordinate_start_domain_max": "12706521",
+  "coordinate_start_domain_min": "23916",
+  "coordinate_total_start_domain_length": "12682605",
+  "coordinate_uniform_start_null": true,
+  "coordinate_unique_membership_null": true,
   "coordinate_width_source": "data/fire_ants_chr16/metadata/region_manifest.tsv",
   "description": "Predeclared spatial-null inference for frozen fire-ant chromosome-16 Stage-4A support track.",
   "exact_circular_p_value": "0.0208333333",
   "figure_checksums": {
     "empirical/fire_ants_chr16/figures/fire_ants_chr16_circular_null.pdf": "45798879bc6620fc4cc3cc52b30c9438018eac40980d0ae97bc8ca6f8132cc98",
     "empirical/fire_ants_chr16/figures/fire_ants_chr16_circular_null.png": "5341ea0dc172852a883067e9c134174753728c3e5bd6d2610897d8ef87e6ad34",
+    "empirical/fire_ants_chr16/figures/fire_ants_chr16_coordinate_length_weighted.pdf": "ac58304c02e81d69b7bee43d4dce901e3b7c51c88c86107ca1ce683ceaefcb93",
+    "empirical/fire_ants_chr16/figures/fire_ants_chr16_coordinate_length_weighted.png": "f02a701720623c05fcf29ec15f59336d408837f2c5d236d4a33946925e3bd632",
     "empirical/fire_ants_chr16/figures/fire_ants_chr16_coordinate_null.pdf": "4f557e51dfa190caeece1f3d51c423c002d81d7c24a0d3a72924996cd94cf0c0",
     "empirical/fire_ants_chr16/figures/fire_ants_chr16_coordinate_null.png": "9fcd81ff52ba4bc63e13b95cf8e559d3d2247183dd32c4aa2262413f6c7d8970",
     "empirical/fire_ants_chr16/figures/fire_ants_chr16_spatial_test.pdf": "a6ee9153672bd40f7e1a8de84bad46a53081d2285948c4e0b15b484c9965156c",
@@ -18,8 +25,10 @@
   },
   "inferential_tests_performed": [
     "exact_circular_shift_null_primary",
-    "physical_coordinate_same_width_interval_sensitivity"
+    "unique_membership_state_coordinate_sensitivity",
+    "continuous_uniform_start_coordinate_sensitivity"
   ],
+  "length_weighted_coordinate_p_value": "0.0783290184",
   "msrc_model_fit": false,
   "n_chr16_windows": 96,
   "n_circular_shifts": 96,
@@ -31,11 +40,13 @@
     "empirical/fire_ants_chr16/results/stage4b_boundary_context.tsv": "e3799be629d62a2b0c9b98b52c3cd70113d8c497d174c0328f723c6b78e375d2",
     "empirical/fire_ants_chr16/results/stage4b_chr16_physical_order.tsv": "4535ccfe0fcac24f3b7e1f43d59242a5dd25c090813b61e114be8712f3d04eed",
     "empirical/fire_ants_chr16/results/stage4b_circular_shifts.tsv": "ec6a8a65a962ed7957c77305ada7d05ba4832ab14a5a6a50891ec358262469a4",
+    "empirical/fire_ants_chr16/results/stage4b_coordinate_length_weighted.tsv": "8d8416b51b1e2e826db478d1d91a3b27d7369c9c2eec4fa2faaf2e996f6a57a9",
+    "empirical/fire_ants_chr16/results/stage4b_coordinate_length_weighted_summary.tsv": "18bfc7e10b398a577c6e10af86335f4448a9f93cd4f773e6d939179982511e21",
     "empirical/fire_ants_chr16/results/stage4b_coordinate_placements.tsv": "3e3e36877f2e391365324d7971e48365827889e9921d9e20fb24d659a28b70bf",
-    "empirical/fire_ants_chr16/results/stage4b_coordinate_summary.tsv": "ead076f022e4637ee58ac3ba88c036d1420d8001b61aa436171f405094c060b4",
-    "empirical/fire_ants_chr16/results/stage4b_main_table.tsv": "0cd5434315d9a3a16249752452c6b49c72d3935f81c246095d778983143cbc15",
+    "empirical/fire_ants_chr16/results/stage4b_coordinate_summary.tsv": "bd9c8a2f5fa5de7ed8feae7b54d0fa7e4c5fbb3663866e3bbf8d6e676d583eaf",
+    "empirical/fire_ants_chr16/results/stage4b_main_table.tsv": "673ce7e1450865ed242813af3cf79ac3aae632ef51b31eb33729cf69e62ad480",
     "empirical/fire_ants_chr16/results/stage4b_primary_test.tsv": "310fe14c9cdb0e4d4ba6b1b9355498cfa1e845e56de119061f395c7011d9ec8b",
-    "empirical/fire_ants_chr16/results/stage4b_report.md": "c1e9d7136d2b869c5615fa913d7a7d997dd77d2b0f6f5a90d33ac075abc09782"
+    "empirical/fire_ants_chr16/results/stage4b_report.md": "cf314bfd97b222280151bb20c29b0a98848cb47b55a2c905ba55627aabd037d4"
   },
   "parent_checksums": {
     "stage0_focal_quartet": "5ea280c1f035d539d82156f201022b2cb4ff1c90bff1a63f93c91a31fcf9d4f6",
@@ -56,7 +67,7 @@
   "physical_interval_width": "16237060",
   "processing_script": {
     "path": "empirical/fire_ants_chr16/scripts/04b_spatial_null_tests.py",
-    "sha256": "872f408e94db65d4497196029fb814b1b1ac3e58d352c3ade51bbfe802c7242f"
+    "sha256": "9bb6a68ba1a19e35a126b122d5a2f6f8bb388e6a3bd1797c5b8c3a4a2089e2ed"
   },
   "stage": "Stage 4B",
   "stage1_recorded_checksums": {
@@ -104,5 +115,6 @@
     "empirical/fire_ants_chr16/results/stage4a_primary_contrast.tsv": "b95e01fc55c7eb086464bf6dad2fd591944cd4d187bfc9a6a3ffcea5370c7b40",
     "empirical/fire_ants_chr16/results/stage4a_region_summary.tsv": "b902d6cdc472fbe2b5749d56e3edb44a093129d8dc418fae05078f55f5bbabca",
     "empirical/fire_ants_chr16/results/stage4a_report.md": "c33ed1f68ee23321e67e3033c94f15da25a7002d20884278ca3b057cc501c719"
-  }
+  },
+  "unique_membership_coordinate_p_value": "0.0309278351"
 }

@@ -37,11 +37,15 @@ Observed rank among 96 shifts: `2`. `n_ge_observed = 2`. Exact one-sided `p = 0.
 
 The same-width interval uses the frozen Stage-0 supergene span from `data/fire_ants_chr16/metadata/region_manifest.tsv`: start `11680438`, end `27917498`, width `16237060` bp. The chr16 analysis domain is defined conservatively as the minimum source window start and maximum source window end among frozen chr16 Stage-4A windows: `23916` to `28943581`.
 
-The coordinate null enumerates starts induced by fixed-width interval boundary events `s=x_i` and `s=x_i-L`, plus domain boundaries, the observed interval, and deterministic between-event representatives, then deduplicates exact inside-window membership sets. No arbitrary sliding grid is used.
+Secondary sensitivity 1 is the original unique-membership-state coordinate sensitivity. It enumerates starts induced by fixed-width interval boundary events `s=x_i` and `s=x_i-L`, plus domain boundaries, the observed interval, and deterministic between-event representatives, then deduplicates exact inside-window membership sets. Each distinct sampled-window membership pattern receives equal weight regardless of how much physical start-coordinate range produces it.
 
-Unique coordinate placements: `97`. Observed rank: `3`. `n_ge_observed = 3`. Coordinate sensitivity `p = 0.0309278351`.
+Unique membership states: `97`. Observed rank: `3`. `n_ge_observed = 3`. Equal-weight unique-membership `p = 0.0309278351`.
 
-This sensitivity preserves physical interval width and irregularly spaced window coordinates, but the number of sampled windows inside candidate intervals may vary. It is not the primary P-value.
+Secondary sensitivity 2 is the continuous physical-coordinate null. It partitions the allowed interval-start domain exactly at events generated only by `x_i`, `x_i-L`, and the domain endpoints. Open intervals between adjacent events are weighted by their physical start-coordinate length, which corresponds to drawing the interval start uniformly over the valid physical domain.
+
+Continuous start domain: `23916` to `12706521` bp, total length `12682605` bp. Extreme start-coordinate length: `993416` bp. Length-weighted physical-coordinate `p = 0.0783290184`.
+
+No arbitrary coordinate grid is used in either coordinate sensitivity. These coordinate analyses are secondary sensitivities, not the primary P-value.
 
 ## Boundary context
 
@@ -67,7 +71,9 @@ Nearest-window context around the independently frozen supergene boundaries is r
 
 ## Results
 
-The primary circular null gives exact one-sided `p = 0.0208333333` with observed `Delta_D = 1.610109863495346`. The coordinate-aware sensitivity gives `p = 0.0309278351` over `97` unique same-width physical placements.
+Primary: exact 96-alignment circular shift, observed rank `2`, `p = 0.0208333333`. Secondary sensitivity 1: equal-weight unique membership states, `p = 0.0309278351`. Secondary sensitivity 2: continuous uniform physical interval start, `p = 0.0783290184`.
+
+The primary window-space circular null places the observed supergene alignment second among 96 possible alignments. A coordinate-aware analysis remains supportive but is more conservative when candidate placements are weighted by the amount of physical start-coordinate space producing each sampled-window membership pattern.
 
 Dominance-pattern summary is descriptive only. Chr16 outside windows are 44/44 species-dominant. Chr16 supergene windows are species=8, haplotype=43, third=1.
 
