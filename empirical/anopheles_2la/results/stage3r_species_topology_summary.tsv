@@ -1,0 +1,4 @@
+treatment	n_windows	topology	localPP_or_support	quartet1	quartet2	quartet3	notes
+T_outside	547	(arabiensis,quadriannulatus)|(coluzzii,gambiae)	1	0.931104	0.0458368	0.0230597	ASTRAL4 multi-individual mapping; arrangement labels not used as species
+T_inside	429	(arabiensis,gambiae)|(coluzzii,quadriannulatus)	0.99984	0.456944	0.408833	0.134223	ASTRAL4 multi-individual mapping; arrangement labels not used as species
+T_all	976	(arabiensis,quadriannulatus)|(coluzzii,gambiae)	1	0.70154	0.226539	0.0719213	ASTRAL4 multi-individual mapping; arrangement labels not used as species

@@ -1,0 +1,4 @@
+treatment	n_windows	q_baseline	q_alt1	q_alt2	localPP_baseline	topology_scored	notes
+T_outside	547	0.931104	0.0458368	0.0230597	1	(arabiensis,quadriannulatus)|(coluzzii,gambiae)	ASTRAL4 -C scoring of T_outside topology; support keys preserved when emitted
+T_inside	429	0.408833	0.134223	0.456944	0.000159823	(arabiensis,quadriannulatus)|(coluzzii,gambiae)	ASTRAL4 -C scoring of T_outside topology; support keys preserved when emitted
+T_all	976	0.70154	0.226539	0.0719213	1	(arabiensis,quadriannulatus)|(coluzzii,gambiae)	ASTRAL4 -C scoring of T_outside topology; support keys preserved when emitted

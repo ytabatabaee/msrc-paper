@@ -440,7 +440,7 @@ The full 2L scan contained {len(grid)} fixed 50-kb windows: {counts['inside']} i
 
 Inside 2La, individuals carrying the same inversion arrangement across species became genetically/genealogically more similar than individuals from the same species carrying opposite arrangements. Mean `C(w)` was {float(summ['C']['mean_inside']):.4g} inside and {float(summ['C']['mean_outside']):.4g} outside; `Delta_C={float(summ['C']['delta_mean']):.4g}` with circular-shift p={float(cir['C']['p_one_sided_ge_observed']):.4g}. Mean `M(w)` was {float(summ['M']['mean_inside']):.4g} inside and {float(summ['M']['mean_outside']):.4g} outside; `Delta_M={float(summ['M']['delta_mean']):.4g}` with circular-shift p={float(cir['M']['p_one_sided_ge_observed']):.4g}.
 
-The discrete quartet statistic `D(w)` was useful for topology direction but saturated in high-signal regions, so magnitude was interpreted primarily through `C(w)` and `M(w)`. Haplotype validation was limited to six deterministic windows and was concordant in direction for {sum(1 for r in hap_rows if r['concordant_direction']=='true')}/{len(hap_rows)} windows.
+The discrete quartet statistic `D(w)` was useful for topology direction but saturated in high-signal regions, so magnitude was interpreted primarily through `C(w)` and `M(w)`. Haplotype validation was limited to six deterministic windows and was concordant in direction for {sum(1 for r in hap_rows if str(r['concordant_direction']).lower() == 'true' or r['concordant_direction'] is True)}/{len(hap_rows)} windows.
 
 These results support interpreting 2La as a spatially coherent arrangement-associated genealogy regime maintained by recombination suppression against a genome-wide background shaped by species history and introgression. They do not imply that 2La alone caused the historical genealogy or that introgression is absent.
 """)
@@ -495,7 +495,7 @@ Stage 2R completed the full coordinate-1-anchored 50-kb scan across 2L using aut
 
 Windows: {len(grid)} total; {counts['inside']} inside 2La, {counts['outside']} outside, {counts['boundary']} boundary; {usable} usable by the frozen SNP/missingness rule.
 
-Primary crossed signals: `Delta_C={float(summ['C']['delta_mean']):.4g}` with circular p={float(cir['C']['p_one_sided_ge_observed']):.4g}; `Delta_M={float(summ['M']['delta_mean']):.4g}` with circular p={float(cir['M']['p_one_sided_ge_observed']):.4g}. Haplotype validation was concordant for {sum(1 for r in hap_rows if r['concordant_direction']=='true')}/{len(hap_rows)} deterministic validation windows.
+Primary crossed signals: `Delta_C={float(summ['C']['delta_mean']):.4g}` with circular p={float(cir['C']['p_one_sided_ge_observed']):.4g}; `Delta_M={float(summ['M']['delta_mean']):.4g}` with circular p={float(cir['M']['p_one_sided_ge_observed']):.4g}. Haplotype validation was concordant for {sum(1 for r in hap_rows if str(r['concordant_direction']).lower() == 'true' or r['concordant_direction'] is True)}/{len(hap_rows)} deterministic validation windows.
 
 Decision: **{decision}**. The next step is manuscript integration using the MalariaGEN sample-level analysis as the primary Anopheles result and retaining the Fontaine tree analysis as historical/external comparison.
 """

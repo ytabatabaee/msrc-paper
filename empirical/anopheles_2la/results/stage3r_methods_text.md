@@ -1,0 +1,5 @@
+# Stage 3R methods text
+
+We tested whether the strongly arrangement-associated local genealogies within 2La influenced species-level summary-tree inference when windows were treated as local tree inputs. We reused the Stage-2R 53-tip NJ trees for usable, non-boundary 50-kb windows and mapped individuals to four biological species: arabiensis, coluzzii, gambiae, and quadriannulatus. Arrangement labels were retained for diagnostics but were not used as species in the primary ASTRAL4 run.
+
+ASTRAL4 v1.25.4.8 was run with the documented `-a/--mapping` gene-to-species map. Treatments were all usable non-boundary 2L windows, outside-only collinear windows, and inside-only 2La windows. The outside-only topology was frozen as the empirical collinear baseline before downweighting. Downweighting retained all outside windows and added deterministic random subsets of inside windows with seeds `20261003 + 1000*m + replicate_id`; 20 replicates were used for finite m because full ASTRAL external-process runs were not cheap enough for 100 replicates in this environment.

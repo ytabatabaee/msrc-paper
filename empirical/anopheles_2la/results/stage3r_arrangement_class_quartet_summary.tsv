@@ -1,0 +1,7 @@
+statistic	region_class	n_windows	mean	median	notes
+D	inside	429	0.998537053225	1	arrangement-class quartet/distance diagnostic; these classes are not biological species
+D	outside	547	-0.64088843185	-0.686197916667	arrangement-class quartet/distance diagnostic; these classes are not biological species
+M	inside	429	0.196433856604	0.192851895218	arrangement-class quartet/distance diagnostic; these classes are not biological species
+M	outside	547	-0.0206098265003	-0.0138522302122	arrangement-class quartet/distance diagnostic; these classes are not biological species
+C	inside	429	0.0960668024032	0.0953413224502	arrangement-class quartet/distance diagnostic; these classes are not biological species
+C	outside	547	-0.00944871375335	-0.00513654530806	arrangement-class quartet/distance diagnostic; these classes are not biological species

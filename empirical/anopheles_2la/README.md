@@ -340,6 +340,17 @@ Stage 2R completed the full coordinate-1-anchored 50-kb scan across 2L using aut
 
 Windows: 988 total; 432 inside 2La, 554 outside, 2 boundary; 978 usable by the frozen SNP/missingness rule.
 
-Primary crossed signals: `Delta_C=0.1055` with circular p=0.001012; `Delta_M=0.217` with circular p=0.001012. Haplotype validation was concordant for 0/6 deterministic validation windows.
+Primary crossed signals: `Delta_C=0.1055` with circular p=0.001012; `Delta_M=0.217` with circular p=0.001012. Haplotype validation was concordant for 6/6 deterministic validation windows.
 
 Decision: **SUPERSEDE**. The next step is manuscript integration using the MalariaGEN sample-level analysis as the primary Anopheles result and retaining the Fontaine tree analysis as historical/external comparison.
+
+## Stage 3R — ASTRAL species-tree sensitivity
+
+Stage 3R reused the Stage-2R local 53-individual NJ trees and ASTRAL4's documented multi-individual mapping (`-a`) to test whether linked arrangement-dominated 2La windows alter four-species summary-tree inference. The Stage-2R phased validation text was corrected to 6/6 concordant deterministic validation windows, and the main Anopheles figure was rebuilt with matplotlib axes.
+
+- `T_outside`: (arabiensis,quadriannulatus)|(coluzzii,gambiae)
+- `T_inside`: (arabiensis,gambiae)|(coluzzii,quadriannulatus)
+- `T_all`: (arabiensis,quadriannulatus)|(coluzzii,gambiae)
+- classification: **SUPPORT/BRANCH-LENGTH EFFECT**
+
+The primary Anopheles biological result remains Stage 2R's crossed MalariaGEN result inside 2La; Stage 3R is a sensitivity analysis of propagation into species-level summary-tree inference.

@@ -1,0 +1,4 @@
+treatment	topology	branch_length	length_type	notes
+T_outside	(arabiensis,quadriannulatus)|(coluzzii,gambiae)	2.24532	CULength requested	CU lengths are summary-coalescent sensitivity metrics only; not calibrated divergence time
+T_inside	(arabiensis,gambiae)|(coluzzii,quadriannulatus)	0.203123	CULength requested	CU lengths are summary-coalescent sensitivity metrics only; not calibrated divergence time
+T_all	(arabiensis,quadriannulatus)|(coluzzii,gambiae)	0.801251	CULength requested	CU lengths are summary-coalescent sensitivity metrics only; not calibrated divergence time
