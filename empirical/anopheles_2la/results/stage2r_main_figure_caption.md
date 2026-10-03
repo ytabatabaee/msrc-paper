@@ -1,0 +1,3 @@
+# Main figure caption
+
+Full chromosome-arm 2L Stage-2R scan of arrangement-associated genealogy around the 2La inversion. Panel A shows the fixed AgamP4 2La interval. Panels B-D show unsmoothed 50-kb window tracks for the crossed gambiae/coluzzii distance contrast `C(w)`, continuous quartet margin `M(w)`, and discrete quartet topology support `D(w)`. The shaded region is the frozen 2La interval (`2L:20524058-42165532`). Boundary-overlap windows were excluded from primary inside-vs-outside tests. Inside means and outside means are reported with exact circular-shift p-values for the primary statistics.

@@ -1,0 +1,4 @@
+statistic	observed_delta	p_one_sided_ge_observed_corrected	n_candidate_intervals	null
+C	0.105231214992	0.00359712230216	555	same-width physical interval placement; p=(k+1)/(N+1)
+M	0.216439765721	0.00359712230216	555	same-width physical interval placement; p=(k+1)/(N+1)
+D	1.63344774944	0.00719424460432	555	same-width physical interval placement; p=(k+1)/(N+1)

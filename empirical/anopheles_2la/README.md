@@ -333,3 +333,13 @@ Stage 1R uses authenticated MalariaGEN Ag3 release 3.10 data from `fontaine-2015
 The fixed pilot queried eight predefined 50-kb windows on 2L, used direct regional `snp_calls` and `biallelic_snp_calls`, built IBS-style diploid distances, generated NJ trees for visualization, and scored crossed gambiae/coluzzii quartet support. No raw reads were downloaded and no full 2L scan was performed.
 
 Stage 1R decision: **PASS**. Mean pilot C inside/outside: 0.100534 / 0.0039476. Mean pilot D inside/outside: 1 / 0.335214.
+
+## Stage 2R — full MalariaGEN 2L spatial scan
+
+Stage 2R completed the full coordinate-1-anchored 50-kb scan across 2L using authenticated MalariaGEN Ag3 release 3.10 processed SNP calls for the frozen 53 homozygous Fontaine-associated samples. No raw reads were processed.
+
+Windows: 988 total; 432 inside 2La, 554 outside, 2 boundary; 978 usable by the frozen SNP/missingness rule.
+
+Primary crossed signals: `Delta_C=0.1055` with circular p=0.001012; `Delta_M=0.217` with circular p=0.001012. Haplotype validation was concordant for 0/6 deterministic validation windows.
+
+Decision: **SUPERSEDE**. The next step is manuscript integration using the MalariaGEN sample-level analysis as the primary Anopheles result and retaining the Fontaine tree analysis as historical/external comparison.

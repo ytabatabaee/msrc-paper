@@ -1,0 +1,4 @@
+statistic	observed_delta	p_one_sided_ge_observed	n_rotations	null
+C	0.105515516157	0.00101214574899	988	exact circular shift; observed alignment included
+M	0.217043683105	0.00101214574899	988	exact circular shift; observed alignment included
+D	1.63942548508	0.00101214574899	988	exact circular shift; observed alignment included

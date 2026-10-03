@@ -1,0 +1,129 @@
+{
+  "Ag3_release": "3.10",
+  "bucket": "gs://vo_agam_release_master_us_central1",
+  "chromosome": "2L",
+  "chromosome_length": 49364325,
+  "circular_tests": [
+    {
+      "n_rotations": "988",
+      "null": "exact circular shift; observed alignment included",
+      "observed_delta": "0.105515516157",
+      "p_one_sided_ge_observed": "0.00101214574899",
+      "statistic": "C"
+    },
+    {
+      "n_rotations": "988",
+      "null": "exact circular shift; observed alignment included",
+      "observed_delta": "0.217043683105",
+      "p_one_sided_ge_observed": "0.00101214574899",
+      "statistic": "M"
+    },
+    {
+      "n_rotations": "988",
+      "null": "exact circular shift; observed alignment included",
+      "observed_delta": "1.63942548508",
+      "p_one_sided_ge_observed": "0.00101214574899",
+      "statistic": "D"
+    }
+  ],
+  "decision": "SUPERSEDE",
+  "full_haplotype_scan": false,
+  "n_windows": 988,
+  "no_raw_read_processing": true,
+  "outputs": {
+    "data/anopheles_2la/processed/stage2r_local_nj_trees.nwk.gz": "350f35b21a9ae33da31a8872d4d584c6fcbf3098a2c9e9cee74debef96576dbf",
+    "data/anopheles_2la/processed/stage2r_pairwise_distances.tsv.gz": "66f82d35a1aa9b3807e6241837aa4637e648ae170030e4ca39a8cc30e2a83518",
+    "data/anopheles_2la/processed/stage2r_window_grid.tsv": "37b28ceb3e9d3928e2e3c2a3f95aa72132690bd5bca8b3798e8ac14aa1c51ecf",
+    "empirical/anopheles_2la/figures/anopheles_2la_crossed_design.pdf": "3b48793adb30fba4f2db0f0643627e4c553184a8d108d15c511f79f867d5db59",
+    "empirical/anopheles_2la/figures/anopheles_2la_crossed_design.png": "39964df525c99f0e5c3210c2006ef6eaf5c06a9a7376bdade43f24604ab31b5e",
+    "empirical/anopheles_2la/figures/anopheles_2la_main.pdf": "ad92215add8e5bcb956e76228ff9e48dd626d3d45a53e86c15d16e3bb8fac0d3",
+    "empirical/anopheles_2la/figures/anopheles_2la_main.png": "892eb03f915e8bf7fbe960875a10b50b9972c89ca2dc3e695ea08011a693573d",
+    "empirical/anopheles_2la/figures/stage2r_full_2L_spatial_signal.pdf": "8b2b3b135a260b4d2209d45ae7aad38bb27278bd6178652e7d202bba56c31a91",
+    "empirical/anopheles_2la/figures/stage2r_full_2L_spatial_signal.png": "892eb03f915e8bf7fbe960875a10b50b9972c89ca2dc3e695ea08011a693573d",
+    "empirical/anopheles_2la/results/stage2r_all53_distance_class_summary.tsv": "9cee81614411d782e2b98de6b3439e27825e188d0fe19b1263615855433b2f7c",
+    "empirical/anopheles_2la/results/stage2r_boundary_decay.tsv": "e341c344a3865280bd099d38f92e76f95a0c5f04fddc48e2a285401841112ab2",
+    "empirical/anopheles_2la/results/stage2r_circular_shift_tests.tsv": "cbf54ac4a5964bc44942f6093bb5e3029ae9e82e89f10772bcde1a2d1565e82f",
+    "empirical/anopheles_2la/results/stage2r_crossed_distance_signal.tsv": "d0acfc4de9cb88c305d464e8cdff390fc65aa2b4544b73ad23ac04e79a1bd7e5",
+    "empirical/anopheles_2la/results/stage2r_fontaine_comparison.md": "07e088270b257c32650ff84e02d8665f90bdb0b985abf8c08a6fd7a3b4df8886",
+    "empirical/anopheles_2la/results/stage2r_haplotype_validation.tsv": "f2d1f0025b9e97099ae5d74d40b563c39c533a7828aae53db774f81fd0e9e588",
+    "empirical/anopheles_2la/results/stage2r_inside_outside_summary.tsv": "00e3c9beac7f6104c5084f0d6a24cd50a4aef57e665c579f100c39defa7a121e",
+    "empirical/anopheles_2la/results/stage2r_inside_position_summary.tsv": "b103f586ccb04def15d5caa395e4359290d494ae79aa40a25cc84408945ba89c",
+    "empirical/anopheles_2la/results/stage2r_main_figure_caption.md": "9ae6101a61537ae79038be951097c773d16e1972fd4f7a4223bfea3504642725",
+    "empirical/anopheles_2la/results/stage2r_methods_text.md": "500ec36c7f0138d58d6331555efda586b95001400bbef24dadb8db9f694fab8f",
+    "empirical/anopheles_2la/results/stage2r_physical_interval_tests.tsv": "56868abcf2d8499166cbc4c15d66dbd8bbc6af7c7f28868d5c147d698bbb20c3",
+    "empirical/anopheles_2la/results/stage2r_preanalysis_plan.md": "8afe484a53c81b4eb8fbe25c6de29c6452dd2be3a683602fe8559ded34b6f5a1",
+    "empirical/anopheles_2la/results/stage2r_quartet_margin_signal.tsv": "5e80910b635c610731d23d37f65f0e3a86222834cd7b82a117bc904300d5d668",
+    "empirical/anopheles_2la/results/stage2r_quartet_topology_signal.tsv": "b21527ad2c6c28f9e8bea0e0fe2a64264969eb3e2145b123d0100961fb0cd754",
+    "empirical/anopheles_2la/results/stage2r_report.md": "dfec470914913911869770c1e405942f330337b94cd79b792b138b6de07beffd",
+    "empirical/anopheles_2la/results/stage2r_results_text.md": "fc79b427cc59cbbc0a90f40fb732f3740e211f26bc487dc1e5f7ed76fdcdbdb1",
+    "empirical/anopheles_2la/results/stage2r_summary_topology_analysis.md": "ea637b6b9f22b69caeec6d92b4fe401ff88a518a297bbe1747e8a884a8201447",
+    "empirical/anopheles_2la/results/stage2r_window_qc.tsv": "c7c49eed03360148278b896a19255dfbda70db93f99cedbeabbf178cffd497a3"
+  },
+  "physical_tests": [
+    {
+      "n_candidate_intervals": "555",
+      "null": "same-width physical interval placement; p=(k+1)/(N+1)",
+      "observed_delta": "0.105231214992",
+      "p_one_sided_ge_observed_corrected": "0.00359712230216",
+      "statistic": "C"
+    },
+    {
+      "n_candidate_intervals": "555",
+      "null": "same-width physical interval placement; p=(k+1)/(N+1)",
+      "observed_delta": "0.216439765721",
+      "p_one_sided_ge_observed_corrected": "0.00359712230216",
+      "statistic": "M"
+    },
+    {
+      "n_candidate_intervals": "555",
+      "null": "same-width physical interval placement; p=(k+1)/(N+1)",
+      "observed_delta": "1.63344774944",
+      "p_one_sided_ge_observed_corrected": "0.00719424460432",
+      "statistic": "D"
+    }
+  ],
+  "region_class_counts": {
+    "boundary": 2,
+    "inside": 432,
+    "outside": 554
+  },
+  "sample_set": "fontaine-2015-rebuild",
+  "stage": "Stage 2R",
+  "summary": [
+    {
+      "delta_mean": "0.105515516157",
+      "delta_median": "0.100477867758",
+      "mean_inside": "0.0960668024032",
+      "mean_outside": "-0.00944871375335",
+      "median_inside": "0.0953413224502",
+      "median_outside": "-0.00513654530806",
+      "n_inside": "429",
+      "n_outside": "547",
+      "statistic": "C"
+    },
+    {
+      "delta_mean": "0.217043683105",
+      "delta_median": "0.20670412543",
+      "mean_inside": "0.196433856604",
+      "mean_outside": "-0.0206098265003",
+      "median_inside": "0.192851895218",
+      "median_outside": "-0.0138522302122",
+      "n_inside": "429",
+      "n_outside": "547",
+      "statistic": "M"
+    },
+    {
+      "delta_mean": "1.63942548508",
+      "delta_median": "1.68619791667",
+      "mean_inside": "0.998537053225",
+      "mean_outside": "-0.64088843185",
+      "median_inside": "1",
+      "median_outside": "-0.686197916667",
+      "n_inside": "429",
+      "n_outside": "547",
+      "statistic": "D"
+    }
+  ],
+  "usable_windows": 978,
+  "window_size": 50000
+}
