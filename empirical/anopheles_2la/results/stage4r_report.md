@@ -9,6 +9,7 @@ Stage 4R is additive to Stage 2R and Stage 3R. Stage 2R remains the primary clea
 - usable inside windows: 430
 - total usable non-boundary windows: 976
 - Stage 4R classification: **SUPPORT/BRANCH-LENGTH EFFECT**
+- finalized correction: Stage 4R downweighting all-inside endpoint is `430`, not the Stage-3R restricted-analysis count of 429
 
 `T_outside6`: `arabiensis,coluzzii,gambiae,quadriannulatus|melas,merus; arabiensis,coluzzii,gambiae|melas,merus,quadriannulatus; arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae`
 
@@ -16,4 +17,4 @@ Stage 4R is additive to Stage 2R and Stage 3R. Stage 2R remains the primary clea
 
 `T_all6`: `arabiensis,coluzzii,gambiae,quadriannulatus|melas,merus; arabiensis,coluzzii,gambiae|melas,merus,quadriannulatus; arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae`
 
-Branch-level sensitivity is reported in `stage4r_fixed_split_scores.tsv` and `stage4r_branch_sensitivity.tsv`. Stage 4R is the primary Anopheles species-tree sensitivity analysis once successful; Stage 3R remains the restricted four-species homozygote sensitivity analysis matched to the Stage-2R cohort.
+Branch-level sensitivity is reported in `stage4r_fixed_split_scores.tsv` and `stage4r_branch_sensitivity.tsv`. Stage 4R is the primary Anopheles species-tree sensitivity analysis; Stage 3R remains the restricted four-species homozygote sensitivity analysis matched to the Stage-2R cohort. After correcting the Stage-4R downweighting endpoint label from the Stage-3R carryover value 429 to the dynamic all-inside count of 430, no further Anopheles empirical analysis is currently required.

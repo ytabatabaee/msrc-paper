@@ -604,7 +604,8 @@ def run_downweighting(args, trees, outside, inside, mapfile, outside_splits):
                 if ann:
                     branch_support.append(float(ann.get('q1', math.nan)))
                     branch_cu.append(float(ann.get('branch_length', math.nan)))
-            rows.append({'m_inside':429 if m=='all' else m, 'replicate':rep, 'seed':seed, 'n_windows':len(outside_sorted)+len(chosen), 'topology':topology_label_from_splits(res['splits']), 'rf_to_T_outside6':rf, 'normalized_rf_to_T_outside6':nrf, 'matches_T_outside6':rf==0, 'mean_baseline_q_across_matching_splits':float(np.nanmean(branch_support)) if branch_support else math.nan, 'min_baseline_q_across_matching_splits':float(np.nanmin(branch_support)) if branch_support else math.nan, 'mean_CU_across_matching_splits':float(np.nanmean(branch_cu)) if branch_cu else math.nan})
+            m_inside_value=len(inside_sorted) if m=='all' else int(m)
+            rows.append({'m_inside':m_inside_value, 'replicate':rep, 'seed':seed, 'n_windows':len(outside_sorted)+len(chosen), 'topology':topology_label_from_splits(res['splits']), 'rf_to_T_outside6':rf, 'normalized_rf_to_T_outside6':nrf, 'matches_T_outside6':rf==0, 'mean_baseline_q_across_matching_splits':float(np.nanmean(branch_support)) if branch_support else math.nan, 'min_baseline_q_across_matching_splits':float(np.nanmin(branch_support)) if branch_support else math.nan, 'mean_CU_across_matching_splits':float(np.nanmean(branch_cu)) if branch_cu else math.nan})
     write_tsv(DOWN, rows, ['m_inside','replicate','seed','n_windows','topology','rf_to_T_outside6','normalized_rf_to_T_outside6','matches_T_outside6','mean_baseline_q_across_matching_splits','min_baseline_q_across_matching_splits','mean_CU_across_matching_splits'])
     summarize_downweighting(rows)
     return rows
@@ -617,21 +618,34 @@ def most_sensitive_split():
 
 def summarize_downweighting(rows):
     sens=most_sensitive_split()
+    qc=read_tsv(QC)
+    n_inside=sum(1 for r in qc if r['region_class']=='inside' and r['status']=='ok')
+    n_outside=sum(1 for r in qc if r['region_class']=='outside' and r['status']=='ok')
+    n_nonboundary=n_inside+n_outside
+    assert n_inside==430, n_inside
+    assert n_outside==546, n_outside
+    assert n_nonboundary==976, n_nonboundary
     # For mixed topologies matching T_outside6, use inferred branch q1 for the sensitive split.
     by=defaultdict(list); match=defaultdict(list)
+    finite_m={str(m) for m in M_VALUES if m!='all'}
+    all_m=str(n_inside)
     for r in rows:
         m=str(r['m_inside'])
+        path_token=m if m in finite_m else 'all'
+        if path_token=='all':
+            assert int(r['m_inside'])==n_inside
+            assert int(r['n_windows'])==n_nonboundary
         match[m].append(1.0 if as_bool(r['matches_T_outside6']) else 0.0)
         if as_bool(r['matches_T_outside6']):
-            path=ASTRAL6/f"down6_m{m if m!='429' else 'all'}_r{int(r['replicate']):03d}_species.nwk"
+            path=ASTRAL6/f"down6_m{path_token}_r{int(r['replicate']):03d}_species.nwk"
             if path.exists():
                 ann=parse_astral(path)['ann'].get(sens,{})
                 if ann and 'q1' in ann:
                     by[m].append(float(ann['q1']))
-    # Add x=0 exact from fixed split scores outside and x=429 exact from all for same split.
+    # Add x=0 exact from fixed split scores outside and dynamic all-inside endpoint from T_all6.
     fixed={r['split']:r for r in read_tsv(FIXED_SPLITS)}
     rows_out=[]
-    q0=float(fixed[sens]['q_baseline_outside']); q429=float(fixed[sens]['q_baseline_all'])
+    q0=float(fixed[sens]['q_baseline_outside']); q_all=float(fixed[sens]['q_baseline_all'])
     rows_out.append({'m_inside':0, 'n_replicates':1, 'mean_q_sensitive_split':q0, 'sd_q_sensitive_split':0.0, 'min_q_sensitive_split':q0, 'max_q_sensitive_split':q0, 'fraction_topology_matches_T_outside6':1.0, 'sensitive_split':sens, 'support_source':'T_outside6 fixed split score'})
     for m in ['1','2','5','10','20','40','80','160']:
         vals=by[m]
@@ -640,7 +654,9 @@ def summarize_downweighting(rows):
         else:
             mean=sd=mn=mx=math.nan
         rows_out.append({'m_inside':int(m), 'n_replicates':len(match[m]), 'mean_q_sensitive_split':mean, 'sd_q_sensitive_split':sd, 'min_q_sensitive_split':mn, 'max_q_sensitive_split':mx, 'fraction_topology_matches_T_outside6':float(np.mean(match[m])) if match[m] else math.nan, 'sensitive_split':sens, 'support_source':'inferred branch annotation when topology matches T_outside6'})
-    rows_out.append({'m_inside':429, 'n_replicates':1, 'mean_q_sensitive_split':q429, 'sd_q_sensitive_split':0.0, 'min_q_sensitive_split':q429, 'max_q_sensitive_split':q429, 'fraction_topology_matches_T_outside6':float(np.mean(match['429'])) if match['429'] else math.nan, 'sensitive_split':sens, 'support_source':'T_all6 fixed split score'})
+    rows_out.append({'m_inside':n_inside, 'n_replicates':1, 'mean_q_sensitive_split':q_all, 'sd_q_sensitive_split':0.0, 'min_q_sensitive_split':q_all, 'max_q_sensitive_split':q_all, 'fraction_topology_matches_T_outside6':float(np.mean(match[all_m])) if match[all_m] else math.nan, 'sensitive_split':sens, 'support_source':'T_all6 fixed split score'})
+    assert rows_out[-1]['m_inside']==n_inside
+    assert abs(rows_out[-1]['mean_q_sensitive_split']-0.664997)<1e-6
     write_tsv(DOWN_SUM, rows_out, ['m_inside','n_replicates','mean_q_sensitive_split','sd_q_sensitive_split','min_q_sensitive_split','max_q_sensitive_split','fraction_topology_matches_T_outside6','sensitive_split','support_source'])
 
 
@@ -759,11 +775,15 @@ The RF comparison between `T_outside6` and `T_all6` was {rf_oa['rf']} (normalize
 
 The most inversion-sensitive outside-tree branch by outside-to-all support decrease was `{most['split']}`. Its baseline quartet support decreased by {float(most['delta_q_outside_minus_all']):.4g} from outside-only to all windows, and its requested CU length changed by {float(most['delta_CU_outside_minus_all']):.4g}. Inside-only local histories produced the strongest conflict/weakening for the branches listed in `stage4r_branch_sensitivity.tsv`.
 
-The downweighting experiment retained all usable outside windows and added deterministic subsets of inside-2La windows. It is summarized in `stage4r_downweighting.tsv` and `stage4r_downweighting_summary.tsv`. Dense linked 2La windows are interpreted as local genomic genealogies rather than independent loci.
+Using all 72 Fontaine-associated individuals represented by 144 phased haplotypes, the inside-2La summary tree differed substantially from the outside-2La tree (RF=4; normalized RF=0.667), changing two of three internal splits. When all {n_inside} usable inside windows were combined with the {n_outside} outside windows, the global six-species topology returned to the outside topology, but all three outside-tree internal branches showed reduced quartet support and shorter requested CU branch lengths.
+
+For the strongest branch, `arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae`, quartet support changed from `0.871768` outside to `0.664997` in all windows, and requested CU length changed from `1.63610` to `0.686122`. This is not interpreted as a whole-tree topology failure because `T_all6=T_outside6`.
+
+The downweighting experiment retained all usable outside windows and added deterministic subsets of inside-2La windows. The final endpoint is dynamically labelled as all {n_inside} usable inside windows, giving {n_outside}+{n_inside}={n_clean} total non-boundary windows. It is summarized in `stage4r_downweighting.tsv` and `stage4r_downweighting_summary.tsv`. Dense linked 2La windows are interpreted as local genomic genealogies rather than independent loci.
 """)
     CAPTION.write_text(f"""# Stage 4R figure caption
 
-Stage 4R six-species ASTRAL sensitivity analysis using all 72 Fontaine-associated individuals represented as 144 phased haplotypes. (A) ASTRAL summary tree from local haplotype NJ trees fully outside 2La. (B) ASTRAL summary tree from windows fully inside 2La. (C) ASTRAL summary tree from all usable non-boundary 2L windows. Tip labels are the six biological species; heterokaryotype haplotypes are mapped to species only, not to arrangement states. Internal labels show ASTRAL local posterior support where readable, and requested CU branch lengths are used only as summary-coalescent sensitivity metrics, not calibrated divergence times. (D) Linked-window downweighting: all usable outside windows are retained while deterministic subsets of inside-2La windows are added. The plotted branch is selected by the predeclared criterion of largest outside-to-all decrease in baseline quartet support among `T_outside6` internal branches. The 2La windows are physically linked and should not be interpreted as independent loci.
+Stage 4R six-species ASTRAL sensitivity analysis using all 72 Fontaine-associated individuals represented as 144 phased haplotypes. (A) ASTRAL summary tree from local haplotype NJ trees fully outside 2La. (B) ASTRAL summary tree from windows fully inside 2La. (C) ASTRAL summary tree from all usable non-boundary 2L windows. Tip labels are the six biological species; heterokaryotype haplotypes are mapped to species only, not to arrangement states. Internal labels show ASTRAL local posterior support where readable, and requested CU branch lengths are used only as summary-coalescent sensitivity metrics, not calibrated divergence times. (D) Linked-window downweighting: all usable outside windows are retained while deterministic subsets of inside-2La windows are added. The plotted branch is selected by the predeclared criterion of largest outside-to-all decrease in baseline quartet support among `T_outside6` internal branches. The final downweighting endpoint is `{n_inside}` inside windows plus `{n_outside}` outside windows, i.e. all `{n_clean}` usable non-boundary windows. The 2La windows are physically linked and should not be interpreted as independent loci.
 """)
     REPORT.write_text(f"""# Stage 4R report — six-species species-tree sensitivity using all Fontaine samples
 
@@ -776,6 +796,7 @@ Stage 4R is additive to Stage 2R and Stage 3R. Stage 2R remains the primary clea
 - usable inside windows: {n_inside}
 - total usable non-boundary windows: {n_clean}
 - Stage 4R classification: **{classification}**
+- finalized correction: Stage 4R downweighting all-inside endpoint is `{n_inside}`, not the Stage-3R restricted-analysis count of 429
 
 `T_outside6`: `{top['T_outside6']}`
 
@@ -783,7 +804,7 @@ Stage 4R is additive to Stage 2R and Stage 3R. Stage 2R remains the primary clea
 
 `T_all6`: `{top['T_all6']}`
 
-Branch-level sensitivity is reported in `stage4r_fixed_split_scores.tsv` and `stage4r_branch_sensitivity.tsv`. Stage 4R is the primary Anopheles species-tree sensitivity analysis once successful; Stage 3R remains the restricted four-species homozygote sensitivity analysis matched to the Stage-2R cohort.
+Branch-level sensitivity is reported in `stage4r_fixed_split_scores.tsv` and `stage4r_branch_sensitivity.tsv`. Stage 4R is the primary Anopheles species-tree sensitivity analysis; Stage 3R remains the restricted four-species homozygote sensitivity analysis matched to the Stage-2R cohort. After correcting the Stage-4R downweighting endpoint label from the Stage-3R carryover value 429 to the dynamic all-inside count of {n_inside}, no further Anopheles empirical analysis is currently required.
 """)
     VS_STAGE3.write_text(f"""# Stage 4R versus Stage 3R
 
@@ -808,6 +829,8 @@ Usable windows: {n_clean} non-boundary windows ({n_outside} outside 2La, {n_insi
 `T_all6`: `{top['T_all6']}`
 
 Most inversion-sensitive outside-tree branch: `{most['split']}`.
+
+Stage 4R is finalized after correcting the downweighting endpoint label to {n_inside} inside windows; no further Anopheles empirical analysis is currently required.
 """
     for p in [README, PROJECT_STATUS]:
         old=p.read_text() if p.exists() else ''
@@ -820,7 +843,7 @@ Most inversion-sensitive outside-tree branch: `{most['split']}`.
 
 def write_manifest(results):
     outputs=[ALL72_MAP,HAP_MAP,SAMPLE_SUMMARY,QC,LOCAL_TREES,TREE_AUDIT,SPECIES_TOPO,TREE_COMPARE,FIXED_SPLITS,BRANCH_SENS,DOWN,DOWN_SUM,VS_STAGE3,METHODS,RESTEXT,CAPTION,REPORT,FIGPDF,FIGPNG,SAMPLE_FIGPDF,SAMPLE_FIGPNG]
-    MANIFEST.write_text(json.dumps({'stage':'Stage 4R','sample_set':SAMPLE_SET,'Ag3_release':'3.10','n_individuals':72,'n_haplotypes':144,'n_species':6,'species':SPECIES,'inversion_interval':f'{CHROM}:{INV_START}-{INV_END}','astral4':str(ASTRAL4),'T_outside6_splits':results['T_outside6']['splits'],'T_inside6_splits':results['T_inside6']['splits'],'T_all6_splits':results['T_all6']['splits'],'no_raw_read_processing':True,'outputs':{str(p.relative_to(REPO)):sha256(p) for p in outputs if p.exists()}}, indent=2, sort_keys=True)+'\n')
+    MANIFEST.write_text(json.dumps({'stage':'Stage 4R','sample_set':SAMPLE_SET,'Ag3_release':'3.10','n_individuals':72,'n_haplotypes':144,'n_species':6,'n_inside_trees':sum(1 for r in read_tsv(QC) if r['region_class']=='inside' and r['status']=='ok'),'n_outside_trees':sum(1 for r in read_tsv(QC) if r['region_class']=='outside' and r['status']=='ok'),'n_clean_trees':sum(1 for r in read_tsv(QC) if r['region_class']!='boundary' and r['status']=='ok'),'species':SPECIES,'inversion_interval':f'{CHROM}:{INV_START}-{INV_END}','astral4':str(ASTRAL4),'T_outside6_splits':results['T_outside6']['splits'],'T_inside6_splits':results['T_inside6']['splits'],'T_all6_splits':results['T_all6']['splits'],'no_raw_read_processing':True,'outputs':{str(p.relative_to(REPO)):sha256(p) for p in outputs if p.exists()}}, indent=2, sort_keys=True)+'\n')
 
 
 def run_tests():
@@ -841,6 +864,30 @@ def run_tests():
         def test_rf(self):
             a=['a,b|c,d,e,f','a,c|b,d,e,f','a,d|b,c,e,f']; b=list(a)
             self.assertEqual(rf_distance(a,b)[0],0)
+        def test_stage4_counts_and_endpoint(self):
+            if not (QC.exists() and DOWN.exists() and DOWN_SUM.exists() and TREE_COMPARE.exists()):
+                self.skipTest('Stage 4R outputs not generated')
+            qc=read_tsv(QC)
+            n_inside=sum(1 for r in qc if r['region_class']=='inside' and r['status']=='ok')
+            n_outside=sum(1 for r in qc if r['region_class']=='outside' and r['status']=='ok')
+            n_nonboundary=sum(1 for r in qc if r['region_class']!='boundary' and r['status']=='ok')
+            self.assertEqual(n_inside,430)
+            self.assertEqual(n_outside,546)
+            self.assertEqual(n_nonboundary,976)
+            self.assertEqual(n_nonboundary,n_inside+n_outside)
+            down=read_tsv(DOWN)
+            final=[r for r in down if int(r['m_inside'])==n_inside and int(r['n_windows'])==n_nonboundary]
+            self.assertEqual(len(final),1)
+            self.assertTrue(as_bool(final[0]['matches_T_outside6']))
+            dsum=read_tsv(DOWN_SUM)
+            last=dsum[-1]
+            self.assertEqual(int(last['m_inside']),n_inside)
+            self.assertEqual(int(last['n_replicates']),1)
+            self.assertAlmostEqual(float(last['mean_q_sensitive_split']),0.664997,places=6)
+            self.assertEqual(last['support_source'],'T_all6 fixed split score')
+            comp={r['comparison']:r for r in read_tsv(TREE_COMPARE)}
+            self.assertEqual(int(comp['T_outside6 vs T_inside6']['rf']),4)
+            self.assertEqual(int(comp['T_outside6 vs T_all6']['rf']),0)
         def test_trees_if_present(self):
             if QC.exists() and LOCAL_TREES.exists():
                 trees,grid,usable,clean,inside,outside,haprows=audit_trees()

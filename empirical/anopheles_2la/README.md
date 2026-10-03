@@ -368,3 +368,5 @@ Usable windows: 976 non-boundary windows (546 outside 2La, 430 inside 2La). Stag
 `T_all6`: `arabiensis,coluzzii,gambiae,quadriannulatus|melas,merus; arabiensis,coluzzii,gambiae|melas,merus,quadriannulatus; arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae`
 
 Most inversion-sensitive outside-tree branch: `arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae`.
+
+Stage 4R is finalized after correcting the downweighting endpoint label to 430 inside windows; no further Anopheles empirical analysis is currently required.
