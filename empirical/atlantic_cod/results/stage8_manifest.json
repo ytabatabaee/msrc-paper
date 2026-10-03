@@ -1,0 +1,43 @@
+{
+  "analysis": "ASTRAL summary-tree divergence-time projection",
+  "astral4_rerun": false,
+  "candidate_root_edges_tested_T0": 21,
+  "frozen_input_checksums": {
+    "data/atlantic_cod/processed/cod_window_trees.tsv": "26ed195ee26cb860ca0885c76d768d427639a4338b74a787d9421498e10dfb0b",
+    "data/atlantic_cod/processed/stage4a_window_topology_scores.tsv": "3ef09caa4edddd247ad986ff168a4fc86b79d66559293bec51d291ee8cf9328e",
+    "empirical/atlantic_cod/results/astral4/T0_all.inferred.nwk": "4a006a022ca357bced60f2e059ad9310af47abe32cce585e7624304b7d36ad53",
+    "empirical/atlantic_cod/results/astral4/T1_outside.inferred.nwk": "3dbfcf4277aaeec7ea38b19f0a285e2dc077a46a12d9a13accdd6552cfc3c578"
+  },
+  "output_checksums": {
+    "data/atlantic_cod/processed/stage8_pairwise_mrca_matrices.tsv": "fb0cd49f1ca49f6c95cc0de5ba7ae09c366095edeaa7644e47730b5b5afcff9c",
+    "empirical/atlantic_cod/figures/atlantic_cod_stage8_pairwise_time_shift_heatmap.pdf": "223125f128b48242a26f0394d8788174465cc06b8944e4e83d0a52d1ea6516e6",
+    "empirical/atlantic_cod/figures/atlantic_cod_stage8_pairwise_time_shift_heatmap.png": "6f448e15b080cc193fc02595382edcdeb10a5569db05616f5435c5d5186c4f14",
+    "empirical/atlantic_cod/figures/atlantic_cod_stage8_summary_tree_time_projection.pdf": "56d7fa4f7dd57b9d7ca3279d5c0f335c660fcd3ca16391dda700a1b2fbf02053",
+    "empirical/atlantic_cod/figures/atlantic_cod_stage8_summary_tree_time_projection.png": "fe87a44717f8049438b0cd1b6f92f4ff6c25687fa2932c83d21cf9acb6a8243c",
+    "empirical/atlantic_cod/results/stage8_T0_all_topology_all_times.nwk": "e13f21627893a4571c5922bf6eda7b2df2879b6efe69d76e8b38197f3b4ab586",
+    "empirical/atlantic_cod/results/stage8_T0_all_topology_outside_times.nwk": "b931b763f43b3d0b7f27632c96d22fbc936197775dc92020ae6b8b408dabf32f",
+    "empirical/atlantic_cod/results/stage8_T1_outside_topology_all_times.nwk": "d830259da9c67b5badc52c084e27e34f04afeca8a0a8c89fb6f1aee444e298ab",
+    "empirical/atlantic_cod/results/stage8_T1_outside_topology_outside_times.nwk": "08a0e49cc9dc9a7e0e2a579bdb5033804fd82e8704309a383ed4e78b54a89e0b",
+    "empirical/atlantic_cod/results/stage8_figure_caption.md": "deec9fd1c9741fc916f8186e9cfa6cf383e8cfb581f25f0669bb118ab61b0c9c",
+    "empirical/atlantic_cod/results/stage8_methods_text.md": "fc94289f7706555000a90acc02086a85f83474a6da02172e677f29565c23fff9",
+    "empirical/atlantic_cod/results/stage8_node_age_shifts.tsv": "62548fc78a5812a4b98069eccccbabff54172691574fa9f579160aee9f0fbeaf",
+    "empirical/atlantic_cod/results/stage8_projection_fit.tsv": "29f5731b6d3c3cc5b4c16d5b2f21ebf07c4806f34a4cf79817eaa23f60606675",
+    "empirical/atlantic_cod/results/stage8_projection_residuals.tsv": "586c02e4da6fec3ee7cb2c780b629a584a5ead743dd0901da9ce1d0a468c5bb9",
+    "empirical/atlantic_cod/results/stage8_report.md": "3355a781ded2e8d155562bfcd3d1fe1a4ab7307f3d46b0df533f20354307deda",
+    "empirical/atlantic_cod/results/stage8_results_text.md": "4925d1759adabaeeb1ca51ae9132c440b7dc446c76797a6f6ce62561db03aa52",
+    "empirical/atlantic_cod/results/stage8_rooting_audit.tsv": "dc6184813b2998576741ea9cf238b6fe8a4f26f611307fa66366d5cfc4c787af",
+    "empirical/atlantic_cod/results/stage8_summary.tsv": "4b3962fb26d2e79173190a80d6983d087791770c94c75943deac1b4ec241ce56"
+  },
+  "post_freeze_extension": true,
+  "primary_topology": "empirical/atlantic_cod/results/astral4/T0_all.inferred.nwk",
+  "secondary_topology": "empirical/atlantic_cod/results/astral4/T1_outside.inferred.nwk",
+  "selected_primary_root_edge": "Gadmor_bat_spc+Gadmor_twc_spc+Gadmor_two_spc|Gadmor_avc_spc+Gadmor_avo_spc+Gadmor_bor_spc+Gadmor_icc_spc+Gadmor_ico_spc+Gadmor_kie_spc+Gadmor_lfc_spc+Gadmor_lfo_spc+Gadmor_low_spc",
+  "snapp_rerun": false,
+  "software_versions": {
+    "biopython": "1.88",
+    "matplotlib": "3.11.2",
+    "numpy": "2.5.3",
+    "python": "3.12.11"
+  },
+  "stage": 8
+}

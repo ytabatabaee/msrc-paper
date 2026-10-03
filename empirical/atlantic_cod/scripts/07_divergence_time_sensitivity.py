@@ -58,6 +58,7 @@ POSTERIOR_AVAILABILITY = RESULTS / "stage7_posterior_availability.tsv"
 WINDOW_SIGNAL = RESULTS / "stage7_window_divergence_time_signal.tsv"
 TESTS = RESULTS / "stage7_divergence_time_tests.tsv"
 PAIR_SUMMARY = RESULTS / "stage7_pairwise_divergence_time_summary.tsv"
+PAIR_CLASS_SUMMARY = RESULTS / "stage7_pair_class_summary.tsv"
 TOPO_TIME = RESULTS / "stage7_topology_time_comparison.tsv"
 POSTERIOR_SUMMARY = RESULTS / "stage7_posterior_time_summary.tsv"
 METHODS_TEXT = RESULTS / "stage7_methods_text.md"
@@ -72,6 +73,7 @@ FIG_TRACKS_PDF = FIGURES / "atlantic_cod_stage7_topology_and_time_tracks.pdf"
 FIG_TRACKS_PNG = FIGURES / "atlantic_cod_stage7_topology_and_time_tracks.png"
 
 LGS = ("LG01", "LG02", "LG07", "LG12")
+NEGATIVE_BRANCH_CLAMP_TOLERANCE = 1e-10
 EXPECTED_STAGE5 = {
     "data/atlantic_cod/processed/stage2_structural_quartet_candidates.tsv": "303d9eb563fc6b5c0dd953b0d9f4c4b363baf83061f32fa37fb2f4e4a0f1a72c",
     "data/atlantic_cod/processed/stage3_baseline_quartets.tsv": "5af7eea33f8c998556a140a4e14facb87322e58043632e7b04c15de3eab64bc1",
@@ -149,8 +151,17 @@ def parse_tree(newick: str):
     for clade in tree.find_clades():
         if clade.branch_length is None:
             clade.branch_length = 0.0
-        if not math.isfinite(float(clade.branch_length)) or float(clade.branch_length) < -1e-12:
-            raise ValueError("Tree contains a negative or non-finite branch length")
+        branch_length = float(clade.branch_length)
+        if not math.isfinite(branch_length):
+            raise ValueError("Tree contains a non-finite branch length")
+        if branch_length < 0:
+            if abs(branch_length) <= NEGATIVE_BRANCH_CLAMP_TOLERANCE:
+                clade.branch_length = 0.0
+            else:
+                raise ValueError(
+                    f"Tree contains a materially negative branch length: minimum branch length {branch_length:.12g}; "
+                    f"clamp tolerance {NEGATIVE_BRANCH_CLAMP_TOLERANCE:g}"
+                )
     return tree
 
 
@@ -419,7 +430,11 @@ def physical_test_for_lg(rows: list[dict[str, object]], region: dict[str, int | 
             "delta_A": d,
             "greater_or_equal_observed": d >= observed,
         })
-    p = sum(as_bool(r["greater_or_equal_observed"]) for r in null_rows) / len(null_rows) if null_rows else math.nan
+    if null_rows:
+        k = sum(as_bool(r["greater_or_equal_observed"]) for r in null_rows)
+        p = (k + 1) / (len(null_rows) + 1)
+    else:
+        p = math.nan
     return p, null_rows
 
 
@@ -464,8 +479,10 @@ def divergence_time_tests(window_rows: list[dict[str, object]]) -> tuple[list[di
         rows.append(row)
         raw_p[lg] = circular_p
     adjusted = bh_adjust(raw_p)
+    physical_adjusted = bh_adjust({str(row["lg"]): float(row["physical_p"]) for row in rows})
     for row in rows:
         row["BH_p"] = adjusted[str(row["lg"])]
+        row["physical_BH_p"] = physical_adjusted[str(row["lg"])]
     return rows, physical_null_rows
 
 
@@ -497,6 +514,46 @@ def pairwise_summary(shift_rows: list[dict[str, object]]) -> list[dict[str, obje
             "relative_change": med_in / med_out if med_out > 1e-12 else math.nan,
             "n_inside": len(inside),
             "n_outside": len(outside),
+        })
+    return rows
+
+
+def pair_class_summary(pair_rows: list[dict[str, object]]) -> list[dict[str, object]]:
+    grouped: dict[tuple[str, str], list[dict[str, object]]] = defaultdict(list)
+    for row in pair_rows:
+        grouped[(str(row["lg"]), str(row["pair_class"]))].append(row)
+    rows = []
+    for (lg, cls), group in sorted(grouped.items()):
+        if cls == "unknown":
+            continue
+        by_pair: dict[tuple[str, str], list[dict[str, object]]] = defaultdict(list)
+        for row in group:
+            by_pair[(str(row["population1"]), str(row["population2"]))].append(row)
+        pair_stats = []
+        for pair, pair_group in sorted(by_pair.items()):
+            inside = [float(r["mrca_time"]) for r in pair_group if r["region_class"] == "inside"]
+            outside = [float(r["mrca_time"]) for r in pair_group if r["region_class"] == "outside"]
+            if not inside or not outside:
+                continue
+            med_out = statistics.median(outside)
+            med_in = statistics.median(inside)
+            pair_stats.append({
+                "median_outside": med_out,
+                "median_inside": med_in,
+                "delta": med_in - med_out,
+                "relative": med_in / med_out if med_out > 1e-12 else math.nan,
+            })
+        if not pair_stats:
+            continue
+        rows.append({
+            "lg": lg,
+            "pair_class": cls,
+            "n_pairs": len(pair_stats),
+            "median_outside_time": statistics.median(s["median_outside"] for s in pair_stats),
+            "median_inside_time": statistics.median(s["median_inside"] for s in pair_stats),
+            "median_pair_delta": statistics.median(s["delta"] for s in pair_stats),
+            "mean_pair_delta": statistics.fmean(s["delta"] for s in pair_stats),
+            "median_relative_change": statistics.median(s["relative"] for s in pair_stats if math.isfinite(s["relative"])),
         })
     return rows
 
@@ -578,7 +635,7 @@ def write_time_scale_audit(diagnostics: list[dict[str, object]], posterior_rows:
     ## Findings
 
     1. Of the 426 published 250-kb MCC trees, {len(valid)} passed the Stage-7 tree validation checks and were ultrametric within numerical tolerance. The maximum observed tip-depth deviation among valid trees was {max_dev:.3g}.
-    2. One window failed the nonnegative branch-length validation and was excluded from MRCA-time calculations: {", ".join(str(row["window_id"]) + " (" + str(row["validation_issue"]) + ")" for row in invalid) if invalid else "none"}.
+    2. One window failed the nonnegative branch-length validation and was excluded from MRCA-time calculations: {", ".join(str(row["window_id"]) + " (" + str(row["validation_issue"]) + ")" for row in invalid) if invalid else "none"}. Negative branch lengths with absolute magnitude no greater than {NEGATIVE_BRANCH_CLAMP_TOLERANCE:g} would be clamped to zero as numerical noise, but the excluded LG07 window is materially below zero and was not silently repaired.
     3. Branch lengths are time-scaled SNAPP tree lengths from the published BEAST/SNAPP workflow, not raw pairwise sequence distances. Across valid MCC trees, root heights range from {root_min:.6g} to {root_max:.6g} in the workflow's time units.
     4. The workflow constrains the population-tree crown age with `lognormal(0,3.83,0.093)` and describes that constraint as coming from the largest tree-topology subset of the AIM analysis with a prior distribution on root age. The 250-kb MCC trees are therefore calibrated relative to that shared root-age prior.
     5. The script evidence available locally does not label the Newick branch lengths explicitly as years, Ma, or substitutions. Because the paper reports divergence times in Ma and the SNAPP XML workflow applies a root-age prior, Stage 7 treats the branch lengths as the published calibrated SNAPP time units. It does not convert them to calendar years or Ma beyond that source-calibrated scale.
@@ -651,24 +708,31 @@ def plot_tracks(window_rows: list[dict[str, object]]) -> None:
     plt.close(fig)
 
 
-def write_texts(test_rows, pair_rows, topo_rows, posterior_rows):
+def write_texts(test_rows, pair_rows, pair_class_rows, topo_rows, posterior_rows):
     tests = {r["lg"]: r for r in test_rows}
     top_pairs = sorted(pair_rows, key=lambda r: float(r["delta_time"]), reverse=True)[:5]
     top_txt = "; ".join(f"{r['lg']} {r['population1']}/{r['population2']} Δ={float(r['delta_time']):.3g} ({r['pair_class']})" for r in top_pairs)
     posterior_available = any(r["posterior_available"] == "true" for r in posterior_rows)
+    class_lookup = {(r["lg"], r["pair_class"]): r for r in pair_class_rows}
+    class_txt = "; ".join(
+        f"{lg} {cls.replace('_', ' ')} median Δ={float(class_lookup[(lg, cls)]['median_pair_delta']):.3g}"
+        for lg in LGS
+        for cls in ("opposite_arrangement", "same_arrangement")
+        if (lg, cls) in class_lookup
+    )
     METHODS_TEXT.write_text(textwrap.dedent("""
     As a post-freeze Stage-7 extension, we used the published time-scaled 250-kb SNAPP MCC trees to test whether the same Atlantic cod population pairs have shifted inferred MRCA times inside inversion intervals relative to collinear windows. Inversion coordinates, population arrangement states, baseline topology, and inside/outside/boundary classifications were reused from the frozen Stage-5 analysis. Boundary-overlap windows were excluded from the primary inside-versus-outside test.
 
-    For each window tree and each unordered population pair, we calculated the MRCA height from node depths in the ultrametric tree, treating all population tips as contemporaneous. For each pair within each linkage group, the collinear baseline was the median MRCA time across fully outside windows on that linkage group. The primary window statistic was A(w), the mean MRCA time for opposite-arrangement pairs minus the mean MRCA time for same-arrangement pairs. Significance was evaluated with the same exact circular-shift logic used for the topology analysis, using the ordered A(w) track and fixed inversion mask; one-sided tests used the predeclared direction A_inside > A_outside and were BH-corrected across the four linkage groups.
+    For each window tree and each unordered population pair, we calculated the MRCA height from node depths in the ultrametric tree, treating all population tips as contemporaneous. For each pair within each linkage group, the collinear baseline was the median MRCA time across fully outside windows on that linkage group. The primary window statistic was A(w), the mean MRCA time for opposite-arrangement pairs minus the mean MRCA time for same-arrangement pairs. Significance was evaluated with the same exact circular-shift logic used for the topology analysis, using the ordered A(w) track and fixed inversion mask; one-sided tests used the predeclared direction A_inside > A_outside and were BH-corrected across the four linkage groups. A physical-coordinate placement null was also reported as a secondary sensitivity analysis, with finite-sample empirical p-values calculated as (k+1)/(N+1) and separately BH-corrected across linkage groups.
 
     Per-window posterior SNAPP tree files were not locally available and were not listed in the frozen Zenodo record, so uncertainty analyses were limited to the published MCC point estimates. SNAPP was not rerun.
     """).strip() + "\n")
     RESULTS_TEXT.write_text(textwrap.dedent(f"""
-    Stage 7 found inversion-associated divergence-time shifts in the same published Atlantic cod SNAPP window trees used for the topology analysis. LG01 had mean A_inside={float(tests['LG01']['mean_A_inside']):.3g} and mean A_outside={float(tests['LG01']['mean_A_outside']):.3g}, giving ΔA={float(tests['LG01']['delta_A']):.3g} with circular-shift p={float(tests['LG01']['circular_p']):.3g}. LG02 also shifted positively (ΔA={float(tests['LG02']['delta_A']):.3g}, p={float(tests['LG02']['circular_p']):.3g}), as did LG12 (ΔA={float(tests['LG12']['delta_A']):.3g}, p={float(tests['LG12']['circular_p']):.3g}). LG07 also showed a positive divergence-time shift (ΔA={float(tests['LG07']['delta_A']):.3g}, p={float(tests['LG07']['circular_p']):.3g}) despite lacking the corresponding Stage-4 topology enrichment.
+    Stage 7 found positive inversion-associated divergence-time shifts in the same published Atlantic cod SNAPP window trees used for the topology analysis. Under the primary circular-shift test, all four focal linkage groups shifted in the expected direction: LG01 ΔA={float(tests['LG01']['delta_A']):.3g} (p={float(tests['LG01']['circular_p']):.3g}), LG02 ΔA={float(tests['LG02']['delta_A']):.3g} (p={float(tests['LG02']['circular_p']):.3g}), LG07 ΔA={float(tests['LG07']['delta_A']):.3g} (p={float(tests['LG07']['circular_p']):.3g}), and LG12 ΔA={float(tests['LG12']['delta_A']):.3g} (p={float(tests['LG12']['circular_p']):.3g}). In the secondary physical-coordinate sensitivity analysis, LG01, LG02, and LG07 remained supported after the finite-sample correction, whereas LG12 was weaker and did not pass the 0.05 physical-coordinate sensitivity threshold (physical p={float(tests['LG12']['physical_p']):.3g}).
 
-    Pair-specific summaries showed that the largest inside-versus-outside increases were: {top_txt}. Opposite-arrangement pairs were the primary source of the positive A(w) shifts in LG01 and LG02, indicating that populations carrying different chromosomal arrangements were inferred to have deeper local coalescent histories within those supergene windows than in the same linkage-group collinear background.
+    Pair-specific summaries showed that the largest inside-versus-outside increases were: {top_txt}. Pair-class summaries across all population pairs showed: {class_txt}. These summaries indicate whether A(w) is driven by deeper opposite-arrangement pairs, shifts among same-arrangement pairs, or both, rather than relying on only the largest individual pair changes.
 
-    The divergence-time shifts co-localized with the existing topology signal for LG01, LG02, and LG12, but LG07 was discordant: it had weak topology enrichment in Stage 4 while showing a positive divergence-time shift in Stage 7. These results support an empirical divergence-time sensitivity claim for the published Atlantic cod SNAPP outputs, with the limitation that Stage 7 uses MCC point estimates only because per-window posterior tree samples were unavailable.
+    The divergence-time shifts co-localized with the existing topology signal for LG01 and LG02, and supportively for LG12 although LG12 was sensitive to the spatial null definition. LG07 was topology-time discordant: it had weak topology enrichment in Stage 4 while showing a positive divergence-time shift in Stage 7. These results support an empirical divergence-time sensitivity claim for the published Atlantic cod SNAPP outputs, with the limitation that Stage 7 uses MCC point estimates only because per-window posterior tree samples were unavailable.
     """).strip() + "\n")
     FIGURE_CAPTION.write_text(textwrap.dedent("""
     Figure. Atlantic cod Stage-7 divergence-time sensitivity. Left/right comparison panels plot, for each linkage group, the same population pair's median MRCA time in fully outside windows against its median MRCA time in fully inside inversion windows; the diagonal marks no shift. Points are colored by whether the pair carries the same or opposite chromosomal arrangement on the focal linkage group. Track panels compare the existing topology statistic D(w) with the new divergence-time statistic A(w), where A(w) is the mean MRCA time of opposite-arrangement pairs minus the mean MRCA time of same-arrangement pairs. Gray shading marks the frozen inversion interval and red points mark boundary-overlap windows excluded from primary tests. The analysis uses published SNAPP MCC trees and does not rerun SNAPP.
@@ -685,11 +749,17 @@ def write_report(test_rows, topo_rows, posterior_available_rows, diagnostics):
         "",
         "## Primary tests",
         "",
-        "| LG | n inside | n outside | mean A inside | median A inside | mean A outside | median A outside | Delta A | circular p | physical p | BH p |",
-        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
+        "The circular-shift test is the primary Stage-7 inferential test. The physical-coordinate placement test is a secondary sensitivity analysis using finite-sample empirical p-values `(k+1)/(N+1)`.",
+        "",
+        "| LG | n inside | n outside | mean A inside | median A inside | mean A outside | median A outside | Delta A | circular p | circular BH p | physical p | physical BH p |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
     for r in test_rows:
-        lines.append(f"| {r['lg']} | {r['n_inside']} | {r['n_outside']} | {float(r['mean_A_inside']):.6g} | {float(r['median_A_inside']):.6g} | {float(r['mean_A_outside']):.6g} | {float(r['median_A_outside']):.6g} | {float(r['delta_A']):.6g} | {float(r['circular_p']):.6g} | {float(r['physical_p']):.6g} | {float(r['BH_p']):.6g} |")
+        lines.append(f"| {r['lg']} | {r['n_inside']} | {r['n_outside']} | {float(r['mean_A_inside']):.6g} | {float(r['median_A_inside']):.6g} | {float(r['mean_A_outside']):.6g} | {float(r['median_A_outside']):.6g} | {float(r['delta_A']):.6g} | {float(r['circular_p']):.6g} | {float(r['BH_p']):.6g} | {float(r['physical_p']):.6g} | {float(r['physical_BH_p']):.6g} |")
+    lines.extend([
+        "",
+        "LG01, LG02, and LG07 remain supported in the physical-coordinate sensitivity analysis. LG12 is supportive under the primary circular test but less robust under the physical-coordinate placement null.",
+    ])
     lines.extend([
         "",
         "## Topology-time comparison",
@@ -746,25 +816,27 @@ def main() -> None:
     posterior_rows = posterior_availability(windows)
     posterior_summary_rows = posterior_summary()
     topo_rows = topology_time_comparison(test_rows)
+    pair_class_rows = pair_class_summary(pair_rows)
 
     write_tsv(PAIRWISE_TIMES, pair_rows, ["lg", "window_id", "start", "end", "region_class", "population1", "population2", "arrangement1", "arrangement2", "pair_class", "mrca_time", "tree_source"])
     write_tsv(PAIRWISE_SHIFTS, shifted_rows, ["lg", "window_id", "start", "end", "region_class", "population1", "population2", "arrangement1", "arrangement2", "pair_class", "mrca_time", "tree_source", "baseline_rule", "baseline_median_outside_time", "delta_time", "relative_time"])
     write_tsv(POSTERIOR_AVAILABILITY, posterior_rows, ["lg", "window_id", "start", "end", "region_class", "mcc_available", "posterior_available", "n_posterior_trees", "source", "notes"])
     write_tsv(WINDOW_SIGNAL, window_signal, ["lg", "window_id", "start", "end", "midpoint", "region_class", "n_same_pairs", "n_opposite_pairs", "mean_time_opposite", "mean_time_same", "mean_time_all", "median_time_opposite", "median_time_same", "A_opposite_minus_same", "A_relative"])
-    write_tsv(TESTS, test_rows, ["lg", "n_inside", "n_outside", "mean_A_inside", "median_A_inside", "mean_A_outside", "median_A_outside", "delta_A", "circular_p", "physical_p", "BH_p"])
+    write_tsv(TESTS, test_rows, ["lg", "n_inside", "n_outside", "mean_A_inside", "median_A_inside", "mean_A_outside", "median_A_outside", "delta_A", "circular_p", "physical_p", "BH_p", "physical_BH_p"])
     write_tsv(RESULTS / "stage7_physical_coordinate_null.tsv", physical_null_rows, ["lg", "candidate_index", "candidate_start", "candidate_end", "n_observed_inside", "n_observed_outside", "delta_A", "greater_or_equal_observed"])
     write_tsv(PAIR_SUMMARY, summary_rows, ["lg", "population1", "population2", "arrangement1", "arrangement2", "pair_class", "median_time_outside", "median_time_inside", "mean_time_outside", "mean_time_inside", "delta_time", "relative_change", "n_inside", "n_outside"])
+    write_tsv(PAIR_CLASS_SUMMARY, pair_class_rows, ["lg", "pair_class", "n_pairs", "median_outside_time", "median_inside_time", "median_pair_delta", "mean_pair_delta", "median_relative_change"])
     write_tsv(TOPO_TIME, topo_rows, ["lg", "delta_D", "topology_p", "delta_A", "time_p", "interpretation"])
     write_tsv(POSTERIOR_SUMMARY, posterior_summary_rows, ["analysis_scope", "posterior_available", "n_windows_with_posterior", "n_windows_expected", "summary"])
 
     write_time_scale_audit(diagnostics, posterior_rows)
     plot_inside_outside(summary_rows)
     plot_tracks(window_signal)
-    write_texts(test_rows, summary_rows, topo_rows, posterior_rows)
+    write_texts(test_rows, summary_rows, pair_class_rows, topo_rows, posterior_rows)
     write_report(test_rows, topo_rows, posterior_rows, diagnostics)
     outputs = [
         PAIRWISE_TIMES, PAIRWISE_SHIFTS, TIME_AUDIT, POSTERIOR_AVAILABILITY, WINDOW_SIGNAL, TESTS,
-        RESULTS / "stage7_physical_coordinate_null.tsv", PAIR_SUMMARY, TOPO_TIME, POSTERIOR_SUMMARY,
+        RESULTS / "stage7_physical_coordinate_null.tsv", PAIR_SUMMARY, PAIR_CLASS_SUMMARY, TOPO_TIME, POSTERIOR_SUMMARY,
         METHODS_TEXT, RESULTS_TEXT, FIGURE_CAPTION, REPORT,
         FIG_INSIDE_OUTSIDE_PDF, FIG_INSIDE_OUTSIDE_PNG, FIG_TRACKS_PDF, FIG_TRACKS_PNG,
     ]

@@ -1,0 +1,12 @@
+node_id	clade_taxa	n_descendants	age_outside	age_all	delta_age	relative_change	branch_length_outside	branch_length_all
+N09	Gadmor_avc_spc+Gadmor_avo_spc+Gadmor_bor_spc+Gadmor_ico_spc+Gadmor_kie_spc+Gadmor_lfc_spc+Gadmor_lfo_spc+Gadmor_low_spc	8	0.0347019353	0.0471499728	0.0124480374	1.35871306	0.00408506818	0.000793189727
+N10	Gadmor_avc_spc+Gadmor_avo_spc+Gadmor_bor_spc+Gadmor_icc_spc+Gadmor_ico_spc+Gadmor_kie_spc+Gadmor_lfc_spc+Gadmor_lfo_spc+Gadmor_low_spc	9	0.0387870035	0.0479431625	0.00915615899	1.23606255	0.0202493238	0.0177130568
+N01	Gadmor_avo_spc+Gadmor_lfo_spc	2	0.0347019353	0.0271099199	-0.00759201543	0.781222132	0	0.001647714
+N11	Gadmor_avc_spc+Gadmor_avo_spc+Gadmor_bat_spc+Gadmor_bor_spc+Gadmor_icc_spc+Gadmor_ico_spc+Gadmor_kie_spc+Gadmor_lfc_spc+Gadmor_lfo_spc+Gadmor_low_spc+Gadmor_twc_spc+Gadmor_two_spc	12	0.0590363273	0.0656562193	0.00661989197	1.11213252	NA	NA
+N04	Gadmor_avo_spc+Gadmor_ico_spc+Gadmor_lfo_spc	3	0.0347019353	0.0287576339	-0.00594430143	0.828704037	0	0.0183923389
+N03	Gadmor_kie_spc+Gadmor_lfc_spc	2	0.0319751464	0.0278416254	-0.004133521	0.870727066	0	0.0004975148
+N06	Gadmor_kie_spc+Gadmor_lfc_spc+Gadmor_low_spc	3	0.0319751464	0.0283391402	-0.0036360062	0.886286488	0	0.00328289433
+N05	Gadmor_bat_spc+Gadmor_twc_spc+Gadmor_two_spc	3	0.0186520504	0.0212111019	0.00255905147	1.13719947	0.0403842769	0.0444451174
+N08	Gadmor_avc_spc+Gadmor_bor_spc+Gadmor_kie_spc+Gadmor_lfc_spc+Gadmor_low_spc	5	0.0330419768	0.0353692867	0.0023273099	1.07043495	0.0016599585	0.011780686
+N07	Gadmor_avc_spc+Gadmor_kie_spc+Gadmor_lfc_spc+Gadmor_low_spc	4	0.0319751464	0.0316220345	-0.000353111867	0.988956677	0.00106683043	0.00374725219
+N02	Gadmor_bat_spc+Gadmor_twc_spc	2	0.0186520504	0.0186614567	9.40626667e-06	1.0005043	0	0.0025496452
