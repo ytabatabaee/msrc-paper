@@ -1,0 +1,4 @@
+split	q_baseline_outside	q_alt1_outside	q_alt2_outside	localPP_outside	CULength_outside	q_baseline_inside	q_alt1_inside	q_alt2_inside	localPP_inside	CULength_inside	q_baseline_all	q_alt1_all	q_alt2_all	localPP_all	CULength_all
+arabiensis,coluzzii,gambiae,quadriannulatus|melas,merus	0.831347	0.0565313	0.112121	1	1.36548	0.36671	0.478636	0.154654	1.02547e-08	0.0500197	0.626641	0.2425	0.13086	1	0.578032
+arabiensis,coluzzii,gambiae|melas,merus,quadriannulatus	0.957005	0.013794	0.0292007	1	2.70133	0.81432	0.171705	0.0139751	1	1.26814	0.894142	0.0833654	0.0224927	1	1.83158
+arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae	0.871768	0.0854649	0.0427671	1	1.6361	0.402447	0.150704	0.446849	0.000583255	0.107886	0.664997	0.244681	0.0903213	1	0.686122

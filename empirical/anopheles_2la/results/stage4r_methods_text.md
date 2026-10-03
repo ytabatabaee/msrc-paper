@@ -1,0 +1,7 @@
+# Stage 4R methods text
+
+Stage 4R used all 72 Fontaine-associated MalariaGEN Ag3 release 3.10 samples from `fontaine-2015-rebuild`, representing six biological species. Phased haplotypes were queried directly with `ag3.haplotypes(...)`; no raw reads were downloaded or processed. Each diploid individual contributed two phased haplotypes, giving 144 haplotype tips in complete local trees. Heterokaryotypic individuals were retained, but their two homologues were mapped only to the individual's biological species; no homolog was arbitrarily labelled standard or inverted.
+
+We reused the frozen Stage-2R coordinate-1-anchored 50-kb 2L grid and the frozen 2La interval `2L:20524058-42165532`. Boundary-overlap windows were excluded from ASTRAL treatments, and low-signal windows were retained in QC output but excluded from summary-tree inference. SNP filtering retained biallelic haplotype SNPs with minor allele count >= 2 and site missingness <= 0.25; windows required at least 25 retained SNPs and maximum haplotype missingness <= 0.5.
+
+For each usable window, haplotype pairwise distance was the mean absolute allelic difference across jointly callable retained SNPs. A deterministic neighbor-joining tree was constructed for each window. ASTRAL4 (`/Users/ytabatabaee/Desktop/ASTER/bin/astral4`) was run with haplotype-to-species mapping (`-a`), detailed support (`-u 2 -t 2`), and requested `CULength`. CU branch lengths are treated as summary-coalescent sensitivity metrics, not calibrated times.

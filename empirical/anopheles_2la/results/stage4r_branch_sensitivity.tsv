@@ -1,0 +1,4 @@
+split	delta_q_outside_minus_all	delta_q_outside_minus_inside	delta_CU_outside_minus_all	delta_CU_outside_minus_inside	classification
+arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae	0.206771	0.469321	0.949978	1.528214	topology_conflict_inside;support_weakened;branch_length_shifted
+arabiensis,coluzzii,gambiae,quadriannulatus|melas,merus	0.204706	0.464637	0.787448	1.3154603	topology_conflict_inside;support_weakened;branch_length_shifted
+arabiensis,coluzzii,gambiae|melas,merus,quadriannulatus	0.062863	0.142685	0.86975	1.43319	support_weakened;branch_length_shifted

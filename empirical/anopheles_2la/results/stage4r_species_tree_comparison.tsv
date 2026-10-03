@@ -1,0 +1,4 @@
+comparison	rf	normalized_rf	same_topology
+T_outside6 vs T_inside6	4	0.666666666667	false
+T_outside6 vs T_all6	0	0	true
+T_inside6 vs T_all6	4	0.666666666667	false

@@ -354,3 +354,17 @@ Stage 3R reused the Stage-2R local 53-individual NJ trees and ASTRAL4's document
 - classification: **SUPPORT/BRANCH-LENGTH EFFECT**
 
 The primary Anopheles biological result remains Stage 2R's crossed MalariaGEN result inside 2La; Stage 3R is a sensitivity analysis of propagation into species-level summary-tree inference. The improved Stage 3R figure shows that 2La does not flip the combined species topology, but progressively erodes its quartet and CU support, while 2La-only windows support a different topology with near-unit ASTRAL support.
+
+## Stage 4R — six-species species-tree sensitivity
+
+Stage 4R completed the additive six-species ASTRAL sensitivity analysis using all 72 Fontaine-associated MalariaGEN samples as 144 phased haplotypes. This is now the primary Anopheles species-tree sensitivity analysis. Stage 2R remains the primary clean arrangement-vs-species result, and Stage 3R remains the restricted four-species homozygote sensitivity analysis.
+
+Usable windows: 976 non-boundary windows (546 outside 2La, 430 inside 2La). Stage 4R classification: **SUPPORT/BRANCH-LENGTH EFFECT**.
+
+`T_outside6`: `arabiensis,coluzzii,gambiae,quadriannulatus|melas,merus; arabiensis,coluzzii,gambiae|melas,merus,quadriannulatus; arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae`
+
+`T_inside6`: `arabiensis,coluzzii,gambiae,merus|melas,quadriannulatus; arabiensis,coluzzii,gambiae|melas,merus,quadriannulatus; arabiensis,gambiae|coluzzii,melas,merus,quadriannulatus`
+
+`T_all6`: `arabiensis,coluzzii,gambiae,quadriannulatus|melas,merus; arabiensis,coluzzii,gambiae|melas,merus,quadriannulatus; arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae`
+
+Most inversion-sensitive outside-tree branch: `arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae`.

@@ -1,0 +1,11 @@
+m_inside	n_replicates	mean_q_sensitive_split	sd_q_sensitive_split	min_q_sensitive_split	max_q_sensitive_split	fraction_topology_matches_T_outside6	sensitive_split	support_source
+0	1	0.871768	0	0.871768	0.871768	1	arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae	T_outside6 fixed split score
+1	20	0.87088065	9.23393484012e-05	0.870746	0.871024	1	arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae	inferred branch annotation when topology matches T_outside6
+2	20	0.8700324	0.0001548552465	0.869735	0.870264	1	arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae	inferred branch annotation when topology matches T_outside6
+5	20	0.86748045	0.000228129804924	0.867133	0.867941	1	arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae	inferred branch annotation when topology matches T_outside6
+10	20	0.86322515	0.000342000811787	0.862238	0.863869	1	arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae	inferred branch annotation when topology matches T_outside6
+20	20	0.8552227	0.000446068333212	0.854502	0.855904	1	arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae	inferred branch annotation when topology matches T_outside6
+40	20	0.8398325	0.000496295699208	0.838995	0.84058	1	arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae	inferred branch annotation when topology matches T_outside6
+80	20	0.81182425	0.000821495867626	0.809606	0.81308	1	arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae	inferred branch annotation when topology matches T_outside6
+160	20	0.7652362	0.000767091403323	0.763421	0.766361	1	arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae	inferred branch annotation when topology matches T_outside6
+429	1	0.664997	0	0.664997	0.664997	1	arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae	T_all6 fixed split score
