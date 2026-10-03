@@ -1,0 +1,11 @@
+m_inside	n_replicates	mean_q_outside_topology	sd_q_outside_topology	min_q_outside_topology	max_q_outside_topology	fraction_topology_matches_outside	support_source
+0	1	0.931104	0	0.931104	0.931104	1	T_outside exact
+1	20	0.9301373	0.000121646640986	0.929944	0.930234	1	inferred q1 because topology == T_outside
+2	20	0.92916505	0.000148928267791	0.928871	0.929367	1	inferred q1 because topology == T_outside
+5	20	0.92638725	0.0003001530969	0.925815	0.926787	1	inferred q1 because topology == T_outside
+10	20	0.92160515	0.000275346150566	0.921226	0.922127	1	inferred q1 because topology == T_outside
+20	20	0.91276525	0.000422871372132	0.912197	0.913532	1	inferred q1 because topology == T_outside
+40	20	0.89550345	0.000643135614331	0.894225	0.896632	1	inferred q1 because topology == T_outside
+80	20	0.86432925	0.000808327700288	0.863121	0.865855	1	inferred q1 because topology == T_outside
+160	20	0.812673	0.000923500206594	0.811135	0.814495	1	inferred q1 because topology == T_outside
+429	1	0.70154	0	0.70154	0.70154	1	T_all exact

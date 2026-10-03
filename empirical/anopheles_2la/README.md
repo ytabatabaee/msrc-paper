@@ -353,4 +353,4 @@ Stage 3R reused the Stage-2R local 53-individual NJ trees and ASTRAL4's document
 - `T_all`: (arabiensis,quadriannulatus)|(coluzzii,gambiae)
 - classification: **SUPPORT/BRANCH-LENGTH EFFECT**
 
-The primary Anopheles biological result remains Stage 2R's crossed MalariaGEN result inside 2La; Stage 3R is a sensitivity analysis of propagation into species-level summary-tree inference.
+The primary Anopheles biological result remains Stage 2R's crossed MalariaGEN result inside 2La; Stage 3R is a sensitivity analysis of propagation into species-level summary-tree inference. The improved Stage 3R figure shows that 2La does not flip the combined species topology, but progressively erodes its quartet and CU support, while 2La-only windows support a different topology with near-unit ASTRAL support.

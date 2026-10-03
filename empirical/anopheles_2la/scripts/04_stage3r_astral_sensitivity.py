@@ -51,6 +51,7 @@ ENV=RESULTS/'stage3r_astral_environment.md'
 TOPO_SUM=RESULTS/'stage3r_species_topology_summary.tsv'
 FIXED=RESULTS/'stage3r_fixed_topology_scores.tsv'
 DOWN=RESULTS/'stage3r_downweighting.tsv'
+DOWN_SUMMARY=RESULTS/'stage3r_downweighting_summary.tsv'
 BRANCH=RESULTS/'stage3r_branch_length_summary.tsv'
 ARRCTRL=RESULTS/'stage3r_arrangement_class_quartet_summary.tsv'
 METHODS=RESULTS/'stage3r_methods_text.md'
@@ -63,6 +64,9 @@ FIGPNG=FIGURES/'anopheles_stage3r_astral_sensitivity.png'
 
 INV_START_MB=20.524058; INV_END_MB=42.165532
 SPECIES=['arabiensis','coluzzii','gambiae','quadriannulatus']
+T_OUTSIDE_SPLIT='arabiensis,quadriannulatus|coluzzii,gambiae'
+T_INSIDE_SPLIT='arabiensis,gambiae|coluzzii,quadriannulatus'
+T_ALT_SPLIT='arabiensis,coluzzii|gambiae,quadriannulatus'
 ASTRAL4=Path('/Users/ytabatabaee/Desktop/ASTER/bin/astral4')
 M_VALUES=[1,2,5,10,20,40,80,160,'all']
 SEED_BASE=20261003
@@ -329,6 +333,56 @@ def all_three_topologies():
     taxa=SPECIES
     return [canonical_split([taxa[0],taxa[1]],taxa), canonical_split([taxa[0],taxa[2]],taxa), canonical_split([taxa[0],taxa[3]],taxa)]
 
+
+
+def all_species_splits():
+    return {T_OUTSIDE_SPLIT, T_INSIDE_SPLIT, T_ALT_SPLIT}
+
+def canonical_q_map_from_inferred(split, ann):
+    """Map ASTRAL q fields to canonical species splits when q1 is the inferred split.
+
+    For q2/q3, ASTRAL's ordering is not guaranteed from the Newick alone, so only
+    q1 is assigned unambiguously here. Fixed-topology -C scoring is used whenever
+    support for a non-inferred split is required.
+    """
+    out={k:math.nan for k in all_species_splits()}
+    out[split]=float(ann['q1'])
+    return out
+
+def fixed_score_rows_by_treatment():
+    return {r['treatment']:r for r in read_tsv(FIXED)}
+
+def baseline_quartet_support(treatment=None, split=None, ann=None, fixed_rows=None):
+    """Return support specifically for T_OUTSIDE_SPLIT, never raw q1 unless safe.
+
+    If the inferred/scored split is T_OUTSIDE_SPLIT, q1 is the baseline support.
+    Otherwise a fixed-topology scoring row must be supplied and q_baseline is used.
+    """
+    if split == T_OUTSIDE_SPLIT and ann is not None and 'q1' in ann:
+        return float(ann['q1']), 'inferred q1 equals T_outside split'
+    if treatment is None:
+        raise ValueError('treatment is required when inferred split is not T_outside')
+    fixed=fixed_rows if fixed_rows is not None else fixed_score_rows_by_treatment()
+    row=fixed[treatment]
+    return float(row['q_baseline']), f'{treatment} fixed T_outside score'
+
+def load_existing_astral_results():
+    paths={'T_outside':ASTRAL_DIR/'T_outside_species.nwk','T_inside':ASTRAL_DIR/'T_inside_species.nwk','T_all':ASTRAL_DIR/'T_all_species.nwk'}
+    nwindows={'T_outside':547,'T_inside':429,'T_all':976}
+    out={}
+    for treatment,path in paths.items():
+        nw,split,ann=parse_support_for_tree(path)
+        out[treatment]={'tree':nw,'split':split,'ann':ann,'n_windows':nwindows[treatment],'cmd':'existing ASTRAL output reused; no rerun'}
+    assert out['T_outside']['split']==T_OUTSIDE_SPLIT
+    assert out['T_all']['split']==T_OUTSIDE_SPLIT
+    assert out['T_inside']['split']==T_INSIDE_SPLIT
+    fixed=fixed_score_rows_by_treatment()
+    assert abs(baseline_quartet_support('T_outside', out['T_outside']['split'], out['T_outside']['ann'], fixed)[0]-0.931104)<1e-6
+    assert abs(baseline_quartet_support('T_all', out['T_all']['split'], out['T_all']['ann'], fixed)[0]-0.701540)<1e-6
+    assert abs(baseline_quartet_support('T_inside', out['T_inside']['split'], out['T_inside']['ann'], fixed)[0]-0.408833)<1e-6
+    assert abs(float(out['T_inside']['ann']['q1'])-0.456944)<1e-6
+    return out
+
 def species_quartet_scores_from_stage2(wids, crows=None):
     # For four biological species, use all-53 distance class files would not identify species quartet alternatives directly.
     # Here we report ASTRAL annotations where possible; fallback frequencies are not needed because ASTRAL is available.
@@ -396,28 +450,118 @@ def arrangement_control():
     write_tsv(ARRCTRL,rows,['statistic','region_class','n_windows','mean','median','notes'])
     return rows
 
-def make_stage3_fig(results,down_rows):
-    fig,axs=plt.subplots(2,2,figsize=(10,7))
-    for ax,t in zip(axs.flat[:3],['T_outside','T_inside','T_all']):
-        ax.axis('off'); ax.set_title(t.replace('_',' '),fontsize=12)
-        top=topology_label(results[t]['split']); sup=results[t]['ann'].get('pp1',results[t]['ann'].get('confidence','NA'))
-        ax.text(0.5,0.58,top,ha='center',va='center',fontsize=11,wrap=True)
-        ax.text(0.5,0.35,f'support: {fmt(sup)}\nwindows: {results[t]["n_windows"]}',ha='center',va='center',fontsize=10)
-    ax=axs.flat[3]
-    grouped=defaultdict(list)
-    for r in down_rows: grouped[str(r['m_inside'])].append(1.0 if as_bool(r['matches_T_outside']) else 0.0)
-    xs=[]; ys=[]; labels=[]
-    for m in M_VALUES:
-        k=str(m); xs.append(len(xs)); ys.append(sum(grouped[k])/len(grouped[k]) if grouped[k] else math.nan); labels.append(str(m))
-    ax.plot(xs,ys,marker='o',color='#1b9e77')
-    ax.set_xticks(xs); ax.set_xticklabels(labels,rotation=45)
-    ax.set_ylim(-0.03,1.03); ax.set_ylabel('Fraction matching T_outside'); ax.set_xlabel('Number of 2La windows included')
-    ax.set_title('Downweighting linked 2La windows')
-    fig.tight_layout(); fig.savefig(FIG); fig.savefig(FIGPNG,dpi=300); plt.close(fig)
+def split_sides(split):
+    left,right=split.split('|')
+    return left.split(','), right.split(',')
+
+def italic_species(name):
+    return rf'$\it{{{name}}}$'
+
+def draw_quartet_tree(ax, split, title, ann, n_windows, extra_note=''):
+    left,right=split_sides(split)
+    ax.set_title(title, loc='left', fontsize=12, fontweight='bold')
+    ax.set_xlim(0,1); ax.set_ylim(0,1); ax.axis('off')
+    x_tip_l, x_cherry_l, x_cherry_r, x_tip_r = 0.07, 0.30, 0.70, 0.93
+    y_left=[0.75,0.55]; y_right=[0.45,0.25]
+    y_mid_l=sum(y_left)/2; y_mid_r=sum(y_right)/2
+    lw=2.0
+    ax.plot([x_cherry_l,x_cherry_l],[min(y_left),max(y_left)], color='black', lw=lw)
+    ax.plot([x_cherry_r,x_cherry_r],[min(y_right),max(y_right)], color='black', lw=lw)
+    for y,taxon in zip(y_left,left):
+        ax.plot([x_tip_l,x_cherry_l],[y,y], color='black', lw=lw)
+        ax.text(x_tip_l-0.02,y,italic_species(taxon),ha='right',va='center',fontsize=10)
+    for y,taxon in zip(y_right,right):
+        ax.plot([x_cherry_r,x_tip_r],[y,y], color='black', lw=lw)
+        ax.text(x_tip_r+0.02,y,italic_species(taxon),ha='left',va='center',fontsize=10)
+    ax.plot([x_cherry_l,x_cherry_r],[y_mid_l,y_mid_r], color='black', lw=lw+0.8)
+    pp=float(ann.get('pp1', ann.get('localPP', ann.get('confidence', float('nan')))))
+    cu=float(ann.get('branch_length', float('nan')))
+    q1=float(ann.get('q1', float('nan'))); q2=float(ann.get('q2', float('nan'))); q3=float(ann.get('q3', float('nan')))
+    txt=f"localPP = {pp:.4g}\nCU = {cu:.3f}\nq = ({q1:.3f}, {q2:.3f}, {q3:.3f})\nn = {n_windows} windows"
+    if extra_note:
+        txt += '\n' + extra_note
+    ax.text(0.50,0.96,txt,ha='center',va='top',fontsize=8.5,bbox=dict(facecolor='white', edgecolor='0.82', pad=3))
+
+def baseline_support_summary(down_rows, fixed_rows):
+    fixed={r['treatment']:r for r in fixed_rows}
+    rows=[]
+    outside_q=float(fixed['T_outside']['q_baseline'])
+    all_q=float(fixed['T_all']['q_baseline'])
+    inside_q=float(fixed['T_inside']['q_baseline'])
+    assert abs(outside_q-0.931104)<1e-6
+    assert abs(all_q-0.701540)<1e-6
+    assert abs(inside_q-0.408833)<1e-6
+    rows.append({'m_inside':'0','n_replicates':1,'mean_q_outside_topology':outside_q,'sd_q_outside_topology':0.0,'min_q_outside_topology':outside_q,'max_q_outside_topology':outside_q,'fraction_topology_matches_outside':1.0,'support_source':'T_outside exact'})
+    by=defaultdict(list); matches=defaultdict(list); sources=defaultdict(set)
+    for r in down_rows:
+        m=str(r['m_inside'])
+        if m == 'all':
+            continue
+        inferred_split = T_OUTSIDE_SPLIT if as_bool(r['matches_T_outside']) else None
+        if inferred_split == T_OUTSIDE_SPLIT:
+            q_base=float(r['q1'])
+            source='inferred q1 because topology == T_outside'
+        else:
+            raise RuntimeError(f"Mixed treatment {m} replicate {r['replicate']} does not match T_outside; fixed scoring is required before summarising.")
+        by[m].append(q_base)
+        matches[m].append(1.0 if as_bool(r['matches_T_outside']) else 0.0)
+        sources[m].add(source)
+    for m in ['1','2','5','10','20','40','80','160']:
+        vals=by[m]
+        assert vals, f'missing downweighting values for m={m}'
+        mean=sum(vals)/len(vals)
+        sd=(sum((v-mean)**2 for v in vals)/(len(vals)-1))**0.5 if len(vals)>1 else 0.0
+        frac=sum(matches[m])/len(matches[m])
+        assert abs(frac-1.0)<1e-12, f'mixed treatment m={m} did not always match T_outside'
+        rows.append({'m_inside':m,'n_replicates':len(vals),'mean_q_outside_topology':mean,'sd_q_outside_topology':sd,'min_q_outside_topology':min(vals),'max_q_outside_topology':max(vals),'fraction_topology_matches_outside':frac,'support_source':'; '.join(sorted(sources[m]))})
+    rows.append({'m_inside':'429','n_replicates':1,'mean_q_outside_topology':all_q,'sd_q_outside_topology':0.0,'min_q_outside_topology':all_q,'max_q_outside_topology':all_q,'fraction_topology_matches_outside':1.0,'support_source':'T_all exact'})
+    assert abs(rows[-1]['mean_q_outside_topology']-inside_q)>0.1, 'x=429 must use T_all, not inside-only baseline support'
+    write_tsv(DOWN_SUMMARY, rows, ['m_inside','n_replicates','mean_q_outside_topology','sd_q_outside_topology','min_q_outside_topology','max_q_outside_topology','fraction_topology_matches_outside','support_source'])
+    return rows
+
+def make_stage3_fig(results,down_rows,fixed_rows=None):
+    fixed_rows = fixed_rows if fixed_rows is not None else read_tsv(FIXED)
+    summary_rows=baseline_support_summary(down_rows, fixed_rows)
+    fig,axs=plt.subplots(2,2,figsize=(11,8.2))
+    draw_quartet_tree(axs[0,0], results['T_outside']['split'], 'A. Outside 2La', results['T_outside']['ann'], results['T_outside']['n_windows'])
+    draw_quartet_tree(axs[0,1], results['T_inside']['split'], 'B. Inside 2La', results['T_inside']['ann'], results['T_inside']['n_windows'], extra_note='q(T_outside)=0.409')
+    draw_quartet_tree(axs[1,0], results['T_all']['split'], 'C. All 2L windows', results['T_all']['ann'], results['T_all']['n_windows'])
+    ax=axs[1,1]
+    xs=[int(r['m_inside']) for r in summary_rows]
+    ys=[float(r['mean_q_outside_topology']) for r in summary_rows]
+    yerr=[float(r['sd_q_outside_topology']) for r in summary_rows]
+    ymin=[float(r['min_q_outside_topology']) for r in summary_rows]
+    ymax=[float(r['max_q_outside_topology']) for r in summary_rows]
+    ax.plot(xs, ys, marker='o', color='#1f78b4', lw=2)
+    ax.errorbar(xs, ys, yerr=yerr, fmt='none', ecolor='#1f78b4', alpha=0.45, capsize=2)
+    ax.fill_between(xs, ymin, ymax, color='#1f78b4', alpha=0.12, linewidth=0)
+    ax.set_xscale('symlog', linthresh=2)
+    ax.set_xticks(xs)
+    ax.set_xticklabels([str(x) for x in xs], rotation=45, ha='right')
+    ax.set_ylim(0.62,0.96)
+    ax.set_xlabel('Number of 2La windows added')
+    ax.set_ylabel('Quartet support for outside topology')
+    ax.set_title('D. Effect of linked 2La windows', loc='left', fontsize=12, fontweight='bold')
+    ax.grid(True, axis='y', color='0.9', lw=0.8)
+    ax.text(0.03,0.06,'Topology remained T_outside\nfor all mixed treatments', transform=ax.transAxes, fontsize=9, bbox=dict(facecolor='white', edgecolor='0.82', pad=3))
+    ax.axhline(0.408833, color='#d95f02', ls=':', lw=1.2)
+    ax.text(0.98,0.13,'inside-only q(T_outside)=0.409', transform=ax.transAxes, ha='right', va='bottom', fontsize=8.5, color='#b85c00')
+    ax.text(0.98,0.94,'CU: 2.245 → 0.801', transform=ax.transAxes, ha='right', va='top', fontsize=9)
+    fig.suptitle('Stage 3R: species-tree sensitivity to linked 2La local genealogies', fontsize=13)
+    fig.tight_layout(rect=[0,0,1,0.965])
+    fig.savefig(FIG)
+    fig.savefig(FIGPNG,dpi=300)
+    plt.close(fig)
 
 def write_stage3_texts(results,fixed,down_rows,classification):
     outside=topology_label(results['T_outside']['split']); inside=topology_label(results['T_inside']['split']); alltop=topology_label(results['T_all']['split'])
-    changed_all=results['T_all']['split']!=results['T_outside']['split']; changed_inside=results['T_inside']['split']!=results['T_outside']['split']
+    fixed_by={r['treatment']:r for r in fixed}
+    q_out=float(fixed_by['T_outside']['q_baseline']); q_all=float(fixed_by['T_all']['q_baseline']); q_in_base=float(fixed_by['T_inside']['q_baseline'])
+    q_in_win=float(results['T_inside']['ann']['q1']); q_in_alt2=float(results['T_inside']['ann']['q2']); q_in_alt3=float(results['T_inside']['ann']['q3']); pp_in=float(results['T_inside']['ann']['pp1'])
+    cu_out=float(results['T_outside']['ann']['branch_length']); cu_all=float(results['T_all']['ann']['branch_length'])
+    q_reduction=(q_out-q_all)/q_out
+    alt_out=1-q_out; alt_all=1-q_all
+    cu_reduction=(cu_out-cu_all)/cu_out
     match_by_m={}
     for m in M_VALUES:
         vals=[as_bool(r['matches_T_outside']) for r in down_rows if str(r['m_inside'])==str(m)]
@@ -430,17 +574,21 @@ ASTRAL4 v1.25.4.8 was run with the documented `-a/--mapping` gene-to-species map
 """)
     RESTEXT.write_text(f"""# Stage 3R results text
 
-The empirical collinear baseline `T_outside` was `{outside}`. The inside-only topology was `{inside}`, and the all-window topology was `{alltop}`. `T_all` {'differed from' if changed_all else 'matched'} `T_outside`; `T_inside` {'differed from' if changed_inside else 'matched'} `T_outside`.
+The empirical collinear baseline `T_outside` was `{outside}`. The inside-only topology was `{inside}`, and the all-window topology was `{alltop}`. `T_all` matched `T_outside`, whereas `T_inside` differed from `T_outside`.
 
-The downweighting experiment measured whether linked 2La windows could shift species-level summary-tree inference when all outside windows were retained. The fraction of replicates matching `T_outside` by m was: {', '.join(f'{m}: {match_by_m[str(m)]:.2f}' for m in M_VALUES)}.
+Quartet support for the outside-baseline topology declined from `{q_out:.6f}` in the outside-only analysis to `{q_all:.6f}` when all linked 2La windows were added, a relative reduction of `{100*q_reduction:.1f}%`. Combined alternative quartet support increased from `{alt_out:.4f}` outside to `{alt_all:.4f}` in the all-window analysis. The requested CU internal branch length also dropped from `{cu_out:.5f}` to `{cu_all:.6f}`, a reduction of `{100*cu_reduction:.1f}%`. CU lengths are interpreted only as summary-coalescent sensitivity metrics, not calibrated times.
+
+Using explicit split-aware notation, `q(T_outside | outside)= {q_out:.6f}`, `q(T_outside | inside)= {q_in_base:.6f}`, and `q(T_outside | all)= {q_all:.6f}`. The inside-only analysis inferred the alternative topology `{inside}` with `q(T_inside | inside)= {q_in_win:.6f}` and near-unit ASTRAL local posterior support (`localPP={pp_in:.5f}`); the remaining third quartet had support `{q_in_alt3:.6f}`. Thus the inside-winning quartet frequency is only modestly higher than the outside-baseline quartet frequency on the same inside-only data. This illustrates sensitivity to linked-window replication: many physically linked 50-kb windows inside 2La can yield near-unit summary support even when the leading raw quartet-frequency advantage is modest.
+
+The downweighting experiment measured whether linked 2La windows could shift species-level summary-tree inference when all outside windows were retained. The inferred topology matched `T_outside` for every mixed treatment, including all inside windows: {', '.join(f'{m}: {match_by_m[str(m)]:.2f}' for m in M_VALUES)}. The support trend is summarized in `stage3r_downweighting_summary.tsv` and plotted in the Stage 3R figure.
 
 Stage 3R classification: **{classification}**.
 
 This does not replace the Stage-2R primary result. Stage 2R remains the main Anopheles result: within 2La, same-arrangement samples across species are closer than same-species samples carrying opposite arrangements.
 """)
-    CAPTION.write_text("""# Stage 3R figure caption
+    CAPTION.write_text(f"""# Stage 3R figure caption
 
-ASTRAL4 species-level summary-tree sensitivity to linked 2La local genealogies. Panels A-C show the inferred four-species summary topologies for outside-only, inside-only, and all usable non-boundary 2L windows, with support values reported from ASTRAL output where available. Panel D shows the downweighting experiment retaining all outside windows while adding deterministic subsets of inside-2La windows.
+Stage 3R species-level ASTRAL sensitivity analysis. (A) Outside-2La local trees recover the collinear-background topology `{outside}` with high quartet support and a long requested CU internal branch. (B) Inside-2La windows recover an alternative topology `{inside}`. The inside-only analysis yields near-unit ASTRAL local posterior support even though its leading quartet frequency is only modestly higher than that of the outside-baseline topology, illustrating sensitivity to linked-window replication when many physically linked 50-kb windows are treated as separate local-tree observations. (C) Combining all usable windows restores the outside topology but reduces its quartet support and requested CU branch length. (D) Quartet support is always defined with respect to the fixed outside-2La topology, irrespective of which split is ranked first in an individual ASTRAL run; this support declines as increasing numbers of linked 2La windows are added while the inferred mixed-treatment topology remains unchanged. The 429-window endpoint represents all outside windows plus all usable 2La windows, whereas the inside-only analysis is shown separately in panel B. CU length is a summary-coalescent sensitivity metric here and is not calibrated divergence time.
 """)
     REPORT.write_text(f"""# Stage 3R — species-level summary-tree sensitivity to 2La-linked local genealogies
 
@@ -451,7 +599,9 @@ Stage 3R asked whether hundreds of linked arrangement-associated local genealogi
 - `T_all`: `{alltop}`
 - final classification: **{classification}**
 
-Interpretation: {'including linked 2La windows altered the inferred species-level summary topology relative to the collinear background.' if classification=='SPECIES-TOPOLOGY EFFECT' else 'the extreme local arrangement signal did not overturn the four-species summary topology, but support/branch-length sensitivity is documented.' if classification=='SUPPORT/BRANCH-LENGTH EFFECT' else 'the effect remained local to 2La arrangement genealogy and did not materially affect species-level summary inference.'}
+`T_inside` differs from `T_outside`, but `T_all` equals `T_outside`. Adding all 2La windows reduces `q(T_outside)` from approximately `{q_out:.3f}` to `{q_all:.3f}` and reduces the requested CU internal branch length from approximately `{cu_out:.3f}` to `{cu_all:.3f}`. The full combined topology is therefore stable, but the linked inversion windows weaken the support/branch-length profile. Inside-only linked windows nevertheless yield near-unit support for an alternative topology (`localPP={pp_in:.5f}`), with `q(T_inside | inside)={q_in_win:.3f}` versus `q(T_outside | inside)={q_in_base:.3f}`.
+
+Interpretation: the extreme local arrangement signal does not overturn the four-species all-window summary topology, but it materially affects summary support and CU branch-length sensitivity. The Stage-2R crossed MalariaGEN result remains the primary Anopheles biological result.
 
 ASTRAL branch lengths, when present, are treated only as summary-coalescent sensitivity metrics. SU lengths are not interpreted as calibrated substitution lengths or divergence times.
 """)
@@ -468,13 +618,30 @@ Stage 3R reused the Stage-2R local 53-individual NJ trees and ASTRAL4's document
 - `T_all`: {topology_label(results['T_all']['split'])}
 - classification: **{classification}**
 
-The primary Anopheles biological result remains Stage 2R's crossed MalariaGEN result inside 2La; Stage 3R is a sensitivity analysis of propagation into species-level summary-tree inference.
+The primary Anopheles biological result remains Stage 2R's crossed MalariaGEN result inside 2La; Stage 3R is a sensitivity analysis of propagation into species-level summary-tree inference. The improved Stage 3R figure shows that 2La does not flip the combined species topology, but progressively erodes its quartet and CU support, while 2La-only windows support a different topology with near-unit ASTRAL support.
 """
     for p in [README,PROJECT_STATUS]:
         old=p.read_text() if p.exists() else ''
         marker='## Stage 3R — ASTRAL species-tree sensitivity'
         if marker in old: old=old.split(marker)[0].rstrip()+'\n'
         p.write_text(old.rstrip()+block)
+
+
+def update_existing_outputs():
+    fix_stage2_texts(); check_stage2_numbers(); make_main_figure()
+    results=load_existing_astral_results()
+    fixed=read_tsv(FIXED)
+    down_rows=read_tsv(DOWN)
+    classification='SUPPORT/BRANCH-LENGTH EFFECT'
+    make_stage3_fig(results, down_rows, fixed)
+    write_stage3_texts(results, fixed, down_rows, classification)
+    update_docs(classification, results, down_rows)
+    outputs=[DOWN_SUMMARY,RESTEXT,CAPTION,REPORT,FIG,FIGPNG,MAIN_PDF,MAIN_PNG,README,PROJECT_STATUS]
+    old=json.loads(MANIFEST.read_text()) if MANIFEST.exists() else {}
+    old.update({'stage':'Stage 3R','classification':classification,'T_outside':topology_label(results['T_outside']['split']),'T_inside':topology_label(results['T_inside']['split']),'T_all':topology_label(results['T_all']['split']),'q_Toutside_outside':0.931104,'q_Toutside_inside':0.408833,'q_Tinside_inside':0.456944,'q_Toutside_all':0.701540,'support_definition':'canonical fixed T_outside split: arabiensis,quadriannulatus|coluzzii,gambiae','outputs':{**old.get('outputs',{}), **{str(p.relative_to(REPO)):sha256(p) for p in outputs if p.exists()}}})
+    MANIFEST.write_text(json.dumps(old,indent=2,sort_keys=True)+'\n')
+    print(json.dumps({'updated_existing':True,'q_Toutside_outside':0.931104,'q_Toutside_inside':0.408833,'q_Tinside_inside':0.456944,'q_Toutside_all':0.701540},sort_keys=True))
+    return 0
 
 def run(args):
     fix_stage2_texts(); check_stage2_numbers(); make_main_figure()
@@ -485,7 +652,7 @@ def run(args):
     changed_all=results['T_all']['split']!=results['T_outside']['split']; changed_inside=results['T_inside']['split']!=results['T_outside']['split']
     classification='SPECIES-TOPOLOGY EFFECT' if changed_all else 'SUPPORT/BRANCH-LENGTH EFFECT' if changed_inside else 'LOCAL-ONLY EFFECT'
     make_stage3_fig(results,down_rows); write_stage3_texts(results,fixed,down_rows,classification); update_docs(classification,results,down_rows)
-    outputs=[MAP,AUDIT,ENV,TOPO_SUM,FIXED,DOWN,BRANCH,ARRCTRL,METHODS,RESTEXT,CAPTION,REPORT,FIG,FIGPNG,MAIN_PDF,MAIN_PNG,STAGE2_CAPTION,STAGE2_RESULTS,README,PROJECT_STATUS]
+    outputs=[MAP,AUDIT,ENV,TOPO_SUM,FIXED,DOWN,DOWN_SUMMARY,BRANCH,ARRCTRL,METHODS,RESTEXT,CAPTION,REPORT,FIG,FIGPNG,MAIN_PDF,MAIN_PNG,STAGE2_CAPTION,STAGE2_RESULTS,README,PROJECT_STATUS]
     for p in ASTRAL_DIR.glob('*'): outputs.append(p)
     MANIFEST.write_text(json.dumps({'stage':'Stage 3R','classification':classification,'astral4':str(ASTRAL4),'direct_mapping_supported':True,'n_inside_trees':len(inside),'n_outside_trees':len(outside),'n_clean_trees':len(clean),'T_outside':topology_label(results['T_outside']['split']),'T_inside':topology_label(results['T_inside']['split']),'T_all':topology_label(results['T_all']['split']),'stage2_haplotype_concordance':'6/6','stage2_core_numbers_unchanged':True,'downweight_reps_finite_m':REPS,'outputs':{str(p.relative_to(REPO)):sha256(p) for p in outputs if p.exists()}},indent=2,sort_keys=True)+'\n')
     print(json.dumps({'classification':classification,'T_outside':topology_label(results['T_outside']['split']),'T_inside':topology_label(results['T_inside']['split']),'T_all':topology_label(results['T_all']['split']),'inside':len(inside),'outside':len(outside)},sort_keys=True))
@@ -500,9 +667,28 @@ class Tests(unittest.TestCase):
     def test_clean_counts(self):
         _,_,inside,outside,clean=load_stage2(); self.assertEqual(len(inside),429); self.assertEqual(len(outside),547); self.assertEqual(len(clean),976)
 
+    def test_downweighting_summary_endpoints(self):
+        if DOWN_SUMMARY.exists():
+            rows={r['m_inside']:r for r in read_tsv(DOWN_SUMMARY)}
+            self.assertAlmostEqual(float(rows['0']['mean_q_outside_topology']),0.931104,places=6)
+            self.assertAlmostEqual(float(rows['429']['mean_q_outside_topology']),0.70154,places=5)
+            self.assertNotAlmostEqual(float(rows['429']['mean_q_outside_topology']),0.408833,places=3)
+            self.assertEqual(rows['0']['support_source'],'T_outside exact')
+            self.assertEqual(rows['429']['support_source'],'T_all exact')
+            self.assertTrue(all(abs(float(r['fraction_topology_matches_outside'])-1.0)<1e-12 for r in rows.values()))
+    def test_canonical_baseline_support(self):
+        results=load_existing_astral_results()
+        fixed=fixed_score_rows_by_treatment()
+        self.assertEqual(results['T_inside']['split'], T_INSIDE_SPLIT)
+        self.assertNotEqual(results['T_inside']['split'], T_OUTSIDE_SPLIT)
+        self.assertAlmostEqual(float(results['T_inside']['ann']['q1']),0.456944,places=6)
+        self.assertAlmostEqual(baseline_quartet_support('T_inside', results['T_inside']['split'], results['T_inside']['ann'], fixed)[0],0.408833,places=6)
+
 def main(argv=None):
-    ap=argparse.ArgumentParser(); ap.add_argument('--run-tests',action='store_true'); args=ap.parse_args(argv)
+    ap=argparse.ArgumentParser(); ap.add_argument('--run-tests',action='store_true'); ap.add_argument('--update-existing', action='store_true', help='Regenerate Stage 3R figure/prose from existing ASTRAL outputs without rerunning ASTRAL.'); args=ap.parse_args(argv)
     if args.run_tests:
         res=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromTestCase(Tests)); return 0 if res.wasSuccessful() else 1
+    if args.update_existing:
+        return update_existing_outputs()
     return run(args)
 if __name__=='__main__': raise SystemExit(main())
