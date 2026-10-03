@@ -1,0 +1,5 @@
+lg	delta_D	topology_p	delta_A	time_p	interpretation
+LG01	1.232766	0.009174	0.757029649	0.00917431193	topology_shift_and_time_shift
+LG02	0.892332	0.010989	0.653994231	0.010989011	topology_shift_and_time_shift
+LG07	-0.005981	0.555556	0.435501004	0.00854700855	discordant_topology_time_pattern
+LG12	1.04317	0.038462	0.324552387	0.00961538462	topology_shift_and_time_shift

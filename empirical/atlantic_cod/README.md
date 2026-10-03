@@ -37,6 +37,10 @@ Stage 4B is complete. It tests whether the Stage-4A topology-alignment signal is
 
 Stage 5 is complete. It adds the final physical-coordinate-aware sensitivity check, writes manuscript-ready figures/tables/text, and freezes the Atlantic cod empirical analysis for manuscript use in `results/FINAL_ANALYSIS.md` and `results/stage5_final_manifest.json`.
 
+Stage 6 is complete as a post-freeze extension. It evaluates ASTRAL4 summary-tree topology sensitivity to treating adjacent linked inversion windows as separate input trees. Stage 6 does not replace or modify the Stage-5 freeze.
+
+Stage 7 is complete as a post-freeze extension. It uses the native time-scaled published SNAPP MCC window trees to test divergence-time sensitivity for the same population pairs inside versus outside the frozen inversion intervals. Stage 7 writes pairwise MRCA-time tables, inside/outside time-shift summaries, topology/time comparison tables, and figures in `results/stage7_*` and `figures/atlantic_cod_stage7_*`. One boundary-overlap LG07 window failed the nonnegative branch-length validation and was excluded from Stage-7 MRCA calculations; the primary fully inside/outside counts were unaffected. Per-window posterior SNAPP trees were not available in the local/public inventory, so Stage 7 reports MCC point-estimate sensitivity only and does not rerun SNAPP.
+
 These analyses still do not prove MSRC. The final Atlantic cod freeze provides spatial-null support for the predeclared topology-alignment signal on some linkage groups.
 
 ## Conceptual role

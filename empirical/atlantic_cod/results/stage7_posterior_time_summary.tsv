@@ -1,0 +1,2 @@
+analysis_scope	posterior_available	n_windows_with_posterior	n_windows_expected	summary
+per_window_pairwise_mrca	false	0	426	Per-window SNAPP posterior tree samples were not available locally and were not listed in the frozen Zenodo record. Stage 7 therefore reports MCC point-estimate sensitivity only.

@@ -1,0 +1,52 @@
+{
+  "analysis": "Atlantic cod inversion-associated divergence-time sensitivity",
+  "excluded_windows": [
+    {
+      "lg": "LG07",
+      "max_tip_depth_deviation": NaN,
+      "n_tips": "",
+      "root_height": NaN,
+      "valid_for_stage7": false,
+      "validation_issue": "Tree contains a negative or non-finite branch length",
+      "window_id": "LG07_023000001_023250000"
+    }
+  ],
+  "frozen_input_checksums": {
+    "data/atlantic_cod/processed/cod_window_trees.tsv": "26ed195ee26cb860ca0885c76d768d427639a4338b74a787d9421498e10dfb0b",
+    "data/atlantic_cod/processed/stage2_structural_quartet_candidates.tsv": "303d9eb563fc6b5c0dd953b0d9f4c4b363baf83061f32fa37fb2f4e4a0f1a72c",
+    "data/atlantic_cod/processed/stage3_baseline_quartets.tsv": "5af7eea33f8c998556a140a4e14facb87322e58043632e7b04c15de3eab64bc1",
+    "data/atlantic_cod/processed/stage4a_local_quartets.tsv": "8ae82f803294a47854a8eecf907dc2684dc89cf6407362beaf9a4e7616d306f2",
+    "data/atlantic_cod/processed/stage4a_window_topology_scores.tsv": "3ef09caa4edddd247ad986ff168a4fc86b79d66559293bec51d291ee8cf9328e"
+  },
+  "output_checksums": {
+    "data/atlantic_cod/processed/stage7_pairwise_mrca_times.tsv": "65367a8c7d4f63be9d293b8ef124e731fe4d6509f8cca3496eb935e0fa94e7fb",
+    "data/atlantic_cod/processed/stage7_pairwise_time_shifts.tsv": "a338c05d96985e062103c89fa94d2839cd618b79eff27088a316d9ccf6c1debb",
+    "empirical/atlantic_cod/figures/atlantic_cod_stage7_inside_vs_outside_times.pdf": "ae82b9a765538e505ce07c77c6a2629682cc4d2a38372f384937256af3dd7d48",
+    "empirical/atlantic_cod/figures/atlantic_cod_stage7_inside_vs_outside_times.png": "23ff3e0939bfbe217077baf6020ede8ab96a87a6b194a278b5bd784da559355a",
+    "empirical/atlantic_cod/figures/atlantic_cod_stage7_topology_and_time_tracks.pdf": "9c1da0525dbbda3c5379b0da8302eb6cd5d62ef95c2da51a1831bc88ef5a8e2d",
+    "empirical/atlantic_cod/figures/atlantic_cod_stage7_topology_and_time_tracks.png": "6d57e079d03eebfa89c54001622cbbdf7f86c6da298648e7452d834723333cd1",
+    "empirical/atlantic_cod/results/stage7_divergence_time_tests.tsv": "2b0df45d07809afa5d44cd1e7f6e64ab86d453721d0b98bc4358c30a9c3296b2",
+    "empirical/atlantic_cod/results/stage7_figure_caption.md": "ed5d2acaf1bb72b9de0c8971247bb5ee3fb9a5c64312e9f8b2476492d09d1d1b",
+    "empirical/atlantic_cod/results/stage7_methods_text.md": "8d79e589425c2c0d77b213decf16bad12f97dd60d41e0b289287fd12767f8a98",
+    "empirical/atlantic_cod/results/stage7_pairwise_divergence_time_summary.tsv": "8ac49fad5e2bcfa4e9292ce4ea09a54c0ddab68b31cb47ce074cce87fd8ea236",
+    "empirical/atlantic_cod/results/stage7_physical_coordinate_null.tsv": "36b63823f52d6af925ca1e02ac78ff42445b571983412503ee990c799a716999",
+    "empirical/atlantic_cod/results/stage7_posterior_availability.tsv": "b22e2d6577b18c723c3febd8b0dac23b25d725d1a7793fdd6c44a37f4275426d",
+    "empirical/atlantic_cod/results/stage7_posterior_time_summary.tsv": "67eb7bc3c8cad701632df08c13e8e8c8e9c9f6977dcc5aefc3928d6bc6a0bf2c",
+    "empirical/atlantic_cod/results/stage7_report.md": "19c639d2ac39b855c5a5210ea56f50e4f64c73809a40113874ae9f792c620da7",
+    "empirical/atlantic_cod/results/stage7_results_text.md": "f4ae17d377b6925fc09e9e77abc82356c7ccbc3aae7595d1a42cb95c2608ed20",
+    "empirical/atlantic_cod/results/stage7_time_scale_audit.md": "2e1912a7e57e266819ae8a221b1f6952af787f49957f16b38f60a709748a7cf7",
+    "empirical/atlantic_cod/results/stage7_topology_time_comparison.tsv": "105c1428ec0ab2591da12ae34237eda65810d7f89a4604374a98e28da3864c65",
+    "empirical/atlantic_cod/results/stage7_window_divergence_time_signal.tsv": "5f6849175e53c6720cb8dd018f46fe426d1490ab1bf038bc25d9db3d8b6f8dc5"
+  },
+  "post_freeze_extension": true,
+  "snapp_rerun": false,
+  "software_versions": {
+    "biopython": "1.88",
+    "matplotlib": "3.11.2",
+    "python": "3.12.11"
+  },
+  "stage": 7,
+  "window_count_excluded": 1,
+  "window_count_total": 426,
+  "window_count_used": 425
+}
