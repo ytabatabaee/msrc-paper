@@ -1,0 +1,28 @@
+{
+  "attempt_timestamp_utc": "2026-10-03T12:16:55+00:00",
+  "available_sample_sets_columns": [
+    "sample_set",
+    "sample_count",
+    "study_id",
+    "study_url",
+    "terms_of_use_expiry_date",
+    "terms_of_use_url",
+    "release",
+    "unrestricted_use"
+  ],
+  "available_sample_sets_sha256": "ef02b3a316b8a45bd425067165f9907d6298fcd3e764653e93e6c270e710b482",
+  "command": "empirical/anopheles_2la/scripts/01_fetch_sample_karyotypes.py --url gs://vo_agam_release_master_us_central1",
+  "documented_sample_set_identifier": "fontaine-2015-rebuild",
+  "error": "'Ag3' object has no attribute 'karyotype'",
+  "error_type": "AttributeError",
+  "expected_total": 72,
+  "malariagen_data_package_version": "12.0.1",
+  "n_samples_retrieved": 0,
+  "note": "No canonical sample manifest or frozen quartet output was replaced after this failed attempt.",
+  "release_requested": "3.10",
+  "retrieval_status": "API_UNAVAILABLE",
+  "sample_set_identifier": "fontaine-2015-rebuild",
+  "sample_set_query": "fontaine",
+  "script": "empirical/anopheles_2la/scripts/01_fetch_sample_karyotypes.py",
+  "topology_data_embargo": "haplotypes/snp_calls/njt/topology methods not called"
+}

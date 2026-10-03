@@ -1,0 +1,8 @@
+sample_id	species	karyotype_raw	arrangement_class	confidence	source
+not_recovered_aggregate_arabiensis	Anopheles arabiensis	not_recovered	unknown	not_recovered	Ag3.10 fontaine-2015-rebuild aggregate count only; authoritative per-sample karyotype not retrieved in Stage 0R.
+not_recovered_aggregate_coluzzii	Anopheles coluzzii	not_recovered	unknown	not_recovered	Ag3.10 fontaine-2015-rebuild aggregate count only; authoritative per-sample karyotype not retrieved in Stage 0R.
+not_recovered_aggregate_gambiae	Anopheles gambiae	not_recovered	unknown	not_recovered	Ag3.10 fontaine-2015-rebuild aggregate count only; authoritative per-sample karyotype not retrieved in Stage 0R.
+not_recovered_aggregate_melas	Anopheles melas	not_recovered	unknown	not_recovered	Ag3.10 fontaine-2015-rebuild aggregate count only; authoritative per-sample karyotype not retrieved in Stage 0R.
+not_recovered_aggregate_merus	Anopheles merus	not_recovered	unknown	not_recovered	Ag3.10 fontaine-2015-rebuild aggregate count only; authoritative per-sample karyotype not retrieved in Stage 0R.
+not_recovered_aggregate_quadriannulatus	Anopheles quadriannulatus	not_recovered	unknown	not_recovered	Ag3.10 fontaine-2015-rebuild aggregate count only; authoritative per-sample karyotype not retrieved in Stage 0R.
+not_available_christyi	Anopheles christyi	not_available	unknown	not_available	Not listed in Ag3.10 fontaine-2015-rebuild public summary.

@@ -1,0 +1,56 @@
+{
+  "api_method_signatures": {
+    "karyotype": "(inversion: Literal['2La', '2Rb', '2Rc_gam', '2Rc_col', '2Rd', '2Rj'], sample_sets: Union[Sequence[str], str, NoneType] = None, sample_query: Optional[str] = None, sample_query_options: Optional[dict] = None) -> pandas.core.frame.DataFrame",
+    "sample_metadata": "(sample_sets: Union[Sequence[str], str, NoneType] = None, sample_query: Optional[str] = None, sample_query_options: Optional[dict] = None, sample_indices: Optional[List[int]] = None) -> pandas.core.frame.DataFrame",
+    "sample_sets": "(release: Union[str, Sequence[str], NoneType] = None) -> pandas.core.frame.DataFrame"
+  },
+  "api_methods_used": [
+    "sample_sets",
+    "sample_metadata",
+    "karyotype"
+  ],
+  "attempt_timestamp_utc": "2026-10-03T12:22:10+00:00",
+  "available_sample_sets_columns": [
+    "sample_set",
+    "sample_count",
+    "study_id",
+    "study_url",
+    "terms_of_use_expiry_date",
+    "terms_of_use_url",
+    "release",
+    "unrestricted_use"
+  ],
+  "available_sample_sets_sha256": "ef02b3a316b8a45bd425067165f9907d6298fcd3e764653e93e6c270e710b482",
+  "command": "empirical/anopheles_2la/scripts/01_fetch_sample_karyotypes.py --url gs://vo_agam_release_master_us_central1",
+  "documented_sample_set_identifier": "fontaine-2015-rebuild",
+  "frozen_strict_quartets_sha256": "a6935728a9d6b1ac0e0e52e5216dc135615fd35ba2e76178b3ef5e6180567728",
+  "malariagen_data_package_version": "14.0.0",
+  "n_candidate_strict_quartets": 19110,
+  "n_samples_retrieved": 72,
+  "raw_karyotype_value_counts": {
+    "0": 26,
+    "1": 19,
+    "2": 27
+  },
+  "release_requested": "3.10",
+  "retrieval_status": "SUCCESS",
+  "sample_manifest": "data/anopheles_2la/metadata/sample_manifest.tsv",
+  "sample_manifest_sha256": "667e5bd84bd1501da980a23eb13e289fcafae888b0b761e37532b728f4153d15",
+  "sample_set_identifier": "fontaine-2015-rebuild",
+  "sample_set_query": "fontaine",
+  "script": "empirical/anopheles_2la/scripts/01_fetch_sample_karyotypes.py",
+  "species_counts": {
+    "arabiensis": 12,
+    "coluzzii": 11,
+    "gambiae": 26,
+    "melas": 4,
+    "merus": 9,
+    "quadriannulatus": 10
+  },
+  "state_counts": {
+    "A0_homozygous": 14,
+    "A1_homozygous": 21,
+    "unknown": 37
+  },
+  "topology_data_embargo": "haplotypes/snp_calls/njt/topology methods not called"
+}

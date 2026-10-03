@@ -1,0 +1,73 @@
+sample_id	species	karyotype_numeric	arrangement	sample_set	study_id	country	population	include_primary	exclusion_reason
+SAMN01760603	arabiensis	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-EN_arab_2005	true	
+SAMN01760604	arabiensis	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-EN_arab_2005	true	
+SAMN01760605	arabiensis	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-EN_arab_2005	true	
+SAMN01760606	arabiensis	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Burkina Faso	BF-07_arab_2004	true	
+SAMN01760607	arabiensis	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-EN_arab_2005	true	
+SAMN01760608	arabiensis	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Tanzania	TZ-09_arab_2009	true	
+SAMN01760609	arabiensis	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Burkina Faso	BF-07_arab_2004	true	
+SAMN01760610	arabiensis	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Burkina Faso	BF-07_arab_2004	true	
+SAMN01760611	arabiensis	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Burkina Faso	BF-07_arab_2004	true	
+SAMN01760612	arabiensis	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Tanzania	TZ-09_arab_2009	true	
+SAMN01760613	arabiensis	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Tanzania	TZ-09_arab_2009	true	
+SAMN01760614	arabiensis	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Tanzania	TZ-09_arab_2009	true	
+SAMN02899197	coluzzii	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-CE_colu_2005	true	
+SAMN02899198	coluzzii	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-CE_colu_2005	true	
+SAMN02899199	coluzzii	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-CE_colu_2005	true	
+SAMN02899200	coluzzii	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-CE_colu_2005	true	
+SAMN02899201	coluzzii	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-SU_colu_2005	true	
+SAMN02899202	coluzzii	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-SU_colu_2005	true	
+SAMN02899203	coluzzii	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-SU_colu_2005	true	
+SAMN02899204	coluzzii	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-SU_colu_2005	true	
+SAMN02899194	coluzzii	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Burkina Faso	BF-09_colu_2012	true	
+SAMN02899195	coluzzii	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Burkina Faso	BF-09_colu_2012	true	
+SAMN02899196	coluzzii	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Burkina Faso	BF-09_colu_2012	true	
+SAMN02899210	gambiae	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-CE_gamb_2005	true	
+SAMN02899211	gambiae	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-CE_gamb_2005	true	
+SAMN02899212	gambiae	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-CE_gamb_2005	true	
+SAMN02899213	gambiae	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-SU_gamb_2005	true	
+SAMN02899214	gambiae	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-SU_gamb_2005	true	
+SAMN02899215	gambiae	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-SU_gamb_2005	true	
+SAMN02899216	gambiae	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-SU_gamb_2005	true	
+SAMN02899230	gambiae	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Tanzania	TZ-04_gamb_2008	true	
+SAMN02899206	gambiae	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Burkina Faso	BF-09_gamb_2012	true	
+SAMN02899207	gambiae	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Burkina Faso	BF-09_gamb_2012	true	
+SAMN02899217	gambiae	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Mali	ML-2_gamb_2004	true	
+SAMN02899218	gambiae	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Mali	ML-2_gamb_2004	true	
+SAMN02899219	gambiae	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Mali	ML-2_gamb_2004	true	
+SAMN02899220	gambiae	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Mali	ML-2_gamb_2004	true	
+SAMN02899221	gambiae	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Mali	ML-2_gamb_2004	true	
+SAMN02899222	gambiae	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Mali	ML-2_gamb_2004	true	
+SAMN02899223	gambiae	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Mali	ML-2_gamb_2004	true	
+SAMN02899224	gambiae	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Mali	ML-2_gamb_2004	true	
+SAMN02899225	gambiae	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Mali	ML-2_gamb_2004	true	
+SAMN02899226	gambiae	2	2La/2La	fontaine-2015-rebuild	fontaine-2015-rebuild	Mali	ML-2_gamb_2004	true	
+SAMN01760633	quadriannulatus	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Zimbabwe	ZW18_quad_1986	true	
+SAMN01760634	quadriannulatus	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Zimbabwe	ZW18_quad_1986	true	
+SAMN01760635	quadriannulatus	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Zimbabwe	ZW18_quad_1986	true	
+SAMN01760636	quadriannulatus	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Zimbabwe	ZW18_quad_1986	true	
+SAMN01760637	quadriannulatus	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Zimbabwe	ZW18_quad_1986	true	
+SAMN01760638	quadriannulatus	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Zimbabwe	ZW18_quad_1986	true	
+SAMN01760639	quadriannulatus	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Zimbabwe	ZW18_quad_1986	true	
+SAMN01760640	quadriannulatus	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Zimbabwe	ZW18_quad_1986	true	
+SAMN01760641	quadriannulatus	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Zimbabwe	ZW18_quad_1986	true	
+SAMN01760642	quadriannulatus	0	2L+a/2L+a	fontaine-2015-rebuild	fontaine-2015-rebuild	Zimbabwe	ZW18_quad_1986	true	
+SAMN02899205	gambiae	1	heterokaryotype	fontaine-2015-rebuild	fontaine-2015-rebuild	Burkina Faso	BF-09_gamb_2012	false	heterokaryotype excluded from primary unphased diploid Stage-1R analysis
+SAMN02899208	gambiae	1	heterokaryotype	fontaine-2015-rebuild	fontaine-2015-rebuild	Burkina Faso	BF-09_gamb_2012	false	heterokaryotype excluded from primary unphased diploid Stage-1R analysis
+SAMN02899209	gambiae	1	heterokaryotype	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-CE_gamb_2005	false	heterokaryotype excluded from primary unphased diploid Stage-1R analysis
+SAMN02899227	gambiae	1	heterokaryotype	fontaine-2015-rebuild	fontaine-2015-rebuild	Tanzania	TZ-04_gamb_2008	false	heterokaryotype excluded from primary unphased diploid Stage-1R analysis
+SAMN02899228	gambiae	1	heterokaryotype	fontaine-2015-rebuild	fontaine-2015-rebuild	Tanzania	TZ-04_gamb_2008	false	heterokaryotype excluded from primary unphased diploid Stage-1R analysis
+SAMN02899229	gambiae	1	heterokaryotype	fontaine-2015-rebuild	fontaine-2015-rebuild	Tanzania	TZ-04_gamb_2008	false	heterokaryotype excluded from primary unphased diploid Stage-1R analysis
+SAMN01760618	melas	1	heterokaryotype	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-SU_mela_2010	false	heterokaryotype excluded from primary unphased diploid Stage-1R analysis
+SAMN01760619	melas	1	heterokaryotype	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-SU_mela_2010	false	heterokaryotype excluded from primary unphased diploid Stage-1R analysis
+SAMN01760621	melas	1	heterokaryotype	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-SU_mela_2010	false	heterokaryotype excluded from primary unphased diploid Stage-1R analysis
+SAMN01760622	melas	1	heterokaryotype	fontaine-2015-rebuild	fontaine-2015-rebuild	Cameroon	CM-SU_mela_2010	false	heterokaryotype excluded from primary unphased diploid Stage-1R analysis
+SAMN01760623	merus	1	heterokaryotype	fontaine-2015-rebuild	fontaine-2015-rebuild	Kenya	KE-14_meru_1988	false	heterokaryotype excluded from primary unphased diploid Stage-1R analysis
+SAMN01760624	merus	1	heterokaryotype	fontaine-2015-rebuild	fontaine-2015-rebuild	Kenya	KE-14_meru_1988	false	heterokaryotype excluded from primary unphased diploid Stage-1R analysis
+SAMN01760625	merus	1	heterokaryotype	fontaine-2015-rebuild	fontaine-2015-rebuild	South Africa	ZA-KZN_meru_1988	false	heterokaryotype excluded from primary unphased diploid Stage-1R analysis
+SAMN01760626	merus	1	heterokaryotype	fontaine-2015-rebuild	fontaine-2015-rebuild	Kenya	KE-14_meru_1988	false	heterokaryotype excluded from primary unphased diploid Stage-1R analysis
+SAMN01760627	merus	1	heterokaryotype	fontaine-2015-rebuild	fontaine-2015-rebuild	South Africa	ZA-KZN_meru_1988	false	heterokaryotype excluded from primary unphased diploid Stage-1R analysis
+SAMN01760628	merus	1	heterokaryotype	fontaine-2015-rebuild	fontaine-2015-rebuild	South Africa	ZA-KZN_meru_1988	false	heterokaryotype excluded from primary unphased diploid Stage-1R analysis
+SAMN01760630	merus	1	heterokaryotype	fontaine-2015-rebuild	fontaine-2015-rebuild	South Africa	ZA-KZN_meru_1988	false	heterokaryotype excluded from primary unphased diploid Stage-1R analysis
+SAMN01760631	merus	1	heterokaryotype	fontaine-2015-rebuild	fontaine-2015-rebuild	Kenya	KE-14_meru_1988	false	heterokaryotype excluded from primary unphased diploid Stage-1R analysis
+SAMN01760632	merus	1	heterokaryotype	fontaine-2015-rebuild	fontaine-2015-rebuild	South Africa	ZA-KZN_meru_1988	false	heterokaryotype excluded from primary unphased diploid Stage-1R analysis

@@ -1,15 +1,21 @@
 metric	value	notes
-total_samples	0	sample_manifest.tsv rows
-A0_homozygotes	0	
-A1_homozygotes	0	
-heterokaryotypes	0	
+total_samples	72	sample_manifest.tsv rows
+A0_homozygotes	26	
+A1_homozygotes	27	
+heterokaryotypes	19	
 unknown_or_unresolved	0	
-strict_2_to_2_candidate_quartets	0	
+strict_2_to_2_candidate_quartets	42120	
 four_distinct_species_quartets	0	
-direct_sample_level_only_quartets	0	
+direct_sample_level_only_quartets	42120	
 quartets_relying_partly_on_species_fixed_state	0	
-geography_matched_quartets	0	
+geography_matched_quartets	630	
 recommended_primary_quartets	0	
-independence_groups	0	
-direct_sample_karyotype_states	0	resolved homokaryotypic samples
+independence_groups	33	
+direct_sample_karyotype_states	53	resolved homokaryotypic samples
 species_fixed_states	0	resolved homokaryotypic samples
+samples_species_arabiensis	12	
+samples_species_coluzzii	11	
+samples_species_gambiae	26	
+samples_species_melas	4	
+samples_species_merus	9	
+samples_species_quadriannulatus	10	

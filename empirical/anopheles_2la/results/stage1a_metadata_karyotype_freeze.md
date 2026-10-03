@@ -4,18 +4,18 @@ Stage 1A stops after structural/karyotype prediction freezing. It does not infer
 
 ## API retrieval
 
-- MalariaGEN package version: 12.0.1
+- MalariaGEN package version: 14.0.0
 - Requested release: 3.10
 - Sample-set query: fontaine
 - Documented sample set identifier: fontaine-2015-rebuild
-- Programmatically discovered sample set identifier: not discovered
-- Retrieval status: blocked
-- Samples retrieved: 0
+- Programmatically discovered sample set identifier: fontaine-2015-rebuild
+- Retrieval status: SUCCESS
+- Samples retrieved: 72
 
 ## Reconciliation
 
 - Expected Stage-0 aggregate total: 72.
-- Retrieved sample-manifest rows: 0.
+- Retrieved sample-manifest rows: 72.
 - See `empirical/anopheles_2la/results/stage1a_sample_reconciliation.tsv`.
 
 ## Karyotype provenance
@@ -25,28 +25,33 @@ Stage 1A stops after structural/karyotype prediction freezing. It does not infer
 
 ## State counts
 
-- A0_homozygous: 0
-- A1_homozygous: 0
-- heterokaryotype: 0
+- A0_homozygous: 26
+- A1_homozygous: 27
+- heterokaryotype: 19
 - unknown: 0
 
 ## Counts by species
 
-- none: API retrieval blocked before sample-level metadata were returned
+- arabiensis: 12
+- coluzzii: 11
+- gambiae: 26
+- melas: 4
+- merus: 9
+- quadriannulatus: 10
 
 ## Evidence basis
 
-- direct_sample_karyotype states: 0
+- direct_sample_karyotype states: 53
 - species_fixed states: 0
-- unresolved/excluded samples: 0
+- unresolved/excluded samples: 29
 
 ## Strict quartet predictions
 
-- strict 2:2 candidate quartets: 0
+- strict 2:2 candidate quartets: 42120
 - four-distinct-species strict quartets: 0
-- geography-matched strict quartets: 0
+- geography-matched strict quartets: 630
 - frozen file: `data/anopheles_2la/processed/frozen_strict_quartets_stage1a.tsv`
-- sha256: `b19c6ac1987b0f141b5f8c89d51a12cb8f47b125015d105b39d0054cb8850cbd`
+- sha256: `d6477c676432ac7a63bca6565e2a3dc20f8a35e80892e1d81a00752816e3b180`
 
 ## Best Design A candidates
 
@@ -63,7 +68,3 @@ Stage 1A stops after structural/karyotype prediction freezing. It does not infer
 ## Proceed to Stage 1B?
 
 No. Authoritative sample-level metadata/karyotype retrieval remains blocked in this environment, so no clean strict 2:2 predictions have been populated beyond the deterministic empty freeze.
-
-## Retrieval blocker
-
-- HttpError: Anonymous caller does not have storage.objects.get access to the Google Cloud Storage object. Permission 'storage.objects.get' denied on resource '//storage.googleapis.com/projects/_/buckets/vo_agam_release/objects/v3-config.json' (or it may not exist)., 401

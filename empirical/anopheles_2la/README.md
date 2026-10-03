@@ -325,3 +325,11 @@ bootstrap/support threshold is used for the primary quartet-classification
 analysis. Tree estimation reads only alignments/windows and fixed execution
 metadata; structural predictions enter only after local tree files are
 finalized.
+
+## Stage 1R — MalariaGEN regional SNP-access and homozygote pilot
+
+Stage 1R uses authenticated MalariaGEN Ag3 release 3.10 data from `fontaine-2015-rebuild` via `gs://vo_agam_release_master_us_central1`. The primary pilot cohort is the frozen set of 53 2La homozygotes; 19 heterokaryotypes remain in metadata but are excluded from the unphased diploid pilot.
+
+The fixed pilot queried eight predefined 50-kb windows on 2L, used direct regional `snp_calls` and `biallelic_snp_calls`, built IBS-style diploid distances, generated NJ trees for visualization, and scored crossed gambiae/coluzzii quartet support. No raw reads were downloaded and no full 2L scan was performed.
+
+Stage 1R decision: **PASS**. Mean pilot C inside/outside: 0.100534 / 0.0039476. Mean pilot D inside/outside: 1 / 0.335214.

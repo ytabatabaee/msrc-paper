@@ -1,0 +1,31 @@
+{
+  "decision": "PASS",
+  "no_full_scan": true,
+  "no_raw_read_processing": true,
+  "outputs": {
+    "data/anopheles_2la/processed/stage1r_pairwise_distances.tsv": "f2bd2bb8f2d9558b415c559e9d8ce06c888d5c5d7e2ea1a536b20fc7ce28adba",
+    "data/anopheles_2la/processed/stage1r_pilot_trees.nwk": "c0e0319f619e3c8ff98ba0051b38c43934a69b8c144cbfa4cf5c8ce3ad3985d7",
+    "data/anopheles_2la/processed/stage1r_pilot_windows.tsv": "c12316ed3f883e5bf7cf7ba732a80eb34736bf34a54f01b8c0fb9323bf0c5171",
+    "data/anopheles_2la/processed/stage1r_primary_homozygote_samples.tsv": "2f33fa485e3229caab45bf24de986433228ef003deef93571ac34ea9f3c6c621",
+    "empirical/anopheles_2la/figures/stage1r_pilot_signal.pdf": "b21fad6178ee463acd0b6132ab0fab126387778fba9b8553d966fc6a6e6182e0",
+    "empirical/anopheles_2la/figures/stage1r_pilot_signal.png": "6e629746a544398a99e4cb725dcdd48b96ff0553b8c0a930b1a9d28a4e0d772d",
+    "empirical/anopheles_2la/results/stage1r_crossed_distance_test.tsv": "8468f2870f46a2cccb35319ebf2310aab17e9b666e8097859341fa5171d911b3",
+    "empirical/anopheles_2la/results/stage1r_distance_class_summary.tsv": "f7e97c764af7857fcce8d3ce5f6e773b7d57c03fa738829a1f7aa67367d95fe3",
+    "empirical/anopheles_2la/results/stage1r_environment_provenance.json": "1193b04fe52a285378f266369e2b00372eb022e912e0f14b6d3dadcbb3196c71",
+    "empirical/anopheles_2la/results/stage1r_filtering_plan.md": "c4f6d6c9246358f04489d213ace6792acd6eb4d279aad3efe265b539c4e13244",
+    "empirical/anopheles_2la/results/stage1r_haplotype_membership.tsv": "6b8d87e92e0e4b2a886c166771ad63c65765356861eca6f1a40484ae2e5d997c",
+    "empirical/anopheles_2la/results/stage1r_pilot_quartet_support.tsv": "912cc8d6bc36a80ca1136b1aed13e2e565d619e1aa116f32c19a4a52a884ba1b",
+    "empirical/anopheles_2la/results/stage1r_report.md": "79f4e3f41b3fda6417c7c98989c720a345dd43a6c914f0292876886374791a44",
+    "empirical/anopheles_2la/results/stage1r_window_qc.tsv": "aef824110f613d2bbd1cbbe0b63199acd51765e5be44d76924834b569119fee0",
+    "empirical/anopheles_2la/results/stage2r_preanalysis_plan.md": "0c9638bdcbd06d365afe014508ae5c7ea6be6f1bb6ea0d88acf1bc329350c843"
+  },
+  "signal_summary": {
+    "mean_C_inside": 0.10053446880494202,
+    "mean_C_outside": 0.003947599517317819,
+    "mean_D_inside": 1.0,
+    "mean_D_outside": 0.3352141203703704
+  },
+  "stage": "Stage 1R",
+  "stage2r_executed": false,
+  "total_pilot_bp": 400000
+}

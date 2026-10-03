@@ -23,19 +23,24 @@ Stage 0 freezes only data/sample inventory and structural metadata-derived candi
 
 ## Sample manifest status
 
-- Sample rows with sample-level provenance: 0.
-- Samples with sequence data available: 0.
-- Samples with phased data available: 0.
+- Sample rows with sample-level provenance: 72.
+- Samples with sequence data available: 72.
+- Samples with phased data available: 72.
 
 ### Samples by species
 
-- none: sample-level manifest not yet populated
+- arabiensis: 12
+- coluzzii: 11
+- gambiae: 26
+- melas: 4
+- merus: 9
+- quadriannulatus: 10
 
 ### Samples by 2La state
 
-- A0_homozygous: 0
-- A1_homozygous: 0
-- heterokaryotype: 0
+- A0_homozygous: 26
+- A1_homozygous: 27
+- heterokaryotype: 19
 - unknown: 0
 
 ### Aggregate Ag3.10 fontaine-2015-rebuild availability
@@ -58,10 +63,10 @@ These aggregate counts suggest cross-species A0/A1 contrasts should be available
 
 ## Candidate strict quartets
 
-- Strict 2:2 A0/A1 quartets: 0.
+- Strict 2:2 A0/A1 quartets: 42120.
 - One-sample-per-species strict quartets: 0.
-- Geography/population-controlled possibilities: 0.
-- Within-species A0-vs-A1 replacement possibilities: 0.
+- Geography/population-controlled possibilities: 630.
+- Within-species A0-vs-A1 replacement possibilities: 27228.
 
 ## Blockers before Stage 1
 

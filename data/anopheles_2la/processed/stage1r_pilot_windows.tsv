@@ -1,0 +1,9 @@
+window_id	chrom	start	end	position_class	distance_to_nearest_breakpoint	selection_rule
+outside_left_distal_10Mb	2L	10000000	10049999	outside_left	10474059	fixed distal left 2L control at 10.00 Mb; selected before SNP/topology inspection
+outside_left_flank_50kb	2L	20474058	20524057	outside_left	1	50-kb window immediately left of frozen 2La interval without boundary overlap
+inside_left_boundary_50kb	2L	20524059	20574058	inside_near_boundary	1	50-kb window immediately inside left 2La boundary without crossing breakpoint
+inside_deep_q1	2L	25909427	25959426	inside_deep	5385369	50-kb window centered at 0.25 of frozen 2La interval; selected before SNP/topology inspection
+inside_deep_center	2L	31319796	31369795	inside_deep	10795737	50-kb window centered at 0.50 of frozen 2La interval; selected before SNP/topology inspection
+inside_deep_q3	2L	36730164	36780163	inside_deep	5385369	50-kb window centered at 0.75 of frozen 2La interval; selected before SNP/topology inspection
+inside_right_boundary_50kb	2L	42115532	42165531	inside_near_boundary	1	50-kb window immediately inside right 2La boundary without crossing breakpoint
+outside_right_flank_50kb	2L	42165533	42215532	outside_right	1	50-kb window immediately right of frozen 2La interval without boundary overlap

@@ -1,0 +1,7 @@
+window_set	chrom	start	end	window_bp	relationship_to_2la	n_windows	coordinate_source	notes
+original_fontaine_all_genome	unknown	unknown	unknown	50000	original_design	4063	Fontaine et al. 2015 reported design as 4,063 50-kb windows; exact coordinates not recovered in repository Stage 0R	Do not use as a coordinate inventory until original supplement/archive windows are recovered.
+malariagen_reproducible_2L_grid_full_inside	2L	20550001	42150000	50000	fully_inside_2La	432	Stage 0R reproducible 1-based non-overlapping 50-kb grid on AgamP4 2L, anchored at 2L:1	Primary provisional count for fully contained 2La windows if exact Fontaine windows remain unavailable.
+malariagen_reproducible_2L_grid_intersecting	2L	20500001	42200000	50000	intersects_2La	434	Stage 0R reproducible 1-based non-overlapping 50-kb grid on AgamP4 2L, anchored at 2L:1	Includes two boundary windows that partially overlap the inversion.
+malariagen_breakpoint_anchored_2la_tiles	2L	20524058	42165532	50000	inside_2La_breakpoint_anchored	433	Stage 0R interval tiling from inversion start	Alternative breakpoint-anchored tiling; final tile is shorter unless clipped/padded.
+left_flank_candidate_1Mb	2L	19524058	20524057	50000	left_flank	20	Stage 0R deterministic flank candidate	Not selected by topology; candidate matched-window pool only.
+right_flank_candidate_1Mb	2L	42165533	43165532	50000	right_flank	20	Stage 0R deterministic flank candidate	Not selected by topology; candidate matched-window pool only.

@@ -1,0 +1,9 @@
+window_id	position_class	n_within_species_opposite_pairs	mean_within_species_opposite_distance	n_cross_species_same_pairs	mean_cross_species_same_distance	C
+outside_left_distal_10Mb	outside_left	120	0.104760503076	100	0.112060337344	-0.00729983426785
+outside_left_flank_50kb	outside_left	120	0.125602103309	100	0.121719465219	0.0038826380905
+inside_left_boundary_50kb	inside_near_boundary	120	0.225445849621	100	0.0895670557248	0.135878793896
+inside_deep_q1	inside_deep	120	0.217902287207	100	0.104667715185	0.113234572021
+inside_deep_center	inside_deep	120	0.170782104789	100	0.106330731572	0.0644513732166
+inside_deep_q3	inside_deep	120	0.162556401341	100	0.100872144595	0.0616842567463
+inside_right_boundary_50kb	inside_near_boundary	120	0.220609223313	100	0.0931858751682	0.127423348144
+outside_right_flank_50kb	outside_right	120	0.131898327599	100	0.11663833287	0.0152599947293

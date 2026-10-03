@@ -1,0 +1,2 @@
+chrom	start	end	length	reference_assembly	coordinate_source	coordinate_interpretation
+2L	20524058	42165532	21641475	AgamP4	Existing repository region manifest and Ag1000G/AgamP4-based 2La analyses using 2L:20524058-42165532; original breakpoint-structure provenance traced to Sharakhov/White/Fontaine coordinate lineage	Working analysis interval, stored as 1-based inclusive. Cytogenetic boundaries and genomic breakpoint estimates should be distinguished in Stage 1R if exact breakpoint tables are recovered.

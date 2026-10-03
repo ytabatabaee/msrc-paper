@@ -1,0 +1,9 @@
+window_id	position_class	n_informative_quartets	q_species	q_arrangement	q_third	D_arrangement_minus_species
+outside_left_distal_10Mb	outside_left	2304	0.799045138889	0.144097222222	0.0568576388889	-0.654947916667
+outside_left_flank_50kb	outside_left	2304	0.157552083333	0.838541666667	0.00390625	0.680989583333
+inside_left_boundary_50kb	inside_near_boundary	2304	0	1	0	1
+inside_deep_q1	inside_deep	2304	0	1	0	1
+inside_deep_center	inside_deep	2304	0	1	0	1
+inside_deep_q3	inside_deep	2304	0	1	0	1
+inside_right_boundary_50kb	inside_near_boundary	2304	0	1	0	1
+outside_right_flank_50kb	outside_right	2304	0.00954861111111	0.989149305556	0.00130208333333	0.979600694444

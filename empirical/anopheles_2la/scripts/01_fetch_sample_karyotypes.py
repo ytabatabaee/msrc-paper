@@ -43,7 +43,6 @@ EXPECTED_TOTAL = 72
 
 FORBIDDEN_API_NAMES = {
     "haplotypes",
-    "snp_calls",
     "njt",
     "plot_njt",
     "biallelic_snp_calls",
@@ -252,6 +251,12 @@ def state_from_karyotype(raw: str) -> tuple[str, str]:
     compact = value.replace(" ", "").replace("^", "")
     if not value or value.lower() in {"nan", "none", ".", "unknown", "unassigned"}:
         return "unknown", "unresolved"
+    if compact in {"0", "0.0"}:
+        return "A0_homozygous", "direct_sample_karyotype"
+    if compact in {"1", "1.0"}:
+        return "heterokaryotype", "direct_sample_karyotype"
+    if compact in {"2", "2.0"}:
+        return "A1_homozygous", "direct_sample_karyotype"
     standard_tokens = {"2L+a/2L+a", "2L+a|2L+a", "+/+", "standard", "standard_hom"}
     inverted_tokens = {"2La/2La", "2La|2La", "inverted", "inverted_hom"}
     het_tokens = {"2L+a/2La", "2La/2L+a", "+/2La", "2La/+", "heterozygote", "heterokaryotype"}
@@ -311,7 +316,16 @@ def build_sample_rows(metadata: Any, karyotypes: Any, sample_set: str, release: 
         raise RuntimeError("sample_metadata() returned no sample_id column")
     if "sample_id" not in kdf.columns:
         kdf = kdf.reset_index().rename(columns={"index": "sample_id"})
-    karyotype_col = find_column(list(kdf.columns), ["karyotype", "call", "2La_karyotype", "genotype"])
+    karyotype_col = find_column(
+        list(kdf.columns),
+        [
+            "karyotype_2La",
+            "2La_karyotype",
+            "karyotype",
+            "call",
+            "genotype",
+        ],
+    )
     if not karyotype_col:
         non_id = [c for c in kdf.columns if c != "sample_id"]
         if len(non_id) == 1:
@@ -615,6 +629,9 @@ class FetchTests(unittest.TestCase):
         self.assertEqual(state_from_karyotype("2L+a/2L+a")[0], "A0_homozygous")
         self.assertEqual(state_from_karyotype("2La/2La")[0], "A1_homozygous")
         self.assertEqual(state_from_karyotype("2La/2L+a")[0], "heterokaryotype")
+        self.assertEqual(state_from_karyotype("0")[0], "A0_homozygous")
+        self.assertEqual(state_from_karyotype("1")[0], "heterokaryotype")
+        self.assertEqual(state_from_karyotype("2")[0], "A1_homozygous")
         self.assertEqual(state_from_karyotype("")[0], "unknown")
 
     def test_species_fixed_not_direct(self) -> None:

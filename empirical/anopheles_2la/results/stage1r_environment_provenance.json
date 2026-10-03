@@ -1,0 +1,26 @@
+{
+  "Ag3_release": "3.10",
+  "api_method_signatures": {
+    "biallelic_snp_calls": "(region: Union[str, malariagen_data.util.Region, Mapping, List[Union[str, malariagen_data.util.Region, Mapping]], Tuple[Union[str, malariagen_data.util.Region, Mapping], ...]], sample_sets: Union[Sequence[str], str, NoneType] = None, sample_query: Optional[str] = None, sample_query_options: Optional[dict] = None, sample_indices: Optional[List[int]] = None, site_mask: Optional[str] = None, site_class: Optional[str] = None, inline_array: bool = True, chunks: Union[int, str, Tuple[Union[int, str], ...], Callable[[Tuple[int, ...]], Union[int, str, Tuple[Union[int, str], ...]]]] = 'native', cohort_size: Optional[int] = None, min_cohort_size: Optional[int] = None, max_cohort_size: Optional[int] = None, random_seed: int = 42, min_minor_ac: Union[int, float, NoneType] = None, max_missing_an: Union[int, float, NoneType] = None, n_snps: Optional[int] = None, thin_offset: int = 0) -> xarray.core.dataset.Dataset",
+    "haplotypes": "(region: Union[str, malariagen_data.util.Region, Mapping, List[Union[str, malariagen_data.util.Region, Mapping]], Tuple[Union[str, malariagen_data.util.Region, Mapping], ...]], analysis: str = 'default', sample_sets: Union[Sequence[str], str, NoneType] = None, sample_query: Optional[str] = None, sample_query_options: Optional[dict] = None, inline_array: bool = True, chunks: Union[int, str, Tuple[Union[int, str], ...], Callable[[Tuple[int, ...]], Union[int, str, Tuple[Union[int, str], ...]]]] = 'native', cohort_size: Optional[int] = None, min_cohort_size: Optional[int] = None, max_cohort_size: Optional[int] = None, random_seed: int = 42) -> xarray.core.dataset.Dataset",
+    "sample_metadata": "(sample_sets: Union[Sequence[str], str, NoneType] = None, sample_query: Optional[str] = None, sample_query_options: Optional[dict] = None, sample_indices: Optional[List[int]] = None) -> pandas.core.frame.DataFrame",
+    "snp_calls": "(region: Union[str, malariagen_data.util.Region, Mapping, List[Union[str, malariagen_data.util.Region, Mapping]], Tuple[Union[str, malariagen_data.util.Region, Mapping], ...]], sample_sets: Union[Sequence[str], str, NoneType] = None, sample_query: Optional[str] = None, sample_query_options: Optional[dict] = None, sample_indices: Optional[List[int]] = None, site_mask: Optional[str] = None, site_class: Optional[str] = None, inline_array: bool = True, chunks: Union[int, str, Tuple[Union[int, str], ...], Callable[[Tuple[int, ...]], Union[int, str, Tuple[Union[int, str], ...]]]] = 'native', cohort_size: Optional[int] = None, min_cohort_size: Optional[int] = None, max_cohort_size: Optional[int] = None, random_seed: int = 42) -> xarray.core.dataset.Dataset"
+  },
+  "api_methods_used_stage1r": [
+    "sample_metadata",
+    "snp_calls",
+    "biallelic_snp_calls",
+    "haplotypes"
+  ],
+  "biopython_version_if_used": "1.86",
+  "bucket": "gs://vo_agam_release_master_us_central1",
+  "gcs_auth_method": "Google Application Default Credentials; credentials/tokens not stored",
+  "malariagen_data_version": "14.0.0",
+  "numpy_version": "1.26.4",
+  "pandas_version": "2.3.3",
+  "python_3_11_migration": "not attempted beyond PATH probe: no python3.11 executable available; Stage 1R used validated Python 3.10 environment",
+  "python_executable": "/Users/ytabatabaee/Desktop/msrc-paper/.venv-malaria310/bin/python",
+  "python_version": "3.10.0 (v3.10.0:b494f5935c, Oct  4 2021, 14:59:20) [Clang 12.0.5 (clang-1205.0.22.11)]",
+  "sample_set": "fontaine-2015-rebuild",
+  "scikit_allel_version_if_used": "1.3.13"
+}
