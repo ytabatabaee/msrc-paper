@@ -1,33 +1,33 @@
 # Recombination-suppression validation report
 
-## Source study
+## Purpose
 
-The validation uses an independent direct linkage-map source: Wang J., Wurm Y., Nipitwattanaphon M. et al. A Y-like social chromosome causes alternative colony organization in fire ants. Nature 493, 664-668 (2013). DOI:10.1038/nature11832. This source is distinct from the Stolle et al. local-tree/TWISST analysis used for the frozen MSRC fire-ant genealogy results.
+The requested update was to replace the earlier schematic recombination bar with a quantitative chromosome-16 recombination or LD track on a real physical coordinate axis. The target layout was physical chr16 position, quantitative recombination/LD evidence, and the existing frozen `q_species` / `q_haplotype` genealogy track.
 
-## Data type
+## Route A: direct Wang linkage map
 
-Direct linkage-map marker data were recovered from the Wang et al. supplementary data archive. The parsed source tables contain 27934 RADtag marker rows across 7 mapping families. Each row includes a marker, an original scaffold position, a linkage group, and a cM coordinate. These marker-level data are written to `data/fire_ants_chr16/processed/recombination_map.tsv` in their original coordinate system.
+Wang et al. 2013 provide direct linkage-map marker tables. I parsed 27934 RADtag marker rows across 7 mapping families and preserved them in `data/fire_ants_chr16/processed/recombination_map.tsv`. These rows contain original `Si_gnF` scaffold positions and family-specific genetic positions in cM.
 
-## Coordinate compatibility
+Route A did not produce a chr16 cM/Mb track because no documented `Si_gnF` scaffold-to-Stolle `Si_gnGA`/`gng20170922wFex.fa` chromosome-placement file was recovered. The important candidate file named `linkage_map_supergene.txt` is referenced by the upstream README but was not present in the local frozen inputs or the public upstream repository tree. I did not guess scaffold placements.
 
-The linkage-map marker positions use original `Si_gnF` scaffold coordinates. The frozen MSRC fire-ant topology track uses Stolle/TWISST chromosome coordinates. Because no reliable scaffold-to-chromosome conversion was found in the committed inputs, no marker-level cM/Mb curve was projected onto chromosome 16. The figure therefore uses the published regional conclusion as a schematic validation track over the frozen author-designated supergene interval `11680438-27917498` bp.
+## Route B: Yan physical-coordinate LD
 
-## Recombination/linkage result
+Yan et al. 2020 report LD r² across physical chr16 and exact SB-reference inversion breakpoints. The published inversion union is chr16:12612565-24031576. I downloaded the minimal journal supplementary PDF and Supplementary Tables 1-5 and inspected them. They do not contain the numeric Extended Data Fig. 5 LD matrix or a one-dimensional LD track. Reconstructing LD from raw PRJNA421367 reads would require large-scale read/genotype processing, and no small public chr16 genotype/LD file was recovered. I did not digitize the published heatmap or treat pixels as quantitative data.
 
-Wang et al. report a large social-chromosome region of approximately 13 Mb, about 55% of the chromosome, in which recombination is completely suppressed between the SB and Sb social chromosomes. This is direct linkage-map evidence for suppressed recombination across the social-supergene region.
+## Result
 
-## Relation to the frozen genealogy signal
+`QUANTITATIVE_RECOMBINATION_TRACK_NOT_RECOVERED`
 
-The frozen MSRC fire-ant analysis shows that chr16 windows outside the supergene are species-history dominated, whereas windows inside the author-designated supergene interval shift strongly toward the cross-species SB/Sb haplotype quartet. The independent linkage-map evidence supports the biological consistency of this result: the genomic interval with the strong social-haplotype genealogy is also the known recombination-suppressed social chromosome region.
+No quantitative recombination or LD track was generated. The previous constant schematic bar was copied to archive filenames for provenance, but it should not be used as the final quantitative validation figure requested here.
 
-## Relation to Stage 6C branch-length effects
+## Relation to frozen genealogy and Stage 6C
 
-Stage 6C remains unchanged. Its fixed-topology individual-level ASTRAL4/CASTLES-II comparison found strong CULength reductions for the two focal SB/Sb species-pair branches when supergene windows were added, with SULength responses that differed by branch. The recombination validation does not estimate branch lengths and does not reinterpret CU or SU values as recombination rates. It supports the narrative that linked histories in a recombination-suppressed region can influence summary-tree branch estimates even when the global topology remains stable.
-
-## Limitations
-
-The marker-level linkage map could not be placed onto the frozen chromosome-16 coordinate axis without a documented coordinate conversion. The integrated figure is therefore a regional validation figure, not a new recombination-rate map. It should not be read as estimating local cM/Mb values across the Stolle/TWISST windows.
+The frozen topology/TWISST/ASTRAL/CASTLES-II results remain unchanged. The local-genealogy result still shows a pronounced switch from species-history support outside the frozen supergene analysis span to SB/Sb haplotype support inside it. Stage 6C branch-length results remain unchanged. This audit only addresses whether an independent quantitative recombination/LD track can be reproducibly aligned to those frozen coordinates.
 
 ## Introgression caveat
 
-The fire-ant supergene literature invokes recurrent adaptive introgression among socially polymorphic species. This validation supports the role of recombination suppression in maintaining a long linked genealogy, but it does not show that recombination suppression alone caused the observed genealogy or that MSRC without gene flow explains the system.
+The fire-ant supergene is known to have experienced recurrent adaptive introgression. Recombination suppression helps preserve a long linked haplotype after such events, but this audit does not imply that MSRC without gene flow fully explains the system.
+
+## Smallest missing objects
+
+A quantitative figure would require one of the following: (1) a documented Wang `Si_gnF` scaffold-to-Stolle `Si_gnGA` chr16 placement table such as `linkage_map_supergene.txt`, or (2) the numeric Yan Extended Data Fig. 5 SNP/genotype/LD source data in physical chr16 coordinates, preferably as a chr16 VCF/genotype matrix or precomputed r² table.

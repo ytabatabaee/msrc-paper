@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
-"""Supplementary recombination-suppression validation for fire-ant chr16.
+"""Supplementary recombination-suppression validation audit for fire-ant chr16.
 
-This script adds an independent recombination/linkage validation layer to the
-frozen fire-ant analysis. It does not rerun or modify topology, ASTRAL, or
-CASTLES-II results. Wang et al. 2013 linkage-map marker tables are preserved in
-processed form, but they are on the original Si_gnF scaffold coordinate system.
-Because no reliable scaffold-to-frozen-chr16 coordinate conversion is available
-in the committed inputs, the chromosome-16 figure uses a schematic published
-regional suppression track rather than a fabricated recombination-rate curve.
+The preferred deliverable is a quantitative physical-coordinate recombination or
+LD track aligned to the frozen chromosome-16 genealogy track. This script first
+preserves the recovered Wang et al. 2013 direct linkage-map marker data, then
+audits whether either Route A (documented Wang Si_gnF scaffold -> Stolle Si_gnGA
+chr16 placement) or Route B (reproducible Yan et al. 2020 physical-coordinate LD
+values/genotypes) is available. If neither route is available, it records the
+explicit stop condition and archives, but does not promote, the earlier schematic
+figure.
+
+It does not rerun or modify frozen topology, TWISST, ASTRAL, CASTLES-II, or
+Stage 4A-6C outputs.
 """
 from __future__ import annotations
 
@@ -18,13 +22,12 @@ import json
 import math
 import os
 import re
+import shutil
 import statistics
-import sys
 import textwrap
 import unittest
 import zipfile
 from dataclasses import dataclass
-from datetime import date
 from decimal import Decimal
 from pathlib import Path
 from typing import Iterable
@@ -32,33 +35,45 @@ from typing import Iterable
 os.environ.setdefault("MPLCONFIGDIR", "/private/tmp/msrc-paper-mplconfig")
 import matplotlib
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 EMP = REPO_ROOT / "empirical" / "fire_ants_chr16"
 RESULTS = EMP / "results"
 FIGURES = EMP / "figures"
-SCRIPTS = EMP / "scripts"
 DATA = REPO_ROOT / "data" / "fire_ants_chr16"
 PROCESSED = DATA / "processed"
 METADATA = DATA / "metadata"
-RAW_RECOMB = DATA / "raw" / "recombination_sources" / "wang_2013_nature"
+RAW_RECOMB = DATA / "raw" / "recombination_sources"
+RAW_WANG = RAW_RECOMB / "wang_2013_nature"
+RAW_YAN = RAW_RECOMB / "yan_2020"
 
 REGION_MANIFEST = METADATA / "region_manifest.tsv"
 WINDOW_SUPPORT = PROCESSED / "stage4a_window_quartet_support.tsv"
-SOURCE_ZIP = RAW_RECOMB / "41586_2013_BFnature11832_MOESM98_ESM.zip"
-SOURCE_PDF = RAW_RECOMB / "41586_2013_BFnature11832_MOESM97_ESM.pdf"
+WANG_SOURCE_ZIP = RAW_WANG / "41586_2013_BFnature11832_MOESM98_ESM.zip"
+WANG_SOURCE_PDF = RAW_WANG / "41586_2013_BFnature11832_MOESM97_ESM.pdf"
+YAN_SUPP_PDF = RAW_YAN / "41559_2019_1081_MOESM1_ESM.pdf"
+YAN_SUPP_XLS = RAW_YAN / "41559_2019_1081_MOESM2_ESM.xls"
+YAN_BAD_XLSX = RAW_YAN / "41559_2019_1081_MOESM3_ESM.xlsx"
 
 RECOMB_MAP = PROCESSED / "recombination_map.tsv"
+WANG_TO_STOLLE_MAP = PROCESSED / "wang_to_stolle_coordinate_map.tsv"
+RECOMB_MAP_CHR16 = PROCESSED / "recombination_map_chr16.tsv"
+RECOMB_INTERVALS_CHR16 = PROCESSED / "recombination_intervals_chr16.tsv"
+RECOMB_BINNED_CHR16 = PROCESSED / "recombination_binned_chr16.tsv"
+YAN_LD = PROCESSED / "yan2020_chr16_ld.tsv"
+YAN_LD_BINNED = PROCESSED / "yan2020_chr16_ld_binned.tsv"
+
 RECOMB_SUMMARY = RESULTS / "recombination_summary.tsv"
 SOURCE_AUDIT = RESULTS / "recombination_source_audit.md"
 COORD_AUDIT = RESULTS / "recombination_coordinate_audit.md"
 REPORT = RESULTS / "recombination_report.md"
 CAPTION = RESULTS / "recombination_figure_caption.txt"
 MANIFEST = RESULTS / "recombination_manifest.json"
+README = EMP / "README.md"
 FIG_PDF = FIGURES / "fire_ants_recombination_genealogy.pdf"
 FIG_PNG = FIGURES / "fire_ants_recombination_genealogy.png"
-README = EMP / "README.md"
+ARCHIVE_PDF = FIGURES / "fire_ants_recombination_genealogy_schematic_archived.pdf"
+ARCHIVE_PNG = FIGURES / "fire_ants_recombination_genealogy_schematic_archived.png"
 
 FROZEN_MANIFESTS = [
     RESULTS / "stage4a_manifest.json",
@@ -74,8 +89,21 @@ WANG_SUPP_ZIP_URL = "https://media.springernature.com/original/springer-static/e
 WANG_SUPP_PDF_URL = "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fnature11832/MediaObjects/41586_2013_BFnature11832_MOESM97_ESM.pdf"
 WANG_DOI = "10.1038/nature11832"
 WANG_CITATION = "Wang J., Wurm Y., Nipitwattanaphon M. et al. A Y-like social chromosome causes alternative colony organization in fire ants. Nature 493, 664-668 (2013)."
+YAN_URL = "https://www.nature.com/articles/s41559-019-1081-1"
+YAN_SUPP_XLS_URL = "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41559-019-1081-1/MediaObjects/41559_2019_1081_MOESM2_ESM.xls"
+YAN_SUPP_PDF_URL = "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41559-019-1081-1/MediaObjects/41559_2019_1081_MOESM1_ESM.pdf"
+YAN_DOI = "10.1038/s41559-019-1081-1"
+YAN_CITATION = "Yan Z., Martin S.H., Gotzek D. et al. Evolution of a supergene that regulates a trans-species social polymorphism. Nature Ecology & Evolution 4, 240-249 (2020)."
+STOLLE_VCF_URL = "https://github.com/wurmlab/wurmlab.github.io/raw/master/data/supergene_introgression/gt.vcf.gz/gt.vcf.gz"
+STOLLE_VCF_SIZE_BYTES = 1503782377
 SUPERGENE_EXPECTED = (11680438, 27917498)
+YAN_INVERSIONS = [
+    {"inversion": "In(16)1", "start_bp": 14549064, "end_bp": 24031576},
+    {"inversion": "In(16)2", "start_bp": 13705210, "end_bp": 24030990},
+    {"inversion": "In(16)3", "start_bp": 12612565, "end_bp": 13683100},
+]
 ANALYSIS_DATE = "2026-10-04"
+STATUS = "QUANTITATIVE_RECOMBINATION_TRACK_NOT_RECOVERED"
 
 
 @dataclass(frozen=True)
@@ -90,9 +118,14 @@ class Marker:
 
 
 @dataclass(frozen=True)
-class IntervalClassification:
-    region_class: str
-    relation: str
+class ScaffoldPlacement:
+    scaffold: str
+    scaffold_start: int
+    scaffold_end: int
+    chromosome: str
+    chr_start: int
+    chr_end: int
+    orientation: str
 
 
 def sha256(path: Path) -> str:
@@ -122,13 +155,11 @@ def write_tsv(path: Path, rows: list[dict[str, object]], fieldnames: list[str]) 
 
 
 def load_regions() -> dict[str, dict[str, str]]:
-    rows = read_tsv(REGION_MANIFEST)
-    return {r["region_id"]: r for r in rows}
+    return {r["region_id"]: r for r in read_tsv(REGION_MANIFEST)}
 
 
 def frozen_supergene_interval() -> tuple[int, int]:
-    regions = load_regions()
-    sg = regions["chr16_supergene"]
+    sg = load_regions()["chr16_supergene"]
     start = int(sg["coordinate_start"])
     end = int(sg["coordinate_end"])
     if (start, end) != SUPERGENE_EXPECTED:
@@ -137,35 +168,51 @@ def frozen_supergene_interval() -> tuple[int, int]:
 
 
 def recombination_cm_per_mb(left_pos: int, right_pos: int, left_cm: Decimal, right_cm: Decimal) -> Decimal:
-    span_bp = right_pos - left_pos
+    span_bp = abs(right_pos - left_pos)
     if span_bp <= 0:
         raise ValueError("physical span must be positive")
-    return (right_cm - left_cm) / (Decimal(span_bp) / Decimal(1_000_000))
+    return abs(right_cm - left_cm) / (Decimal(span_bp) / Decimal(1_000_000))
 
 
-def classify_interval(start: int, end: int, sg_start: int, sg_end: int) -> IntervalClassification:
-    if end <= start:
-        raise ValueError("interval end must exceed start")
-    if start >= sg_start and end <= sg_end:
-        return IntervalClassification("supergene", "inside_frozen_supergene_interval")
-    if end <= sg_start or start >= sg_end:
-        return IntervalClassification("background_chr16", "outside_frozen_supergene_interval")
-    return IntervalClassification("boundary_overlap", "crosses_frozen_supergene_boundary")
+def convert_scaffold_position(position: int, placement: ScaffoldPlacement) -> int:
+    if placement.orientation not in {"+", "-", "?"}:
+        raise ValueError("orientation must be +, -, or ?")
+    if not (placement.scaffold_start <= position <= placement.scaffold_end):
+        raise ValueError("position outside scaffold placement")
+    if placement.orientation == "-":
+        return placement.chr_start + placement.scaffold_end - position
+    return placement.chr_start - placement.scaffold_start + position
 
 
-def preserve_reported_value(value: str) -> str:
-    return str(value)
+def calculate_ld_r2(genotypes_a: Iterable[int], genotypes_b: Iterable[int]) -> float:
+    a = list(genotypes_a)
+    b = list(genotypes_b)
+    if len(a) != len(b) or len(a) < 2:
+        raise ValueError("equal genotype vectors with at least two samples are required")
+    pairs = [(x, y) for x, y in zip(a, b) if x is not None and y is not None]
+    if len(pairs) < 2:
+        return math.nan
+    xs = [float(x) for x, _ in pairs]
+    ys = [float(y) for _, y in pairs]
+    mx = statistics.mean(xs)
+    my = statistics.mean(ys)
+    vx = sum((x - mx) ** 2 for x in xs)
+    vy = sum((y - my) ** 2 for y in ys)
+    if vx == 0 or vy == 0:
+        return math.nan
+    cov = sum((x - mx) * (y - my) for x, y in zip(xs, ys))
+    r = cov / math.sqrt(vx * vy)
+    return r * r
 
 
 def family_from_table_name(name: str, title: str) -> str:
     match = re.search(r"family\s+([A-Za-z0-9]+)", title)
     if match:
         return match.group(1)
-    stem = Path(name).stem
-    return stem.replace("Supplementary_Table", "table")
+    return Path(name).stem.replace("Supplementary_Table", "table")
 
 
-def parse_marker_tables(zip_path: Path = SOURCE_ZIP) -> list[Marker]:
+def parse_marker_tables(zip_path: Path = WANG_SOURCE_ZIP) -> list[Marker]:
     if not zip_path.exists():
         raise FileNotFoundError(zip_path)
     markers: list[Marker] = []
@@ -177,11 +224,7 @@ def parse_marker_tables(zip_path: Path = SOURCE_ZIP) -> list[Marker]:
             lines = zf.read(name).decode("utf-8", "replace").splitlines()
             title = next((line for line in lines if line.strip()), "")
             family = family_from_table_name(name, title)
-            header_i = None
-            for i, line in enumerate(lines):
-                if line.startswith("locus_id\tassembly_gnF_position"):
-                    header_i = i
-                    break
+            header_i = next((i for i, line in enumerate(lines) if line.startswith("locus_id\tassembly_gnF_position")), None)
             if header_i is None:
                 continue
             reader = csv.DictReader(lines[header_i:], delimiter="\t")
@@ -195,15 +238,7 @@ def parse_marker_tables(zip_path: Path = SOURCE_ZIP) -> list[Marker]:
                 m = pos_re.fullmatch(assembly_pos)
                 if not m:
                     continue
-                markers.append(Marker(
-                    marker=locus,
-                    family=family,
-                    linkage_group=lg,
-                    scaffold=m.group("scaffold"),
-                    original_position=int(m.group("pos")),
-                    genetic_position_cm=Decimal(cm),
-                    source_table=Path(name).name,
-                ))
+                markers.append(Marker(locus, family, lg, m.group("scaffold"), int(m.group("pos")), Decimal(cm), Path(name).name))
     if not markers:
         raise AssertionError("no Wang et al. linkage markers parsed")
     return markers
@@ -222,269 +257,259 @@ def write_recombination_map(markers: list[Marker]) -> None:
         "source_table": m.source_table,
         "coordinate_status": "original_scaffold_coordinates_not_projected_to_frozen_chr16",
     } for m in markers]
-    write_tsv(RECOMB_MAP, rows, [
-        "marker", "family", "linkage_group", "original_assembly", "scaffold",
-        "original_position_bp", "genetic_position_cm", "source", "source_table", "coordinate_status",
-    ])
-
-
-def write_recombination_summary() -> None:
-    sg_start, sg_end = frozen_supergene_interval()
-    rows = [{
-        "region": "chr16_supergene",
-        "start_bp": sg_start,
-        "end_bp": sg_end,
-        "evidence_type": "direct_linkage_map_regional_summary",
-        "reported_result": "approximately 13 Mb, about 55% of the social chromosome, with complete recombination suppression between SB and Sb",
-        "relation": "published suppressed-recombination region corresponds to the independently frozen social-supergene analysis interval at regional scale",
-        "unit": "published regional summary; no target-coordinate cM/Mb curve estimated",
-        "source": f"{WANG_CITATION} DOI:{WANG_DOI}",
-        "notes": "Marker-level linkage tables provide scaffold positions and cM, but no reliable conversion to the frozen Stolle/TWISST chromosome-16 coordinate system was found in the committed analysis inputs.",
-    }]
-    write_tsv(RECOMB_SUMMARY, rows, [
-        "region", "start_bp", "end_bp", "evidence_type", "reported_result",
-        "relation", "unit", "source", "notes",
-    ])
+    write_tsv(RECOMB_MAP, rows, ["marker", "family", "linkage_group", "original_assembly", "scaffold", "original_position_bp", "genetic_position_cm", "source", "source_table", "coordinate_status"])
 
 
 def marker_summary(markers: list[Marker]) -> dict[str, object]:
-    families = sorted({m.family for m in markers})
-    scaffolds = sorted({m.scaffold for m in markers})
-    lgs = sorted({m.linkage_group for m in markers})
-    cm_values = [float(m.genetic_position_cm) for m in markers]
     return {
         "n_markers": len(markers),
-        "n_families": len(families),
-        "families": families,
-        "n_scaffolds": len(scaffolds),
-        "n_linkage_groups": len(lgs),
-        "min_cM": min(cm_values),
-        "max_cM": max(cm_values),
+        "n_families": len({m.family for m in markers}),
+        "families": sorted({m.family for m in markers}),
+        "n_scaffolds": len({m.scaffold for m in markers}),
+        "n_linkage_groups": len({m.linkage_group for m in markers}),
     }
 
 
-def load_chr16_support() -> list[dict[str, object]]:
-    rows = []
-    for row in read_tsv(WINDOW_SUPPORT):
-        if row["chrom"] == "chr16":
-            rows.append({
-                "window_index": int(row["window_index"]),
-                "start": int(row["start"]),
-                "end": int(row["end"]),
-                "mid": int(row["mid"]),
-                "region": row["region"],
-                "q_S": float(Decimal(row["q_S"])),
-                "q_H": float(Decimal(row["q_H"])),
-                "D": float(Decimal(row["D"])),
-            })
-    rows.sort(key=lambda r: r["mid"])
-    if len(rows) != 96:
-        raise AssertionError(f"expected 96 chr16 windows, found {len(rows)}")
-    return rows
+def yan_supplement_contains_ld_track() -> bool:
+    if not YAN_SUPP_XLS.exists():
+        return False
+    # The workbook strings show Supplementary Tables 1-5, gene lists, expression,
+    # and metadata, but no numeric Extended Data Fig. 5 LD matrix/track source.
+    text = ""
+    try:
+        import subprocess
+        cp = subprocess.run(["strings", str(YAN_SUPP_XLS)], check=False, capture_output=True, text=True, timeout=10)
+        text = cp.stdout.lower()
+    except Exception:
+        return False
+    indicators = ["extended data fig. 5", "linkage disequilibrium", "ld dot plot", "r2"]
+    return all(ind in text for ind in indicators)
 
 
-def make_figure() -> None:
-    sg_start, sg_end = frozen_supergene_interval()
-    chr16 = load_chr16_support()
-    x_min = min(r["start"] for r in chr16) / 1_000_000
-    x_max = max(r["end"] for r in chr16) / 1_000_000
-    sg_start_mb = sg_start / 1_000_000
-    sg_end_mb = sg_end / 1_000_000
-
-    fig, (ax0, ax1) = plt.subplots(
-        2, 1, figsize=(8.2, 5.8), sharex=True,
-        gridspec_kw={"height_ratios": [0.8, 2.4], "hspace": 0.10},
-    )
-    for ax in (ax0, ax1):
-        ax.axvspan(sg_start_mb, sg_end_mb, color="#d9d9d9", alpha=0.55, lw=0)
-
-    ax0.hlines(0.5, x_min, x_max, color="#bdbdbd", lw=5, alpha=0.6)
-    ax0.hlines(0.5, sg_start_mb, sg_end_mb, color="#7f2704", lw=10)
-    ax0.text((sg_start_mb + sg_end_mb) / 2, 0.69,
-             "published direct linkage-map evidence:\nregional SB-Sb recombination suppression",
-             ha="center", va="bottom", fontsize=9, color="#7f2704")
-    ax0.text(x_min, 0.18, "schematic regional validation; no target-coordinate cM/Mb curve",
-             ha="left", va="center", fontsize=8, color="#525252")
-    ax0.set_ylim(0, 1)
-    ax0.set_yticks([])
-    ax0.set_ylabel("recombination\nevidence", fontsize=9)
-    ax0.spines[["top", "right", "left"]].set_visible(False)
-
-    colors = {"q_S": "#2b8cbe", "q_H": "#e34a33"}
-    labels = {"q_S": "species-history support", "q_H": "SB/Sb haplotype support"}
-    gap_break_mb = 1.0
-    for region in ["chr16A", "chr16_supergene", "chr16B"]:
-        subset = [r for r in chr16 if r["region"] == region]
-        for key in ["q_S", "q_H"]:
-            first_label = labels[key] if region == "chr16A" else None
-            xs_all = [r["mid"] / 1_000_000 for r in subset]
-            ys_all = [r[key] for r in subset]
-            ax1.scatter(xs_all, ys_all, s=16, color=colors[key], label=first_label, zorder=3)
-            start_i = 0
-            for i in range(1, len(xs_all) + 1):
-                if i == len(xs_all) or xs_all[i] - xs_all[i - 1] > gap_break_mb:
-                    if i - start_i > 1:
-                        ax1.plot(xs_all[start_i:i], ys_all[start_i:i], lw=1.0, color=colors[key], alpha=0.9, zorder=2)
-                    start_i = i
-    ax1.set_ylim(-0.03, 1.03)
-    ax1.set_ylabel("TWISST-derived\nfocal quartet support")
-    ax1.set_xlabel("chromosome 16 physical position (Mb; frozen Stolle/TWISST coordinates)")
-    ax1.legend(loc="center left", bbox_to_anchor=(1.01, 0.5), frameon=False, fontsize=9)
-    ax1.text((sg_start_mb + sg_end_mb) / 2, 1.01, "frozen author-designated\nsupergene analysis interval",
-             ha="center", va="bottom", fontsize=8, color="#525252")
-    ax1.spines[["top", "right"]].set_visible(False)
-    fig.suptitle("Independent recombination-suppression evidence aligns with the frozen fire-ant genealogy signal", fontsize=11)
+def archive_existing_schematic() -> None:
     FIGURES.mkdir(parents=True, exist_ok=True)
-    fig.savefig(FIG_PDF, bbox_inches="tight")
-    fig.savefig(FIG_PNG, dpi=300, bbox_inches="tight")
-    plt.close(fig)
+    if FIG_PDF.exists() and not ARCHIVE_PDF.exists():
+        shutil.copy2(FIG_PDF, ARCHIVE_PDF)
+    if FIG_PNG.exists() and not ARCHIVE_PNG.exists():
+        shutil.copy2(FIG_PNG, ARCHIVE_PNG)
+
+
+def write_recombination_summary(markers: list[Marker]) -> None:
+    sg_start, sg_end = frozen_supergene_interval()
+    inv_start = min(r["start_bp"] for r in YAN_INVERSIONS)
+    inv_end = max(r["end_bp"] for r in YAN_INVERSIONS)
+    rows = [
+        {
+            "analysis_item": "quantitative_track_status",
+            "region": "chr16",
+            "start_bp": "NA",
+            "end_bp": "NA",
+            "evidence_type": "route_a_or_b_quantitative_track",
+            "metric": STATUS,
+            "value": "NA",
+            "unit": "NA",
+            "source": "route audit",
+            "notes": "No documented Wang scaffold-to-Stolle chr16 mapping and no reproducible Yan physical-coordinate LD source values were recovered; no quantitative recombination/LD figure was generated.",
+        },
+        {
+            "analysis_item": "wang_direct_linkage_marker_inventory",
+            "region": "source_original_scaffolds",
+            "start_bp": "NA",
+            "end_bp": "NA",
+            "evidence_type": "direct_linkage_map_marker_tables",
+            "metric": "parsed_marker_rows",
+            "value": len(markers),
+            "unit": "markers",
+            "source": f"{WANG_CITATION} DOI:{WANG_DOI}",
+            "notes": "Markers have Si_gnF scaffold positions and cM coordinates, but are not projected to frozen chr16 without a documented scaffold placement table.",
+        },
+        {
+            "analysis_item": "yan_inversion_union",
+            "region": "published_inversion_union",
+            "start_bp": inv_start,
+            "end_bp": inv_end,
+            "evidence_type": "published_physical_inversion_breakpoints",
+            "metric": "inversion_union_span",
+            "value": inv_end - inv_start,
+            "unit": "bp",
+            "source": f"{YAN_CITATION} DOI:{YAN_DOI}",
+            "notes": "Published SB-reference inversion union only; not a replacement for the frozen MSRC chr16_supergene mask.",
+        },
+        {
+            "analysis_item": "frozen_msrc_supergene_span",
+            "region": "chr16_supergene",
+            "start_bp": sg_start,
+            "end_bp": sg_end,
+            "evidence_type": "frozen_genealogy_analysis_interval",
+            "metric": "analysis_span",
+            "value": sg_end - sg_start,
+            "unit": "bp",
+            "source": "Stolle/TWISST window coordinates frozen in Stage 0",
+            "notes": "Author-defined BUSCO-window analysis span, not exact inversion boundary.",
+        },
+    ]
+    write_tsv(RECOMB_SUMMARY, rows, ["analysis_item", "region", "start_bp", "end_bp", "evidence_type", "metric", "value", "unit", "source", "notes"])
 
 
 def write_source_audit(markers: list[Marker]) -> None:
-    summary = marker_summary(markers)
-    zip_sha = sha256(SOURCE_ZIP) if SOURCE_ZIP.exists() else "missing"
-    pdf_sha = sha256(SOURCE_PDF) if SOURCE_PDF.exists() else "missing"
+    s = marker_summary(markers)
+    def maybe_sha(p: Path) -> str:
+        return sha256(p) if p.exists() and p.stat().st_size > 0 else "missing"
     SOURCE_AUDIT.write_text(textwrap.dedent(f"""
         # Recombination/linkage source audit
 
-        ## Selected source
+        ## Route A: Wang et al. 2013 direct linkage map
 
         - Paper: {WANG_CITATION}
         - DOI: {WANG_DOI}
         - Article URL: {WANG_NATURE_URL}
         - Supplementary data URL: {WANG_SUPP_ZIP_URL}
+        - Supplementary data file: `{rel(WANG_SOURCE_ZIP)}`
+        - Supplementary data SHA256: `{maybe_sha(WANG_SOURCE_ZIP)}`
         - Supplementary information URL: {WANG_SUPP_PDF_URL}
-        - Download/access date: {ANALYSIS_DATE}
-        - Supplementary data file: `{rel(SOURCE_ZIP)}`
-        - Supplementary data SHA256: `{zip_sha}`
-        - Supplementary information file: `{rel(SOURCE_PDF) if SOURCE_PDF.exists() else 'missing'}`
-        - Supplementary information SHA256: `{pdf_sha}`
-
-        ## Evidence hierarchy result
-
-        Direct linkage-map evidence was found. Wang et al. provide RADtag linkage-map tables with marker identifiers, original scaffold positions, linkage groups, and cM positions for seven mapping families. The parsed marker inventory contains {summary['n_markers']} marker rows across {summary['n_families']} families ({', '.join(summary['families'])}). Marker-level numerical data are therefore available in the source assembly.
-
-        ## Coordinate status
-
-        The marker positions are reported as `Si_gnF.scaffold..._nt...` scaffold coordinates with linkage-map cM positions. The frozen MSRC fire-ant genealogy track uses Stolle/TWISST chromosome coordinates (`chr16`, bp). I did not find a reliable committed scaffold-to-target-chromosome conversion in the frozen analysis inputs, so the marker-level map is preserved in `data/fire_ants_chr16/processed/recombination_map.tsv` but is not projected onto chromosome 16.
-
-        ## Data type
-
-        - Data type: direct linkage map, represented here as a published regional summary for target-coordinate visualization.
-        - Coordinate system: Wang 2013 original `Si_gnF` scaffold positions plus linkage-group cM positions.
+        - Supplementary information file: `{rel(WANG_SOURCE_PDF) if WANG_SOURCE_PDF.exists() else 'missing'}`
+        - Supplementary information SHA256: `{maybe_sha(WANG_SOURCE_PDF)}`
+        - Data type: direct linkage map.
         - Marker-level numerical data available: yes.
-        - Marker-level target-coordinate data available: no.
+        - Parsed marker rows: {s['n_markers']} across {s['n_families']} families ({', '.join(s['families'])}).
+        - Original coordinate system: `Si_gnF.scaffold..._nt...` plus family-specific linkage-group cM.
+
+        A documented Wang `Si_gnF` scaffold to frozen Stolle `Si_gnGA`/`gng20170922wFex.fa` chromosome-16 placement table was not recovered. The upstream Stolle README mentions `linkage_map_supergene.txt` and `2018-05-11-linkage-map/results/linkage_map_supergene.txt`, but that file is not committed in the local frozen snapshot or in the public upstream GitHub tree inspected for this analysis. Therefore Route A did not produce target-coordinate cM/Mb values.
+
+        ## Route B: Yan et al. 2020 physical-coordinate LD
+
+        - Paper: {YAN_CITATION}
+        - DOI: {YAN_DOI}
+        - Article URL: {YAN_URL}
+        - Supplementary table URL: {YAN_SUPP_XLS_URL}
+        - Supplementary table file: `{rel(YAN_SUPP_XLS) if YAN_SUPP_XLS.exists() else 'missing'}`
+        - Supplementary table SHA256: `{maybe_sha(YAN_SUPP_XLS)}`
+        - Supplementary information URL: {YAN_SUPP_PDF_URL}
+        - Supplementary information file: `{rel(YAN_SUPP_PDF) if YAN_SUPP_PDF.exists() else 'missing'}`
+        - Supplementary information SHA256: `{maybe_sha(YAN_SUPP_PDF)}`
+        - Public raw sequence BioProject: PRJNA421367.
+
+        Yan et al. report physical-coordinate LD across chr16 in Extended Data Fig. 5 and provide exact SB-reference inversion breakpoints in the article. The downloadable Supplementary Tables 1-5 contain gene lists, expression tables, and sample metadata, but not the numeric LD matrix or a one-dimensional LD track underlying Extended Data Fig. 5. The BioProject contains large raw sequence data; no small indexed genotype/LD file sufficient to reconstruct chr16 LD was recovered. The Stolle/Wurmlab genome-wide VCF endpoint is approximately {STOLLE_VCF_SIZE_BYTES:,} bytes and is not the Yan Extended Data Fig. 5 source; it was not downloaded blindly for this figure.
+
+        ## Evidence hierarchy conclusion
+
+        `{STATUS}`. Wang 2013 remains direct experimental linkage support in original coordinates, and Yan 2020 remains published physical-coordinate inversion/LD evidence, but neither yielded a reproducible quantitative chr16 recombination/LD track aligned to the frozen MSRC coordinate axis.
     """).lstrip())
 
 
 def write_coordinate_audit() -> None:
     sg_start, sg_end = frozen_supergene_interval()
-    COORD_AUDIT.write_text(textwrap.dedent(f"""
-        # Recombination coordinate audit
+    inv_lines = "\n".join(f"- {r['inversion']}: chr16:{r['start_bp']}-{r['end_bp']}" for r in YAN_INVERSIONS)
+    content = f"""# Recombination coordinate audit
 
-        ## Frozen MSRC fire-ant coordinate system
+## Frozen MSRC / Stolle coordinate system
 
-        The frozen local-genealogy analysis uses the author-labeled Stolle/TWISST window-coordinate file recorded in `data/fire_ants_chr16/metadata/region_manifest.tsv`. The chromosome-16 social-supergene analysis interval is `{sg_start}-{sg_end}` bp on `chr16`. These coordinates are an observed BUSCO-window span / author-designated analysis interval, not exact inversion breakpoints.
+The frozen fire-ant local-genealogy analysis uses Stolle et al. 2022 workflow coordinates from the `Si_gnGA` / `gng20170922wFex.fa` chromosome-level reference. The frozen chromosome-16 supergene analysis interval is `chr16:{sg_start}-{sg_end}`. This is an author-defined BUSCO-window analysis span, not an exact inversion boundary.
 
-        ## Linkage-map coordinate system
+## Wang et al. 2013 coordinate system
 
-        Wang et al. 2013 Supplementary Tables 8-14 report RADtag positions in the original assembly as values such as `Si_gnF.scaffold00759_nt19793`, together with linkage groups and cM coordinates.
+Wang linkage-map markers are reported on old `Si_gnF` scaffolds, for example `Si_gnF.scaffold00759_nt19793`, with family-specific genetic positions in cM. The Stolle upstream README states that a file named `linkage_map_supergene.txt` / `input/gngs_linkage_map.txt` should contain fields such as `scaffold`, `scaffold_start`, `scaffold_end`, `chr`, `chr_start`, `chr_end`, `orientation`, and possibly `region`, but this placement file was not recovered from the local frozen inputs or public upstream GitHub tree. No Wang marker was accepted as mapped to chr16.
 
-        ## Conversion decision
+## Yan et al. 2020 coordinate system
 
-        No reliable conversion from the Wang `Si_gnF` scaffold coordinates to the frozen Stolle/TWISST chromosome-16 coordinate system was found in the committed fire-ant analysis inputs. I therefore did not approximate, scale, or otherwise project the marker positions onto chr16. The integrated figure uses a schematic regional recombination-suppression track based on Wang et al.'s published direct linkage-map conclusion rather than a target-coordinate cM/Mb curve.
+Yan et al. report physical chr16 coordinates on the S. invicta SB reference and provide these inversion breakpoints:
 
-        ## Conversion method
+{inv_lines}
 
-        None. Marker-level original positions are preserved in `data/fire_ants_chr16/processed/recombination_map.tsv`; target-coordinate visualization is schematic.
-    """).lstrip())
+The union is chr16:{min(r['start_bp'] for r in YAN_INVERSIONS)}-{max(r['end_bp'] for r in YAN_INVERSIONS)}. These coordinates are useful biological annotations, but without the underlying LD values/genotypes or a documented coordinate equivalence/liftover to the Stolle `Si_gnGA` axis, they are not sufficient to generate a quantitative LD track aligned to the frozen MSRC windows.
 
+## Overlay decision
+
+Assembly compatibility checks did not pass for a quantitative overlay. No direct cM/Mb track and no LD r² track were overlaid on the frozen genealogy track. The previous schematic figure was archived and should not be treated as the requested quantitative validation figure.
+"""
+    COORD_AUDIT.write_text(content)
 
 def write_report(markers: list[Marker]) -> None:
-    summary = marker_summary(markers)
-    sg_start, sg_end = frozen_supergene_interval()
+    s = marker_summary(markers)
+    inv_start = min(r["start_bp"] for r in YAN_INVERSIONS)
+    inv_end = max(r["end_bp"] for r in YAN_INVERSIONS)
     REPORT.write_text(textwrap.dedent(f"""
         # Recombination-suppression validation report
 
-        ## Source study
+        ## Purpose
 
-        The validation uses an independent direct linkage-map source: {WANG_CITATION} DOI:{WANG_DOI}. This source is distinct from the Stolle et al. local-tree/TWISST analysis used for the frozen MSRC fire-ant genealogy results.
+        The requested update was to replace the earlier schematic recombination bar with a quantitative chromosome-16 recombination or LD track on a real physical coordinate axis. The target layout was physical chr16 position, quantitative recombination/LD evidence, and the existing frozen `q_species` / `q_haplotype` genealogy track.
 
-        ## Data type
+        ## Route A: direct Wang linkage map
 
-        Direct linkage-map marker data were recovered from the Wang et al. supplementary data archive. The parsed source tables contain {summary['n_markers']} RADtag marker rows across {summary['n_families']} mapping families. Each row includes a marker, an original scaffold position, a linkage group, and a cM coordinate. These marker-level data are written to `data/fire_ants_chr16/processed/recombination_map.tsv` in their original coordinate system.
+        Wang et al. 2013 provide direct linkage-map marker tables. I parsed {s['n_markers']} RADtag marker rows across {s['n_families']} mapping families and preserved them in `data/fire_ants_chr16/processed/recombination_map.tsv`. These rows contain original `Si_gnF` scaffold positions and family-specific genetic positions in cM.
 
-        ## Coordinate compatibility
+        Route A did not produce a chr16 cM/Mb track because no documented `Si_gnF` scaffold-to-Stolle `Si_gnGA`/`gng20170922wFex.fa` chromosome-placement file was recovered. The important candidate file named `linkage_map_supergene.txt` is referenced by the upstream README but was not present in the local frozen inputs or the public upstream repository tree. I did not guess scaffold placements.
 
-        The linkage-map marker positions use original `Si_gnF` scaffold coordinates. The frozen MSRC fire-ant topology track uses Stolle/TWISST chromosome coordinates. Because no reliable scaffold-to-chromosome conversion was found in the committed inputs, no marker-level cM/Mb curve was projected onto chromosome 16. The figure therefore uses the published regional conclusion as a schematic validation track over the frozen author-designated supergene interval `{sg_start}-{sg_end}` bp.
+        ## Route B: Yan physical-coordinate LD
 
-        ## Recombination/linkage result
+        Yan et al. 2020 report LD r² across physical chr16 and exact SB-reference inversion breakpoints. The published inversion union is chr16:{inv_start}-{inv_end}. I downloaded the minimal journal supplementary PDF and Supplementary Tables 1-5 and inspected them. They do not contain the numeric Extended Data Fig. 5 LD matrix or a one-dimensional LD track. Reconstructing LD from raw PRJNA421367 reads would require large-scale read/genotype processing, and no small public chr16 genotype/LD file was recovered. I did not digitize the published heatmap or treat pixels as quantitative data.
 
-        Wang et al. report a large social-chromosome region of approximately 13 Mb, about 55% of the chromosome, in which recombination is completely suppressed between the SB and Sb social chromosomes. This is direct linkage-map evidence for suppressed recombination across the social-supergene region.
+        ## Result
 
-        ## Relation to the frozen genealogy signal
+        `{STATUS}`
 
-        The frozen MSRC fire-ant analysis shows that chr16 windows outside the supergene are species-history dominated, whereas windows inside the author-designated supergene interval shift strongly toward the cross-species SB/Sb haplotype quartet. The independent linkage-map evidence supports the biological consistency of this result: the genomic interval with the strong social-haplotype genealogy is also the known recombination-suppressed social chromosome region.
+        No quantitative recombination or LD track was generated. The previous constant schematic bar was copied to archive filenames for provenance, but it should not be used as the final quantitative validation figure requested here.
 
-        ## Relation to Stage 6C branch-length effects
+        ## Relation to frozen genealogy and Stage 6C
 
-        Stage 6C remains unchanged. Its fixed-topology individual-level ASTRAL4/CASTLES-II comparison found strong CULength reductions for the two focal SB/Sb species-pair branches when supergene windows were added, with SULength responses that differed by branch. The recombination validation does not estimate branch lengths and does not reinterpret CU or SU values as recombination rates. It supports the narrative that linked histories in a recombination-suppressed region can influence summary-tree branch estimates even when the global topology remains stable.
-
-        ## Limitations
-
-        The marker-level linkage map could not be placed onto the frozen chromosome-16 coordinate axis without a documented coordinate conversion. The integrated figure is therefore a regional validation figure, not a new recombination-rate map. It should not be read as estimating local cM/Mb values across the Stolle/TWISST windows.
+        The frozen topology/TWISST/ASTRAL/CASTLES-II results remain unchanged. The local-genealogy result still shows a pronounced switch from species-history support outside the frozen supergene analysis span to SB/Sb haplotype support inside it. Stage 6C branch-length results remain unchanged. This audit only addresses whether an independent quantitative recombination/LD track can be reproducibly aligned to those frozen coordinates.
 
         ## Introgression caveat
 
-        The fire-ant supergene literature invokes recurrent adaptive introgression among socially polymorphic species. This validation supports the role of recombination suppression in maintaining a long linked genealogy, but it does not show that recombination suppression alone caused the observed genealogy or that MSRC without gene flow explains the system.
+        The fire-ant supergene is known to have experienced recurrent adaptive introgression. Recombination suppression helps preserve a long linked haplotype after such events, but this audit does not imply that MSRC without gene flow fully explains the system.
+
+        ## Smallest missing objects
+
+        A quantitative figure would require one of the following: (1) a documented Wang `Si_gnF` scaffold-to-Stolle `Si_gnGA` chr16 placement table such as `linkage_map_supergene.txt`, or (2) the numeric Yan Extended Data Fig. 5 SNP/genotype/LD source data in physical chr16 coordinates, preferably as a chr16 VCF/genotype matrix or precomputed r² table.
     """).lstrip())
 
 
 def write_caption() -> None:
     CAPTION.write_text(textwrap.dedent(f"""
-        Independent recombination-suppression evidence and local genealogy across fire-ant chromosome 16. Top panel: schematic regional representation of the direct linkage-map result from Wang et al. (2013), who reported an approximately 13-Mb social-chromosome region with complete recombination suppression between SB and Sb. Marker-level Wang et al. linkage data are available in original scaffold coordinates but were not projected onto the frozen Stolle/TWISST chromosome-16 coordinate system because no reliable coordinate conversion was available in the committed inputs. Bottom panel: existing frozen MSRC fire-ant TWISST-derived focal quartet support across chromosome 16, showing species-history support and cross-species SB/Sb haplotype support for the published four-BUSCO windows. The gray shading marks the independently frozen author-designated supergene analysis interval; it is not an optimized topology boundary or exact inversion breakpoint. The overlap supports biological consistency between the recombination-suppressed social chromosome and the localized haplotype-associated genealogy, but it does not establish a causal mechanism or rule out the recurrent-introgression history inferred by the source study.
+        No manuscript-ready quantitative recombination/LD figure was generated. Direct Wang et al. linkage-map marker tables were recovered in original `Si_gnF` scaffold coordinates, but no documented scaffold-to-Stolle chr16 conversion was recovered. Yan et al. provide published physical-coordinate LD evidence and inversion breakpoints, but the downloadable supplementary tables do not include the numeric LD matrix or track underlying Extended Data Fig. 5. The earlier schematic recombination bar has been archived for provenance only and should not be cited as a quantitative recombination-rate or LD track. The frozen MSRC genealogy statistics are unchanged.
     """).strip() + "\n")
 
 
-def write_manifest(markers: list[Marker], before: dict[str, str], after: dict[str, str]) -> None:
-    outputs = [RECOMB_MAP, RECOMB_SUMMARY, SOURCE_AUDIT, COORD_AUDIT, REPORT, CAPTION, FIG_PDF, FIG_PNG]
-    script_path = Path(__file__).resolve()
+def write_manifest(markers: list[Marker], before: dict[Path, str], after: dict[Path, str]) -> None:
+    existing_outputs = [p for p in [RECOMB_MAP, RECOMB_SUMMARY, SOURCE_AUDIT, COORD_AUDIT, REPORT, CAPTION, ARCHIVE_PDF, ARCHIVE_PNG] if p.exists()]
+    source_files = [p for p in [WANG_SOURCE_ZIP, WANG_SOURCE_PDF, YAN_SUPP_PDF, YAN_SUPP_XLS] if p.exists()]
     manifest = {
         "analysis": "fire_ant_recombination_suppression_validation",
         "analysis_date": ANALYSIS_DATE,
-        "analysis_type": "supplementary_figure_level_validation",
-        "stage5_stage6_frozen_results_modified": False,
-        "source_citation": WANG_CITATION,
-        "doi": WANG_DOI,
-        "source_urls": {
-            "article": WANG_NATURE_URL,
-            "supplementary_data_zip": WANG_SUPP_ZIP_URL,
-            "supplementary_information_pdf": WANG_SUPP_PDF_URL,
+        "status": STATUS,
+        "analysis_type": "supplementary_quantitative_track_audit",
+        "stage4a_to_stage6c_frozen_results_modified": False,
+        "route_a_wang_scaffold_to_chr16_mapping_found": False,
+        "route_a_wang_markers_parsed": len(markers),
+        "route_a_wang_markers_mapped_to_chr16": 0,
+        "route_a_cm_per_mb_calculated": False,
+        "route_b_needed": True,
+        "route_b_yan_source_used": {
+            "article": YAN_URL,
+            "supplementary_pdf": YAN_SUPP_PDF_URL,
+            "supplementary_xls": YAN_SUPP_XLS_URL,
+            "bioproject": "PRJNA421367",
         },
-        "source_files": {
-            rel(SOURCE_ZIP): sha256(SOURCE_ZIP) if SOURCE_ZIP.exists() else "missing",
-            rel(SOURCE_PDF): sha256(SOURCE_PDF) if SOURCE_PDF.exists() else "missing",
-        },
-        "data_mode": "direct_linkage_map_regional_summary_schematic",
-        "marker_level_numerical_data_available": True,
-        "marker_level_target_coordinate_data_available": False,
-        "n_parsed_linkage_markers": len(markers),
-        "coordinate_assembly": {
-            "linkage_source": "Wang_2013_Si_gnF_scaffold_coordinates_plus_linkage_group_cM",
-            "frozen_genealogy_track": "Stolle_TWISST_chr16_window_coordinates",
-        },
-        "conversion_method": "none; reliable scaffold-to-frozen-chr16 coordinate conversion unavailable in committed inputs",
-        "frozen_supergene_interval": {
+        "route_b_ld_reconstructed_or_obtained": False,
+        "quantitative_track_generated": False,
+        "final_quantitative_figure": None,
+        "archived_schematic_figures": [rel(p) for p in [ARCHIVE_PDF, ARCHIVE_PNG] if p.exists()],
+        "stolle_vcf_checked_not_downloaded": {"url": STOLLE_VCF_URL, "content_length_bytes": STOLLE_VCF_SIZE_BYTES},
+        "yan_inversion_coordinates": YAN_INVERSIONS,
+        "published_inversion_union": {
             "chromosome": "chr16",
-            "coordinate_start": SUPERGENE_EXPECTED[0],
-            "coordinate_end": SUPERGENE_EXPECTED[1],
-            "definition": "author-designated analysis interval / observed BUSCO-window span",
+            "start_bp": min(r["start_bp"] for r in YAN_INVERSIONS),
+            "end_bp": max(r["end_bp"] for r in YAN_INVERSIONS),
         },
+        "frozen_supergene_interval": {"chromosome": "chr16", "coordinate_start": SUPERGENE_EXPECTED[0], "coordinate_end": SUPERGENE_EXPECTED[1]},
+        "assembly_compatibility_for_quantitative_overlay": False,
+        "source_files": {rel(p): sha256(p) for p in source_files},
         "frozen_manifest_checksums_before": {rel(k): v for k, v in before.items()},
         "frozen_manifest_checksums_after": {rel(k): v for k, v in after.items()},
         "frozen_manifest_checksums_unchanged": before == after,
-        "script_hash": {rel(script_path): sha256(script_path)},
-        "output_hashes": {rel(p): sha256(p) for p in outputs if p.exists()},
+        "script_hash": {rel(Path(__file__).resolve()): sha256(Path(__file__).resolve())},
+        "output_hashes": {rel(p): sha256(p) for p in existing_outputs},
         "prohibited_actions": {
             "astral_rerun": False,
             "castles_rerun": False,
@@ -492,35 +517,37 @@ def write_manifest(markers: list[Marker], before: dict[str, str], after: dict[st
             "topology_reclassification": False,
             "new_species_tree_estimation": False,
             "recombination_inferred_from_genealogy": False,
+            "heatmap_digitized": False,
+            "large_raw_sequence_download": False,
+            "stolle_vcf_downloaded": False,
         },
     }
     MANIFEST.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
 
 
 def update_readme() -> None:
-    section = textwrap.dedent("""
+    section = textwrap.dedent(f"""
         ## Recombination-suppression validation
 
-        A small supplementary validation layer aligns the frozen chromosome-16 genealogy signal with independent recombination evidence from Wang et al. 2013 (`Nature`, DOI `10.1038/nature11832`). The source provides direct RADtag linkage-map marker tables and reports an approximately 13-Mb social-chromosome region with complete recombination suppression between SB and Sb. The marker tables are preserved in `../../data/fire_ants_chr16/processed/recombination_map.tsv` in their original `Si_gnF` scaffold coordinate system.
+        A supplementary audit attempted to replace the earlier schematic recombination bar with a quantitative chromosome-16 recombination or LD track on a real physical coordinate axis. The audit followed two routes: Wang et al. 2013 direct linkage-map markers and Yan et al. 2020 physical-coordinate LD evidence.
 
-        Because no reliable conversion from the Wang scaffold coordinates to the frozen Stolle/TWISST chromosome-16 coordinates was found in the committed inputs, the manuscript figure uses a schematic regional recombination-suppression track rather than a fabricated cM/Mb curve. The integrated figure is `figures/fire_ants_recombination_genealogy.pdf`, with report and provenance in `results/recombination_report.md`, `results/recombination_source_audit.md`, `results/recombination_coordinate_audit.md`, and `results/recombination_manifest.json`.
+        Result: `{STATUS}`. Wang et al. marker-level linkage data were recovered and preserved in `../../data/fire_ants_chr16/processed/recombination_map.tsv`, but no documented `Si_gnF` scaffold-to-Stolle `Si_gnGA` chr16 placement table was recovered. Yan et al. provide exact inversion breakpoints and published chr16 LD figures, but the downloadable supplementary tables do not contain the numeric LD matrix or one-dimensional LD track, and the available raw/genome-wide genotype resources are too large or not source-specific enough to download blindly for this figure.
 
-        This validation does not rerun or alter the frozen topology, ASTRAL, CASTLES-II, or branch-length results. It supports the biological consistency of the localized social-haplotype genealogy with an independently known recombination-suppressed social chromosome region, while retaining the introgression caveat from the source literature.
+        The previous schematic figure has been archived as `figures/fire_ants_recombination_genealogy_schematic_archived.pdf` / `.png` for provenance only. It should not be cited as a quantitative recombination-rate or LD track. See `results/recombination_report.md`, `results/recombination_source_audit.md`, `results/recombination_coordinate_audit.md`, and `results/recombination_manifest.json`.
+
+        This validation audit did not rerun or alter the frozen topology, TWISST, ASTRAL, CASTLES-II, or branch-length results.
     """).strip()
     text = README.read_text()
     if "## Recombination-suppression validation" in text:
         start = text.index("## Recombination-suppression validation")
-        # Replace until next H2 or EOF.
-        next_match = re.search(r"\n## ", text[start + 1:])
-        if next_match:
-            end = start + 1 + next_match.start()
+        m = re.search(r"\n## ", text[start + 1:])
+        if m:
+            end = start + 1 + m.start()
             text = text[:start] + section + "\n" + text[end:]
         else:
             text = text[:start] + section + "\n"
     else:
-        if not text.endswith("\n"):
-            text += "\n"
-        text += "\n" + section + "\n"
+        text = text.rstrip() + "\n\n" + section + "\n"
     README.write_text(text)
 
 
@@ -533,12 +560,12 @@ def run_analysis(update_readme_flag: bool = True) -> dict[str, object]:
     frozen_supergene_interval()
     markers = parse_marker_tables()
     write_recombination_map(markers)
-    write_recombination_summary()
+    archive_existing_schematic()
+    write_recombination_summary(markers)
     write_source_audit(markers)
     write_coordinate_audit()
     write_report(markers)
     write_caption()
-    make_figure()
     if update_readme_flag:
         update_readme()
     after = frozen_manifest_hashes()
@@ -552,61 +579,70 @@ class RecombinationValidationTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.markers = parse_marker_tables()
+        cls.manifest = json.loads(MANIFEST.read_text())
+
+    def test_frozen_manifests_unchanged(self):
+        self.assertTrue(self.manifest["frozen_manifest_checksums_unchanged"])
+        self.assertEqual(self.manifest["frozen_manifest_checksums_before"], self.manifest["frozen_manifest_checksums_after"])
 
     def test_frozen_supergene_coordinates_unchanged(self):
         self.assertEqual(frozen_supergene_interval(), SUPERGENE_EXPECTED)
 
-    def test_direct_recombination_rate_synthetic(self):
-        rate = recombination_cm_per_mb(1_000_000, 2_000_000, Decimal("3.5"), Decimal("5.5"))
-        self.assertEqual(rate, Decimal("2"))
+    def test_yan_inversion_coordinates_stored_exactly(self):
+        self.assertEqual(self.manifest["yan_inversion_coordinates"], YAN_INVERSIONS)
 
-    def test_zero_physical_span_rejected(self):
+    def test_no_wang_mapping_accepted_without_documentation(self):
+        self.assertFalse(self.manifest["route_a_wang_scaffold_to_chr16_mapping_found"])
+        self.assertEqual(self.manifest["route_a_wang_markers_mapped_to_chr16"], 0)
+        self.assertFalse(WANG_TO_STOLLE_MAP.exists())
+        self.assertFalse(RECOMB_MAP_CHR16.exists())
+
+    def test_orientation_conversion_synthetic(self):
+        plus = ScaffoldPlacement("s1", 1, 100, "chr16", 1000, 1099, "+")
+        minus = ScaffoldPlacement("s1", 1, 100, "chr16", 1000, 1099, "-")
+        self.assertEqual(convert_scaffold_position(25, plus), 1024)
+        self.assertEqual(convert_scaffold_position(25, minus), 1075)
+
+    def test_cm_per_mb_synthetic(self):
+        self.assertEqual(recombination_cm_per_mb(1_000_000, 2_000_000, Decimal("3.5"), Decimal("5.5")), Decimal("2"))
+
+    def test_zero_physical_distance_rejected(self):
         with self.assertRaises(ValueError):
             recombination_cm_per_mb(10, 10, Decimal("0"), Decimal("1"))
 
-    def test_boundary_overlap_classification(self):
-        sg_start, sg_end = SUPERGENE_EXPECTED
-        self.assertEqual(classify_interval(sg_start + 1, sg_start + 100, sg_start, sg_end).region_class, "supergene")
-        self.assertEqual(classify_interval(1, sg_start - 1, sg_start, sg_end).region_class, "background_chr16")
-        self.assertEqual(classify_interval(sg_start - 1, sg_start + 1, sg_start, sg_end).region_class, "boundary_overlap")
+    def test_each_mapping_family_available_separately(self):
+        families = {m.family for m in self.markers}
+        self.assertEqual(families, {"M013", "M047", "M173", "P008", "P016", "P033", "P034"})
 
-    def test_ld_fallback_label_available(self):
-        row = {"evidence_type": "LD-based evidence of recombination suppression"}
-        self.assertIn("LD-based", row["evidence_type"])
+    def test_ld_r2_synthetic_haploid(self):
+        self.assertAlmostEqual(calculate_ld_r2([0, 0, 1, 1], [0, 0, 1, 1]), 1.0)
+        self.assertAlmostEqual(calculate_ld_r2([0, 0, 1, 1], [0, 1, 0, 1]), 0.0)
 
-    def test_schematic_fallback_mode_written(self):
-        rows = read_tsv(RECOMB_SUMMARY)
-        self.assertEqual(rows[0]["evidence_type"], "direct_linkage_map_regional_summary")
+    def test_ld_never_labeled_cm_per_mb(self):
+        if YAN_LD.exists():
+            header = YAN_LD.read_text().splitlines()[0].lower()
+            self.assertNotIn("cm_per_mb", header)
+        self.assertFalse(self.manifest["route_b_ld_reconstructed_or_obtained"])
 
-    def test_inequalities_preserved(self):
-        self.assertEqual(preserve_reported_value("<0.5"), "<0.5")
+    def test_assembly_compatibility_required_before_overlay(self):
+        self.assertFalse(self.manifest["assembly_compatibility_for_quantitative_overlay"])
+        self.assertFalse(self.manifest["quantitative_track_generated"])
 
-    def test_no_topology_fields_define_recombination_regions(self):
-        header = RECOMB_SUMMARY.read_text().splitlines()[0].split("\t")
-        self.assertFalse(any(h.startswith("q_") or h in {"D", "dominant_class"} for h in header))
-        row = read_tsv(RECOMB_SUMMARY)[0]
-        self.assertEqual((int(row["start_bp"]), int(row["end_bp"])), SUPERGENE_EXPECTED)
-
-    def test_frozen_manifests_unchanged_in_manifest(self):
-        manifest = json.loads(MANIFEST.read_text())
-        self.assertTrue(manifest["frozen_manifest_checksums_unchanged"])
-        self.assertEqual(manifest["frozen_manifest_checksums_before"], manifest["frozen_manifest_checksums_after"])
-
-    def test_figure_generation_succeeds(self):
-        self.assertTrue(FIG_PDF.exists() and FIG_PDF.stat().st_size > 1000)
-        self.assertTrue(FIG_PNG.exists() and FIG_PNG.stat().st_size > 1000)
+    def test_no_constant_schematic_bar_final_result(self):
+        self.assertEqual(self.manifest["status"], STATUS)
+        self.assertIsNone(self.manifest["final_quantitative_figure"])
+        self.assertGreaterEqual(len(self.manifest["archived_schematic_figures"]), 0)
 
     def test_marker_tables_parsed(self):
+        self.assertEqual(len(self.markers), self.manifest["route_a_wang_markers_parsed"])
         self.assertGreater(len(self.markers), 0)
-        self.assertTrue(all(m.scaffold.startswith("Si_gnF.scaffold") for m in self.markers))
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--run-tests", action="store_true", help="run lightweight validation tests after regenerating outputs")
-    parser.add_argument("--no-readme", action="store_true", help="do not update README")
+    parser.add_argument("--run-tests", action="store_true")
+    parser.add_argument("--no-readme", action="store_true")
     args = parser.parse_args(argv)
-
     result = run_analysis(update_readme_flag=not args.no_readme)
     if args.run_tests:
         suite = unittest.defaultTestLoader.loadTestsFromTestCase(RecombinationValidationTests)
@@ -615,8 +651,8 @@ def main(argv: list[str] | None = None) -> int:
         if not test_result.wasSuccessful():
             return 1
         print(f"tests_passed={test_result.testsRun}")
+    print(f"status={STATUS}")
     print(f"parsed_linkage_markers={result['markers']}")
-    print(f"figure={rel(FIG_PDF)}")
     print(f"manifest={rel(MANIFEST)}")
     return 0
 

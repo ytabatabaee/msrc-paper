@@ -1,14 +1,13 @@
 {
   "analysis": "fire_ant_recombination_suppression_validation",
   "analysis_date": "2026-10-04",
-  "analysis_type": "supplementary_figure_level_validation",
-  "conversion_method": "none; reliable scaffold-to-frozen-chr16 coordinate conversion unavailable in committed inputs",
-  "coordinate_assembly": {
-    "frozen_genealogy_track": "Stolle_TWISST_chr16_window_coordinates",
-    "linkage_source": "Wang_2013_Si_gnF_scaffold_coordinates_plus_linkage_group_cM"
-  },
-  "data_mode": "direct_linkage_map_regional_summary_schematic",
-  "doi": "10.1038/nature11832",
+  "analysis_type": "supplementary_quantitative_track_audit",
+  "archived_schematic_figures": [
+    "empirical/fire_ants_chr16/figures/fire_ants_recombination_genealogy_schematic_archived.pdf",
+    "empirical/fire_ants_chr16/figures/fire_ants_recombination_genealogy_schematic_archived.png"
+  ],
+  "assembly_compatibility_for_quantitative_overlay": false,
+  "final_quantitative_figure": null,
   "frozen_manifest_checksums_after": {
     "empirical/fire_ants_chr16/results/stage4a_manifest.json": "d1fa79815bbe4d1f45a2af7f5a1d5487d39fe3041ccac4f79f961a998ab99bf1",
     "empirical/fire_ants_chr16/results/stage4b_manifest.json": "3aa375b5b1f52964e338a93aa7cb9330e47fe88986fa3205bfcfd26711df7a2b",
@@ -29,42 +28,77 @@
   "frozen_supergene_interval": {
     "chromosome": "chr16",
     "coordinate_end": 27917498,
-    "coordinate_start": 11680438,
-    "definition": "author-designated analysis interval / observed BUSCO-window span"
+    "coordinate_start": 11680438
   },
-  "marker_level_numerical_data_available": true,
-  "marker_level_target_coordinate_data_available": false,
-  "n_parsed_linkage_markers": 27934,
   "output_hashes": {
     "data/fire_ants_chr16/processed/recombination_map.tsv": "032488b32f8a15fbb15282eca8d04d69f09f1eba7f116cb39dfa670fd4b0d836",
-    "empirical/fire_ants_chr16/figures/fire_ants_recombination_genealogy.pdf": "2e6f247b4931f3f6b213aa09f95bee026d573ec720d82501da2fefbf48d421aa",
-    "empirical/fire_ants_chr16/figures/fire_ants_recombination_genealogy.png": "cec5bdd332dc0a9241e979841df00a8e4e269b20155b7fb3a150a134260322a9",
-    "empirical/fire_ants_chr16/results/recombination_coordinate_audit.md": "093d7193e7071e8c22c2b54f918085577d8386d06d5290b331879db73c183739",
-    "empirical/fire_ants_chr16/results/recombination_figure_caption.txt": "3501466178b2ccdbeb22507a6dd905124be876c1736730117612fdaa3b05806b",
-    "empirical/fire_ants_chr16/results/recombination_report.md": "981aa6283a38ba324fc55c167abe627bc6ef4a04db682baab503b7c3e1c35632",
-    "empirical/fire_ants_chr16/results/recombination_source_audit.md": "45d8a51ae3c44752ce32961ab0f2721529caaa66802f520c004b02dc242932c3",
-    "empirical/fire_ants_chr16/results/recombination_summary.tsv": "88f2e9b8a6fa8aaeb702b3ddf9cd9f6425bf1242c3b22c51ba3ce14039b7dd00"
+    "empirical/fire_ants_chr16/figures/fire_ants_recombination_genealogy_schematic_archived.pdf": "2e6f247b4931f3f6b213aa09f95bee026d573ec720d82501da2fefbf48d421aa",
+    "empirical/fire_ants_chr16/figures/fire_ants_recombination_genealogy_schematic_archived.png": "cec5bdd332dc0a9241e979841df00a8e4e269b20155b7fb3a150a134260322a9",
+    "empirical/fire_ants_chr16/results/recombination_coordinate_audit.md": "e5aae01f5f94daefbb13202a8038441eac997f540e78f93d5d1e85c46a2fdec0",
+    "empirical/fire_ants_chr16/results/recombination_figure_caption.txt": "41d62532702ee5d7fac8c030af4edd4f35c8fd3ae430a670c2788ea2f89e656f",
+    "empirical/fire_ants_chr16/results/recombination_report.md": "91d83762ada7abd55f486639c372416420b9790e52a0d5077a58e0430249e10b",
+    "empirical/fire_ants_chr16/results/recombination_source_audit.md": "e13684eb5fdd9fda163779706800bdf46b2ef0258cd8488b50ac602161c14894",
+    "empirical/fire_ants_chr16/results/recombination_summary.tsv": "fe6d6e3ade490bc4ea1b584b3a05b7f64c2329f957b120dbf0279487e39e53d6"
   },
   "prohibited_actions": {
     "astral_rerun": false,
     "castles_rerun": false,
     "gene_tree_regeneration": false,
+    "heatmap_digitized": false,
+    "large_raw_sequence_download": false,
     "new_species_tree_estimation": false,
     "recombination_inferred_from_genealogy": false,
+    "stolle_vcf_downloaded": false,
     "topology_reclassification": false
   },
-  "script_hash": {
-    "empirical/fire_ants_chr16/scripts/07_recombination_validation.py": "8fa9c3c7d53548e344df72a1340e7cd8a511d830b2b494e534abbdf5971f94d1"
+  "published_inversion_union": {
+    "chromosome": "chr16",
+    "end_bp": 24031576,
+    "start_bp": 12612565
   },
-  "source_citation": "Wang J., Wurm Y., Nipitwattanaphon M. et al. A Y-like social chromosome causes alternative colony organization in fire ants. Nature 493, 664-668 (2013).",
+  "quantitative_track_generated": false,
+  "route_a_cm_per_mb_calculated": false,
+  "route_a_wang_markers_mapped_to_chr16": 0,
+  "route_a_wang_markers_parsed": 27934,
+  "route_a_wang_scaffold_to_chr16_mapping_found": false,
+  "route_b_ld_reconstructed_or_obtained": false,
+  "route_b_needed": true,
+  "route_b_yan_source_used": {
+    "article": "https://www.nature.com/articles/s41559-019-1081-1",
+    "bioproject": "PRJNA421367",
+    "supplementary_pdf": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41559-019-1081-1/MediaObjects/41559_2019_1081_MOESM1_ESM.pdf",
+    "supplementary_xls": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41559-019-1081-1/MediaObjects/41559_2019_1081_MOESM2_ESM.xls"
+  },
+  "script_hash": {
+    "empirical/fire_ants_chr16/scripts/07_recombination_validation.py": "966dd911582998512ac11bda1726eb855c30369fc7aef5cd9b293e15d75c9a4e"
+  },
   "source_files": {
     "data/fire_ants_chr16/raw/recombination_sources/wang_2013_nature/41586_2013_BFnature11832_MOESM97_ESM.pdf": "70b09fed688ece03cd0d84dc45223f5f6bba64fbb8d1805d57cbe2ff758f2e0b",
-    "data/fire_ants_chr16/raw/recombination_sources/wang_2013_nature/41586_2013_BFnature11832_MOESM98_ESM.zip": "155f1a9576cf11085c206fcc706ba828683e6a20c18cdfe413ef4a5059ef8613"
+    "data/fire_ants_chr16/raw/recombination_sources/wang_2013_nature/41586_2013_BFnature11832_MOESM98_ESM.zip": "155f1a9576cf11085c206fcc706ba828683e6a20c18cdfe413ef4a5059ef8613",
+    "data/fire_ants_chr16/raw/recombination_sources/yan_2020/41559_2019_1081_MOESM1_ESM.pdf": "18e829cfa04af4597f1b1c0826f449a03508b3aaf7276723f3bc1ef4428bc4de",
+    "data/fire_ants_chr16/raw/recombination_sources/yan_2020/41559_2019_1081_MOESM2_ESM.xls": "2cc864b2ba12c9be8605b0761aa5ca436ae5954fd8445ba972a85e505a8152e4"
   },
-  "source_urls": {
-    "article": "https://www.nature.com/articles/nature11832",
-    "supplementary_data_zip": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fnature11832/MediaObjects/41586_2013_BFnature11832_MOESM98_ESM.zip",
-    "supplementary_information_pdf": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fnature11832/MediaObjects/41586_2013_BFnature11832_MOESM97_ESM.pdf"
+  "stage4a_to_stage6c_frozen_results_modified": false,
+  "status": "QUANTITATIVE_RECOMBINATION_TRACK_NOT_RECOVERED",
+  "stolle_vcf_checked_not_downloaded": {
+    "content_length_bytes": 1503782377,
+    "url": "https://github.com/wurmlab/wurmlab.github.io/raw/master/data/supergene_introgression/gt.vcf.gz/gt.vcf.gz"
   },
-  "stage5_stage6_frozen_results_modified": false
+  "yan_inversion_coordinates": [
+    {
+      "end_bp": 24031576,
+      "inversion": "In(16)1",
+      "start_bp": 14549064
+    },
+    {
+      "end_bp": 24030990,
+      "inversion": "In(16)2",
+      "start_bp": 13705210
+    },
+    {
+      "end_bp": 13683100,
+      "inversion": "In(16)3",
+      "start_bp": 12612565
+    }
+  ]
 }
