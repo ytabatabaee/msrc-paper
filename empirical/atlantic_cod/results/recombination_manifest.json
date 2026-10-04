@@ -1,0 +1,98 @@
+{
+  "analysis": "Atlantic cod quantitative LD linkage validation",
+  "analysis_date_utc": "2026-10-04T22:01:09.003722+00:00",
+  "coordinate_assembly": "gadMor2",
+  "doi": "10.1038/s41559-022-01661-x",
+  "frozen_inversion_coordinates": {
+    "LG01": {
+      "end": 26192386,
+      "start": 9114741
+    },
+    "LG02": {
+      "end": 24048607,
+      "start": 18489307
+    },
+    "LG07": {
+      "end": 23019113,
+      "start": 13610591
+    },
+    "LG12": {
+      "end": 14327837,
+      "start": 638100
+    }
+  },
+  "frozen_manifest_hashes_after": {
+    "stage4a": "23e21f056f94fa5e492156fbe9033423eb536053c86def00f4814cd46e246b72",
+    "stage4b": "6d8eb64e16947b3207a48390c615b7e4c78e45bc73a6fa940a560be0ab77884b",
+    "stage5": "5ae6f3274f0accd9c6aedc1a8b512901a5c67209bb4024987d5192acabc445db",
+    "stage6": "be05abce694a782fc685fc1c8aa9004e106299474b814f86cb9f4fac8bd44e28",
+    "stage7": "8385afddf18cb7570317269f89ae4e5c4f5ae4b2f7fa944bef256208f9de325b",
+    "stage8": "dc0529677777fcc4c4063fcdd35250b55cb72e89cffd690fd9aeaf2e7bfb0970"
+  },
+  "frozen_manifest_hashes_before": {
+    "stage4a": "23e21f056f94fa5e492156fbe9033423eb536053c86def00f4814cd46e246b72",
+    "stage4b": "6d8eb64e16947b3207a48390c615b7e4c78e45bc73a6fa940a560be0ab77884b",
+    "stage5": "5ae6f3274f0accd9c6aedc1a8b512901a5c67209bb4024987d5192acabc445db",
+    "stage6": "be05abce694a782fc685fc1c8aa9004e106299474b814f86cb9f4fac8bd44e28",
+    "stage7": "8385afddf18cb7570317269f89ae4e5c4f5ae4b2f7fa944bef256208f9de325b",
+    "stage8": "dc0529677777fcc4c4063fcdd35250b55cb72e89cffd690fd9aeaf2e7bfb0970"
+  },
+  "n_250kb_bins": {
+    "LG01": 110,
+    "LG02": 92,
+    "LG07": 119,
+    "LG12": 105
+  },
+  "output_hashes": {
+    "data/atlantic_cod/processed/cod_linkage_250kb.tsv": "9d8bcdcba196e537b737023659db90b05af97ac2f4e9882cdcd5de4f92ee4c3e",
+    "data/atlantic_cod/processed/cod_linkage_per_snp.tsv": "984e248256b40b4dab55b6bb0851d41141df58db7a2c2ed3abc5e25e534276c2",
+    "empirical/atlantic_cod/figures/atlantic_cod_linkage_genealogy.pdf": "919c2cfa43e0aee5c8e9e5d6dae92a9776096c29566c80affaae81658fc79218",
+    "empirical/atlantic_cod/figures/atlantic_cod_linkage_genealogy.png": "d15c6e47eda88f5fc64a80aff8c302c492e37ef29c0d70c0af5d2f8a043a3b26",
+    "empirical/atlantic_cod/figures/atlantic_cod_linkage_genealogy_time.pdf": "8f65cf17238fd04531758a2e98ad86ef53eda77b946fbb0bad83762cdaab446b",
+    "empirical/atlantic_cod/figures/atlantic_cod_linkage_genealogy_time.png": "d90903a1d7b587d2d134c6ba06dbd2eafd7ad35d38691232394b76acc17b15d6",
+    "empirical/atlantic_cod/figures/cod_linkage_source_reproduction.pdf": "354586cedebba0871c2d64d3f46c7b381a9b87498d1e18d3f0814579b040a35d",
+    "empirical/atlantic_cod/figures/cod_linkage_source_reproduction.png": "90d78294cc7ace43463436e28c37f19229efbe4afebe9f4248db6f7ddd49c88b",
+    "empirical/atlantic_cod/results/recombination_coordinate_audit.md": "0f7b8cf3067bf2101fa01f21df099e2304ea3ceca2df2671b2b03df5a04522a8",
+    "empirical/atlantic_cod/results/recombination_figure_caption.txt": "65b0ed4903bd168ab155e3d7364d27e5208548e26889c691cf812174e7f5d280",
+    "empirical/atlantic_cod/results/recombination_linkage_genealogy_time_windows.tsv": "eb0be132952b9b0bbb40f2f38a5deeb39b259826cdd7d5f07a1282bdcc59b233",
+    "empirical/atlantic_cod/results/recombination_report.md": "ba2df9aede43164fc1f51d5d4fc74b22f61846aed37c045d2550e8ba8cf39aa5",
+    "empirical/atlantic_cod/results/recombination_source_audit.md": "4e73fbaf49c35bef660b77e11aa53f1a0b9f6107239a2fabf6192b33ab8bc032",
+    "empirical/atlantic_cod/results/recombination_spatial_correlations.tsv": "93eabb20d2d6120c0d0dc5baaef2cee45c392675fad48c7e4caaa36dfa922202",
+    "empirical/atlantic_cod/results/recombination_summary.tsv": "53a84f5328591e0c52b949402b198ce433b90e9ee9c9e9b895b1bf15a4235b62"
+  },
+  "script_hashes": {
+    "empirical/atlantic_cod/scripts/09_linkage_validation.py": "d19ddcdc6e7594d6b0a082cecaef5bb99505c235b64ef8e50e9528fdea644dd0"
+  },
+  "snp_rows_per_lg": {
+    "LG01": 298,
+    "LG02": 230,
+    "LG07": 249,
+    "LG12": 197
+  },
+  "software_versions": {
+    "matplotlib": "3.11.2",
+    "numpy": "2.5.3",
+    "python": "3.12.11"
+  },
+  "source_citation": "Matschiner et al. 2022, Supergene origin and maintenance in Atlantic cod, Nature Ecology & Evolution 6:469-481",
+  "source_data_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41559-022-01661-x/MediaObjects/41559_2022_1661_MOESM3_ESM.txt",
+  "source_file": "data/atlantic_cod/raw/nature_source_data/41559_2022_1661_MOESM3_ESM_source_data_fig1.txt",
+  "source_schema": {
+    "Genetic distance (a)": [
+      "lg",
+      "window_center",
+      "window_start",
+      "window_end",
+      "distance_between_coastal_and_first",
+      "distance_between_haddock_and_first"
+    ],
+    "Linkage per SNP (a)": [
+      "lg",
+      "position",
+      "linkage"
+    ]
+  },
+  "source_sha256": "5f31d7ebaa30f4f7f145abed365786252aded4c701c4d76ca10d77c057c9b8af",
+  "stage": 9,
+  "supplementary_extension": true
+}

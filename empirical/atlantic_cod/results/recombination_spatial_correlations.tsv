@@ -1,0 +1,9 @@
+lg	comparison	n_windows	spearman_rho	circular_shift_p_two_sided	null_description
+LG01	D_topology	0	NA	NA	linkage track fixed; topology/time track circularly shifted; identity rotation included
+LG01	A_time	0	NA	NA	linkage track fixed; topology/time track circularly shifted; identity rotation included
+LG02	D_topology	1	NA	NA	linkage track fixed; topology/time track circularly shifted; identity rotation included
+LG02	A_time	1	NA	NA	linkage track fixed; topology/time track circularly shifted; identity rotation included
+LG07	D_topology	1	NA	NA	linkage track fixed; topology/time track circularly shifted; identity rotation included
+LG07	A_time	1	NA	NA	linkage track fixed; topology/time track circularly shifted; identity rotation included
+LG12	D_topology	1	NA	NA	linkage track fixed; topology/time track circularly shifted; identity rotation included
+LG12	A_time	1	NA	NA	linkage track fixed; topology/time track circularly shifted; identity rotation included

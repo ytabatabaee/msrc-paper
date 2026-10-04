@@ -1,0 +1,9 @@
+summary_level	lg	n_inside	n_outside	median_linkage_inside	median_linkage_outside	mean_linkage_inside	mean_linkage_outside	median_difference_inside_minus_outside	median_ratio_inside_over_outside	metric_label
+snp	LG01	219	79	65740842	2169	51974385.8	7307.21519	65738673	30309.2863	per-SNP LD linkage score, not recombination rate
+snp	LG02	199	31	40096337	508	31169089.4	826418.645	40095829	78929.7972	per-SNP LD linkage score, not recombination rate
+snp	LG07	226	23	54920164	35	46339354.8	5323995.87	54920129	1569147.54	per-SNP LD linkage score, not recombination rate
+snp	LG12	52	145	5320874	53371	3808959.19	91374.5172	5267503	99.6959772	per-SNP LD linkage score, not recombination rate
+window_250kb	LG01	0	0	NA	NA	NA	NA	NA	NA	per-SNP LD linkage score, not recombination rate
+window_250kb	LG02	1	0	42697286.5	NA	42697286.5	NA	NA	NA	per-SNP LD linkage score, not recombination rate
+window_250kb	LG07	1	0	54393659	NA	54393659	NA	NA	NA	per-SNP LD linkage score, not recombination rate
+window_250kb	LG12	1	0	5326449.5	NA	5326449.5	NA	NA	NA	per-SNP LD linkage score, not recombination rate
