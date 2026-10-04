@@ -71,6 +71,8 @@ FIG_LINK_GENE_PDF = FIGURES / "atlantic_cod_linkage_genealogy.pdf"
 FIG_LINK_GENE_PNG = FIGURES / "atlantic_cod_linkage_genealogy.png"
 FIG_BOUNDARY_PDF = FIGURES / "atlantic_cod_linkage_boundary_transitions.pdf"
 FIG_BOUNDARY_PNG = FIGURES / "atlantic_cod_linkage_boundary_transitions.png"
+FIG_LG12_COVERAGE_PDF = FIGURES / "atlantic_cod_linkage_LG12_boundary_coverage.pdf"
+FIG_LG12_COVERAGE_PNG = FIGURES / "atlantic_cod_linkage_LG12_boundary_coverage.png"
 FIG_EFFECT_PDF = FIGURES / "atlantic_cod_linkage_effect_summary.pdf"
 FIG_EFFECT_PNG = FIGURES / "atlantic_cod_linkage_effect_summary.png"
 
@@ -91,6 +93,9 @@ EXPECTED_REGIONS = {
 }
 SOURCE_SHA256_EXPECTED = "5f31d7ebaa30f4f7f145abed365786252aded4c701c4d76ca10d77c057c9b8af"
 BOUNDARY_WINDOW_BP = 250_000
+MAIN_BOUNDARY_FIGURE_LGS = ("LG01", "LG02", "LG07")
+MAIN_BOUNDARY_XLIM_KB = (-60.0, 60.0)
+BOUNDARY_RELATIVE_SHA256_EXPECTED = "148f1c139105b2792abc1e1a5b900a050f663f854c70b3753196e878a84aca43"
 
 
 def sha256(path: Path) -> str:
@@ -551,41 +556,76 @@ def plot_integrated(joined: list[dict[str, object]], linkage_rows: list[dict[str
 
 
 def plot_boundary_transitions(boundary_rows: list[dict[str, object]]) -> None:
-    fig, axes = plt.subplots(4, 2, figsize=(9.5, 9), sharex=True, sharey=True)
-    for row_i, lg in enumerate(LGS):
+    fig, axes = plt.subplots(3, 2, figsize=(8.0, 6.5), sharex=True, sharey=True)
+    for row_i, lg in enumerate(MAIN_BOUNDARY_FIGURE_LGS):
         for col_i, side in enumerate(("left", "right")):
             ax = axes[row_i, col_i]
-            rows = [r for r in boundary_rows if r["lg"] == lg and r["boundary_side"] == side]
+            rows = [
+                r for r in boundary_rows
+                if r["lg"] == lg
+                and r["boundary_side"] == side
+                and MAIN_BOUNDARY_XLIM_KB[0] <= float(r["relative_position_kb"]) <= MAIN_BOUNDARY_XLIM_KB[1]
+            ]
             inside = [r for r in rows if r["side_class"] == "inside"]
             outside = [r for r in rows if r["side_class"] == "outside"]
-            ax.scatter([float(r["relative_position_kb"]) for r in outside], [float(r["log10_linkage_plus1"]) for r in outside], s=14, color="#4c78a8", alpha=0.72, label="outside" if row_i == 0 and col_i == 0 else None)
-            ax.scatter([float(r["relative_position_kb"]) for r in inside], [float(r["log10_linkage_plus1"]) for r in inside], s=14, color="#e45756", alpha=0.72, label="inside" if row_i == 0 and col_i == 0 else None)
+            ax.scatter([float(r["relative_position_kb"]) for r in outside], [float(r["log10_linkage_plus1"]) for r in outside], s=12, color="#4c78a8", alpha=0.68, linewidths=0, label="outside" if row_i == 0 and col_i == 0 else None)
+            ax.scatter([float(r["relative_position_kb"]) for r in inside], [float(r["log10_linkage_plus1"]) for r in inside], s=12, color="#e45756", alpha=0.68, linewidths=0, label="inside" if row_i == 0 and col_i == 0 else None)
             for side_class, color in (("outside", "#4c78a8"), ("inside", "#e45756")):
                 vals = [float(r["log10_linkage_plus1"]) for r in rows if r["side_class"] == side_class]
                 xs = [float(r["relative_position_kb"]) for r in rows if r["side_class"] == side_class]
                 if vals:
                     med = statistics.median(vals)
                     xmin, xmax = (min(xs), max(xs))
-                    ax.hlines(med, xmin, xmax, color=color, lw=2.0)
+                    ax.hlines(med, xmin, xmax, color=color, lw=1.8)
             ax.axvline(0, color="black", lw=0.9)
-            ax.set_title(f"{lg} {side} boundary")
-            ax.set_xlim(-BOUNDARY_WINDOW_BP / 1000, BOUNDARY_WINDOW_BP / 1000)
+            ax.set_xlim(*MAIN_BOUNDARY_XLIM_KB)
+            if row_i == 0:
+                ax.set_title("Left boundary" if side == "left" else "Right boundary", fontsize=10)
             if col_i == 0:
-                ax.set_ylabel(f"{lg}\nlog10(L+1)")
-            if row_i == len(LGS) - 1:
-                ax.set_xlabel("distance from boundary (kb)")
-            if side == "left":
-                ax.text(-0.97, 0.92, "outside", transform=ax.transAxes, ha="left", va="center", fontsize=7)
-                ax.text(0.97, 0.92, "inside", transform=ax.transAxes, ha="right", va="center", fontsize=7)
-            else:
-                ax.text(-0.97, 0.92, "inside", transform=ax.transAxes, ha="left", va="center", fontsize=7)
-                ax.text(0.97, 0.92, "outside", transform=ax.transAxes, ha="right", va="center", fontsize=7)
+                ax.text(-0.12, 0.5, lg, transform=ax.transAxes, ha="right", va="center", fontsize=10, fontweight="bold")
+            if row_i == 0:
+                if side == "left":
+                    ax.text(0.03, 0.92, "outside", transform=ax.transAxes, ha="left", va="center", fontsize=7, color="#4c78a8")
+                    ax.text(0.97, 0.92, "inside", transform=ax.transAxes, ha="right", va="center", fontsize=7, color="#e45756")
+                else:
+                    ax.text(0.03, 0.92, "inside", transform=ax.transAxes, ha="left", va="center", fontsize=7, color="#e45756")
+                    ax.text(0.97, 0.92, "outside", transform=ax.transAxes, ha="right", va="center", fontsize=7, color="#4c78a8")
+            ax.tick_params(labelsize=8)
     handles, labels = axes[0, 0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="upper center", ncol=2, frameon=False)
-    fig.suptitle("Atlantic cod per-SNP linkage transitions at frozen inversion boundaries", y=0.995)
-    fig.tight_layout(rect=(0, 0, 1, 0.965))
+    fig.legend(handles, labels, loc="upper center", ncol=2, frameon=False, bbox_to_anchor=(0.54, 0.955), fontsize=8)
+    fig.suptitle("Atlantic cod linkage transitions at supergene boundaries", y=0.99, fontsize=12)
+    fig.supxlabel("distance from inversion boundary (kb)", y=0.035, fontsize=10)
+    fig.supylabel("log10(linkage score + 1)", x=0.035, fontsize=10)
+    fig.subplots_adjust(left=0.16, right=0.98, bottom=0.10, top=0.90, wspace=0.08, hspace=0.12)
     fig.savefig(FIG_BOUNDARY_PDF)
     fig.savefig(FIG_BOUNDARY_PNG, dpi=300)
+    plt.close(fig)
+
+
+def plot_lg12_boundary_coverage(boundary_rows: list[dict[str, object]]) -> None:
+    fig, axes = plt.subplots(1, 2, figsize=(8.0, 3.2), sharey=True)
+    left = [r for r in boundary_rows if r["lg"] == "LG12" and r["boundary_side"] == "left"]
+    for side_class, color in (("outside", "#4c78a8"), ("inside", "#e45756")):
+        rows = [r for r in left if r["side_class"] == side_class]
+        axes[0].scatter([float(r["relative_position_kb"]) for r in rows], [float(r["log10_linkage_plus1"]) for r in rows], s=12, color=color, alpha=0.68, linewidths=0, label=side_class)
+        vals = [float(r["log10_linkage_plus1"]) for r in rows]
+        xs = [float(r["relative_position_kb"]) for r in rows]
+        if vals:
+            axes[0].hlines(statistics.median(vals), min(xs), max(xs), color=color, lw=1.8)
+    axes[0].axvline(0, color="black", lw=0.9)
+    axes[0].set_xlim(-110, 10)
+    axes[0].set_title("LG12 left boundary")
+    axes[0].set_xlabel("distance from boundary (kb)")
+    axes[0].set_ylabel("log10(linkage score + 1)")
+    axes[0].text(0.04, 0.92, "outside", transform=axes[0].transAxes, color="#4c78a8", fontsize=8)
+    axes[0].text(0.96, 0.92, "inside", transform=axes[0].transAxes, color="#e45756", fontsize=8, ha="right")
+    axes[1].axis("off")
+    axes[1].text(0.5, 0.55, "No published linkage SNPs\nwithin ±250 kb of frozen boundary", ha="center", va="center", fontsize=10)
+    axes[1].set_title("LG12 right boundary")
+    fig.suptitle("LG12 linkage-source boundary coverage", y=0.98, fontsize=12)
+    fig.subplots_adjust(left=0.10, right=0.98, bottom=0.18, top=0.82, wspace=0.12)
+    fig.savefig(FIG_LG12_COVERAGE_PDF)
+    fig.savefig(FIG_LG12_COVERAGE_PNG, dpi=300)
     plt.close(fig)
 
 
@@ -712,7 +752,7 @@ def write_report_and_caption(summary_rows, boundary_rows, boundary_summary_rows,
     |---|---|---:|---:|---:|---:|---:|---:|
     {chr(10).join(f"| {r['lg']} | {r['boundary_side']} | {r['n_inside']} | {r['n_outside']} | {float(r['median_linkage_inside']):.6g} | {float(r['median_linkage_outside']):.6g} | {float(r['median_difference_inside_minus_outside']):.6g} | {fmt(float(r['median_ratio_inside_over_outside']))} |" for r in boundary_summary_rows)}
 
-    Boundary coverage is complete and strongly contrasting for LG01, LG02, and LG07. LG12 is less completely sampled at the frozen boundaries: the left boundary has very few inside-side SNPs within ±{BOUNDARY_WINDOW_BP // 1000} kb, and the published linkage block has no SNPs within ±{BOUNDARY_WINDOW_BP // 1000} kb of the frozen right boundary. LG12 is therefore interpreted primarily from the whole-source inside/outside linkage contrast, not from a two-sided frozen-boundary transition.
+    Boundary coverage is complete and strongly contrasting for LG01, LG02, and LG07. These three linkage groups are shown in the main boundary-transition figure with a compact ±60 kb x-axis range matching the source-supported boundary data. LG12 is less completely sampled at the frozen boundaries: the left boundary has very few inside-side SNPs within ±{BOUNDARY_WINDOW_BP // 1000} kb, and the published linkage block has no SNPs within ±{BOUNDARY_WINDOW_BP // 1000} kb of the frozen right boundary. LG12 is therefore excluded from the main boundary-transition panel, shown separately as a coverage diagnostic, and interpreted primarily from the whole-source inside/outside linkage contrast.
 
     ## Relationship to frozen topology and divergence-time results
 
@@ -735,7 +775,7 @@ def write_report_and_caption(summary_rows, boundary_rows, boundary_summary_rows,
     The linkage score is an LD-based distance-sum statistic influenced by recombination suppression, population structure, selection, haplotype frequencies, and demography. It is not a direct cM/Mb recombination rate. Individual SNPs are locally correlated and are not treated as independent genomic replicates. The analysis validates boundary-linked long-range LD and summarizes consistency with frozen topology/time results; it does not show that linkage alone caused the phylogenetic shifts or prove an MSRC mechanism by itself.
     """).strip() + "\n")
     CAPTION.write_text(textwrap.dedent("""
-    Quantitative linkage transitions at Atlantic cod supergene boundaries. Per-SNP linkage scores are from Matschiner et al. (2022) and quantify the summed physical distance to nearby SNPs with R^2 > 0.8. Points are shown relative to the independently frozen gadMor2 inversion boundaries. Where the published source contains SNPs on both sides of a frozen boundary, linkage increases sharply on the inversion-associated side, providing independent evidence of strong long-range linkage consistent with recombination suppression. LG12 has incomplete source coverage at the frozen right boundary, so the whole-source inside/outside linkage contrast is shown in the effect summary. This linkage statistic is not a direct recombination-rate estimate. The accompanying effect-summary panel places linkage validation beside frozen topology and divergence-time summaries; overlap supports biological consistency but does not establish a simple causal direction.
+    Quantitative linkage transitions at Atlantic cod supergene boundaries. The main boundary-transition figure shows LG01, LG02, and LG07, for which the published source provides two-sided SNP coverage around both frozen inversion boundaries. LG12 is excluded from this boundary-transition panel because its source coverage is strongly one-sided at the left boundary and absent near the frozen right boundary; its linkage evidence is summarized using the whole-source inside/outside contrast instead. Per-SNP linkage scores are from Matschiner et al. (2022) and quantify the summed physical distance to nearby SNPs with R^2 > 0.8. Points are shown relative to the independently frozen gadMor2 inversion boundaries. This linkage statistic is not a direct recombination-rate estimate. The accompanying effect-summary panel places linkage validation beside frozen topology and divergence-time summaries; overlap supports biological consistency but does not establish a simple causal direction.
     """).strip() + "\n")
 
 
@@ -755,6 +795,9 @@ def write_manifest(blocks, linkage_rows, boundary_rows, windows, before_hashes, 
         "frozen_inversion_coordinates": {lg: {"start": EXPECTED_REGIONS[lg][0], "end": EXPECTED_REGIONS[lg][1]} for lg in LGS},
         "snp_rows_per_lg": counts,
         "boundary_window_bp_each_side": BOUNDARY_WINDOW_BP,
+        "main_boundary_figure_lgs": list(MAIN_BOUNDARY_FIGURE_LGS),
+        "main_boundary_figure_xlim_kb": list(MAIN_BOUNDARY_XLIM_KB),
+        "lg12_boundary_coverage_note": "LG12 is excluded from the main boundary-transition figure because source coverage is one-sided at the left boundary and absent within +/-250 kb of the frozen right boundary.",
         "boundary_relative_rows_per_lg": {lg: sum(1 for row in boundary_rows if row["lg"] == lg) for lg in LGS},
         "n_250kb_bins": {lg: sum(1 for w in windows if w["lg"] == lg) for lg in LGS},
         "sparse_250kb_grid_interpretation": "archived for provenance only; not used as manuscript-level linkage-genealogy/time correlation evidence",
@@ -798,6 +841,7 @@ def run_analysis() -> None:
     plot_integrated(joined, linkage_rows, regions, include_time=True)
     plot_integrated(joined, linkage_rows, regions, include_time=False)
     plot_boundary_transitions(boundary_rows)
+    plot_lg12_boundary_coverage(boundary_rows)
     plot_effect_summary(effect_rows)
 
     after_hashes = manifest_hashes()
@@ -809,7 +853,7 @@ def run_analysis() -> None:
         PER_SNP, LINKAGE_250KB, BOUNDARY_RELATIVE, WINDOW_JOIN, SUMMARY, BOUNDARY_SUMMARY, SPATIAL_CORR,
         SOURCE_AUDIT, COORD_AUDIT, REPORT, CAPTION,
         FIG_SOURCE_PDF, FIG_SOURCE_PNG, FIG_LINK_GENE_TIME_PDF, FIG_LINK_GENE_TIME_PNG, FIG_LINK_GENE_PDF, FIG_LINK_GENE_PNG,
-        FIG_BOUNDARY_PDF, FIG_BOUNDARY_PNG, FIG_EFFECT_PDF, FIG_EFFECT_PNG,
+        FIG_BOUNDARY_PDF, FIG_BOUNDARY_PNG, FIG_LG12_COVERAGE_PDF, FIG_LG12_COVERAGE_PNG, FIG_EFFECT_PDF, FIG_EFFECT_PNG,
     ]
     write_manifest(blocks, linkage_rows, boundary_rows, windows, before_hashes, after_hashes, outputs)
 
@@ -907,6 +951,29 @@ class LinkageValidationTests(unittest.TestCase):
     def test_stage4a_to_stage8_manifests_unchanged_available(self):
         hashes = manifest_hashes()
         self.assertTrue(all(stage in hashes for stage in FROZEN_MANIFESTS))
+
+    def test_main_boundary_figure_layout_constants(self):
+        self.assertEqual(len(MAIN_BOUNDARY_FIGURE_LGS), 3)
+        self.assertEqual(tuple(MAIN_BOUNDARY_FIGURE_LGS), ("LG01", "LG02", "LG07"))
+
+    def test_main_boundary_xlim_is_sixty_kb(self):
+        self.assertEqual(MAIN_BOUNDARY_XLIM_KB, (-60.0, 60.0))
+
+    def test_lg12_excluded_from_main_boundary_figure(self):
+        self.assertNotIn("LG12", MAIN_BOUNDARY_FIGURE_LGS)
+
+    def test_lg12_remains_in_effect_summary_data(self):
+        rows = frozen_effect_rows([r for r in summarize_inside_outside(normalize_linkage_rows(parse_source_blocks(RAW_SOURCE), EXPECTED_REGIONS), []) if r["summary_level"] == "snp"])
+        self.assertIn("LG12", {r["lg"] for r in rows})
+
+    def test_lg12_right_missing_coverage_documented(self):
+        text = Path(__file__).read_text()
+        self.assertIn("No published linkage SNPs", text)
+        self.assertIn("absent near the frozen right boundary", text)
+
+    def test_boundary_relative_tsv_unchanged(self):
+        if BOUNDARY_RELATIVE.exists():
+            self.assertEqual(sha256(BOUNDARY_RELATIVE), BOUNDARY_RELATIVE_SHA256_EXPECTED)
 
     def test_figure_generation(self):
         with tempfile.TemporaryDirectory() as tmp:

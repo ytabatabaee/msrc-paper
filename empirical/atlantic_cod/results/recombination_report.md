@@ -38,7 +38,7 @@
 | LG12 | left | 2 | 145 | 5501 | 53371 | -47870 | 0.103070956 |
 | LG12 | right | 0 | 0 | nan | nan | nan | NA |
 
-    Boundary coverage is complete and strongly contrasting for LG01, LG02, and LG07. LG12 is less completely sampled at the frozen boundaries: the left boundary has very few inside-side SNPs within ±250 kb, and the published linkage block has no SNPs within ±250 kb of the frozen right boundary. LG12 is therefore interpreted primarily from the whole-source inside/outside linkage contrast, not from a two-sided frozen-boundary transition.
+    Boundary coverage is complete and strongly contrasting for LG01, LG02, and LG07. These three linkage groups are shown in the main boundary-transition figure with a compact ±60 kb x-axis range matching the source-supported boundary data. LG12 is less completely sampled at the frozen boundaries: the left boundary has very few inside-side SNPs within ±250 kb, and the published linkage block has no SNPs within ±250 kb of the frozen right boundary. LG12 is therefore excluded from the main boundary-transition panel, shown separately as a coverage diagnostic, and interpreted primarily from the whole-source inside/outside linkage contrast.
 
     ## Relationship to frozen topology and divergence-time results
 
