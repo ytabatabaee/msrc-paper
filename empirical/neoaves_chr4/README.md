@@ -19,6 +19,19 @@ the original `genetreesupport/` analysis files.
   `metadata/`; final and compatibility TSV/JSON products are under
   `processed/`.
 
+## Current status
+
+Stage 4C is complete. Historical Stage 4D ASTRAL-MP reproduction attempts are
+preserved as provenance but discontinued as a prerequisite for the new full-tree
+analysis. Stage 4E prepares ASTER/ASTRAL4 full-tree treatments for Bridges-2;
+large inference must run only under SLURM and Stage 4E is not complete until
+cluster outputs are returned and validated.
+
+Stage 4E uses the ID-preserving `data/stage4d/named_recollapsed.tre` source and
+never maps the problematic published collapsed tree to locus metadata by row.
+The generated `.tre` inputs under `data/stage4e/` are large and git-ignored;
+tracked manifests and checksums are written under `results/`.
+
 ## Inputs
 
 - `genetreesupport/63K_trees.names_header.txt.xz`: locus metadata for 63,430

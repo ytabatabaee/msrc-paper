@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 #SBATCH --job-name=neoaves-aster-sens
+#SBATCH -p RM-shared
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=32
 #SBATCH --time=24:00:00
-#SBATCH --mem=64G
-# TODO/user: set --account and --partition if required by PSC allocation
-# TODO/user: adjust cpus-per-task, time, and mem after Bridges-2 preflight if needed
+# TODO/user: add your PSC allocation with:
+# #SBATCH -A YOUR_ALLOCATION
+# TODO/user: adjust cpus-per-task and time after Bridges-2 preflight if needed
 
 set -euo pipefail
 

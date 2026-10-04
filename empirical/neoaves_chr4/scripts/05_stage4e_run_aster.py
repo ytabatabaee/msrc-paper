@@ -61,6 +61,53 @@ def help_text(aster_bin: Path) -> str:
     return (result.stdout + result.stderr).strip()
 
 
+def validate_four_taxon_newick(path: Path) -> None:
+    import dendropy
+
+    text = path.read_text().strip()
+    if not text:
+        raise RuntimeError("Smoke-test output tree is empty")
+    if not text.endswith(";"):
+        raise RuntimeError("Smoke-test output tree does not end in ';'")
+    tree = dendropy.Tree.get(data=text, schema="newick", rooting="force-unrooted", preserve_underscores=True)
+    taxa = {node.taxon.label for node in tree.leaf_node_iter()}
+    if taxa != {"A", "B", "C", "D"}:
+        raise RuntimeError(f"Smoke-test output has unexpected taxa: {sorted(taxa)}")
+
+
+def run_smoke_test(aster_bin: Path, output_root: Path) -> dict[str, object]:
+    smoke_dir = output_root / "aster_smoke_test"
+    smoke_dir.mkdir(parents=True, exist_ok=True)
+    tiny_input = smoke_dir / "tiny_input.tre"
+    tiny_output = smoke_dir / "tiny_output.nwk"
+    stdout_path = smoke_dir / "stdout.log"
+    stderr_path = smoke_dir / "stderr.log"
+    tiny_input.write_text("((A,B),(C,D));\n((A,B),(C,D));\n((A,C),(B,D));\n")
+    cmd = astra_command(aster_bin, tiny_input, tiny_output, 1)
+    with stdout_path.open("w") as stdout, stderr_path.open("w") as stderr:
+        result = subprocess.run(cmd, stdout=stdout, stderr=stderr, check=False)
+    passed = False
+    error = ""
+    try:
+        if result.returncode != 0:
+            raise RuntimeError(f"Smoke-test return code was {result.returncode}")
+        if not tiny_output.exists():
+            raise RuntimeError("Smoke-test output tree was not created")
+        validate_four_taxon_newick(tiny_output)
+        passed = True
+    except Exception as exc:
+        error = str(exc)
+    return {
+        "smoke_test_command": cmd,
+        "smoke_test_returncode": result.returncode,
+        "smoke_test_passed": passed,
+        "smoke_test_tree": str(tiny_output),
+        "smoke_test_stdout": str(stdout_path),
+        "smoke_test_stderr": str(stderr_path),
+        "smoke_test_error": error,
+    }
+
+
 def run_preflight(args: argparse.Namespace) -> None:
     if not args.aster_bin.exists():
         raise RuntimeError(f"ASTER_BIN does not exist: {args.aster_bin}")
@@ -79,6 +126,7 @@ def run_preflight(args: argparse.Namespace) -> None:
             if row["sha256"] and sha256(path) != row["sha256"]:
                 raise RuntimeError(f"Input checksum mismatch: {path}")
             rows.append(row)
+    smoke = run_smoke_test(args.aster_bin, args.output_root)
     report = {
         "status": "preflight_passed",
         "large_inference_run": False,
@@ -93,9 +141,14 @@ def run_preflight(args: argparse.Namespace) -> None:
         "output_root": str(args.output_root),
         "output_free_bytes": usage.free,
         "n_inputs_checked": len(rows),
+        **smoke,
     }
+    if not smoke["smoke_test_passed"]:
+        report["status"] = "preflight_failed"
     out = args.output_root / "stage4e_preflight_runtime.json"
     out.write_text(json.dumps(report, indent=2) + "\n")
+    if not smoke["smoke_test_passed"]:
+        raise RuntimeError(f"ASTER smoke test failed; see {smoke['smoke_test_stderr']}: {smoke['smoke_test_error']}")
     print(json.dumps({"status": "preflight_passed", "report": str(out)}, indent=2))
 
 

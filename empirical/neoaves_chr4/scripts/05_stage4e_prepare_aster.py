@@ -397,13 +397,14 @@ def slurm_header(job_name: str, array: str | None = None) -> str:
     lines = [
         "#!/usr/bin/env bash",
         f"#SBATCH --job-name={job_name}",
+        "#SBATCH -p RM-shared",
         "#SBATCH --nodes=1",
         "#SBATCH --ntasks=1",
         "#SBATCH --cpus-per-task=32",
         "#SBATCH --time=24:00:00",
-        "#SBATCH --mem=64G",
-        "# TODO/user: set --account and --partition if required by PSC allocation",
-        "# TODO/user: adjust cpus-per-task, time, and mem after Bridges-2 preflight if needed",
+        "# TODO/user: add your PSC allocation with:",
+        "# #SBATCH -A YOUR_ALLOCATION",
+        "# TODO/user: adjust cpus-per-task and time after Bridges-2 preflight if needed",
     ]
     if array:
         lines.append(f"#SBATCH --array={array}")
@@ -426,6 +427,7 @@ mkdir -p "$NEOAVES_STAGE4E_OUT"
         slurm_header("neoaves-aster-preflight")
         + setup
         + f"""
+# NO LARGE INFERENCE: this checks inputs, hashes, astral4 -h, and a tiny four-taxon smoke test only.
 "$PYTHON" "{run_py}" \\
   --preflight \\
   --input-manifest "$MSRC_REPO/empirical/neoaves_chr4/results/stage4e_input_manifest.tsv" \\

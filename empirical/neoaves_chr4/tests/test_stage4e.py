@@ -1,5 +1,4 @@
 import importlib.util
-import os
 from pathlib import Path
 
 BASE = Path(__file__).parents[1]
@@ -109,3 +108,141 @@ def test_stage4d_historical_paths_are_not_removed():
     assert (BASE / "results/stage4d").exists()
     assert (BASE / "results/stage4d_report.md").exists()
     assert (BASE / "results/stage4d_manifest.json").exists()
+
+
+def fake_aster(path, body):
+    path.write_text(body)
+    path.chmod(0o755)
+    return path
+
+
+def write_tiny_manifest(tmp_path):
+    data = tmp_path / "data"
+    data.mkdir()
+    tiny = data / "TINY.tre"
+    tiny.write_text("((A,B),(C,D));\n")
+    manifest = tmp_path / "manifest.tsv"
+    manifest.write_text(
+        "treatment\tscope\trelative_path\tn_loci\tn_chr4_loci\ttrees_with_fewer_than_four_taxa_omitted\tsha256\tdescription\n"
+        f"TINY\tunit\tstage4e/TINY.tre\t1\t0\t\t{runner.sha256(tiny)}\ttiny fixture\n"
+    )
+    return data, manifest
+
+
+def test_preflight_smoke_test_uses_tiny_synthetic_input(tmp_path):
+    aster = fake_aster(
+        tmp_path / "astral4",
+        """#!/bin/sh
+if [ "$1" = "-h" ]; then
+  echo "fake astral4 help"
+  exit 0
+fi
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    -i) input="$2"; shift 2 ;;
+    -o) output="$2"; shift 2 ;;
+    -u|-t|--length) shift 2 ;;
+    *) shift ;;
+  esac
+done
+case "$input" in
+  *stage4e*.tre) echo "real Stage-4E input was used" >&2; exit 13 ;;
+esac
+grep -q "((A,B),(C,D));" "$input" || exit 14
+printf '((A,B),(C,D));\\n' > "$output"
+""",
+    )
+    output_root = tmp_path / "out"
+    report = runner.run_smoke_test(aster, output_root)
+    assert report["smoke_test_passed"] is True
+    assert report["smoke_test_returncode"] == 0
+    tiny_input = output_root / "aster_smoke_test/tiny_input.tre"
+    assert tiny_input.read_text() == "((A,B),(C,D));\n((A,B),(C,D));\n((A,C),(B,D));\n"
+    assert " -t 1 " in f" {' '.join(report['smoke_test_command'])} "
+    assert "stage4e" not in str(tiny_input)
+
+
+def test_preflight_smoke_test_failure_causes_preflight_failure(tmp_path):
+    data, manifest = write_tiny_manifest(tmp_path)
+    aster = fake_aster(
+        tmp_path / "astral4",
+        """#!/bin/sh
+if [ "$1" = "-h" ]; then
+  echo "fake astral4 help"
+  exit 0
+fi
+exit 9
+""",
+    )
+    args = type(
+        "Args",
+        (),
+        {"aster_bin": aster, "output_root": tmp_path / "out", "input_manifest": manifest, "data_dir": data},
+    )()
+    try:
+        runner.run_preflight(args)
+    except RuntimeError as exc:
+        assert "smoke test failed" in str(exc).lower()
+    else:
+        raise AssertionError("preflight should fail when the smoke test fails")
+    payload = (tmp_path / "out/stage4e_preflight_runtime.json").read_text()
+    assert '"smoke_test_passed": false' in payload
+
+
+def test_preflight_smoke_test_records_runtime_provenance(tmp_path):
+    data, manifest = write_tiny_manifest(tmp_path)
+    aster = fake_aster(
+        tmp_path / "astral4",
+        """#!/bin/sh
+if [ "$1" = "-h" ]; then
+  echo "fake astral4 help"
+  exit 0
+fi
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    -o) output="$2"; shift 2 ;;
+    -i|-u|-t|--length) shift 2 ;;
+    *) shift ;;
+  esac
+done
+printf '((A,B),(C,D));\\n' > "$output"
+""",
+    )
+    args = type(
+        "Args",
+        (),
+        {"aster_bin": aster, "output_root": tmp_path / "out", "input_manifest": manifest, "data_dir": data},
+    )()
+    runner.run_preflight(args)
+    payload = (tmp_path / "out/stage4e_preflight_runtime.json").read_text()
+    assert '"smoke_test_passed": true' in payload
+    assert '"smoke_test_returncode": 0' in payload
+    assert "tiny_input.tre" in payload
+    assert "stage4e/TINY.tre" not in payload
+
+
+def test_stage4e_slurm_bridges2_headers():
+    scripts = sorted((BASE / "cluster/stage4e_aster").glob("*.sbatch"))
+    assert scripts
+    for script in scripts:
+        text = script.read_text()
+        assert "#SBATCH --mem" not in text
+        assert "#SBATCH -p RM-shared" in text
+        assert "#SBATCH --cpus-per-task=32" in text
+        assert "# #SBATCH -A YOUR_ALLOCATION" in text
+
+
+def test_python_code_does_not_submit_slurm_or_run_large_inputs():
+    for path in [
+        BASE / "scripts/05_stage4e_prepare_aster.py",
+        BASE / "scripts/05_stage4e_run_aster.py",
+        BASE / "scripts/05_stage4e_collect_aster.py",
+        BASE / "scripts/05_stage4e_analyze_aster.py",
+    ]:
+        text = path.read_text()
+        assert "subprocess.run(['sbatch'" not in text
+        assert 'subprocess.run(["sbatch"' not in text
+    source = (BASE / "scripts/05_stage4e_run_aster.py").read_text()
+    smoke_source = source.split("def run_smoke_test", 1)[1].split("def run_preflight", 1)[0]
+    assert "T0.tre" not in smoke_source
+    assert "stage4e" not in smoke_source
