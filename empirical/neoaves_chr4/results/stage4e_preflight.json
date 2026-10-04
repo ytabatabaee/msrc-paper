@@ -1,0 +1,176 @@
+{
+  "stage": "Stage 4E - ASTER/ASTRAL4 full-tree treatment analysis",
+  "status": "prepared_not_run",
+  "large_inference_run_locally": false,
+  "source": {
+    "source": "empirical/neoaves_chr4/data/stage4d/named_recollapsed.tre",
+    "source_sha256": "c0a0ec9b432405da548a6cdb37460ccf1c0d9d1b5a5211d74d5f397c70e0f943",
+    "source_lines": 63430
+  },
+  "frozen_manifest": "empirical/neoaves_chr4/results/stage4d_locus_manifest.tsv",
+  "manifest_sha256": "8290505033761276c458399ac2821773a77cb13a39d9679fe53c00f1605a23ac",
+  "counts": {
+    "n_loci": 63430,
+    "n_unique_locus_ids": 63430,
+    "n_chr4_loci": 6262,
+    "n_nonchr4_loci": 57168,
+    "n_pnas_outlier_loci": 1431,
+    "n_struct_stringent_loci": 495,
+    "n_struct_primary_loci": 835,
+    "n_struct_inclusive_loci": 1308
+  },
+  "inputs": [
+    {
+      "treatment": "T0",
+      "scope": "full363",
+      "relative_path": "empirical/neoaves_chr4/data/stage4e/T0.tre",
+      "n_loci": 63430,
+      "n_chr4_loci": 6262,
+      "sha256": "c0a0ec9b432405da548a6cdb37460ccf1c0d9d1b5a5211d74d5f397c70e0f943",
+      "description": "all 63,430 ID-preserving re-collapsed loci"
+    },
+    {
+      "treatment": "T_PNAS",
+      "scope": "full363",
+      "relative_path": "empirical/neoaves_chr4/data/stage4e/T_PNAS.tre",
+      "n_loci": 61999,
+      "n_chr4_loci": 4831,
+      "sha256": "a8569cf6eba4e16c2bc206a4706a92bdb3c0cbb9aef157be4a79f5251a3bf1bf",
+      "description": "published PNAS chr4 outlier intervals excluded"
+    },
+    {
+      "treatment": "T_STRUCT_PRIMARY",
+      "scope": "full363",
+      "relative_path": "empirical/neoaves_chr4/data/stage4e/T_STRUCT_PRIMARY.tre",
+      "n_loci": 62595,
+      "n_chr4_loci": 5427,
+      "sha256": "18ad225d9c0ae99dfaf60941f10b2bf6bb5cda2c89922adbbf1952b79cf85d36",
+      "description": "primary frozen structural mask excluded"
+    },
+    {
+      "treatment": "T_STRUCT_STRINGENT",
+      "scope": "full363",
+      "relative_path": "empirical/neoaves_chr4/data/stage4e/T_STRUCT_STRINGENT.tre",
+      "n_loci": 62935,
+      "n_chr4_loci": 5767,
+      "sha256": "cb9cc2688b4a3ebfbe1ac7ba99f9bce79879f1e1439c1a4118f9e481d8f1373d",
+      "description": "stringent frozen structural mask excluded"
+    },
+    {
+      "treatment": "T_STRUCT_INCLUSIVE",
+      "scope": "full363",
+      "relative_path": "empirical/neoaves_chr4/data/stage4e/T_STRUCT_INCLUSIVE.tre",
+      "n_loci": 62122,
+      "n_chr4_loci": 4954,
+      "sha256": "c2bc1d12ddf9e86298e1bf10838f86adf9718bf3943867bd9d792580f8dd6980",
+      "description": "inclusive frozen structural mask excluded"
+    },
+    {
+      "treatment": "T_BLOCK_250K",
+      "scope": "full363",
+      "relative_path": "empirical/neoaves_chr4/data/stage4e/T_BLOCK_250K.tre",
+      "n_loci": 57535,
+      "n_chr4_loci": 367,
+      "sha256": "9bfac7cd01fbee6bb843e1494d40a9249fea0db97fe530407e9045ec09ee07d3",
+      "description": "non-chr4 plus deterministic 250-kb chr4 bin representatives"
+    },
+    {
+      "treatment": "T_BLOCK_500K",
+      "scope": "full363",
+      "relative_path": "empirical/neoaves_chr4/data/stage4e/T_BLOCK_500K.tre",
+      "n_loci": 57355,
+      "n_chr4_loci": 187,
+      "sha256": "da19c424baf4f945b588b66f2b9ae76a818694242b6034ac157ce951643b698d",
+      "description": "non-chr4 plus deterministic 500-kb chr4 bin representatives"
+    },
+    {
+      "treatment": "T_BLOCK_1MB",
+      "scope": "full363",
+      "relative_path": "empirical/neoaves_chr4/data/stage4e/T_BLOCK_1MB.tre",
+      "n_loci": 57265,
+      "n_chr4_loci": 97,
+      "sha256": "b91331c9f073731975f861369714fa2de9b4da00bab10f99fa99fc10c37a8ac4",
+      "description": "non-chr4 plus deterministic 1-Mb chr4 bin representatives"
+    },
+    {
+      "treatment": "NONCHR4",
+      "scope": "full363",
+      "relative_path": "empirical/neoaves_chr4/data/stage4e/NONCHR4.tre",
+      "n_loci": 57168,
+      "n_chr4_loci": 0,
+      "sha256": "7da463cfaa509d53fbaf77b8e8780a6cbdd53a50768953d3d197a0bdb6908871",
+      "description": "all chr4 and chr4_* loci excluded"
+    },
+    {
+      "treatment": "J48_T0",
+      "scope": "jarvis48",
+      "relative_path": "empirical/neoaves_chr4/data/stage4e/J48_T0.tre",
+      "n_loci": 62945,
+      "n_chr4_loci": "NA",
+      "trees_with_fewer_than_four_taxa_omitted": 485,
+      "sha256": "cb5195cc449582084a0afc1ce11c87cc8eaa176863f4682f78ad4a29eb22dc14",
+      "description": "Jarvis-48 pruning of T0"
+    },
+    {
+      "treatment": "J48_T_PNAS",
+      "scope": "jarvis48",
+      "relative_path": "empirical/neoaves_chr4/data/stage4e/J48_T_PNAS.tre",
+      "n_loci": 61524,
+      "n_chr4_loci": "NA",
+      "trees_with_fewer_than_four_taxa_omitted": 475,
+      "sha256": "6c60dce91603d46f5d0af75ec46093065cb605bcc8a8ce26e112d420482953b8",
+      "description": "Jarvis-48 pruning of T_PNAS"
+    },
+    {
+      "treatment": "J48_T_STRUCT_PRIMARY",
+      "scope": "jarvis48",
+      "relative_path": "empirical/neoaves_chr4/data/stage4e/J48_T_STRUCT_PRIMARY.tre",
+      "n_loci": 62116,
+      "n_chr4_loci": "NA",
+      "trees_with_fewer_than_four_taxa_omitted": 479,
+      "sha256": "000213a5e5628e1498a0dd8aebca889c056d789cde0d743c5a858d059ff15ef3",
+      "description": "Jarvis-48 pruning of T_STRUCT_PRIMARY"
+    },
+    {
+      "treatment": "J48_T_BLOCK_250K",
+      "scope": "jarvis48",
+      "relative_path": "empirical/neoaves_chr4/data/stage4e/J48_T_BLOCK_250K.tre",
+      "n_loci": 57084,
+      "n_chr4_loci": "NA",
+      "trees_with_fewer_than_four_taxa_omitted": 451,
+      "sha256": "f1e187276b8bf3783b15c947b74f604efaa32efa0056923d1234dc86a52056fa",
+      "description": "Jarvis-48 pruning of T_BLOCK_250K"
+    },
+    {
+      "treatment": "J48_T_BLOCK_500K",
+      "scope": "jarvis48",
+      "relative_path": "empirical/neoaves_chr4/data/stage4e/J48_T_BLOCK_500K.tre",
+      "n_loci": 56905,
+      "n_chr4_loci": "NA",
+      "trees_with_fewer_than_four_taxa_omitted": 450,
+      "sha256": "d9d6004ae80a6b17289ac57afe7941fc539d041eb76576bd0d6a27879d405357",
+      "description": "Jarvis-48 pruning of T_BLOCK_500K"
+    },
+    {
+      "treatment": "J48_T_BLOCK_1MB",
+      "scope": "jarvis48",
+      "relative_path": "empirical/neoaves_chr4/data/stage4e/J48_T_BLOCK_1MB.tre",
+      "n_loci": 56817,
+      "n_chr4_loci": "NA",
+      "trees_with_fewer_than_four_taxa_omitted": 448,
+      "sha256": "a01a90932b564afbcdfc68f2e4e42343d79a2c3019178ed29805ed765a1cc4e9",
+      "description": "Jarvis-48 pruning of T_BLOCK_1MB"
+    },
+    {
+      "treatment": "J48_NONCHR4",
+      "scope": "jarvis48",
+      "relative_path": "empirical/neoaves_chr4/data/stage4e/J48_NONCHR4.tre",
+      "n_loci": 56721,
+      "n_chr4_loci": "NA",
+      "trees_with_fewer_than_four_taxa_omitted": 447,
+      "sha256": "cfecbc68da62fc6bd03b971f09bd95b34fa5efa5ff247cef3672ae90f6667760",
+      "description": "Jarvis-48 pruning of NONCHR4"
+    }
+  ],
+  "note": "No ASTER/ASTRAL4 inference has been run by this preparation script."
+}

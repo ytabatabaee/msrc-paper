@@ -1,0 +1,17 @@
+treatment	scope	relative_path	n_loci	n_chr4_loci	trees_with_fewer_than_four_taxa_omitted	sha256	description
+T0	full363	empirical/neoaves_chr4/data/stage4e/T0.tre	63430	6262		c0a0ec9b432405da548a6cdb37460ccf1c0d9d1b5a5211d74d5f397c70e0f943	all 63,430 ID-preserving re-collapsed loci
+T_PNAS	full363	empirical/neoaves_chr4/data/stage4e/T_PNAS.tre	61999	4831		a8569cf6eba4e16c2bc206a4706a92bdb3c0cbb9aef157be4a79f5251a3bf1bf	published PNAS chr4 outlier intervals excluded
+T_STRUCT_PRIMARY	full363	empirical/neoaves_chr4/data/stage4e/T_STRUCT_PRIMARY.tre	62595	5427		18ad225d9c0ae99dfaf60941f10b2bf6bb5cda2c89922adbbf1952b79cf85d36	primary frozen structural mask excluded
+T_STRUCT_STRINGENT	full363	empirical/neoaves_chr4/data/stage4e/T_STRUCT_STRINGENT.tre	62935	5767		cb9cc2688b4a3ebfbe1ac7ba99f9bce79879f1e1439c1a4118f9e481d8f1373d	stringent frozen structural mask excluded
+T_STRUCT_INCLUSIVE	full363	empirical/neoaves_chr4/data/stage4e/T_STRUCT_INCLUSIVE.tre	62122	4954		c2bc1d12ddf9e86298e1bf10838f86adf9718bf3943867bd9d792580f8dd6980	inclusive frozen structural mask excluded
+T_BLOCK_250K	full363	empirical/neoaves_chr4/data/stage4e/T_BLOCK_250K.tre	57535	367		9bfac7cd01fbee6bb843e1494d40a9249fea0db97fe530407e9045ec09ee07d3	non-chr4 plus deterministic 250-kb chr4 bin representatives
+T_BLOCK_500K	full363	empirical/neoaves_chr4/data/stage4e/T_BLOCK_500K.tre	57355	187		da19c424baf4f945b588b66f2b9ae76a818694242b6034ac157ce951643b698d	non-chr4 plus deterministic 500-kb chr4 bin representatives
+T_BLOCK_1MB	full363	empirical/neoaves_chr4/data/stage4e/T_BLOCK_1MB.tre	57265	97		b91331c9f073731975f861369714fa2de9b4da00bab10f99fa99fc10c37a8ac4	non-chr4 plus deterministic 1-Mb chr4 bin representatives
+NONCHR4	full363	empirical/neoaves_chr4/data/stage4e/NONCHR4.tre	57168	0		7da463cfaa509d53fbaf77b8e8780a6cbdd53a50768953d3d197a0bdb6908871	all chr4 and chr4_* loci excluded
+J48_T0	jarvis48	empirical/neoaves_chr4/data/stage4e/J48_T0.tre	62945	NA	485	cb5195cc449582084a0afc1ce11c87cc8eaa176863f4682f78ad4a29eb22dc14	Jarvis-48 pruning of T0
+J48_T_PNAS	jarvis48	empirical/neoaves_chr4/data/stage4e/J48_T_PNAS.tre	61524	NA	475	6c60dce91603d46f5d0af75ec46093065cb605bcc8a8ce26e112d420482953b8	Jarvis-48 pruning of T_PNAS
+J48_T_STRUCT_PRIMARY	jarvis48	empirical/neoaves_chr4/data/stage4e/J48_T_STRUCT_PRIMARY.tre	62116	NA	479	000213a5e5628e1498a0dd8aebca889c056d789cde0d743c5a858d059ff15ef3	Jarvis-48 pruning of T_STRUCT_PRIMARY
+J48_T_BLOCK_250K	jarvis48	empirical/neoaves_chr4/data/stage4e/J48_T_BLOCK_250K.tre	57084	NA	451	f1e187276b8bf3783b15c947b74f604efaa32efa0056923d1234dc86a52056fa	Jarvis-48 pruning of T_BLOCK_250K
+J48_T_BLOCK_500K	jarvis48	empirical/neoaves_chr4/data/stage4e/J48_T_BLOCK_500K.tre	56905	NA	450	d9d6004ae80a6b17289ac57afe7941fc539d041eb76576bd0d6a27879d405357	Jarvis-48 pruning of T_BLOCK_500K
+J48_T_BLOCK_1MB	jarvis48	empirical/neoaves_chr4/data/stage4e/J48_T_BLOCK_1MB.tre	56817	NA	448	a01a90932b564afbcdfc68f2e4e42343d79a2c3019178ed29805ed765a1cc4e9	Jarvis-48 pruning of T_BLOCK_1MB
+J48_NONCHR4	jarvis48	empirical/neoaves_chr4/data/stage4e/J48_NONCHR4.tre	56721	NA	447	cfecbc68da62fc6bd03b971f09bd95b34fa5efa5ff247cef3672ae90f6667760	Jarvis-48 pruning of NONCHR4

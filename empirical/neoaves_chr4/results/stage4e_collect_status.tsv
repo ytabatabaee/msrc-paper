@@ -1,0 +1,17 @@
+treatment	status	output_dir	tree_sha256	error
+T0	missing	/Users/ytabatabaee/Desktop/msrc-paper/empirical/neoaves_chr4/results/stage4e/cluster/T0		
+T_PNAS	missing	/Users/ytabatabaee/Desktop/msrc-paper/empirical/neoaves_chr4/results/stage4e/cluster/T_PNAS		
+T_STRUCT_PRIMARY	missing	/Users/ytabatabaee/Desktop/msrc-paper/empirical/neoaves_chr4/results/stage4e/cluster/T_STRUCT_PRIMARY		
+T_STRUCT_STRINGENT	missing	/Users/ytabatabaee/Desktop/msrc-paper/empirical/neoaves_chr4/results/stage4e/cluster/T_STRUCT_STRINGENT		
+T_STRUCT_INCLUSIVE	missing	/Users/ytabatabaee/Desktop/msrc-paper/empirical/neoaves_chr4/results/stage4e/cluster/T_STRUCT_INCLUSIVE		
+T_BLOCK_250K	missing	/Users/ytabatabaee/Desktop/msrc-paper/empirical/neoaves_chr4/results/stage4e/cluster/T_BLOCK_250K		
+T_BLOCK_500K	missing	/Users/ytabatabaee/Desktop/msrc-paper/empirical/neoaves_chr4/results/stage4e/cluster/T_BLOCK_500K		
+T_BLOCK_1MB	missing	/Users/ytabatabaee/Desktop/msrc-paper/empirical/neoaves_chr4/results/stage4e/cluster/T_BLOCK_1MB		
+NONCHR4	missing	/Users/ytabatabaee/Desktop/msrc-paper/empirical/neoaves_chr4/results/stage4e/cluster/NONCHR4		
+J48_T0	missing	/Users/ytabatabaee/Desktop/msrc-paper/empirical/neoaves_chr4/results/stage4e/cluster/J48_T0		
+J48_T_PNAS	missing	/Users/ytabatabaee/Desktop/msrc-paper/empirical/neoaves_chr4/results/stage4e/cluster/J48_T_PNAS		
+J48_T_STRUCT_PRIMARY	missing	/Users/ytabatabaee/Desktop/msrc-paper/empirical/neoaves_chr4/results/stage4e/cluster/J48_T_STRUCT_PRIMARY		
+J48_T_BLOCK_250K	missing	/Users/ytabatabaee/Desktop/msrc-paper/empirical/neoaves_chr4/results/stage4e/cluster/J48_T_BLOCK_250K		
+J48_T_BLOCK_500K	missing	/Users/ytabatabaee/Desktop/msrc-paper/empirical/neoaves_chr4/results/stage4e/cluster/J48_T_BLOCK_500K		
+J48_T_BLOCK_1MB	missing	/Users/ytabatabaee/Desktop/msrc-paper/empirical/neoaves_chr4/results/stage4e/cluster/J48_T_BLOCK_1MB		
+J48_NONCHR4	missing	/Users/ytabatabaee/Desktop/msrc-paper/empirical/neoaves_chr4/results/stage4e/cluster/J48_NONCHR4		

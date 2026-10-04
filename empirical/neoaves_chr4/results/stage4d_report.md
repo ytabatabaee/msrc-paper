@@ -4,6 +4,12 @@ No novel Stage-4D treatment has been run. No interpretation category or
 full-tree correction claim is assigned. The original paper's chr4/taxon-sampling
 effect is prior evidence, not a new MSRC finding.
 
+ASTRAL-MP reproduction was discontinued as a prerequisite for the new analysis.
+New full-tree treatments use ASTER/ASTRAL4 consistently in the separate Stage
+4E preparation and execution workflow. The historical Stage-4D ASTRAL-MP
+artifacts remain preserved as provenance and are not reinterpreted as a passed
+reproduction gate.
+
 ## Inputs and completed preparation
 
 Existing downloads are reused without downloading raw alignments. Exact URLs,
