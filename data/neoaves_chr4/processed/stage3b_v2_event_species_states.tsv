@@ -1,0 +1,113 @@
+structural_set	flank_window_bp	event_id	species	left_state	internal_state	right_state	combined_arrangement_state	confidence
+primary	250000	primary_W250000_EV011	Flamingo	same_chr:-:+:forward:very_distant	single_boundary		A2	limited
+primary	250000	primary_W250000_EV011	Dove	same_chr:-:-:reverse:very_distant	single_boundary		A3	limited
+primary	250000	primary_W250000_EV011	Sandgrouse	same_chr:+:-:reverse:very_distant	single_boundary		A1	high
+primary	250000	primary_W250000_EV011	Turaco	same_chr:+:-:reverse:very_distant	single_boundary		A1	limited
+primary	250000	primary_W250000_EV011	Cuckoo	same_chr:-:-:reverse:very_distant	single_boundary		A3	limited
+primary	250000	primary_W250000_EV011	Stork	same_chr:-:+:forward:very_distant	single_boundary		A2	limited
+primary	250000	primary_W250000_EV011	Chicken	same_chr:+:+:forward:adjacent	single_boundary		A0	high
+primary	250000	primary_W250000_EV001	Flamingo	same_chr:+:+:reverse:very_distant	chr12:+:coherent_run	same_chr:+:+:reverse:very_distant	A2	limited
+primary	250000	primary_W250000_EV001	Dove	same_chr:-:-:forward:very_distant	OU015479.1:-:coherent_run	same_chr:-:-:forward:near	A4	limited
+primary	250000	primary_W250000_EV001	Sandgrouse	same_chr:-:-:forward:very_distant	chr18:+:coherent_run	same_chr:-:-:forward:very_distant	A6	high
+primary	250000	primary_W250000_EV001	Turaco	same_chr:-:-:forward:very_distant	chr13:-:coherent_run	same_chr:-:-:forward:very_distant	A5	high
+primary	250000	primary_W250000_EV001	Cuckoo	same_chr:-:+:forward:very_distant	CM030646.1:-:coherent_run	same_chr:-:-:forward:very_distant	A3	limited
+primary	250000	primary_W250000_EV001	Stork	same_chr:+:+:reverse:near	CM030203.1:+:coherent_run	same_chr:+:+:reverse:very_distant	A1	high
+primary	250000	primary_W250000_EV001	Chicken	same_chr:+:+:forward:adjacent	GalGal6_chr4:+:reference_interval	same_chr:+:+:forward:adjacent	A0	high
+primary	250000	primary_W250000_EV002	Flamingo	different_chr:-:-:chromosome_switch:unknown_gap	chr4:-:coherent_run	same_chr:-:+:reverse:distant	A5	high
+primary	250000	primary_W250000_EV002	Dove	different_chr:+:+:chromosome_switch:unknown_gap	LR594554.2:-:coherent_run	same_chr:+:-:forward:distant	A1	limited
+primary	250000	primary_W250000_EV002	Sandgrouse	different_chr:+:-:chromosome_switch:unknown_gap	chr5:-:coherent_run	same_chr:-:+:reverse:distant	A3	high
+primary	250000	primary_W250000_EV002	Turaco	different_chr:+:-:chromosome_switch:unknown_gap	chr5:-:coherent_run	same_chr:-:+:reverse:distant	A3	high
+primary	250000	primary_W250000_EV002	Cuckoo	different_chr:+:-:chromosome_switch:unknown_gap	CM030640.1:-:coherent_run	same_chr:-:+:reverse:distant	A2	high
+primary	250000	primary_W250000_EV002	Stork	different_chr:-:-:chromosome_switch:unknown_gap	CM030196.1:-:coherent_run	same_chr:-:+:reverse:distant	A4	high
+primary	250000	primary_W250000_EV002	Chicken	same_chr:+:+:forward:adjacent	GalGal6_chr4:+:reference_interval	same_chr:+:+:forward:adjacent	A0	high
+primary	250000	primary_W250000_EV012	Flamingo	same_chr:+:-:forward:very_distant	single_boundary		A3	high
+primary	250000	primary_W250000_EV012	Dove	same_chr:-:+:reverse:very_distant	single_boundary		A4	high
+primary	250000	primary_W250000_EV012	Sandgrouse	different_chr:+:-:chromosome_switch:unknown_gap	single_boundary		A1	high
+primary	250000	primary_W250000_EV012	Turaco	same_chr:+:+:reverse:very_distant	single_boundary		A2	high
+primary	250000	primary_W250000_EV012	Cuckoo	same_chr:+:-:forward:very_distant	single_boundary		A3	high
+primary	250000	primary_W250000_EV012	Stork	same_chr:+:-:forward:very_distant	single_boundary		A3	high
+primary	250000	primary_W250000_EV012	Chicken	same_chr:+:+:forward:adjacent	single_boundary		A0	high
+primary	250000	primary_W250000_EV013	Flamingo	same_chr:-:-:reverse:very_distant	single_boundary		A4	high
+primary	250000	primary_W250000_EV013	Dove	same_chr:+:+:forward:very_distant	single_boundary		A2	high
+primary	250000	primary_W250000_EV013	Sandgrouse	different_chr:-:-:chromosome_switch:unknown_gap	single_boundary		A1	high
+primary	250000	primary_W250000_EV013	Turaco	same_chr:+:-:forward:very_distant	single_boundary		A3	high
+primary	250000	primary_W250000_EV013	Cuckoo	same_chr:-:-:reverse:very_distant	single_boundary		A4	high
+primary	250000	primary_W250000_EV013	Stork	same_chr:-:-:reverse:very_distant	single_boundary		A4	high
+primary	250000	primary_W250000_EV013	Chicken	same_chr:+:+:forward:adjacent	single_boundary		A0	high
+primary	250000	primary_W250000_EV003	Flamingo	same_chr:-:-:forward:very_distant	chr4:-:coherent_run	same_chr:-:-:forward:very_distant	A5	high
+primary	250000	primary_W250000_EV003	Dove	same_chr:+:-:reverse:very_distant	LR594554.2:-:coherent_run	same_chr:-:+:forward:very_distant	A2	high
+primary	250000	primary_W250000_EV003	Sandgrouse	different_chr:-:-:chromosome_switch:unknown_gap	chr15:+:coherent_run	same_chr:+:-:reverse:very_distant	A1	limited
+primary	250000	primary_W250000_EV003	Turaco	same_chr:-:-:reverse:very_distant	chr5:+:coherent_run	same_chr:+:+:reverse:very_distant	A6	limited
+primary	250000	primary_W250000_EV003	Cuckoo	same_chr:-:-:forward:very_distant	CM030640.1:-:coherent_run	same_chr:-:-:forward:very_distant	A4	limited
+primary	250000	primary_W250000_EV003	Stork	same_chr:-:-:forward:very_distant	CM030196.1:-:coherent_run	same_chr:-:-:forward:very_distant	A3	limited
+primary	250000	primary_W250000_EV003	Chicken	same_chr:+:+:forward:adjacent	GalGal6_chr4:+:reference_interval	same_chr:+:+:forward:adjacent	A0	high
+primary	250000	primary_W250000_EV004	Flamingo	same_chr:+:+:reverse:very_distant	chr4:+:coherent_run	same_chr:+:+:reverse:very_distant	A5	high
+primary	250000	primary_W250000_EV004	Dove	same_chr:-:-:forward:very_distant	LR594554.2:-:coherent_run	same_chr:-:-:forward:near	A6	high
+primary	250000	primary_W250000_EV004	Sandgrouse	different_chr:-:+:chromosome_switch:unknown_gap	chr5:-:coherent_run	different_chr:-:+:chromosome_switch:unknown_gap	A1	high
+primary	250000	primary_W250000_EV004	Turaco	same_chr:+:+:forward:very_distant	chr5:+:coherent_run	same_chr:+:+:reverse:very_distant	A2	high
+primary	250000	primary_W250000_EV004	Cuckoo	same_chr:+:+:reverse:very_distant	CM030640.1:+:coherent_run	same_chr:+:-:forward:very_distant	A4	high
+primary	250000	primary_W250000_EV004	Stork	same_chr:+:+:reverse:very_distant	CM030196.1:+:coherent_run	same_chr:+:+:reverse:very_distant	A3	high
+primary	250000	primary_W250000_EV004	Chicken	same_chr:+:+:forward:adjacent	GalGal6_chr4:+:reference_interval	same_chr:+:+:forward:adjacent	A0	high
+primary	250000	primary_W250000_EV005	Flamingo	same_chr:+:+:reverse:very_distant	chr4:+:coherent_run	same_chr:+:-:forward:very_distant	A2	high
+primary	250000	primary_W250000_EV005	Dove	same_chr:-:-:forward:very_distant	LR594554.2:-:coherent_run	same_chr:-:+:reverse:very_distant	A6	high
+primary	250000	primary_W250000_EV005	Sandgrouse	different_chr:+:+:chromosome_switch:unknown_gap	chr5:+:coherent_run	same_chr:+:-:forward:very_distant	A1	high
+primary	250000	primary_W250000_EV005	Turaco	same_chr:+:+:reverse:very_distant	chr5:+:coherent_run	same_chr:+:-:forward:very_distant	A3	high
+primary	250000	primary_W250000_EV005	Cuckoo	same_chr:-:+:reverse:very_distant	CM030640.1:+:coherent_run	same_chr:+:-:forward:very_distant	A5	high
+primary	250000	primary_W250000_EV005	Stork	same_chr:-:+:reverse:very_distant	CM030196.1:+:coherent_run	same_chr:+:-:forward:very_distant	A4	high
+primary	250000	primary_W250000_EV005	Chicken	same_chr:+:+:forward:adjacent	GalGal6_chr4:+:reference_interval	same_chr:+:+:forward:adjacent	A0	high
+primary	250000	primary_W250000_EV006	Flamingo	same_chr:-:+:forward:very_distant	chr4:+:coherent_run	same_chr:+:-:forward:very_distant	A4	limited
+primary	250000	primary_W250000_EV006	Dove	same_chr:+:-:reverse:very_distant	LR594554.2:-:coherent_run	same_chr:-:+:reverse:distant	A1	limited
+primary	250000	primary_W250000_EV006	Sandgrouse	same_chr:-:-:forward:distant	chr15:+:coherent_run	same_chr:+:-:reverse:very_distant	A5	limited
+primary	250000	primary_W250000_EV006	Turaco	same_chr:-:-:reverse:very_distant	chr5:-:coherent_run	same_chr:+:+:forward:distant	A6	limited
+primary	250000	primary_W250000_EV006	Cuckoo	same_chr:-:+:forward:very_distant	CM030640.1:+:coherent_run	same_chr:+:+:reverse:very_distant	A3	limited
+primary	250000	primary_W250000_EV006	Stork	same_chr:-:+:forward:very_distant	CM030196.1:+:coherent_run	same_chr:+:-:forward:very_distant	A2	limited
+primary	250000	primary_W250000_EV006	Chicken	same_chr:+:+:forward:adjacent	GalGal6_chr4:+:reference_interval	same_chr:+:+:forward:adjacent	A0	high
+primary	250000	primary_W250000_EV014	Flamingo	same_chr:-:+:forward:very_distant	single_boundary		A4	high
+primary	250000	primary_W250000_EV014	Dove	same_chr:+:-:reverse:very_distant	single_boundary		A3	high
+primary	250000	primary_W250000_EV014	Sandgrouse	same_chr:+:+:forward:very_distant	single_boundary		A2	high
+primary	250000	primary_W250000_EV014	Turaco	same_chr:+:-:reverse:very_distant	single_boundary		A3	high
+primary	250000	primary_W250000_EV014	Cuckoo	same_chr:+:+:forward:distant	single_boundary		A1	high
+primary	250000	primary_W250000_EV014	Stork	same_chr:-:+:forward:very_distant	single_boundary		A4	high
+primary	250000	primary_W250000_EV014	Chicken	same_chr:+:+:forward:adjacent	single_boundary		A0	high
+primary	250000	primary_W250000_EV007	Flamingo	same_chr:+:+:forward:near	chr4:+:coherent_run	same_chr:+:-:reverse:very_distant	A2	limited
+primary	250000	primary_W250000_EV007	Dove	same_chr:+:-:forward:near	LR594554.2:+:coherent_run	same_chr:+:+:forward:very_distant	A4	limited
+primary	250000	primary_W250000_EV007	Sandgrouse	same_chr:+:+:forward:near	chr15:+:coherent_run	different_chr:+:-:chromosome_switch:unknown_gap	A1	limited
+primary	250000	primary_W250000_EV007	Turaco	unresolved	chr5:-:coherent_run	same_chr:-:-:reverse:very_distant	unresolved	unresolved
+primary	250000	primary_W250000_EV007	Cuckoo	same_chr:+:-:reverse:very_distant	CM030640.1:-:coherent_run	same_chr:-:-:reverse:very_distant	A5	limited
+primary	250000	primary_W250000_EV007	Stork	same_chr:+:+:reverse:near	CM030196.1:-:coherent_run	same_chr:-:-:reverse:very_distant	A3	limited
+primary	250000	primary_W250000_EV007	Chicken	same_chr:+:+:forward:adjacent	GalGal6_chr4:+:reference_interval	same_chr:+:+:forward:adjacent	A0	high
+primary	250000	primary_W250000_EV015	Flamingo	same_chr:-:+:forward:very_distant	single_boundary		A3	high
+primary	250000	primary_W250000_EV015	Dove	same_chr:+:+:reverse:distant	single_boundary		A2	high
+primary	250000	primary_W250000_EV015	Sandgrouse	different_chr:-:-:chromosome_switch:unknown_gap	single_boundary		A1	high
+primary	250000	primary_W250000_EV015	Turaco	same_chr:-:+:reverse:very_distant	single_boundary		A4	high
+primary	250000	primary_W250000_EV015	Cuckoo	same_chr:-:+:forward:very_distant	single_boundary		A3	high
+primary	250000	primary_W250000_EV015	Stork	same_chr:-:+:forward:very_distant	single_boundary		A3	high
+primary	250000	primary_W250000_EV015	Chicken	same_chr:+:+:forward:adjacent	single_boundary		A0	high
+primary	250000	primary_W250000_EV008	Flamingo	same_chr:+:+:reverse:very_distant	chr4:+:coherent_run	same_chr:+:+:reverse:very_distant	A3	high
+primary	250000	primary_W250000_EV008	Dove	same_chr:+:-:forward:near	LR594554.2:-:coherent_run	same_chr:-:+:forward:very_distant	A4	limited
+primary	250000	primary_W250000_EV008	Sandgrouse	same_chr:-:+:reverse:near	chr15:+:coherent_run	same_chr:+:+:reverse:distant	A5	limited
+primary	250000	primary_W250000_EV008	Turaco	same_chr:+:-:forward:near	unresolved_internal	same_chr:-:-:forward:very_distant	unresolved	unresolved
+primary	250000	primary_W250000_EV008	Cuckoo	same_chr:+:+:reverse:very_distant	CM030640.1:+:coherent_run	same_chr:+:-:reverse:very_distant	A2	high
+primary	250000	primary_W250000_EV008	Stork	same_chr:+:+:reverse:very_distant	CM030196.1:+:coherent_run	same_chr:+:-:reverse:very_distant	A1	high
+primary	250000	primary_W250000_EV008	Chicken	same_chr:+:+:forward:adjacent	GalGal6_chr4:+:reference_interval	same_chr:+:+:forward:adjacent	A0	high
+primary	250000	primary_W250000_EV009	Flamingo	same_chr:+:+:forward:very_distant	chr4:+:coherent_run	same_chr:+:+:reverse:very_distant	A1	high
+primary	250000	primary_W250000_EV009	Dove	same_chr:-:-:reverse:very_distant	LR594554.2:-:coherent_run	same_chr:-:-:forward:very_distant	A5	high
+primary	250000	primary_W250000_EV009	Sandgrouse	same_chr:+:+:reverse:very_distant	chr15:+:coherent_run	same_chr:+:+:reverse:very_distant	A2	high
+primary	250000	primary_W250000_EV009	Turaco	same_chr:-:-:reverse:very_distant	chr5:-:coherent_run	same_chr:+:+:forward:very_distant	A6	high
+primary	250000	primary_W250000_EV009	Cuckoo	same_chr:-:+:forward:very_distant	CM030640.1:+:coherent_run	same_chr:+:-:reverse:very_distant	A4	high
+primary	250000	primary_W250000_EV009	Stork	same_chr:-:+:forward:very_distant	CM030196.1:+:coherent_run	same_chr:+:-:reverse:very_distant	A3	high
+primary	250000	primary_W250000_EV009	Chicken	same_chr:+:+:forward:adjacent	GalGal6_chr4:+:reference_interval	same_chr:+:+:forward:adjacent	A0	high
+primary	250000	primary_W250000_EV010	Flamingo	same_chr:+:+:reverse:very_distant	chr4:+:coherent_run	same_chr:+:+:reverse:very_distant	A1	high
+primary	250000	primary_W250000_EV010	Dove	same_chr:-:-:reverse:very_distant	LR594554.2:-:coherent_run	same_chr:-:+:forward:very_distant	A6	high
+primary	250000	primary_W250000_EV010	Sandgrouse	same_chr:+:+:reverse:very_distant	chr5:-:coherent_run	same_chr:-:-:forward:very_distant	A3	high
+primary	250000	primary_W250000_EV010	Turaco	same_chr:+:+:reverse:very_distant	chr5:+:coherent_run	same_chr:+:-:forward:very_distant	A2	high
+primary	250000	primary_W250000_EV010	Cuckoo	same_chr:-:+:reverse:very_distant	CM030640.1:+:coherent_run	same_chr:+:+:reverse:very_distant	A5	high
+primary	250000	primary_W250000_EV010	Stork	same_chr:-:+:reverse:very_distant	CM030196.1:+:coherent_run	same_chr:+:+:reverse:very_distant	A4	high
+primary	250000	primary_W250000_EV010	Chicken	same_chr:+:+:forward:adjacent	GalGal6_chr4:+:reference_interval	same_chr:+:+:forward:adjacent	A0	high
+primary	250000	primary_W250000_EV016	Flamingo	same_chr:+:-:reverse:very_distant	single_boundary		A3	high
+primary	250000	primary_W250000_EV016	Dove	same_chr:+:+:forward:very_distant	single_boundary		A2	high
+primary	250000	primary_W250000_EV016	Sandgrouse	different_chr:-:-:chromosome_switch:unknown_gap	single_boundary		A1	limited
+primary	250000	primary_W250000_EV016	Turaco	same_chr:-:-:reverse:very_distant	single_boundary		A4	high
+primary	250000	primary_W250000_EV016	Cuckoo	same_chr:+:-:reverse:very_distant	single_boundary		A3	high
+primary	250000	primary_W250000_EV016	Stork	same_chr:+:-:reverse:very_distant	single_boundary		A3	high
+primary	250000	primary_W250000_EV016	Chicken	same_chr:+:+:forward:adjacent	single_boundary		A0	high

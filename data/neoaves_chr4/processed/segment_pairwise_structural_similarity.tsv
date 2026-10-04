@@ -1,0 +1,406 @@
+segment_id	structural_set	anchor_size	species1	species2	shared_informative_anchors	order_concordance	orientation_concordance	missing_fraction	overall_structural_similarity	exact_equivalent	status
+primary_SEG_001	primary	100000	Flamingo	Dove	0			1		false	insufficient_information
+primary_SEG_001	primary	100000	Flamingo	Sandgrouse	0			1		false	insufficient_information
+primary_SEG_001	primary	100000	Flamingo	Turaco	0			1		false	insufficient_information
+primary_SEG_001	primary	100000	Flamingo	Cuckoo	0			1		false	insufficient_information
+primary_SEG_001	primary	100000	Flamingo	Stork	1			0		false	insufficient_information
+primary_SEG_001	primary	100000	Dove	Sandgrouse	0			1		false	insufficient_information
+primary_SEG_001	primary	100000	Dove	Turaco	0			1		false	insufficient_information
+primary_SEG_001	primary	100000	Dove	Cuckoo	0			1		false	insufficient_information
+primary_SEG_001	primary	100000	Dove	Stork	0			1		false	insufficient_information
+primary_SEG_001	primary	100000	Sandgrouse	Turaco	0			1		false	insufficient_information
+primary_SEG_001	primary	100000	Sandgrouse	Cuckoo	0			1		false	insufficient_information
+primary_SEG_001	primary	100000	Sandgrouse	Stork	0			1		false	insufficient_information
+primary_SEG_001	primary	100000	Turaco	Cuckoo	0			1		false	insufficient_information
+primary_SEG_001	primary	100000	Turaco	Stork	0			1		false	insufficient_information
+primary_SEG_001	primary	100000	Cuckoo	Stork	0			1		false	insufficient_information
+primary_SEG_002	primary	100000	Flamingo	Dove	6	0.266666666667	0	0.806451612903	0.133333333333	false	discordant_order_or_orientation
+primary_SEG_002	primary	100000	Flamingo	Sandgrouse	8	0.0357142857143	0	0.636363636364	0.0178571428571	false	discordant_order_or_orientation
+primary_SEG_002	primary	100000	Flamingo	Turaco	8	0.107142857143	0	0.529411764706	0.0535714285714	false	discordant_order_or_orientation
+primary_SEG_002	primary	100000	Flamingo	Cuckoo	7	0.047619047619	0	0.740740740741	0.0238095238095	false	discordant_order_or_orientation
+primary_SEG_002	primary	100000	Flamingo	Stork	9	1	1	0.4375	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_002	primary	100000	Dove	Sandgrouse	11	0.927272727273	1	0.633333333333	0.963636363636	false	discordant_order_or_orientation
+primary_SEG_002	primary	100000	Dove	Turaco	6	0.733333333333	1	0.8	0.866666666667	false	discordant_order_or_orientation
+primary_SEG_002	primary	100000	Dove	Cuckoo	10	0.822222222222	1	0.714285714286	0.911111111111	false	discordant_order_or_orientation
+primary_SEG_002	primary	100000	Dove	Stork	6	0.266666666667	0	0.8	0.133333333333	false	discordant_order_or_orientation
+primary_SEG_002	primary	100000	Sandgrouse	Turaco	8	1	1	0.619047619048	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_002	primary	100000	Sandgrouse	Cuckoo	11	1	1	0.592592592593	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_002	primary	100000	Sandgrouse	Stork	9	0.0277777777778	0	0.55	0.0138888888889	false	discordant_order_or_orientation
+primary_SEG_002	primary	100000	Turaco	Cuckoo	8	1	1	0.68	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_002	primary	100000	Turaco	Stork	9	0.0555555555556	0	0.4	0.0277777777778	false	discordant_order_or_orientation
+primary_SEG_002	primary	100000	Cuckoo	Stork	9	0.0277777777778	0	0.625	0.0138888888889	false	discordant_order_or_orientation
+primary_SEG_003	primary	100000	Flamingo	Dove	1			0.666666666667		false	insufficient_information
+primary_SEG_003	primary	100000	Flamingo	Sandgrouse	1			0.75		false	insufficient_information
+primary_SEG_003	primary	100000	Flamingo	Turaco	1			0.5		false	insufficient_information
+primary_SEG_003	primary	100000	Flamingo	Cuckoo	1			0.5		false	insufficient_information
+primary_SEG_003	primary	100000	Flamingo	Stork	1			0.5		false	insufficient_information
+primary_SEG_003	primary	100000	Dove	Sandgrouse	1			0.833333333333		false	insufficient_information
+primary_SEG_003	primary	100000	Dove	Turaco	1			0.75		false	insufficient_information
+primary_SEG_003	primary	100000	Dove	Cuckoo	1			0.75		false	insufficient_information
+primary_SEG_003	primary	100000	Dove	Stork	1			0.75		false	insufficient_information
+primary_SEG_003	primary	100000	Sandgrouse	Turaco	2			0.5		false	insufficient_information
+primary_SEG_003	primary	100000	Sandgrouse	Cuckoo	1			0.8		false	insufficient_information
+primary_SEG_003	primary	100000	Sandgrouse	Stork	2			0.5		false	insufficient_information
+primary_SEG_003	primary	100000	Turaco	Cuckoo	1			0.666666666667		false	insufficient_information
+primary_SEG_003	primary	100000	Turaco	Stork	2			0		false	insufficient_information
+primary_SEG_003	primary	100000	Cuckoo	Stork	1			0.666666666667		false	insufficient_information
+primary_SEG_004	primary	100000	Flamingo	Dove	7	0.428571428571	0.428571428571	0.758620689655	0.428571428571	false	discordant_order_or_orientation
+primary_SEG_004	primary	100000	Flamingo	Sandgrouse	12	0.0151515151515	0	0.478260869565	0.00757575757576	false	discordant_order_or_orientation
+primary_SEG_004	primary	100000	Flamingo	Turaco	10	0	0	0.5	0	false	discordant_order_or_orientation
+primary_SEG_004	primary	100000	Flamingo	Cuckoo	13	0.0769230769231	0.307692307692	0.48	0.192307692308	false	discordant_order_or_orientation
+primary_SEG_004	primary	100000	Flamingo	Stork	15	1	1	0.210526315789	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_004	primary	100000	Dove	Sandgrouse	10	0.688888888889	0.5	0.655172413793	0.594444444444	false	discordant_order_or_orientation
+primary_SEG_004	primary	100000	Dove	Turaco	8	0.5	0.5	0.692307692308	0.5	false	discordant_order_or_orientation
+primary_SEG_004	primary	100000	Dove	Cuckoo	9	0.611111111111	0.666666666667	0.727272727273	0.638888888889	false	discordant_order_or_orientation
+primary_SEG_004	primary	100000	Dove	Stork	7	0.428571428571	0.428571428571	0.774193548387	0.428571428571	false	discordant_order_or_orientation
+primary_SEG_004	primary	100000	Sandgrouse	Turaco	10	1	1	0.565217391304	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_004	primary	100000	Sandgrouse	Cuckoo	14	0.923076923077	0.714285714286	0.481481481481	0.818681318681	false	discordant_order_or_orientation
+primary_SEG_004	primary	100000	Sandgrouse	Stork	12	0.0151515151515	0	0.52	0.00757575757576	false	discordant_order_or_orientation
+primary_SEG_004	primary	100000	Turaco	Cuckoo	11	0.981818181818	0.818181818182	0.56	0.9	false	discordant_order_or_orientation
+primary_SEG_004	primary	100000	Turaco	Stork	10	0	0	0.545454545455	0	false	discordant_order_or_orientation
+primary_SEG_004	primary	100000	Cuckoo	Stork	15	0.0571428571429	0.266666666667	0.4	0.161904761905	false	discordant_order_or_orientation
+primary_SEG_005	primary	100000	Flamingo	Dove	6	0.133333333333	0	0.6	0.0666666666667	false	discordant_order_or_orientation
+primary_SEG_005	primary	100000	Flamingo	Sandgrouse	6	1	1	0.5	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_005	primary	100000	Flamingo	Turaco	8	1	1	0.384615384615	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_005	primary	100000	Flamingo	Cuckoo	8	1	1	0.555555555556	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_005	primary	100000	Flamingo	Stork	8	0.964285714286	1	0.333333333333	0.982142857143	false	discordant_order_or_orientation
+primary_SEG_005	primary	100000	Dove	Sandgrouse	5	0.2	0	0.583333333333	0.1	false	discordant_order_or_orientation
+primary_SEG_005	primary	100000	Dove	Turaco	5	0.1	0	0.666666666667	0.05	false	discordant_order_or_orientation
+primary_SEG_005	primary	100000	Dove	Cuckoo	4			0.809523809524		false	insufficient_information
+primary_SEG_005	primary	100000	Dove	Stork	5	0.2	0	0.642857142857	0.1	false	discordant_order_or_orientation
+primary_SEG_005	primary	100000	Sandgrouse	Turaco	5	1	1	0.583333333333	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_005	primary	100000	Sandgrouse	Cuckoo	5	1	1	0.705882352941	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_005	primary	100000	Sandgrouse	Stork	6	1	1	0.4	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_005	primary	100000	Turaco	Cuckoo	7	1	1	0.611111111111	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_005	primary	100000	Turaco	Stork	7	0.952380952381	1	0.416666666667	0.97619047619	false	discordant_order_or_orientation
+primary_SEG_005	primary	100000	Cuckoo	Stork	6	1	1	0.666666666667	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_006	primary	100000	Flamingo	Dove	2	1	0	0	0.5	false	discordant_order_or_orientation
+primary_SEG_006	primary	100000	Flamingo	Sandgrouse	0			1		false	discordant_order_or_orientation
+primary_SEG_006	primary	100000	Flamingo	Turaco	1	1	1	0.5	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_006	primary	100000	Flamingo	Cuckoo	0			1		false	discordant_order_or_orientation
+primary_SEG_006	primary	100000	Flamingo	Stork	2	1	1	0	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_006	primary	100000	Dove	Sandgrouse	0			1		false	discordant_order_or_orientation
+primary_SEG_006	primary	100000	Dove	Turaco	1	1	0	0.5	0.5	false	discordant_order_or_orientation
+primary_SEG_006	primary	100000	Dove	Cuckoo	0			1		false	discordant_order_or_orientation
+primary_SEG_006	primary	100000	Dove	Stork	2	1	0	0	0.5	false	discordant_order_or_orientation
+primary_SEG_006	primary	100000	Sandgrouse	Turaco	0			1		false	discordant_order_or_orientation
+primary_SEG_006	primary	100000	Sandgrouse	Cuckoo	0			1		false	discordant_order_or_orientation
+primary_SEG_006	primary	100000	Sandgrouse	Stork	0			1		false	discordant_order_or_orientation
+primary_SEG_006	primary	100000	Turaco	Cuckoo	0			1		false	discordant_order_or_orientation
+primary_SEG_006	primary	100000	Turaco	Stork	1	1	1	0.5	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_006	primary	100000	Cuckoo	Stork	0			1		false	discordant_order_or_orientation
+primary_SEG_007	primary	100000	Flamingo	Dove	7	0.142857142857	0	0.611111111111	0.0714285714286	false	discordant_order_or_orientation
+primary_SEG_007	primary	100000	Flamingo	Sandgrouse	10	0.888888888889	1	0.52380952381	0.944444444444	false	discordant_order_or_orientation
+primary_SEG_007	primary	100000	Flamingo	Turaco	14	0.175824175824	0.0714285714286	0.391304347826	0.123626373626	false	discordant_order_or_orientation
+primary_SEG_007	primary	100000	Flamingo	Cuckoo	5	1	1	0.772727272727	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_007	primary	100000	Flamingo	Stork	15	1	0.933333333333	0.318181818182	0.966666666667	false	discordant_order_or_orientation
+primary_SEG_007	primary	100000	Dove	Sandgrouse	7	0.047619047619	0	0.533333333333	0.0238095238095	false	discordant_order_or_orientation
+primary_SEG_007	primary	100000	Dove	Turaco	7	1	1	0.666666666667	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_007	primary	100000	Dove	Cuckoo	3			0.8		false	insufficient_information
+primary_SEG_007	primary	100000	Dove	Stork	7	0.142857142857	0	0.666666666667	0.0714285714286	false	discordant_order_or_orientation
+primary_SEG_007	primary	100000	Sandgrouse	Turaco	9	0.0277777777778	0.111111111111	0.64	0.0694444444444	false	discordant_order_or_orientation
+primary_SEG_007	primary	100000	Sandgrouse	Cuckoo	4			0.8		false	insufficient_information
+primary_SEG_007	primary	100000	Sandgrouse	Stork	10	0.888888888889	0.9	0.583333333333	0.894444444444	false	discordant_order_or_orientation
+primary_SEG_007	primary	100000	Turaco	Cuckoo	8	0.0714285714286	0	0.636363636364	0.0357142857143	false	discordant_order_or_orientation
+primary_SEG_007	primary	100000	Turaco	Stork	16	0.0916666666667	0	0.333333333333	0.0458333333333	false	discordant_order_or_orientation
+primary_SEG_007	primary	100000	Cuckoo	Stork	9	0.972222222222	1	0.571428571429	0.986111111111	false	discordant_order_or_orientation
+primary_SEG_008	primary	100000	Flamingo	Dove	6	0.266666666667	0	0.142857142857	0.133333333333	false	discordant_order_or_orientation
+primary_SEG_008	primary	100000	Flamingo	Sandgrouse	7	1	1	0.125	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_008	primary	100000	Flamingo	Turaco	3			0.571428571429		false	insufficient_information
+primary_SEG_008	primary	100000	Flamingo	Cuckoo	6	0.733333333333	1	0.142857142857	0.866666666667	false	discordant_order_or_orientation
+primary_SEG_008	primary	100000	Flamingo	Stork	7	0.809523809524	1	0.125	0.904761904762	false	discordant_order_or_orientation
+primary_SEG_008	primary	100000	Dove	Sandgrouse	6	0.266666666667	0	0.25	0.133333333333	false	discordant_order_or_orientation
+primary_SEG_008	primary	100000	Dove	Turaco	3			0.5		false	insufficient_information
+primary_SEG_008	primary	100000	Dove	Cuckoo	5	0.6	0	0.285714285714	0.3	false	discordant_order_or_orientation
+primary_SEG_008	primary	100000	Dove	Stork	6	0.466666666667	0	0.25	0.233333333333	false	discordant_order_or_orientation
+primary_SEG_008	primary	100000	Sandgrouse	Turaco	3			0.625		false	insufficient_information
+primary_SEG_008	primary	100000	Sandgrouse	Cuckoo	6	0.733333333333	1	0.25	0.866666666667	false	discordant_order_or_orientation
+primary_SEG_008	primary	100000	Sandgrouse	Stork	8	0.607142857143	1	0	0.803571428571	false	discordant_order_or_orientation
+primary_SEG_008	primary	100000	Turaco	Cuckoo	2			0.714285714286		false	insufficient_information
+primary_SEG_008	primary	100000	Turaco	Stork	3			0.625		false	insufficient_information
+primary_SEG_008	primary	100000	Cuckoo	Stork	6	1	1	0.25	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_009	primary	100000	Flamingo	Dove	3	1	1	0	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_009	primary	100000	Flamingo	Sandgrouse	3	1	0	0	0.5	false	discordant_order_or_orientation
+primary_SEG_009	primary	100000	Flamingo	Turaco	3	1	0	0	0.5	false	discordant_order_or_orientation
+primary_SEG_009	primary	100000	Flamingo	Cuckoo	1	1	1	0.666666666667	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_009	primary	100000	Flamingo	Stork	3	1	1	0	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_009	primary	100000	Dove	Sandgrouse	3	1	0	0	0.5	false	discordant_order_or_orientation
+primary_SEG_009	primary	100000	Dove	Turaco	3	1	0	0	0.5	false	discordant_order_or_orientation
+primary_SEG_009	primary	100000	Dove	Cuckoo	1	1	1	0.666666666667	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_009	primary	100000	Dove	Stork	3	1	1	0	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_009	primary	100000	Sandgrouse	Turaco	3	1	1	0	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_009	primary	100000	Sandgrouse	Cuckoo	1	1	0	0.666666666667	0.5	false	discordant_order_or_orientation
+primary_SEG_009	primary	100000	Sandgrouse	Stork	3	1	0	0	0.5	false	discordant_order_or_orientation
+primary_SEG_009	primary	100000	Turaco	Cuckoo	1	1	0	0.666666666667	0.5	false	discordant_order_or_orientation
+primary_SEG_009	primary	100000	Turaco	Stork	3	1	0	0	0.5	false	discordant_order_or_orientation
+primary_SEG_009	primary	100000	Cuckoo	Stork	1	1	1	0.666666666667	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_010	primary	100000	Flamingo	Dove	3			0.571428571429		false	insufficient_information
+primary_SEG_010	primary	100000	Flamingo	Sandgrouse	3			0.571428571429		false	insufficient_information
+primary_SEG_010	primary	100000	Flamingo	Turaco	5	0.7	0.8	0.285714285714	0.75	false	discordant_order_or_orientation
+primary_SEG_010	primary	100000	Flamingo	Cuckoo	4			0.2		false	insufficient_information
+primary_SEG_010	primary	100000	Flamingo	Stork	5	0.6	1	0.285714285714	0.8	false	discordant_order_or_orientation
+primary_SEG_010	primary	100000	Dove	Sandgrouse	4			0.333333333333		false	insufficient_information
+primary_SEG_010	primary	100000	Dove	Turaco	5	0.9	0.6	0.285714285714	0.75	false	discordant_order_or_orientation
+primary_SEG_010	primary	100000	Dove	Cuckoo	3			0.5		false	insufficient_information
+primary_SEG_010	primary	100000	Dove	Stork	5	0.2	0	0.285714285714	0.1	false	discordant_order_or_orientation
+primary_SEG_010	primary	100000	Sandgrouse	Turaco	5	0.1	0.2	0.285714285714	0.15	false	discordant_order_or_orientation
+primary_SEG_010	primary	100000	Sandgrouse	Cuckoo	3			0.5		false	insufficient_information
+primary_SEG_010	primary	100000	Sandgrouse	Stork	5	0.9	0.6	0.285714285714	0.75	false	discordant_order_or_orientation
+primary_SEG_010	primary	100000	Turaco	Cuckoo	4			0.428571428571		false	insufficient_information
+primary_SEG_010	primary	100000	Turaco	Stork	7	0.190476190476	0.571428571429	0	0.380952380952	false	discordant_order_or_orientation
+primary_SEG_010	primary	100000	Cuckoo	Stork	4			0.428571428571		false	insufficient_information
+primary_SEG_011	primary	100000	Flamingo	Dove	4			0.666666666667		false	insufficient_information
+primary_SEG_011	primary	100000	Flamingo	Sandgrouse	4			0.692307692308		false	insufficient_information
+primary_SEG_011	primary	100000	Flamingo	Turaco	5	1	1	0.444444444444	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_011	primary	100000	Flamingo	Cuckoo	3			0.75		false	insufficient_information
+primary_SEG_011	primary	100000	Flamingo	Stork	8	1	1	0.272727272727	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_011	primary	100000	Dove	Sandgrouse	2			0.846153846154		false	insufficient_information
+primary_SEG_011	primary	100000	Dove	Turaco	2			0.8		false	insufficient_information
+primary_SEG_011	primary	100000	Dove	Cuckoo	2			0.818181818182		false	insufficient_information
+primary_SEG_011	primary	100000	Dove	Stork	5	0.6	0	0.583333333333	0.3	false	discordant_order_or_orientation
+primary_SEG_011	primary	100000	Sandgrouse	Turaco	4			0.555555555556		false	insufficient_information
+primary_SEG_011	primary	100000	Sandgrouse	Cuckoo	3			0.727272727273		false	insufficient_information
+primary_SEG_011	primary	100000	Sandgrouse	Stork	5	0.4	0.2	0.615384615385	0.3	false	discordant_order_or_orientation
+primary_SEG_011	primary	100000	Turaco	Cuckoo	3			0.625		false	insufficient_information
+primary_SEG_011	primary	100000	Turaco	Stork	5	1	1	0.5	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_011	primary	100000	Cuckoo	Stork	5	1	1	0.545454545455	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_012	primary	100000	Flamingo	Dove	1			0.75		false	insufficient_information
+primary_SEG_012	primary	100000	Flamingo	Sandgrouse	2			0.666666666667		false	insufficient_information
+primary_SEG_012	primary	100000	Flamingo	Turaco	2			0.666666666667		false	insufficient_information
+primary_SEG_012	primary	100000	Flamingo	Cuckoo	3			0.25		false	insufficient_information
+primary_SEG_012	primary	100000	Flamingo	Stork	2			0.5		false	insufficient_information
+primary_SEG_012	primary	100000	Dove	Sandgrouse	1			0.75		false	insufficient_information
+primary_SEG_012	primary	100000	Dove	Turaco	1			0.75		false	insufficient_information
+primary_SEG_012	primary	100000	Dove	Cuckoo	1			0.666666666667		false	insufficient_information
+primary_SEG_012	primary	100000	Dove	Stork	1			0.5		false	insufficient_information
+primary_SEG_012	primary	100000	Sandgrouse	Turaco	2			0.666666666667		false	insufficient_information
+primary_SEG_012	primary	100000	Sandgrouse	Cuckoo	1			0.833333333333		false	insufficient_information
+primary_SEG_012	primary	100000	Sandgrouse	Stork	1			0.8		false	insufficient_information
+primary_SEG_012	primary	100000	Turaco	Cuckoo	2			0.6		false	insufficient_information
+primary_SEG_012	primary	100000	Turaco	Stork	2			0.5		false	insufficient_information
+primary_SEG_012	primary	100000	Cuckoo	Stork	2			0.333333333333		false	insufficient_information
+primary_SEG_013	primary	100000	Flamingo	Dove	4			0.6		false	insufficient_information
+primary_SEG_013	primary	100000	Flamingo	Sandgrouse	5	1	1	0.444444444444	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_013	primary	100000	Flamingo	Turaco	5	1	1	0.444444444444	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_013	primary	100000	Flamingo	Cuckoo	4			0.2		false	insufficient_information
+primary_SEG_013	primary	100000	Flamingo	Stork	5	1	1	0.444444444444	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_013	primary	100000	Dove	Sandgrouse	6	0.0666666666667	0	0.5	0.0333333333333	false	discordant_order_or_orientation
+primary_SEG_013	primary	100000	Dove	Turaco	6	0.0666666666667	0	0.5	0.0333333333333	false	discordant_order_or_orientation
+primary_SEG_013	primary	100000	Dove	Cuckoo	4			0.555555555556		false	insufficient_information
+primary_SEG_013	primary	100000	Dove	Stork	5	0.1	0	0.615384615385	0.05	false	discordant_order_or_orientation
+primary_SEG_013	primary	100000	Sandgrouse	Turaco	8	1	1	0.2	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_013	primary	100000	Sandgrouse	Cuckoo	4			0.555555555556		false	insufficient_information
+primary_SEG_013	primary	100000	Sandgrouse	Stork	6	1	1	0.5	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_013	primary	100000	Turaco	Cuckoo	4			0.555555555556		false	insufficient_information
+primary_SEG_013	primary	100000	Turaco	Stork	7	1	1	0.363636363636	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_013	primary	100000	Cuckoo	Stork	4			0.555555555556		false	insufficient_information
+primary_SEG_014	primary	100000	Flamingo	Dove	4			0.692307692308		false	insufficient_information
+primary_SEG_014	primary	100000	Flamingo	Sandgrouse	3			0.625		false	insufficient_information
+primary_SEG_014	primary	100000	Flamingo	Turaco	3			0.625		false	insufficient_information
+primary_SEG_014	primary	100000	Flamingo	Cuckoo	3			0.666666666667		false	insufficient_information
+primary_SEG_014	primary	100000	Flamingo	Stork	4			0.636363636364		false	insufficient_information
+primary_SEG_014	primary	100000	Dove	Sandgrouse	3			0.727272727273		false	insufficient_information
+primary_SEG_014	primary	100000	Dove	Turaco	3			0.727272727273		false	insufficient_information
+primary_SEG_014	primary	100000	Dove	Cuckoo	5	0	0	0.5	0	false	discordant_order_or_orientation
+primary_SEG_014	primary	100000	Dove	Stork	4			0.714285714286		false	insufficient_information
+primary_SEG_014	primary	100000	Sandgrouse	Turaco	2			0.666666666667		false	insufficient_information
+primary_SEG_014	primary	100000	Sandgrouse	Cuckoo	3			0.5		false	insufficient_information
+primary_SEG_014	primary	100000	Sandgrouse	Stork	3			0.666666666667		false	insufficient_information
+primary_SEG_014	primary	100000	Turaco	Cuckoo	3			0.5		false	insufficient_information
+primary_SEG_014	primary	100000	Turaco	Stork	2			0.8		false	insufficient_information
+primary_SEG_014	primary	100000	Cuckoo	Stork	2			0.818181818182		false	insufficient_information
+primary_SEG_015	primary	100000	Flamingo	Dove	0			1		false	insufficient_information
+primary_SEG_015	primary	100000	Flamingo	Sandgrouse	0			1		false	insufficient_information
+primary_SEG_015	primary	100000	Flamingo	Turaco	0			1		false	insufficient_information
+primary_SEG_015	primary	100000	Flamingo	Cuckoo	0			1		false	insufficient_information
+primary_SEG_015	primary	100000	Flamingo	Stork	0			1		false	insufficient_information
+primary_SEG_015	primary	100000	Dove	Sandgrouse	1			0		false	insufficient_information
+primary_SEG_015	primary	100000	Dove	Turaco	0			1		false	insufficient_information
+primary_SEG_015	primary	100000	Dove	Cuckoo	1			0		false	insufficient_information
+primary_SEG_015	primary	100000	Dove	Stork	1			0.5		false	insufficient_information
+primary_SEG_015	primary	100000	Sandgrouse	Turaco	0			1		false	insufficient_information
+primary_SEG_015	primary	100000	Sandgrouse	Cuckoo	1			0		false	insufficient_information
+primary_SEG_015	primary	100000	Sandgrouse	Stork	1			0.5		false	insufficient_information
+primary_SEG_015	primary	100000	Turaco	Cuckoo	0			1		false	insufficient_information
+primary_SEG_015	primary	100000	Turaco	Stork	0			1		false	insufficient_information
+primary_SEG_015	primary	100000	Cuckoo	Stork	1			0.5		false	insufficient_information
+primary_SEG_016	primary	100000	Flamingo	Dove	0			1		false	insufficient_information
+primary_SEG_016	primary	100000	Flamingo	Sandgrouse	0			1		false	insufficient_information
+primary_SEG_016	primary	100000	Flamingo	Turaco	0			1		false	insufficient_information
+primary_SEG_016	primary	100000	Flamingo	Cuckoo	0			1		false	insufficient_information
+primary_SEG_016	primary	100000	Flamingo	Stork	0			1		false	insufficient_information
+primary_SEG_016	primary	100000	Dove	Sandgrouse	0			1		false	insufficient_information
+primary_SEG_016	primary	100000	Dove	Turaco	0			1		false	insufficient_information
+primary_SEG_016	primary	100000	Dove	Cuckoo	0			1		false	insufficient_information
+primary_SEG_016	primary	100000	Dove	Stork	0			1		false	insufficient_information
+primary_SEG_016	primary	100000	Sandgrouse	Turaco	0			1		false	insufficient_information
+primary_SEG_016	primary	100000	Sandgrouse	Cuckoo	1			0.5		false	insufficient_information
+primary_SEG_016	primary	100000	Sandgrouse	Stork	0			1		false	insufficient_information
+primary_SEG_016	primary	100000	Turaco	Cuckoo	0			1		false	insufficient_information
+primary_SEG_016	primary	100000	Turaco	Stork	0			1		false	insufficient_information
+primary_SEG_016	primary	100000	Cuckoo	Stork	0			1		false	insufficient_information
+primary_SEG_017	primary	100000	Flamingo	Dove	0			1		false	insufficient_information
+primary_SEG_017	primary	100000	Flamingo	Sandgrouse	1			0		false	insufficient_information
+primary_SEG_017	primary	100000	Flamingo	Turaco	0			1		false	insufficient_information
+primary_SEG_017	primary	100000	Flamingo	Cuckoo	1			0.5		false	insufficient_information
+primary_SEG_017	primary	100000	Flamingo	Stork	1			0.666666666667		false	insufficient_information
+primary_SEG_017	primary	100000	Dove	Sandgrouse	0			1		false	insufficient_information
+primary_SEG_017	primary	100000	Dove	Turaco	0			1		false	insufficient_information
+primary_SEG_017	primary	100000	Dove	Cuckoo	0			1		false	insufficient_information
+primary_SEG_017	primary	100000	Dove	Stork	0			1		false	insufficient_information
+primary_SEG_017	primary	100000	Sandgrouse	Turaco	0			1		false	insufficient_information
+primary_SEG_017	primary	100000	Sandgrouse	Cuckoo	1			0.5		false	insufficient_information
+primary_SEG_017	primary	100000	Sandgrouse	Stork	1			0.666666666667		false	insufficient_information
+primary_SEG_017	primary	100000	Turaco	Cuckoo	1			0.5		false	insufficient_information
+primary_SEG_017	primary	100000	Turaco	Stork	0			1		false	insufficient_information
+primary_SEG_017	primary	100000	Cuckoo	Stork	1			0.75		false	insufficient_information
+primary_SEG_018	primary	100000	Flamingo	Dove	1			0.888888888889		false	insufficient_information
+primary_SEG_018	primary	100000	Flamingo	Sandgrouse	2			0.8		false	insufficient_information
+primary_SEG_018	primary	100000	Flamingo	Turaco	1			0.875		false	insufficient_information
+primary_SEG_018	primary	100000	Flamingo	Cuckoo	1			0.888888888889		false	insufficient_information
+primary_SEG_018	primary	100000	Flamingo	Stork	3			0.571428571429		false	insufficient_information
+primary_SEG_018	primary	100000	Dove	Sandgrouse	1			0.888888888889		false	insufficient_information
+primary_SEG_018	primary	100000	Dove	Turaco	1			0.833333333333		false	insufficient_information
+primary_SEG_018	primary	100000	Dove	Cuckoo	1			0.857142857143		false	insufficient_information
+primary_SEG_018	primary	100000	Dove	Stork	1			0.857142857143		false	insufficient_information
+primary_SEG_018	primary	100000	Sandgrouse	Turaco	2			0.714285714286		false	insufficient_information
+primary_SEG_018	primary	100000	Sandgrouse	Cuckoo	4			0.333333333333		false	insufficient_information
+primary_SEG_018	primary	100000	Sandgrouse	Stork	2			0.75		false	insufficient_information
+primary_SEG_018	primary	100000	Turaco	Cuckoo	2			0.6		false	insufficient_information
+primary_SEG_018	primary	100000	Turaco	Stork	1			0.833333333333		false	insufficient_information
+primary_SEG_018	primary	100000	Cuckoo	Stork	1			0.857142857143		false	insufficient_information
+primary_SEG_019	primary	100000	Flamingo	Dove	1	1	0	0.5	0.5	false	discordant_order_or_orientation
+primary_SEG_019	primary	100000	Flamingo	Sandgrouse	2	1	1	0	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_019	primary	100000	Flamingo	Turaco	1	1	1	0.5	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_019	primary	100000	Flamingo	Cuckoo	2	1	1	0	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_019	primary	100000	Flamingo	Stork	2	1	1	0	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_019	primary	100000	Dove	Sandgrouse	1	1	0	0.5	0.5	false	discordant_order_or_orientation
+primary_SEG_019	primary	100000	Dove	Turaco	0			1		false	discordant_order_or_orientation
+primary_SEG_019	primary	100000	Dove	Cuckoo	1	1	0	0.5	0.5	false	discordant_order_or_orientation
+primary_SEG_019	primary	100000	Dove	Stork	1	1	0	0.5	0.5	false	discordant_order_or_orientation
+primary_SEG_019	primary	100000	Sandgrouse	Turaco	1	1	1	0.5	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_019	primary	100000	Sandgrouse	Cuckoo	2	1	1	0	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_019	primary	100000	Sandgrouse	Stork	2	1	1	0	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_019	primary	100000	Turaco	Cuckoo	1	1	1	0.5	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_019	primary	100000	Turaco	Stork	1	1	1	0.5	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_019	primary	100000	Cuckoo	Stork	2	1	1	0	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_020	primary	100000	Flamingo	Dove	0			1		false	insufficient_information
+primary_SEG_020	primary	100000	Flamingo	Sandgrouse	0			1		false	insufficient_information
+primary_SEG_020	primary	100000	Flamingo	Turaco	0			1		false	insufficient_information
+primary_SEG_020	primary	100000	Flamingo	Cuckoo	0			1		false	insufficient_information
+primary_SEG_020	primary	100000	Flamingo	Stork	0			1		false	insufficient_information
+primary_SEG_020	primary	100000	Dove	Sandgrouse	1			0.666666666667		false	insufficient_information
+primary_SEG_020	primary	100000	Dove	Turaco	2			0.6		false	insufficient_information
+primary_SEG_020	primary	100000	Dove	Cuckoo	2			0.333333333333		false	insufficient_information
+primary_SEG_020	primary	100000	Dove	Stork	0			1		false	insufficient_information
+primary_SEG_020	primary	100000	Sandgrouse	Turaco	1			0.75		false	insufficient_information
+primary_SEG_020	primary	100000	Sandgrouse	Cuckoo	1			0.5		false	insufficient_information
+primary_SEG_020	primary	100000	Sandgrouse	Stork	0			1		false	insufficient_information
+primary_SEG_020	primary	100000	Turaco	Cuckoo	2			0.5		false	insufficient_information
+primary_SEG_020	primary	100000	Turaco	Stork	0			1		false	insufficient_information
+primary_SEG_020	primary	100000	Cuckoo	Stork	0			1		false	insufficient_information
+primary_SEG_021	primary	100000	Flamingo	Dove	0			1		false	insufficient_information
+primary_SEG_021	primary	100000	Flamingo	Sandgrouse	0			1		false	insufficient_information
+primary_SEG_021	primary	100000	Flamingo	Turaco	0			1		false	insufficient_information
+primary_SEG_021	primary	100000	Flamingo	Cuckoo	0			1		false	insufficient_information
+primary_SEG_021	primary	100000	Flamingo	Stork	0			1		false	insufficient_information
+primary_SEG_021	primary	100000	Dove	Sandgrouse	0			1		false	insufficient_information
+primary_SEG_021	primary	100000	Dove	Turaco	0			1		false	insufficient_information
+primary_SEG_021	primary	100000	Dove	Cuckoo	0			1		false	insufficient_information
+primary_SEG_021	primary	100000	Dove	Stork	0			1		false	insufficient_information
+primary_SEG_021	primary	100000	Sandgrouse	Turaco	0			1		false	insufficient_information
+primary_SEG_021	primary	100000	Sandgrouse	Cuckoo	0			1		false	insufficient_information
+primary_SEG_021	primary	100000	Sandgrouse	Stork	0			1		false	insufficient_information
+primary_SEG_021	primary	100000	Turaco	Cuckoo	0			1		false	insufficient_information
+primary_SEG_021	primary	100000	Turaco	Stork	0			1		false	insufficient_information
+primary_SEG_021	primary	100000	Cuckoo	Stork	0			1		false	insufficient_information
+primary_SEG_022	primary	100000	Flamingo	Dove	2			0.75		false	insufficient_information
+primary_SEG_022	primary	100000	Flamingo	Sandgrouse	3			0.5		false	insufficient_information
+primary_SEG_022	primary	100000	Flamingo	Turaco	2			0.6		false	insufficient_information
+primary_SEG_022	primary	100000	Flamingo	Cuckoo	3			0.5		false	insufficient_information
+primary_SEG_022	primary	100000	Flamingo	Stork	3			0.5		false	insufficient_information
+primary_SEG_022	primary	100000	Dove	Sandgrouse	2			0.714285714286		false	insufficient_information
+primary_SEG_022	primary	100000	Dove	Turaco	1			0.833333333333		false	insufficient_information
+primary_SEG_022	primary	100000	Dove	Cuckoo	2			0.714285714286		false	insufficient_information
+primary_SEG_022	primary	100000	Dove	Stork	2			0.714285714286		false	insufficient_information
+primary_SEG_022	primary	100000	Sandgrouse	Turaco	2			0.5		false	insufficient_information
+primary_SEG_022	primary	100000	Sandgrouse	Cuckoo	4			0		false	insufficient_information
+primary_SEG_022	primary	100000	Sandgrouse	Stork	3			0.4		false	insufficient_information
+primary_SEG_022	primary	100000	Turaco	Cuckoo	2			0.5		false	insufficient_information
+primary_SEG_022	primary	100000	Turaco	Stork	2			0.5		false	insufficient_information
+primary_SEG_022	primary	100000	Cuckoo	Stork	3			0.4		false	insufficient_information
+primary_SEG_023	primary	100000	Flamingo	Dove	6	0.0666666666667	0	0.5	0.0333333333333	false	discordant_order_or_orientation
+primary_SEG_023	primary	100000	Flamingo	Sandgrouse	8	1	1	0.384615384615	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_023	primary	100000	Flamingo	Turaco	6	0.133333333333	0.333333333333	0.625	0.233333333333	false	discordant_order_or_orientation
+primary_SEG_023	primary	100000	Flamingo	Cuckoo	9	1	1	0.5	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_023	primary	100000	Flamingo	Stork	8	1	1	0.272727272727	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_023	primary	100000	Dove	Sandgrouse	8	0.0714285714286	0	0.384615384615	0.0357142857143	false	discordant_order_or_orientation
+primary_SEG_023	primary	100000	Dove	Turaco	4			0.777777777778		false	insufficient_information
+primary_SEG_023	primary	100000	Dove	Cuckoo	9	0.111111111111	0	0.5	0.0555555555556	false	discordant_order_or_orientation
+primary_SEG_023	primary	100000	Dove	Stork	6	0.0666666666667	0	0.538461538462	0.0333333333333	false	discordant_order_or_orientation
+primary_SEG_023	primary	100000	Sandgrouse	Turaco	6	0.133333333333	0.333333333333	0.684210526316	0.233333333333	false	discordant_order_or_orientation
+primary_SEG_023	primary	100000	Sandgrouse	Cuckoo	10	1	1	0.5	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_023	primary	100000	Sandgrouse	Stork	8	1	1	0.428571428571	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_023	primary	100000	Turaco	Cuckoo	9	0.194444444444	0.333333333333	0.590909090909	0.263888888889	false	discordant_order_or_orientation
+primary_SEG_023	primary	100000	Turaco	Stork	7	0.190476190476	0.428571428571	0.5625	0.309523809524	false	discordant_order_or_orientation
+primary_SEG_023	primary	100000	Cuckoo	Stork	10	1	1	0.444444444444	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_024	primary	100000	Flamingo	Dove	2			0.333333333333		false	insufficient_information
+primary_SEG_024	primary	100000	Flamingo	Sandgrouse	2			0.333333333333		false	insufficient_information
+primary_SEG_024	primary	100000	Flamingo	Turaco	2			0.5		false	insufficient_information
+primary_SEG_024	primary	100000	Flamingo	Cuckoo	0			1		false	insufficient_information
+primary_SEG_024	primary	100000	Flamingo	Stork	2			0.75		false	insufficient_information
+primary_SEG_024	primary	100000	Dove	Sandgrouse	2			0		false	insufficient_information
+primary_SEG_024	primary	100000	Dove	Turaco	1			0.75		false	insufficient_information
+primary_SEG_024	primary	100000	Dove	Cuckoo	0			1		false	insufficient_information
+primary_SEG_024	primary	100000	Dove	Stork	2			0.714285714286		false	insufficient_information
+primary_SEG_024	primary	100000	Sandgrouse	Turaco	1			0.75		false	insufficient_information
+primary_SEG_024	primary	100000	Sandgrouse	Cuckoo	0			1		false	insufficient_information
+primary_SEG_024	primary	100000	Sandgrouse	Stork	2			0.714285714286		false	insufficient_information
+primary_SEG_024	primary	100000	Turaco	Cuckoo	1			0.666666666667		false	insufficient_information
+primary_SEG_024	primary	100000	Turaco	Stork	2			0.75		false	insufficient_information
+primary_SEG_024	primary	100000	Cuckoo	Stork	1			0.857142857143		false	insufficient_information
+primary_SEG_025	primary	100000	Flamingo	Dove	0			1		false	insufficient_information
+primary_SEG_025	primary	100000	Flamingo	Sandgrouse	0			1		false	insufficient_information
+primary_SEG_025	primary	100000	Flamingo	Turaco	0			1		false	insufficient_information
+primary_SEG_025	primary	100000	Flamingo	Cuckoo	0			1		false	insufficient_information
+primary_SEG_025	primary	100000	Flamingo	Stork	0			1		false	insufficient_information
+primary_SEG_025	primary	100000	Dove	Sandgrouse	4			0.333333333333		false	insufficient_information
+primary_SEG_025	primary	100000	Dove	Turaco	4			0		false	insufficient_information
+primary_SEG_025	primary	100000	Dove	Cuckoo	1			0.75		false	insufficient_information
+primary_SEG_025	primary	100000	Dove	Stork	1			0.75		false	insufficient_information
+primary_SEG_025	primary	100000	Sandgrouse	Turaco	4			0.333333333333		false	insufficient_information
+primary_SEG_025	primary	100000	Sandgrouse	Cuckoo	1			0.833333333333		false	insufficient_information
+primary_SEG_025	primary	100000	Sandgrouse	Stork	1			0.833333333333		false	insufficient_information
+primary_SEG_025	primary	100000	Turaco	Cuckoo	1			0.75		false	insufficient_information
+primary_SEG_025	primary	100000	Turaco	Stork	1			0.75		false	insufficient_information
+primary_SEG_025	primary	100000	Cuckoo	Stork	1			0		false	insufficient_information
+primary_SEG_026	primary	100000	Flamingo	Dove	1			0.5		false	insufficient_information
+primary_SEG_026	primary	100000	Flamingo	Sandgrouse	0			1		false	insufficient_information
+primary_SEG_026	primary	100000	Flamingo	Turaco	1			0.875		false	insufficient_information
+primary_SEG_026	primary	100000	Flamingo	Cuckoo	0			1		false	insufficient_information
+primary_SEG_026	primary	100000	Flamingo	Stork	1			0		false	insufficient_information
+primary_SEG_026	primary	100000	Dove	Sandgrouse	1			0.833333333333		false	insufficient_information
+primary_SEG_026	primary	100000	Dove	Turaco	2			0.75		false	insufficient_information
+primary_SEG_026	primary	100000	Dove	Cuckoo	0			1		false	insufficient_information
+primary_SEG_026	primary	100000	Dove	Stork	1			0.5		false	insufficient_information
+primary_SEG_026	primary	100000	Sandgrouse	Turaco	5	1	1	0.375	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_026	primary	100000	Sandgrouse	Cuckoo	0			1		false	insufficient_information
+primary_SEG_026	primary	100000	Sandgrouse	Stork	0			1		false	insufficient_information
+primary_SEG_026	primary	100000	Turaco	Cuckoo	0			1		false	insufficient_information
+primary_SEG_026	primary	100000	Turaco	Stork	1			0.875		false	insufficient_information
+primary_SEG_026	primary	100000	Cuckoo	Stork	0			1		false	insufficient_information
+primary_SEG_027	primary	100000	Flamingo	Dove	14	0.010989010989	0	0.791044776119	0.00549450549451	false	discordant_order_or_orientation
+primary_SEG_027	primary	100000	Flamingo	Sandgrouse	16	0.983333333333	1	0.746031746032	0.991666666667	false	discordant_order_or_orientation
+primary_SEG_027	primary	100000	Flamingo	Turaco	18	0.986928104575	1	0.672727272727	0.993464052288	false	discordant_order_or_orientation
+primary_SEG_027	primary	100000	Flamingo	Cuckoo	21	0.980952380952	1	0.676923076923	0.990476190476	false	discordant_order_or_orientation
+primary_SEG_027	primary	100000	Flamingo	Stork	30	0.995402298851	1	0.5	0.997701149425	false	discordant_order_or_orientation
+primary_SEG_027	primary	100000	Dove	Sandgrouse	18	0.0196078431373	0	0.678571428571	0.00980392156863	false	discordant_order_or_orientation
+primary_SEG_027	primary	100000	Dove	Turaco	16	0.025	0	0.692307692308	0.0125	false	discordant_order_or_orientation
+primary_SEG_027	primary	100000	Dove	Cuckoo	12	0.030303030303	0	0.826086956522	0.0151515151515	false	discordant_order_or_orientation
+primary_SEG_027	primary	100000	Dove	Stork	23	0.00790513833992	0	0.629032258065	0.00395256916996	false	discordant_order_or_orientation
+primary_SEG_027	primary	100000	Sandgrouse	Turaco	17	1	1	0.65306122449	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_027	primary	100000	Sandgrouse	Cuckoo	15	0.990476190476	1	0.765625	0.995238095238	false	discordant_order_or_orientation
+primary_SEG_027	primary	100000	Sandgrouse	Stork	23	0.99209486166	1	0.616666666667	0.99604743083	false	discordant_order_or_orientation
+primary_SEG_027	primary	100000	Turaco	Cuckoo	17	1	1	0.696428571429	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_027	primary	100000	Turaco	Stork	23	1	1	0.574074074074	1	true	exact_multi_anchor_order_orientation_match
+primary_SEG_027	primary	100000	Cuckoo	Stork	24	0.989130434783	1	0.636363636364	0.994565217391	false	discordant_order_or_orientation

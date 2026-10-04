@@ -1,0 +1,107 @@
+{
+  "all_frozen_prediction_sensitivity_sha256": "9eafba690c7eab4aa1b52f58cf3a1a1b7f0c49647cf8c56f52bb412b9b76cdf9",
+  "all_pairs_equivalence_rule": "Identical normalized state signature within event/breakpoint; no connected-component or single-linkage grouping.",
+  "anti_circularity": {
+    "forbidden_inputs": [
+      "arrangement_state_definitions.tsv",
+      "arrangement_states.tsv",
+      "canonical_arrangement_states.tsv",
+      "chr4_clade_means.tsv",
+      "genealogy_change_point_cluster_audit.tsv",
+      "genealogy_change_points.tsv",
+      "genealogy_change_points_raw.tsv",
+      "locus_table_chr4.tsv",
+      "normalized_arrangement_states.tsv",
+      "q1",
+      "q2",
+      "q3",
+      "segment_discrete_arrangement_states.tsv",
+      "segment_pairwise_structural_similarity.tsv",
+      "segment_quartet_support.tsv",
+      "segment_species_structural_states.tsv",
+      "shared_genealogy_transitions.tsv",
+      "structural_quartet_predictions.tsv",
+      "structural_quartet_predictions_all.tsv",
+      "structural_topology_prediction_permutation.tsv",
+      "structural_topology_prediction_segment_results.tsv",
+      "structural_topology_prediction_summary.tsv"
+    ],
+    "genealogy_or_q_values_loaded": false,
+    "old_outlier_or_stage3b_state_files_read": false
+  },
+  "breakpoint_window_sizes_bp": [
+    100000,
+    250000,
+    500000
+  ],
+  "chicken_reference_handling": "Chicken/Gallus_gallus/GalGal6 is represented explicitly as a structural taxon with direct reference state A0.",
+  "event_pairing_rule": "Adjacent frozen breakpoints are paired only when the same species support both boundaries and orientation/chromosome/order evidence occurs at both; otherwise single_boundary_event.",
+  "frozen_topology_predictions": "empirical/neoaves_chr4/results/stage3b_v2_structural_quartet_predictions.tsv",
+  "frozen_topology_predictions_sha256": "4533b91a126da872b74c4ea0e0249d6041e0a59738d3cef1f1d00c5631ab1961",
+  "junction_state_definition": "same/different query chromosome, reference-relative left/right orientations, query order relationship, and query discontinuity class; raw query coordinates are audit fields only.",
+  "phase": "Stage 3B-v2 Phase A structural-only event-state prediction freeze",
+  "primary_breakpoint_window_bp": 250000,
+  "quartet_role_mapping": {
+    "Columbea": {
+      "C1": [
+        "Dove",
+        "Sandgrouse"
+      ],
+      "C2": [
+        "Flamingo"
+      ],
+      "O": [
+        "Chicken"
+      ],
+      "S": [
+        "Turaco",
+        "Cuckoo",
+        "Stork"
+      ]
+    },
+    "N61": {
+      "C1": [
+        "Turaco",
+        "Cuckoo"
+      ],
+      "C2": [
+        "Dove",
+        "Sandgrouse"
+      ],
+      "O": [
+        "Flamingo",
+        "Chicken"
+      ],
+      "S": [
+        "Stork"
+      ]
+    },
+    "N62": {
+      "C1": [
+        "Dove"
+      ],
+      "C2": [
+        "Sandgrouse"
+      ],
+      "O": [
+        "Flamingo",
+        "Stork",
+        "Chicken"
+      ],
+      "S": [
+        "Turaco",
+        "Cuckoo"
+      ]
+    }
+  },
+  "quartet_role_mapping_sha256": "767c27e66ddb98d2f006f8252569492557738ef3797eaffbf49db71f9cbd2bc1",
+  "script_sha256": "ab96216da45d02782c3e813eca150697e5a6f19023c5fc70c76d60d4f122d713",
+  "stage27c_manifest_checksum": "c7794fbf3a35c3716edb87cb35d1217e484affcea03e31086a1230023983f2b4",
+  "strict_prediction_rule": "C1=C2!=S=O -> q1; C1=S!=C2=O -> q2; C2=S!=C1=O -> q3; all other patterns no_unique_strict_prediction.",
+  "structural_input_checksums": {
+    "empirical/neoaves_chr4/results/denovo_breakpoint_sets.tsv": "f716d3d00d8e68b4956bac18cf98c7d697acd2eb4054ea6fdb63b6e2865f4031",
+    "empirical/neoaves_chr4/results/denovo_chr4_blocks.tsv": "17f46d7d8a2316f93ff75f48eba2310f235ae002e1ecf9c50530a28efd97886d",
+    "empirical/neoaves_chr4/results/denovo_consensus_structural_breakpoints.tsv": "fae21aa312b3a8b7771338a69167dc39995fe4b007fb51e5ba1bfa50173d0182",
+    "empirical/neoaves_chr4/results/denovo_synteny_runs.tsv": "c3b82b69e88361172c3e265ede20a934168b7f42b6a8562ff793ef6756f2ebdc"
+  }
+}

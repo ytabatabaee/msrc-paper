@@ -1,0 +1,12 @@
+canonical_region_id	partition_50000	partition_100000	partition_200000	stable_across_anchor_sizes	matches_100kb_baseline
+CR_01	A0:Stork;A1:Flamingo;A2:Dove,Turaco;A3:Sandgrouse;A4:Cuckoo	A0:Stork;A1:Flamingo;A2:Dove,Turaco;A3:Sandgrouse;A4:Cuckoo	A0:Stork,Sandgrouse;A1:Flamingo;A2:Dove,Turaco;A3:Cuckoo	false	false
+CR_02	A0:Stork;A1:Flamingo,Cuckoo;A2:Dove,Turaco;A3:Sandgrouse	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	false	false
+CR_03	A0:Stork;A1:Flamingo,Cuckoo;A2:Dove;A3:Sandgrouse;A4:Turaco	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	false	false
+CR_04	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	true	true
+CR_05	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	true	true
+CR_06	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	true	true
+CR_07	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	true	true
+CR_08	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	true	true
+CR_09	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	true	true
+CR_10	A0:Stork,Flamingo,Turaco,Cuckoo;A1:Dove;A2:Sandgrouse	A0:Stork,Flamingo,Turaco,Cuckoo;A1:Dove;A2:Sandgrouse	A0:Stork;A1:Flamingo;A2:Dove;A3:Sandgrouse;A4:Turaco;A5:Cuckoo	false	false
+CR_11	A0:Stork,Flamingo,Sandgrouse,Cuckoo;A1:Dove;A2:Turaco	A0:Stork,Flamingo,Sandgrouse,Cuckoo;A1:Dove;A2:Turaco	A0:Stork,Flamingo,Sandgrouse,Cuckoo;A1:Dove;A2:Turaco	true	true

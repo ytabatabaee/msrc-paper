@@ -1,0 +1,13 @@
+metric	value
+n_structural_blocks	21626
+n_structural_intervals	39
+n_breakpoints	78
+chr4_coordinate_min	86453
+chr4_coordinate_max	91310470
+unknown_orientation_blocks	0
+overlapping_structural_intervals	9
+species_with_published_summary_mismatch	Cuckoo;Dove;Flamingo;Sandgrouse;Stork;Turaco
+published_exact_matches	0
+published_approximate_matches	10
+published_differences	7
+published_unmatched	1

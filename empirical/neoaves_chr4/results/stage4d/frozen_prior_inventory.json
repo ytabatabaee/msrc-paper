@@ -1,0 +1,1062 @@
+[
+  {
+    "path": "empirical/neoaves_chr4/results/stage4a_report.md",
+    "sha256": "91934edd416be04a9802f65e806d3065c3592c8eed6cee94483bccd173c34ae4"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3b_primary_structural_segments.tsv",
+    "sha256": "ccab25cda1f1de34649c17dc592ebf3f07f19e83589919113f2b7430c178ff82"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/arrangement_state_definitions.tsv",
+    "sha256": "9ec70c0379727c321891c6103466cb67c6a653b50433c6522d5949c1b0a3157f"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3a_final_manifest.json",
+    "sha256": "179eefe885b4e78b39950bb75e200dc2628be7d5cce29605c546367b4d02ebf3"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage4b_manifest.json",
+    "sha256": "d4a96a6777a0f4bc204cfe8678543664303c41ac9e3db9ab25033fe17e76d54e"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/breakpoint_enrichment_summary.tsv",
+    "sha256": "4b5b3463e441c1e8c7d656dbb40ee7ade6d959a714999774ef2051af136fbfbf"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/structural_intervals.tsv",
+    "sha256": "8f188aa089f2123b48a0911c05d21fd59a042b518adbfcba52ba19dae485a678"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/canonical_region_validation.tsv",
+    "sha256": "babddf563c19f26d89a9362926eb088bc517bfa67ec5f3b72ce22b81441ac0f8"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/denovo_species_breakpoints_raw.tsv",
+    "sha256": "21f70543c96fcda855cd56f7cf9b0fc0bf295a928a383ade6fe4537941f5834c"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3b_final_manifest.json",
+    "sha256": "af985799b2f5d7dd76c66a7af34c2af84aec2e9e1e3c5ba7b42f02a20179333e"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/canonical_structural_boundaries.tsv",
+    "sha256": "21e65063b98831f9c0926f91337bde3561f40a41ff238ce57b5cd566f3d128d0"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage4a_structural_topology_support.tsv",
+    "sha256": "e178e99da45bc4bf82ee0af696231445563316bc6219e396c359659f60d0b83e"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/structural_topology_prediction_segment_results.tsv",
+    "sha256": "c4fa9e8fa1be55715bda83b82e36d3aabd14b09cf1d0c4101304c95a5ac8aeb5"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/structural_topology_prediction_summary.tsv",
+    "sha256": "3675682245065143372e19638ba5aeb0d1b8ab4759e4215853c68da57eaf9154"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/chr4_clade_means.tsv",
+    "sha256": "1292fb12c5905609d4e98af96801c0c4602093d19486cf3fcf66d6979aff0cab"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/denovo_adjacent_block_features.tsv",
+    "sha256": "19a2f7de998550ea596979f5ca4e3eaefb4a581656904df90644ba1618151d15"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage4a_structural_enrichment.tsv",
+    "sha256": "a609c6caaac3af4bbec833caadace4562b1321ac9f97945d75dabd32a725ce52"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/canonical_region_summary.tsv",
+    "sha256": "61b03d4a196d1ca3f80bf932d2f7e813d72963e3b14604a63571771c5663e664"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3b_v2_breakpoint_junction_states.tsv",
+    "sha256": "6aa682a1f2a9def02929b9b3cfe0ab64c64fb7907f8d8adfc462fa044121aed3"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/denovo_breakpoint_manifest_invalid_orientation.json",
+    "sha256": "9bb05a2962033787eb28cca37120fd796395e37f92cf572cc843a5958bc861e6"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage4a_manifest.json",
+    "sha256": "31958a2edf6c8ef20e123a468c64ba7b354580e5b899c81922b97b3df4935cb7"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/structural_boundary_nearest_change_points.tsv",
+    "sha256": "f14732a8d5ae98eb44f085d9458a3963ff4e1298c995303a835a44227637e935"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/canonical_anchor_states.tsv",
+    "sha256": "ae57bf06d06beadb18687215a3047a62a1a95ca4d9ba60fc5ee9dd21fd2461ac"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/denovo_consensus_structural_breakpoints_stage27b.tsv",
+    "sha256": "bfac0c1a2d68294903dcda51d04e2577bc4d166f56f200377079ad1d1e34515e"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3b_inclusive_structural_segments.tsv",
+    "sha256": "f1e730c92f0282fdabb332d5a3a6bec5a56f96295c96c72e0b7fe66139cebba3"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3b_v2_final_manifest.json",
+    "sha256": "e2ab7322fc7683823ca7731975d2cee5b27503e6b42a55d1c4041e0b75941169"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3b_v2_summary.tsv",
+    "sha256": "e36fb98336e78ba468ffd668f7136257df7a6b3b77e64bfd3f1fbdc464887eb8"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3b_v2_structural_events.tsv",
+    "sha256": "def1d79b4b940aa101014d918c13d79e65bb7b35a688a2c59f854b0b405692b6"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3b_structural_prediction_manifest.json",
+    "sha256": "9a07f12e166e2f062368bfeee56605fc51f3baf8cb8b5b218579feb4d1303010"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/structural_topology_prediction_sensitivity.tsv",
+    "sha256": "7e17921aaca245e2d7181d34f6ca5f14cfcaf24e0e77df917f8f89be87c36bd9"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage4c_chromosome_jackknife.tsv",
+    "sha256": "28184d0355a6e5de8c91a811245f4fd8e6713325ecc561135f1b1233aa4eae70"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage4c_independent_validation.tsv",
+    "sha256": "631997d55cf81b02a2e0786ef58ec5c1aace59a23ed15d78ab1f19917ef52010"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/canonical_arrangement_state_definitions.tsv",
+    "sha256": "f66a658c7011abed4397551821513d9411ad2c99215f4ac3dd10d79852a5d6a7"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/denovo_vs_published_boundaries.tsv",
+    "sha256": "1e37efce15e38e27de7f8781d1ed9d4b1920fe0f0a7030bb8a5abfe4107e64a8"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/arrangement_states.tsv",
+    "sha256": "6fef43aefad5a80a51c979a7eff2bca90b047704b957c4151633ee8f7166706b"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/canonical_arrangement_states.tsv",
+    "sha256": "df1bf88ea7a868c9f566b9a223a26b450199a790b6d18acfa5eb1d3c91b34f34"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/structural_interval_validation.tsv",
+    "sha256": "5082f4db2a3705d41598e72bc33b09db89dc5bb32875f060ecf4d284c6156452"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/genealogy_change_points.tsv",
+    "sha256": "5dfa2ed233b50327692dca148a482d77868ae24672f6caddb5e98f9b4bd469ed"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/denovo_consensus_structural_breakpoints.tsv",
+    "sha256": "fae21aa312b3a8b7771338a69167dc39995fe4b007fb51e5ba1bfa50173d0182"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/breakpoint_enrichment_summary_final.tsv",
+    "sha256": "8a703c6553f5f3308e99c9a5fbd88c22e919519db437f5d98a1243b60ef86b48"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/segment_species_structural_states.tsv",
+    "sha256": "2691161c7f1384cb0419d1bd695a8ee68a094f938ba0462c3300b450f9aadd6d"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3b_v2_structural_prediction_manifest.json",
+    "sha256": "b8234d5f96298a79bf3775024ee0e1e9a4221e9b86b256d0198c3485fa9103f3"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/structural_validation_summary.tsv",
+    "sha256": "9873bc54edc8f14265889910d96a8c8500dff6670e8680519b463fbd87fecf62"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/segment_quartet_support.tsv",
+    "sha256": "cfac2bfe61d00eb6fc1c17422c1dd1288fae3acf03a5c003ba87c4e391a93cb0"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage4c_reference_candidates.tsv",
+    "sha256": "17414a708a0e61d420bf3f925ef57aad7b70e3d7701faec84787ee76b9691570"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/validation_summary.tsv",
+    "sha256": "7f37b090f35e27ddda4d5185c8ee18f21febe5fffb3e2c18ea568e7fe50caba9"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/segment_discrete_arrangement_states.tsv",
+    "sha256": "461cead93c5a6915370adb4e61328b777ec35dca7e1874c263456e3148c5f646"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/normalized_arrangement_validation.tsv",
+    "sha256": "d1ff00b05027d7165deabf9e6b7f25fb9b9478b1211e41bae1c341013188524a"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/shared_genealogy_transitions.tsv",
+    "sha256": "3f57cef3bdb92e7c5616a9b5bf264c687c796a8010939d23a367334deb71cc34"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage4a_window_vs_block_support.tsv",
+    "sha256": "123ddb26ab2bfcb5787e32313426111922a1f7f64c593f204b8309fb76daa2ff"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/canonical_region_pairwise_similarity.tsv",
+    "sha256": "6bd955d9b3f0099cb6660e691d1e6b363cab5b14a8f4150859878b6a04a0d8b2"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/structural_topology_prediction_permutation.tsv",
+    "sha256": "0eb5cfec58b088c5003cdbf845f097170988f88e26152238532693ef77cec080"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/segment_pairwise_structural_similarity.tsv",
+    "sha256": "0605e3dea1a2bda43c6f297ed76f5090ebe64b1446908e1a46cd86b13c0871ae"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3b_v2_quartet_role_mapping.tsv",
+    "sha256": "767c27e66ddb98d2f006f8252569492557738ef3797eaffbf49db71f9cbd2bc1"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/canonical_structural_regions.tsv",
+    "sha256": "b77ef54362f26c6180023e14a50bf1ad671071c1c6c20f1a8ef8d8a569ef5cc2"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3b_v2_structural_quartet_predictions_all.tsv",
+    "sha256": "9eafba690c7eab4aa1b52f58cf3a1a1b7f0c49647cf8c56f52bb412b9b76cdf9"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/denovo_synteny_runs.tsv",
+    "sha256": "c3b82b69e88361172c3e265ede20a934168b7f42b6a8562ff793ef6756f2ebdc"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3b_v2_structural_quartet_predictions.tsv",
+    "sha256": "4533b91a126da872b74c4ea0e0249d6041e0a59738d3cef1f1d00c5631ab1961"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/denovo_breakpoint_sets.tsv",
+    "sha256": "f716d3d00d8e68b4956bac18cf98c7d697acd2eb4054ea6fdb63b6e2865f4031"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/quartet_role_mapping.tsv",
+    "sha256": "9846fd21b6861864bb933c818bea59a07fd09539a6ed5eb6b3c2aa9b50836483"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage4c_report.md",
+    "sha256": "3152f89e79eb2ecdf30744aa4564e7bfb9ae6b6373336134dcbf76d88c07fc2f"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/structural_source_metadata.tsv",
+    "sha256": "e7f1e8a563db365e1ab0f0fedeaa94abe861501385c89b4e2fab6c086016c132"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage4b_leave_one_event_out.tsv",
+    "sha256": "878cadcd3c57170a1b849d25ccd13dd86b077196280f892c85a7700bd066369f"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/structural_blocks.tsv",
+    "sha256": "f17ac6bdd67e8393ae46ff849587a9441f36f5398a6c5982de5e03f0c02120dd"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/normalized_arrangement_states.tsv",
+    "sha256": "e8c628625ff233e6f4ec337857eecbc03fc9e68d0e19ae2da9fc3f3d8f7d99cd"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3b_v2_event_quartet_support.tsv",
+    "sha256": "6cc60179e9ad9dcfb56ce3cef0f2bba6cb7126149e4fa5531a4bddb8a7ae6062"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/denovo_breakpoint_manifest_stage27b.json",
+    "sha256": "751d0389b245b512024aa0d6fa3a64250bd463e6932466105a146f67fd8f9807"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage4a_event_level_summary.tsv",
+    "sha256": "3a3e4a99afb5a2e2b5bb153e966b1459462e1795f99b630d196dc1bdebf051d7"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/normalized_arrangement_state_definitions.tsv",
+    "sha256": "3a4464fadf0fec1c0af32a987607a1b12b09b9588c5c6201992abc2ae373a2e5"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/denovo_chr4_blocks.tsv",
+    "sha256": "17f46d7d8a2316f93ff75f48eba2310f235ae002e1ecf9c50530a28efd97886d"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/genealogy_change_points_raw.tsv",
+    "sha256": "0288128979f4f348c9e664a533e470506374d9736e30bf02d15c500325192c36"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3b_v2_event_species_states.tsv",
+    "sha256": "d72c2f007567a778903563df823ba7c3ba429e3d8205b07bb9d52dd38d013576"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/structural_breakpoint_genealogy_support.tsv",
+    "sha256": "a6df1ef1423c6f1c08e922645e8080c0a4838b85d89158a18123e7dd2943ba06"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/structural_quartet_predictions.tsv",
+    "sha256": "d453b22b60186d9ec9fde44f4013e76caf9b48c703bbfbac564512ef8b16a578"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/breakpoint_enrichment_by_genealogy_method.tsv",
+    "sha256": "98f8f6d8e683e0977124c4f9781c95e0c3cfcf6d10e5e9b21277c54f4067d887"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage27b_vs_stage27c_consensus.tsv",
+    "sha256": "15ecec1c7f1a9e7194febd07aaefbd246b2efa378fb97d701691c61c67a64c81"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3b_v2_event_arrangement_states.tsv",
+    "sha256": "f56cf466d460897e5550a3b8a22e667ead6e1693d35eb688ef907de54561f6be"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage4c_control_chromosomes.tsv",
+    "sha256": "c61c43ca559619ebe863e4beb26a3f270552967b12ed0a428b9cd0a9ee67692e"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage4b_report.md",
+    "sha256": "0ebdd6697c7754ed53cbaeb9609f4d0c0065e03228a4217e696267f5e04ea03f"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/structural_breakpoints.tsv",
+    "sha256": "6eb79ed29f8aa827e37dc8bf075799052e3011d6be97dc88fe0421cc16f79104"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/locus_table_chr4.tsv",
+    "sha256": "52493ab4aadd4bce6dff84540ee8b27ad7a2fadfe1cd718cc4e2a859585beccb"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/anchor_size_sensitivity.tsv",
+    "sha256": "76a0ec7e0c10d9f59e9b8d277231ac6e91aec17b5d55ea2bf9488ae782862732"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/denovo_species_breakpoints.tsv",
+    "sha256": "c7145bbec84a8995bbbf63f9ed97237c0ca1a04a685ff5a098f4c10aa6e963d9"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/denovo_structural_segments.tsv",
+    "sha256": "12a4767e1279a2446dc7a167507be13e9af9e6ff36b2122fec9d275374952a80"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3b_v2_permutation_null.tsv",
+    "sha256": "555a88e1fb839b3144a7fbdd60b3fdf4ffb7aaf88c54dae6ac4f51b55d012cf0"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/structural_partitions.tsv",
+    "sha256": "dd6fab5ecbc80f60739d04de0095f8709b6bf6b6ad76b0ac5046a6236a8abc36"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/breakpoint_enrichment_by_structural_set.tsv",
+    "sha256": "6a57f253e5a2bb6cb6fb268b10dbcb054baa93c4ead55c1e42133dced78adfcb"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3b_v2_event_results.tsv",
+    "sha256": "3d6e5e3dcfadecab1dfe1ac0530f090ac18d5bf39dfea7d845f89cfac82df9a1"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage4c_manifest.json",
+    "sha256": "53ef7bca2823cd76153b1c6da396fdf33e0af09b7951f6d10212f569dde8cc0c"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3b_v1_vs_v2_predictions.tsv",
+    "sha256": "a41cfbef7e048a523c13e47bdaacac0ec88ac5828406213902464431a4d085bb"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3a_singlelink_vs_completespan.tsv",
+    "sha256": "88dcf6f72980e8df585ca6493b865041a42309055b59553d2e669a64d4cec600"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/genealogy_change_point_cluster_audit.tsv",
+    "sha256": "6e8bd6659f69eb9667d0c35b259ff4261c6925d358aed1a0472ca9543a1d9b14"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage4b_inference_treatments.tsv",
+    "sha256": "8f84bcf08a1f805b06a4541d2c8ddc92020efe558b9402fe70a607a16750e933"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/structural_quartet_predictions_all.tsv",
+    "sha256": "8264369a94df2bf0034e7a0c305d13a929a3bdeca56a5690c4e0e14776d1c4ab"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3b_v2_sensitivity.tsv",
+    "sha256": "a2d5d9d1e3292542bc93c937c69cc71e80168ced64bfcf19525651bf879af567"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/denovo_raw_structural_disruptions.tsv",
+    "sha256": "ac2edd6e4600641adca52682d52e87f321e8599a7a49048c8746c8a3bbd3f5fc"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/breakpoint_enrichment_sensitivity.tsv",
+    "sha256": "66407c3baa0ffe9ef5d481012aaff0bc738d97a30658003d25597ddbb3bdaa23"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/denovo_breakpoint_sensitivity.tsv",
+    "sha256": "e2f5c28f0d3cb7968725736f18b8ca893c22110e0ed5be0cb88dfb97e723569f"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/arrangement_state_pairwise_similarity.tsv",
+    "sha256": "040cdb1d9fe04b1659896d35f802dde0a3c1862f361a16b0636164bc8d126759"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/denovo_breakpoint_manifest.json",
+    "sha256": "c7794fbf3a35c3716edb87cb35d1217e484affcea03e31086a1230023983f2b4"
+  },
+  {
+    "path": "empirical/neoaves_chr4/results/stage3b_stringent_structural_segments.tsv",
+    "sha256": "f6b00789c9ce9f728565ddcf55b169b033e1188f7b245cca9c4f6709825d756a"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/stage4b_figure_C_N61_leave_one_event_out.png",
+    "sha256": "75ab4c11ce118a8bb32521ae56903aa8bfbeb8a3db476c03a6b7692e53f605cc"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/stage4c_figure_C_control_context.png",
+    "sha256": "863b99ab57342b687f5b73be1670c0a9631913128a2de480ed33513d4fc60ec9"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/chr4_raw_quartet_tracks.pdf",
+    "sha256": "ef10ced3b0d5dc979ac382e04ac14e070b44517c190dcc9c3c8ed44599c84dd7"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/stage4c_figure_C_control_context.pdf",
+    "sha256": "56c848445ba7275aa3423428d35092277a16250d5ec30a5167fa790421165d71"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/stage4b_figure_C_N61_leave_one_event_out.pdf",
+    "sha256": "1fb6ef09a0aeeddbfb65185809b88e7d69857263b523d07da76642e48b68dcaa"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/chr4_raw_quartet_tracks.png",
+    "sha256": "d62b551c0f81745a0b85ab39102a9d5d626c4d503b1d678a52a3d9d7d4e08873"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/structural_topology_prediction_null.pdf",
+    "sha256": "3b8b9d5961c85e696df5d37b530ec4eac1b9ce402f21663850b6dcd579561de3"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/breakpoint_enrichment_null.pdf",
+    "sha256": "c6d9e3c3f09de2819c1762c5e4645306feeadf6b0bf579909e137f6340fa8898"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/breakpoint_enrichment_null_primary.pdf",
+    "sha256": "f25a227baab92455c3f81f7baae97fccc02e1749c509f8f2b9d82588bf659826"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/chr4_structural_track.pdf",
+    "sha256": "e3e16d9f3e0be15c3b97ea2c86404d0d7e61df9f88cd17eb8ab3bf7459706a9e"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/denovo_chr4_synteny_map.png",
+    "sha256": "0768085b17c069d82a08bf3a0183f65d3670a2d42887fdc2faba86af9236aa29"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/stage4c_figure_A_reference_comparison.pdf",
+    "sha256": "5f72b3b39bec935cc69a1d6e1099fafba9e779913842fc7a01976ac6b0703276"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/stage4b_figure_B_species_margin.pdf",
+    "sha256": "1c28984cdee7953ace3f9cc2801caab14ee56f73e57b1cc75a47ebd26884ca5d"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/chr4_canonical_structural_regions.pdf",
+    "sha256": "1a4dac565a49f51f8bc3483d4b37e7a1455aa2f561475091db93cbb86605d38e"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/stage4b_figure_A_treatment_support.pdf",
+    "sha256": "c91f2e768cfb109016e3f3c4c17c19e65ce31b824d357fdda928a6e2855add59"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/chr4_canonical_structural_regions.png",
+    "sha256": "cfd1507965f306fe555df51bfbd3e2df51f9a628df613aa7baf4561926d33f28"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/stage4b_figure_A_treatment_support.png",
+    "sha256": "af57eef3f97e0241f081fe2ffb5f1ef98a0a94c4a2be1b15ceda199af654e171"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/chr4_structural_track.png",
+    "sha256": "beb916561a7980fbbf788a08e8b3bd9170cff09be5ac9e6c209720f07934b78f"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/stage4b_figure_B_species_margin.png",
+    "sha256": "92a359ff0b4720747f50b8a81cfc3361c0862c42f73c6c0ac4e6e743be793a18"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/denovo_chr4_synteny_map.pdf",
+    "sha256": "4b5dc7210624a2a616711f0061927172b5d9715e0267179991bfaec3c362b053"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/stage4c_figure_A_reference_comparison.png",
+    "sha256": "b43c491b70b6b2b54150c9dcb9185f466ea44d3558d3f18d929f4d507c65cb15"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/denovo_consensus_breakpoints.png",
+    "sha256": "418146afd6e9285111b79c6bdf86f5f784c5ff44e3dc8bd92557c714958d7588"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/stage4a_figure_B_structural_category_frequencies.png",
+    "sha256": "30932e642311b97b4a1434d1755e451d5e4ffbcf04f0fb15ee0ce83154d36084"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/stage4a_figure_B_structural_category_frequencies.pdf",
+    "sha256": "ac0f0af5e0530093a84d8658f3b5a4692330122464ff93e0a962cf91f917ff19"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/denovo_consensus_breakpoints.pdf",
+    "sha256": "513fcfea528e767b78e8ec1d2ba009917398c1240677a8b197555a2ad88088a2"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/breakpoint_enrichment_structural_set_sensitivity.pdf",
+    "sha256": "9e1860d6e4822109252d2555fa29897df378bc548806f8b85a9497559a7402d4"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/stage4a_figure_A_chr4_structural_topology.png",
+    "sha256": "7bb3eb04d9ad898f259d5d8c3b88c7db5bf0ec285b535aa9eec950e44a30d3e0"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/chr4_event_states_predict_topology.pdf",
+    "sha256": "761d16bfdafc76b7a174fbe0edea1fab616f5072d062a27e910e4343719f6264"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/chr4_event_states_predict_topology.png",
+    "sha256": "724ecf7cc4dad6430cb8e981da3bf8525dbb4bf5a207a50e51b98e30e2ae3e90"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/stage4a_figure_A_chr4_structural_topology.pdf",
+    "sha256": "0ac78a5edc44942c7dbc9730bbf703aa93038189eb83fd92af2ecf9b91eacbae"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/chr4_change_points_vs_denovo_structure.pdf",
+    "sha256": "b981b9024f400e5ad6160876a3ec7d641a669240e8db7b340cf30fbcc2f4f36a"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/stage4a_figure_C_window_vs_block.png",
+    "sha256": "c880f7cdefbf0c89c5cb32a2f00bf16e77e80ca467de063f3731a778363317a8"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/chr4_normalized_arrangement_states.pdf",
+    "sha256": "4d858458c70da8e28019156b3d0b21f9e707e59fb175994ddb27b41b4e8275b0"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/chr4_change_points_vs_structure.pdf",
+    "sha256": "9a96c13875647015136b275837b908b611cbd258cd7bcadfd70a77233fa124d1"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/stage4a_figure_C_window_vs_block.pdf",
+    "sha256": "2af22ecfc84fce9e2f5380bb80e9a6b65a94c1889e46c63c313f0263095071c3"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/chr4_normalized_arrangement_states.png",
+    "sha256": "6e09b2836f03dcd75542479f5c67a14169271ec9a9c0210300a71efc7522d47c"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/chr4_change_points_vs_structure.png",
+    "sha256": "c03d7112df9e356ec6261904ebb35f93e1f728a0cb8aa9651130f567dc89ea48"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/chr4_change_points_vs_denovo_structure.png",
+    "sha256": "d9e0bb6c4c7f1d5eeb6fd9f23e9044f364332b801ceb2e7736d1cdc8628af73c"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/chr4_structural_state_predicts_topology.png",
+    "sha256": "8606abbe0647c14fbbf3f0dfd16ad38db8a1c77ea19c601da5b9cbffc76465d1"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/chr4_change_points_blind.pdf",
+    "sha256": "1e5eb7c70f1b472b7a253316dcd633ef5666a8f99fffd19682b7691bd1b87780"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/stage4c_figure_B_N61_focal.png",
+    "sha256": "de4c6cbe3ee55fc4543384c7f96913a7f0bbbef4a30d54d89dcf4f33d7e31159"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/stage4c_figure_B_N61_focal.pdf",
+    "sha256": "c9b751531c56b30af4390a050450ecdf945f36dbf4cbb521527a43e669e7b162"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/chr4_structural_state_predicts_topology.pdf",
+    "sha256": "4405830c374ce33fea42529b6ac4eb78e9503ebff8e5429432d73eb6a60d81db"
+  },
+  {
+    "path": "empirical/neoaves_chr4/figures/chr4_change_points_blind.png",
+    "sha256": "92d768a37c7b21135ea3f315f22a467e25a29cfe8f546f5e9c2af9e3b87c86af"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3b_primary_structural_segments.tsv",
+    "sha256": "ccab25cda1f1de34649c17dc592ebf3f07f19e83589919113f2b7430c178ff82"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/arrangement_state_definitions.tsv",
+    "sha256": "9ec70c0379727c321891c6103466cb67c6a653b50433c6522d5949c1b0a3157f"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3a_final_manifest.json",
+    "sha256": "179eefe885b4e78b39950bb75e200dc2628be7d5cce29605c546367b4d02ebf3"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/breakpoint_enrichment_summary.tsv",
+    "sha256": "4b5b3463e441c1e8c7d656dbb40ee7ade6d959a714999774ef2051af136fbfbf"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/structural_intervals.tsv",
+    "sha256": "8f188aa089f2123b48a0911c05d21fd59a042b518adbfcba52ba19dae485a678"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/canonical_region_validation.tsv",
+    "sha256": "babddf563c19f26d89a9362926eb088bc517bfa67ec5f3b72ce22b81441ac0f8"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/denovo_species_breakpoints_raw.tsv",
+    "sha256": "21f70543c96fcda855cd56f7cf9b0fc0bf295a928a383ade6fe4537941f5834c"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3b_final_manifest.json",
+    "sha256": "af985799b2f5d7dd76c66a7af34c2af84aec2e9e1e3c5ba7b42f02a20179333e"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/canonical_structural_boundaries.tsv",
+    "sha256": "21e65063b98831f9c0926f91337bde3561f40a41ff238ce57b5cd566f3d128d0"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/structural_topology_prediction_segment_results.tsv",
+    "sha256": "c4fa9e8fa1be55715bda83b82e36d3aabd14b09cf1d0c4101304c95a5ac8aeb5"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/structural_topology_prediction_summary.tsv",
+    "sha256": "3675682245065143372e19638ba5aeb0d1b8ab4759e4215853c68da57eaf9154"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/chr4_clade_means.tsv",
+    "sha256": "1292fb12c5905609d4e98af96801c0c4602093d19486cf3fcf66d6979aff0cab"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/denovo_adjacent_block_features.tsv",
+    "sha256": "19a2f7de998550ea596979f5ca4e3eaefb4a581656904df90644ba1618151d15"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/canonical_region_summary.tsv",
+    "sha256": "61b03d4a196d1ca3f80bf932d2f7e813d72963e3b14604a63571771c5663e664"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3b_v2_breakpoint_junction_states.tsv",
+    "sha256": "6aa682a1f2a9def02929b9b3cfe0ab64c64fb7907f8d8adfc462fa044121aed3"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/denovo_breakpoint_manifest_invalid_orientation.json",
+    "sha256": "9bb05a2962033787eb28cca37120fd796395e37f92cf572cc843a5958bc861e6"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/structural_boundary_nearest_change_points.tsv",
+    "sha256": "f14732a8d5ae98eb44f085d9458a3963ff4e1298c995303a835a44227637e935"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/canonical_anchor_states.tsv",
+    "sha256": "ae57bf06d06beadb18687215a3047a62a1a95ca4d9ba60fc5ee9dd21fd2461ac"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/denovo_consensus_structural_breakpoints_stage27b.tsv",
+    "sha256": "bfac0c1a2d68294903dcda51d04e2577bc4d166f56f200377079ad1d1e34515e"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3b_inclusive_structural_segments.tsv",
+    "sha256": "f1e730c92f0282fdabb332d5a3a6bec5a56f96295c96c72e0b7fe66139cebba3"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3b_v2_final_manifest.json",
+    "sha256": "e2ab7322fc7683823ca7731975d2cee5b27503e6b42a55d1c4041e0b75941169"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3b_v2_summary.tsv",
+    "sha256": "e36fb98336e78ba468ffd668f7136257df7a6b3b77e64bfd3f1fbdc464887eb8"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3b_v2_structural_events.tsv",
+    "sha256": "def1d79b4b940aa101014d918c13d79e65bb7b35a688a2c59f854b0b405692b6"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3b_structural_prediction_manifest.json",
+    "sha256": "9a07f12e166e2f062368bfeee56605fc51f3baf8cb8b5b218579feb4d1303010"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/structural_topology_prediction_sensitivity.tsv",
+    "sha256": "7e17921aaca245e2d7181d34f6ca5f14cfcaf24e0e77df917f8f89be87c36bd9"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/canonical_arrangement_state_definitions.tsv",
+    "sha256": "f66a658c7011abed4397551821513d9411ad2c99215f4ac3dd10d79852a5d6a7"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/denovo_vs_published_boundaries.tsv",
+    "sha256": "1e37efce15e38e27de7f8781d1ed9d4b1920fe0f0a7030bb8a5abfe4107e64a8"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/arrangement_states.tsv",
+    "sha256": "6fef43aefad5a80a51c979a7eff2bca90b047704b957c4151633ee8f7166706b"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/canonical_arrangement_states.tsv",
+    "sha256": "df1bf88ea7a868c9f566b9a223a26b450199a790b6d18acfa5eb1d3c91b34f34"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/structural_interval_validation.tsv",
+    "sha256": "5082f4db2a3705d41598e72bc33b09db89dc5bb32875f060ecf4d284c6156452"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/genealogy_change_points.tsv",
+    "sha256": "5dfa2ed233b50327692dca148a482d77868ae24672f6caddb5e98f9b4bd469ed"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/denovo_consensus_structural_breakpoints.tsv",
+    "sha256": "fae21aa312b3a8b7771338a69167dc39995fe4b007fb51e5ba1bfa50173d0182"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/breakpoint_enrichment_summary_final.tsv",
+    "sha256": "8a703c6553f5f3308e99c9a5fbd88c22e919519db437f5d98a1243b60ef86b48"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/segment_species_structural_states.tsv",
+    "sha256": "2691161c7f1384cb0419d1bd695a8ee68a094f938ba0462c3300b450f9aadd6d"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3b_v2_structural_prediction_manifest.json",
+    "sha256": "b8234d5f96298a79bf3775024ee0e1e9a4221e9b86b256d0198c3485fa9103f3"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/structural_validation_summary.tsv",
+    "sha256": "9873bc54edc8f14265889910d96a8c8500dff6670e8680519b463fbd87fecf62"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/segment_quartet_support.tsv",
+    "sha256": "cfac2bfe61d00eb6fc1c17422c1dd1288fae3acf03a5c003ba87c4e391a93cb0"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/validation_summary.tsv",
+    "sha256": "7f37b090f35e27ddda4d5185c8ee18f21febe5fffb3e2c18ea568e7fe50caba9"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/segment_discrete_arrangement_states.tsv",
+    "sha256": "461cead93c5a6915370adb4e61328b777ec35dca7e1874c263456e3148c5f646"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/normalized_arrangement_validation.tsv",
+    "sha256": "d1ff00b05027d7165deabf9e6b7f25fb9b9478b1211e41bae1c341013188524a"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/shared_genealogy_transitions.tsv",
+    "sha256": "3f57cef3bdb92e7c5616a9b5bf264c687c796a8010939d23a367334deb71cc34"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/canonical_region_pairwise_similarity.tsv",
+    "sha256": "6bd955d9b3f0099cb6660e691d1e6b363cab5b14a8f4150859878b6a04a0d8b2"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/structural_topology_prediction_permutation.tsv",
+    "sha256": "0eb5cfec58b088c5003cdbf845f097170988f88e26152238532693ef77cec080"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/segment_pairwise_structural_similarity.tsv",
+    "sha256": "0605e3dea1a2bda43c6f297ed76f5090ebe64b1446908e1a46cd86b13c0871ae"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3b_v2_quartet_role_mapping.tsv",
+    "sha256": "767c27e66ddb98d2f006f8252569492557738ef3797eaffbf49db71f9cbd2bc1"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/canonical_structural_regions.tsv",
+    "sha256": "b77ef54362f26c6180023e14a50bf1ad671071c1c6c20f1a8ef8d8a569ef5cc2"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3b_v2_structural_quartet_predictions_all.tsv",
+    "sha256": "9eafba690c7eab4aa1b52f58cf3a1a1b7f0c49647cf8c56f52bb412b9b76cdf9"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/denovo_synteny_runs.tsv",
+    "sha256": "c3b82b69e88361172c3e265ede20a934168b7f42b6a8562ff793ef6756f2ebdc"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3b_v2_structural_quartet_predictions.tsv",
+    "sha256": "4533b91a126da872b74c4ea0e0249d6041e0a59738d3cef1f1d00c5631ab1961"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/denovo_breakpoint_sets.tsv",
+    "sha256": "f716d3d00d8e68b4956bac18cf98c7d697acd2eb4054ea6fdb63b6e2865f4031"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/quartet_role_mapping.tsv",
+    "sha256": "9846fd21b6861864bb933c818bea59a07fd09539a6ed5eb6b3c2aa9b50836483"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/structural_source_metadata.tsv",
+    "sha256": "e7f1e8a563db365e1ab0f0fedeaa94abe861501385c89b4e2fab6c086016c132"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/structural_blocks.tsv",
+    "sha256": "f17ac6bdd67e8393ae46ff849587a9441f36f5398a6c5982de5e03f0c02120dd"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/normalized_arrangement_states.tsv",
+    "sha256": "e8c628625ff233e6f4ec337857eecbc03fc9e68d0e19ae2da9fc3f3d8f7d99cd"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3b_v2_event_quartet_support.tsv",
+    "sha256": "6cc60179e9ad9dcfb56ce3cef0f2bba6cb7126149e4fa5531a4bddb8a7ae6062"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/denovo_breakpoint_manifest_stage27b.json",
+    "sha256": "751d0389b245b512024aa0d6fa3a64250bd463e6932466105a146f67fd8f9807"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/normalized_arrangement_state_definitions.tsv",
+    "sha256": "3a4464fadf0fec1c0af32a987607a1b12b09b9588c5c6201992abc2ae373a2e5"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/denovo_chr4_blocks.tsv",
+    "sha256": "17f46d7d8a2316f93ff75f48eba2310f235ae002e1ecf9c50530a28efd97886d"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/genealogy_change_points_raw.tsv",
+    "sha256": "0288128979f4f348c9e664a533e470506374d9736e30bf02d15c500325192c36"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3b_v2_event_species_states.tsv",
+    "sha256": "d72c2f007567a778903563df823ba7c3ba429e3d8205b07bb9d52dd38d013576"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/structural_breakpoint_genealogy_support.tsv",
+    "sha256": "a6df1ef1423c6f1c08e922645e8080c0a4838b85d89158a18123e7dd2943ba06"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/structural_quartet_predictions.tsv",
+    "sha256": "d453b22b60186d9ec9fde44f4013e76caf9b48c703bbfbac564512ef8b16a578"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/breakpoint_enrichment_by_genealogy_method.tsv",
+    "sha256": "98f8f6d8e683e0977124c4f9781c95e0c3cfcf6d10e5e9b21277c54f4067d887"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage27b_vs_stage27c_consensus.tsv",
+    "sha256": "15ecec1c7f1a9e7194febd07aaefbd246b2efa378fb97d701691c61c67a64c81"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3b_v2_event_arrangement_states.tsv",
+    "sha256": "f56cf466d460897e5550a3b8a22e667ead6e1693d35eb688ef907de54561f6be"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/structural_breakpoints.tsv",
+    "sha256": "6eb79ed29f8aa827e37dc8bf075799052e3011d6be97dc88fe0421cc16f79104"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/locus_table_chr4.tsv",
+    "sha256": "52493ab4aadd4bce6dff84540ee8b27ad7a2fadfe1cd718cc4e2a859585beccb"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/anchor_size_sensitivity.tsv",
+    "sha256": "76a0ec7e0c10d9f59e9b8d277231ac6e91aec17b5d55ea2bf9488ae782862732"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/denovo_species_breakpoints.tsv",
+    "sha256": "c7145bbec84a8995bbbf63f9ed97237c0ca1a04a685ff5a098f4c10aa6e963d9"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/denovo_structural_segments.tsv",
+    "sha256": "12a4767e1279a2446dc7a167507be13e9af9e6ff36b2122fec9d275374952a80"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3b_v2_permutation_null.tsv",
+    "sha256": "555a88e1fb839b3144a7fbdd60b3fdf4ffb7aaf88c54dae6ac4f51b55d012cf0"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/structural_partitions.tsv",
+    "sha256": "dd6fab5ecbc80f60739d04de0095f8709b6bf6b6ad76b0ac5046a6236a8abc36"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/breakpoint_enrichment_by_structural_set.tsv",
+    "sha256": "6a57f253e5a2bb6cb6fb268b10dbcb054baa93c4ead55c1e42133dced78adfcb"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3b_v2_event_results.tsv",
+    "sha256": "3d6e5e3dcfadecab1dfe1ac0530f090ac18d5bf39dfea7d845f89cfac82df9a1"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3b_v1_vs_v2_predictions.tsv",
+    "sha256": "a41cfbef7e048a523c13e47bdaacac0ec88ac5828406213902464431a4d085bb"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3a_singlelink_vs_completespan.tsv",
+    "sha256": "88dcf6f72980e8df585ca6493b865041a42309055b59553d2e669a64d4cec600"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/genealogy_change_point_cluster_audit.tsv",
+    "sha256": "6e8bd6659f69eb9667d0c35b259ff4261c6925d358aed1a0472ca9543a1d9b14"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/structural_quartet_predictions_all.tsv",
+    "sha256": "8264369a94df2bf0034e7a0c305d13a929a3bdeca56a5690c4e0e14776d1c4ab"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3b_v2_sensitivity.tsv",
+    "sha256": "a2d5d9d1e3292542bc93c937c69cc71e80168ced64bfcf19525651bf879af567"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/denovo_raw_structural_disruptions.tsv",
+    "sha256": "ac2edd6e4600641adca52682d52e87f321e8599a7a49048c8746c8a3bbd3f5fc"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/breakpoint_enrichment_sensitivity.tsv",
+    "sha256": "66407c3baa0ffe9ef5d481012aaff0bc738d97a30658003d25597ddbb3bdaa23"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/denovo_breakpoint_sensitivity.tsv",
+    "sha256": "e2f5c28f0d3cb7968725736f18b8ca893c22110e0ed5be0cb88dfb97e723569f"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/arrangement_state_pairwise_similarity.tsv",
+    "sha256": "040cdb1d9fe04b1659896d35f802dde0a3c1862f361a16b0636164bc8d126759"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/denovo_breakpoint_manifest.json",
+    "sha256": "c7794fbf3a35c3716edb87cb35d1217e484affcea03e31086a1230023983f2b4"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage3b_stringent_structural_segments.tsv",
+    "sha256": "f6b00789c9ce9f728565ddcf55b169b033e1188f7b245cca9c4f6709825d756a"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage03b_v2_event_state_test/stage3b_v2_breakpoint_junction_states.tsv",
+    "sha256": "6aa682a1f2a9def02929b9b3cfe0ab64c64fb7907f8d8adfc462fa044121aed3"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage03b_v2_event_state_test/stage3b_v2_final_manifest.json",
+    "sha256": "e2ab7322fc7683823ca7731975d2cee5b27503e6b42a55d1c4041e0b75941169"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage03b_v2_event_state_test/stage3b_v2_summary.tsv",
+    "sha256": "e36fb98336e78ba468ffd668f7136257df7a6b3b77e64bfd3f1fbdc464887eb8"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage03b_v2_event_state_test/stage3b_v2_structural_events.tsv",
+    "sha256": "def1d79b4b940aa101014d918c13d79e65bb7b35a688a2c59f854b0b405692b6"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage03b_v2_event_state_test/stage3b_v2_structural_prediction_manifest.json",
+    "sha256": "b8234d5f96298a79bf3775024ee0e1e9a4221e9b86b256d0198c3485fa9103f3"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage03b_v2_event_state_test/stage3b_v2_structural_quartet_predictions_all.tsv",
+    "sha256": "9eafba690c7eab4aa1b52f58cf3a1a1b7f0c49647cf8c56f52bb412b9b76cdf9"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage03b_v2_event_state_test/stage3b_v2_structural_quartet_predictions.tsv",
+    "sha256": "4533b91a126da872b74c4ea0e0249d6041e0a59738d3cef1f1d00c5631ab1961"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage03b_v2_event_state_test/stage3b_v2_event_quartet_support.tsv",
+    "sha256": "6cc60179e9ad9dcfb56ce3cef0f2bba6cb7126149e4fa5531a4bddb8a7ae6062"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage03b_v2_event_state_test/stage3b_v2_event_species_states.tsv",
+    "sha256": "d72c2f007567a778903563df823ba7c3ba429e3d8205b07bb9d52dd38d013576"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage03b_v2_event_state_test/stage3b_v2_event_arrangement_states.tsv",
+    "sha256": "f56cf466d460897e5550a3b8a22e667ead6e1693d35eb688ef907de54561f6be"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage03b_v2_event_state_test/stage3b_v2_permutation_null.tsv",
+    "sha256": "555a88e1fb839b3144a7fbdd60b3fdf4ffb7aaf88c54dae6ac4f51b55d012cf0"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage03b_v2_event_state_test/stage3b_v2_event_results.tsv",
+    "sha256": "3d6e5e3dcfadecab1dfe1ac0530f090ac18d5bf39dfea7d845f89cfac82df9a1"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage03b_v2_event_state_test/stage3b_v1_vs_v2_predictions.tsv",
+    "sha256": "a41cfbef7e048a523c13e47bdaacac0ec88ac5828406213902464431a4d085bb"
+  },
+  {
+    "path": "data/neoaves_chr4/processed/stage03b_v2_event_state_test/stage3b_v2_sensitivity.tsv",
+    "sha256": "a2d5d9d1e3292542bc93c937c69cc71e80168ced64bfcf19525651bf879af567"
+  },
+  {
+    "path": "empirical/neoaves_chr4/scripts/04c_make_figures.R",
+    "sha256": "40248a0103379204327b0f3f6f60c60a6ee0eae07a791920baf18adadba05ccc"
+  },
+  {
+    "path": "empirical/neoaves_chr4/scripts/03b_test_structural_predictions.py",
+    "sha256": "f497e414210d3486b3d8affa36b56b1dd8139736258bd2dba9d3d8fbe3731faa"
+  },
+  {
+    "path": "empirical/neoaves_chr4/scripts/04b_inference_treatments.py",
+    "sha256": "70799d1158cee3cd66bb35346029276659a79eb0fbd73c75e8bc2b173d3b4294"
+  },
+  {
+    "path": "empirical/neoaves_chr4/scripts/04b_make_figures.R",
+    "sha256": "206acea4a9a427a54b79b8f1e6c8ff1c5e53f3060064e71f067c336394027358"
+  },
+  {
+    "path": "empirical/neoaves_chr4/scripts/027b_compare_denovo_to_published.py",
+    "sha256": "0511ac7c3bfdce8cd585e12b8ba966b46ccfc1036914d2909a398634a6aa73b3"
+  },
+  {
+    "path": "empirical/neoaves_chr4/scripts/03b_build_structural_predictions.py",
+    "sha256": "d17d5b09e2d046617b403702926d8ac8762226a435c75c6b795edc6ba0c710c1"
+  },
+  {
+    "path": "empirical/neoaves_chr4/scripts/03a_breakpoint_enrichment.py",
+    "sha256": "7dfb41d1344c2e47ea87a680ebd0985c4b572c90d3f45704df4fa296a2f7a33b"
+  },
+  {
+    "path": "empirical/neoaves_chr4/scripts/04a_make_figures.R",
+    "sha256": "3713cdaecdd59047488e1d4433c9fe135efccdb204bc29369a5fcb712652ebf5"
+  },
+  {
+    "path": "empirical/neoaves_chr4/scripts/03b_v2_build_event_states.py",
+    "sha256": "ab96216da45d02782c3e813eca150697e5a6f19023c5fc70c76d60d4f122d713"
+  },
+  {
+    "path": "empirical/neoaves_chr4/scripts/04c_independent_validation.py",
+    "sha256": "570bfc0b6a0a3292507616f00c7c858fe5ad830177ad60cc0ea708bcf8410a98"
+  },
+  {
+    "path": "empirical/neoaves_chr4/scripts/026_refine_structural_regions.py",
+    "sha256": "99f65042d6c21d6a07df0f9a9d9243bcd41a3bf25e1325448d2a0076afe75210"
+  },
+  {
+    "path": "empirical/neoaves_chr4/scripts/027_denovo_structural_breakpoints.py",
+    "sha256": "0db1326be5f2137d70189b472da5abdb8f4eeb6e09653204b689be9fee05fe5f"
+  },
+  {
+    "path": "empirical/neoaves_chr4/scripts/04a_structural_topology_support.py",
+    "sha256": "5ee15dbac37fcf55a19c9a3a6408fac09a35754442040ce0063582ba81479ca5"
+  },
+  {
+    "path": "empirical/neoaves_chr4/scripts/03b_v2_test_event_states.py",
+    "sha256": "7d8c83a9f2b5cbe29418240b08f535b9ed4d6ec3ff3ffc4f8a1b8f155f994297"
+  },
+  {
+    "path": "empirical/neoaves_chr4/scripts/025_normalize_arrangement_states.py",
+    "sha256": "9497297b2bff770d10b60fc9b9ffff87234c047108af90c621981771dd442f06"
+  },
+  {
+    "path": "empirical/neoaves_chr4/scripts/02_build_structural_states.py",
+    "sha256": "c46fedc914dc287cc44090974db4037d1935e7232dfaa31de8ff8f4c720cd979"
+  },
+  {
+    "path": "empirical/neoaves_chr4/scripts/01_build_locus_table.py",
+    "sha256": "46915bbdcf13d082fbafeaa715257e8a863ae38fea017888df794fdcb8902350"
+  },
+  {
+    "path": "empirical/neoaves_chr4/tests/test_stage4b.py",
+    "sha256": "9d0221dd777421e9577e19f685b6d1d980c134ff8a5e352a38be081fc6fcc2d1"
+  },
+  {
+    "path": "empirical/neoaves_chr4/tests/test_stage4c.py",
+    "sha256": "021ee060766bb383ca3f38c4cd9205c7aeab365f93f4ccf13cbc54f1f18ad18e"
+  },
+  {
+    "path": "empirical/neoaves_chr4/tests/README.md",
+    "sha256": "02b4a5199ba5c73fcb6e3529fcf3e7f6624254c00d6339b8cd80ca73b56bf813"
+  },
+  {
+    "path": "empirical/neoaves_chr4/tests/test_stage4a.py",
+    "sha256": "1e19479510669e8ee750ee94e50890f593799a6c1cd8120664aecb24be67945d"
+  }
+]

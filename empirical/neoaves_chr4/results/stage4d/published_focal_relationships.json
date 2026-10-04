@@ -1,0 +1,34 @@
+{
+  "source": "empirical/neoaves_chr4/external/stiller2024/63K.tre",
+  "sha256": "d3b4a9f202bb5337338f6814ea4b64757d5ffa6547b8ff9e50faaa9260ed076f",
+  "kind": "published reference, not re-inference",
+  "focal_relationships": [
+    {
+      "clade": "Columbea",
+      "state": "q2",
+      "branch_support": "1",
+      "n_C1": 9,
+      "n_C2": 3,
+      "n_S": 314,
+      "n_O": 37
+    },
+    {
+      "clade": "N61",
+      "state": "q1",
+      "branch_support": "1",
+      "n_C1": 13,
+      "n_C2": 9,
+      "n_S": 301,
+      "n_O": 40
+    },
+    {
+      "clade": "N62",
+      "state": "q1",
+      "branch_support": "1",
+      "n_C1": 5,
+      "n_C2": 4,
+      "n_S": 13,
+      "n_O": 341
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "status": "reproduction_incomplete",
+  "analysis_freeze_sha256": null,
+  "novel_treatments_run": false,
+  "interpretation_categories": [],
+  "tests": {
+    "passed": 32,
+    "failed": 0
+  },
+  "checkpoints": {
+    "FULL363_ORIGINAL_REPRO": "running; no completed tree",
+    "FULL363_RECOLLAPSED_VALIDATION": "pending",
+    "FIGURE4": "source aggregation complete; de novo verification pending",
+    "J48_ALL": "pending; earlier attempt incomplete",
+    "J48_PNAS_OUTLIER_EXCLUDED": "pending"
+  },
+  "archived_log_vs_supplied_tree": {
+    "rf": 0,
+    "normalized_rf": 0,
+    "is_fresh_inference": false
+  },
+  "artifacts": {
+    "empirical/neoaves_chr4/results/stage4d_locus_manifest.tsv": "8290505033761276c458399ac2821773a77cb13a39d9679fe53c00f1605a23ac",
+    "empirical/neoaves_chr4/results/stage4d_download_manifest.tsv": "bda82e24dc935ac1503f4f953c26e986b8bbfd868f15caae52d78f6e222f2372",
+    "empirical/neoaves_chr4/results/stage4d_figure4_reproduction.tsv": "4761e50886d6d91176d77f6e9e7770ac22498b8da194aa67a0c2b42afbd460f7",
+    "empirical/neoaves_chr4/results/stage4d_analysis_plan.md": "535c2058e4ba149c49bfc237404f74aed0d4760982e2b4bc599ea4511fc4f8e5",
+    "empirical/neoaves_chr4/results/stage4d_report.md": "26d5b6238370362ba42b39d4c7ed601e4fee1c02ab6d048aa009f4fc26c0b167",
+    "empirical/neoaves_chr4/results/stage4d/figure4_original_grid.tsv": "8ca4b03e577cac4381b26948f8edc55f2b5e4a3bda3ae46dee53396b13861901",
+    "empirical/neoaves_chr4/results/stage4d/input_audit.json": "fc6057d6d8046abf863d5f6d8ef2826dd91ee351cdf58064f10fdd40819309b1",
+    "empirical/neoaves_chr4/results/stage4d/figure4_reproduction_audit.json": "d5a144b00422ed99e492fc07b65e60c5282842e5b584d45801807110232086f9",
+    "empirical/neoaves_chr4/results/stage4d/frozen_prior_inventory.json": "d5a15e6a97f78019c1eeaff40da7a2c2a1e741cc6244ef0ffadeefae2091e3e5",
+    "empirical/neoaves_chr4/scripts/04d_run_checkpoint.py": "d389356630bf30872d63af071e6a34c2042f3ea8882bb853f3b03163453fdfb8",
+    "empirical/neoaves_chr4/tests/test_stage4d.py": "adf82790175ffb265ca95c0a441499d1d2c3d888d31cb337d39e98f42dae0948"
+  },
+  "attempt": "empirical/neoaves_chr4/results/stage4d/attempts/full363_resume_01",
+  "manuscript_claim": "No full-tree treatment claim until reproduction gates pass."
+}

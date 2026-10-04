@@ -1,0 +1,17 @@
+{
+  "validation": "Existing inputs inspected; not regenerated",
+  "counts": {
+    "J48_ALL": 62945,
+    "J48_PNAS_OUTLIER_EXCLUDED": 61524,
+    "taxa": 48
+  },
+  "source_sha256": {
+    "J48_ALL.tre": "cb5195cc449582084a0afc1ce11c87cc8eaa176863f4682f78ad4a29eb22dc14",
+    "J48_PNAS_OUTLIER_EXCLUDED.tre": "6c60dce91603d46f5d0af75ec46093065cb605bcc8a8ce26e112d420482953b8",
+    "jarvis48_taxa.tsv": "5bd5c663c65c5b1bad797f2d337e97a29b6400184c32a2d1e0892a012da37f64",
+    "named_recollapsed.tre": "c0a0ec9b432405da548a6cdb37460ccf1c0d9d1b5a5211d74d5f397c70e0f943"
+  },
+  "trees_omitted_fewer_than_four_tips": 485,
+  "usable_pnas_excluded": 1421,
+  "caveat": "Input construction was performed earlier; full-tree validation of re-collapsed named-tree fallback remains pending."
+}

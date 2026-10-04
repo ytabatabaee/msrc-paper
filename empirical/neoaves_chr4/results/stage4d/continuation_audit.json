@@ -1,0 +1,15 @@
+{
+  "prior_suite": {
+    "passed": 29,
+    "failed": 1
+  },
+  "stage4b_manifest_mismatches": [
+    {
+      "path": "empirical/neoaves_chr4/results/stage4b_report.md",
+      "expected": "0ebdd6697c7754ed53cbaeb9609f4d0c0065e03228a4217e696267f5e04ea03f",
+      "actual": "b23c4ce310daccda0a83b1ad1789cf06ff2dd1d1e7f030e7c96577ca5a241dad",
+      "head_sha256": "0ebdd6697c7754ed53cbaeb9609f4d0c0065e03228a4217e696267f5e04ea03f"
+    }
+  ],
+  "action": "Preserved all frozen files; no novel treatments or freeze generated."
+}

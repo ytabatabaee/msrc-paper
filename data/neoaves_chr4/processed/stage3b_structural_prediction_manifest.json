@@ -1,0 +1,84 @@
+{
+  "all_frozen_prediction_sensitivity_sha256": "8264369a94df2bf0034e7a0c305d13a929a3bdeca56a5690c4e0e14776d1c4ab",
+  "anchor_size": 100000,
+  "anti_circularity": {
+    "forbidden_inputs": [
+      "canonical_arrangement_states.tsv",
+      "canonical_structural_regions.tsv",
+      "locus_table_chr4.tsv",
+      "normalized_arrangement_states.tsv",
+      "outlier-regions-by-maf2synteny-summary.tsv",
+      "outlier-regions-by-maf2synteny.tsv",
+      "structural_intervals.tsv"
+    ],
+    "locus_table_read": false,
+    "old_outlier_derived_arrangement_state_files_read": false
+  },
+  "frozen_topology_predictions_sha256": "d453b22b60186d9ec9fde44f4013e76caf9b48c703bbfbac564512ef8b16a578",
+  "generalized_score_formula": "G1/G2/G3 as predeclared pairwise role structural similarity contrasts",
+  "phase": "Stage 3B Phase A structural-only prediction freeze",
+  "phase_a_script_sha256": "8e49c7924af9b35968f328180b177a83916d40c0284d4e438f4c2e651b00a149",
+  "role_mapping": {
+    "Columbea": {
+      "C1": [
+        "Dove",
+        "Sandgrouse"
+      ],
+      "C2": [
+        "Flamingo"
+      ],
+      "O": [],
+      "S": [
+        "Turaco",
+        "Cuckoo",
+        "Stork"
+      ]
+    },
+    "N61": {
+      "C1": [
+        "Turaco",
+        "Cuckoo"
+      ],
+      "C2": [
+        "Dove",
+        "Sandgrouse"
+      ],
+      "O": [
+        "Flamingo"
+      ],
+      "S": [
+        "Stork"
+      ]
+    },
+    "N62": {
+      "C1": [
+        "Dove"
+      ],
+      "C2": [
+        "Sandgrouse"
+      ],
+      "O": [
+        "Flamingo",
+        "Stork"
+      ],
+      "S": [
+        "Turaco",
+        "Cuckoo"
+      ]
+    }
+  },
+  "sensitivity_anchor_sizes": [
+    50000,
+    100000,
+    200000
+  ],
+  "stage27c_manifest_checksum": "c7794fbf3a35c3716edb87cb35d1217e484affcea03e31086a1230023983f2b4",
+  "state_equivalence_rule": "complete-linkage all-pairs exact normalized anchor order and corrected reference-relative orientation on informative anchors",
+  "structural_breakpoint_set": "primary",
+  "structural_input_checksums": {
+    "empirical/neoaves_chr4/results/denovo_breakpoint_sets.tsv": "f716d3d00d8e68b4956bac18cf98c7d697acd2eb4054ea6fdb63b6e2865f4031",
+    "empirical/neoaves_chr4/results/denovo_chr4_blocks.tsv": "17f46d7d8a2316f93ff75f48eba2310f235ae002e1ecf9c50530a28efd97886d",
+    "empirical/neoaves_chr4/results/denovo_consensus_structural_breakpoints.tsv": "fae21aa312b3a8b7771338a69167dc39995fe4b007fb51e5ba1bfa50173d0182",
+    "empirical/neoaves_chr4/results/denovo_synteny_runs.tsv": "c3b82b69e88361172c3e265ede20a934168b7f42b6a8562ff793ef6756f2ebdc"
+  }
+}

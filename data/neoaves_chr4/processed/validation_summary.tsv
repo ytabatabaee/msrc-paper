@@ -1,0 +1,11 @@
+metric	value
+chr4_loci_Columbea	6096
+chr4_loci_N61	6132
+chr4_loci_N62	5881
+undefined_qqs_dropped	632
+missing_topology_rows_dropped	0
+max_abs_q_sum_minus_1	2.22044604925e-16
+outside_0_1_values	0
+duplicate_gene_clade_rows	0
+coordinate_min_start	110000
+coordinate_max_end	90170000

@@ -1,0 +1,43 @@
+{
+  "stage": "4C",
+  "git_commit": "dcfb96f0232aeecfdbbdf7c21f13035f0a4e491b",
+  "date_utc": "2026-09-18T19:50:45.525781+00:00",
+  "stage4b_manifest_checksum": "d4a96a6777a0f4bc204cfe8678543664303c41ac9e3db9ab25033fe17e76d54e",
+  "seed": 431729,
+  "reference_bootstrap_replicates": 10000,
+  "reference_selection_rule": "first available A-to-F hierarchy item, prioritizing chr4 exclusion; selected non-chr4 genome-wide focal QQS summaries without inspecting T0-T3 agreement",
+  "primary_reference_id": "nonchr4_genomewide_QQS_v1",
+  "chr4_excluded": true,
+  "reference_estimand": "frequency of dominant q1/q2/q3 state per locus",
+  "uncertainty_unit": "chromosome group; dense loci are not independently bootstrapped",
+  "full_species_tree_inference": {
+    "performed": false,
+    "reason": "per-locus multi-taxon Newick trees and fixed empirical estimator configuration absent"
+  },
+  "inputs": {
+    "data/neoaves_chr4/raw/genetreesupport/63K_trees.names_header.txt.xz": "83aa1159e352d69f649e15058a341624b2057e9ca1f8af29fa20dbcc19b466ab",
+    "data/neoaves_chr4/raw/genetreesupport/clade-rec.stat.xz": "6b3f0cacf3fbbbbb42998702fbbdc4bcb4a5db73c70ca241567f3739316eb5d3",
+    "data/neoaves_chr4/raw/genetreesupport/README.md": "89a5166ed9abb1e4cb5c232f0f3a0ac049b8a696466c846c21000bb7141f937a",
+    "data/neoaves_chr4/raw/genetreesupport/clade-analysis/README.md": "9036e7d5a462b9b87f4a4a69ab828cdbbf6cdf7338cadd6a22a8ab2e170bd915",
+    "data/neoaves_chr4/raw/genetreesupport/draw-movingaverage.r": "3bbd93882ccb7757e209f4c98b5216e17dd9eb5ffd30a09a36ddf6d37b6737c1",
+    "empirical/neoaves_chr4/results/stage4b_inference_treatments.tsv": "8f84bcf08a1f805b06a4541d2c8ddc92020efe558b9402fe70a607a16750e933",
+    "empirical/neoaves_chr4/results/stage4b_manifest.json": "d4a96a6777a0f4bc204cfe8678543664303c41ac9e3db9ab25033fe17e76d54e",
+    "empirical/neoaves_chr4/results/stage3b_v2_quartet_role_mapping.tsv": "767c27e66ddb98d2f006f8252569492557738ef3797eaffbf49db71f9cbd2bc1"
+  },
+  "outputs": {
+    "empirical/neoaves_chr4/results/stage4c_independent_validation.tsv": "631997d55cf81b02a2e0786ef58ec5c1aace59a23ed15d78ab1f19917ef52010",
+    "empirical/neoaves_chr4/results/stage4c_control_chromosomes.tsv": "c61c43ca559619ebe863e4beb26a3f270552967b12ed0a428b9cd0a9ee67692e",
+    "empirical/neoaves_chr4/results/stage4c_chromosome_jackknife.tsv": "28184d0355a6e5de8c91a811245f4fd8e6713325ecc561135f1b1233aa4eae70",
+    "empirical/neoaves_chr4/results/stage4c_reference_candidates.tsv": "17414a708a0e61d420bf3f925ef57aad7b70e3d7701faec84787ee76b9691570",
+    "empirical/neoaves_chr4/results/stage4c_report.md": "3152f89e79eb2ecdf30744aa4564e7bfb9ae6b6373336134dcbf76d88c07fc2f",
+    "empirical/neoaves_chr4/figures/stage4c_figure_A_reference_comparison.pdf": "5f72b3b39bec935cc69a1d6e1099fafba9e779913842fc7a01976ac6b0703276",
+    "empirical/neoaves_chr4/figures/stage4c_figure_A_reference_comparison.png": "b43c491b70b6b2b54150c9dcb9185f466ea44d3558d3f18d929f4d507c65cb15",
+    "empirical/neoaves_chr4/figures/stage4c_figure_B_N61_focal.pdf": "c9b751531c56b30af4390a050450ecdf945f36dbf4cbb521527a43e669e7b162",
+    "empirical/neoaves_chr4/figures/stage4c_figure_B_N61_focal.png": "de4c6cbe3ee55fc4543384c7f96913a7f0bbbef4a30d54d89dcf4f33d7e31159",
+    "empirical/neoaves_chr4/figures/stage4c_figure_C_control_context.pdf": "56c848445ba7275aa3423428d35092277a16250d5ec30a5167fa790421165d71",
+    "empirical/neoaves_chr4/figures/stage4c_figure_C_control_context.png": "863b99ab57342b687f5b73be1670c0a9631913128a2de480ed33513d4fc60ec9",
+    "PROJECT_STATUS.md": "89174cf805c4b299effdb1197541cd6bdbe3174dacc13a58235fd8ea868c2fa8"
+  },
+  "prior_treatments_redefined": false,
+  "stage3b_eligibility_relaxed": false
+}

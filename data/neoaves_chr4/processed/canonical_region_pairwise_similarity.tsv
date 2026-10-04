@@ -1,0 +1,166 @@
+canonical_region_id	species1	species2	informative_shared_anchors	order_concordance	orientation_concordance	missing_fraction	overall_similarity	equivalent_arrangement	equivalence_reason
+CR_01	Stork	Flamingo	74	0.998519067012	0.0135135135135	0.038961038961	0.506016290263	false	discordant_order_or_orientation
+CR_01	Stork	Dove	69	0.00170502983802	1	0.103896103896	0.500852514919	false	discordant_order_or_orientation
+CR_01	Stork	Sandgrouse	71	0.998792756539	1	0.0649350649351	0.99939637827	false	discordant_order_or_orientation
+CR_01	Stork	Turaco	74	0.00148093298778	1	0.025974025974	0.500740466494	false	discordant_order_or_orientation
+CR_01	Stork	Cuckoo	69	0.998294970162	0	0.0909090909091	0.499147485081	false	discordant_order_or_orientation
+CR_01	Flamingo	Dove	69	0.00341005967604	0	0.103896103896	0.00170502983802	false	discordant_order_or_orientation
+CR_01	Flamingo	Sandgrouse	71	0.997183098592	0.0140845070423	0.0649350649351	0.505633802817	false	discordant_order_or_orientation
+CR_01	Flamingo	Turaco	73	0.00304414003044	0.013698630137	0.038961038961	0.00837138508371	false	discordant_order_or_orientation
+CR_01	Flamingo	Cuckoo	69	0.996589940324	1	0.0909090909091	0.998294970162	false	discordant_order_or_orientation
+CR_01	Dove	Sandgrouse	66	0.0004662004662	1	0.103896103896	0.500233100233	false	discordant_order_or_orientation
+CR_01	Dove	Turaco	68	1	1	0.103896103896	1	true	exact_multi_anchor_order_orientation_match
+CR_01	Dove	Cuckoo	65	0.000961538461538	0	0.103896103896	0.000480769230769	false	discordant_order_or_orientation
+CR_01	Sandgrouse	Turaco	71	0.000402414486922	1	0.0649350649351	0.500201207243	false	discordant_order_or_orientation
+CR_01	Sandgrouse	Cuckoo	66	0.999533799534	0	0.0909090909091	0.499766899767	false	discordant_order_or_orientation
+CR_01	Turaco	Cuckoo	69	0.000852514919011	0	0.0909090909091	0.000426257459506	false	discordant_order_or_orientation
+CR_02	Stork	Flamingo	4			0		false	insufficient_information
+CR_02	Stork	Dove	4			0		false	insufficient_information
+CR_02	Stork	Sandgrouse	4			0		false	insufficient_information
+CR_02	Stork	Turaco	4			0		false	insufficient_information
+CR_02	Stork	Cuckoo	4			0		false	insufficient_information
+CR_02	Flamingo	Dove	4			0		false	insufficient_information
+CR_02	Flamingo	Sandgrouse	4			0		false	insufficient_information
+CR_02	Flamingo	Turaco	4			0		false	insufficient_information
+CR_02	Flamingo	Cuckoo	4			0		false	insufficient_information
+CR_02	Dove	Sandgrouse	4			0		false	insufficient_information
+CR_02	Dove	Turaco	4			0		false	insufficient_information
+CR_02	Dove	Cuckoo	4			0		false	insufficient_information
+CR_02	Sandgrouse	Turaco	4			0		false	insufficient_information
+CR_02	Sandgrouse	Cuckoo	4			0		false	insufficient_information
+CR_02	Turaco	Cuckoo	4			0		false	insufficient_information
+CR_03	Stork	Flamingo	3			0.2		false	insufficient_information
+CR_03	Stork	Dove	3			0.2		false	insufficient_information
+CR_03	Stork	Sandgrouse	4			0.2		false	insufficient_information
+CR_03	Stork	Turaco	4			0.2		false	insufficient_information
+CR_03	Stork	Cuckoo	3			0.2		false	insufficient_information
+CR_03	Flamingo	Dove	3			0.2		false	insufficient_information
+CR_03	Flamingo	Sandgrouse	4			0		false	insufficient_information
+CR_03	Flamingo	Turaco	4			0		false	insufficient_information
+CR_03	Flamingo	Cuckoo	4			0		false	insufficient_information
+CR_03	Dove	Sandgrouse	4			0.2		false	insufficient_information
+CR_03	Dove	Turaco	4			0.2		false	insufficient_information
+CR_03	Dove	Cuckoo	3			0.2		false	insufficient_information
+CR_03	Sandgrouse	Turaco	5	0.1	1	0	0.55	false	discordant_order_or_orientation
+CR_03	Sandgrouse	Cuckoo	4			0		false	insufficient_information
+CR_03	Turaco	Cuckoo	4			0		false	insufficient_information
+CR_04	Stork	Flamingo	97	0.792525773196	0.958762886598	0.185483870968	0.875644329897	false	discordant_order_or_orientation
+CR_04	Stork	Dove	90	0.0951310861423	0.311111111111	0.193548387097	0.203121098627	false	discordant_order_or_orientation
+CR_04	Stork	Sandgrouse	93	0.605656848995	0.989247311828	0.201612903226	0.797452080411	false	discordant_order_or_orientation
+CR_04	Stork	Turaco	86	0.0470588235294	1	0.274193548387	0.523529411765	false	discordant_order_or_orientation
+CR_04	Stork	Cuckoo	91	0.999755799756	0.747252747253	0.225806451613	0.873504273504	false	discordant_order_or_orientation
+CR_04	Flamingo	Dove	85	0.154621848739	0.258823529412	0.193548387097	0.206722689076	false	discordant_order_or_orientation
+CR_04	Flamingo	Sandgrouse	92	0.515050167224	0.978260869565	0.201612903226	0.746655518395	false	discordant_order_or_orientation
+CR_04	Flamingo	Turaco	84	0.19305794607	0.988095238095	0.274193548387	0.590576592083	false	discordant_order_or_orientation
+CR_04	Flamingo	Cuckoo	89	0.795454545455	0.775280898876	0.225806451613	0.785367722165	false	discordant_order_or_orientation
+CR_04	Dove	Sandgrouse	88	0.473354231975	0.284090909091	0.201612903226	0.378722570533	false	discordant_order_or_orientation
+CR_04	Dove	Turaco	80	0.862974683544	0.275	0.274193548387	0.568987341772	false	discordant_order_or_orientation
+CR_04	Dove	Cuckoo	86	0.0913816689466	0.0813953488372	0.225806451613	0.0863885088919	false	discordant_order_or_orientation
+CR_04	Sandgrouse	Turaco	83	0.289156626506	1	0.274193548387	0.644578313253	false	discordant_order_or_orientation
+CR_04	Sandgrouse	Cuckoo	87	0.651964715317	0.770114942529	0.225806451613	0.711039828923	false	discordant_order_or_orientation
+CR_04	Turaco	Cuckoo	84	0.0450372920252	0.797619047619	0.274193548387	0.421328169822	false	discordant_order_or_orientation
+CR_05	Stork	Flamingo	52	0.681749622926	0.846153846154	0.225352112676	0.76395173454	false	discordant_order_or_orientation
+CR_05	Stork	Dove	48	0.167553191489	0.625	0.253521126761	0.396276595745	false	discordant_order_or_orientation
+CR_05	Stork	Sandgrouse	49	0.535714285714	0.959183673469	0.253521126761	0.747448979592	false	discordant_order_or_orientation
+CR_05	Stork	Turaco	43	0.246954595792	1	0.380281690141	0.623477297896	false	discordant_order_or_orientation
+CR_05	Stork	Cuckoo	50	0.967346938776	0.46	0.225352112676	0.713673469388	false	discordant_order_or_orientation
+CR_05	Flamingo	Dove	49	0.291666666667	0.448979591837	0.253521126761	0.370323129252	false	discordant_order_or_orientation
+CR_05	Flamingo	Sandgrouse	49	0.68962585034	0.918367346939	0.253521126761	0.803996598639	false	discordant_order_or_orientation
+CR_05	Flamingo	Turaco	43	0.204872646733	0.883720930233	0.380281690141	0.544296788483	false	discordant_order_or_orientation
+CR_05	Flamingo	Cuckoo	50	0.716734693878	0.48	0.225352112676	0.598367346939	false	discordant_order_or_orientation
+CR_05	Dove	Sandgrouse	47	0.479185938945	0.553191489362	0.253521126761	0.516188714154	false	discordant_order_or_orientation
+CR_05	Dove	Turaco	40	0.7	0.575	0.380281690141	0.6375	false	discordant_order_or_orientation
+CR_05	Dove	Cuckoo	48	0.204787234043	0.1875	0.253521126761	0.196143617021	false	discordant_order_or_orientation
+CR_05	Sandgrouse	Turaco	40	0.234615384615	0.95	0.380281690141	0.592307692308	false	discordant_order_or_orientation
+CR_05	Sandgrouse	Cuckoo	47	0.597594819611	0.531914893617	0.253521126761	0.564754856614	false	discordant_order_or_orientation
+CR_05	Turaco	Cuckoo	43	0.267995570321	0.511627906977	0.380281690141	0.389811738649	false	discordant_order_or_orientation
+CR_06	Stork	Flamingo	9	1	0.777777777778	0.4	0.888888888889	false	discordant_order_or_orientation
+CR_06	Stork	Dove	6	0.0666666666667	0.166666666667	0.466666666667	0.116666666667	false	discordant_order_or_orientation
+CR_06	Stork	Sandgrouse	8	0.785714285714	1	0.4	0.892857142857	false	discordant_order_or_orientation
+CR_06	Stork	Turaco	8	0	1	0.4	0.5	false	discordant_order_or_orientation
+CR_06	Stork	Cuckoo	7	0.904761904762	1	0.466666666667	0.952380952381	false	discordant_order_or_orientation
+CR_06	Flamingo	Dove	6	0.0666666666667	0	0.466666666667	0.0333333333333	false	discordant_order_or_orientation
+CR_06	Flamingo	Sandgrouse	8	0.785714285714	0.875	0.333333333333	0.830357142857	false	discordant_order_or_orientation
+CR_06	Flamingo	Turaco	8	0	0.75	0.333333333333	0.375	false	discordant_order_or_orientation
+CR_06	Flamingo	Cuckoo	7	0.904761904762	0.714285714286	0.466666666667	0.809523809524	false	discordant_order_or_orientation
+CR_06	Dove	Sandgrouse	7	0.285714285714	0.285714285714	0.466666666667	0.285714285714	false	discordant_order_or_orientation
+CR_06	Dove	Turaco	6	0.933333333333	0.333333333333	0.466666666667	0.633333333333	false	discordant_order_or_orientation
+CR_06	Dove	Cuckoo	6	0.0666666666667	0.333333333333	0.466666666667	0.2	false	discordant_order_or_orientation
+CR_06	Sandgrouse	Turaco	8	0.214285714286	1	0.333333333333	0.607142857143	false	discordant_order_or_orientation
+CR_06	Sandgrouse	Cuckoo	7	0.904761904762	1	0.466666666667	0.952380952381	false	discordant_order_or_orientation
+CR_06	Turaco	Cuckoo	7	0.238095238095	1	0.466666666667	0.619047619048	false	discordant_order_or_orientation
+CR_07	Stork	Flamingo	48	0.677304964539	0.875	0.193548387097	0.77615248227	false	discordant_order_or_orientation
+CR_07	Stork	Dove	42	0.127758420441	0.642857142857	0.209677419355	0.385307781649	false	discordant_order_or_orientation
+CR_07	Stork	Sandgrouse	45	0.506060606061	0.955555555556	0.225806451613	0.730808080808	false	discordant_order_or_orientation
+CR_07	Stork	Turaco	39	0.290148448043	1	0.354838709677	0.645074224022	false	discordant_order_or_orientation
+CR_07	Stork	Cuckoo	43	0.995570321152	0.441860465116	0.274193548387	0.718715393134	false	discordant_order_or_orientation
+CR_07	Flamingo	Dove	42	0.304297328688	0.52380952381	0.209677419355	0.414053426249	false	discordant_order_or_orientation
+CR_07	Flamingo	Sandgrouse	42	0.707317073171	0.97619047619	0.225806451613	0.841753774681	false	discordant_order_or_orientation
+CR_07	Flamingo	Turaco	38	0.210526315789	0.894736842105	0.354838709677	0.552631578947	false	discordant_order_or_orientation
+CR_07	Flamingo	Cuckoo	42	0.698025551684	0.47619047619	0.274193548387	0.587108013937	false	discordant_order_or_orientation
+CR_07	Dove	Sandgrouse	39	0.518218623482	0.564102564103	0.225806451613	0.541160593792	false	discordant_order_or_orientation
+CR_07	Dove	Turaco	34	0.705882352941	0.617647058824	0.354838709677	0.661764705882	false	discordant_order_or_orientation
+CR_07	Dove	Cuckoo	37	0.145645645646	0.189189189189	0.274193548387	0.167417417417	false	discordant_order_or_orientation
+CR_07	Sandgrouse	Turaco	34	0.22816399287	0.970588235294	0.354838709677	0.599376114082	false	discordant_order_or_orientation
+CR_07	Sandgrouse	Cuckoo	39	0.550607287449	0.487179487179	0.274193548387	0.518893387314	false	discordant_order_or_orientation
+CR_07	Turaco	Cuckoo	36	0.292063492063	0.5	0.354838709677	0.396031746032	false	discordant_order_or_orientation
+CR_08	Stork	Flamingo	40	0.676923076923	0.9	0.0697674418605	0.788461538462	false	discordant_order_or_orientation
+CR_08	Stork	Dove	35	0.147899159664	0.685714285714	0.116279069767	0.416806722689	false	discordant_order_or_orientation
+CR_08	Stork	Sandgrouse	35	0.536134453782	0.942857142857	0.186046511628	0.739495798319	false	discordant_order_or_orientation
+CR_08	Stork	Turaco	32	0.421370967742	1	0.255813953488	0.710685483871	false	discordant_order_or_orientation
+CR_08	Stork	Cuckoo	39	0.966261808367	0.333333333333	0.093023255814	0.64979757085	false	discordant_order_or_orientation
+CR_08	Flamingo	Dove	35	0.371428571429	0.628571428571	0.116279069767	0.5	false	discordant_order_or_orientation
+CR_08	Flamingo	Sandgrouse	35	0.957983193277	1	0.186046511628	0.978991596639	false	discordant_order_or_orientation
+CR_08	Flamingo	Turaco	32	0.151209677419	0.9375	0.255813953488	0.54435483871	false	discordant_order_or_orientation
+CR_08	Flamingo	Cuckoo	39	0.712550607287	0.435897435897	0.093023255814	0.574224021592	false	discordant_order_or_orientation
+CR_08	Dove	Sandgrouse	33	0.392045454545	0.666666666667	0.186046511628	0.529356060606	false	discordant_order_or_orientation
+CR_08	Dove	Turaco	29	0.593596059113	0.689655172414	0.255813953488	0.641625615764	false	discordant_order_or_orientation
+CR_08	Dove	Cuckoo	35	0.146218487395	0.142857142857	0.116279069767	0.144537815126	false	discordant_order_or_orientation
+CR_08	Sandgrouse	Turaco	29	0.0886699507389	0.931034482759	0.255813953488	0.509852216749	false	discordant_order_or_orientation
+CR_08	Sandgrouse	Cuckoo	34	0.586452762923	0.382352941176	0.186046511628	0.48440285205	false	discordant_order_or_orientation
+CR_08	Turaco	Cuckoo	32	0.461693548387	0.34375	0.255813953488	0.402721774194	false	discordant_order_or_orientation
+CR_09	Stork	Flamingo	3			0.4		false	insufficient_information
+CR_09	Stork	Dove	3			0.4		false	insufficient_information
+CR_09	Stork	Sandgrouse	3			0.4		false	insufficient_information
+CR_09	Stork	Turaco	3			0.4		false	insufficient_information
+CR_09	Stork	Cuckoo	3			0.4		false	insufficient_information
+CR_09	Flamingo	Dove	3			0.4		false	insufficient_information
+CR_09	Flamingo	Sandgrouse	3			0.4		false	insufficient_information
+CR_09	Flamingo	Turaco	3			0.4		false	insufficient_information
+CR_09	Flamingo	Cuckoo	3			0.4		false	insufficient_information
+CR_09	Dove	Sandgrouse	3			0.4		false	insufficient_information
+CR_09	Dove	Turaco	3			0.4		false	insufficient_information
+CR_09	Dove	Cuckoo	3			0.4		false	insufficient_information
+CR_09	Sandgrouse	Turaco	3			0.4		false	insufficient_information
+CR_09	Sandgrouse	Cuckoo	3			0.4		false	insufficient_information
+CR_09	Turaco	Cuckoo	3			0.4		false	insufficient_information
+CR_10	Stork	Flamingo	7	1	1	0.125	1	true	exact_multi_anchor_order_orientation_match
+CR_10	Stork	Dove	6	0.6	0.333333333333	0	0.466666666667	false	discordant_order_or_orientation
+CR_10	Stork	Sandgrouse	7	0	1	0.125	0.5	false	discordant_order_or_orientation
+CR_10	Stork	Turaco	8	1	1	0	1	true	exact_multi_anchor_order_orientation_match
+CR_10	Stork	Cuckoo	8	1	1	0	1	true	exact_multi_anchor_order_orientation_match
+CR_10	Flamingo	Dove	6	0.6	0.333333333333	0.125	0.466666666667	false	discordant_order_or_orientation
+CR_10	Flamingo	Sandgrouse	7	0	1	0.125	0.5	false	discordant_order_or_orientation
+CR_10	Flamingo	Turaco	7	1	1	0.125	1	true	exact_multi_anchor_order_orientation_match
+CR_10	Flamingo	Cuckoo	7	1	1	0.125	1	true	exact_multi_anchor_order_orientation_match
+CR_10	Dove	Sandgrouse	6	0.4	0.333333333333	0.125	0.366666666667	false	discordant_order_or_orientation
+CR_10	Dove	Turaco	6	0.6	0.333333333333	0	0.466666666667	false	discordant_order_or_orientation
+CR_10	Dove	Cuckoo	6	0.6	0.333333333333	0	0.466666666667	false	discordant_order_or_orientation
+CR_10	Sandgrouse	Turaco	7	0	1	0.125	0.5	false	discordant_order_or_orientation
+CR_10	Sandgrouse	Cuckoo	7	0	1	0.125	0.5	false	discordant_order_or_orientation
+CR_10	Turaco	Cuckoo	8	1	1	0	1	true	exact_multi_anchor_order_orientation_match
+CR_11	Stork	Flamingo	53	1	1	0.0185185185185	1	true	exact_multi_anchor_order_orientation_match
+CR_11	Stork	Dove	46	0.000966183574879	0	0.12962962963	0.00048309178744	false	discordant_order_or_orientation
+CR_11	Stork	Sandgrouse	50	1	1	0.0740740740741	1	true	exact_multi_anchor_order_orientation_match
+CR_11	Stork	Turaco	52	0.00829562594268	1	0.037037037037	0.504147812971	false	discordant_order_or_orientation
+CR_11	Stork	Cuckoo	50	1	1	0.0740740740741	1	true	exact_multi_anchor_order_orientation_match
+CR_11	Flamingo	Dove	46	0.000966183574879	0	0.12962962963	0.00048309178744	false	discordant_order_or_orientation
+CR_11	Flamingo	Sandgrouse	50	1	1	0.0740740740741	1	true	exact_multi_anchor_order_orientation_match
+CR_11	Flamingo	Turaco	52	0.00829562594268	1	0.037037037037	0.504147812971	false	discordant_order_or_orientation
+CR_11	Flamingo	Cuckoo	50	1	1	0.0740740740741	1	true	exact_multi_anchor_order_orientation_match
+CR_11	Dove	Sandgrouse	45	0.0010101010101	0	0.12962962963	0.000505050505051	false	discordant_order_or_orientation
+CR_11	Dove	Turaco	45	0.992929292929	0	0.12962962963	0.496464646465	false	discordant_order_or_orientation
+CR_11	Dove	Cuckoo	46	0.000966183574879	0	0.12962962963	0.00048309178744	false	discordant_order_or_orientation
+CR_11	Sandgrouse	Turaco	49	0.00765306122449	1	0.0740740740741	0.503826530612	false	discordant_order_or_orientation
+CR_11	Sandgrouse	Cuckoo	48	1	1	0.0740740740741	1	true	exact_multi_anchor_order_orientation_match
+CR_11	Turaco	Cuckoo	49	0.00595238095238	1	0.0740740740741	0.502976190476	false	discordant_order_or_orientation

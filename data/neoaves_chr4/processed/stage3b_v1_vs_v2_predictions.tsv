@@ -1,0 +1,49 @@
+clade	event_id	start	end	old_segment_id	old_segment_wide_prediction	new_event_specific_prediction	observed_topology	descriptive_only
+Columbea	primary_W250000_EV011	1699860	2199860	primary_SEG_001		no_unique_strict_prediction	q3	true
+N61	primary_W250000_EV011	1699860	2199860	primary_SEG_001		no_unique_strict_prediction	q2	true
+N62	primary_W250000_EV011	1699860	2199860	primary_SEG_001		no_unique_strict_prediction	q2	true
+Columbea	primary_W250000_EV001	9504880	10974030	primary_SEG_003		no_unique_strict_prediction	q2	true
+N61	primary_W250000_EV001	9504880	10974030	primary_SEG_003		no_unique_strict_prediction	q3	true
+N62	primary_W250000_EV001	9504880	10974030	primary_SEG_003		no_unique_strict_prediction	q2	true
+Columbea	primary_W250000_EV002	19760078	25213019	primary_SEG_005		no_unique_strict_prediction	q1	true
+N61	primary_W250000_EV002	19760078	25213019	primary_SEG_005	q1	no_unique_strict_prediction	q2	true
+N62	primary_W250000_EV002	19760078	25213019	primary_SEG_005	q1	no_unique_strict_prediction	q1	true
+Columbea	primary_W250000_EV012	25309087	25809087	primary_SEG_006		no_unique_strict_prediction	q1	true
+N61	primary_W250000_EV012	25309087	25809087	primary_SEG_006		no_unique_strict_prediction	q2	true
+N62	primary_W250000_EV012	25309087	25809087	primary_SEG_006		no_unique_strict_prediction	q1	true
+Columbea	primary_W250000_EV013	32984049	33484049	primary_SEG_007		no_unique_strict_prediction	q2	true
+N61	primary_W250000_EV013	32984049	33484049	primary_SEG_007	q1	no_unique_strict_prediction	q3	true
+N62	primary_W250000_EV013	32984049	33484049	primary_SEG_007	q2	no_unique_strict_prediction	q3	true
+Columbea	primary_W250000_EV003	34021640	34232794	primary_SEG_009		no_unique_strict_prediction	q1	true
+N61	primary_W250000_EV003	34021640	34232794	primary_SEG_009	q1	no_unique_strict_prediction	q2	true
+N62	primary_W250000_EV003	34021640	34232794	primary_SEG_009	q3	no_unique_strict_prediction	q1	true
+Columbea	primary_W250000_EV004	35025837	37255236	primary_SEG_011		no_unique_strict_prediction	q2	true
+N61	primary_W250000_EV004	35025837	37255236	primary_SEG_011		no_unique_strict_prediction	q2	true
+N62	primary_W250000_EV004	35025837	37255236	primary_SEG_011		no_unique_strict_prediction	q1	true
+Columbea	primary_W250000_EV005	39237022	42267292	primary_SEG_013		no_unique_strict_prediction	q1	true
+N61	primary_W250000_EV005	39237022	42267292	primary_SEG_013	q2	no_unique_strict_prediction	q1	true
+N62	primary_W250000_EV005	39237022	42267292	primary_SEG_013	q3	no_unique_strict_prediction	q1	true
+Columbea	primary_W250000_EV006	44647530	45658664	primary_SEG_015		no_unique_strict_prediction	q1	true
+N61	primary_W250000_EV006	44647530	45658664	primary_SEG_015		no_unique_strict_prediction	q2	true
+N62	primary_W250000_EV006	44647530	45658664	primary_SEG_015		no_unique_strict_prediction	q1	true
+Columbea	primary_W250000_EV014	46172770	46672770	primary_SEG_016		no_unique_strict_prediction	q1	true
+N61	primary_W250000_EV014	46172770	46672770	primary_SEG_016		no_unique_strict_prediction	q2	true
+N62	primary_W250000_EV014	46172770	46672770	primary_SEG_016		no_unique_strict_prediction	q1	true
+Columbea	primary_W250000_EV007	47143089	49159743	primary_SEG_018		no_unique_strict_prediction	q1	true
+N61	primary_W250000_EV007	47143089	49159743	primary_SEG_018		no_unique_strict_prediction	q2	true
+N62	primary_W250000_EV007	47143089	49159743	primary_SEG_018		no_unique_strict_prediction	q1	true
+Columbea	primary_W250000_EV015	49374080	49874080	primary_SEG_019		no_unique_strict_prediction	q1	true
+N61	primary_W250000_EV015	49374080	49874080	primary_SEG_019	q1	no_unique_strict_prediction	q2	true
+N62	primary_W250000_EV015	49374080	49874080	primary_SEG_019		no_unique_strict_prediction	q1	true
+Columbea	primary_W250000_EV008	50410378	50989362	primary_SEG_021		no_unique_strict_prediction	q1	true
+N61	primary_W250000_EV008	50410378	50989362	primary_SEG_021		no_unique_strict_prediction	q2	true
+N62	primary_W250000_EV008	50410378	50989362	primary_SEG_021		no_unique_strict_prediction	q1	true
+Columbea	primary_W250000_EV009	51789124	57203613	primary_SEG_023		no_unique_strict_prediction	q1	true
+N61	primary_W250000_EV009	51789124	57203613	primary_SEG_023	q1	no_unique_strict_prediction	q2	true
+N62	primary_W250000_EV009	51789124	57203613	primary_SEG_023	q2	no_unique_strict_prediction	q1	true
+Columbea	primary_W250000_EV010	58171516	59982754	primary_SEG_025		no_unique_strict_prediction	q1	true
+N61	primary_W250000_EV010	58171516	59982754	primary_SEG_025		no_unique_strict_prediction	q1	true
+N62	primary_W250000_EV010	58171516	59982754	primary_SEG_025		no_unique_strict_prediction	q1	true
+Columbea	primary_W250000_EV016	60785423	61285423	primary_SEG_026		no_unique_strict_prediction	q3	true
+N61	primary_W250000_EV016	60785423	61285423	primary_SEG_026		no_unique_strict_prediction	q1	true
+N62	primary_W250000_EV016	60785423	61285423	primary_SEG_026		no_unique_strict_prediction	q1	true

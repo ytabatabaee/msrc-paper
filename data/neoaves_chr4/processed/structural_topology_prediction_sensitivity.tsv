@@ -1,0 +1,10 @@
+structural_set	clade	comparable_segments	fraction_discrete_predictions_unchanged	fraction_generalized_predictions_unchanged	strict_predictions_stable_all_anchor_sizes	generalized_predictions_stable_all_anchor_sizes
+inclusive	Columbea	44	1	1	44	44
+inclusive	N61	44	0.977272727273	0.454545454545	43	20
+inclusive	N62	44	1	0.477272727273	44	21
+primary	Columbea	27	1	1	27	27
+primary	N61	27	1	0.37037037037	27	10
+primary	N62	27	1	0.407407407407	27	11
+stringent	Columbea	17	1	1	17	17
+stringent	N61	17	1	0.352941176471	17	6
+stringent	N62	17	1	0.411764705882	17	7
