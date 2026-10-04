@@ -12,15 +12,15 @@ The source is an independent experimental crossing study. It estimated recombina
 
 ## Data availability outcome
 
-A reproducible marker-level table containing both physical positions and genetic distances was not recovered during this audit. Therefore this extension uses a coarse published regional-summary track rather than a reconstructed marker-level recombination map. No figure digitization or interpolation was performed.
+A reproducible marker-level table containing both physical positions and genetic distances was not recovered during this audit. Therefore this extension uses a schematic published regional-summary track rather than a reconstructed marker-level recombination map. No figure digitization or interpolation was performed.
 
 ## Coordinate system
 
-The plotted recombination regions are aligned to the frozen MSRC interval `2L:20524058-42165532` in the same AgamP4-style coordinate system used by Stage 2R-4R. No coordinate conversion was attempted because no marker-level source table was recovered.
+The 2La interval itself is aligned to the frozen MSRC interval `2L:20524058-42165532` in the same AgamP4-style coordinate system used by Stage 2R-4R. No coordinate conversion was attempted because no marker-level source table was recovered.
 
 ## Recombination pattern
 
-Published regional estimates report approximately `~2.0 cM/Mb` in `2L+a/2L+a` homokaryotypes, `<0.5 cM/Mb` inside 2La in `2La/+a` heterokaryotypes, and `<1.0 cM/Mb` in heterokaryotype flanking regions.
+Published regional estimates report approximately `~2.0 cM/Mb` in `2L+a/2L+a` homokaryotypes, `<0.5 cM/Mb` inside 2La in `2La/+a` heterokaryotypes, and `<1.0 cM/Mb` at flanking regions/markers in heterokaryotypes. Because marker-level physical coordinates were unavailable, the flanking estimates are shown schematically near the breakpoints and are not assigned genomic spans.
 
 ## Relationship to Stage 2R genealogy statistics
 
@@ -28,6 +28,7 @@ The integrated figure aligns this independent recombination-suppression evidence
 
 ## Limitations
 
-- The recombination panel is a published regional-summary track, not a marker-level recombination map.
+- The recombination panel is a schematic published regional-summary track, not a marker-level recombination map.
+- The `<1.0 cM/Mb` flanking estimates are not drawn as chromosome-wide flanking intervals because the measured marker spans were not recovered.
 - The recombination crossing experiment and the Fontaine/MalariaGEN genealogy analysis use different samples and study designs.
 - No LD-based recombination estimator was run on the 72 Fontaine samples.

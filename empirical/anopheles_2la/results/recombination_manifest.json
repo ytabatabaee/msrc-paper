@@ -8,29 +8,30 @@
   "analysis": "Anopheles 2La recombination-suppression validation",
   "analysis_date": "2026-10-04",
   "conversion_method": "none; no marker-level coordinate conversion performed",
-  "coordinate_assembly": "published marker-level coordinates unavailable; regional values aligned to frozen MSRC interval only",
+  "coordinate_assembly": "published marker-level coordinates unavailable; only the 2La interval is aligned to frozen MSRC coordinates; flanking estimates have no assigned physical span",
   "current_analysis_coordinate_assembly": "AgamP4-style coordinates used by Stage 2R-4R",
   "data_file_hashes": {
-    "data/anopheles_2la/processed/2la_recombination_summary.tsv": "8139970003b2865da49e0e8091a42a3b95920d8512ecc4289351a641344e691b",
-    "empirical/anopheles_2la/results/recombination_summary.tsv": "0ac7800e6b558dd8d2bd7ca65ac2475c3793cc04f28ae7078aabc595535157ee"
+    "data/anopheles_2la/processed/2la_recombination_summary.tsv": "5eaa3775de1e9f2dcb78a9e38440fdd79719338855af502557c12b3a50597167",
+    "empirical/anopheles_2la/results/recombination_summary.tsv": "d5a9518d76a82b84148fac5d893e1b0c9c3981cd36dfabc785abbeb247b6d70c"
   },
-  "data_mode": "published regional summary fallback; no marker-level table recovered",
+  "data_mode": "schematic published regional summary fallback; no marker-level table recovered",
   "doi": "10.1111/j.1365-2583.2007.00764.x",
   "output_hashes": {
-    "data/anopheles_2la/processed/2la_recombination_summary.tsv": "8139970003b2865da49e0e8091a42a3b95920d8512ecc4289351a641344e691b",
-    "empirical/anopheles_2la/README.md": "5c59c3d9fd6b626bac5fb836a000c3930d5a3dfc1f2025b63d41b58dc6582276",
-    "empirical/anopheles_2la/figures/anopheles_2la_recombination_genealogy.pdf": "6047accdbfc98b9ef4ce7263dd79830c3f4d5f900118751794d51459c9cc5bd8",
-    "empirical/anopheles_2la/figures/anopheles_2la_recombination_genealogy.png": "2b9421efd453890edfc236e6f155ac2055b4f3db97a82224318a4487a829f6cc",
-    "empirical/anopheles_2la/figures/anopheles_2la_recombination_only.pdf": "f56827252a1627e0fa8cf5816bb1fd888e7f13b5c851fbaf74c5ff884ddc6939",
-    "empirical/anopheles_2la/figures/anopheles_2la_recombination_only.png": "f19b1f6e4ce57d4ccdf7574fdd935cce21fda97e439e15055a82cd2df15b4188",
-    "empirical/anopheles_2la/results/recombination_coordinate_audit.md": "862c145a832be87cb852d6bfd8fe83c1d1735f13e977ff0ec522c7d501eacbb8",
-    "empirical/anopheles_2la/results/recombination_figure_caption.txt": "c4cd93af41679b6a25589169bfd73e851fc17195e11f2cc7b8fd4699a80c17e2",
-    "empirical/anopheles_2la/results/recombination_report.md": "321bcbc91f0329347d12a66e79410adde6abc6933c99b399dc6125b82464ccfe",
-    "empirical/anopheles_2la/results/recombination_source_audit.md": "602edf5b4963ba76ca5223cf4073ffc8e16214fbd8b4cf4b38cbde71eb22f13e",
-    "empirical/anopheles_2la/results/recombination_summary.tsv": "0ac7800e6b558dd8d2bd7ca65ac2475c3793cc04f28ae7078aabc595535157ee"
+    "data/anopheles_2la/processed/2la_recombination_summary.tsv": "5eaa3775de1e9f2dcb78a9e38440fdd79719338855af502557c12b3a50597167",
+    "empirical/anopheles_2la/README.md": "086d9b3e63d3e0e11f59d0add06bf9d8b2aa9ae90b4db2be73135e64843f414b",
+    "empirical/anopheles_2la/figures/anopheles_2la_recombination_genealogy.pdf": "9ce02f7dec8a9a5895039e6b7a65279e55265ccf23a244c357543cc15e464aa5",
+    "empirical/anopheles_2la/figures/anopheles_2la_recombination_genealogy.png": "614ed45b8eadd48e40839f51e963943db00d79b1fdff5a000991e6caa31f2815",
+    "empirical/anopheles_2la/figures/anopheles_2la_recombination_only.pdf": "1cf29dd0d813f4af085bb55ad2bb6e1a2281755153f7904b823c7e5c409a7c9b",
+    "empirical/anopheles_2la/figures/anopheles_2la_recombination_only.png": "dc8f69511c0df04206904e4e0a16ee7e5a58c2e51de0119aff4c4de7fc134240",
+    "empirical/anopheles_2la/results/recombination_coordinate_audit.md": "d2fe1c2a2ec70ca4048cc50f1524346c5d830f98fa50199688618012f8ccc06d",
+    "empirical/anopheles_2la/results/recombination_figure_caption.txt": "77f2c0f263136f861c9529e10d0be20e150055f19b152581355bd46e66c99924",
+    "empirical/anopheles_2la/results/recombination_manifest.json": "e435f20c7bfc849e302d11a8c76e9d5fcc40c40f5e1026b10570d5874ed50ec5",
+    "empirical/anopheles_2la/results/recombination_report.md": "54c498254b6df50df0932817b2504a3732faffe23b0469061aad651fbc904541",
+    "empirical/anopheles_2la/results/recombination_source_audit.md": "221dc84e92000c1f75fe7763c5e65b9c1b435415f445e058d5ceb4afa1b11e30",
+    "empirical/anopheles_2la/results/recombination_summary.tsv": "d5a9518d76a82b84148fac5d893e1b0c9c3981cd36dfabc785abbeb247b6d70c"
   },
   "script_hashes": {
-    "empirical/anopheles_2la/scripts/05_recombination_validation.py": "83b64123396755e9719586126a3cd68af62811529821fac913bac153dae1c977"
+    "empirical/anopheles_2la/scripts/05_recombination_validation.py": "cd5b58a7e2148e7f35c736bf3e2af53e4e680a135347abcd572c36f79069a149"
   },
   "source_citation": "Stump AD, Pombi M, Goeddel L, Ribeiro JMC, Wilder JA, della Torre A, Besansky NJ. 2007. Genetic exchange in 2La inversion heterokaryotypes of Anopheles gambiae. Insect Molecular Biology 16(6):703-709.",
   "source_file_hashes": {},

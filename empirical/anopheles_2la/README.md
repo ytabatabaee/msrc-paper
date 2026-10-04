@@ -373,7 +373,7 @@ Stage 4R is finalized after correcting the downweighting endpoint label to 430 i
 
 ## Recombination-suppression validation
 
-A supplementary recombination-suppression validation has been added using the independent crossing experiment of Stump et al. 2007 (`10.1111/j.1365-2583.2007.00764.x`). No marker-level table with physical and genetic positions was reproducibly recovered, so the analysis uses a conservative published regional-summary track rather than an interpolated recombination map.
+A supplementary recombination-suppression validation has been added using the independent crossing experiment of Stump et al. 2007 (`10.1111/j.1365-2583.2007.00764.x`). No marker-level table with physical and genetic positions was reproducibly recovered, so the analysis uses a conservative schematic published regional-summary track rather than an interpolated recombination map. The `<1 cM/Mb` flanking estimates are shown as marker-context annotations near the breakpoints and are not assigned chromosome-wide spans.
 
 The integrated figure aligns the published recombination pattern with the frozen Stage 2R `C(w)`, `M(w)`, and `D(w)` tracks. It supports the biological assumption that recombination between alternative 2La arrangements is strongly reduced inside the inversion, while leaving Stage 2R-4R results unchanged.
 

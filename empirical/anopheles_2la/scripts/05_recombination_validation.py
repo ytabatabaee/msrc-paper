@@ -129,51 +129,59 @@ def classify_region(start_bp, end_bp):
 def make_summary_track():
     rows = [
         {
-            'region': 'outside_left_flank',
-            'start_bp': 1,
-            'end_bp': INV_START-1,
-            'karyotype_context': '2La/+a heterokaryotype',
-            'reported_rate': '<1.0',
-            'rate_relation': '<',
-            'unit': 'cM/Mb',
-            'source': SOURCE_CITATION,
-            'notes': 'Published regional estimate for flanking regions in heterokaryotypes; not marker-level reconstruction.',
-        },
-        {
             'region': 'inside_2La',
             'start_bp': INV_START,
             'end_bp': INV_END,
+            'position_mode': 'aligned_interval',
             'karyotype_context': '2La/+a heterokaryotype',
-            'reported_rate': '<0.5',
+            'reported_value': 0.5,
             'rate_relation': '<',
+            'reported_rate': '<0.5',
             'unit': 'cM/Mb',
             'source': SOURCE_CITATION,
             'notes': 'Published regional estimate inside rearranged region in heterokaryotypes; aligned to frozen Stage-2R 2La interval.',
         },
         {
-            'region': 'outside_right_flank',
-            'start_bp': INV_END+1,
-            'end_bp': 49_364_325,
+            'region': 'left_flank_marker_context',
+            'start_bp': 'NA',
+            'end_bp': 'NA',
+            'position_mode': 'schematic_left_breakpoint',
             'karyotype_context': '2La/+a heterokaryotype',
-            'reported_rate': '<1.0',
+            'reported_value': 1.0,
             'rate_relation': '<',
+            'reported_rate': '<1.0',
             'unit': 'cM/Mb',
             'source': SOURCE_CITATION,
-            'notes': 'Published regional estimate for flanking regions in heterokaryotypes; not marker-level reconstruction.',
+            'notes': 'Published flanking-marker estimate in heterokaryotypes; marker-level physical coordinates and measured span unavailable, so no genomic interval is assigned.',
+        },
+        {
+            'region': 'right_flank_marker_context',
+            'start_bp': 'NA',
+            'end_bp': 'NA',
+            'position_mode': 'schematic_right_breakpoint',
+            'karyotype_context': '2La/+a heterokaryotype',
+            'reported_value': 1.0,
+            'rate_relation': '<',
+            'reported_rate': '<1.0',
+            'unit': 'cM/Mb',
+            'source': SOURCE_CITATION,
+            'notes': 'Published flanking-marker estimate in heterokaryotypes; marker-level physical coordinates and measured span unavailable, so no genomic interval is assigned.',
         },
         {
             'region': 'chromosome_2L_background',
             'start_bp': 1,
             'end_bp': 49_364_325,
+            'position_mode': 'contextual_background',
             'karyotype_context': '2L+a/2L+a homokaryotype',
-            'reported_rate': '~2.0',
+            'reported_value': 2.0,
             'rate_relation': '~',
+            'reported_rate': '~2.0',
             'unit': 'cM/Mb',
             'source': SOURCE_CITATION,
             'notes': 'Published approximate uniform homokaryotype recombination rate on 2L; shown as contextual background only.',
         },
     ]
-    write_tsv(SUMMARY_TSV, rows, ['region','start_bp','end_bp','karyotype_context','reported_rate','rate_relation','unit','source','notes'])
+    write_tsv(SUMMARY_TSV, rows, ['region','start_bp','end_bp','position_mode','karyotype_context','reported_value','rate_relation','reported_rate','unit','source','notes'])
     return rows
 
 
@@ -194,7 +202,7 @@ Access date: 2026-10-04
 3. Public article records: PubMed, Sapienza IRIS, Northern Arizona University Experts, OpenAlex, and journal index pages repeat the article citation and regional summary but do not provide a numerical marker table.
 4. Archival data search: no public archival marker table containing both physical and genetic positions was found during this task.
 
-Because marker-level physical and genetic positions were not reproducibly available, this extension uses the conservative fallback: a categorical published regional-summary recombination track rather than a digitized or interpolated curve.
+Because marker-level physical and genetic positions were not reproducibly available, this extension uses the conservative fallback: a schematic published regional-summary recombination track rather than a digitized or interpolated curve. No physical span was assigned to the `<1 cM/Mb` flanking estimate because marker coordinates were not recovered.
 
 ## Source records
 
@@ -216,6 +224,8 @@ Frozen analysis interval: `{CHROM}:{INV_START}-{INV_END}` (1-based inclusive), e
 Stump et al. (2007) reports experimental recombination estimates from backcross progeny using markers on 2L, but this audit did not recover a machine-readable table with marker-level physical positions and genetic-map distances. Therefore no coordinate conversion, lift-over, or marker remapping was performed.
 
 The fallback recombination track uses the frozen MSRC 2La interval for visual alignment and labels the values as published regional estimates, not as a de novo AgamP4 marker-level recombination map. This avoids approximate coordinate rescaling from older marker/assembly systems.
+
+Only the 2La interval itself is assigned the frozen MSRC coordinates. No physical span was assigned to the `<1 cM/Mb` flanking estimate because marker coordinates were not recovered; those flanking values are shown only as schematic breakpoint-adjacent annotations.
 ''')
 
 
@@ -226,14 +236,14 @@ def write_recombination_summaries(rows):
             'mode': 'published regional summary',
             'region': r['region'],
             'karyotype_context': r['karyotype_context'],
-            'n_intervals': 1,
-            'mean_cm_per_mb': parse_rate(r['reported_rate']),
-            'median_cm_per_mb': parse_rate(r['reported_rate']),
+            'reported_value': r['reported_value'],
             'rate_relation': r['rate_relation'],
+            'reported_rate': r['reported_rate'],
             'unit': r['unit'],
+            'source': r['source'],
             'notes': r['notes'],
         })
-    write_tsv(RECOMB_SUMMARY, out, ['mode','region','karyotype_context','n_intervals','mean_cm_per_mb','median_cm_per_mb','rate_relation','unit','notes'])
+    write_tsv(RECOMB_SUMMARY, out, ['mode','region','karyotype_context','reported_value','rate_relation','reported_rate','unit','source','notes'])
     # Marker-level file is intentionally not created when source data are unavailable.
     if MAP_TSV.exists():
         MAP_TSV.unlink()
@@ -259,19 +269,31 @@ def plot_recombination_panel(ax, rows, show_xlabel=False):
     ax.axvspan(INV_START/1e6, INV_END/1e6, color='#756bb1', alpha=0.16, lw=0)
     colors={'2La/+a heterokaryotype':'#d95f02', '2L+a/2L+a homokaryotype':'#1b9e77'}
     for r in rows:
-        x0=int(r['start_bp'])/1e6; x1=int(r['end_bp'])/1e6
-        y=parse_rate(r['reported_rate'])
+        y=float(r['reported_value'])
         ctx=r['karyotype_context']
-        if r['region']=='chromosome_2L_background':
+        mode=r.get('position_mode','')
+        if mode == 'contextual_background':
+            x0=int(r['start_bp'])/1e6; x1=int(r['end_bp'])/1e6
             ax.hlines(y, x0, x1, color=colors[ctx], lw=1.8, linestyles='--', label='homokaryotype background ~2.0 cM/Mb')
-        else:
-            ax.hlines(y, x0, x1, color=colors[ctx], lw=5, label='heterokaryotype regional upper bound' if r['region']=='outside_left_flank' else None)
+        elif mode == 'aligned_interval':
+            x0=int(r['start_bp'])/1e6; x1=int(r['end_bp'])/1e6
+            ax.hlines(y, x0, x1, color=colors[ctx], lw=5, label='heterokaryotype inside 2La <0.5 cM/Mb')
             ax.text((x0+x1)/2, y+0.07, r['reported_rate'], ha='center', va='bottom', fontsize=8, color=colors[ctx])
+        elif mode == 'schematic_left_breakpoint':
+            xb=INV_START/1e6
+            ax.annotate('flanking markers\n<1 cM/Mb', xy=(xb, y), xytext=(xb-1.6, y+0.34),
+                        ha='right', va='bottom', fontsize=8, color=colors[ctx],
+                        arrowprops=dict(arrowstyle='-|>', lw=1.2, color=colors[ctx], shrinkA=0, shrinkB=4))
+        elif mode == 'schematic_right_breakpoint':
+            xb=INV_END/1e6
+            ax.annotate('flanking markers\n<1 cM/Mb', xy=(xb, y), xytext=(xb+5.2, y+0.34),
+                        ha='left', va='bottom', fontsize=8, color=colors[ctx],
+                        arrowprops=dict(arrowstyle='-|>', lw=1.2, color=colors[ctx], shrinkA=0, shrinkB=4))
     ax.set_ylabel('Published recomb.\n(cM/Mb)')
     ax.set_ylim(0, 2.4)
     ax.set_xlim(0, 49.364325)
     ax.text((INV_START+INV_END)/2/1e6, 2.28, '2La', ha='center', va='top', fontsize=9, color='#4b3f8f')
-    ax.text(0.01,0.92,'Stump et al. 2007 crossing estimates\nregional summary, not marker-level map', transform=ax.transAxes, va='top', fontsize=8.5, bbox=dict(facecolor='white', edgecolor='0.85', alpha=0.9))
+    ax.text(0.01,0.92,'Stump et al. 2007 crossing estimates\nschematic published regional estimates;\nmarker-level coordinates unavailable', transform=ax.transAxes, va='top', fontsize=8.2, bbox=dict(facecolor='white', edgecolor='0.85', alpha=0.9))
     handles, labels=ax.get_legend_handles_labels()
     seen={}
     for h,l in zip(handles,labels):
@@ -279,6 +301,15 @@ def plot_recombination_panel(ax, rows, show_xlabel=False):
     ax.legend(seen.values(), seen.keys(), loc='upper right', fontsize=8, frameon=False)
     if show_xlabel:
         ax.set_xlabel('Genomic position on 2L (Mb)')
+
+
+def interval_plot_rows(rows):
+    """Rows drawn as physical genomic spans in the schematic panel.
+
+    Flanking-marker estimates intentionally are not returned because their
+    marker-level coordinates were not recovered.
+    """
+    return [r for r in rows if r.get('position_mode') in {'aligned_interval', 'contextual_background'}]
 
 
 def plot_signal(ax, signal, ylabel):
@@ -336,15 +367,15 @@ The source is an independent experimental crossing study. It estimated recombina
 
 ## Data availability outcome
 
-A reproducible marker-level table containing both physical positions and genetic distances was not recovered during this audit. Therefore this extension uses a coarse published regional-summary track rather than a reconstructed marker-level recombination map. No figure digitization or interpolation was performed.
+A reproducible marker-level table containing both physical positions and genetic distances was not recovered during this audit. Therefore this extension uses a schematic published regional-summary track rather than a reconstructed marker-level recombination map. No figure digitization or interpolation was performed.
 
 ## Coordinate system
 
-The plotted recombination regions are aligned to the frozen MSRC interval `{CHROM}:{INV_START}-{INV_END}` in the same AgamP4-style coordinate system used by Stage 2R-4R. No coordinate conversion was attempted because no marker-level source table was recovered.
+The 2La interval itself is aligned to the frozen MSRC interval `{CHROM}:{INV_START}-{INV_END}` in the same AgamP4-style coordinate system used by Stage 2R-4R. No coordinate conversion was attempted because no marker-level source table was recovered.
 
 ## Recombination pattern
 
-Published regional estimates report approximately `~2.0 cM/Mb` in `2L+a/2L+a` homokaryotypes, `<0.5 cM/Mb` inside 2La in `2La/+a` heterokaryotypes, and `<1.0 cM/Mb` in heterokaryotype flanking regions.
+Published regional estimates report approximately `~2.0 cM/Mb` in `2L+a/2L+a` homokaryotypes, `<0.5 cM/Mb` inside 2La in `2La/+a` heterokaryotypes, and `<1.0 cM/Mb` at flanking regions/markers in heterokaryotypes. Because marker-level physical coordinates were unavailable, the flanking estimates are shown schematically near the breakpoints and are not assigned genomic spans.
 
 ## Relationship to Stage 2R genealogy statistics
 
@@ -352,11 +383,12 @@ The integrated figure aligns this independent recombination-suppression evidence
 
 ## Limitations
 
-- The recombination panel is a published regional-summary track, not a marker-level recombination map.
+- The recombination panel is a schematic published regional-summary track, not a marker-level recombination map.
+- The `<1.0 cM/Mb` flanking estimates are not drawn as chromosome-wide flanking intervals because the measured marker spans were not recovered.
 - The recombination crossing experiment and the Fontaine/MalariaGEN genealogy analysis use different samples and study designs.
 - No LD-based recombination estimator was run on the 72 Fontaine samples.
 ''')
-    CAPTION.write_text(f'''Independent recombination-suppression evidence aligned with Anopheles 2La genealogy statistics. Panel A shows published regional recombination estimates from the crossing experiment of Stump et al. (2007), independent of the Fontaine/MalariaGEN genealogy analysis. The panel is a regional summary track, not a de novo marker-level recombination map: homokaryotype 2L+a/2L+a background recombination is approximately 2.0 cM/Mb, whereas 2La/+a heterokaryotype recombination is reported as <0.5 cM/Mb inside the inversion and <1.0 cM/Mb in flanking regions. Panels B-D show the frozen Stage 2R MalariaGEN statistics C(w), M(w), and D(w) across 50-kb windows on 2L. Purple shading marks the frozen MSRC 2La interval, 2L:{INV_START}-{INV_END}. The datasets are independent, so the figure supports spatial concordance with recombination suppression rather than a direct causal estimate.
+    CAPTION.write_text(f'''Independent recombination-suppression evidence aligned with Anopheles 2La genealogy statistics. Panel A is a schematic representation of published crossing-based regional estimates from Stump et al. (2007), independent of the Fontaine/MalariaGEN genealogy analysis. Stump et al. reported <0.5 cM/Mb within 2La and <1 cM/Mb at flanking regions/markers in heterokaryotypes, compared with approximately 2.0 cM/Mb in homokaryotype controls. Because marker-level physical coordinates were unavailable, the flanking estimates are shown schematically and are not assigned genomic spans; only the 2La interval itself is aligned to the frozen MSRC coordinates, 2L:{INV_START}-{INV_END}. Panels B-D show the frozen Stage 2R MalariaGEN statistics C(w), M(w), and D(w) across 50-kb windows on 2L. The datasets are independent, so the figure supports spatial concordance with recombination suppression rather than a direct causal estimate.
 ''')
 
 
@@ -365,7 +397,7 @@ def update_readme():
 
 ## Recombination-suppression validation
 
-A supplementary recombination-suppression validation has been added using the independent crossing experiment of Stump et al. 2007 (`{SOURCE_DOI}`). No marker-level table with physical and genetic positions was reproducibly recovered, so the analysis uses a conservative published regional-summary track rather than an interpolated recombination map.
+A supplementary recombination-suppression validation has been added using the independent crossing experiment of Stump et al. 2007 (`{SOURCE_DOI}`). No marker-level table with physical and genetic positions was reproducibly recovered, so the analysis uses a conservative schematic published regional-summary track rather than an interpolated recombination map. The `<1 cM/Mb` flanking estimates are shown as marker-context annotations near the breakpoints and are not assigned chromosome-wide spans.
 
 The integrated figure aligns the published recombination pattern with the frozen Stage 2R `C(w)`, `M(w)`, and `D(w)` tracks. It supports the biological assumption that recombination between alternative 2La arrangements is strongly reduced inside the inversion, while leaving Stage 2R-4R results unchanged.
 
@@ -397,8 +429,8 @@ def write_manifest():
         'source_urls': SOURCE_URLS,
         'source_files': [],
         'source_file_hashes': {},
-        'data_mode': 'published regional summary fallback; no marker-level table recovered',
-        'coordinate_assembly': 'published marker-level coordinates unavailable; regional values aligned to frozen MSRC interval only',
+        'data_mode': 'schematic published regional summary fallback; no marker-level table recovered',
+        'coordinate_assembly': 'published marker-level coordinates unavailable; only the 2La interval is aligned to frozen MSRC coordinates; flanking estimates have no assigned physical span',
         'current_analysis_coordinate_assembly': ASSEMBLY,
         'conversion_method': 'none; no marker-level coordinate conversion performed',
         '2La_boundaries': {'chrom':CHROM, 'start':INV_START, 'end':INV_END, 'coordinate_type':'1-based inclusive'},
@@ -421,7 +453,7 @@ def run():
     write_manifest()
     after={p:sha256(p) for p in before}
     assert before == after, 'Stage 2R/3R/4R manifests changed unexpectedly'
-    print(json.dumps({'mode':'published regional summary fallback','marker_level_data_found':False,'figure':str(FIG),'summary':str(SUMMARY_TSV)}, sort_keys=True))
+    print(json.dumps({'mode':'schematic published regional summary fallback','marker_level_data_found':False,'figure':str(FIG),'summary':str(SUMMARY_TSV)}, sort_keys=True))
 
 
 class Tests(unittest.TestCase):
@@ -444,6 +476,40 @@ class Tests(unittest.TestCase):
         self.assertEqual(len(rows),4)
         inside=[r for r in rows if r['region']=='inside_2La'][0]
         self.assertEqual(inside['reported_rate'],'<0.5')
+        self.assertEqual(float(inside['reported_value']),0.5)
+        self.assertEqual(inside['rate_relation'],'<')
+        self.assertNotIn('mean_cm_per_mb', inside)
+        recomb=write_recombination_summaries(rows)
+        fields=set(recomb[0])
+        self.assertNotIn('mean_cm_per_mb', fields)
+        self.assertNotIn('median_cm_per_mb', fields)
+        self.assertIn('reported_value', fields)
+    def test_flanks_are_schematic_without_spans(self):
+        rows=make_summary_track()
+        flank_rows=[r for r in rows if 'flank_marker_context' in r['region']]
+        self.assertEqual(len(flank_rows),2)
+        for r in flank_rows:
+            self.assertTrue(r['position_mode'].startswith('schematic_'))
+            self.assertEqual(r['start_bp'],'NA')
+            self.assertEqual(r['end_bp'],'NA')
+            self.assertEqual(float(r['reported_value']),1.0)
+            self.assertEqual(r['rate_relation'],'<')
+            self.assertEqual(r['reported_rate'],'<1.0')
+    def test_no_flank_marker_spans_are_plotted(self):
+        rows=make_summary_track()
+        span_regions={r['region'] for r in interval_plot_rows(rows)}
+        self.assertIn('inside_2La', span_regions)
+        self.assertIn('chromosome_2L_background', span_regions)
+        self.assertNotIn('left_flank_marker_context', span_regions)
+        self.assertNotIn('right_flank_marker_context', span_regions)
+    def test_fallback_figure_generation(self):
+        before={p:sha256(p) for p in [STAGE2_MANIFEST,STAGE3_MANIFEST,STAGE4_MANIFEST] if p.exists()}
+        rows=make_summary_track()
+        make_figures(rows)
+        self.assertTrue(FIG.exists() and FIG.stat().st_size > 1000)
+        self.assertTrue(FIGPNG.exists() and FIGPNG.stat().st_size > 1000)
+        after={p:sha256(p) for p in before}
+        self.assertEqual(before, after)
     def test_sorted_stage2_inputs_if_present(self):
         if GRID.exists():
             mids=[]

@@ -13,7 +13,7 @@ Access date: 2026-10-04
 3. Public article records: PubMed, Sapienza IRIS, Northern Arizona University Experts, OpenAlex, and journal index pages repeat the article citation and regional summary but do not provide a numerical marker table.
 4. Archival data search: no public archival marker table containing both physical and genetic positions was found during this task.
 
-Because marker-level physical and genetic positions were not reproducibly available, this extension uses the conservative fallback: a categorical published regional-summary recombination track rather than a digitized or interpolated curve.
+Because marker-level physical and genetic positions were not reproducibly available, this extension uses the conservative fallback: a schematic published regional-summary recombination track rather than a digitized or interpolated curve. No physical span was assigned to the `<1 cM/Mb` flanking estimate because marker coordinates were not recovered.
 
 ## Source records
 
