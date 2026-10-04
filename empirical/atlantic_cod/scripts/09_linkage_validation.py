@@ -47,11 +47,15 @@ REGIONS = DATA_ROOT / "metadata" / "region_manifest.tsv"
 WINDOWS = DATA_ROOT / "processed" / "cod_window_trees.tsv"
 STAGE4A_D = DATA_ROOT / "processed" / "stage4a_window_topology_scores.tsv"
 STAGE7_A = RESULTS / "stage7_window_divergence_time_signal.tsv"
+STAGE4B_SUMMARY = RESULTS / "stage4b_circular_shift_summary.tsv"
+STAGE7_TESTS = RESULTS / "stage7_divergence_time_tests.tsv"
 
 PER_SNP = DATA_ROOT / "processed" / "cod_linkage_per_snp.tsv"
 LINKAGE_250KB = DATA_ROOT / "processed" / "cod_linkage_250kb.tsv"
+BOUNDARY_RELATIVE = DATA_ROOT / "processed" / "cod_linkage_boundary_relative.tsv"
 WINDOW_JOIN = RESULTS / "recombination_linkage_genealogy_time_windows.tsv"
 SUMMARY = RESULTS / "recombination_summary.tsv"
+BOUNDARY_SUMMARY = RESULTS / "recombination_boundary_summary.tsv"
 SPATIAL_CORR = RESULTS / "recombination_spatial_correlations.tsv"
 SOURCE_AUDIT = RESULTS / "recombination_source_audit.md"
 COORD_AUDIT = RESULTS / "recombination_coordinate_audit.md"
@@ -65,6 +69,10 @@ FIG_LINK_GENE_TIME_PDF = FIGURES / "atlantic_cod_linkage_genealogy_time.pdf"
 FIG_LINK_GENE_TIME_PNG = FIGURES / "atlantic_cod_linkage_genealogy_time.png"
 FIG_LINK_GENE_PDF = FIGURES / "atlantic_cod_linkage_genealogy.pdf"
 FIG_LINK_GENE_PNG = FIGURES / "atlantic_cod_linkage_genealogy.png"
+FIG_BOUNDARY_PDF = FIGURES / "atlantic_cod_linkage_boundary_transitions.pdf"
+FIG_BOUNDARY_PNG = FIGURES / "atlantic_cod_linkage_boundary_transitions.png"
+FIG_EFFECT_PDF = FIGURES / "atlantic_cod_linkage_effect_summary.pdf"
+FIG_EFFECT_PNG = FIGURES / "atlantic_cod_linkage_effect_summary.png"
 
 FROZEN_MANIFESTS = {
     "stage4a": RESULTS / "stage4a_manifest.json",
@@ -82,6 +90,7 @@ EXPECTED_REGIONS = {
     "LG12": (638100, 14327837),
 }
 SOURCE_SHA256_EXPECTED = "5f31d7ebaa30f4f7f145abed365786252aded4c701c4d76ca10d77c057c9b8af"
+BOUNDARY_WINDOW_BP = 250_000
 
 
 def sha256(path: Path) -> str:
@@ -209,6 +218,80 @@ def normalize_linkage_rows(blocks: dict[str, dict[str, object]], regions: dict[s
     if any(counts[lg] == 0 for lg in LGS):
         raise ValueError(f"QUANTITATIVE_COD_LINKAGE_TRACK_NOT_RECOVERED: missing LG rows {counts}")
     return sorted(rows, key=lambda r: (str(r["lg"]), int(r["position_bp"])))
+
+
+def side_for_boundary(relative_position_bp: int, boundary_side: str) -> str:
+    if boundary_side == "left":
+        return "inside" if relative_position_bp >= 0 else "outside"
+    if boundary_side == "right":
+        return "inside" if relative_position_bp <= 0 else "outside"
+    raise ValueError(f"Unexpected boundary side {boundary_side!r}")
+
+
+def boundary_relative_rows(
+    linkage_rows: list[dict[str, object]],
+    regions: dict[str, tuple[int, int]],
+    max_distance_bp: int = BOUNDARY_WINDOW_BP,
+) -> list[dict[str, object]]:
+    rows = []
+    for row in linkage_rows:
+        lg = str(row["lg"])
+        position = int(row["position_bp"])
+        for boundary_side, boundary_bp in (("left", regions[lg][0]), ("right", regions[lg][1])):
+            rel = position - boundary_bp
+            if abs(rel) > max_distance_bp:
+                continue
+            side_class = side_for_boundary(rel, boundary_side)
+            rows.append({
+                "lg": lg,
+                "boundary_side": boundary_side,
+                "boundary_bp": boundary_bp,
+                "snp_position_bp": position,
+                "relative_position_bp": rel,
+                "relative_position_kb": rel / 1000.0,
+                "inside_inversion": side_class == "inside",
+                "side_class": side_class,
+                "linkage_score": float(row["linkage_score"]),
+                "log10_linkage_plus1": math.log10(float(row["linkage_score"]) + 1.0),
+                "source": row["source"],
+            })
+    return sorted(rows, key=lambda r: (str(r["lg"]), str(r["boundary_side"]), int(r["relative_position_bp"])))
+
+
+def boundary_summary(boundary_rows: list[dict[str, object]]) -> list[dict[str, object]]:
+    rows = []
+    grouped: dict[tuple[str, str], list[dict[str, object]]] = defaultdict(list)
+    for row in boundary_rows:
+        grouped[(str(row["lg"]), str(row["boundary_side"]))].append(row)
+    for lg in LGS:
+        for side in ("left", "right"):
+            group = grouped[(lg, side)]
+            inside = [float(r["linkage_score"]) for r in group if r["side_class"] == "inside"]
+            outside = [float(r["linkage_score"]) for r in group if r["side_class"] == "outside"]
+            q25_in, q75_in = quantiles(inside)
+            q25_out, q75_out = quantiles(outside)
+            med_in = median_or_nan(inside)
+            med_out = median_or_nan(outside)
+            rows.append({
+                "lg": lg,
+                "boundary_side": side,
+                "boundary_bp": EXPECTED_REGIONS[lg][0] if side == "left" else EXPECTED_REGIONS[lg][1],
+                "window_bp_each_side": BOUNDARY_WINDOW_BP,
+                "n_inside": len(inside),
+                "n_outside": len(outside),
+                "median_linkage_inside": med_in,
+                "median_linkage_outside": med_out,
+                "mean_linkage_inside": mean_or_nan(inside),
+                "mean_linkage_outside": mean_or_nan(outside),
+                "q25_linkage_inside": q25_in,
+                "q75_linkage_inside": q75_in,
+                "q25_linkage_outside": q25_out,
+                "q75_linkage_outside": q75_out,
+                "median_difference_inside_minus_outside": med_in - med_out if math.isfinite(med_in) and math.isfinite(med_out) else math.nan,
+                "median_ratio_inside_over_outside": med_in / med_out if math.isfinite(med_in) and math.isfinite(med_out) and med_out != 0 else math.nan,
+                "metric_label": "per-SNP LD linkage score, not recombination rate",
+            })
+    return rows
 
 
 def classify_window(row: dict[str, str]) -> str:
@@ -467,6 +550,89 @@ def plot_integrated(joined: list[dict[str, object]], linkage_rows: list[dict[str
     plt.close(fig)
 
 
+def plot_boundary_transitions(boundary_rows: list[dict[str, object]]) -> None:
+    fig, axes = plt.subplots(4, 2, figsize=(9.5, 9), sharex=True, sharey=True)
+    for row_i, lg in enumerate(LGS):
+        for col_i, side in enumerate(("left", "right")):
+            ax = axes[row_i, col_i]
+            rows = [r for r in boundary_rows if r["lg"] == lg and r["boundary_side"] == side]
+            inside = [r for r in rows if r["side_class"] == "inside"]
+            outside = [r for r in rows if r["side_class"] == "outside"]
+            ax.scatter([float(r["relative_position_kb"]) for r in outside], [float(r["log10_linkage_plus1"]) for r in outside], s=14, color="#4c78a8", alpha=0.72, label="outside" if row_i == 0 and col_i == 0 else None)
+            ax.scatter([float(r["relative_position_kb"]) for r in inside], [float(r["log10_linkage_plus1"]) for r in inside], s=14, color="#e45756", alpha=0.72, label="inside" if row_i == 0 and col_i == 0 else None)
+            for side_class, color in (("outside", "#4c78a8"), ("inside", "#e45756")):
+                vals = [float(r["log10_linkage_plus1"]) for r in rows if r["side_class"] == side_class]
+                xs = [float(r["relative_position_kb"]) for r in rows if r["side_class"] == side_class]
+                if vals:
+                    med = statistics.median(vals)
+                    xmin, xmax = (min(xs), max(xs))
+                    ax.hlines(med, xmin, xmax, color=color, lw=2.0)
+            ax.axvline(0, color="black", lw=0.9)
+            ax.set_title(f"{lg} {side} boundary")
+            ax.set_xlim(-BOUNDARY_WINDOW_BP / 1000, BOUNDARY_WINDOW_BP / 1000)
+            if col_i == 0:
+                ax.set_ylabel(f"{lg}\nlog10(L+1)")
+            if row_i == len(LGS) - 1:
+                ax.set_xlabel("distance from boundary (kb)")
+            if side == "left":
+                ax.text(-0.97, 0.92, "outside", transform=ax.transAxes, ha="left", va="center", fontsize=7)
+                ax.text(0.97, 0.92, "inside", transform=ax.transAxes, ha="right", va="center", fontsize=7)
+            else:
+                ax.text(-0.97, 0.92, "inside", transform=ax.transAxes, ha="left", va="center", fontsize=7)
+                ax.text(0.97, 0.92, "outside", transform=ax.transAxes, ha="right", va="center", fontsize=7)
+    handles, labels = axes[0, 0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="upper center", ncol=2, frameon=False)
+    fig.suptitle("Atlantic cod per-SNP linkage transitions at frozen inversion boundaries", y=0.995)
+    fig.tight_layout(rect=(0, 0, 1, 0.965))
+    fig.savefig(FIG_BOUNDARY_PDF)
+    fig.savefig(FIG_BOUNDARY_PNG, dpi=300)
+    plt.close(fig)
+
+
+def frozen_effect_rows(summary_rows: list[dict[str, object]]) -> list[dict[str, object]]:
+    topo = {r["lg"]: r for r in read_tsv(STAGE4B_SUMMARY)}
+    time = {r["lg"]: r for r in read_tsv(STAGE7_TESTS)}
+    source_ratio = {r["lg"]: float(r["median_ratio_inside_over_outside"]) for r in summary_rows if r["summary_level"] == "snp"}
+    rows = []
+    for lg in LGS:
+        rows.append({
+            "lg": lg,
+            "source_inside_outside_linkage_ratio": source_ratio.get(lg, math.nan),
+            "log10_source_inside_outside_linkage_ratio": math.log10(source_ratio[lg]) if lg in source_ratio and source_ratio[lg] > 0 else math.nan,
+            "delta_D": float(topo[lg]["observed_delta_D"]),
+            "topology_p": float(topo[lg]["p_one_sided"]),
+            "delta_A": float(time[lg]["delta_A"]),
+            "time_circular_p": float(time[lg]["circular_p"]),
+            "time_physical_p": float(time[lg]["physical_p"]),
+        })
+    return rows
+
+
+def plot_effect_summary(effect_rows: list[dict[str, object]]) -> None:
+    fig, axes = plt.subplots(1, 3, figsize=(10.5, 3.8))
+    x = np.arange(len(LGS))
+    colors = ["#4c78a8", "#4c78a8", "#f58518", "#4c78a8"]
+    axes[0].bar(x, [float(r["log10_source_inside_outside_linkage_ratio"]) for r in effect_rows], color=colors)
+    axes[0].set_ylabel("log10 source SNP\ninside/outside linkage ratio")
+    axes[0].set_xticks(x, LGS)
+    axes[0].set_title("published LD linkage")
+    axes[1].bar(x, [float(r["delta_D"]) for r in effect_rows], color=colors)
+    axes[1].axhline(0, color="black", lw=0.8)
+    axes[1].set_ylabel("ΔD")
+    axes[1].set_xticks(x, LGS)
+    axes[1].set_title("frozen topology effect")
+    axes[2].bar(x, [float(r["delta_A"]) for r in effect_rows], color=colors)
+    axes[2].axhline(0, color="black", lw=0.8)
+    axes[2].set_ylabel("ΔA")
+    axes[2].set_xticks(x, LGS)
+    axes[2].set_title("frozen time effect")
+    fig.suptitle("Atlantic cod linkage validation and frozen phylogenetic consequences", y=1.02)
+    fig.tight_layout()
+    fig.savefig(FIG_EFFECT_PDF, bbox_inches="tight")
+    fig.savefig(FIG_EFFECT_PNG, dpi=300, bbox_inches="tight")
+    plt.close(fig)
+
+
 def write_audits(blocks, linkage_rows, windows, regions, before_hashes, after_hashes) -> None:
     counts = source_counts(linkage_rows)
     columns = {name: block["header"] for name, block in blocks.items()}
@@ -513,9 +679,8 @@ def write_audits(blocks, linkage_rows, windows, regions, before_hashes, after_ha
     """).strip() + "\n")
 
 
-def write_report_and_caption(summary_rows, corr_rows, counts, regions) -> None:
+def write_report_and_caption(summary_rows, boundary_rows, boundary_summary_rows, corr_rows, counts, regions, effect_rows) -> None:
     snp_summary = [r for r in summary_rows if r["summary_level"] == "snp"]
-    win_summary = [r for r in summary_rows if r["summary_level"] == "window_250kb"]
     REPORT.write_text(textwrap.dedent(f"""
     # Atlantic cod quantitative linkage-validation report
 
@@ -527,40 +692,54 @@ def write_report_and_caption(summary_rows, corr_rows, counts, regions) -> None:
 
     SNP counts: {json.dumps(counts, sort_keys=True)}.
 
-    ## SNP-level inside/outside linkage
+    ## Source sampling design
+
+    The `Linkage per SNP (a)` block is boundary-focused. It captures the sharp linkage contrast around the supergene boundaries rather than providing a dense chromosome-wide SNP track across all frozen 250-kb SNAPP windows. The archived 250-kb bin table is therefore retained for provenance only and is not interpreted as a chromosome-wide linkage track.
+
+    ## Whole-source SNP-level inside/outside linkage
+
+    These source-reproduction summaries demonstrate the abrupt linkage contrast represented in Source Data Fig. 1. They should not be interpreted as unbiased chromosome-wide inside/outside linkage effect sizes because the published source sampling is concentrated around the supergene boundaries.
 
     | LG | n inside | n outside | median inside | median outside | difference | ratio |
     |---|---:|---:|---:|---:|---:|---:|
     {chr(10).join(f"| {r['lg']} | {r['n_inside']} | {r['n_outside']} | {float(r['median_linkage_inside']):.6g} | {float(r['median_linkage_outside']):.6g} | {float(r['median_difference_inside_minus_outside']):.6g} | {float(r['median_ratio_inside_over_outside']):.6g} |" for r in snp_summary)}
 
-    ## 250-kb window-level inside/outside linkage
+    ## Boundary-relative analysis
 
-    | LG | n inside windows | n outside windows | median inside | median outside | difference | ratio |
+    The primary revised analysis uses a prospective ±{BOUNDARY_WINDOW_BP // 1000} kb window around each frozen inversion boundary. Relative positions are `SNP position - boundary position`. For left boundaries, negative positions are outside and positive or zero positions are inside. For right boundaries, negative or zero positions are inside and positive positions are outside.
+
+    | LG | boundary | n inside | n outside | median inside | median outside | difference | ratio |
+    |---|---|---:|---:|---:|---:|---:|---:|
+    {chr(10).join(f"| {r['lg']} | {r['boundary_side']} | {r['n_inside']} | {r['n_outside']} | {float(r['median_linkage_inside']):.6g} | {float(r['median_linkage_outside']):.6g} | {float(r['median_difference_inside_minus_outside']):.6g} | {fmt(float(r['median_ratio_inside_over_outside']))} |" for r in boundary_summary_rows)}
+
+    Boundary coverage is complete and strongly contrasting for LG01, LG02, and LG07. LG12 is less completely sampled at the frozen boundaries: the left boundary has very few inside-side SNPs within ±{BOUNDARY_WINDOW_BP // 1000} kb, and the published linkage block has no SNPs within ±{BOUNDARY_WINDOW_BP // 1000} kb of the frozen right boundary. LG12 is therefore interpreted primarily from the whole-source inside/outside linkage contrast, not from a two-sided frozen-boundary transition.
+
+    ## Relationship to frozen topology and divergence-time results
+
+    The revised manuscript-facing summary does not use sparse 250-kb linkage-D or linkage-A correlations. Instead, it presents source-level SNP linkage validation alongside already-frozen linkage-group-level topology and divergence-time summaries. LG01 and LG02 combine strong linkage with robust topology shifts and positive divergence-time shifts. LG07 shows strong published linkage evidence and a divergence-time shift despite little topology enrichment, making it a topology-time discordant inversion. LG12 shows strong whole-source linkage contrast and supportive topology/time effects, while retaining the Stage-7 caveat that physical-coordinate temporal sensitivity is weaker and the boundary-coverage caveat noted above.
+
+    | LG | whole-source SNP linkage ratio | ΔD | topology p | ΔA | time circular p | time physical p |
     |---|---:|---:|---:|---:|---:|---:|
-    {chr(10).join(f"| {r['lg']} | {r['n_inside']} | {r['n_outside']} | {float(r['median_linkage_inside']):.6g} | {float(r['median_linkage_outside']):.6g} | {float(r['median_difference_inside_minus_outside']):.6g} | {float(r['median_ratio_inside_over_outside']):.6g} |" for r in win_summary)}
+    {chr(10).join(f"| {r['lg']} | {float(r['source_inside_outside_linkage_ratio']):.6g} | {float(r['delta_D']):.6g} | {float(r['topology_p']):.6g} | {float(r['delta_A']):.6g} | {float(r['time_circular_p']):.6g} | {float(r['time_physical_p']):.6g} |" for r in effect_rows)}
 
-    ## Spatial linkage-genealogy relationships
+    ## Retired sparse-grid correlations
 
-    Spearman correlations use 250-kb windows and exclude boundary windows. The Source Data Fig. 1 linkage block is sparse on the chromosome-wide frozen SNAPP grid: most linkage SNPs fall in or near inversion intervals rather than in a dense track across all outside windows. Consequently, linkage-D and linkage-A correlations are reported only when at least three non-boundary 250-kb bins contain linkage SNPs. Circular-shift p-values keep the linkage track fixed, shift D(w) or A(w), and include the identity rotation.
-
-    | LG | comparison | n windows | rho | circular p |
-    |---|---|---:|---:|---:|
-    {chr(10).join(f"| {r['lg']} | {r['comparison']} | {r['n_windows']} | {float(r['spearman_rho']):.6g} | {float(r['circular_shift_p_two_sided']):.6g} |" for r in corr_rows)}
+    `recombination_spatial_correlations.tsv` remains archived for provenance, but it is uninformative because the source linkage rows populate too few non-boundary windows on the full 250-kb SNAPP grid. NA correlations are not interpreted as negative results.
 
     ## Interpretation
 
-    At the per-SNP level, all four LGs show much higher median linkage scores inside the frozen inversion intervals than outside the intervals represented in Source Data Fig. 1. LG01 and LG02 combine strong quantitative long-range linkage with the previously frozen topology and divergence-time sensitivity signals. LG07 combines strong linkage and divergence-time sensitivity without a corresponding strong topology shift, making it a topology-time discordant inversion rather than a failed control. LG12 shows elevated linkage and supportive topology/time behavior, but Stage-7 physical-coordinate sensitivity was weaker.
+    Published SNP-level linkage data show abrupt, strong increases in long-range linkage at well-covered Atlantic cod supergene boundaries, independently validating substantial recombination suppression. LG12 has incomplete right-boundary coverage in the source linkage block, so its strongest quantitative support is the whole-source inside/outside linkage contrast rather than a two-sided right-boundary transition. The phylogenetic consequences differ among supergenes: LG01 and LG02 show strong topology and divergence-time effects, LG07 shows a divergence-time effect without a strong topology shift, and LG12 shows supportive topology/time effects. Strong recombination suppression therefore does not imply a single uniform phylogenetic outcome.
 
     ## Limitations
 
-    The linkage score is an LD-based distance-sum statistic influenced by recombination suppression, population structure, selection, haplotype frequencies, and demography. It is not a direct cM/Mb recombination rate. Individual SNPs are not treated as independent genomic replicates. The 250-kb window summaries are used for physical-coordinate alignment with frozen D(w) and A(w), but the source linkage rows are too sparse on the full SNAPP grid for a meaningful linkage-genealogy correlation test. Spatial correlations are therefore descriptive only and unavailable where fewer than three non-boundary bins have linkage data.
+    The linkage score is an LD-based distance-sum statistic influenced by recombination suppression, population structure, selection, haplotype frequencies, and demography. It is not a direct cM/Mb recombination rate. Individual SNPs are locally correlated and are not treated as independent genomic replicates. The analysis validates boundary-linked long-range LD and summarizes consistency with frozen topology/time results; it does not show that linkage alone caused the phylogenetic shifts or prove an MSRC mechanism by itself.
     """).strip() + "\n")
     CAPTION.write_text(textwrap.dedent("""
-    Atlantic cod quantitative linkage validation. Per-SNP linkage data come independently from the Matschiner et al. 2022 100-individual SNP analysis and quantify, for each SNP, the sum of physical distances to strongly linked nearby SNPs with R^2 > 0.8. This LD-based linkage score is used as a recombination-suppression proxy, not as a meiotic recombination rate. Topology D(w) and divergence-time A(w) tracks come from the published SNAPP-window analyses already frozen in the MSRC Atlantic cod workflow. Tracks are aligned only by common gadMor2 physical coordinates and frozen inversion intervals. Spatial co-localization supports biological validation of long-range linkage in the supergene intervals but does not establish a simple causal direction.
+    Quantitative linkage transitions at Atlantic cod supergene boundaries. Per-SNP linkage scores are from Matschiner et al. (2022) and quantify the summed physical distance to nearby SNPs with R^2 > 0.8. Points are shown relative to the independently frozen gadMor2 inversion boundaries. Where the published source contains SNPs on both sides of a frozen boundary, linkage increases sharply on the inversion-associated side, providing independent evidence of strong long-range linkage consistent with recombination suppression. LG12 has incomplete source coverage at the frozen right boundary, so the whole-source inside/outside linkage contrast is shown in the effect summary. This linkage statistic is not a direct recombination-rate estimate. The accompanying effect-summary panel places linkage validation beside frozen topology and divergence-time summaries; overlap supports biological consistency but does not establish a simple causal direction.
     """).strip() + "\n")
 
 
-def write_manifest(blocks, linkage_rows, windows, before_hashes, after_hashes, outputs) -> None:
+def write_manifest(blocks, linkage_rows, boundary_rows, windows, before_hashes, after_hashes, outputs) -> None:
     counts = source_counts(linkage_rows)
     manifest = {
         "analysis": "Atlantic cod quantitative LD linkage validation",
@@ -575,7 +754,10 @@ def write_manifest(blocks, linkage_rows, windows, before_hashes, after_hashes, o
         "coordinate_assembly": "gadMor2",
         "frozen_inversion_coordinates": {lg: {"start": EXPECTED_REGIONS[lg][0], "end": EXPECTED_REGIONS[lg][1]} for lg in LGS},
         "snp_rows_per_lg": counts,
+        "boundary_window_bp_each_side": BOUNDARY_WINDOW_BP,
+        "boundary_relative_rows_per_lg": {lg: sum(1 for row in boundary_rows if row["lg"] == lg) for lg in LGS},
         "n_250kb_bins": {lg: sum(1 for w in windows if w["lg"] == lg) for lg in LGS},
+        "sparse_250kb_grid_interpretation": "archived for provenance only; not used as manuscript-level linkage-genealogy/time correlation evidence",
         "analysis_date_utc": datetime.now(timezone.utc).isoformat(),
         "frozen_manifest_hashes_before": before_hashes,
         "frozen_manifest_hashes_after": after_hashes,
@@ -597,27 +779,39 @@ def run_analysis() -> None:
     linkage_rows = normalize_linkage_rows(blocks, regions)
     windows = load_windows()
     link_windows = bin_linkage_to_windows(linkage_rows, windows)
+    boundary_rows = boundary_relative_rows(linkage_rows, regions)
+    boundary_summary_rows = boundary_summary(boundary_rows)
     joined = join_tracks(link_windows)
     summary_rows = summarize_inside_outside(linkage_rows, link_windows)
     corr_rows = spatial_correlations(joined)
+    effect_rows = frozen_effect_rows(summary_rows)
 
     write_tsv(PER_SNP, linkage_rows, ["lg", "position_bp", "linkage_score", "linkage_score_unit", "inside_inversion", "boundary_class", "source"])
     write_tsv(LINKAGE_250KB, link_windows, ["lg", "window_id", "start", "end", "midpoint", "region_class", "n_snps", "median_linkage_score", "mean_linkage_score", "q25_linkage_score", "q75_linkage_score", "max_linkage_score", "linkage_score_unit"])
+    write_tsv(BOUNDARY_RELATIVE, boundary_rows, ["lg", "boundary_side", "boundary_bp", "snp_position_bp", "relative_position_bp", "relative_position_kb", "inside_inversion", "side_class", "linkage_score", "log10_linkage_plus1", "source"])
     write_tsv(WINDOW_JOIN, joined, ["lg", "window_id", "start", "end", "midpoint", "region_class", "n_snps", "median_linkage_score", "mean_linkage_score", "q25_linkage_score", "q75_linkage_score", "max_linkage_score", "linkage_score_unit", "D_arrangement_minus_baseline", "A_opposite_minus_same"])
     write_tsv(SUMMARY, summary_rows, ["summary_level", "lg", "n_inside", "n_outside", "median_linkage_inside", "median_linkage_outside", "mean_linkage_inside", "mean_linkage_outside", "median_difference_inside_minus_outside", "median_ratio_inside_over_outside", "metric_label"])
+    write_tsv(BOUNDARY_SUMMARY, boundary_summary_rows, ["lg", "boundary_side", "boundary_bp", "window_bp_each_side", "n_inside", "n_outside", "median_linkage_inside", "median_linkage_outside", "mean_linkage_inside", "mean_linkage_outside", "q25_linkage_inside", "q75_linkage_inside", "q25_linkage_outside", "q75_linkage_outside", "median_difference_inside_minus_outside", "median_ratio_inside_over_outside", "metric_label"])
     write_tsv(SPATIAL_CORR, corr_rows, ["lg", "comparison", "n_windows", "spearman_rho", "circular_shift_p_two_sided", "null_description"])
 
     plot_source_reproduction(linkage_rows, regions)
     plot_integrated(joined, linkage_rows, regions, include_time=True)
     plot_integrated(joined, linkage_rows, regions, include_time=False)
+    plot_boundary_transitions(boundary_rows)
+    plot_effect_summary(effect_rows)
 
     after_hashes = manifest_hashes()
     if before_hashes != after_hashes:
         raise ValueError(f"Frozen Stage 4A-8 manifests changed: before={before_hashes} after={after_hashes}")
     write_audits(blocks, linkage_rows, windows, regions, before_hashes, after_hashes)
-    write_report_and_caption(summary_rows, corr_rows, source_counts(linkage_rows), regions)
-    outputs = [PER_SNP, LINKAGE_250KB, WINDOW_JOIN, SUMMARY, SPATIAL_CORR, SOURCE_AUDIT, COORD_AUDIT, REPORT, CAPTION, FIG_SOURCE_PDF, FIG_SOURCE_PNG, FIG_LINK_GENE_TIME_PDF, FIG_LINK_GENE_TIME_PNG, FIG_LINK_GENE_PDF, FIG_LINK_GENE_PNG]
-    write_manifest(blocks, linkage_rows, windows, before_hashes, after_hashes, outputs)
+    write_report_and_caption(summary_rows, boundary_rows, boundary_summary_rows, corr_rows, source_counts(linkage_rows), regions, effect_rows)
+    outputs = [
+        PER_SNP, LINKAGE_250KB, BOUNDARY_RELATIVE, WINDOW_JOIN, SUMMARY, BOUNDARY_SUMMARY, SPATIAL_CORR,
+        SOURCE_AUDIT, COORD_AUDIT, REPORT, CAPTION,
+        FIG_SOURCE_PDF, FIG_SOURCE_PNG, FIG_LINK_GENE_TIME_PDF, FIG_LINK_GENE_TIME_PNG, FIG_LINK_GENE_PDF, FIG_LINK_GENE_PNG,
+        FIG_BOUNDARY_PDF, FIG_BOUNDARY_PNG, FIG_EFFECT_PDF, FIG_EFFECT_PNG,
+    ]
+    write_manifest(blocks, linkage_rows, boundary_rows, windows, before_hashes, after_hashes, outputs)
 
 
 class LinkageValidationTests(unittest.TestCase):
@@ -656,6 +850,43 @@ class LinkageValidationTests(unittest.TestCase):
         self.assertEqual(boundary_class(26192386, 9114741, 26192386), "inside")
         self.assertEqual(boundary_class(9114740, 9114741, 26192386), "outside")
 
+    def test_relative_coordinate_calculation(self):
+        rows = boundary_relative_rows([{"lg": "LG01", "position_bp": 9114741, "linkage_score": 0.0, "source": "synthetic"}], EXPECTED_REGIONS)
+        left = [r for r in rows if r["boundary_side"] == "left"][0]
+        self.assertEqual(left["relative_position_bp"], 0)
+        self.assertEqual(left["relative_position_kb"], 0.0)
+
+    def test_left_boundary_side_classification(self):
+        self.assertEqual(side_for_boundary(-1, "left"), "outside")
+        self.assertEqual(side_for_boundary(1, "left"), "inside")
+
+    def test_right_boundary_side_classification(self):
+        self.assertEqual(side_for_boundary(-1, "right"), "inside")
+        self.assertEqual(side_for_boundary(1, "right"), "outside")
+
+    def test_boundary_zero_is_inside(self):
+        self.assertEqual(side_for_boundary(0, "left"), "inside")
+        self.assertEqual(side_for_boundary(0, "right"), "inside")
+
+    def test_log10_linkage_plus_one_handles_zero(self):
+        rows = boundary_relative_rows([{"lg": "LG01", "position_bp": 9114741, "linkage_score": 0.0, "source": "synthetic"}], EXPECTED_REGIONS)
+        self.assertAlmostEqual(rows[0]["log10_linkage_plus1"], 0.0)
+
+    def test_boundary_summary_uses_chosen_window(self):
+        snps = [
+            {"lg": "LG01", "position_bp": 9114741 - BOUNDARY_WINDOW_BP, "linkage_score": 1.0, "source": "synthetic"},
+            {"lg": "LG01", "position_bp": 9114741 + BOUNDARY_WINDOW_BP, "linkage_score": 10.0, "source": "synthetic"},
+            {"lg": "LG01", "position_bp": 9114741 + BOUNDARY_WINDOW_BP + 1, "linkage_score": 100.0, "source": "synthetic"},
+        ]
+        rows = boundary_relative_rows(snps, EXPECTED_REGIONS)
+        left = [r for r in rows if r["lg"] == "LG01" and r["boundary_side"] == "left"]
+        self.assertEqual(len(left), 2)
+
+    def test_no_cross_boundary_curve_fit(self):
+        text = Path(__file__).read_text().lower()
+        self.assertNotIn("roll" + "ing", text)
+        self.assertNotIn("smoo" + "th", text)
+
     def test_missing_bins_remain_missing(self):
         binned = bin_linkage_to_windows([], [{"lg": "LG01", "window_id": "w", "start": 1, "end": 250000, "midpoint": 125000, "region_class": "outside"}])
         self.assertEqual(binned[0]["n_snps"], 0)
@@ -692,6 +923,11 @@ class LinkageValidationTests(unittest.TestCase):
         self.assertIn("D_arrangement_minus_baseline", text)
         self.assertNotIn("if " + "D_arrangement", text)
         self.assertNotIn("if " + "A_opposite", text)
+
+    def test_manuscript_figure_not_based_on_sparse_correlations(self):
+        text = Path(__file__).read_text()
+        self.assertIn("plot_effect_summary", text)
+        self.assertNotIn("plot_effect_summary(" + "corr", text)
 
 
 if __name__ == "__main__":

@@ -1,6 +1,13 @@
 {
   "analysis": "Atlantic cod quantitative LD linkage validation",
-  "analysis_date_utc": "2026-10-04T22:01:09.003722+00:00",
+  "analysis_date_utc": "2026-10-04T22:25:32.647645+00:00",
+  "boundary_relative_rows_per_lg": {
+    "LG01": 298,
+    "LG02": 230,
+    "LG07": 249,
+    "LG12": 147
+  },
+  "boundary_window_bp_each_side": 250000,
   "coordinate_assembly": "gadMor2",
   "doi": "10.1038/s41559-022-01661-x",
   "frozen_inversion_coordinates": {
@@ -45,23 +52,29 @@
   },
   "output_hashes": {
     "data/atlantic_cod/processed/cod_linkage_250kb.tsv": "9d8bcdcba196e537b737023659db90b05af97ac2f4e9882cdcd5de4f92ee4c3e",
+    "data/atlantic_cod/processed/cod_linkage_boundary_relative.tsv": "148f1c139105b2792abc1e1a5b900a050f663f854c70b3753196e878a84aca43",
     "data/atlantic_cod/processed/cod_linkage_per_snp.tsv": "984e248256b40b4dab55b6bb0851d41141df58db7a2c2ed3abc5e25e534276c2",
-    "empirical/atlantic_cod/figures/atlantic_cod_linkage_genealogy.pdf": "919c2cfa43e0aee5c8e9e5d6dae92a9776096c29566c80affaae81658fc79218",
+    "empirical/atlantic_cod/figures/atlantic_cod_linkage_boundary_transitions.pdf": "b069250de7792eaf8c60c27ee5df6196d4221825c7040841dc83efbe3b37a4c9",
+    "empirical/atlantic_cod/figures/atlantic_cod_linkage_boundary_transitions.png": "d9ddb56be3897bd2aafec827097e5821f38aee14e85efb4a0cb8be58fb07e5eb",
+    "empirical/atlantic_cod/figures/atlantic_cod_linkage_effect_summary.pdf": "83ba7621b0c829e932d3e2651c499557f6a4289b2323956995aa8cca34984770",
+    "empirical/atlantic_cod/figures/atlantic_cod_linkage_effect_summary.png": "9c95eca9049cde5d761354c2f5f8720e592c7fcb023e4923520295ff9d050b7f",
+    "empirical/atlantic_cod/figures/atlantic_cod_linkage_genealogy.pdf": "610f46cf4555c1c7548d9d0078b29fdd9dc5b14c085f6c396eb238f9f097131f",
     "empirical/atlantic_cod/figures/atlantic_cod_linkage_genealogy.png": "d15c6e47eda88f5fc64a80aff8c302c492e37ef29c0d70c0af5d2f8a043a3b26",
-    "empirical/atlantic_cod/figures/atlantic_cod_linkage_genealogy_time.pdf": "8f65cf17238fd04531758a2e98ad86ef53eda77b946fbb0bad83762cdaab446b",
+    "empirical/atlantic_cod/figures/atlantic_cod_linkage_genealogy_time.pdf": "9942e933a1dec1027c827adaddf99e7f22d504cfd9c8a1ebf3c634d60eb5b355",
     "empirical/atlantic_cod/figures/atlantic_cod_linkage_genealogy_time.png": "d90903a1d7b587d2d134c6ba06dbd2eafd7ad35d38691232394b76acc17b15d6",
-    "empirical/atlantic_cod/figures/cod_linkage_source_reproduction.pdf": "354586cedebba0871c2d64d3f46c7b381a9b87498d1e18d3f0814579b040a35d",
+    "empirical/atlantic_cod/figures/cod_linkage_source_reproduction.pdf": "5c27bced22289ae903c553367ad5255a3564233a3f6697c85eff369cfd618b57",
     "empirical/atlantic_cod/figures/cod_linkage_source_reproduction.png": "90d78294cc7ace43463436e28c37f19229efbe4afebe9f4248db6f7ddd49c88b",
+    "empirical/atlantic_cod/results/recombination_boundary_summary.tsv": "9bbb377dc4d84bbd8cb4f838ea836f8f4c49419e5a093facdf646217ffdca084",
     "empirical/atlantic_cod/results/recombination_coordinate_audit.md": "0f7b8cf3067bf2101fa01f21df099e2304ea3ceca2df2671b2b03df5a04522a8",
-    "empirical/atlantic_cod/results/recombination_figure_caption.txt": "65b0ed4903bd168ab155e3d7364d27e5208548e26889c691cf812174e7f5d280",
+    "empirical/atlantic_cod/results/recombination_figure_caption.txt": "c57f2ae122bcb44bfaeb6e5c320d0f39c85289c0bb22cd412ce6883d79bbd4cd",
     "empirical/atlantic_cod/results/recombination_linkage_genealogy_time_windows.tsv": "eb0be132952b9b0bbb40f2f38a5deeb39b259826cdd7d5f07a1282bdcc59b233",
-    "empirical/atlantic_cod/results/recombination_report.md": "ba2df9aede43164fc1f51d5d4fc74b22f61846aed37c045d2550e8ba8cf39aa5",
+    "empirical/atlantic_cod/results/recombination_report.md": "6e05cb3c3307b4e4b9542638320ca1e0401d060099a6e22da4482f61b6874abb",
     "empirical/atlantic_cod/results/recombination_source_audit.md": "4e73fbaf49c35bef660b77e11aa53f1a0b9f6107239a2fabf6192b33ab8bc032",
     "empirical/atlantic_cod/results/recombination_spatial_correlations.tsv": "93eabb20d2d6120c0d0dc5baaef2cee45c392675fad48c7e4caaa36dfa922202",
     "empirical/atlantic_cod/results/recombination_summary.tsv": "53a84f5328591e0c52b949402b198ce433b90e9ee9c9e9b895b1bf15a4235b62"
   },
   "script_hashes": {
-    "empirical/atlantic_cod/scripts/09_linkage_validation.py": "d19ddcdc6e7594d6b0a082cecaef5bb99505c235b64ef8e50e9528fdea644dd0"
+    "empirical/atlantic_cod/scripts/09_linkage_validation.py": "48483ab2f5df1084094c679a3c58e0c51428f69af3b9bdd16af3284242bf575f"
   },
   "snp_rows_per_lg": {
     "LG01": 298,
@@ -93,6 +106,7 @@
     ]
   },
   "source_sha256": "5f31d7ebaa30f4f7f145abed365786252aded4c701c4d76ca10d77c057c9b8af",
+  "sparse_250kb_grid_interpretation": "archived for provenance only; not used as manuscript-level linkage-genealogy/time correlation evidence",
   "stage": 9,
   "supplementary_extension": true
 }

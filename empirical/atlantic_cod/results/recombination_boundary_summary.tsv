@@ -1,0 +1,9 @@
+lg	boundary_side	boundary_bp	window_bp_each_side	n_inside	n_outside	median_linkage_inside	median_linkage_outside	mean_linkage_inside	mean_linkage_outside	q25_linkage_inside	q75_linkage_inside	q25_linkage_outside	q75_linkage_outside	median_difference_inside_minus_outside	median_ratio_inside_over_outside	metric_label
+LG01	left	9114741	250000	204	33	66270114.5	7584	54621544.1	14122.2424	56588713.5	70246329	1024	21831	66262530.5	8738.14801	per-SNP LD linkage score, not recombination rate
+LG01	right	26192386	250000	15	46	18748778	1205.5	15973033.2	2418.17391	17128933	20896766	45	3308	18747572.5	15552.6985	per-SNP LD linkage score, not recombination rate
+LG02	left	18489307	250000	137	18	42622820	604.5	37020885.6	1144.55556	40014880	45450853	356.5	1884.5	42622215.5	70509.2142	per-SNP LD linkage score, not recombination rate
+LG02	right	24048607	250000	62	13	25022055	423	18238507.5	1969105.85	780005	31594540.2	40	1667150	25021632	59153.7943	per-SNP LD linkage score, not recombination rate
+LG07	left	13610591	250000	102	11	61456277	88	51443299.4	11131008.1	58512834.8	64327144	18.5	13196610.5	61456189	698366.784	per-SNP LD linkage score, not recombination rate
+LG07	right	23019113	250000	124	12	54308528.5	18.5	42140948.8	901.333333	41141804	54935665.8	6.5	800.25	54308510	2935596.14	per-SNP LD linkage score, not recombination rate
+LG12	left	638100	250000	2	145	5501	53371	5501	91374.5172	2750.5	8251.5	25096	89643	-47870	0.103070956	per-SNP LD linkage score, not recombination rate
+LG12	right	14327837	250000	0	0	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	per-SNP LD linkage score, not recombination rate
