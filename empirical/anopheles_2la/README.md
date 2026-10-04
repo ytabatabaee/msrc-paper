@@ -370,3 +370,15 @@ Usable windows: 976 non-boundary windows (546 outside 2La, 430 inside 2La). Stag
 Most inversion-sensitive outside-tree branch: `arabiensis,melas,merus,quadriannulatus|coluzzii,gambiae`.
 
 Stage 4R is finalized after correcting the downweighting endpoint label to 430 inside windows; no further Anopheles empirical analysis is currently required.
+
+## Recombination-suppression validation
+
+A supplementary recombination-suppression validation has been added using the independent crossing experiment of Stump et al. 2007 (`10.1111/j.1365-2583.2007.00764.x`). No marker-level table with physical and genetic positions was reproducibly recovered, so the analysis uses a conservative published regional-summary track rather than an interpolated recombination map.
+
+The integrated figure aligns the published recombination pattern with the frozen Stage 2R `C(w)`, `M(w)`, and `D(w)` tracks. It supports the biological assumption that recombination between alternative 2La arrangements is strongly reduced inside the inversion, while leaving Stage 2R-4R results unchanged.
+
+Key outputs:
+
+- `empirical/anopheles_2la/figures/anopheles_2la_recombination_genealogy.pdf`
+- `empirical/anopheles_2la/results/recombination_report.md`
+- `data/anopheles_2la/processed/2la_recombination_summary.tsv`

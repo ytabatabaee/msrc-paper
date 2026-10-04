@@ -1,0 +1,5 @@
+mode	region	karyotype_context	n_intervals	mean_cm_per_mb	median_cm_per_mb	rate_relation	unit	notes
+published regional summary	outside_left_flank	2La/+a heterokaryotype	1	1	1	<	cM/Mb	Published regional estimate for flanking regions in heterokaryotypes; not marker-level reconstruction.
+published regional summary	inside_2La	2La/+a heterokaryotype	1	0.5	0.5	<	cM/Mb	Published regional estimate inside rearranged region in heterokaryotypes; aligned to frozen Stage-2R 2La interval.
+published regional summary	outside_right_flank	2La/+a heterokaryotype	1	1	1	<	cM/Mb	Published regional estimate for flanking regions in heterokaryotypes; not marker-level reconstruction.
+published regional summary	chromosome_2L_background	2L+a/2L+a homokaryotype	1	2	2	~	cM/Mb	Published approximate uniform homokaryotype recombination rate on 2L; shown as contextual background only.
