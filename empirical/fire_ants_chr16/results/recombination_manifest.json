@@ -1,0 +1,70 @@
+{
+  "analysis": "fire_ant_recombination_suppression_validation",
+  "analysis_date": "2026-10-04",
+  "analysis_type": "supplementary_figure_level_validation",
+  "conversion_method": "none; reliable scaffold-to-frozen-chr16 coordinate conversion unavailable in committed inputs",
+  "coordinate_assembly": {
+    "frozen_genealogy_track": "Stolle_TWISST_chr16_window_coordinates",
+    "linkage_source": "Wang_2013_Si_gnF_scaffold_coordinates_plus_linkage_group_cM"
+  },
+  "data_mode": "direct_linkage_map_regional_summary_schematic",
+  "doi": "10.1038/nature11832",
+  "frozen_manifest_checksums_after": {
+    "empirical/fire_ants_chr16/results/stage4a_manifest.json": "d1fa79815bbe4d1f45a2af7f5a1d5487d39fe3041ccac4f79f961a998ab99bf1",
+    "empirical/fire_ants_chr16/results/stage4b_manifest.json": "3aa375b5b1f52964e338a93aa7cb9330e47fe88986fa3205bfcfd26711df7a2b",
+    "empirical/fire_ants_chr16/results/stage5_final_manifest.json": "b235bbdade85b5e9804d655ce5d8f20f9609615b6074da080238a34ea110d3fc",
+    "empirical/fire_ants_chr16/results/stage6_cu_manifest.json": "4cefd7d97aab32f32e53c485d869527e08d408149971412d2753d3da017cbbbc",
+    "empirical/fire_ants_chr16/results/stage6_manifest.json": "c1a986b8d4110ab86e4bec8b822b6c7851198d81d8e34ccad8d72ac13702e85f",
+    "empirical/fire_ants_chr16/results/stage6c_manifest.json": "b0c319ea77539f2cf32fbe2a9f5c074ab2e8c4c8546385de4e55786c2dff993c"
+  },
+  "frozen_manifest_checksums_before": {
+    "empirical/fire_ants_chr16/results/stage4a_manifest.json": "d1fa79815bbe4d1f45a2af7f5a1d5487d39fe3041ccac4f79f961a998ab99bf1",
+    "empirical/fire_ants_chr16/results/stage4b_manifest.json": "3aa375b5b1f52964e338a93aa7cb9330e47fe88986fa3205bfcfd26711df7a2b",
+    "empirical/fire_ants_chr16/results/stage5_final_manifest.json": "b235bbdade85b5e9804d655ce5d8f20f9609615b6074da080238a34ea110d3fc",
+    "empirical/fire_ants_chr16/results/stage6_cu_manifest.json": "4cefd7d97aab32f32e53c485d869527e08d408149971412d2753d3da017cbbbc",
+    "empirical/fire_ants_chr16/results/stage6_manifest.json": "c1a986b8d4110ab86e4bec8b822b6c7851198d81d8e34ccad8d72ac13702e85f",
+    "empirical/fire_ants_chr16/results/stage6c_manifest.json": "b0c319ea77539f2cf32fbe2a9f5c074ab2e8c4c8546385de4e55786c2dff993c"
+  },
+  "frozen_manifest_checksums_unchanged": true,
+  "frozen_supergene_interval": {
+    "chromosome": "chr16",
+    "coordinate_end": 27917498,
+    "coordinate_start": 11680438,
+    "definition": "author-designated analysis interval / observed BUSCO-window span"
+  },
+  "marker_level_numerical_data_available": true,
+  "marker_level_target_coordinate_data_available": false,
+  "n_parsed_linkage_markers": 27934,
+  "output_hashes": {
+    "data/fire_ants_chr16/processed/recombination_map.tsv": "032488b32f8a15fbb15282eca8d04d69f09f1eba7f116cb39dfa670fd4b0d836",
+    "empirical/fire_ants_chr16/figures/fire_ants_recombination_genealogy.pdf": "2e6f247b4931f3f6b213aa09f95bee026d573ec720d82501da2fefbf48d421aa",
+    "empirical/fire_ants_chr16/figures/fire_ants_recombination_genealogy.png": "cec5bdd332dc0a9241e979841df00a8e4e269b20155b7fb3a150a134260322a9",
+    "empirical/fire_ants_chr16/results/recombination_coordinate_audit.md": "093d7193e7071e8c22c2b54f918085577d8386d06d5290b331879db73c183739",
+    "empirical/fire_ants_chr16/results/recombination_figure_caption.txt": "3501466178b2ccdbeb22507a6dd905124be876c1736730117612fdaa3b05806b",
+    "empirical/fire_ants_chr16/results/recombination_report.md": "981aa6283a38ba324fc55c167abe627bc6ef4a04db682baab503b7c3e1c35632",
+    "empirical/fire_ants_chr16/results/recombination_source_audit.md": "45d8a51ae3c44752ce32961ab0f2721529caaa66802f520c004b02dc242932c3",
+    "empirical/fire_ants_chr16/results/recombination_summary.tsv": "88f2e9b8a6fa8aaeb702b3ddf9cd9f6425bf1242c3b22c51ba3ce14039b7dd00"
+  },
+  "prohibited_actions": {
+    "astral_rerun": false,
+    "castles_rerun": false,
+    "gene_tree_regeneration": false,
+    "new_species_tree_estimation": false,
+    "recombination_inferred_from_genealogy": false,
+    "topology_reclassification": false
+  },
+  "script_hash": {
+    "empirical/fire_ants_chr16/scripts/07_recombination_validation.py": "8fa9c3c7d53548e344df72a1340e7cd8a511d830b2b494e534abbdf5971f94d1"
+  },
+  "source_citation": "Wang J., Wurm Y., Nipitwattanaphon M. et al. A Y-like social chromosome causes alternative colony organization in fire ants. Nature 493, 664-668 (2013).",
+  "source_files": {
+    "data/fire_ants_chr16/raw/recombination_sources/wang_2013_nature/41586_2013_BFnature11832_MOESM97_ESM.pdf": "70b09fed688ece03cd0d84dc45223f5f6bba64fbb8d1805d57cbe2ff758f2e0b",
+    "data/fire_ants_chr16/raw/recombination_sources/wang_2013_nature/41586_2013_BFnature11832_MOESM98_ESM.zip": "155f1a9576cf11085c206fcc706ba828683e6a20c18cdfe413ef4a5059ef8613"
+  },
+  "source_urls": {
+    "article": "https://www.nature.com/articles/nature11832",
+    "supplementary_data_zip": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fnature11832/MediaObjects/41586_2013_BFnature11832_MOESM98_ESM.zip",
+    "supplementary_information_pdf": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fnature11832/MediaObjects/41586_2013_BFnature11832_MOESM97_ESM.pdf"
+  },
+  "stage5_stage6_frozen_results_modified": false
+}

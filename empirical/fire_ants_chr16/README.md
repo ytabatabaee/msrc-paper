@@ -276,3 +276,11 @@ Post-freeze sensitivity: Stage 6 tests grouped TWISST/modal-tree ASTRAL4 summary
 Strongest branch-length follow-up: Stage 6C uses the original 267-individual RAxML trees, the exact metadata-derived seven-group mapping, and ASTRAL4/CASTLES-II. Stage 6C supersedes Stage 6B for direct CU-vs-SU comparison because CU and SU are estimated from identical individual-level inputs and the identical fixed background topology. Stage 6B remains documented as an independent grouped/modal-topology CU sensitivity analysis.
 
 Final manuscript-facing outputs: `results/fire_ants_final_summary.tsv`, `results/fire_ants_final_methods.md`, `results/fire_ants_final_results.md`, and `figures/fire_ants_final_summary.pdf`.
+
+## Recombination-suppression validation
+
+A small supplementary validation layer aligns the frozen chromosome-16 genealogy signal with independent recombination evidence from Wang et al. 2013 (`Nature`, DOI `10.1038/nature11832`). The source provides direct RADtag linkage-map marker tables and reports an approximately 13-Mb social-chromosome region with complete recombination suppression between SB and Sb. The marker tables are preserved in `../../data/fire_ants_chr16/processed/recombination_map.tsv` in their original `Si_gnF` scaffold coordinate system.
+
+Because no reliable conversion from the Wang scaffold coordinates to the frozen Stolle/TWISST chromosome-16 coordinates was found in the committed inputs, the manuscript figure uses a schematic regional recombination-suppression track rather than a fabricated cM/Mb curve. The integrated figure is `figures/fire_ants_recombination_genealogy.pdf`, with report and provenance in `results/recombination_report.md`, `results/recombination_source_audit.md`, `results/recombination_coordinate_audit.md`, and `results/recombination_manifest.json`.
+
+This validation does not rerun or alter the frozen topology, ASTRAL, CASTLES-II, or branch-length results. It supports the biological consistency of the localized social-haplotype genealogy with an independently known recombination-suppressed social chromosome region, while retaining the introgression caveat from the source literature.
