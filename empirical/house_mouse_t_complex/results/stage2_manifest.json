@@ -1,0 +1,53 @@
+{
+  "analysis": "house_mouse_t_complex_stage2",
+  "source_archive": {
+    "basename": "IST-2017-78-v1+1_Data.zip",
+    "sha256": "f925084a87ac3837661ad99f931da608c129ea3e590c3470030b3ba649d47877",
+    "size_bytes": 143697895
+  },
+  "primary_dataset": "Coverage_AlleleRatio_RAW_SNPs",
+  "n_primary_usable_trees": 4046,
+  "coordinate_range_bp": [5000000, 37054999],
+  "tip_counts": {"total": 55, "pseudo_t": 15, "standard_mus_musculus": 32, "spretus": 8},
+  "fixed_quartet_baseline": "Q_SPECIES = (musculus, castaneus) | (domesticus, spretus)",
+  "commands": [
+    "02a_score_fixed_quartets.py",
+    "02b_balanced_sampling_astral.py --n-replicates 7 --seed 20261005 --threads 2",
+    "02c_population_astral.py --threads 2",
+    "02d_filtering_robustness.py --archive IST-2017-78-v1+1_Data.zip --threads 2",
+    "02e_linkage_sensitivity.py --archive IST-2017-78-v1+1_Data.zip --threads 2 --max-phases 10",
+    "02f_make_stage2_figures.py"
+  ],
+  "status": {
+    "stage2_fixed_quartets": "complete",
+    "stage2_balanced_sampling": "partial_7_of_200_replicates_local",
+    "stage2_population": "complete_local_run",
+    "stage2_filtering": "partial_third_dataset_tip_label_incompatible",
+    "stage2_linkage": "partial_phase_sweep_capped_at_10_offsets_per_spacing",
+    "source_defined_blocks_available": false,
+    "biological_interpretation": "gated_pending_full_controls"
+  },
+  "outputs": [
+    "empirical/house_mouse_t_complex/results/stage2_fixed_quartet_scan.tsv",
+    "empirical/house_mouse_t_complex/results/stage2_fixed_quartet_summary.tsv",
+    "empirical/house_mouse_t_complex/results/stage2_balanced_sampling_astral.tsv",
+    "empirical/house_mouse_t_complex/results/stage2_balanced_sampling_summary.tsv",
+    "empirical/house_mouse_t_complex/results/stage2_population_astral.tsv",
+    "empirical/house_mouse_t_complex/results/stage2_filtering_robustness.tsv",
+    "empirical/house_mouse_t_complex/results/stage2_linkage_sensitivity.tsv",
+    "empirical/house_mouse_t_complex/results/stage2_source_defined_blocks.tsv",
+    "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_stage2_main.png",
+    "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_stage2_main.pdf",
+    "empirical/house_mouse_t_complex/results/stage2_figure_validation.tsv"
+  ],
+  "sha256": {
+    "empirical/house_mouse_t_complex/results/stage2_fixed_quartet_summary.tsv": "e6fc2b30e9bb6b1b0732904c53367b8a2d8e307fbbcd9d361cadf4f68abb8e03",
+    "empirical/house_mouse_t_complex/results/stage2_balanced_sampling_summary.tsv": "3b596ffda7a841d520ff56c035c6ca455917fb139f9e7aea80599413c9aec418",
+    "empirical/house_mouse_t_complex/results/stage2_population_astral.tsv": "a3aa65ca00079d4a1dc4feac2337050bd634df258a48a16735883064b896d436",
+    "empirical/house_mouse_t_complex/results/stage2_filtering_robustness.tsv": "81e471dafa8ec3b9c7512246ec63628d19685130dd2274d4864fae5f09b47e53",
+    "empirical/house_mouse_t_complex/results/stage2_linkage_sensitivity.tsv": "885fec1340298ae9f63e8d7a9af10c4ad43888b279dea1ecbf62ba05cdc3bcc0",
+    "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_stage2_main.png": "563572c226e8277244af1cb862f9986c8fb61cd29b82fcbd15cbf3792170a399",
+    "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_stage2_main.pdf": "4b04223c1b32545fa77211ca8fa68e7f5b688ef96332dc912b2e54e89abcfe57",
+    "empirical/house_mouse_t_complex/results/stage2_figure_validation.tsv": "e6f5ab53f9b90e279e7fa9ec20ef4e4eeef26a315b07e1a2e3bbb8c6004d0902"
+  }
+}

@@ -14,5 +14,7 @@ Data/2-Coverage-and_AlleleRatio-Filtered_RAW_SNPs/
     ML_trees.zip
 ```
 
-Processed outputs written here are lightweight inventories, mapping tables, frozen gene-tree files, and manifests. The `raw/` directory is for local user-supplied source material only.
-
+Processed outputs written here are lightweight inventories, mapping tables,
+frozen gene-tree files, Stage 2 thinning/sampling inputs, and manifests. The
+`raw/` directory is for local user-supplied source material only. Do not add
+the upstream archive or nested binary ZIPs to git.

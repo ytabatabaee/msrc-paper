@@ -2,7 +2,7 @@
 
 This directory stages an empirical MSRC analysis of the house-mouse t-haplotype / t-complex on chromosome 17 using the published Kelemen & Vicoso local-gene-tree archive.
 
-The current implementation covers Stage 0 and Stage 1 scaffolding only. Stage 0 audits the source archive, inventories the nested ML tree files, parses the final Newick trees, and creates unresolved tip-mapping tables when the archive does not directly establish biological identities. Stage 1 is gated: it only freezes ASTRAL-ready gene-tree inputs when Stage 0 has source-backed, mostly resolved tip-to-subspecies mappings.
+Stages 0 and 1 audit and freeze the published trees. Stage 2 adds exact fixed-quartet scoring, balanced-sampling ASTRAL controls, seven-population sensitivity, filtering robustness, spatial thinning, and a validated main figure. Stage 2 remains explicitly gated: the local balanced run is currently a seven-replicate pilot, and the full 200-replicate control is checkpointable but not yet complete.
 
 Run Stage 0 with a local copy of the upstream archive:
 
@@ -35,3 +35,7 @@ python empirical/house_mouse_t_complex/scripts/00_audit_house_mouse_data.py --ru
 pytest empirical/house_mouse_t_complex/tests
 ```
 
+Stage 2 outputs are in `results/stage2_report.md` and the main figure is
+`figures/house_mouse_t_complex_stage2_main.{png,pdf}`. The Stage 2 scripts use
+repository-relative output paths and retain source archive provenance by
+basename, SHA256, and byte size.

@@ -1,0 +1,7 @@
+dataset	treatment	status	n_usable_trees	coordinates_recoverable	tip_labels_compatible	mean_q_species	mean_q_t_alt	mean_q_other	mean_q_unresolved	astral_topology	CU	localPP	q1	q2	q3
+PASS_SNPs	STANDARD_ONLY	ok	4047	true	true	0.4396011415	0.3535016045	0.2068753049	2.194905827e-05	Q_SPECIES	0.17345	1	0.439603	0.206886	0.353511
+PASS_SNPs	ALL_TIPS	ok	4047	true	true	0.3397896149	0.3828676831	0.2773174041	2.529798675e-05	Q_T_ALT	0.0770645	1	0.382874	0.339798	0.277327
+Coverage_AlleleRatio_RAW_SNPs	STANDARD_ONLY	ok	4046	true	true	0.3698034644	0.3436296747	0.2863647439	0.0002021170459	Q_SPECIES	0.056283	0.999985	0.36991	0.343656	0.286434
+Coverage_AlleleRatio_RAW_SNPs	ALL_TIPS	ok	4046	true	true	0.323186646	0.3652898935	0.311230255	0.0002932055175	Q_T_ALT	0.049097	1	0.365364	0.323323	0.311313
+Coverage_RAW_SNPs	STANDARD_ONLY	tip_label_incompatible	4046	true	false										
+Coverage_RAW_SNPs	ALL_TIPS	tip_label_incompatible	4046	true	false										

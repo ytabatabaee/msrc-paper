@@ -1,0 +1,10 @@
+treatment	n_gene_trees	topology	rf_distance_vs_P0	changed_splits_vs_P0	CU_length	localPP	q1	q2	q3	status
+T0_STANDARD	4046	Q_SPECIES	NA	NA	0.056283	0.999985	0.36991	0.101641	0.172913	exploratory_stage1
+T1_ALL_WINDOWS	4046	Q_T_ALT	NA	NA	0.049097	1	0.365364	0.323323	0.311313	exploratory_stage1
+B0_STANDARD_MATCHED	4046	see_stage2_balanced_summary	NA	NA	0.067082	0.896104	NA	NA	NA	partial_7_replicates
+B1_T_MATCHED	4046	see_stage2_balanced_summary	NA	NA	0.199257	1	NA	NA	NA	partial_7_replicates
+B2_MIXED_BALANCED	4046	see_stage2_balanced_summary	NA	NA	0.031468	0.902319	NA	NA	NA	partial_7_replicates
+P0_STANDARD_7POP	4046	population_tree_in_stage2_population_astral.tsv	0	0	0.886491	1	0.725447	0.101641	0.172913	complete_local_run
+P1_ALL_7POP	4046	population_tree_changed_RF2	2	2	0.157049	1	0.430331	0.260108	0.309561	complete_local_run
+P2_THIN_50kb_7POP	467	population_tree_changed_RF2	2	2	0.151452	0.99996	0.427942	0.264812	0.307247	complete_local_run
+P3_THIN_100kb_7POP	248	population_tree_changed_RF2	2	2	0.157458	0.997808	0.432194	0.260356	0.30745	complete_local_run

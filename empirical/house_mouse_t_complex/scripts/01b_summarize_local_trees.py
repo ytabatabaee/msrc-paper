@@ -4,9 +4,8 @@
 from __future__ import annotations
 
 import argparse
-import struct
+import os
 import sys
-import zlib
 from collections import Counter
 from pathlib import Path
 
@@ -44,101 +43,29 @@ def split_for_four(tips: list[str], groups: dict[str, str]) -> str:
     return "quartet_available_mapping_not_topology_scored"
 
 
-def write_placeholder_figures(rows: list[dict[str, object]]) -> None:
+def write_inventory_figures(rows: list[dict[str, object]]) -> None:
+    os.environ.setdefault("MPLCONFIGDIR", "/private/tmp/msrc_mplconfig")
+    os.environ.setdefault("XDG_CACHE_HOME", "/private/tmp/msrc_xdgcache")
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    import numpy as np
+
     FIGURES.mkdir(parents=True, exist_ok=True)
-    x = [float(r["midpoint_bp"]) for r in rows if r.get("midpoint_bp") not in {"NA", None}]
-    y = [float(r["fraction_tips_present"]) for r in rows if r.get("midpoint_bp") not in {"NA", None}]
-    width, height = 1000, 360
-    margin_l, margin_r, margin_t, margin_b = 80, 30, 35, 55
-    pixels = bytearray([255] * (width * height * 3))
-
-    def set_pixel(px: int, py: int, color: tuple[int, int, int]) -> None:
-        if 0 <= px < width and 0 <= py < height:
-            idx = (py * width + px) * 3
-            pixels[idx : idx + 3] = bytes(color)
-
-    def line(x0: int, y0: int, x1: int, y1: int, color: tuple[int, int, int]) -> None:
-        dx = abs(x1 - x0)
-        dy = -abs(y1 - y0)
-        sx = 1 if x0 < x1 else -1
-        sy = 1 if y0 < y1 else -1
-        err = dx + dy
-        while True:
-            for ox in (-1, 0, 1):
-                for oy in (-1, 0, 1):
-                    set_pixel(x0 + ox, y0 + oy, color)
-            if x0 == x1 and y0 == y1:
-                break
-            e2 = 2 * err
-            if e2 >= dy:
-                err += dy
-                x0 += sx
-            if e2 <= dx:
-                err += dx
-                y0 += sy
-
-    axis = (20, 20, 20)
-    line(margin_l, height - margin_b, width - margin_r, height - margin_b, axis)
-    line(margin_l, margin_t, margin_l, height - margin_b, axis)
-    points: list[tuple[int, int]] = []
-    if x:
-        xmin, xmax = min(x), max(x)
-        span = xmax - xmin if xmax > xmin else 1.0
-        for xi, yi in zip(x, y, strict=True):
-            px = int(margin_l + (xi - xmin) / span * (width - margin_l - margin_r))
-            py = int(height - margin_b - max(0.0, min(1.0, yi)) * (height - margin_t - margin_b))
-            points.append((px, py))
-        for a, b in zip(points, points[1:]):
-            line(a[0], a[1], b[0], b[1], (37, 99, 135))
-    raw = b"".join(b"\x00" + pixels[row * width * 3 : (row + 1) * width * 3] for row in range(height))
-
-    def chunk(kind: bytes, data: bytes) -> bytes:
-        return struct.pack(">I", len(data)) + kind + data + struct.pack(">I", zlib.crc32(kind + data) & 0xFFFFFFFF)
-
-    png = (
-        b"\x89PNG\r\n\x1a\n"
-        + chunk(b"IHDR", struct.pack(">IIBBBBB", width, height, 8, 2, 0, 0, 0))
-        + chunk(b"IDAT", zlib.compress(raw, 9))
-        + chunk(b"IEND", b"")
-    )
-    (FIGURES / "house_mouse_t_complex_tree_inventory.png").write_bytes(png)
-
-    pdf_lines = [
-        "%PDF-1.4\n",
-        "1 0 obj << /Type /Catalog /Pages 2 0 R >> endobj\n",
-        "2 0 obj << /Type /Pages /Kids [3 0 R] /Count 1 >> endobj\n",
-        "3 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 1000 360] /Contents 4 0 R >> endobj\n",
-    ]
-    commands = ["0.08 0.08 0.08 RG 1 w 80 55 m 970 55 l S 80 55 m 80 325 l S"]
-    if points:
-        path = [f"{points[0][0]} {height - points[0][1]} m"]
-        path.extend(f"{px} {height - py} l" for px, py in points[1:])
-        commands.append("0.15 0.39 0.53 RG 1.5 w " + " ".join(path) + " S")
-    commands.append("BT /F1 14 Tf 80 335 Td (House mouse t-complex local tree inventory) Tj ET")
-    stream = "\n".join(commands).encode("ascii")
-    pdf_lines.append(f"4 0 obj << /Length {len(stream)} /Resources << /Font << /F1 5 0 R >> >> >> stream\n")
-    head = "".join(pdf_lines).encode("ascii")
-    body = stream + b"\nendstream endobj\n5 0 obj << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> endobj\n"
-    offsets = [0]
-    parts = [b"%PDF-1.4\n"]
-    objects = [
-        b"1 0 obj << /Type /Catalog /Pages 2 0 R >> endobj\n",
-        b"2 0 obj << /Type /Pages /Kids [3 0 R] /Count 1 >> endobj\n",
-        b"3 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 1000 360] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >> endobj\n",
-        f"4 0 obj << /Length {len(stream)} >> stream\n".encode("ascii") + stream + b"\nendstream endobj\n",
-        b"5 0 obj << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> endobj\n",
-    ]
-    parts = [b"%PDF-1.4\n"]
-    offsets = []
-    for obj in objects:
-        offsets.append(sum(len(part) for part in parts))
-        parts.append(obj)
-    xref_pos = sum(len(part) for part in parts)
-    xref = ["xref\n0 6\n0000000000 65535 f \n"]
-    xref.extend(f"{offset:010d} 00000 n \n" for offset in offsets)
-    trailer = f"trailer << /Size 6 /Root 1 0 R >>\nstartxref\n{xref_pos}\n%%EOF\n"
-    parts.append(("".join(xref) + trailer).encode("ascii"))
-    (FIGURES / "house_mouse_t_complex_tree_inventory.pdf").write_bytes(b"".join(parts))
+    starts = np.array([float(r["start_bp"]) for r in rows])
+    bins = np.arange(starts.min(), starts.max() + 250_000, 250_000)
+    counts, edges = np.histogram(starts, bins=bins)
+    if counts.max() == counts.min():
+        raise RuntimeError("Inventory figure would be uninformative: 250-kb bin counts are constant.")
+    fig, ax = plt.subplots(figsize=(9, 3.2))
+    ax.bar(edges[:-1] / 1e6, counts, width=np.diff(edges) / 1e6, align="edge", color="#4c78a8", edgecolor="white", linewidth=0.4)
+    ax.set_xlabel("chr17 position (Mb)")
+    ax.set_ylabel("5-kb trees per 250-kb bin")
+    ax.set_title("House mouse t-complex window density")
+    fig.tight_layout()
+    fig.savefig(FIGURES / "house_mouse_t_complex_tree_inventory.png", dpi=220)
+    fig.savefig(FIGURES / "house_mouse_t_complex_tree_inventory.pdf")
 
 
 def main() -> int:
@@ -188,7 +115,7 @@ def main() -> int:
             "q3",
         ],
     )
-    write_placeholder_figures(rows)
+    write_inventory_figures(rows)
     print(f"Wrote {SUMMARY_TSV}")
     return 0
 
