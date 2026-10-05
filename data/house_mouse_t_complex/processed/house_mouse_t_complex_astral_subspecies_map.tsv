@@ -1,0 +1,56 @@
+individual	species	mapping_confidence
+Mmc_CAST10_H36.variant8	Mus musculus castaneus	strong
+Mmc_CAST1_H12.variant8_tHaplSubset.fa	Mus musculus castaneus	strong
+Mmc_CAST2_H14.variant8_tHaplSubset.fa	Mus musculus castaneus	strong
+Mmc_CAST3_H15.variant8	Mus musculus castaneus	strong
+Mmc_CAST4_H24.variant8	Mus musculus castaneus	strong
+Mmc_CAST5_H26.variant8	Mus musculus castaneus	strong
+Mmc_CAST6_H27.variant8_tHaplSubset.fa	Mus musculus castaneus	strong
+Mmc_CAST7_H28.variant8	Mus musculus castaneus	strong
+Mmc_CAST8_H30.variant8	Mus musculus castaneus	strong
+Mmc_CAST9_H34.variant8	Mus musculus castaneus	strong
+Mmd_FRA1_14.variant	Mus musculus domesticus	strong
+Mmd_FRA2_15B.variant	Mus musculus domesticus	strong
+Mmd_FRA3_16B.variant	Mus musculus domesticus	strong
+Mmd_FRA4_18B.variant	Mus musculus domesticus	strong
+Mmd_FRA5_B2C.variant_tHaplSubset.fa	Mus musculus domesticus	strong
+Mmd_FRA6_C1.variant_tHaplSubset.fa	Mus musculus domesticus	strong
+Mmd_FRA7_E1.variant	Mus musculus domesticus	strong
+Mmd_FRA8_F1B.variant_tHaplSubset.fa	Mus musculus domesticus	strong
+Mmd_GER1_TP1.variant2	Mus musculus domesticus	strong
+Mmd_GER2_TP121B.variant2	Mus musculus domesticus	strong
+Mmd_GER3_TP17-2.variant2	Mus musculus domesticus	strong
+Mmd_GER4_TP3-92.variant2	Mus musculus domesticus	strong
+Mmd_GER5_TP4a.variant2	Mus musculus domesticus	strong
+Mmd_GER6_TP51D.variant2_tHaplSubset.fa	Mus musculus domesticus	strong
+Mmd_GER7_TP7-10F1A2.variant2	Mus musculus domesticus	strong
+Mmd_GER8_TP81B.variant2	Mus musculus domesticus	strong
+Mmm_AFG1_396.variant7_tHaplSubset.fa	Mus musculus musculus	strong
+Mmm_AFG2_413.variant7	Mus musculus musculus	strong
+Mmm_AFG3_416.variant7_tHaplSubset.fa	Mus musculus musculus	strong
+Mmm_AFG4_424.variant7	Mus musculus musculus	strong
+Mmm_AFG5_435.variant7	Mus musculus musculus	strong
+Mmm_AFG6_444.variant7_tHaplSubset.fa	Mus musculus musculus	strong
+Mmm_CZE1_CR12.variant5_tHaplSubset.fa	Mus musculus musculus	strong
+Mmm_CZE2_CR13.variant5_tHaplSubset.fa	Mus musculus musculus	strong
+Mmm_CZE3_CR16.variant5	Mus musculus musculus	strong
+Mmm_CZE4_CR23.variant5_tHaplSubset.fa	Mus musculus musculus	strong
+Mmm_CZE5_CR25.variant5	Mus musculus musculus	strong
+Mmm_CZE7_CR46.variant5	Mus musculus musculus	strong
+Mmm_CZE8_CR59.variant5	Mus musculus musculus	strong
+Mmm_KAZ1_AL1.variant6	Mus musculus musculus	strong
+Mmm_KAZ2_AL16.variant6	Mus musculus musculus	strong
+Mmm_KAZ3_AL19.variant6_tHaplSubset.fa	Mus musculus musculus	strong
+Mmm_KAZ4_AL33.variant6	Mus musculus musculus	strong
+Mmm_KAZ5_AL38.variant6	Mus musculus musculus	strong
+Mmm_KAZ6_AL40.variant6	Mus musculus musculus	strong
+Mmm_KAZ7_AL41.variant6_tHaplSubset.fa	Mus musculus musculus	strong
+Mmm_KAZ8_AL42.variant6	Mus musculus musculus	strong
+Ms_SPRE1_SP36.variant9	Mus spretus	strong
+Ms_SPRE2_SP39.variant9	Mus spretus	strong
+Ms_SPRE3_SP41.variant9	Mus spretus	strong
+Ms_SPRE4_SP51.variant9	Mus spretus	strong
+Ms_SPRE5_SP62.variant9	Mus spretus	strong
+Ms_SPRE6_SP68.variant9	Mus spretus	strong
+Ms_SPRE7_SP69.variant9	Mus spretus	strong
+Ms_SPRE8_SP70.variant9	Mus spretus	strong

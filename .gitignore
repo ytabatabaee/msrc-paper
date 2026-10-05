@@ -9,6 +9,75 @@ __pycache__/
 # Local editor/project settings
 .idea/
 .vscode/
+.venv-malaria/
+.venv-malaria310/
+
+# Large Anopheles genomic inputs should remain external unless explicitly approved.
+data/anopheles_2la/raw/**/*.bam
+data/anopheles_2la/raw/**/*.cram
+data/anopheles_2la/raw/**/*.fastq
+data/anopheles_2la/raw/**/*.fastq.gz
+data/anopheles_2la/raw/**/*.fq
+data/anopheles_2la/raw/**/*.fq.gz
+data/anopheles_2la/raw/**/*.vcf
+data/anopheles_2la/raw/**/*.vcf.gz
+data/anopheles_2la/raw/**/*.bcf
+data/anopheles_2la/raw/**/*.zarr/
+data/anopheles_2la/raw/**/*.tar
+data/anopheles_2la/raw/**/*.tar.gz
+
+# Large Songbirds Stage 1B raw-read pilot products should remain external.
+data/songbirds_pips/raw/stage1b_shared_pip/**/*.sra
+data/songbirds_pips/raw/stage1b_shared_pip/**/*.fastq
+data/songbirds_pips/raw/stage1b_shared_pip/**/*.fastq.gz
+data/songbirds_pips/raw/stage1b_shared_pip/**/*.fq
+data/songbirds_pips/raw/stage1b_shared_pip/**/*.fq.gz
+data/songbirds_pips/raw/stage1b_shared_pip/**/*.sam
+data/songbirds_pips/raw/stage1b_shared_pip/**/*.bam
+data/songbirds_pips/raw/stage1b_shared_pip/**/*.bai
+data/songbirds_pips/raw/stage1b_shared_pip/**/*.cram
+data/songbirds_pips/raw/stage1b_shared_pip/**/*.crai
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.sam
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.bam
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.bai
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.cram
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.crai
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.saf
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.saf.gz
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.saf.idx
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.sfs
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.sfs.gz
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.fa
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.fasta
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.fna
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.fa.gz
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.fasta.gz
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.fna.gz
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.amb
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.ann
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.bwt
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.pac
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.sa
+data/songbirds_pips/intermediate/stage1b_shared_pip/**/*.fai
+
+# House mouse t-complex upstream archives remain local provenance inputs.
+/IST-2017-78-v1+1_Data.zip
+data/house_mouse_t_complex/raw/**/*.zip
+data/house_mouse_t_complex/raw/**/*.tar
+data/house_mouse_t_complex/raw/**/*.tar.gz
+data/house_mouse_t_complex/raw/IST-2017-78-v1+1_Data.zip
+data/house_mouse_t_complex/intermediate/**/*.zip
+data/house_mouse_t_complex/processed/matplotlib_cache/
+!empirical/house_mouse_t_complex/results/stage1_aster/*.log
+
+# Large Neoaves Stage 4E ASTER/ASTRAL4 inputs and cluster outputs are prepared
+# locally but remain external to git; manifests/checksums live under results.
+empirical/neoaves_chr4/data/stage4e/*.tre
+empirical/neoaves_chr4/data/stage4e/random_matched/*.locus_ids
+empirical/neoaves_chr4/data/stage4e/random_matched/*.tre
+empirical/neoaves_chr4/results/stage4e/cluster/
+empirical/neoaves_chr4/results/stage4e/trees/*.nwk
+empirical/neoaves_chr4/results/stage4e/**/*.log
 
 # C extensions
 *.so
@@ -212,3 +281,16 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Stage 4D immutable external downloads and derived large tree inputs
+/empirical/neoaves_chr4/external/stiller2024/*
+!/empirical/neoaves_chr4/external/stiller2024/download_manifest.tsv
+!/empirical/neoaves_chr4/external/stiller2024/checksums.sha256
+/empirical/neoaves_chr4/data/stage4d/
+/empirical/neoaves_chr4/external/chr4avian/*
+!/empirical/neoaves_chr4/external/chr4avian/download_manifest.tsv
+/empirical/neoaves_chr4/external/astral5151/*
+!/empirical/neoaves_chr4/external/astral5151/download_manifest.tsv
+
+# Preserve small House mouse Stage 1 ASTRAL provenance logs.
+!empirical/house_mouse_t_complex/results/stage1_aster/*.log

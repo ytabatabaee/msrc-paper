@@ -1,0 +1,31 @@
+Accurate Species TRee ALgorithm IV (ASTRAL-IV)
+*** NOW with integrated CASTLES-2 ***
+Version: v1.25.4.8
+#Genetrees: 4046
+#Species: 4
+#Rounds: 4
+#Samples: 4
+#Threads: 2
+#NNI moves:0/28
+(((Mus_musculus_domesticus,Mus_musculus_musculus),Mus_musculus_castaneus),Mus_spretus);
+#NNI moves:0/28
+(((Mus_spretus,Mus_musculus_castaneus),Mus_musculus_domesticus),Mus_musculus_musculus);
+#NNI moves:0/28
+(((Mus_spretus,Mus_musculus_castaneus),Mus_musculus_musculus),Mus_musculus_domesticus);
+#NNI moves:0/28
+(((Mus_musculus_musculus,Mus_musculus_domesticus),Mus_musculus_castaneus),Mus_spretus);
+Initial score: 3.61173e+08
+Initial tree: (((Mus_musculus_musculus,Mus_musculus_domesticus),Mus_spretus),Mus_musculus_castaneus);
+*** Subsample Process ***
+#NNI moves:0/28
+(((Mus_spretus,Mus_musculus_castaneus),Mus_musculus_musculus),Mus_musculus_domesticus);
+#NNI moves:0/28
+(((Mus_musculus_musculus,Mus_musculus_domesticus),Mus_musculus_castaneus),Mus_spretus);
+#NNI moves:0/28
+(((Mus_spretus,Mus_musculus_castaneus),Mus_musculus_domesticus),Mus_musculus_musculus);
+#NNI moves:0/28
+(((Mus_musculus_domesticus,Mus_musculus_musculus),Mus_spretus),Mus_musculus_castaneus);
+Current score: 3.61173e+08
+Current tree: (((Mus_musculus_domesticus,Mus_musculus_musculus),Mus_spretus),Mus_musculus_castaneus);
+Final Tree: (((Mus_musculus_domesticus,Mus_musculus_musculus),Mus_spretus),Mus_musculus_castaneus);
+Score: 361173050

@@ -1,0 +1,56 @@
+subset	tree_tip	individual	subspecies	population	t_status	mapping_confidence
+all_available	Mmc_CAST10_H36.variant8	Mmc_CAST10_H36.variant8	Mus musculus castaneus	CAST	standard_noncarrier	strong
+all_available	Mmc_CAST1_H12.variant8_tHaplSubset.fa	Mmc_CAST1_H12.variant8_tHaplSubset.fa	Mus musculus castaneus	CAST	pseudo-t_haplotype	strong
+all_available	Mmc_CAST2_H14.variant8_tHaplSubset.fa	Mmc_CAST2_H14.variant8_tHaplSubset.fa	Mus musculus castaneus	CAST	pseudo-t_haplotype	strong
+all_available	Mmc_CAST3_H15.variant8	Mmc_CAST3_H15.variant8	Mus musculus castaneus	CAST	standard_noncarrier	strong
+all_available	Mmc_CAST4_H24.variant8	Mmc_CAST4_H24.variant8	Mus musculus castaneus	CAST	standard_noncarrier	strong
+all_available	Mmc_CAST5_H26.variant8	Mmc_CAST5_H26.variant8	Mus musculus castaneus	CAST	standard_noncarrier	strong
+all_available	Mmc_CAST6_H27.variant8_tHaplSubset.fa	Mmc_CAST6_H27.variant8_tHaplSubset.fa	Mus musculus castaneus	CAST	pseudo-t_haplotype	strong
+all_available	Mmc_CAST7_H28.variant8	Mmc_CAST7_H28.variant8	Mus musculus castaneus	CAST	standard_noncarrier	strong
+all_available	Mmc_CAST8_H30.variant8	Mmc_CAST8_H30.variant8	Mus musculus castaneus	CAST	standard_noncarrier	strong
+all_available	Mmc_CAST9_H34.variant8	Mmc_CAST9_H34.variant8	Mus musculus castaneus	CAST	standard_noncarrier	strong
+all_available	Mmd_FRA1_14.variant	Mmd_FRA1_14.variant	Mus musculus domesticus	France	standard_noncarrier	strong
+all_available	Mmd_FRA2_15B.variant	Mmd_FRA2_15B.variant	Mus musculus domesticus	France	standard_noncarrier	strong
+all_available	Mmd_FRA3_16B.variant	Mmd_FRA3_16B.variant	Mus musculus domesticus	France	standard_noncarrier	strong
+all_available	Mmd_FRA4_18B.variant	Mmd_FRA4_18B.variant	Mus musculus domesticus	France	standard_noncarrier	strong
+all_available	Mmd_FRA5_B2C.variant_tHaplSubset.fa	Mmd_FRA5_B2C.variant_tHaplSubset.fa	Mus musculus domesticus	France	pseudo-t_haplotype	strong
+all_available	Mmd_FRA6_C1.variant_tHaplSubset.fa	Mmd_FRA6_C1.variant_tHaplSubset.fa	Mus musculus domesticus	France	pseudo-t_haplotype	strong
+all_available	Mmd_FRA7_E1.variant	Mmd_FRA7_E1.variant	Mus musculus domesticus	France	standard_noncarrier	strong
+all_available	Mmd_FRA8_F1B.variant_tHaplSubset.fa	Mmd_FRA8_F1B.variant_tHaplSubset.fa	Mus musculus domesticus	France	pseudo-t_haplotype	strong
+all_available	Mmd_GER1_TP1.variant2	Mmd_GER1_TP1.variant2	Mus musculus domesticus	Germany	standard_noncarrier	strong
+all_available	Mmd_GER2_TP121B.variant2	Mmd_GER2_TP121B.variant2	Mus musculus domesticus	Germany	standard_noncarrier	strong
+all_available	Mmd_GER3_TP17-2.variant2	Mmd_GER3_TP17-2.variant2	Mus musculus domesticus	Germany	standard_noncarrier	strong
+all_available	Mmd_GER4_TP3-92.variant2	Mmd_GER4_TP3-92.variant2	Mus musculus domesticus	Germany	standard_noncarrier	strong
+all_available	Mmd_GER5_TP4a.variant2	Mmd_GER5_TP4a.variant2	Mus musculus domesticus	Germany	standard_noncarrier	strong
+all_available	Mmd_GER6_TP51D.variant2_tHaplSubset.fa	Mmd_GER6_TP51D.variant2_tHaplSubset.fa	Mus musculus domesticus	Germany	pseudo-t_haplotype	strong
+all_available	Mmd_GER7_TP7-10F1A2.variant2	Mmd_GER7_TP7-10F1A2.variant2	Mus musculus domesticus	Germany	standard_noncarrier	strong
+all_available	Mmd_GER8_TP81B.variant2	Mmd_GER8_TP81B.variant2	Mus musculus domesticus	Germany	standard_noncarrier	strong
+all_available	Mmm_AFG1_396.variant7_tHaplSubset.fa	Mmm_AFG1_396.variant7_tHaplSubset.fa	Mus musculus musculus	Afghanistan	pseudo-t_haplotype	strong
+all_available	Mmm_AFG2_413.variant7	Mmm_AFG2_413.variant7	Mus musculus musculus	Afghanistan	standard_noncarrier	strong
+all_available	Mmm_AFG3_416.variant7_tHaplSubset.fa	Mmm_AFG3_416.variant7_tHaplSubset.fa	Mus musculus musculus	Afghanistan	pseudo-t_haplotype	strong
+all_available	Mmm_AFG4_424.variant7	Mmm_AFG4_424.variant7	Mus musculus musculus	Afghanistan	standard_noncarrier	strong
+all_available	Mmm_AFG5_435.variant7	Mmm_AFG5_435.variant7	Mus musculus musculus	Afghanistan	standard_noncarrier	strong
+all_available	Mmm_AFG6_444.variant7_tHaplSubset.fa	Mmm_AFG6_444.variant7_tHaplSubset.fa	Mus musculus musculus	Afghanistan	pseudo-t_haplotype	strong
+all_available	Mmm_CZE1_CR12.variant5_tHaplSubset.fa	Mmm_CZE1_CR12.variant5_tHaplSubset.fa	Mus musculus musculus	Czech Republic	pseudo-t_haplotype	strong
+all_available	Mmm_CZE2_CR13.variant5_tHaplSubset.fa	Mmm_CZE2_CR13.variant5_tHaplSubset.fa	Mus musculus musculus	Czech Republic	pseudo-t_haplotype	strong
+all_available	Mmm_CZE3_CR16.variant5	Mmm_CZE3_CR16.variant5	Mus musculus musculus	Czech Republic	standard_noncarrier	strong
+all_available	Mmm_CZE4_CR23.variant5_tHaplSubset.fa	Mmm_CZE4_CR23.variant5_tHaplSubset.fa	Mus musculus musculus	Czech Republic	pseudo-t_haplotype	strong
+all_available	Mmm_CZE5_CR25.variant5	Mmm_CZE5_CR25.variant5	Mus musculus musculus	Czech Republic	standard_noncarrier	strong
+all_available	Mmm_CZE7_CR46.variant5	Mmm_CZE7_CR46.variant5	Mus musculus musculus	Czech Republic	standard_noncarrier	strong
+all_available	Mmm_CZE8_CR59.variant5	Mmm_CZE8_CR59.variant5	Mus musculus musculus	Czech Republic	standard_noncarrier	strong
+all_available	Mmm_KAZ1_AL1.variant6	Mmm_KAZ1_AL1.variant6	Mus musculus musculus	Kazakhstan	standard_noncarrier	strong
+all_available	Mmm_KAZ2_AL16.variant6	Mmm_KAZ2_AL16.variant6	Mus musculus musculus	Kazakhstan	standard_noncarrier	strong
+all_available	Mmm_KAZ3_AL19.variant6_tHaplSubset.fa	Mmm_KAZ3_AL19.variant6_tHaplSubset.fa	Mus musculus musculus	Kazakhstan	pseudo-t_haplotype	strong
+all_available	Mmm_KAZ4_AL33.variant6	Mmm_KAZ4_AL33.variant6	Mus musculus musculus	Kazakhstan	standard_noncarrier	strong
+all_available	Mmm_KAZ5_AL38.variant6	Mmm_KAZ5_AL38.variant6	Mus musculus musculus	Kazakhstan	standard_noncarrier	strong
+all_available	Mmm_KAZ6_AL40.variant6	Mmm_KAZ6_AL40.variant6	Mus musculus musculus	Kazakhstan	standard_noncarrier	strong
+all_available	Mmm_KAZ7_AL41.variant6_tHaplSubset.fa	Mmm_KAZ7_AL41.variant6_tHaplSubset.fa	Mus musculus musculus	Kazakhstan	pseudo-t_haplotype	strong
+all_available	Mmm_KAZ8_AL42.variant6	Mmm_KAZ8_AL42.variant6	Mus musculus musculus	Kazakhstan	standard_noncarrier	strong
+all_available	Ms_SPRE1_SP36.variant9	Ms_SPRE1_SP36.variant9	Mus spretus	SPRE	outgroup_not_t_haplotype	strong
+all_available	Ms_SPRE2_SP39.variant9	Ms_SPRE2_SP39.variant9	Mus spretus	SPRE	outgroup_not_t_haplotype	strong
+all_available	Ms_SPRE3_SP41.variant9	Ms_SPRE3_SP41.variant9	Mus spretus	SPRE	outgroup_not_t_haplotype	strong
+all_available	Ms_SPRE4_SP51.variant9	Ms_SPRE4_SP51.variant9	Mus spretus	SPRE	outgroup_not_t_haplotype	strong
+all_available	Ms_SPRE5_SP62.variant9	Ms_SPRE5_SP62.variant9	Mus spretus	SPRE	outgroup_not_t_haplotype	strong
+all_available	Ms_SPRE6_SP68.variant9	Ms_SPRE6_SP68.variant9	Mus spretus	SPRE	outgroup_not_t_haplotype	strong
+all_available	Ms_SPRE7_SP69.variant9	Ms_SPRE7_SP69.variant9	Mus spretus	SPRE	outgroup_not_t_haplotype	strong
+all_available	Ms_SPRE8_SP70.variant9	Ms_SPRE8_SP70.variant9	Mus spretus	SPRE	outgroup_not_t_haplotype	strong
