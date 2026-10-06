@@ -17,6 +17,7 @@
     "02e_linkage_sensitivity.py --archive IST-2017-78-v1+1_Data.zip --astral-phases 10",
     "02f_make_stage2_figures.py",
     "02l_import_recombination_classification.py --archive IST-2017-78-v1+1_Data.zip",
+    "02n_summarize_q_heterogeneity.py",
     "02m_make_visualizations.py"
   ],
   "status": {
@@ -27,11 +28,21 @@
     "astral_exact_concordance": "60/60",
     "third_filter_rescued": true,
     "third_filter_exact_tip_matches": "55/55",
-    "linkage_phases": {"5": 1, "10": 2, "20": 4, "50": 10, "100": 20, "250": 50, "500": 100},
+    "linkage_phases": {
+      "5": 1,
+      "10": 2,
+      "20": 4,
+      "50": 10,
+      "100": 20,
+      "250": 50,
+      "500": 100
+    },
     "source_defined_blocks_available": false,
     "large_derived_trees_removed_from_git": 77,
     "recombination_source_audit": "12,138 source rows; 4,046/4,046 frozen windows matched for each subspecies; all observed codes defined",
-    "visualization_validation": "9 PNG/PDF figure pairs passed size, dimensions, pixel-variation, and numeric-invariant checks"
+    "visualization_validation": "11 PNG/PDF figure pairs passed size, dimensions, pixel-variation, and numeric-invariant checks",
+    "arrangement_contributions": "8 pattern weights and weighted topology contributions reconstruct ALL_TIPS quartet means",
+    "spatial_heterogeneity_summary": "ALL_TIPS window dominance, distribution, and 5-kb-to-500-kb aggregation sensitivity"
   },
   "sha256": {
     "empirical/house_mouse_t_complex/results/stage2_astral_summary.tsv": "959fc6f2a8556d441c5ba921f6a75ab76ac2d1d32a04e4e169ddbc22a9fcc422",
@@ -49,41 +60,50 @@
     "empirical/house_mouse_t_complex/results/stage2_linkage_sensitivity.tsv": "9a96bf9ed1abfecbfa00a272c28420ecb9fe143e07263967c6e574e043942ca2",
     "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_stage2_main.png": "99131b14ec21f18a3fe5acba4900b79f11d6d70066be731fa539e91f86df321b",
     "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_stage2_main.pdf": "b5fcd3c5153e30488087f8b9daad74278fc80f32929fb3e1609b473ba4c325ff",
-    "empirical/house_mouse_t_complex/results/stage2_figure_validation.tsv": "0deea54cae7536e95644592dc10c74ecad21d9840f3c44a9fbe2c73b1659312e"
-    ,"empirical/house_mouse_t_complex/results/stage2_quartet_by_recombination_state.tsv": "6a8bd84a90ebc5d216526cf273c2d17ef24a3f5439fd400a09cd9a9042fd863f"
-    ,"empirical/house_mouse_t_complex/results/stage2_recombination_state_5kb.tsv": "859a3b7c8598186e130be51e4903d276618ef70210a3e69f75c925bc88a135c6"
-    ,"empirical/house_mouse_t_complex/results/stage2_recombination_state_500kb.tsv": "8410d60b20aec421c65b55c1150df4c36e32f395be84cf7291fa70c4e471c6d4"
-    ,"empirical/house_mouse_t_complex/results/stage2_recombination_source_code_audit.tsv": "761367a79e4c784ee3f19eddabd1f72502c51e1dd46dc03aa70dc9666a7dea77"
-    ,"empirical/house_mouse_t_complex/results/stage2_visualization_validation.tsv": "3651ce841cdee5e1781dbf76d988ae9ef21ad36b5a3f7c986fa9fe57d8a7662a"
-    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_astral_4group.png": "d439b91f05ffa699d6baaeb8bb31c06106c87524ee53372d2d3aa05413b719e4"
-    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_astral_4group.pdf": "b9f30b4c54245f25d5afa336a75218c522e2d92c7e02f68099ab7c056841c2a4"
-    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_astral_7population.png": "570cbec59c449b0b17dae84bcda43b0dab4d251defcbbdad11cb2295299577c7"
-    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_astral_7population.pdf": "c9b6bc6c8f154c4752710c6144de6057ef4d232246f45457f0b03f3050402413"
-    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_q_tracks.png": "05491d213d7b7dda26ae3a366dcccc950d5da84aa3629aa95ff0a99d4e85029b"
-    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_q_tracks.pdf": "43f756ed51143dd4704a5c4e291016e59324861755378f2c52d4e4eaa8c16693"
-    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_recombination_track.png": "55cf6dece333972d218614c7e72acac9003aed7460cea8eba6844bbf14c2ad5e"
-    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_recombination_track.pdf": "af18f0e4ffb2d21176b6348cecb393d0991daa8b249be24754c4da955d770e1b"
-    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_q_recombination.png": "b7f98bcc69716d49e818c6eb25e0e5a10d15bd743649cf688ceec99094a3dda2"
-    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_q_recombination.pdf": "2be982d034eb0d26763f121e0fe58895e5491a8376fd1747587bd4ccbbb3ec31"
-    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_controls.png": "c6ce28ab6a50dceaaef3d7fb8b5f53d36027682af82195efce705d431843681b"
-    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_controls.pdf": "1753053a03ef477b36bac10c2e1d399a2853854ece37a9ee2ed20edeaa9d22f9"
-    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_main_v2.png": "b141002fa85772f461b80b7d1874f2b7f03c2edaf971a47969503a126d3f30ba"
-    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_main_v2.pdf": "e510bd077367d4f8c4a7ebe26c8d14aa10d317e30afc3c945194eb0f006e80eb"
+    "empirical/house_mouse_t_complex/results/stage2_figure_validation.tsv": "0deea54cae7536e95644592dc10c74ecad21d9840f3c44a9fbe2c73b1659312e",
+    "empirical/house_mouse_t_complex/results/stage2_quartet_by_recombination_state.tsv": "6a8bd84a90ebc5d216526cf273c2d17ef24a3f5439fd400a09cd9a9042fd863f",
+    "empirical/house_mouse_t_complex/results/stage2_recombination_state_5kb.tsv": "859a3b7c8598186e130be51e4903d276618ef70210a3e69f75c925bc88a135c6",
+    "empirical/house_mouse_t_complex/results/stage2_recombination_state_500kb.tsv": "8410d60b20aec421c65b55c1150df4c36e32f395be84cf7291fa70c4e471c6d4",
+    "empirical/house_mouse_t_complex/results/stage2_recombination_source_code_audit.tsv": "761367a79e4c784ee3f19eddabd1f72502c51e1dd46dc03aa70dc9666a7dea77",
+    "empirical/house_mouse_t_complex/results/stage2_visualization_validation.tsv": "3905d61cad811dfab7b471b1c89bfb5b2e1ee880502797b188a48b0f089f865f",
+    "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_astral_4group.png": "d439b91f05ffa699d6baaeb8bb31c06106c87524ee53372d2d3aa05413b719e4",
+    "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_astral_4group.pdf": "b9f30b4c54245f25d5afa336a75218c522e2d92c7e02f68099ab7c056841c2a4",
+    "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_astral_7population.png": "570cbec59c449b0b17dae84bcda43b0dab4d251defcbbdad11cb2295299577c7",
+    "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_astral_7population.pdf": "c9b6bc6c8f154c4752710c6144de6057ef4d232246f45457f0b03f3050402413",
+    "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_q_tracks.png": "05491d213d7b7dda26ae3a366dcccc950d5da84aa3629aa95ff0a99d4e85029b",
+    "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_q_tracks.pdf": "43f756ed51143dd4704a5c4e291016e59324861755378f2c52d4e4eaa8c16693",
+    "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_recombination_track.png": "55cf6dece333972d218614c7e72acac9003aed7460cea8eba6844bbf14c2ad5e",
+    "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_recombination_track.pdf": "af18f0e4ffb2d21176b6348cecb393d0991daa8b249be24754c4da955d770e1b",
+    "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_q_recombination.png": "b7f98bcc69716d49e818c6eb25e0e5a10d15bd743649cf688ceec99094a3dda2",
+    "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_q_recombination.pdf": "2be982d034eb0d26763f121e0fe58895e5491a8376fd1747587bd4ccbbb3ec31",
+    "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_controls.png": "c6ce28ab6a50dceaaef3d7fb8b5f53d36027682af82195efce705d431843681b",
+    "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_controls.pdf": "1753053a03ef477b36bac10c2e1d399a2853854ece37a9ee2ed20edeaa9d22f9",
+    "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_main_v2.png": "b141002fa85772f461b80b7d1874f2b7f03c2edaf971a47969503a126d3f30ba",
+    "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_main_v2.pdf": "e510bd077367d4f8c4a7ebe26c8d14aa10d317e30afc3c945194eb0f006e80eb",
+    "empirical/house_mouse_t_complex/results/stage2_arrangement_pattern_contributions.tsv": "7db1407a469c7e3e25e16b80b9bb4894a0f1fe9119ad6f003d9ccaf83203c260",
+    "empirical/house_mouse_t_complex/results/stage2_window_topology_heterogeneity.tsv": "f0ec2065c028710f9805814c2d46dfe5de1fe1128c88431d62cac0057bb8eb9b",
+    "empirical/house_mouse_t_complex/results/stage2_q_smoothing_sensitivity.tsv": "b63e9df43d0e7b2f64efe81cbd518cfb433147a8db7657ffead4c1e3469a66fa"
   },
   "visualization_hashes": {
     "house_mouse_t_complex_astral_4group.png": "42bb5e034d8089da9e79ba4f18aac1e5b157c716876eaa398fd1168632889534",
-    "house_mouse_t_complex_astral_4group.pdf": "f9012409891bb7efc40dd5b76ec3290d587d34474e76dd3b144f805e4270686d",
+    "house_mouse_t_complex_astral_4group.pdf": "bc457dd70c3fffa954dcbfafa184b79fae90a28ab18426c62deb4be1407c0df4",
     "house_mouse_t_complex_astral_7population.png": "df1dec50da3bd7b1fa11854dfa83e4c5cf47a00bfb86b42c72232e8b43922d0e",
-    "house_mouse_t_complex_astral_7population.pdf": "821edd7f2383810070f804c685eda899b9ba373d266a03b26af78334cf5ad5c9",
-    "house_mouse_t_complex_q_tracks.png": "7a1dc95f7709083f052ada19c29404a2abddf403dcf0288def98e1f993caf275",
-    "house_mouse_t_complex_q_tracks.pdf": "fa90b4de28826cbab5fddfd5a401a2a339fbe36a3a588a7061e165681debd228",
-    "house_mouse_t_complex_recombination_track.png": "16e3b0deed8280a5b88f9086028f0158cf4af547c51005e0a3d4d9d2ad675ef9",
-    "house_mouse_t_complex_recombination_track.pdf": "fa44f2a5c9a08305496a7512b5608632b5644174576dde8a9d48e73cf24a1bf1",
-    "house_mouse_t_complex_q_recombination.png": "fb7bac81ed2fa55cb584464ccb627bc76b163e14631cdd76ae9c660c70a19503",
-    "house_mouse_t_complex_q_recombination.pdf": "21d6cf6ea8e840c249507a2a6628f18964ca199d1c67b7eeb4898563a3470c65",
-    "house_mouse_t_complex_main_v2.png": "99131b14ec21f18a3fe5acba4900b79f11d6d70066be731fa539e91f86df321b",
-    "house_mouse_t_complex_main_v2.pdf": "b5fcd3c5153e30488087f8b9daad74278fc80f32929fb3e1609b473ba4c325ff",
-    "house_mouse_t_complex_main_v3.png": "aec828fbabbbfe0a2e44dfa77a2103285e5d2c7b15a42d2e21f0a24929aec678",
-    "house_mouse_t_complex_main_v3.pdf": "c2333b01dd0c442b0eb216f29fb8133ad3e876bbeab9cb1d0fd637a234dc4a4d"
+    "house_mouse_t_complex_astral_7population.pdf": "abe4bef10dd552b5ffde05c7a9e146fa41dbb98dc4ebf848d9ab3d8b878749d3",
+    "house_mouse_t_complex_q_tracks.png": "fb1c325338075bf6b7153bb377acb460201abf91f8494a1d079a82b710b5b483",
+    "house_mouse_t_complex_q_tracks.pdf": "0685d7f69ae0f36ac04bb92ce404f9a746d03f41755383ab423a79d0b8d6fc34",
+    "house_mouse_t_complex_recombination_track.png": "a1ddb777773f05ad4e4fb52ed37791345a6a3392a0ec2fd0364ec6395f9d08ec",
+    "house_mouse_t_complex_recombination_track.pdf": "f1a56e8f36228a249222ac975c5e17aa3215c8416754677d5f65ba1b5bed5550",
+    "house_mouse_t_complex_q_recombination.png": "d1e60ec9b7574ec25ebc419f8b293caf6969da6ee17b933b18d4b8cb730baa58",
+    "house_mouse_t_complex_q_recombination.pdf": "eeb14fcc93e3c44e8bd53779d0be4b59d9da8a450af500805b0012129ece780f",
+    "house_mouse_t_complex_main_v2.png": "e3e2a75dff26a733831a0e4e8f3fc40217cad85a771142d2a16052f041989249",
+    "house_mouse_t_complex_main_v2.pdf": "35012d1481fe875a8bbd7983010b1fa165b128e7b8a7516649e5cb2f5997ea05",
+    "house_mouse_t_complex_main_v3.png": "3f6b1840c8a3fa81e1dd4debd8dd040391aed733d8bf6f14b19701d6389c8428",
+    "house_mouse_t_complex_main_v3.pdf": "a210239a3e08acbd1619ca2f6bcfb9c81f951d435bf88a1e226f11ab9a3611c6",
+    "house_mouse_t_complex_controls.png": "c6ce28ab6a50dceaaef3d7fb8b5f53d36027682af82195efce705d431843681b",
+    "house_mouse_t_complex_controls.pdf": "48167b61aba7a5a57672c3b49260da4a3c6a985cbe8618fe615ed26661592abf",
+    "house_mouse_t_complex_main_v4.png": "999c98461721ec235f2c5d2914320ba333ca234af3b9546054c31fb1a1c04534",
+    "house_mouse_t_complex_main_v4.pdf": "1593e23c08e5d5e6cae1bb0a5d05cc27cb33f2c321e3fad4460551ed658354a4",
+    "house_mouse_t_complex_q_smoothing.png": "1f625c4dd294017914e2abd5de29e04afb4fef8094ad692ebd3a64141c68a4ea",
+    "house_mouse_t_complex_q_smoothing.pdf": "1cf25122633c0a27adfb9dc02e572088c620d5f0bee603fadaf992130ac72f25"
   }
 }

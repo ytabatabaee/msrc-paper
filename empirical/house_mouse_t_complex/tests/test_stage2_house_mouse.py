@@ -159,7 +159,7 @@ def test_astral_exact_validation_and_population_split_statuses() -> None:
 def test_stage2_visualization_outputs_and_numeric_invariants() -> None:
     root = Path(__file__).resolve().parents[1]
     validation = read_tsv(root / "results" / "stage2_visualization_validation.tsv")
-    assert len(validation) == 9
+    assert len(validation) == 11
     assert all(int(row["nonwhite_pixels"]) > 5_000 for row in validation)
     qrows = read_tsv(root / "results" / "stage2_fixed_quartet_scan.tsv")
     assert all(abs(sum(float(row[key]) for key in ("q_species", "q_t_alt", "q_other", "q_unresolved")) - 1) < 1e-8 for row in qrows)
@@ -194,3 +194,53 @@ def test_named_astral_q_values_follow_inferred_focal_split() -> None:
     assert annotations["ALL"]["inferred"] == "Q_T_ALT"
     assert annotations["ALL"]["q_t_alt"] > annotations["ALL"]["q_species"]
     assert abs(sum(float(annotations["ALL"][key]) for key in ("q_species", "q_t_alt", "q_other")) - 1) < 1e-8
+
+
+def test_arrangement_contributions_match_exact_pattern_summary() -> None:
+    root = Path(__file__).resolve().parents[1]
+    contributions = read_tsv(root / "results" / "stage2_arrangement_pattern_contributions.tsv")
+    summary = {row["status_pattern"]: row for row in read_tsv(root / "results" / "stage2_arrangement_pattern_summary.tsv")}
+    assert [row["status_pattern"] for row in contributions] == ["SSS", "SST", "STS", "STT", "TSS", "TST", "TTS", "TTT"]
+    assert abs(sum(float(row["pattern_weight"]) for row in contributions) - 1) < 1e-8
+    for row in contributions:
+        source = summary[row["status_pattern"]]
+        for key in ("q_species", "q_t_alt", "q_other"):
+            assert abs(float(row[key]) - float(source[key])) < 1e-10
+    target = next(row for row in read_tsv(root / "results" / "stage2_fixed_quartet_summary.tsv") if row["treatment"] == "ALL_TIPS")
+    for key in ("q_species", "q_t_alt", "q_other"):
+        contribution_key = f"contribution_{key}"
+        assert abs(sum(float(row[contribution_key]) for row in contributions) - float(target[f"mean_{key}"])) < 1e-8
+    by_pattern = {row["status_pattern"]: row for row in contributions}
+    assert float(by_pattern["SSS"]["q_species"]) > float(by_pattern["SSS"]["q_t_alt"])
+    assert float(by_pattern["TTT"]["q_species"]) > float(by_pattern["TTT"]["q_t_alt"])
+    assert float(by_pattern["STS"]["q_t_alt"]) > float(by_pattern["STS"]["q_species"])
+    assert float(by_pattern["TTS"]["q_t_alt"]) > float(by_pattern["TTS"]["q_species"])
+    assert float(by_pattern["TST"]["q_other"]) > max(float(by_pattern["TST"][key]) for key in ("q_species", "q_t_alt"))
+
+
+def test_window_heterogeneity_smoothing_and_missing_gaps() -> None:
+    root = Path(__file__).resolve().parents[1]
+    heterogeneity = read_tsv(root / "results" / "stage2_window_topology_heterogeneity.tsv")
+    assert {row["metric"] for row in heterogeneity if row["section"] == "dominant_topology"} == {"Q_SPECIES", "Q_T_ALT", "Q_OTHER", "TIE_OR_UNRESOLVED"}
+    decisive = {(row["statistic"]): float(row["value"]) for row in heterogeneity if row["section"] == "decisive_delta"}
+    assert decisive[">=0.25"] > decisive[">=0.50"] > decisive[">=0.75"] > decisive[">=0.90"]
+    smoothing = read_tsv(root / "results" / "stage2_q_smoothing_sensitivity.tsv")
+    assert [int(row["bin_size_bp"]) for row in smoothing] == [5000, 25000, 50000, 100000, 250000, 500000]
+    assert float(smoothing[0]["mean_abs_delta_species_alt"]) > float(smoothing[-1]["mean_abs_delta_species_alt"])
+    spec = importlib.util.spec_from_file_location("visuals", SCRIPT_DIR / "02m_make_visualizations.py")
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+    gaps = module.retained_gaps()
+    meta = read_tsv(root.parent.parent / "data" / "house_mouse_t_complex" / "processed" / "house_mouse_t_complex_ml_5kb_metadata.tsv")
+    starts = [int(row["start_bp"]) for row in meta]
+    assert all(not any(start <= end and start >= begin for start in starts) for begin, end in gaps)
+
+
+def test_main_v4_validation_and_panel_count() -> None:
+    root = Path(__file__).resolve().parents[1]
+    validation = read_tsv(root / "results" / "stage2_visualization_validation.tsv")
+    v4 = next(row for row in validation if row["figure"] == "house_mouse_t_complex_main_v4")
+    assert v4["intended_panels"] == "4"
+    assert int(v4["nonwhite_pixels"]) > 5_000
+    assert (Path(__file__).resolve().parents[1] / "figures" / "house_mouse_t_complex_main_v4.png").exists()

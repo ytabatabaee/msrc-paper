@@ -14,6 +14,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 from Bio import Phylo
+from matplotlib.patches import Patch
 from PIL import Image
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -22,6 +23,7 @@ if str(SCRIPT_DIR) not in sys.path:
 
 from house_mouse_stage2_utils import (  # noqa: E402
     FIGURES,
+    PROCESSED,
     RESULTS,
     canonical_split,
     four_taxon_topology_from_newick,
@@ -237,11 +239,28 @@ def plot_segments(ax, x: np.ndarray, y: np.ndarray, **kwargs) -> None:
             ax.plot(x[segment], y[segment], label=label if index == 0 else None, **kwargs)
 
 
+def retained_gaps() -> list[tuple[int, int]]:
+    meta = sorted(read_tsv(PROCESSED / "house_mouse_t_complex_ml_5kb_metadata.tsv"), key=lambda row: int(row["start_bp"]))
+    gaps = []
+    for previous, current in zip(meta, meta[1:]):
+        start = int(previous["end_bp"]) + 1
+        end = int(current["start_bp"]) - 1
+        if end >= start:
+            gaps.append((start, end))
+    return gaps
+
+
+def shade_retained_gaps(ax) -> None:
+    for start, end in retained_gaps():
+        ax.axvspan(start / 1e6, end / 1e6, color="#eeeeee", alpha=0.7, zorder=-10, label="_no_retained_windows")
+
+
 def plot_q_axis(ax, rows: list[dict[str, str]], treatment: str, title: str) -> None:
     raw = [row for row in rows if row["treatment"] == treatment]
     bins = bin_q(rows, treatment)
     xraw = np.array([float(row["midpoint_bp"]) / 1e6 for row in raw])
     xb = np.array([row["midpoint"] / 1e6 for row in bins])
+    shade_retained_gaps(ax)
     for key, color in Q_COLORS.items():
         ax.scatter(xraw, [float(row[key]) for row in raw], s=2, alpha=0.08, color=color)
         plot_segments(ax, xb, np.array([row[key] for row in bins]), color=color, lw=1.7, label=key)
@@ -249,7 +268,10 @@ def plot_q_axis(ax, rows: list[dict[str, str]], treatment: str, title: str) -> N
     ax.set_ylim(0, 1)
     ax.set_ylabel("Quartet fraction")
     ax.set_title(title)
-    ax.legend(frameon=False, fontsize=8, ncol=3)
+    handles, labels = ax.get_legend_handles_labels()
+    if retained_gaps():
+        handles.append(Patch(facecolor="#eeeeee", edgecolor="none", label="No retained local-tree windows"))
+    ax.legend(handles, labels + (["No retained local-tree windows"] if retained_gaps() else []), frameon=False, fontsize=8, ncol=2)
 
 
 def load_recomb() -> list[dict[str, str]]:
@@ -263,6 +285,7 @@ def load_recomb() -> list[dict[str, str]]:
 def plot_recomb_axes(axes, rows: list[dict[str, str]], title: str | None = None, all_ylabels: bool = True) -> None:
     for ax, species in zip(axes, ("domesticus", "musculus", "castaneus")):
         sub = [row for row in rows if row["subspecies"] == species]
+        shade_retained_gaps(ax)
         x = np.array([(int(row["bin_start"]) + 250_000) / 1e6 for row in sub])
         bottom = np.zeros(len(sub))
         for key, color in RECOMB_COLORS.items():
@@ -278,7 +301,9 @@ def plot_recomb_axes(axes, rows: list[dict[str, str]], title: str | None = None,
     if title:
         axes[0].set_title(title)
     if all_ylabels:
-        axes[0].legend(frameon=False, fontsize=8, ncol=3, loc="upper right")
+        handles, labels = axes[0].get_legend_handles_labels()
+        handles.append(Patch(facecolor="#eeeeee", edgecolor="none", label="No retained local-tree windows"))
+        axes[0].legend(handles, labels + ["No retained local-tree windows"], frameon=False, fontsize=8, ncol=2, loc="upper right")
 
 
 def make_q_tracks() -> None:
@@ -306,6 +331,7 @@ def make_q_recombination() -> None:
     axq = fig.add_subplot(grid[0])
     plot_q_axis(axq, qrows, "ALL_TIPS", "ALL_TIPS quartet support; 250-kb means")
     axd = fig.add_subplot(grid[1], sharex=axq)
+    shade_retained_gaps(axd)
     bins = bin_q(qrows, "ALL_TIPS")
     plot_segments(axd, np.array([r["midpoint"] / 1e6 for r in bins]), np.array([r["q_species"] - r["q_t_alt"] for r in bins]), color="#333333", lw=1.5)
     axd.axhline(0, color="black", lw=0.7)
@@ -329,6 +355,103 @@ def arrangement_panel(ax) -> None:
     ax.set_ylabel("Quartet fraction")
     ax.set_title("D. Arrangement-state quartet composition")
     ax.legend(frameon=False, fontsize=8)
+
+
+def arrangement_pattern_rows() -> list[dict[str, str]]:
+    return read_tsv(RESULTS / "stage2_arrangement_pattern_contributions.tsv")
+
+
+def arrangement_panel_full(ax) -> None:
+    rows = arrangement_pattern_rows()
+    patterns = [row["status_pattern"] for row in rows]
+    bottom = np.zeros(len(rows))
+    for key, label, color in [("q_species", "Q_SPECIES", Q_COLORS["q_species"]), ("q_t_alt", "Q_T_ALT", Q_COLORS["q_t_alt"]), ("q_other", "Q_OTHER", Q_COLORS["q_other"])]:
+        values = np.array([float(row[key]) for row in rows])
+        ax.bar(np.arange(len(rows)), values, bottom=bottom, color=color, label=label)
+        bottom += values
+    ax.set_xticks(np.arange(len(rows)), patterns)
+    ax.set_ylim(0, 1.08)
+    ax.set_ylabel("Quartet fraction")
+    ax.set_title("B. Exact arrangement-state quartet composition")
+    dominance = {"SSS": Q_COLORS["q_species"], "TTT": Q_COLORS["q_species"], "STS": Q_COLORS["q_t_alt"], "TTS": Q_COLORS["q_t_alt"], "TST": Q_COLORS["q_other"]}
+    for tick, pattern in zip(ax.get_xticklabels(), patterns):
+        if pattern in dominance:
+            tick.set_color(dominance[pattern])
+    ax.legend(frameon=False, fontsize=8, ncol=3)
+
+
+def balanced_panel(ax) -> None:
+    rows = read_tsv(RESULTS / "stage2_balanced_quartet_resampling_summary.tsv")
+    treatment_order = ["B0_STANDARD_MATCHED", "B1_T_MATCHED", "B2_MIXED_BALANCED"]
+    labels = ["B0 standard\nmatched", "B1 t\nmatched", "B2 mixed\nbalanced"]
+    data = {row["treatment"]: row for row in rows}
+    bottom = np.zeros(3)
+    for key, label, color in [("fraction_Q_SPECIES", "Q_SPECIES", Q_COLORS["q_species"]), ("fraction_Q_T_ALT", "Q_T_ALT", Q_COLORS["q_t_alt"]), ("fraction_Q_OTHER", "Q_OTHER", Q_COLORS["q_other"])]:
+        values = np.array([float(data[t][key]) for t in treatment_order])
+        ax.bar(np.arange(3), values, bottom=bottom, color=color, label=label)
+        bottom += values
+    ax.set_xticks(np.arange(3), labels)
+    ax.set_ylim(0, 1.08)
+    ax.set_ylabel("Replicate fraction")
+    ax.set_title("D. Balanced resampling (n=1,000)")
+    ax.text(0.5, -0.24, "B2 composition-balanced; total sample size differs from B0/B1", transform=ax.transAxes, ha="center", fontsize=7)
+    ax.legend(frameon=False, fontsize=8, ncol=3)
+
+
+def make_main_v4() -> None:
+    qrows = read_tsv(RESULTS / "stage2_fixed_quartet_scan.tsv")
+    fig = plt.figure(figsize=(15, 11))
+    outer = fig.add_gridspec(2, 2, width_ratios=[1.25, 1], height_ratios=[1.1, 1], hspace=0.34, wspace=0.22)
+    tree_grid = outer[0, 0].subgridspec(1, 2, wspace=0.14)
+    trees = {"STANDARD": load_tree(RESULTS / "stage1_aster" / "T0_STANDARD_subspecies.nwk", "Mus_spretus"), "ALL": load_tree(RESULTS / "stage1_aster" / "T1_ALL_WINDOWS_subspecies.nwk", "Mus_spretus")}
+    labels = [PRETTY[x] for x in FOUR_LABELS]
+    tree_axes = [fig.add_subplot(tree_grid[i]) for i in range(2)]
+    draw_cladogram(tree_axes[0], trees["STANDARD"], labels, "A. STANDARD_ONLY\nQ_SPECIES", Q_COLORS["q_species"], focal_split=focal_split("Q_SPECIES"))
+    draw_cladogram(tree_axes[1], trees["ALL"], labels, "ALL_TIPS\nQ_T_ALT", Q_COLORS["q_t_alt"], focal_split=focal_split("Q_T_ALT"))
+    for ax, key in zip(tree_axes, ("STANDARD", "ALL")):
+        ann = focal_annotations()[key]
+        ax.text(0.02, -0.04, f"CU={ann['CU']:.6f}; localPP={ann['localPP']:.6f}\nq_species={ann['q_species']:.6f}; q_t_alt={ann['q_t_alt']:.6f}; q_other={ann['q_other']:.6f}", transform=ax.transAxes, fontsize=7, va="top")
+    panel_b = fig.add_subplot(outer[0, 1])
+    arrangement_panel_full(panel_b)
+    panel_c = outer[1, 0].subgridspec(1, 2, wspace=0.38)
+    axw, axd = fig.add_subplot(panel_c[0]), fig.add_subplot(panel_c[1])
+    rows = arrangement_pattern_rows()
+    patterns = [row["status_pattern"] for row in rows]
+    weights = np.array([float(row["pattern_weight"]) for row in rows])
+    delta = np.array([float(row["contribution_delta_species_alt"]) for row in rows])
+    axw.barh(patterns, weights, color="#999999")
+    axw.set_xlabel("Pattern weight")
+    axw.set_title("C. Mixture contribution")
+    axw.invert_yaxis()
+    colors = [Q_COLORS["q_species"] if value >= 0 else Q_COLORS["q_t_alt"] for value in delta]
+    axd.barh(patterns, delta, color=colors)
+    axd.axvline(0, color="black", lw=0.8)
+    axd.set_xlabel("Weighted contribution\n(q_species − q_t_alt)")
+    axd.invert_yaxis()
+    axd.set_yticklabels([])
+    for axis in (axw, axd):
+        axis.grid(axis="x", alpha=0.2)
+    panel_d = fig.add_subplot(outer[1, 1])
+    balanced_panel(panel_d)
+    fig.suptitle("House-mouse t-complex: arrangement-state-conditioned genealogy and quartet distortion", fontsize=15)
+    fig.subplots_adjust(top=0.86, bottom=0.13, left=0.05, right=0.98)
+    save(fig, "house_mouse_t_complex_main_v4")
+
+
+def make_q_smoothing() -> None:
+    rows = read_tsv(RESULTS / "stage2_q_smoothing_sensitivity.tsv")
+    x = np.array([int(row["bin_size_bp"]) / 1000 for row in rows])
+    fig, axes = plt.subplots(1, 2, figsize=(12, 4.5))
+    for key, color, label in [("mean_q_species", Q_COLORS["q_species"], "q_species"), ("mean_q_t_alt", Q_COLORS["q_t_alt"], "q_t_alt"), ("mean_q_other", Q_COLORS["q_other"], "q_other")]:
+        axes[0].plot(x, [float(row[key]) for row in rows], marker="o", color=color, label=label)
+    axes[0].axhline(1 / 3, color="#777777", ls="--", lw=0.8)
+    axes[0].set_xscale("log"); axes[0].set_xlabel("aggregation bin (kb)"); axes[0].set_ylabel("Mean quartet fraction"); axes[0].set_title("Mean support remains near 1/3")
+    axes[0].legend(frameon=False)
+    axes[1].plot(x, [float(row["mean_abs_delta_species_alt"]) for row in rows], marker="o", color="#333333", label="mean |q_species − q_t_alt|")
+    axes[1].plot(x, [float(row["fraction_max_ge_0.6"]) for row in rows], marker="s", color="#9467bd", label="fraction max(q) ≥ 0.6")
+    axes[1].set_xscale("log"); axes[1].set_xlabel("aggregation bin (kb)"); axes[1].set_ylabel("Fraction / contrast"); axes[1].set_title("Fine-scale contrast cancels with aggregation"); axes[1].legend(frameon=False)
+    fig.suptitle("ALL_TIPS spatial aggregation sensitivity; linked windows are not independent", fontsize=13)
+    fig.tight_layout(); save(fig, "house_mouse_t_complex_q_smoothing")
 
 
 def make_controls() -> None:
@@ -412,7 +535,7 @@ def validate_tree_semantics() -> None:
 
 
 def validate_figures() -> None:
-    stems = ["house_mouse_t_complex_astral_4group", "house_mouse_t_complex_astral_7population", "house_mouse_t_complex_q_tracks", "house_mouse_t_complex_recombination_track", "house_mouse_t_complex_q_recombination", "house_mouse_t_complex_controls", "house_mouse_t_complex_stage2_main", "house_mouse_t_complex_main_v2", "house_mouse_t_complex_main_v3"]
+    stems = ["house_mouse_t_complex_astral_4group", "house_mouse_t_complex_astral_7population", "house_mouse_t_complex_q_tracks", "house_mouse_t_complex_recombination_track", "house_mouse_t_complex_q_recombination", "house_mouse_t_complex_q_smoothing", "house_mouse_t_complex_controls", "house_mouse_t_complex_stage2_main", "house_mouse_t_complex_main_v2", "house_mouse_t_complex_main_v3", "house_mouse_t_complex_main_v4"]
     rows = []
     for stem in stems:
         png, pdf = FIGURES / f"{stem}.png", FIGURES / f"{stem}.pdf"
@@ -420,7 +543,8 @@ def validate_figures() -> None:
         with Image.open(png) as image:
             pixels = np.asarray(image.convert("RGB")); nonwhite = int(np.sum(np.any(pixels < 245, axis=2))); distinct = int(np.unique(pixels.reshape(-1, 3), axis=0).shape[0])
             assert pixels.shape[1] >= 800 and pixels.shape[0] >= 500 and nonwhite > 5_000 and distinct > 100
-            rows.append({"figure": stem, "png_bytes": png.stat().st_size, "pdf_bytes": pdf.stat().st_size, "width_px": pixels.shape[1], "height_px": pixels.shape[0], "nonwhite_pixels": nonwhite, "distinct_rgb": distinct, "intended_tree_panels": 2 if "astral" in stem else "NA"})
+            intended = 4 if stem.endswith("main_v4") else (2 if "astral" in stem else "NA")
+            rows.append({"figure": stem, "png_bytes": png.stat().st_size, "pdf_bytes": pdf.stat().st_size, "width_px": pixels.shape[1], "height_px": pixels.shape[0], "nonwhite_pixels": nonwhite, "distinct_rgb": distinct, "intended_panels": intended})
     write_tsv(RESULTS / "stage2_visualization_validation.tsv", rows, list(rows[0].keys()))
 
 
@@ -429,7 +553,7 @@ def main() -> int:
     qrows = read_tsv(RESULTS / "stage2_fixed_quartet_scan.tsv")
     for row in qrows:
         assert abs(sum(float(row[key]) for key in ("q_species", "q_t_alt", "q_other", "q_unresolved")) - 1.0) < 1e-8
-    validate_tree_semantics(); make_4group_trees(); make_7population_trees(); make_q_tracks(); make_recombination_track(); make_q_recombination(); make_controls(); quartet_by_recombination(); draw_main("v2"); draw_main("v3"); validate_figures()
+    validate_tree_semantics(); make_4group_trees(); make_7population_trees(); make_q_tracks(); make_recombination_track(); make_q_recombination(); make_q_smoothing(); make_controls(); quartet_by_recombination(); draw_main("v2"); draw_main("v3"); make_main_v4(); validate_figures()
     print("Wrote visualization suite")
     return 0
 
