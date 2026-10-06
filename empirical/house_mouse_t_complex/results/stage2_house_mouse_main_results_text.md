@@ -18,8 +18,10 @@ one third. Nevertheless, 33.9% of individual windows were Q_SPECIES dominant,
 or unresolved winners. The absolute species-versus-alternative contrast was at
 least 0.25 in 49.8% of windows, at least 0.50 in 21.8%, and at least 0.75 in
 7.7%. Mean absolute contrast declined from 0.311 at 5-kb resolution to 0.094
-at 500-kb aggregation, demonstrating cancellation among neighboring linked
-windows rather than absence of strong local genealogies.
+at 500-kb aggregation, showing that spatial aggregation attenuates fine-scale
+quartet contrast. This pattern is consistent with heterogeneous neighboring
+genealogies being averaged together and does not by itself establish a linkage
+mechanism.
 
 The stronger signal emerged after conditioning on arrangement state. The
 homogeneous SSS and TTT classes favored Q_SPECIES, whereas STS favored Q_T_ALT
@@ -29,16 +31,17 @@ STT strongly favored Q_SPECIES, and TSS modestly favored Q_SPECIES. Thus the
 ALL_TIPS distribution is not an average of only SSS and TTT; six mixed-state
 classes are included. The exact pattern weights were SSS 0.325, SST 0.139,
 STS 0.200, STT 0.086, TSS 0.108, TST 0.046, TTS 0.067, and TTT 0.029.
-Their weighted contributions reconstruct the all-tip quartet frequencies; the
-largest negative contribution to q_species − q_t_alt came from STS (-0.060),
-followed by TTS (-0.038).
+The six mixed-state classes comprised 64.6% of induced quartets. Their weighted
+contributions reconstruct the all-tip quartet frequencies; the largest negative
+contribution to q_species − q_t_alt came from STS (-0.060), followed by TTS
+(-0.038).
 
-The mixture effect persisted under deterministic balanced resampling. The
-matched standard treatment returned Q_SPECIES in 53.7% of replicates, the
-matched t treatment returned Q_SPECIES in 100%, and the mixed treatment
-returned Q_T_ALT in 65.8%. The mixed treatment was composition-balanced but
-not total-sample-size matched to the two single-state treatments. These
-results support arrangement-state-dependent quartet distortion and a changed
-aggregate summary topology, while the linked windows remain non-independent
-and the analysis has no independent genome-wide local-tree control.
-
+Mixed-state sampling shifted the deterministic balanced resampling distribution
+toward Q_T_ALT: the matched standard treatment returned Q_SPECIES in 53.7% of
+replicates, the matched t treatment returned Q_SPECIES in 100%, and the mixed
+treatment returned Q_T_ALT in 65.8%. The mixed treatment was
+composition-balanced but not total-sample-size matched to the two single-state
+treatments. These results support arrangement-state-dependent quartet
+distortion and a changed aggregate summary topology, while the linked windows
+remain non-independent and the analysis has no independent genome-wide
+local-tree control.

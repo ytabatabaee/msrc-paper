@@ -393,8 +393,8 @@ def balanced_panel(ax) -> None:
     ax.set_xticks(np.arange(3), labels)
     ax.set_ylim(0, 1.08)
     ax.set_ylabel("Replicate fraction")
-    ax.set_title("D. Balanced resampling (n=1,000)")
-    ax.text(0.5, -0.24, "B2 composition-balanced; total sample size differs from B0/B1", transform=ax.transAxes, ha="center", fontsize=7)
+    ax.set_title("D. Mixed-state sampling shifts outcomes toward Q_T_ALT")
+    ax.text(0.5, -0.24, "B2 composition-balanced; total sample size differs from B0/B1", transform=ax.transAxes, ha="center", fontsize=8)
     ax.legend(frameon=False, fontsize=8, ncol=3)
 
 
@@ -410,7 +410,7 @@ def make_main_v4() -> None:
     draw_cladogram(tree_axes[1], trees["ALL"], labels, "ALL_TIPS\nQ_T_ALT", Q_COLORS["q_t_alt"], focal_split=focal_split("Q_T_ALT"))
     for ax, key in zip(tree_axes, ("STANDARD", "ALL")):
         ann = focal_annotations()[key]
-        ax.text(0.02, -0.04, f"CU={ann['CU']:.6f}; localPP={ann['localPP']:.6f}\nq_species={ann['q_species']:.6f}; q_t_alt={ann['q_t_alt']:.6f}; q_other={ann['q_other']:.6f}", transform=ax.transAxes, fontsize=7, va="top")
+        ax.text(0.02, -0.04, f"CU = {ann['CU']:.6f}; localPP = {ann['localPP']:.6f}", transform=ax.transAxes, fontsize=9, va="top")
     panel_b = fig.add_subplot(outer[0, 1])
     arrangement_panel_full(panel_b)
     panel_c = outer[1, 0].subgridspec(1, 2, wspace=0.38)
@@ -421,14 +421,22 @@ def make_main_v4() -> None:
     delta = np.array([float(row["contribution_delta_species_alt"]) for row in rows])
     axw.barh(patterns, weights, color="#999999")
     axw.set_xlabel("Pattern weight")
-    axw.set_title("C. Mixture contribution")
+    axw.set_title("Pattern frequency")
     axw.invert_yaxis()
     colors = [Q_COLORS["q_species"] if value >= 0 else Q_COLORS["q_t_alt"] for value in delta]
     axd.barh(patterns, delta, color=colors)
     axd.axvline(0, color="black", lw=0.8)
-    axd.set_xlabel("Weighted contribution\n(q_species − q_t_alt)")
+    axd.set_xlabel("Weighted contribution")
+    axd.set_title("Contribution to Δ = q_species − q_t_alt")
     axd.invert_yaxis()
     axd.set_yticklabels([])
+    axw.text(0.5, 1.08, "Mixed-state quartets = 64.6%", transform=axw.transAxes,
+             ha="center", va="bottom", fontsize=8, weight="bold")
+    axd.text(0.5, -0.19, "negative Δ → Q_T_ALT; positive Δ → Q_SPECIES",
+             transform=axd.transAxes, ha="center", va="top", fontsize=7.5)
+    for tick in axw.get_yticklabels():
+        if tick.get_text() in {"STS", "TTS"}:
+            tick.set_fontweight("bold")
     for axis in (axw, axd):
         axis.grid(axis="x", alpha=0.2)
     panel_d = fig.add_subplot(outer[1, 1])

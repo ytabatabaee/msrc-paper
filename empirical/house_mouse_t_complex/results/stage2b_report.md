@@ -205,8 +205,9 @@ coordinates are not overlaid.
 The manuscript emphasis is now the arrangement-state-conditioned result in
 `figures/house_mouse_t_complex_main_v4.png` and `.pdf`. The spatial q track is
 retained as a supplementary/descriptive figure because its 250-kb means are
-usually close to one third: strong 5-kb genealogical signals frequently
-cancel across neighboring windows. The new main figure shows all eight exact
+usually close to one third: spatial aggregation attenuates fine-scale quartet
+contrast, consistent with heterogeneous neighboring genealogies being averaged
+together. The new main figure shows all eight exact
 arrangement classes, their weights, their weighted contributions to the
 all-tip quartet distribution, and the 1,000-replicate balanced control.
 
@@ -214,7 +215,8 @@ The eight-class contribution table is
 `stage2_arrangement_pattern_contributions.tsv`. It reconstructs the frozen
 ALL_TIPS means exactly. SSS and TTT favor Q_SPECIES, STS and TTS favor Q_T_ALT,
 and TST favors Q_OTHER; STS gives the largest negative weighted contribution
-to q_species minus q_t_alt, followed by TTS. This supports the restrained
+to q_species minus q_t_alt, followed by TTS. The six mixed-state classes
+comprise 64.6% of induced quartets. This supports the restrained
 claim that the t-complex has arrangement-state-dependent quartet distortion
 whose mixed-state composition changes the aggregate ASTRAL summary topology.
 It does not support a long near-fixed alternative-topology block.

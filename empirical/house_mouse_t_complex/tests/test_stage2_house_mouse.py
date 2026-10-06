@@ -202,6 +202,11 @@ def test_arrangement_contributions_match_exact_pattern_summary() -> None:
     summary = {row["status_pattern"]: row for row in read_tsv(root / "results" / "stage2_arrangement_pattern_summary.tsv")}
     assert [row["status_pattern"] for row in contributions] == ["SSS", "SST", "STS", "STT", "TSS", "TST", "TTS", "TTT"]
     assert abs(sum(float(row["pattern_weight"]) for row in contributions) - 1) < 1e-8
+    by_pattern = {row["status_pattern"]: row for row in contributions}
+    homogeneous = float(by_pattern["SSS"]["pattern_weight"]) + float(by_pattern["TTT"]["pattern_weight"])
+    mixed = sum(float(row["pattern_weight"]) for row in contributions if row["status_pattern"] not in {"SSS", "TTT"})
+    assert abs(homogeneous - 0.3535714286) < 1e-8
+    assert abs(mixed - 0.6464285714) < 1e-8
     for row in contributions:
         source = summary[row["status_pattern"]]
         for key in ("q_species", "q_t_alt", "q_other"):
@@ -210,12 +215,13 @@ def test_arrangement_contributions_match_exact_pattern_summary() -> None:
     for key in ("q_species", "q_t_alt", "q_other"):
         contribution_key = f"contribution_{key}"
         assert abs(sum(float(row[contribution_key]) for row in contributions) - float(target[f"mean_{key}"])) < 1e-8
-    by_pattern = {row["status_pattern"]: row for row in contributions}
     assert float(by_pattern["SSS"]["q_species"]) > float(by_pattern["SSS"]["q_t_alt"])
     assert float(by_pattern["TTT"]["q_species"]) > float(by_pattern["TTT"]["q_t_alt"])
     assert float(by_pattern["STS"]["q_t_alt"]) > float(by_pattern["STS"]["q_species"])
     assert float(by_pattern["TTS"]["q_t_alt"]) > float(by_pattern["TTS"]["q_species"])
     assert float(by_pattern["TST"]["q_other"]) > max(float(by_pattern["TST"][key]) for key in ("q_species", "q_t_alt"))
+    deltas = {pattern: float(row["contribution_delta_species_alt"]) for pattern, row in by_pattern.items()}
+    assert deltas["STS"] < deltas["TTS"] < 0
 
 
 def test_window_heterogeneity_smoothing_and_missing_gaps() -> None:
@@ -244,3 +250,8 @@ def test_main_v4_validation_and_panel_count() -> None:
     assert v4["intended_panels"] == "4"
     assert int(v4["nonwhite_pixels"]) > 5_000
     assert (Path(__file__).resolve().parents[1] / "figures" / "house_mouse_t_complex_main_v4.png").exists()
+    source = (SCRIPT_DIR / "02m_make_visualizations.py").read_text()
+    main_v4_source = source.split("def make_main_v4", 1)[1].split("def make_q_smoothing", 1)[0]
+    assert "q_species=" not in main_v4_source
+    assert (Path(__file__).resolve().parents[3] / "PROJECT_STATUS.md").exists()
+    assert "The The" not in (root / "results" / "stage2b_report.md").read_text()
