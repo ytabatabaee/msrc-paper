@@ -39,7 +39,7 @@ Stage 2B outputs are in `results/stage2b_report.md`. The visualization and
 recombination extension is generated with:
 
 ```bash
-python empirical/house_mouse_t_complex/scripts/02l_reconstruct_recombination_track.py \
+python empirical/house_mouse_t_complex/scripts/02l_import_recombination_classification.py \
   --archive /path/to/IST-2017-78-v1+1_Data.zip
 python empirical/house_mouse_t_complex/scripts/02m_make_visualizations.py
 ```

@@ -159,7 +159,7 @@ def test_astral_exact_validation_and_population_split_statuses() -> None:
 def test_stage2_visualization_outputs_and_numeric_invariants() -> None:
     root = Path(__file__).resolve().parents[1]
     validation = read_tsv(root / "results" / "stage2_visualization_validation.tsv")
-    assert len(validation) == 7
+    assert len(validation) == 9
     assert all(int(row["nonwhite_pixels"]) > 5_000 for row in validation)
     qrows = read_tsv(root / "results" / "stage2_fixed_quartet_scan.tsv")
     assert all(abs(sum(float(row[key]) for key in ("q_species", "q_t_alt", "q_other", "q_unresolved")) - 1) < 1e-8 for row in qrows)
@@ -167,12 +167,13 @@ def test_stage2_visualization_outputs_and_numeric_invariants() -> None:
     assert all(abs(sum(float(row[key]) for key in ("fraction_very_recent_or_extensive", "fraction_recent_or_older", "fraction_no_recent_recombination", "fraction_unresolved")) - 1) < 1e-8 for row in recomb)
 
 
-def test_recombination_source_concordance_and_classes() -> None:
+def test_recombination_source_audit_and_classes() -> None:
     root = Path(__file__).resolve().parents[1]
-    concordance = read_tsv(root / "results" / "stage2_recombination_source_concordance.tsv")
-    assert len(concordance) == 3
-    assert all(row["concordance"] == "1" for row in concordance)
-    spec = importlib.util.spec_from_file_location("recomb", SCRIPT_DIR / "02l_reconstruct_recombination_track.py")
+    audit = read_tsv(root / "results" / "stage2_recombination_source_code_audit.tsv")
+    assert len(audit) == 3
+    assert all(row["n_source_rows"] == "4046" and row["n_windows_matched"] == "4046" for row in audit)
+    assert all(row["unknown_codes"] == "NA" for row in audit)
+    spec = importlib.util.spec_from_file_location("recomb", SCRIPT_DIR / "02l_import_recombination_classification.py")
     module = importlib.util.module_from_spec(spec)
     assert spec.loader is not None
     spec.loader.exec_module(module)
@@ -180,3 +181,16 @@ def test_recombination_source_concordance_and_classes() -> None:
     assert module.classify_topology_code(("1", "0", "1")) == "RECENT_OR_OLDER"
     assert module.classify_topology_code(("0", "0", "0")) == "NO_RECENT_RECOMBINATION"
     assert module.classify_topology_code(("1", "9", "1")) == "UNRESOLVED"
+
+
+def test_named_astral_q_values_follow_inferred_focal_split() -> None:
+    spec = importlib.util.spec_from_file_location("visuals", SCRIPT_DIR / "02m_make_visualizations.py")
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+    annotations = module.focal_annotations()
+    assert annotations["STANDARD"]["inferred"] == "Q_SPECIES"
+    assert annotations["STANDARD"]["q_species"] > annotations["STANDARD"]["q_t_alt"]
+    assert annotations["ALL"]["inferred"] == "Q_T_ALT"
+    assert annotations["ALL"]["q_t_alt"] > annotations["ALL"]["q_species"]
+    assert abs(sum(float(annotations["ALL"][key]) for key in ("q_species", "q_t_alt", "q_other")) - 1) < 1e-8

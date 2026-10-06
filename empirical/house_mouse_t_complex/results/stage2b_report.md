@@ -148,13 +148,17 @@ lineages, but they do not establish causality or prove MSRC. The remaining
 limitation is that these are published local trees from one chr17 region, with
 no independent genome-wide control and no direct re-estimation of genealogies.
 
-## Visualization and recombination-state reconstruction
+## Final visualization cleanup
 
-The visualization suite adds a side-by-side four-group tree drawing at
+The four-group ASTRAL plot now contains exactly two explicit cladogram panels
+at
 `figures/house_mouse_t_complex_astral_4group.png` and `.pdf`. It shows the
-standard-only `Q_SPECIES` tree beside the all-tip `Q_T_ALT` tree while keeping
-the ASTRAL inference unrooted and using *M. spretus* only as a presentation
-root. The seven-population drawing is at
+standard-only `Q_SPECIES` tree beside the all-tip `Q_T_ALT` tree. The
+ALL-TIPS annotation now correctly reports the biological values
+`q_species = 0.323323`, `q_t_alt = 0.365364`, and `q_other = 0.311313`;
+these names are not fixed aliases for ASTRAL q1/q2/q3. ASTRAL inference is
+unrooted and *M. spretus* is used only to orient the visualization. The
+seven-population plot also contains exactly two explicit tree panels at
 `figures/house_mouse_t_complex_astral_7population.png` and `.pdf`; it marks the
 one P0 split lost and one P1 split gained, with RF(P0,P1) = 2, and does not
 collapse the comparison to one branch length.
@@ -164,21 +168,27 @@ Direct q tracks are provided in
 and fixed 250-kb means for STANDARD_ONLY and ALL_TIPS. The aligned
 q/recombination figure is at
 `figures/house_mouse_t_complex_q_recombination.png` and `.pdf`; the
-recombination-only track is at
+recombination-only track has an explicit `Fraction of 5-kb windows` y-axis and
+is at
 `figures/house_mouse_t_complex_recombination_track.png` and `.pdf`. The
-manuscript-oriented composite is at
+The manuscript-oriented `main_v3` composite is at
+`figures/house_mouse_t_complex_main_v3.png` and `.pdf`; the regenerated
+compatibility `main_v2` output is at
 `figures/house_mouse_t_complex_main_v2.png` and `.pdf`; balanced and thinning
 controls are separated into `figures/house_mouse_t_complex_controls.png` and
 `.pdf`.
 
-The recombination track is reconstructed from the authors' archived
+The recombination track directly uses the authors' archived
 `Tree_results_dom_ML`, `Tree_results_mus_ML`, and `Tree_results_cas_ML` files.
-All 4,046 source rows for each subspecies match the frozen windows and the
-three source topology codes map exactly to the three requested classes; the
-recorded concordance is 1.0 in
-`stage2_recombination_source_concordance.tsv`. The result is a
-phylogeny-based recombination-state classification, not a direct cM/Mb rate
-estimate. Descriptive quartet summaries by each subspecies-specific state are
+All 4,046 frozen windows for each subspecies match a source classification row,
+and all observed source codes have an explicit mapping to the published
+classes. The audit is recorded in
+`stage2_recombination_source_code_audit.tsv`; this is a source-row coverage
+and code-definition audit rather than an independent reclassification test.
+The result is a phylogeny-based
+recombination-state classification, not a direct cM/Mb rate estimate. Its
+stacked y-axis is the fraction of 5-kb windows per 500-kb bin in each class.
+Descriptive quartet summaries by each subspecies-specific state are
 in `stage2_quartet_by_recombination_state.tsv`. In these summaries, Q_T_ALT
 enrichment is strongest for domesticus `RECENT_OR_OLDER` windows and for
 very-recent/extensive states in castaneus and musculus, while no-recent states

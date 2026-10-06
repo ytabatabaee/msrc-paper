@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reconstruct the published phylogeny-based t/standard recombination states."""
+"""Import the authors' archived phylogeny-based t/standard classifications."""
 
 from __future__ import annotations
 
@@ -29,7 +29,7 @@ SOURCE_BASE = "Data/2-Coverage-and_AlleleRatio-Filtered_RAW_SNPs/2-Tree_topologi
 SPECIES_FILES = {"domesticus": "Tree_results_dom_ML", "musculus": "Tree_results_mus_ML", "castaneus": "Tree_results_cas_ML"}
 OUT_5KB = RESULTS / "stage2_recombination_state_5kb.tsv"
 OUT_500KB = RESULTS / "stage2_recombination_state_500kb.tsv"
-CONCORDANCE = RESULTS / "stage2_recombination_source_concordance.tsv"
+SOURCE_AUDIT = RESULTS / "stage2_recombination_source_code_audit.tsv"
 CLASSES = ["VERY_RECENT_OR_EXTENSIVE", "RECENT_OR_OLDER", "NO_RECENT_RECOMBINATION", "UNRESOLVED"]
 
 
@@ -117,12 +117,13 @@ def run(args: argparse.Namespace) -> None:
             "fraction_unresolved": counts["UNRESOLVED"] / total,
         })
     write_tsv(OUT_500KB, bin_rows, ["bin_start", "bin_end", "subspecies", "n_windows", "fraction_very_recent_or_extensive", "fraction_recent_or_older", "fraction_no_recent_recombination", "fraction_unresolved"])
-    concordance_rows = []
+    audit_rows = []
     for species in SPECIES_FILES:
         codes = Counter(" ".join(code) for code in source[species].values())
-        concordance_rows.append({"subspecies": species, "source_rows": len(source[species]), "reconstructed_rows": len(source[species]), "exact_code_matches": len(source[species]), "concordance": 1.0, "source_topology_codes": ";".join(f"{key}:{value}" for key, value in sorted(codes.items()))})
-    write_tsv(CONCORDANCE, concordance_rows, ["subspecies", "source_rows", "reconstructed_rows", "exact_code_matches", "concordance", "source_topology_codes"])
-    print(f"Wrote {OUT_5KB}\nWrote {OUT_500KB}\nWrote {CONCORDANCE}")
+        unknown = sorted(code for code in codes if classify_topology_code(tuple(code.split())) == "UNRESOLVED")
+        audit_rows.append({"subspecies": species, "n_source_rows": len(source[species]), "n_windows_matched": matched, "source_topology_codes": ";".join(f"{key}:{value}" for key, value in sorted(codes.items())), "unmatched_windows": symmetric_difference, "unknown_codes": ";".join(unknown) if unknown else "NA"})
+    write_tsv(SOURCE_AUDIT, audit_rows, ["subspecies", "n_source_rows", "n_windows_matched", "source_topology_codes", "unmatched_windows", "unknown_codes"])
+    print(f"Wrote {OUT_5KB}\nWrote {OUT_500KB}\nWrote {SOURCE_AUDIT}")
 
 
 def main() -> int:

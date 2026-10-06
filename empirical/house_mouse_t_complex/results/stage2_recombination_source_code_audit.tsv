@@ -1,0 +1,4 @@
+subspecies	n_source_rows	n_windows_matched	source_topology_codes	unmatched_windows	unknown_codes
+domesticus	4046	4046	0 0 0:340;1 0 1:232;1 1 2:3474	0	NA
+musculus	4046	4046	0 0 0:343;1 0 1:1833;1 1 2:1870	0	NA
+castaneus	4046	4046	0 0 0:408;1 0 1:802;1 1 2:2836	0	NA
