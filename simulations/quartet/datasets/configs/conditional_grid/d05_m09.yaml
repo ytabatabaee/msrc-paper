@@ -1,0 +1,15 @@
+mode: conditional
+seed: 1501197153
+num_loci: 100000
+structured_interval:
+  duration: 1.0
+  configuration: '1010'
+  migration:
+    m01: 1.0
+    m10: 1.0
+  coalescence:
+    lambda0: 1.0
+    lambda1: 1.0
+output:
+  directory: simulations/quartet/datasets/raw/conditional_grid/d05_m09
+  record_resolved_config: true

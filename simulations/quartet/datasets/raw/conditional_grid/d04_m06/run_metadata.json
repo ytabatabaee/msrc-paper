@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/Users/ytabatabaee/opt/anaconda3/bin/msrc-sim",
+    "--config",
+    "/Users/ytabatabaee/Desktop/msrc-paper/simulations/quartet/datasets/configs/conditional_grid/d04_m06.yaml"
+  ],
+  "config": "simulations/quartet/datasets/configs/conditional_grid/d04_m06.yaml",
+  "config_sha256": "299ba17d31f295988a85bea60591a883d4a5f1f0dfeb6794101d807b49fcac74",
+  "seed": 886300940,
+  "runtime_seconds": 2.010070675999998,
+  "return_code": 0,
+  "stdout": "Configuration: 1010\nEmpirical: [0.14066, 0.72144, 0.1379]\nExact: [0.13922061442005612, 0.7215587711598879, 0.13922061442005612]\nWrote simulations/quartet/datasets/raw/conditional_grid/d04_m06\n",
+  "stderr": "",
+  "msrc_sim_executable": "/Users/ytabatabaee/opt/anaconda3/bin/msrc-sim"
+}

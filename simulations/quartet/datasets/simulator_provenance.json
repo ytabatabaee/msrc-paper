@@ -1,0 +1,19 @@
+{
+  "repository_url": "https://github.com/ytabatabaee/msrc-sim.git",
+  "local_repository": "/Users/ytabatabaee/Desktop/msrc-sim",
+  "git_commit": "f5157d2c64068eb32e0eabfe9bec629c28a404f9",
+  "package_name": "msrc-sim",
+  "package_version": "0.8.8",
+  "python": "3.9.7",
+  "numpy": "1.26.4",
+  "scipy": "1.13.1",
+  "pyyaml": "6.0",
+  "executable": "/Users/ytabatabaee/opt/anaconda3/bin/msrc-sim",
+  "source_resolution": "The executable resolves to the local checkout above.",
+  "simulator_tests": {
+    "full_collection": "blocked by existing import error in tests/test_daughter_sorting_eta_analysis.py: scripts.run_daughter_sorting_eta",
+    "remaining_tests": "176 passed, 8 warnings, with that unrelated test module excluded",
+    "scientific_conditional_tests": "passed within the 176-test run"
+  },
+  "note": "The checkout contained unrelated pre-existing dirty files and deleted legacy tests; none were modified by this experiment."
+}

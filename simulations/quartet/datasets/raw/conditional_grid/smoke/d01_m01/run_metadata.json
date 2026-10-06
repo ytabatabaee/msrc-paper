@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/Users/ytabatabaee/opt/anaconda3/bin/msrc-sim",
+    "--config",
+    "/Users/ytabatabaee/Desktop/msrc-paper/simulations/quartet/datasets/configs/conditional_grid/smoke/d01_m01.yaml"
+  ],
+  "config": "simulations/quartet/datasets/configs/conditional_grid/smoke/d01_m01.yaml",
+  "config_sha256": "1a94df3d1f59a6fe54ca788db42794657b7ff03c7907783f4cfec4531ebc8855",
+  "seed": 146778691,
+  "runtime_seconds": 0.9715032920000004,
+  "return_code": 0,
+  "stdout": "Configuration: 1010\nEmpirical: [0.1362, 0.7328, 0.131]\nExact: [0.1311730556660847, 0.7376538886678304, 0.1311730556660847]\nWrote simulations/quartet/datasets/raw/conditional_grid/smoke/d01_m01\n",
+  "stderr": "",
+  "msrc_sim_executable": "/Users/ytabatabaee/opt/anaconda3/bin/msrc-sim"
+}

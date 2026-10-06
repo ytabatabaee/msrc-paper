@@ -1,0 +1,26 @@
+mode: conditional
+seed: 1967884922
+num_loci: 100000
+structured_interval:
+  duration: 0.25
+  configuration: '1010'
+  migration:
+    m01: 1.0
+    m10: 1.0
+  coalescence:
+    lambda0: 1.0
+    lambda1: 1.0
+output:
+  directory: simulations/quartet/datasets/raw/conditional_grid/d03_m09
+  record_resolved_config: true
+  record_frequency_history: true
+  record_sampled_arrangements: true
+  record_gene_trees: true
+  record_coalescence_times: true
+  record_backward_events: false
+  event_log_loci:
+    first_n: 100
+  make_history_plot: false
+  history_plot: {}
+population_process:
+  model: wright_fisher
