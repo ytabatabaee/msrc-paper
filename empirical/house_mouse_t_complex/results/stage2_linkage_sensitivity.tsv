@@ -1,48 +1,188 @@
-spacing_kb	phase_kb	n_trees	topology	matches_q_species	matches_q_t_alt	CU	localPP	q1	q2	q3	tree_file
-5	0	4046	Q_T_ALT	false	true	0.049097	1	0.365364	0.323323	0.311313	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_5kb_phase_0kb.tre
-10	0	2123	Q_T_ALT	false	true	0.0512536	0.997785	0.366814	0.326407	0.306778	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_10kb_phase_0kb.tre
-10	5	2107	Q_T_ALT	false	true	0.0440273	0.991487	0.36222	0.321529	0.316251	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_10kb_phase_5kb.tre
-20	0	1110	Q_T_ALT	false	true	0.0512987	0.969325	0.367	0.325812	0.307187	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_20kb_phase_0kb.tre
-20	5	1103	Q_T_ALT	false	true	0.0481475	0.956842	0.365002	0.325212	0.309787	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_20kb_phase_5kb.tre
-20	10	1109	Q_T_ALT	false	true	0.0464303	0.946871	0.363907	0.308215	0.327878	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_20kb_phase_10kb.tre
-20	15	1105	Q_T_ALT	false	true	0.0365707	0.876726	0.357597	0.324531	0.317872	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_20kb_phase_15kb.tre
-50	0	467	Q_T_ALT	false	true	0.0361178	0.705423	0.357747	0.323613	0.31864	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_50kb_phase_0kb.tre
-50	5	465	Q_T_ALT	false	true	0.028519	0.608102	0.352835	0.333561	0.313605	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_50kb_phase_5kb.tre
-50	10	466	Q_T_ALT	false	true	0.0274446	0.572261	0.352135	0.308756	0.339109	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_50kb_phase_10kb.tre
-50	15	469	Q_T_ALT	false	true	0.0426746	0.768033	0.361955	0.324262	0.313784	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_50kb_phase_15kb.tre
-50	20	470	Q_T_ALT	false	true	0.05668	0.880964	0.370856	0.316534	0.31261	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_50kb_phase_20kb.tre
-50	25	468	Q_T_ALT	false	true	0.0275029	0.612022	0.35217	0.32841	0.31942	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_50kb_phase_25kb.tre
-50	30	468	Q_T_ALT	false	true	0.0288698	0.595966	0.353058	0.337391	0.309551	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_50kb_phase_30kb.tre
-50	35	468	Q_T_ALT	false	true	0.0555644	0.8715	0.370155	0.309606	0.320239	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_50kb_phase_35kb.tre
-50	40	471	Q_T_ALT	false	true	0.077314	0.961899	0.383747	0.325515	0.290738	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_50kb_phase_40kb.tre
-50	45	469	Q_T_ALT	false	true	0.0414415	0.759509	0.361165	0.320349	0.318486	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_50kb_phase_45kb.tre
-100	0	248	Q_T_ALT	false	true	0.051231	0.720177	0.368106	0.314261	0.317634	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_100kb_phase_0kb.tre
-100	5	247	Q_T_ALT	false	true	0.0534059	0.730362	0.369493	0.323584	0.306923	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_100kb_phase_5kb.tre
-100	10	248	Q_T_ALT	false	true	0.0328516	0.570487	0.35631	0.311949	0.331742	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_100kb_phase_10kb.tre
-100	15	249	Q_T_ALT	false	true	0.033446	0.577809	0.356689	0.330418	0.312893	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_100kb_phase_15kb.tre
-100	20	249	Q_T_ALT	false	true	0.0547831	0.746223	0.370354	0.315832	0.313813	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_100kb_phase_20kb.tre
-100	25	247	Q_SPECIES	true	false	0.00938561	0.397331	0.340936	0.338067	0.320997	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_100kb_phase_25kb.tre
-100	30	245	Q_T_ALT	false	true	0.0259422	0.46979	0.351836	0.346752	0.301412	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_100kb_phase_30kb.tre
-100	35	243	Q_T_ALT	false	true	0.0455702	0.673509	0.364526	0.322309	0.313166	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_100kb_phase_35kb.tre
-100	40	245	Q_T_ALT	false	true	0.0646549	0.77079	0.376604	0.337646	0.28575	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_100kb_phase_40kb.tre
-100	45	245	Q_T_ALT	false	true	0.0395238	0.627319	0.360635	0.325644	0.313721	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_100kb_phase_45kb.tre
-250	0	108	Q_T_ALT	false	true	0.0452516	0.551539	0.366188	0.333717	0.300095	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_250kb_phase_0kb.tre
-250	5	108	Q_T_ALT	false	true	0.0301455	0.482541	0.3564	0.333027	0.310573	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_250kb_phase_5kb.tre
-250	10	109	Q_T_ALT	false	true	0.0292215	0.476148	0.355767	0.308972	0.335261	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_250kb_phase_10kb.tre
-250	15	110	Q_T_ALT	false	true	0.0415335	0.491507	0.363732	0.283914	0.352354	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_250kb_phase_15kb.tre
-250	20	110	Q_T_ALT	false	true	0.0425799	0.552177	0.364407	0.314835	0.320758	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_250kb_phase_20kb.tre
-250	25	110	Q_T_ALT	false	true	0.0212835	0.431498	0.35053	0.307586	0.341884	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_250kb_phase_25kb.tre
-250	30	110	Q_OTHER	false	false	0.0455758	0.567713	0.366336	0.314855	0.318809	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_250kb_phase_30kb.tre
-250	35	109	Q_T_ALT	false	true	0.0565022	0.619779	0.373351	0.305196	0.321453	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_250kb_phase_35kb.tre
-250	40	109	Q_T_ALT	false	true	0.0647116	0.66022	0.37855	0.320249	0.301202	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_250kb_phase_40kb.tre
-250	45	110	Q_OTHER	false	false	0.0360976	0.51497	0.360214	0.310053	0.329733	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_250kb_phase_45kb.tre
-500	0	58	Q_T_ALT	false	true	0.0885617	0.669067	0.396557	0.304358	0.299085	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_500kb_phase_0kb.tre
-500	5	58	Q_T_ALT	false	true	0.044459	0.502539	0.36857	0.331528	0.299901	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_500kb_phase_5kb.tre
-500	10	58	Q_T_ALT	false	true	0.0328975	0.467706	0.361027	0.320221	0.318751	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_500kb_phase_10kb.tre
-500	15	58	Q_T_ALT	false	true	0.0487875	0.5055	0.371372	0.286842	0.341786	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_500kb_phase_15kb.tre
-500	20	58	Q_T_ALT	false	true	0.0475665	0.520181	0.370583	0.316608	0.312809	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_500kb_phase_20kb.tre
-500	25	58	Q_OTHER	false	false	0.0194737	0.408474	0.352159	0.345561	0.30228	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_500kb_phase_25kb.tre
-500	30	58	Q_OTHER	false	false	0.0325985	0.466598	0.360831	0.321198	0.317971	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_500kb_phase_30kb.tre
-500	35	58	Q_T_ALT	false	true	0.0397632	0.491047	0.365517	0.310887	0.323595	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_500kb_phase_35kb.tre
-500	40	58	Q_T_ALT	false	true	0.0900861	0.662255	0.397502	0.326432	0.276066	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_500kb_phase_40kb.tre
-500	45	59	Q_OTHER	false	false	0.0214059	0.424585	0.353341	0.311766	0.334893	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_500kb_phase_45kb.tre
+spacing_kb	phase_kb	n_trees	topology	exact_topology	matches_q_species	matches_q_t_alt	matches_q_other	exact_delta_species_alt	CU	localPP	q1	q2	q3	tree_file
+5	0	4046	Q_T_ALT	Q_T_ALT	false	true	false	-0.04210324755	0.049097	1	0.365364	0.323323	0.311313	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_5kb_phase_0kb.tre
+10	0	2123	Q_T_ALT	Q_T_ALT	false	true	false	-0.04040299484	0.0512536	0.997785	0.366814	0.326407	0.306778	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_10kb_phase_0kb.tre
+10	5	2107	Q_T_ALT	Q_T_ALT	false	true	false	-0.0408131307	0.0440273	0.991487	0.36222	0.321529	0.316251	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_10kb_phase_5kb.tre
+20	0	1110	Q_T_ALT	Q_T_ALT	false	true	false	-0.04126049041	0.0512987	0.969325	0.367	0.325812	0.307187	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_20kb_phase_0kb.tre
+20	5	1103	Q_T_ALT	Q_T_ALT	false	true	false	-0.04002702991	0.0481475	0.956842	0.365002	0.325212	0.309787	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_20kb_phase_5kb.tre
+20	10	1109	Q_T_ALT	Q_T_ALT	false	true	false	-0.03594954298	0.0464303	0.946871	0.363907	0.308215	0.327878	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_20kb_phase_10kb.tre
+20	15	1105	Q_T_ALT	Q_T_ALT	false	true	false	-0.03972204267	0.0365707	0.876726	0.357597	0.324531	0.317872	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_20kb_phase_15kb.tre
+50	0	467	Q_T_ALT	Q_T_ALT	false	true	false	-0.03406734348	0.0361178	0.705423	0.357747	0.323613	0.31864	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_50kb_phase_0kb.tre
+50	5	465	Q_T_ALT	Q_T_ALT	false	true	false	-0.01927403354	0.028519	0.608102	0.352835	0.333561	0.313605	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_50kb_phase_5kb.tre
+50	10	466	Q_T_ALT	Q_T_ALT	false	true	false	-0.01301867783	0.0274446	0.572261	0.352135	0.308756	0.339109	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_50kb_phase_10kb.tre
+50	15	469	Q_T_ALT	Q_T_ALT	false	true	false	-0.04816431237	0.0426746	0.768033	0.361955	0.324262	0.313784	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_50kb_phase_15kb.tre
+50	20	470	Q_T_ALT	Q_T_ALT	false	true	false	-0.05449444339	0.05668	0.880964	0.370856	0.316534	0.31261	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_50kb_phase_20kb.tre
+50	25	468	Q_T_ALT	Q_T_ALT	false	true	false	-0.02375976166	0.0275029	0.612022	0.35217	0.32841	0.31942	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_50kb_phase_25kb.tre
+50	30	468	Q_T_ALT	Q_T_ALT	false	true	false	-0.01566649497	0.0288698	0.595966	0.353058	0.337391	0.309551	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_50kb_phase_30kb.tre
+50	35	468	Q_T_ALT	Q_T_ALT	false	true	false	-0.04991605617	0.0555644	0.8715	0.370155	0.309606	0.320239	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_50kb_phase_35kb.tre
+50	40	471	Q_T_ALT	Q_T_ALT	false	true	false	-0.05811541111	0.077314	0.961899	0.383747	0.325515	0.290738	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_50kb_phase_40kb.tre
+50	45	469	Q_T_ALT	Q_T_ALT	false	true	false	-0.04137229986	0.0414415	0.759509	0.361165	0.320349	0.318486	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_50kb_phase_45kb.tre
+100	0	248	Q_T_ALT	Q_T_ALT	false	true	false	-0.05384414603	0.051231	0.720177	0.368106	0.314261	0.317634	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_100kb_phase_0kb.tre
+100	5	247	Q_T_ALT	Q_T_ALT	false	true	false	-0.04590939489	0.0534059	0.730362	0.369493	0.323584	0.306923	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_100kb_phase_5kb.tre
+100	10	248	Q_T_ALT	Q_T_ALT	false	true	false	-0.02455417147	0.0328516	0.570487	0.35631	0.311949	0.331742	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_100kb_phase_10kb.tre
+100	15	249	Q_T_ALT	Q_T_ALT	false	true	false	-0.04378286958	0.033446	0.577809	0.356689	0.330418	0.312893	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_100kb_phase_15kb.tre
+100	20	249	Q_T_ALT	Q_T_ALT	false	true	false	-0.0548461704	0.0547831	0.746223	0.370354	0.315832	0.313813	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_100kb_phase_20kb.tre
+100	25	247	Q_SPECIES	Q_SPECIES	true	false	false	0.002868649984	0.00938561	0.397331	0.340936	0.338067	0.320997	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_100kb_phase_25kb.tre
+100	30	245	Q_T_ALT	Q_T_ALT	false	true	false	-0.005084274789	0.0259422	0.46979	0.351836	0.346752	0.301412	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_100kb_phase_30kb.tre
+100	35	243	Q_T_ALT	Q_T_ALT	false	true	false	-0.05135980061	0.0455702	0.673509	0.364526	0.322309	0.313166	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_100kb_phase_35kb.tre
+100	40	245	Q_T_ALT	Q_T_ALT	false	true	false	-0.03895772595	0.0646549	0.77079	0.376604	0.337646	0.28575	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_100kb_phase_40kb.tre
+100	45	245	Q_T_ALT	Q_T_ALT	false	true	false	-0.03605639578	0.0395238	0.627319	0.360635	0.325644	0.313721	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_100kb_phase_45kb.tre
+100	50	245	Q_T_ALT	Q_T_ALT	false	true	false	-0.008785532075	NA	NA	NA	NA	NA	NA
+100	55	244	Q_SPECIES	Q_SPECIES	true	false	false	0.01076475287	NA	NA	NA	NA	NA	NA
+100	60	244	Q_T_ALT	Q_T_ALT	false	true	false	-0.002634203018	NA	NA	NA	NA	NA	NA
+100	65	247	Q_T_ALT	Q_T_ALT	false	true	false	-0.04953670233	NA	NA	NA	NA	NA	NA
+100	70	247	Q_T_ALT	Q_T_ALT	false	true	false	-0.05281216865	NA	NA	NA	NA	NA	NA
+100	75	248	Q_T_ALT	Q_T_ALT	false	true	false	-0.05038072437	NA	NA	NA	NA	NA	NA
+100	80	248	Q_T_ALT	Q_T_ALT	false	true	false	-0.02671205958	NA	NA	NA	NA	NA	NA
+100	85	249	Q_T_ALT	Q_T_ALT	false	true	false	-0.04463867374	NA	NA	NA	NA	NA	NA
+100	90	249	Q_T_ALT	Q_T_ALT	false	true	false	-0.07461856354	NA	NA	NA	NA	NA	NA
+100	95	249	Q_T_ALT	Q_T_ALT	false	true	false	-0.04461088402	NA	NA	NA	NA	NA	NA
+250	0	108	Q_T_ALT	Q_T_ALT	false	true	false	-0.03247113371	0.0452516	0.551539	0.366188	0.333717	0.300095	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_250kb_phase_0kb.tre
+250	5	108	Q_T_ALT	Q_T_ALT	false	true	false	-0.02337308477	0.0301455	0.482541	0.3564	0.333027	0.310573	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_250kb_phase_5kb.tre
+250	10	109	Q_T_ALT	Q_T_ALT	false	true	false	-0.02050567934	0.0292215	0.476148	0.355767	0.308972	0.335261	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_250kb_phase_10kb.tre
+250	15	110	Q_T_ALT	Q_T_ALT	false	true	false	-0.01137851732	0.0415335	0.491507	0.363732	0.283914	0.352354	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_250kb_phase_15kb.tre
+250	20	110	Q_T_ALT	Q_T_ALT	false	true	false	-0.05030573593	0.0425799	0.552177	0.364407	0.314835	0.320758	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_250kb_phase_20kb.tre
+250	25	110	Q_T_ALT	Q_T_ALT	false	true	false	-0.04294439936	0.0212835	0.431498	0.35053	0.307586	0.341884	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_250kb_phase_25kb.tre
+250	30	110	Q_OTHER	Q_OTHER	false	false	true	0.003953936682	0.0455758	0.567713	0.366336	0.314855	0.318809	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_250kb_phase_30kb.tre
+250	35	109	Q_T_ALT	Q_T_ALT	false	true	false	-0.05189800405	0.0565022	0.619779	0.373351	0.305196	0.321453	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_250kb_phase_35kb.tre
+250	40	109	Q_T_ALT	Q_T_ALT	false	true	false	-0.05779884775	0.0647116	0.66022	0.37855	0.320249	0.301202	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_250kb_phase_40kb.tre
+250	45	110	Q_OTHER	Q_OTHER	false	false	true	-0.01968005953	0.0360976	0.51497	0.360214	0.310053	0.329733	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_250kb_phase_45kb.tre
+250	50	109	Q_T_ALT	Q_T_ALT	false	true	false	-0.001787420822	NA	NA	NA	NA	NA	NA
+250	55	108	Q_T_ALT	Q_T_ALT	false	true	false	-0.01309971616	NA	NA	NA	NA	NA	NA
+250	60	108	Q_T_ALT	Q_T_ALT	false	true	false	-0.002041652885	NA	NA	NA	NA	NA	NA
+250	65	108	Q_T_ALT	Q_T_ALT	false	true	false	-0.06762497245	NA	NA	NA	NA	NA	NA
+250	70	108	Q_T_ALT	Q_T_ALT	false	true	false	-0.03002301037	NA	NA	NA	NA	NA	NA
+250	75	107	Q_T_ALT	Q_T_ALT	false	true	false	-0.0610355474	NA	NA	NA	NA	NA	NA
+250	80	107	Q_T_ALT	Q_T_ALT	false	true	false	-0.02500173844	NA	NA	NA	NA	NA	NA
+250	85	108	Q_T_ALT	Q_T_ALT	false	true	false	-0.05011505181	NA	NA	NA	NA	NA	NA
+250	90	108	Q_T_ALT	Q_T_ALT	false	true	false	-0.0663497575	NA	NA	NA	NA	NA	NA
+250	95	108	Q_T_ALT	Q_T_ALT	false	true	false	-0.03338362544	NA	NA	NA	NA	NA	NA
+250	100	108	Q_T_ALT	Q_T_ALT	false	true	false	-0.05639123127	NA	NA	NA	NA	NA	NA
+250	105	108	Q_T_ALT	Q_T_ALT	false	true	false	-0.01358438052	NA	NA	NA	NA	NA	NA
+250	110	108	Q_T_ALT	Q_T_ALT	false	true	false	-0.05372678297	NA	NA	NA	NA	NA	NA
+250	115	110	Q_T_ALT	Q_T_ALT	false	true	false	-0.06479335769	NA	NA	NA	NA	NA	NA
+250	120	110	Q_T_ALT	Q_T_ALT	false	true	false	-0.06590232684	NA	NA	NA	NA	NA	NA
+250	125	109	Q_T_ALT	Q_T_ALT	false	true	false	-0.0670342535	NA	NA	NA	NA	NA	NA
+250	130	109	Q_T_ALT	Q_T_ALT	false	true	false	-0.0007061626302	NA	NA	NA	NA	NA	NA
+250	135	109	Q_T_ALT	Q_T_ALT	false	true	false	-0.07287844037	NA	NA	NA	NA	NA	NA
+250	140	110	Q_T_ALT	Q_T_ALT	false	true	false	-0.1197077922	NA	NA	NA	NA	NA	NA
+250	145	109	Q_T_ALT	Q_T_ALT	false	true	false	-0.06732504642	NA	NA	NA	NA	NA	NA
+250	150	109	Q_T_ALT	Q_T_ALT	false	true	false	-0.04701732471	NA	NA	NA	NA	NA	NA
+250	155	107	Q_T_ALT	Q_T_ALT	false	true	false	-0.02587234368	NA	NA	NA	NA	NA	NA
+250	160	107	Q_T_ALT	Q_T_ALT	false	true	false	-0.007964786385	NA	NA	NA	NA	NA	NA
+250	165	109	Q_T_ALT	Q_T_ALT	false	true	false	-0.03042813456	NA	NA	NA	NA	NA	NA
+250	170	108	Q_T_ALT	Q_T_ALT	false	true	false	-0.05375881835	NA	NA	NA	NA	NA	NA
+250	175	109	Q_SPECIES	Q_SPECIES	true	false	false	0.02300950196	NA	NA	NA	NA	NA	NA
+250	180	108	Q_SPECIES	Q_SPECIES	true	false	false	0.01607969576	NA	NA	NA	NA	NA	NA
+250	185	108	Q_T_ALT	Q_T_ALT	false	true	false	-0.04598765432	NA	NA	NA	NA	NA	NA
+250	190	109	Q_T_ALT	Q_T_ALT	false	true	false	-0.04569954129	NA	NA	NA	NA	NA	NA
+250	195	109	Q_T_ALT	Q_T_ALT	false	true	false	-0.04276703801	NA	NA	NA	NA	NA	NA
+250	200	109	Q_T_ALT	Q_T_ALT	false	true	false	-0.01487788063	NA	NA	NA	NA	NA	NA
+250	205	109	Q_T_ALT	Q_T_ALT	false	true	false	-0.01861996233	NA	NA	NA	NA	NA	NA
+250	210	109	Q_SPECIES	Q_SPECIES	true	false	false	0.008138447459	NA	NA	NA	NA	NA	NA
+250	215	107	Q_T_ALT	Q_T_ALT	false	true	false	-0.04634547452	NA	NA	NA	NA	NA	NA
+250	220	107	Q_T_ALT	Q_T_ALT	false	true	false	-0.05604173621	NA	NA	NA	NA	NA	NA
+250	225	108	Q_SPECIES	Q_SPECIES	true	false	false	0.03022452325	NA	NA	NA	NA	NA	NA
+250	230	108	Q_T_ALT	Q_T_ALT	false	true	false	-0.07643883654	NA	NA	NA	NA	NA	NA
+250	235	108	Q_T_ALT	Q_T_ALT	false	true	false	-0.01159301974	NA	NA	NA	NA	NA	NA
+250	240	108	Q_SPECIES	Q_SPECIES	true	false	false	0.01716648754	NA	NA	NA	NA	NA	NA
+250	245	107	Q_T_ALT	Q_T_ALT	false	true	false	-0.03423105808	NA	NA	NA	NA	NA	NA
+500	0	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.09219904558	0.0885617	0.669067	0.396557	0.304358	0.299085	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_500kb_phase_0kb.tre
+500	5	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.03704202588	0.044459	0.502539	0.36857	0.331528	0.299901	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_500kb_phase_5kb.tre
+500	10	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.04227601602	0.0328975	0.467706	0.361027	0.320221	0.318751	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_500kb_phase_10kb.tre
+500	15	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.02958615559	0.0487875	0.5055	0.371372	0.286842	0.341786	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_500kb_phase_15kb.tre
+500	20	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.05536612275	0.0475665	0.520181	0.370583	0.316608	0.312809	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_500kb_phase_20kb.tre
+500	25	58	Q_OTHER	Q_OTHER	false	false	true	-0.04328176315	0.0194737	0.408474	0.352159	0.345561	0.30228	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_500kb_phase_25kb.tre
+500	30	58	Q_OTHER	Q_OTHER	false	false	true	-0.003226344421	0.0325985	0.466598	0.360831	0.321198	0.317971	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_500kb_phase_30kb.tre
+500	35	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.04192195198	0.0397632	0.491047	0.365517	0.310887	0.323595	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_500kb_phase_35kb.tre
+500	40	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.07107065887	0.0900861	0.662255	0.397502	0.326432	0.276066	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_500kb_phase_40kb.tre
+500	45	59	Q_OTHER	Q_OTHER	false	false	true	-0.02312663944	0.0214059	0.424585	0.353341	0.311766	0.334893	data/house_mouse_t_complex/processed/stage2/linkage_astral/spacing_500kb_phase_45kb.tre
+500	50	59	Q_T_ALT	Q_T_ALT	false	true	false	-0.0566592262	NA	NA	NA	NA	NA	NA
+500	55	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.02448686372	NA	NA	NA	NA	NA	NA
+500	60	58	Q_OTHER	Q_OTHER	false	false	true	0.02750410509	NA	NA	NA	NA	NA	NA
+500	65	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.1027811987	NA	NA	NA	NA	NA	NA
+500	70	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.05496202792	NA	NA	NA	NA	NA	NA
+500	75	58	Q_OTHER	Q_OTHER	false	false	true	-0.05401272578	NA	NA	NA	NA	NA	NA
+500	80	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.02918719213	NA	NA	NA	NA	NA	NA
+500	85	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.04830665024	NA	NA	NA	NA	NA	NA
+500	90	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.07000205255	NA	NA	NA	NA	NA	NA
+500	95	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.04622331692	NA	NA	NA	NA	NA	NA
+500	100	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.1259800903	NA	NA	NA	NA	NA	NA
+500	105	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.0426313629	NA	NA	NA	NA	NA	NA
+500	110	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.02899027607	NA	NA	NA	NA	NA	NA
+500	115	59	Q_T_ALT	Q_T_ALT	false	true	false	-0.0827866475	NA	NA	NA	NA	NA	NA
+500	120	59	Q_T_ALT	Q_T_ALT	false	true	false	-0.1162965345	NA	NA	NA	NA	NA	NA
+500	125	59	Q_T_ALT	Q_T_ALT	false	true	false	-0.04501425041	NA	NA	NA	NA	NA	NA
+500	130	59	Q_SPECIES	Q_SPECIES	true	false	false	0.01941270681	NA	NA	NA	NA	NA	NA
+500	135	59	Q_T_ALT	Q_T_ALT	false	true	false	-0.1141879792	NA	NA	NA	NA	NA	NA
+500	140	59	Q_T_ALT	Q_T_ALT	false	true	false	-0.09514540457	NA	NA	NA	NA	NA	NA
+500	145	59	Q_T_ALT	Q_T_ALT	false	true	false	-0.04295172518	NA	NA	NA	NA	NA	NA
+500	150	59	Q_OTHER	Q_OTHER	false	false	true	-0.005002143869	NA	NA	NA	NA	NA	NA
+500	155	59	Q_OTHER	Q_OTHER	false	false	true	0.03366311037	NA	NA	NA	NA	NA	NA
+500	160	59	Q_SPECIES	Q_SPECIES	true	false	false	0.02296963276	NA	NA	NA	NA	NA	NA
+500	165	60	Q_T_ALT	Q_T_ALT	false	true	false	-0.02235119048	NA	NA	NA	NA	NA	NA
+500	170	60	Q_T_ALT	Q_T_ALT	false	true	false	-0.02842261905	NA	NA	NA	NA	NA	NA
+500	175	60	Q_T_ALT	Q_T_ALT	false	true	false	-0.009856150801	NA	NA	NA	NA	NA	NA
+500	180	60	Q_SPECIES	Q_SPECIES	true	false	false	0.004414682543	NA	NA	NA	NA	NA	NA
+500	185	60	Q_T_ALT	Q_T_ALT	false	true	false	-0.05635912698	NA	NA	NA	NA	NA	NA
+500	190	60	Q_T_ALT	Q_T_ALT	false	true	false	-0.08326388889	NA	NA	NA	NA	NA	NA
+500	195	60	Q_T_ALT	Q_T_ALT	false	true	false	-0.01624007937	NA	NA	NA	NA	NA	NA
+500	200	60	Q_OTHER	Q_OTHER	false	false	true	0.01797619047	NA	NA	NA	NA	NA	NA
+500	205	60	Q_T_ALT	Q_T_ALT	false	true	false	-0.03886780755	NA	NA	NA	NA	NA	NA
+500	210	60	Q_SPECIES	Q_SPECIES	true	false	false	0.0244283234	NA	NA	NA	NA	NA	NA
+500	215	59	Q_OTHER	Q_OTHER	false	false	true	-0.02686831618	NA	NA	NA	NA	NA	NA
+500	220	59	Q_T_ALT	Q_T_ALT	false	true	false	-0.005697008682	NA	NA	NA	NA	NA	NA
+500	225	59	Q_SPECIES	Q_SPECIES	true	false	false	0.09423741425	NA	NA	NA	NA	NA	NA
+500	230	59	Q_T_ALT	Q_T_ALT	false	true	false	-0.05540947842	NA	NA	NA	NA	NA	NA
+500	235	59	Q_OTHER	Q_OTHER	false	false	true	-0.01173892757	NA	NA	NA	NA	NA	NA
+500	240	59	Q_SPECIES	Q_SPECIES	true	false	false	0.02763758575	NA	NA	NA	NA	NA	NA
+500	245	59	Q_T_ALT	Q_T_ALT	false	true	false	-0.02942393059	NA	NA	NA	NA	NA	NA
+500	250	59	Q_SPECIES	Q_SPECIES	true	false	false	0.02638531578	NA	NA	NA	NA	NA	NA
+500	255	59	Q_T_ALT	Q_T_ALT	false	true	false	-0.01118278349	NA	NA	NA	NA	NA	NA
+500	260	59	Q_T_ALT	Q_T_ALT	false	true	false	-0.005186894675	NA	NA	NA	NA	NA	NA
+500	265	59	Q_SPECIES	Q_SPECIES	true	false	false	0.002871519375	NA	NA	NA	NA	NA	NA
+500	270	59	Q_T_ALT	Q_T_ALT	false	true	false	-0.04436163236	NA	NA	NA	NA	NA	NA
+500	275	59	Q_T_ALT	Q_T_ALT	false	true	false	-0.04251664649	NA	NA	NA	NA	NA	NA
+500	280	59	Q_OTHER	Q_OTHER	false	false	true	0.005544415851	NA	NA	NA	NA	NA	NA
+500	285	59	Q_T_ALT	Q_T_ALT	false	true	false	-0.05928861481	NA	NA	NA	NA	NA	NA
+500	290	59	Q_T_ALT	Q_T_ALT	false	true	false	-0.04153551251	NA	NA	NA	NA	NA	NA
+500	295	59	Q_OTHER	Q_OTHER	false	false	true	-0.0181856588	NA	NA	NA	NA	NA	NA
+500	300	58	Q_SPECIES	Q_SPECIES	true	false	false	0.04957666256	NA	NA	NA	NA	NA	NA
+500	305	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.004606039619	NA	NA	NA	NA	NA	NA
+500	310	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.03600613197	NA	NA	NA	NA	NA	NA
+500	315	58	Q_OTHER	Q_OTHER	false	false	true	-0.02784149221	NA	NA	NA	NA	NA	NA
+500	320	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.005643216344	NA	NA	NA	NA	NA	NA
+500	325	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.06936319787	NA	NA	NA	NA	NA	NA
+500	330	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.02771256672	NA	NA	NA	NA	NA	NA
+500	335	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.04971136084	NA	NA	NA	NA	NA	NA
+500	340	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.05824610017	NA	NA	NA	NA	NA	NA
+500	345	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.02063962439	NA	NA	NA	NA	NA	NA
+500	350	58	Q_OTHER	Q_OTHER	false	false	true	0.01627540024	NA	NA	NA	NA	NA	NA
+500	355	58	Q_OTHER	Q_OTHER	false	false	true	0.0126359811	NA	NA	NA	NA	NA	NA
+500	360	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.07575302751	NA	NA	NA	NA	NA	NA
+500	365	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.05543924468	NA	NA	NA	NA	NA	NA
+500	370	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.02345481836	NA	NA	NA	NA	NA	NA
+500	375	57	Q_T_ALT	Q_T_ALT	false	true	false	-0.09865810359	NA	NA	NA	NA	NA	NA
+500	380	57	Q_T_ALT	Q_T_ALT	false	true	false	-0.03850772765	NA	NA	NA	NA	NA	NA
+500	385	57	Q_T_ALT	Q_T_ALT	false	true	false	-0.03823295217	NA	NA	NA	NA	NA	NA
+500	390	58	Q_T_ALT	Q_T_ALT	false	true	false	-0.1470154711	NA	NA	NA	NA	NA	NA
+500	395	57	Q_T_ALT	Q_T_ALT	false	true	false	-0.1013490758	NA	NA	NA	NA	NA	NA
+500	400	57	Q_T_ALT	Q_T_ALT	false	true	false	-0.1017961571	NA	NA	NA	NA	NA	NA
+500	405	56	Q_T_ALT	Q_T_ALT	false	true	false	-0.1024819303	NA	NA	NA	NA	NA	NA
+500	410	56	Q_T_ALT	Q_T_ALT	false	true	false	-0.05699936225	NA	NA	NA	NA	NA	NA
+500	415	56	Q_T_ALT	Q_T_ALT	false	true	false	-0.05325786565	NA	NA	NA	NA	NA	NA
+500	420	55	Q_T_ALT	Q_T_ALT	false	true	false	-0.09286255412	NA	NA	NA	NA	NA	NA
+500	425	55	Q_SPECIES	Q_SPECIES	true	false	false	0.038262987	NA	NA	NA	NA	NA	NA
+500	430	55	Q_SPECIES	Q_SPECIES	true	false	false	0.004523809507	NA	NA	NA	NA	NA	NA
+500	435	55	Q_T_ALT	Q_T_ALT	false	true	false	-0.05105519481	NA	NA	NA	NA	NA	NA
+500	440	57	Q_T_ALT	Q_T_ALT	false	true	false	-0.01988304095	NA	NA	NA	NA	NA	NA
+500	445	57	Q_T_ALT	Q_T_ALT	false	true	false	-0.08482664997	NA	NA	NA	NA	NA	NA
+500	450	57	Q_T_ALT	Q_T_ALT	false	true	false	-0.06751187866	NA	NA	NA	NA	NA	NA
+500	455	57	Q_T_ALT	Q_T_ALT	false	true	false	-0.01483200189	NA	NA	NA	NA	NA	NA
+500	460	57	Q_T_ALT	Q_T_ALT	false	true	false	-0.03028991751	NA	NA	NA	NA	NA	NA
+500	465	57	Q_T_ALT	Q_T_ALT	false	true	false	-0.06704652256	NA	NA	NA	NA	NA	NA
+500	470	57	Q_T_ALT	Q_T_ALT	false	true	false	-0.1071624374	NA	NA	NA	NA	NA	NA
+500	475	57	Q_T_ALT	Q_T_ALT	false	true	false	-0.04945044905	NA	NA	NA	NA	NA	NA
+500	480	57	Q_T_ALT	Q_T_ALT	false	true	false	-0.09665178572	NA	NA	NA	NA	NA	NA
+500	485	57	Q_T_ALT	Q_T_ALT	false	true	false	-0.01898887846	NA	NA	NA	NA	NA	NA
+500	490	57	Q_T_ALT	Q_T_ALT	false	true	false	-0.005255325828	NA	NA	NA	NA	NA	NA
+500	495	57	Q_T_ALT	Q_T_ALT	false	true	false	-0.03878315581	NA	NA	NA	NA	NA	NA

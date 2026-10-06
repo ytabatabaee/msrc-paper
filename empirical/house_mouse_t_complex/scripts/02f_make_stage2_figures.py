@@ -54,8 +54,9 @@ def moving_bin(rows: list[dict[str, str]], treatment: str, bin_size: int = 250_0
 def run() -> None:
     scan = read_tsv(RESULTS / "stage2_fixed_quartet_scan.tsv")
     qsum = read_tsv(RESULTS / "stage2_fixed_quartet_summary.tsv")
-    balanced = read_tsv(RESULTS / "stage2_balanced_sampling_summary.tsv") if (RESULTS / "stage2_balanced_sampling_summary.tsv").exists() else []
-    linkage = read_tsv(RESULTS / "stage2_linkage_sensitivity.tsv")
+    balanced = read_tsv(RESULTS / "stage2_balanced_quartet_resampling_summary.tsv")
+    arrangement = read_tsv(RESULTS / "stage2_arrangement_pattern_summary.tsv")
+    linkage = read_tsv(RESULTS / "stage2_linkage_summary.tsv")
     FIGURES.mkdir(parents=True, exist_ok=True)
     fig, axes = plt.subplots(2, 2, figsize=(12, 8))
     ax = axes[0, 0]
@@ -73,18 +74,18 @@ def run() -> None:
     ax.legend(frameon=False, fontsize=8)
 
     ax = axes[0, 1]
-    treatments = ["STANDARD_ONLY", "T_ONLY", "ALL_TIPS"]
-    comp = ["mean_q_species", "mean_q_t_alt", "mean_q_other", "mean_q_unresolved"]
+    treatments = ["SSS", "one_T", "two_T", "TTT"]
+    comp = ["q_species", "q_t_alt", "q_other", "q_unresolved"]
     labels = ["Q_SPECIES", "Q_T_ALT", "Q_OTHER", "unresolved"]
     bottoms = np.zeros(len(treatments))
-    qmap = {r["treatment"]: r for r in qsum}
+    qmap = {r["status_pattern"]: r for r in arrangement}
     colors = ["#4c78a8", "#f58518", "#54a24b", "#bab0ac"]
     for c, label, color in zip(comp, labels, colors):
         vals = np.array([float(qmap[t][c]) for t in treatments])
         ax.bar(treatments, vals, bottom=bottoms, label=label, color=color)
         bottoms += vals
     ax.set_ylim(0, 1)
-    ax.set_title("B. Aggregate quartet composition")
+    ax.set_title("B. Arrangement-state quartet composition")
     ax.tick_params(axis="x", labelrotation=20)
     ax.legend(frameon=False, fontsize=8)
 
@@ -102,27 +103,30 @@ def run() -> None:
             ax.bar(btreat, vals, bottom=bottoms, label=label, color=color)
             bottoms += vals
         ax.set_ylim(0, 1)
-    ax.set_title("C. Balanced ASTRAL controls")
+    ax.set_title("C. Balanced exact quartet resampling (n=1000)")
     ax.tick_params(axis="x", labelrotation=20)
 
     ax = axes[1, 1]
-    by_spacing: dict[int, list[dict[str, str]]] = defaultdict(list)
-    for r in linkage:
-        by_spacing[int(r["spacing_kb"])].append(r)
-    spacings, pp, ntree = [], [], []
-    for spacing in sorted(by_spacing):
-        rows = by_spacing[spacing]
-        spacings.append(spacing)
-        pp.append(np.mean([float(r["localPP"]) for r in rows if r["localPP"] != "NA"]))
-        ntree.append(np.mean([float(r["n_trees"]) for r in rows]))
-    ax.plot(spacings, pp, marker="o", color="#e45756", label="mean localPP")
+    spacings = [int(r["spacing_kb"]) for r in linkage]
+    alt = [float(r["fraction_Q_T_ALT"]) for r in linkage]
+    species = [float(r["fraction_Q_SPECIES"]) for r in linkage]
+    pp = [float(r["median_localPP"]) if r["median_localPP"] != "NA" else np.nan for r in linkage]
+    ax.plot(spacings, alt, marker="o", color="#f58518", label="Q_T_ALT frequency")
+    ax.plot(spacings, species, marker="o", color="#4c78a8", label="Q_SPECIES frequency")
     ax2 = ax.twinx()
-    ax2.plot(spacings, ntree, marker="s", color="#72b7b2", label="mean n trees")
+    ax2.plot(spacings, pp, marker="s", color="#e45756", label="median ASTRAL localPP")
     ax.set_xscale("log")
     ax.set_xlabel("spacing (kb)")
-    ax.set_ylabel("localPP")
-    ax2.set_ylabel("n trees")
-    ax.set_title("D. Spatial thinning sensitivity")
+    ax.set_ylabel("topology frequency")
+    ax.set_ylim(0, 1)
+    ax2.set_ylabel("median localPP")
+    ax2.set_ylim(0, 1.05)
+    ax.set_title("D. Spatial thinning and support inflation")
+    if np.nanstd(alt) == 0 or np.nanstd(pp) == 0:
+        raise RuntimeError("Stage-2 thinning series unexpectedly constant")
+    lines, labels1 = ax.get_legend_handles_labels()
+    lines2, labels2 = ax2.get_legend_handles_labels()
+    ax.legend(lines + lines2, labels1 + labels2, frameon=False, fontsize=7)
 
     fig.tight_layout()
     fig.savefig(PNG, dpi=220)

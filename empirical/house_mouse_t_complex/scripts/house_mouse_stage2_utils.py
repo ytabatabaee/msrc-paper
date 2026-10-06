@@ -370,6 +370,69 @@ def parse_first_annotation(newick: str) -> dict[str, object]:
     return out
 
 
+ANNOTATION_KEYS = ("CULength", "SULength", "localPP", "q1", "q2", "q3", "f1", "f2", "f3")
+
+
+def parse_annotation_text(text: str | None) -> dict[str, float]:
+    """Parse one ASTRAL annotation into numeric values."""
+    if not text:
+        return {}
+    values: dict[str, float] = {}
+    for key, value in re.findall(r"([A-Za-z0-9]+)=([^;\]]+)", text):
+        if key in ANNOTATION_KEYS:
+            try:
+                values[key] = float(value)
+            except ValueError:
+                continue
+    return values
+
+
+def annotated_split_records(newick: str) -> list[dict[str, object]]:
+    """Return annotations keyed by canonical unrooted split.
+
+    ASTRAL places annotations on the child clade carrying the branch
+    annotation. The root annotation is excluded because it has no associated
+    nontrivial unrooted split.
+    """
+    tree = Phylo.read(io.StringIO(newick), "newick")
+    all_tips = frozenset(t.name for t in tree.get_terminals())
+    records: list[dict[str, object]] = []
+    for clade in tree.find_clades(order="postorder"):
+        side = frozenset(t.name for t in clade.get_terminals())
+        if not (1 < len(side) < len(all_tips) - 1):
+            continue
+        other = all_tips - side
+        annotation = parse_annotation_text(clade.name or clade.comment)
+        if not annotation:
+            continue
+        record = dict(annotation)
+        record["split"] = canonical_split([side, other])
+        record["side_a"] = tuple(sorted(side))
+        record["side_b"] = tuple(sorted(other))
+        record["branch_length"] = clade.branch_length
+        records.append(record)
+    return records
+
+
+def annotation_for_split(newick: str, target_split: Iterable[Iterable[str]]) -> dict[str, object] | None:
+    """Extract the annotation attached to one requested canonical split."""
+    target = canonical_split(target_split)
+    for record in annotated_split_records(newick):
+        if record["split"] == target:
+            out = {key: record.get(key, "NA") for key in ANNOTATION_KEYS}
+            out.update({"side_a": record["side_a"], "side_b": record["side_b"], "split": record["split"]})
+            if all(key in record for key in ("q1", "q2", "q3")):
+                assert abs(float(record["q1"]) + float(record["q2"]) + float(record["q3"]) - 1.0) < 1e-4
+            return out
+    return None
+
+
+def assert_q_normalized(values: dict[str, object], tolerance: float = 1e-4) -> None:
+    if all(values.get(key, "NA") != "NA" for key in ("q1", "q2", "q3")):
+        total = sum(float(values[key]) for key in ("q1", "q2", "q3"))
+        assert abs(total - 1.0) < tolerance, f"ASTRAL quartet frequencies sum to {total}"
+
+
 def prune_newick(newick: str, keep: set[str]) -> str:
     tree = Phylo.read(io.StringIO(newick), "newick")
     for terminal in list(tree.get_terminals()):

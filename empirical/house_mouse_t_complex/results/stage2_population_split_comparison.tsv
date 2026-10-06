@@ -1,0 +1,6 @@
+split_id	status	CU_P0	CU_P1	delta_CU	localPP_P0	localPP_P1
+Afghanistan|CAST|Czech_Republic|Kazakhstan || France|Germany|SPRE	lost	0.056283	NA	NA	0.999985	NA
+Afghanistan|CAST|Czech_Republic|Kazakhstan|SPRE || France|Germany	shared	0.886491	0.69498	-0.191511	1	1
+Afghanistan|CAST|France|Germany|SPRE || Czech_Republic|Kazakhstan	shared	0.52962	0.157049	-0.372571	1	1
+Afghanistan|Czech_Republic|France|Germany|Kazakhstan || CAST|SPRE	gained	NA	0.049097	NA	NA	1
+Afghanistan|Czech_Republic|Kazakhstan || CAST|France|Germany|SPRE	shared	1.21839	0.411267	-0.807123	1	1

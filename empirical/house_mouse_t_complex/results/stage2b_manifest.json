@@ -1,0 +1,50 @@
+{
+  "analysis": "house_mouse_t_complex_stage2b",
+  "source_archive": {
+    "basename": "IST-2017-78-v1+1_Data.zip",
+    "sha256": "f925084a87ac3837661ad99f931da608c129ea3e590c3470030b3ba649d47877",
+    "size_bytes": 143697895
+  },
+  "commands": [
+    "02i_correct_astral_summary.py",
+    "02g_arrangement_status_quartets.py",
+    "02h_balanced_quartet_resampling.py --n-replicates 1000 --seed 20261005",
+    "02b_balanced_sampling_astral.py --n-replicates 20 --seed 20261005 --threads 2",
+    "02h_balanced_quartet_resampling.py --validate-astral",
+    "02k_audit_third_filter_tips.py --archive IST-2017-78-v1+1_Data.zip",
+    "02d_filtering_robustness.py --archive IST-2017-78-v1+1_Data.zip --threads 2",
+    "02j_population_split_analysis.py",
+    "02e_linkage_sensitivity.py --archive IST-2017-78-v1+1_Data.zip --astral-phases 10",
+    "02f_make_stage2_figures.py"
+  ],
+  "status": {
+    "corrected_astral_annotations": true,
+    "arrangement_patterns": "complete_8_patterns_plus_pooled_classes",
+    "balanced_exact_replicates": 1000,
+    "astral_validation_replicates": 60,
+    "astral_exact_concordance": "60/60",
+    "third_filter_rescued": true,
+    "third_filter_exact_tip_matches": "55/55",
+    "linkage_phases": {"5": 1, "10": 2, "20": 4, "50": 10, "100": 20, "250": 50, "500": 100},
+    "source_defined_blocks_available": false,
+    "large_derived_trees_removed_from_git": 77
+  },
+  "sha256": {
+    "empirical/house_mouse_t_complex/results/stage2_astral_summary.tsv": "959fc6f2a8556d441c5ba921f6a75ab76ac2d1d32a04e4e169ddbc22a9fcc422",
+    "empirical/house_mouse_t_complex/results/stage2_arrangement_pattern_quartets.tsv": "2221cf0cfca898377c5267b1afeb7981acf750f7b7536276b78398611e7ecf2c",
+    "empirical/house_mouse_t_complex/results/stage2_arrangement_pattern_summary.tsv": "ef2c595e4ed50629c1c75b3cc6643eec2cde8cf3297b4112dca1eaed9768c6bd",
+    "empirical/house_mouse_t_complex/results/stage2_arrangement_pattern_spatial_summary.tsv": "be76793f8e5d8ab85078d27eeab9722dc8043cabf2732572d070458a28c1f36a",
+    "empirical/house_mouse_t_complex/results/stage2_balanced_quartet_resampling.tsv": "2f64289cc4fa335cbac439ebe8649679de3aa51fc23d0f4f4cff27ef6fdfbb83",
+    "empirical/house_mouse_t_complex/results/stage2_balanced_quartet_resampling_summary.tsv": "47bee4bd2c69ded8a620667054a2b83f253e2231e243e1989b7c1b39fbd16d02",
+    "empirical/house_mouse_t_complex/results/stage2_balanced_quartet_astral_validation.tsv": "d8d49cda5e4872b481e155dfb225906a9d0dfd6f8bb1a22200474c8f60c7dfe0",
+    "empirical/house_mouse_t_complex/results/stage2_third_filter_tip_label_audit.tsv": "9e3ca157d7d457d2da6c271f9238d52879002c97d74e5dce916c2e9e23f28a9f",
+    "empirical/house_mouse_t_complex/results/stage2_filtering_robustness.tsv": "34cbb9acec6d4b89db3b4dac5581f38144bf568bc2feb2fba3c0561c3df0699c",
+    "empirical/house_mouse_t_complex/results/stage2_population_split_table.tsv": "fc08aa0c37509345ba58a64812ceef716ed717acc894bf0d73e663becf65ac2a",
+    "empirical/house_mouse_t_complex/results/stage2_population_split_comparison.tsv": "86a575018dcaf6d31ed8fa962cc6f771708cb4cfef99b5668a34d503052f831c",
+    "empirical/house_mouse_t_complex/results/stage2_linkage_summary.tsv": "1bb999f2f7d72d1fad6f682562cceb99f1717861acb5b3f89561d54c335a61a1",
+    "empirical/house_mouse_t_complex/results/stage2_linkage_sensitivity.tsv": "9a96bf9ed1abfecbfa00a272c28420ecb9fe143e07263967c6e574e043942ca2",
+    "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_stage2_main.png": "e4f2e1e60fc3457f1ba21fb51b97e7c10f9b952b20ec11b46db5d8efd6d26d86",
+    "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_stage2_main.pdf": "f59a1501694c47a6b28ce0f54babe75b2d3c36f1bcfb394283dd83dcbb5623a2",
+    "empirical/house_mouse_t_complex/results/stage2_figure_validation.tsv": "0deea54cae7536e95644592dc10c74ecad21d9840f3c44a9fbe2c73b1659312e"
+  }
+}

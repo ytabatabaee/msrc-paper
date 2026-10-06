@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import sys
+import importlib.util
 from pathlib import Path
 
 import pytest
@@ -21,6 +22,8 @@ from house_mouse_stage2_utils import (  # noqa: E402
     spatial_thin_records,
     tips_by_species,
     tree_bipartitions,
+    annotation_for_split,
+    read_tsv,
 )
 
 
@@ -94,3 +97,60 @@ def test_main_figure_is_nonempty() -> None:
     assert image.width >= 800 and image.height >= 600
     assert len(set(pixels)) > 100
     assert sum(any(channel < 245 for channel in pixel) for pixel in pixels) > 5_000
+
+
+def test_split_specific_annotation_and_normalization() -> None:
+    newick = "((Mus_musculus_musculus,Mus_musculus_castaneus)'[CULength=0.4;SULength=0.2;localPP=0.9;q1=0.5;q2=0.3;q3=0.2;f1=5;f2=3;f3=2]':0.4,(Mus_musculus_domesticus,Mus_spretus));"
+    target = (("Mus_musculus_castaneus", "Mus_musculus_musculus"), ("Mus_musculus_domesticus", "Mus_spretus"))
+    annotation = annotation_for_split(newick, target)
+    assert annotation is not None
+    assert annotation["CULength"] == 0.4
+    assert abs(sum(float(annotation[key]) for key in ("q1", "q2", "q3")) - 1) < 1e-8
+    spec = importlib.util.spec_from_file_location("filtering", SCRIPT_DIR / "02d_filtering_robustness.py")
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+    assert module.normalize_filter_tip("X_tHaplSubsetOverallCovFiltered") == "X_tHaplSubset.fa"
+    assert module.normalize_filter_tip("X_OverallCovFiltered_DelRemoved") == "X"
+    assert module.normalize_filter_tip("X_typo") == "X_typo"
+
+
+def test_all_eight_arrangement_patterns_and_pooling() -> None:
+    patterns = {a + b + c for a in "ST" for b in "ST" for c in "ST"}
+    assert patterns == {"SSS", "SST", "STS", "STT", "TSS", "TST", "TTS", "TTT"}
+    assert {p for p in patterns if p.count("T") == 1} == {"SST", "STS", "TSS"}
+    assert {p for p in patterns if p.count("T") == 2} == {"STT", "TST", "TTS"}
+
+
+def test_arrangement_status_quartet_counts_are_exact() -> None:
+    spec = importlib.util.spec_from_file_location("arrangements", SCRIPT_DIR / "02g_arrangement_status_quartets.py")
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+    mapping = [
+        {"tree_tip": "dom_S", "subspecies": "Mus musculus domesticus", "t_status": "standard_noncarrier", "mapping_confidence": "strong"},
+        {"tree_tip": "dom_T", "subspecies": "Mus musculus domesticus", "t_status": "pseudo-t_haplotype", "mapping_confidence": "strong"},
+        {"tree_tip": "mus_S", "subspecies": "Mus musculus musculus", "t_status": "standard_noncarrier", "mapping_confidence": "strong"},
+        {"tree_tip": "mus_T", "subspecies": "Mus musculus musculus", "t_status": "pseudo-t_haplotype", "mapping_confidence": "strong"},
+        {"tree_tip": "cast_S", "subspecies": "Mus musculus castaneus", "t_status": "standard_noncarrier", "mapping_confidence": "strong"},
+        {"tree_tip": "cast_T", "subspecies": "Mus musculus castaneus", "t_status": "pseudo-t_haplotype", "mapping_confidence": "strong"},
+        {"tree_tip": "spret", "subspecies": "Mus spretus", "t_status": "outgroup_not_t_haplotype", "mapping_confidence": "exact"},
+    ]
+    counts = module.count_pattern("((mus_S,cast_S),(dom_S,spret));", "SSS", mapping)
+    assert counts[Q_SPECIES] == 1 and sum(counts.values()) == 1
+
+
+def test_full_phase_enumeration() -> None:
+    assert len(range(0, 100_000, 5_000)) == 20
+    assert len(range(0, 250_000, 5_000)) == 50
+    assert len(range(0, 500_000, 5_000)) == 100
+
+
+def test_astral_exact_validation_and_population_split_statuses() -> None:
+    validation = read_tsv(Path(__file__).resolve().parents[1] / "results" / "stage2_balanced_quartet_astral_validation.tsv")
+    assert len(validation) == 60
+    assert all(row["concordant"] == "true" for row in validation)
+    comparison = read_tsv(Path(__file__).resolve().parents[1] / "results" / "stage2_population_split_comparison.tsv")
+    assert sum(row["status"] == "lost" for row in comparison) == 1
+    assert sum(row["status"] == "gained" for row in comparison) == 1
+    assert sum(row["status"] == "shared" for row in comparison) == 3

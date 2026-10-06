@@ -111,6 +111,11 @@ The newer 2025 inversion breakpoints were not overlaid because assembly,
 reference coordinate system, and lift-over compatibility with the 2017 window
 coordinates were not established.
 
+Stage 2B supersedes the interpretation of this preliminary report. See
+`stage2b_report.md` for corrected split-specific ASTRAL annotations,
+arrangement-state quartet decomposition, the 1,000-replicate balanced control,
+the rescued third filtering dataset, and the complete spatial phase sweep.
+
 ## Reproducibility
 
 The source archive is recorded by basename, SHA256

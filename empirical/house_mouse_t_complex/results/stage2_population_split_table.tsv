@@ -1,0 +1,17 @@
+treatment	split_id	side_a	side_b	CU	SU	localPP	q1	q2	q3
+P0_STANDARD	Afghanistan|CAST|Czech_Republic|Kazakhstan || France|Germany|SPRE	Afghanistan|CAST|Czech_Republic|Kazakhstan	France|Germany|SPRE	0.056283	0.00108471	0.999985	0.36991	0.343656	0.286434
+P0_STANDARD	Afghanistan|CAST|Czech_Republic|Kazakhstan|SPRE || France|Germany	Afghanistan|CAST|Czech_Republic|Kazakhstan|SPRE	France|Germany	0.886491	0.00300191	1	0.725447	0.101641	0.172913
+P0_STANDARD	Afghanistan|CAST|France|Germany|SPRE || Czech_Republic|Kazakhstan	Afghanistan|CAST|France|Germany|SPRE	Czech_Republic|Kazakhstan	0.52962	0.00140632	1	0.607598	0.214433	0.177969
+P0_STANDARD	Afghanistan|Czech_Republic|Kazakhstan || CAST|France|Germany|SPRE	Afghanistan|Czech_Republic|Kazakhstan	CAST|France|Germany|SPRE	1.21839	0.00176377	1	0.803061	0.106049	0.0908902
+P1_ALL	Afghanistan|CAST|Czech_Republic|Kazakhstan|SPRE || France|Germany	Afghanistan|CAST|Czech_Republic|Kazakhstan|SPRE	France|Germany	0.69498	0.000624218	1	0.667442	0.176667	0.155891
+P1_ALL	Afghanistan|CAST|France|Germany|SPRE || Czech_Republic|Kazakhstan	Afghanistan|CAST|France|Germany|SPRE	Czech_Republic|Kazakhstan	0.157049	0.000808827	1	0.430331	0.260108	0.309561
+P1_ALL	Afghanistan|Czech_Republic|France|Germany|Kazakhstan || CAST|SPRE	Afghanistan|Czech_Republic|France|Germany|Kazakhstan	CAST|SPRE	0.049097	0.000138824	1	0.365364	0.311313	0.323323
+P1_ALL	Afghanistan|Czech_Republic|Kazakhstan || CAST|France|Germany|SPRE	Afghanistan|Czech_Republic|Kazakhstan	CAST|France|Germany|SPRE	0.411267	0.00159991	1	0.558265	0.207858	0.233877
+P2_THIN_50kb	Afghanistan|CAST|Czech_Republic|Kazakhstan|SPRE || France|Germany	Afghanistan|CAST|Czech_Republic|Kazakhstan|SPRE	France|Germany	0.669643	0.000444283	1	0.66015	0.178839	0.161011
+P2_THIN_50kb	Afghanistan|CAST|France|Germany|SPRE || Czech_Republic|Kazakhstan	Afghanistan|CAST|France|Germany|SPRE	Czech_Republic|Kazakhstan	0.151452	0.000486519	0.99996	0.427942	0.264812	0.307247
+P2_THIN_50kb	Afghanistan|Czech_Republic|France|Germany|Kazakhstan || CAST|SPRE	Afghanistan|Czech_Republic|France|Germany|Kazakhstan	CAST|SPRE	0.0361178	8.77616e-05	0.705423	0.357747	0.31864	0.323613
+P2_THIN_50kb	Afghanistan|Czech_Republic|Kazakhstan || CAST|France|Germany|SPRE	Afghanistan|Czech_Republic|Kazakhstan	CAST|France|Germany|SPRE	0.383292	0.00146282	1	0.546759	0.210056	0.243185
+P3_THIN_100kb	Afghanistan|CAST|Czech_Republic|Kazakhstan|SPRE || France|Germany	Afghanistan|CAST|Czech_Republic|Kazakhstan|SPRE	France|Germany	0.663241	0.000687512	1	0.659195	0.182066	0.158739
+P3_THIN_100kb	Afghanistan|CAST|France|Germany|SPRE || Czech_Republic|Kazakhstan	Afghanistan|CAST|France|Germany|SPRE	Czech_Republic|Kazakhstan	0.157458	0.000439845	0.997808	0.432194	0.260356	0.30745
+P3_THIN_100kb	Afghanistan|Czech_Republic|France|Germany|Kazakhstan || CAST|SPRE	Afghanistan|Czech_Republic|France|Germany|Kazakhstan	CAST|SPRE	0.051231	0.000417789	0.720177	0.368106	0.317634	0.314261
+P3_THIN_100kb	Afghanistan|Czech_Republic|Kazakhstan || CAST|France|Germany|SPRE	Afghanistan|Czech_Republic|Kazakhstan	CAST|France|Germany|SPRE	0.363521	0.00152554	1	0.538681	0.221947	0.239372

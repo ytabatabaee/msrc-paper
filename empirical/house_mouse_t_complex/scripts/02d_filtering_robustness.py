@@ -21,6 +21,7 @@ from house_mouse_stage2_utils import (  # noqa: E402
     aggregate_quartet_rows,
     find_astral,
     load_stage1,
+    parse_astral_result,
     prune_newick,
     quartet_counts_for_tree,
     run_astral,
@@ -87,7 +88,9 @@ def run(args: argparse.Namespace) -> None:
                 agg = aggregate_quartet_rows(qrows)[0]
                 tree_file = DATA_DIR / f"{dataset}_{treatment}.tre"
                 write_tree_file(tree_file, [prune_newick(nw, tips) if treatment == "STANDARD_ONLY" else nw for nw in normalized])
-                result = run_astral(astral, tree_file, map_file, OUT_DIR / f"{dataset}_{treatment}.nwk", threads=args.threads)
+                output = OUT_DIR / f"{dataset}_{treatment}.nwk"
+                log = output.with_suffix(".log")
+                result = parse_astral_result(output, log) if output.exists() and log.exists() else run_astral(astral, tree_file, map_file, output, threads=args.threads)
                 rows.append(
                     {
                         "dataset": dataset,
@@ -135,9 +138,18 @@ def run(args: argparse.Namespace) -> None:
 
 def normalize_filter_newick(newick: str) -> str:
     out = newick.replace(".._", "")
-    out = out.replace("OverallCovFiltered", "")
+    out = out.replace("_OverallCovFiltered", "").replace("OverallCovFiltered", "")
+    out = out.replace("_DelRemoved", "")
     # Stage-1 canonical pseudo-t labels retain the original .fa marker.
     out = re_add_t_hapl_fa(out)
+    return out
+
+
+def normalize_filter_tip(label: str) -> str:
+    """Remove only documented archive artifacts from one tip label."""
+    out = label.replace(".._", "").replace("_OverallCovFiltered", "").replace("OverallCovFiltered", "").replace("_DelRemoved", "")
+    if out.endswith("_tHaplSubset"):
+        out += ".fa"
     return out
 
 
