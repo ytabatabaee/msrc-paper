@@ -147,3 +147,45 @@ which a persistent structural polymorphism alters genealogical sampling across
 lineages, but they do not establish causality or prove MSRC. The remaining
 limitation is that these are published local trees from one chr17 region, with
 no independent genome-wide control and no direct re-estimation of genealogies.
+
+## Visualization and recombination-state reconstruction
+
+The visualization suite adds a side-by-side four-group tree drawing at
+`figures/house_mouse_t_complex_astral_4group.png` and `.pdf`. It shows the
+standard-only `Q_SPECIES` tree beside the all-tip `Q_T_ALT` tree while keeping
+the ASTRAL inference unrooted and using *M. spretus* only as a presentation
+root. The seven-population drawing is at
+`figures/house_mouse_t_complex_astral_7population.png` and `.pdf`; it marks the
+one P0 split lost and one P1 split gained, with RF(P0,P1) = 2, and does not
+collapse the comparison to one branch length.
+
+Direct q tracks are provided in
+`figures/house_mouse_t_complex_q_tracks.png` and `.pdf`, with raw 5-kb values
+and fixed 250-kb means for STANDARD_ONLY and ALL_TIPS. The aligned
+q/recombination figure is at
+`figures/house_mouse_t_complex_q_recombination.png` and `.pdf`; the
+recombination-only track is at
+`figures/house_mouse_t_complex_recombination_track.png` and `.pdf`. The
+manuscript-oriented composite is at
+`figures/house_mouse_t_complex_main_v2.png` and `.pdf`; balanced and thinning
+controls are separated into `figures/house_mouse_t_complex_controls.png` and
+`.pdf`.
+
+The recombination track is reconstructed from the authors' archived
+`Tree_results_dom_ML`, `Tree_results_mus_ML`, and `Tree_results_cas_ML` files.
+All 4,046 source rows for each subspecies match the frozen windows and the
+three source topology codes map exactly to the three requested classes; the
+recorded concordance is 1.0 in
+`stage2_recombination_source_concordance.tsv`. The result is a
+phylogeny-based recombination-state classification, not a direct cM/Mb rate
+estimate. Descriptive quartet summaries by each subspecies-specific state are
+in `stage2_quartet_by_recombination_state.tsv`. In these summaries, Q_T_ALT
+enrichment is strongest for domesticus `RECENT_OR_OLDER` windows and for
+very-recent/extensive states in castaneus and musculus, while no-recent states
+are species-history leaning. This is a descriptive comparison among linked
+windows and does not establish an association or causal effect.
+
+No published coordinate list for the concatenated non-recombined-region tree
+was recovered, so no source-defined block boundaries are drawn. The primary
+coordinate system remains the 2017 chr17 window system; newer breakpoint
+coordinates are not overlaid.

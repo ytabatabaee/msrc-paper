@@ -35,7 +35,19 @@ python empirical/house_mouse_t_complex/scripts/00_audit_house_mouse_data.py --ru
 pytest empirical/house_mouse_t_complex/tests
 ```
 
-Stage 2B outputs are in `results/stage2b_report.md` and the main figure is
-`figures/house_mouse_t_complex_stage2_main.{png,pdf}`. The Stage 2 scripts use
-repository-relative output paths and retain source archive provenance by
-basename, SHA256, and byte size.
+Stage 2B outputs are in `results/stage2b_report.md`. The visualization and
+recombination extension is generated with:
+
+```bash
+python empirical/house_mouse_t_complex/scripts/02l_reconstruct_recombination_track.py \
+  --archive /path/to/IST-2017-78-v1+1_Data.zip
+python empirical/house_mouse_t_complex/scripts/02m_make_visualizations.py
+```
+
+It produces four-group and seven-population ASTRAL drawings, direct quartet
+tracks, the source-defined phylogeny-based recombination-state track, the
+aligned q/recombination figure, controls, and
+`figures/house_mouse_t_complex_main_v2.{png,pdf}`. The recombination track is
+an inferred local-tree classification, not a direct cM/Mb rate estimate. The
+Stage 2 scripts use repository-relative output paths and retain source archive
+provenance by basename, SHA256, and byte size.

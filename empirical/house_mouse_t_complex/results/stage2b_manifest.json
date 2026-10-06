@@ -15,7 +15,9 @@
     "02d_filtering_robustness.py --archive IST-2017-78-v1+1_Data.zip --threads 2",
     "02j_population_split_analysis.py",
     "02e_linkage_sensitivity.py --archive IST-2017-78-v1+1_Data.zip --astral-phases 10",
-    "02f_make_stage2_figures.py"
+    "02f_make_stage2_figures.py",
+    "02l_reconstruct_recombination_track.py --archive IST-2017-78-v1+1_Data.zip",
+    "02m_make_visualizations.py"
   ],
   "status": {
     "corrected_astral_annotations": true,
@@ -27,7 +29,9 @@
     "third_filter_exact_tip_matches": "55/55",
     "linkage_phases": {"5": 1, "10": 2, "20": 4, "50": 10, "100": 20, "250": 50, "500": 100},
     "source_defined_blocks_available": false,
-    "large_derived_trees_removed_from_git": 77
+    "large_derived_trees_removed_from_git": 77,
+    "recombination_source_concordance": "12,138/12,138 exact source-row classifications",
+    "visualization_validation": "7 PNG/PDF figure pairs passed size, dimensions, pixel-variation, and numeric-invariant checks"
   },
   "sha256": {
     "empirical/house_mouse_t_complex/results/stage2_astral_summary.tsv": "959fc6f2a8556d441c5ba921f6a75ab76ac2d1d32a04e4e169ddbc22a9fcc422",
@@ -46,5 +50,24 @@
     "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_stage2_main.png": "e4f2e1e60fc3457f1ba21fb51b97e7c10f9b952b20ec11b46db5d8efd6d26d86",
     "empirical/house_mouse_t_complex/figures/house_mouse_t_complex_stage2_main.pdf": "f59a1501694c47a6b28ce0f54babe75b2d3c36f1bcfb394283dd83dcbb5623a2",
     "empirical/house_mouse_t_complex/results/stage2_figure_validation.tsv": "0deea54cae7536e95644592dc10c74ecad21d9840f3c44a9fbe2c73b1659312e"
+    ,"empirical/house_mouse_t_complex/results/stage2_quartet_by_recombination_state.tsv": "6a8bd84a90ebc5d216526cf273c2d17ef24a3f5439fd400a09cd9a9042fd863f"
+    ,"empirical/house_mouse_t_complex/results/stage2_recombination_state_5kb.tsv": "859a3b7c8598186e130be51e4903d276618ef70210a3e69f75c925bc88a135c6"
+    ,"empirical/house_mouse_t_complex/results/stage2_recombination_state_500kb.tsv": "8410d60b20aec421c65b55c1150df4c36e32f395be84cf7291fa70c4e471c6d4"
+    ,"empirical/house_mouse_t_complex/results/stage2_recombination_source_concordance.tsv": "0009454eeff42955af2eaae6f9ed218b05056ccb8f74f507286ba93af9d8b012"
+    ,"empirical/house_mouse_t_complex/results/stage2_visualization_validation.tsv": "ce1480e1f898bc7b499db585b7d4fc8216d85dda9112944cde529ca4cc2026d4"
+    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_astral_4group.png": "d439b91f05ffa699d6baaeb8bb31c06106c87524ee53372d2d3aa05413b719e4"
+    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_astral_4group.pdf": "b9f30b4c54245f25d5afa336a75218c522e2d92c7e02f68099ab7c056841c2a4"
+    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_astral_7population.png": "570cbec59c449b0b17dae84bcda43b0dab4d251defcbbdad11cb2295299577c7"
+    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_astral_7population.pdf": "c9b6bc6c8f154c4752710c6144de6057ef4d232246f45457f0b03f3050402413"
+    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_q_tracks.png": "05491d213d7b7dda26ae3a366dcccc950d5da84aa3629aa95ff0a99d4e85029b"
+    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_q_tracks.pdf": "43f756ed51143dd4704a5c4e291016e59324861755378f2c52d4e4eaa8c16693"
+    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_recombination_track.png": "55cf6dece333972d218614c7e72acac9003aed7460cea8eba6844bbf14c2ad5e"
+    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_recombination_track.pdf": "af18f0e4ffb2d21176b6348cecb393d0991daa8b249be24754c4da955d770e1b"
+    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_q_recombination.png": "b7f98bcc69716d49e818c6eb25e0e5a10d15bd743649cf688ceec99094a3dda2"
+    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_q_recombination.pdf": "2be982d034eb0d26763f121e0fe58895e5491a8376fd1747587bd4ccbbb3ec31"
+    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_controls.png": "c6ce28ab6a50dceaaef3d7fb8b5f53d36027682af82195efce705d431843681b"
+    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_controls.pdf": "dd5f479ee0181fdeeeee999c5f9f122cb752536147a632b8f97d66c9aebcd218"
+    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_main_v2.png": "b141002fa85772f461b80b7d1874f2b7f03c2edaf971a47969503a126d3f30ba"
+    ,"empirical/house_mouse_t_complex/figures/house_mouse_t_complex_main_v2.pdf": "e510bd077367d4f8c4a7ebe26c8d14aa10d317e30afc3c945194eb0f006e80eb"
   }
 }

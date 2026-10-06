@@ -1,0 +1,8 @@
+figure	png_bytes	pdf_bytes	width_px	height_px	nonwhite_pixels	distinct_rgb
+house_mouse_t_complex_astral_4group	144995	28814	2618	1261	147135	716
+house_mouse_t_complex_astral_7population	131766	24069	3058	1304	125394	316
+house_mouse_t_complex_q_tracks	1434406	168159	2619	1520	751949	33757
+house_mouse_t_complex_recombination_track	72273	23447	2618	1297	2014744	499
+house_mouse_t_complex_q_recombination	848453	94234	2421	2244	1975328	25369
+house_mouse_t_complex_controls	131331	20174	2839	1075	868974	1158
+house_mouse_t_complex_main_v2	904716	119438	2686	2436	1971923	25274
