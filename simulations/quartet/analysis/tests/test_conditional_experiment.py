@@ -81,3 +81,26 @@ def test_repeated_raw_cells_are_complete():
 def test_plot_source_is_processed_table():
     script = (ROOT / "analysis/scripts/04_plot_conditional_grid.py").read_text()
     assert "datasets/processed/conditional_quartet_grid.tsv" in script
+
+
+def test_main_panel_labels_exact_data_and_no_zero_contour():
+    script = (ROOT / "analysis/scripts/04_plot_conditional_grid.py").read_text()
+    assert "configuration 1010" in script
+    assert '[(0.29, "1"), (0.59, "3")]' in script
+    assert '[(0.29, "2"), (0.59, "4")]' in script
+    assert '"12|34  Q_SPECIES"' in script
+    assert '"13|24  Q_ALT"' in script
+    assert '"14|23  Q_OTHER"' in script
+    main_source = script.split("def make_main_panel", 1)[1].split("def main", 1)[0]
+    assert '"exact_delta_alt_species"' in main_source
+    assert "contour" not in main_source
+    assert "max(data, key=lambda r: float(r[\"exact_delta_alt_species\"]))" in main_source
+
+
+def test_main_panel_artifacts_and_supplementary_simplex_layout():
+    figures = ROOT / "analysis/figures"
+    for name in ("conditional_quartet_main_panel.png", "conditional_quartet_main_panel.pdf", "conditional_quartet_simplex.png", "conditional_quartet_simplex.pdf"):
+        path = figures / name
+        assert path.exists() and path.stat().st_size > 1000
+    script = (ROOT / "analysis/scripts/04_plot_conditional_grid.py").read_text()
+    assert 'text(0.5, 0.92, "Q_OTHER"' in script
