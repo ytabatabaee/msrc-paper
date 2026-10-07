@@ -86,15 +86,15 @@ def test_plot_source_is_processed_table():
 def test_main_panel_labels_exact_data_and_no_zero_contour():
     script = (ROOT / "analysis/scripts/04_plot_conditional_grid.py").read_text()
     assert "configuration 1010" in script
-    assert '[(0.29, "1"), (0.59, "3")]' in script
-    assert '[(0.29, "2"), (0.59, "4")]' in script
-    assert '"12|34  Q_SPECIES"' in script
-    assert '"13|24  Q_ALT"' in script
-    assert '"14|23  Q_OTHER"' in script
-    main_source = script.split("def make_main_panel", 1)[1].split("def main", 1)[0]
-    assert '"exact_delta_alt_species"' in main_source
-    assert "contour" not in main_source
-    assert "max(data, key=lambda r: float(r[\"exact_delta_alt_species\"]))" in main_source
+    assert "tip_y = [0.79, 0.68, 0.57, 0.46]" in script
+    assert "states = [1, 0, 1, 0]" in script
+    assert "'12|34':'Q_SPECIES'" in script
+    assert "'13|24':'Q_ALT'" in script
+    assert "'14|23':'Q_OTHER'" in script
+    heatmap_source = script.split("def _make_heatmap_panel", 1)[1].split("def make_main_panel", 1)[0]
+    assert '"exact_delta_alt_species"' in heatmap_source
+    assert "contour" not in heatmap_source
+    assert "max(data, key=lambda r: float(r[\"exact_delta_alt_species\"]))" in heatmap_source
 
 
 def test_main_panel_artifacts_and_supplementary_simplex_layout():

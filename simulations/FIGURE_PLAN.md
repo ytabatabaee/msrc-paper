@@ -14,8 +14,10 @@ The eventual manuscript figure will use a compact four-panel layout:
 └──────────────────────┴──────────────────────┘
 ```
 
-Panel A: controlled conditional quartet, using the scenario schematic and
-compact exact `q_ALT-q_SPECIES` heatmap in
+Panel A: controlled conditional quartet, using the biological species-tree /
+recombination-suppressed-region schematic, four representative exact/Monte
+Carlo quartet-curve panels, four quartet-simplex panels, and the complete
+exact `q_ALT-q_SPECIES` heatmap in
 `quartet/analysis/figures/conditional_quartet_main_panel.{png,pdf}`.
 
 Panel B: affected-locus fraction / epsilon threshold, showing expected

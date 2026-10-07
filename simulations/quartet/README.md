@@ -15,3 +15,10 @@ The `datasets/` tree contains frozen configs, raw simulator outputs, and
 normalized tables. The `analysis/` tree contains drivers, validation results,
 figures, and tests. The mechanistic WF/Moran experiment is planned but is not
 run by this study.
+
+The combined main-paper figure is
+`analysis/figures/conditional_quartet_main_panel.{png,pdf}`. It contains the
+biological schematic, four representative probability-curve panels, four
+simplex panels, and the complete exact parameter-grid heatmap. The older
+seven-duration curves, seven-panel simplex, and standalone heatmap remain
+available as supplementary diagnostics.
