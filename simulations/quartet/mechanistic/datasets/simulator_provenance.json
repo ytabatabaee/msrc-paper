@@ -1,0 +1,18 @@
+{
+  "repository_url": "https://github.com/ytabatabaee/msrc-sim.git",
+  "local_repository": "/Users/ytabatabaee/Desktop/msrc-sim",
+  "git_commit": "f5157d2c64068eb32e0eabfe9bec629c28a404f9",
+  "package_version": "0.8.8",
+  "python": "3.9.7",
+  "numpy": "1.26.4",
+  "scipy": "1.13.1",
+  "pyyaml": "6.0",
+  "replicate_executable": "/Users/ytabatabaee/opt/anaconda3/bin/msrc-sim-replicates",
+  "public_msc_api": "msrcsim.structured_coalescent.simulate_msc_genealogy",
+  "experiment": "Mechanistic Wright-Fisher quartet pilot",
+  "pilot": {"configurations": 72, "independent_replicates_per_configuration": 12, "loci_per_replicate": 20},
+  "smoke": {"independent_replicates_per_configuration": 3, "loci_per_replicate": 10},
+  "msc_controls": {"loci_per_configuration": 20000},
+  "simulator_source_modified": false,
+  "validation": "MSC controls were regenerated after the final configuration checksum and agree with their analytic expectations within 1.20 standard errors in every topology/cell comparison."
+}

@@ -1,0 +1,5 @@
+{
+  "config": "simulations/quartet/mechanistic/datasets/configs/controls/ne20_tau2.yaml",
+  "config_sha256": "3a32c4cc3c8d5a461767d36fdb23cae5580a2ea3727dd02dc8b8a281ab11d768",
+  "api": "msrcsim.structured_coalescent.simulate_msc_genealogy"
+}

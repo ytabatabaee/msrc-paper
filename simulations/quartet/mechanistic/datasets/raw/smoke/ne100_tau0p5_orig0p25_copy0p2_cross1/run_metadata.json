@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/Users/ytabatabaee/opt/anaconda3/bin/msrc-sim-replicates",
+    "--config",
+    "/Users/ytabatabaee/Desktop/msrc-paper/simulations/quartet/mechanistic/datasets/configs/smoke/ne100_tau0p5_orig0p25_copy0p2_cross1.yaml"
+  ],
+  "config": "simulations/quartet/mechanistic/datasets/configs/smoke/ne100_tau0p5_orig0p25_copy0p2_cross1.yaml",
+  "config_sha256": "efbafebf82cdceb87f526b97f5154d4f714a0be3c28d33fe3506e27df2702269",
+  "seed": 887156616,
+  "runtime_seconds": 4.158475955999997,
+  "return_code": 0,
+  "stdout": "Wrote simulations/quartet/mechanistic/datasets/raw/smoke/ne100_tau0p5_orig0p25_copy0p2_cross1\nAccepted 3 of 3 attempts\n",
+  "stderr": "",
+  "executable": "/Users/ytabatabaee/opt/anaconda3/bin/msrc-sim-replicates"
+}

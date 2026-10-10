@@ -1,0 +1,6 @@
+{
+  "pilot_cells": 72,
+  "msc_controls": 6,
+  "supported_positive_delta_cells": 0,
+  "pilot_cells_with_positive_point_estimate": 0
+}

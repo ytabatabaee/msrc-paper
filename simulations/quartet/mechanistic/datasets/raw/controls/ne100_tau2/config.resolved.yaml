@@ -1,0 +1,14 @@
+mode: ordinary_msc_control
+seed: 479761688
+n_loci: 20000
+species_tree:
+  newick: ((1:200,2:200)A:400,(3:200,4:200)B:400)ROOT;
+  time_units: generations
+  root_extension: 200
+  default_effective_population_size: 100
+control_metadata:
+  cell_id: ne100_tau2
+  daughter_branch_coalescent_units: 2.0
+  unrooted_internal_branch_coalescent_units: 4.0
+  internal_branch_generations_per_side: 400
+  expected_formula: qS=1-(2/3)exp(-t_unrooted), qA=qO=(1/3)exp(-t_unrooted)

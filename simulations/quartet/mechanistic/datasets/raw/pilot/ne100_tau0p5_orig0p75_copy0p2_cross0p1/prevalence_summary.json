@@ -1,0 +1,78 @@
+{
+  "attempted_replicates": 12,
+  "accepted_replicates": 12,
+  "acceptance_rate": 1.0,
+  "asymmetry_threshold": 0.05,
+  "persistent_polymorphism": {
+    "count": 10,
+    "proportion": 0.8333333333333334,
+    "ci95_low": 0.5519691377470266,
+    "ci95_high": 0.9530348578161463
+  },
+  "two_two_terminal_pattern": {
+    "count": 2,
+    "proportion": 0.16666666666666666,
+    "ci95_low": 0.04696514218385381,
+    "ci95_high": 0.4480308622529734
+  },
+  "asymmetric_quartet_distribution": {
+    "count": 5,
+    "proportion": 0.4166666666666667,
+    "ci95_low": 0.19326031365875665,
+    "ci95_high": 0.6804886874504503
+  },
+  "discordant_topology_dominant": {
+    "count": 1,
+    "proportion": 0.08333333333333333,
+    "ci95_low": 0.014865094404917095,
+    "ci95_high": 0.35387991114111694
+  },
+  "mechanistically_discordant_two_two": {
+    "count": 1,
+    "proportion": 0.08333333333333333,
+    "ci95_low": 0.014865094404917095,
+    "ci95_high": 0.35387991114111694
+  },
+  "statistically_supported_off_arm": {
+    "count": 0,
+    "proportion": 0.0,
+    "ci95_low": 2.7755575615628914e-17,
+    "ci95_high": 0.24249400665524085
+  },
+  "network_representable": {
+    "count": 11,
+    "proportion": 0.9166666666666666,
+    "ci95_low": 0.646120088858883,
+    "ci95_high": 0.9851349055950829
+  },
+  "network_aic_preferred": {
+    "count": 0,
+    "proportion": 0.0,
+    "ci95_low": 2.7755575615628914e-17,
+    "ci95_high": 0.24249400665524085
+  },
+  "network_strongly_preferred": {
+    "count": 0,
+    "proportion": 0.0,
+    "ci95_low": 2.7755575615628914e-17,
+    "ci95_high": 0.24249400665524085
+  },
+  "network_boundary_warning": {
+    "count": 6,
+    "proportion": 0.5,
+    "ci95_low": 0.2537815976337061,
+    "ci95_high": 0.7462184023662939
+  },
+  "terminal_pattern_counts": {
+    "0000": 8,
+    "0011": 1,
+    "0100": 1,
+    "0101": 1,
+    "1110": 1
+  },
+  "requested_replicates": 12,
+  "loci_per_replicate": 20,
+  "population_process": {
+    "model": "wright_fisher"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "mode": "ordinary_msc_control",
+  "seed": 3925128057,
+  "n_loci": 20000,
+  "counts": [
+    15049,
+    2491,
+    2460
+  ],
+  "probabilities": [
+    0.75245,
+    0.12455,
+    0.123
+  ],
+  "expected_probabilities": [
+    0.7547470392190385,
+    0.12262648039048077,
+    0.12262648039048077
+  ],
+  "runtime_seconds": 1.70614985
+}
