@@ -37,6 +37,31 @@ class Stage2CEffectiveMSRCTests(unittest.TestCase):
         self.assertGreater(len(blocks), 5)
         self.assertTrue(all(set(v) == set(stage2c.PATTERNS) for v in blocks.values()))
 
+    def test_bootstrap_uses_whole_blocks_and_is_deterministic(self):
+        blocks = stage2c.load_block_rows(stage2c.PRIMARY_BLOCK_SIZE)
+        one = stage2c.bootstrap_rows(blocks, stage2c.PRIMARY_BLOCK_SIZE, 5, 123)
+        two = stage2c.bootstrap_rows(blocks, stage2c.PRIMARY_BLOCK_SIZE, 5, 123)
+        self.assertEqual(one, two)
+        self.assertEqual(len(one), 5 * 3)
+        self.assertTrue(all(r["n_sampled_blocks"] == len(blocks) for r in one))
+        for r in one:
+            self.assertAlmostEqual(sum(float(r[f"q_{topo}_predicted"]) for topo in ("species", "t_alt", "other")), 1.0)
+            self.assertTrue(all(float(r[f"delta_{p}"]) == float(r[f"delta_{p}"]) for p in stage2c.PATTERNS))
+
+    def test_all_block_sizes_complete(self):
+        for size in stage2c.BLOCK_SIZES:
+            blocks = stage2c.load_block_rows(size)
+            self.assertGreater(len(blocks), 5)
+            self.assertTrue(all(set(v) == set(stage2c.PATTERNS) for v in blocks.values()))
+
+    def test_local_delta_is_not_truncated_and_upstream_is_not_called(self):
+        rows = stage2c.local_heterogeneity_rows(stage2c.load_block_rows(stage2c.PRIMARY_BLOCK_SIZE), stage2c.PRIMARY_BLOCK_SIZE)
+        values = [float(r["delta_block"]) for r in rows]
+        self.assertTrue(any(v < 0 for v in values) or any(v > 1 for v in values) or all(0 <= v <= 1 for v in values))
+        source = SCRIPT.read_text()
+        for forbidden in ("subprocess", "Popen", "os.system", "astral4", "raxml"):
+            self.assertNotIn(forbidden, source.lower())
+
 
 if __name__ == "__main__":
     unittest.main()

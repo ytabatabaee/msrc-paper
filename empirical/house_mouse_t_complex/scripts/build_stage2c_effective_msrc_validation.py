@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import csv
 import math
+import random
 from collections import defaultdict
 from pathlib import Path
 
@@ -21,6 +22,8 @@ TOPOLOGIES = ("q_species", "q_t_alt", "q_other")
 ARRANGEMENT_TOPOLOGY = {"STT": "q_species", "TST": "q_other", "TTS": "q_t_alt"}
 BLOCK_SIZES = (500_000, 1_000_000, 2_000_000)
 PRIMARY_BLOCK_SIZE = 1_000_000
+BOOTSTRAP_SEED = 20261009
+BOOTSTRAP_REPLICATES = {500_000: 5_000, 1_000_000: 10_000, 2_000_000: 5_000}
 
 
 def read_tsv(path: Path) -> list[dict[str, str]]:
@@ -214,7 +217,143 @@ def block_cv_rows(blocks: dict[int, dict[str, dict[str, object]]], block_size: i
     return output
 
 
-def build_figure(aggregate: dict[str, dict[str, float | str]], loo_rows: list[dict[str, object]], blocks_1mb: dict[int, dict[str, dict[str, object]]]) -> tuple[Path, Path]:
+def bootstrap_one(blocks: dict[int, dict[str, dict[str, object]]], sampled_blocks: list[int], replicate: int, block_size: int) -> list[dict[str, object]]:
+    aggregate: dict[str, tuple[float, list[float], float]] = {}
+    for pattern in PATTERNS:
+        n_quartets = sum(float(blocks[b][pattern]["n_quartets"]) for b in sampled_blocks)
+        weighted = [sum(float(blocks[b][pattern]["weighted"][i]) for b in sampled_blocks) for i in range(3)]
+        q = normalize(tuple(x / n_quartets for x in weighted))
+        unresolved = sum(float(blocks[b][pattern]["unresolved"]) for b in sampled_blocks) / n_quartets
+        aggregate[pattern] = (n_quartets, list(q), unresolved)
+    deltas = {p: delta_from_q(aggregate[p][1][TOPOLOGIES.index(ARRANGEMENT_TOPOLOGY[p])]) for p in PATTERNS}
+    rows: list[dict[str, object]] = []
+    for heldout in PATTERNS:
+        train = [p for p in PATTERNS if p != heldout]
+        delta_train = sum(deltas[p] for p in train) / 2
+        arr_index = TOPOLOGIES.index(ARRANGEMENT_TOPOLOGY[heldout])
+        p_arr = predicted_q(delta_train)
+        pred = [0.0, 0.0, 0.0]
+        pred[arr_index] = p_arr[0]
+        non = [i for i in range(3) if i != arr_index]
+        pred[non[0]], pred[non[1]] = p_arr[1], p_arr[2]
+        obs = tuple(aggregate[heldout][1])
+        metrics = vector_metrics(tuple(pred), obs, arr_index)
+        rows.append({
+            "block_size_bp": block_size, "bootstrap_replicate": replicate, "heldout_configuration": heldout,
+            "training_configurations": ",".join(train), "n_sampled_blocks": len(sampled_blocks),
+            "delta_STT": deltas["STT"], "delta_TST": deltas["TST"], "delta_TTS": deltas["TTS"], "delta_train": delta_train,
+            "q_species_observed": obs[0], "q_t_alt_observed": obs[1], "q_other_observed": obs[2],
+            "q_species_predicted": pred[0], "q_t_alt_predicted": pred[1], "q_other_predicted": pred[2],
+            "max_abs_error": metrics["max_abs_error"], "l1_distance": metrics["l1_distance"],
+            "arrangement_support_error": metrics["arrangement_support_error"],
+            "nonarrangement_symmetry_error": metrics["nonarrangement_symmetry_error"],
+        })
+    return rows
+
+
+def bootstrap_rows(blocks: dict[int, dict[str, dict[str, object]]], block_size: int, n_bootstrap: int, seed: int) -> list[dict[str, object]]:
+    block_ids = sorted(blocks)
+    rng = random.Random(seed + block_size)
+    rows: list[dict[str, object]] = []
+    for replicate in range(n_bootstrap):
+        sampled = [block_ids[rng.randrange(len(block_ids))] for _ in block_ids]
+        rows.extend(bootstrap_one(blocks, sampled, replicate, block_size))
+    return rows
+
+
+def percentile(values: list[float], probability: float) -> float:
+    ordered = sorted(values)
+    position = (len(ordered) - 1) * probability
+    low, high = math.floor(position), math.ceil(position)
+    if low == high:
+        return ordered[low]
+    return ordered[low] + (ordered[high] - ordered[low]) * (position - low)
+
+
+def bootstrap_summary(rows: list[dict[str, object]], block_size: int, n_bootstrap: int) -> list[dict[str, object]]:
+    output: list[dict[str, object]] = []
+    for pattern in PATTERNS:
+        subset = [r for r in rows if r["heldout_configuration"] == pattern]
+        def stats(field: str) -> tuple[float, float, float]:
+            values = [float(r[field]) for r in subset]
+            return percentile(values, 0.5), percentile(values, 0.025), percentile(values, 0.975)
+        d = stats("delta_train")
+        e = stats("max_abs_error")
+        l1 = stats("l1_distance")
+        a = stats("arrangement_support_error")
+        s = stats("nonarrangement_symmetry_error")
+        output.append({
+            "block_size_bp": block_size, "record_type": "heldout_configuration", "configuration": pattern, "n_bootstrap": n_bootstrap,
+            "delta_train_median": d[0], "delta_train_ci025": d[1], "delta_train_ci975": d[2],
+            "max_abs_error_median": e[0], "max_abs_error_ci025": e[1], "max_abs_error_ci975": e[2],
+            "l1_median": l1[0], "l1_ci025": l1[1], "l1_ci975": l1[2],
+            "arrangement_support_error_median": a[0], "arrangement_support_error_ci025": a[1], "arrangement_support_error_ci975": a[2],
+            "nonarrangement_symmetry_error_median": s[0], "nonarrangement_symmetry_error_ci025": s[1], "nonarrangement_symmetry_error_ci975": s[2],
+        })
+    for pattern in PATTERNS:
+        values = [float(r[f"delta_{pattern}"]) for r in rows if r["heldout_configuration"] == "STT"]
+        output.append({
+            "block_size_bp": block_size, "record_type": "configuration_delta", "configuration": pattern, "n_bootstrap": n_bootstrap,
+            "delta_train_median": percentile(values, 0.5), "delta_train_ci025": percentile(values, 0.025), "delta_train_ci975": percentile(values, 0.975),
+            "max_abs_error_median": None, "max_abs_error_ci025": None, "max_abs_error_ci975": None,
+            "l1_median": None, "l1_ci025": None, "l1_ci975": None,
+            "arrangement_support_error_median": None, "arrangement_support_error_ci025": None, "arrangement_support_error_ci975": None,
+            "nonarrangement_symmetry_error_median": None, "nonarrangement_symmetry_error_ci025": None, "nonarrangement_symmetry_error_ci975": None,
+        })
+    return output
+
+
+def rank_values(values: list[float]) -> list[float]:
+    order = sorted(range(len(values)), key=lambda i: values[i])
+    ranks = [0.0] * len(values)
+    i = 0
+    while i < len(order):
+        j = i + 1
+        while j < len(order) and values[order[j]] == values[order[i]]:
+            j += 1
+        rank = (i + 1 + j) / 2
+        for k in range(i, j):
+            ranks[order[k]] = rank
+        i = j
+    return ranks
+
+
+def spearman(x: list[float], y: list[float]) -> float:
+    rx, ry = rank_values(x), rank_values(y)
+    mx, my = sum(rx) / len(rx), sum(ry) / len(ry)
+    num = sum((a - mx) * (b - my) for a, b in zip(rx, ry))
+    den = math.sqrt(sum((a - mx) ** 2 for a in rx) * sum((b - my) ** 2 for b in ry))
+    return num / den if den else float("nan")
+
+
+def local_heterogeneity_rows(blocks: dict[int, dict[str, dict[str, object]]], block_size: int) -> list[dict[str, object]]:
+    rows: list[dict[str, object]] = []
+    for block in sorted(blocks):
+        for pattern in PATTERNS:
+            d = blocks[block][pattern]
+            q = d["q"]
+            rows.append({"block_size_bp": block_size, "block_id": block, "block_midpoint_mb": d["midpoint"] / 1e6, "configuration": pattern,
+                         "n_windows": d["n_windows"], "q_species": q[0], "q_t_alt": q[1], "q_other": q[2],
+                         "q_unresolved": d["q_unresolved"], "delta_block": d["delta"]})
+    return rows
+
+
+def local_heterogeneity_summary(rows: list[dict[str, object]]) -> dict[str, object]:
+    by_pattern = {p: [r for r in rows if r["configuration"] == p] for p in PATTERNS}
+    stats: dict[str, object] = {}
+    for p in PATTERNS:
+        values = [float(r["delta_block"]) for r in by_pattern[p]]
+        q1, med, q3 = percentile(values, 0.25), percentile(values, 0.5), percentile(values, 0.75)
+        stats[p] = {"range": (min(values), max(values)), "median": med, "iqr": (q1, q3), "fraction_negative": sum(v < 0 for v in values) / len(values), "fraction_gt1": sum(v > 1 for v in values) / len(values)}
+    common = {int(r["block_id"]): r for r in by_pattern["STT"]}
+    for p in ("TST", "TTS"):
+        other = {int(r["block_id"]): r for r in by_pattern[p]}
+        ids = sorted(set(common) & set(other))
+        stats[f"spearman_STT_{p}"] = spearman([float(common[i]["delta_block"]) for i in ids], [float(other[i]["delta_block"]) for i in ids])
+    return stats
+
+
+def build_figure(aggregate: dict[str, dict[str, float | str]], loo_rows: list[dict[str, object]], bootstrap_summary_rows: list[dict[str, object]]) -> tuple[Path, Path]:
     mpl.rcParams.update({"font.family": "DejaVu Sans", "font.size": 8.5, "axes.titlesize": 10, "axes.labelsize": 9, "pdf.fonttype": 42, "ps.fonttype": 42})
     colors = {"STT": "#0072B2", "TST": "#D55E00", "TTS": "#009E73"}
     fig, axes = plt.subplots(1, 3, figsize=(10, 3.25), constrained_layout=True)
@@ -243,20 +382,26 @@ def build_figure(aggregate: dict[str, dict[str, float | str]], loo_rows: list[di
     ax.legend(handles=handles, frameon=False, fontsize=7, loc="lower right", ncol=3, handletextpad=0.2, columnspacing=0.5); ax.grid(alpha=0.18, lw=0.45)
 
     ax = axes[2]
-    for p in PATTERNS:
-        ys = [float(blocks_1mb[b][p]["delta"]) for b in sorted(blocks_1mb)]
-        xs = [blocks_1mb[b][p]["midpoint"] / 1e6 for b in sorted(blocks_1mb)]
-        ax.scatter(xs, ys, s=18, color=colors[p], alpha=0.78, label=p)
-        ax.axhline(float(aggregate[p]["delta_hat"]), color=colors[p], lw=1, ls="--", alpha=0.7)
-    ax.set(xlabel="chr17 block midpoint (Mb)", ylabel="Effective Δ", title="C. Effective Δ across 1-Mb blocks")
-    ax.set_ylim(0.35, 0.75); ax.grid(alpha=0.18, lw=0.45); ax.legend(frameon=False, fontsize=7, ncol=3, loc="upper right")
+    y = list(range(len(PATTERNS)))[::-1]
+    for ypos, p in zip(y, PATTERNS):
+        summary = next(r for r in bootstrap_summary_rows if r["record_type"] == "heldout_configuration" and r["configuration"] == p)
+        median = float(summary["max_abs_error_median"])
+        low = float(summary["max_abs_error_ci025"])
+        high = float(summary["max_abs_error_ci975"])
+        observed = next(float(r["max_abs_error"]) for r in loo_rows if r["analysis"] == "leave_one_configuration_out" and r["configuration"] == p)
+        ax.plot([low, high], [ypos, ypos], color=colors[p], lw=3, alpha=0.65, solid_capstyle="round")
+        ax.scatter(median, ypos, s=42, color=colors[p], marker="o", edgecolor="white", linewidth=0.5, zorder=3)
+        ax.scatter(observed, ypos, s=48, color="black", marker="D", edgecolor="white", linewidth=0.5, zorder=4)
+    ax.set(yticks=y, yticklabels=PATTERNS, xlabel="Maximum absolute prediction error", title="C. Aggregate error under block bootstrap")
+    ax.set_xlim(left=0); ax.grid(axis="x", alpha=0.18, lw=0.45)
+    ax.legend([plt.Line2D([], [], color="0.35", lw=3), plt.Line2D([], [], marker="o", color="none", markerfacecolor="0.35", markersize=6), plt.Line2D([], [], marker="D", color="none", markerfacecolor="black", markersize=6)], ["95% block-bootstrap CI", "bootstrap median", "aggregate observed"], frameon=False, fontsize=6.7, loc="lower right")
     for suffix in ("png", "pdf"):
         fig.savefig(FIGURES / f"stage2c_effective_msrc_validation.{suffix}", dpi=300 if suffix == "png" else None, bbox_inches="tight")
     plt.close(fig)
     return FIGURES / "stage2c_effective_msrc_validation.png", FIGURES / "stage2c_effective_msrc_validation.pdf"
 
 
-def write_report(aggregate: dict[str, dict[str, float | str]], loo_rows: list[dict[str, object]], block_rows: list[dict[str, object]], mouse_tip_check: str) -> Path:
+def write_report(aggregate: dict[str, dict[str, float | str]], loo_rows: list[dict[str, object]], bootstrap_rows_all: list[dict[str, object]], bootstrap_summary_rows: list[dict[str, object]], local_stats: dict[str, object], mouse_tip_check: str) -> Path:
     report = RESULTS / "stage2c_effective_msrc_report.md"
     lines = [
         "# Stage 2C effective MSRC validation",
@@ -277,11 +422,15 @@ def write_report(aggregate: dict[str, dict[str, float | str]], loo_rows: list[di
     for r in loo_rows:
         if r["analysis"] in {"leave_one_configuration_out", "STT_only_prediction"}:
             lines.append(f"| {r['analysis']} | {r['configuration']} | {r['training_configurations']} | {float(r['delta_eff']):.6f} | {float(r['max_abs_error']):.6f} | {float(r['l1_distance']):.6f} | {float(r['arrangement_support_error']):+.6f} | {float(r['nonarrangement_symmetry_error']):.6f} |")
-    lines += ["", "## Spatially blocked validation", "", "Blocks are nonoverlapping physical intervals aligned to the first retained 5-kb window at 5 Mb. The primary block size is 1 Mb because it is large relative to the 5-kb window spacing while retaining multiple spatial folds; 500-kb and 2-Mb runs are fixed sensitivity analyses, not choices optimized for accuracy. Complete blocks, never individual windows, are assigned to the held-out fold. For each held-out block and configuration, Delta is fit from the other two configurations in all remaining blocks with equal configuration weight.", "", "| block size | configuration | folds | mean max abs error | mean L1 | mean arrangement-support error | mean non-arr symmetry error |", "|---:|---|---:|---:|---:|---:|---:|"]
-    for r in block_rows:
-        if r["record_type"] == "summary":
-            lines.append(f"| {r['block_size_bp']} | {r['heldout_configuration']} | {r['n_folds']} | {float(r['max_abs_error']):.6f} | {float(r['l1_distance']):.6f} | {float(r['arrangement_support_error']):+.6f} | {float(r['nonarrangement_symmetry_error']):.6f} |")
-    lines += ["", "No conventional multinomial p-values are reported: induced quartets reuse individuals, windows, and linked genomic segments, so they are not independent replicates. The block-CV results are the preferred robustness analysis.", "", "The held-out validation is a low-dimensional effective MSRC demonstration. It does not establish that the mouse affected genealogy is generated solely by MSRC, and it does not separate the biological switching time and migration parameters.", "", mouse_tip_check]
+    lines += ["", "## Linkage-aware block bootstrap", "", "Physical blocks were used as resampling units to quantify uncertainty in the aggregate held-out predictions while preserving local linkage and spatial heterogeneity. Blocks are nonoverlapping intervals aligned to the first retained 5-kb window at 5 Mb. The primary analysis uses 1-Mb blocks and 10,000 bootstrap replicates; fixed 500-kb and 2-Mb analyses use 5,000 replicates each. Each replicate samples complete blocks with replacement until the original number of blocks is restored, aggregates quartet counts, and gives the two training configurations equal weight.", "", "| block size | held-out | n_bootstrap | Delta train median [95% CI] | max error median [95% CI] | L1 median [95% CI] |", "|---:|---|---:|---|---|---|"]
+    for r in bootstrap_summary_rows:
+        if r["record_type"] == "heldout_configuration":
+            lines.append(f"| {r['block_size_bp']} | {r['configuration']} | {r['n_bootstrap']} | {float(r['delta_train_median']):.6f} [{float(r['delta_train_ci025']):.6f}, {float(r['delta_train_ci975']):.6f}] | {float(r['max_abs_error_median']):.6f} [{float(r['max_abs_error_ci025']):.6f}, {float(r['max_abs_error_ci975']):.6f}] | {float(r['l1_median']):.6f} [{float(r['l1_ci025']):.6f}, {float(r['l1_ci975']):.6f}] |")
+    lines += ["", "## Local spatial heterogeneity diagnostic", "", "A constant Delta is not intended to predict every linked physical block. For each 1-Mb block, `Delta_block = (3 q_arr - 1)/2` is retained without truncation; negative values therefore indicate local model departure rather than an invalid estimate. The bootstrap is the aggregate robustness analysis, while these block estimates describe local heterogeneity.", "", "| configuration | Delta range | median | IQR | fraction < 0 | fraction > 1 |", "|---|---|---:|---|---:|---:|"]
+    for p in PATTERNS:
+        s = local_stats[p]
+        lines.append(f"| {p} | [{s['range'][0]:.6f}, {s['range'][1]:.6f}] | {s['median']:.6f} | [{s['iqr'][0]:.6f}, {s['iqr'][1]:.6f}] | {s['fraction_negative']:.3f} | {s['fraction_gt1']:.3f} |")
+    lines += ["", f"Spearman correlations of block Delta estimates: STT/TST = {local_stats['spearman_STT_TST']:.4f}; STT/TTS = {local_stats['spearman_STT_TTS']:.4f}.", "", "No conventional multinomial p-values are reported: induced quartets reuse individuals, windows, and linked genomic segments, so they are not independent replicates. The old leave-one-single-block-out table is retained for provenance, but it is not interpreted as the preferred robustness analysis.", "", "The held-out validation is a low-dimensional effective MSRC demonstration. TTS has a modest non-arrangement asymmetry (~0.031), indicating departure from the simplest symmetric model. The result does not establish that the entire mouse genealogy is generated solely by MSRC, and it does not separate the biological switching time and migration parameters.", "", mouse_tip_check]
     report.write_text("\n".join(lines) + "\n")
     return report
 
@@ -303,9 +452,24 @@ def main() -> None:
         block_map = load_block_rows(block_size); block_maps[block_size] = block_map; block_all.extend(block_cv_rows(block_map, block_size))
     block_fields = ["record_type", "block_size_bp", "test_block", "test_midpoint_mb", "heldout_configuration", "training_configurations", "n_test_windows", "n_train_blocks", "n_folds", "delta_eff_train", "q_species_observed", "q_t_alt_observed", "q_other_observed", "q_species_predicted", "q_t_alt_predicted", "q_other_predicted", "q_unresolved_observed", "max_abs_error", "l1_distance", "arrangement_support_error", "nonarrangement_symmetry_error", "nonarrangement_prediction_error"]
     write_tsv(RESULTS / "stage2c_effective_msrc_block_cv.tsv", block_all, block_fields)
+    bootstrap_all: list[dict[str, object]] = []
+    bootstrap_summaries: list[dict[str, object]] = []
+    for block_size in BLOCK_SIZES:
+        n_bootstrap = BOOTSTRAP_REPLICATES[block_size]
+        rows = bootstrap_rows(block_maps[block_size], block_size, n_bootstrap, BOOTSTRAP_SEED)
+        bootstrap_all.extend(rows)
+        bootstrap_summaries.extend(bootstrap_summary(rows, block_size, n_bootstrap))
+    bootstrap_fields = ["block_size_bp", "bootstrap_replicate", "heldout_configuration", "training_configurations", "n_sampled_blocks", "delta_STT", "delta_TST", "delta_TTS", "delta_train", "q_species_observed", "q_t_alt_observed", "q_other_observed", "q_species_predicted", "q_t_alt_predicted", "q_other_predicted", "max_abs_error", "l1_distance", "arrangement_support_error", "nonarrangement_symmetry_error"]
+    write_tsv(RESULTS / "stage2c_effective_msrc_block_bootstrap.tsv", bootstrap_all, bootstrap_fields)
+    summary_fields = ["block_size_bp", "record_type", "configuration", "n_bootstrap", "delta_train_median", "delta_train_ci025", "delta_train_ci975", "max_abs_error_median", "max_abs_error_ci025", "max_abs_error_ci975", "l1_median", "l1_ci025", "l1_ci975", "arrangement_support_error_median", "arrangement_support_error_ci025", "arrangement_support_error_ci975", "nonarrangement_symmetry_error_median", "nonarrangement_symmetry_error_ci025", "nonarrangement_symmetry_error_ci975"]
+    write_tsv(RESULTS / "stage2c_effective_msrc_bootstrap_summary.tsv", bootstrap_summaries, summary_fields)
+    local_rows = local_heterogeneity_rows(block_maps[PRIMARY_BLOCK_SIZE], PRIMARY_BLOCK_SIZE)
+    local_fields = ["block_size_bp", "block_id", "block_midpoint_mb", "configuration", "n_windows", "q_species", "q_t_alt", "q_other", "q_unresolved", "delta_block"]
+    write_tsv(RESULTS / "stage2c_effective_msrc_local_heterogeneity.tsv", local_rows, local_fields)
+    local_stats = local_heterogeneity_summary(local_rows)
     loo_rows = prediction_rows(aggregate)
-    png, pdf = build_figure(aggregate, loo_rows, block_maps[PRIMARY_BLOCK_SIZE])
-    report = write_report(aggregate, loo_rows, block_all, mouse_tip_check)
+    png, pdf = build_figure(aggregate, loo_rows, [r for r in bootstrap_summaries if r["block_size_bp"] == PRIMARY_BLOCK_SIZE])
+    report = write_report(aggregate, loo_rows, bootstrap_all, bootstrap_summaries, local_stats, mouse_tip_check)
     print("Aggregate Delta estimates:")
     for p in PATTERNS: print(p, f(float(aggregate[p]["delta_hat"])))
     print("\nLeave-one-configuration-out and STT-only predictions:")
@@ -313,7 +477,10 @@ def main() -> None:
     print("\nBlock-CV summary:")
     for r in block_all:
         if r["record_type"] == "summary": print(r["block_size_bp"], r["heldout_configuration"], f(float(r["max_abs_error"])), f(float(r["l1_distance"])))
-    print("\nOutputs:", RESULTS / "stage2c_effective_msrc_validation.tsv", RESULTS / "stage2c_effective_msrc_block_cv.tsv", report, png, pdf)
+    print("\nLocal heterogeneity summary:")
+    for p in PATTERNS: print(p, local_stats[p])
+    print("Spearman STT/TST", f(local_stats["spearman_STT_TST"]), "STT/TTS", f(local_stats["spearman_STT_TTS"]))
+    print("\nOutputs:", RESULTS / "stage2c_effective_msrc_validation.tsv", RESULTS / "stage2c_effective_msrc_block_cv.tsv", RESULTS / "stage2c_effective_msrc_block_bootstrap.tsv", RESULTS / "stage2c_effective_msrc_bootstrap_summary.tsv", RESULTS / "stage2c_effective_msrc_local_heterogeneity.tsv", report, png, pdf)
 
 
 if __name__ == "__main__":
