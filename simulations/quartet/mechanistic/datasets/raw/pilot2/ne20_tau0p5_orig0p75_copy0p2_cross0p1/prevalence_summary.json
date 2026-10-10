@@ -1,0 +1,87 @@
+{
+  "attempted_replicates": 100,
+  "accepted_replicates": 100,
+  "acceptance_rate": 1.0,
+  "asymmetry_threshold": 0.05,
+  "persistent_polymorphism": {
+    "count": 31,
+    "proportion": 0.31,
+    "ci95_low": 0.22779697212376038,
+    "ci95_high": 0.40626055719489407
+  },
+  "two_two_terminal_pattern": {
+    "count": 13,
+    "proportion": 0.13,
+    "ci95_low": 0.07757167427240512,
+    "ci95_high": 0.20980351440076428
+  },
+  "asymmetric_quartet_distribution": {
+    "count": 54,
+    "proportion": 0.54,
+    "ci95_low": 0.44264860323368227,
+    "ci95_high": 0.6343919169097589
+  },
+  "discordant_topology_dominant": {
+    "count": 5,
+    "proportion": 0.05,
+    "ci95_low": 0.02154367915436796,
+    "ci95_high": 0.11175046923191913
+  },
+  "mechanistically_discordant_two_two": {
+    "count": 4,
+    "proportion": 0.04,
+    "ci95_low": 0.01566330399154762,
+    "ci95_high": 0.0983707143588792
+  },
+  "statistically_supported_off_arm": {
+    "count": 4,
+    "proportion": 0.04,
+    "ci95_low": 0.01566330399154762,
+    "ci95_high": 0.0983707143588792
+  },
+  "network_representable": {
+    "count": 85,
+    "proportion": 0.85,
+    "ci95_low": 0.7671644040916763,
+    "ci95_high": 0.9069401471634337
+  },
+  "network_aic_preferred": {
+    "count": 10,
+    "proportion": 0.1,
+    "ci95_low": 0.0552291370606751,
+    "ci95_high": 0.17436566150491345
+  },
+  "network_strongly_preferred": {
+    "count": 2,
+    "proportion": 0.02,
+    "ci95_low": 0.00550196755016235,
+    "ci95_high": 0.07001179072854388
+  },
+  "network_boundary_warning": {
+    "count": 38,
+    "proportion": 0.38,
+    "ci95_low": 0.29097599252478734,
+    "ci95_high": 0.47790244704488916
+  },
+  "terminal_pattern_counts": {
+    "0000": 63,
+    "0001": 1,
+    "0010": 1,
+    "0011": 5,
+    "0100": 6,
+    "0101": 2,
+    "0110": 1,
+    "1000": 5,
+    "1001": 1,
+    "1011": 4,
+    "1100": 4,
+    "1101": 2,
+    "1110": 2,
+    "1111": 3
+  },
+  "requested_replicates": 100,
+  "loci_per_replicate": 20,
+  "population_process": {
+    "model": "wright_fisher"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "attempted_replicates": 100,
+  "accepted_replicates": 100,
+  "acceptance_rate": 1.0,
+  "asymmetry_threshold": 0.05,
+  "persistent_polymorphism": {
+    "count": 22,
+    "proportion": 0.22,
+    "ci95_low": 0.150012823846054,
+    "ci95_high": 0.31070353514985793
+  },
+  "two_two_terminal_pattern": {
+    "count": 9,
+    "proportion": 0.09,
+    "ci95_low": 0.04807254000256515,
+    "ci95_high": 0.1622621285271631
+  },
+  "asymmetric_quartet_distribution": {
+    "count": 54,
+    "proportion": 0.54,
+    "ci95_low": 0.44264860323368227,
+    "ci95_high": 0.6343919169097589
+  },
+  "discordant_topology_dominant": {
+    "count": 0,
+    "proportion": 0.0,
+    "ci95_low": 3.469446951953614e-18,
+    "ci95_high": 0.03699349820698568
+  },
+  "mechanistically_discordant_two_two": {
+    "count": 0,
+    "proportion": 0.0,
+    "ci95_low": 3.469446951953614e-18,
+    "ci95_high": 0.03699349820698568
+  },
+  "statistically_supported_off_arm": {
+    "count": 7,
+    "proportion": 0.07,
+    "ci95_low": 0.03431926106727268,
+    "ci95_high": 0.137495147390735
+  },
+  "network_representable": {
+    "count": 90,
+    "proportion": 0.9,
+    "ci95_low": 0.8256343384950865,
+    "ci95_high": 0.9447708629393249
+  },
+  "network_aic_preferred": {
+    "count": 9,
+    "proportion": 0.09,
+    "ci95_low": 0.04807254000256515,
+    "ci95_high": 0.1622621285271631
+  },
+  "network_strongly_preferred": {
+    "count": 0,
+    "proportion": 0.0,
+    "ci95_low": 3.469446951953614e-18,
+    "ci95_high": 0.03699349820698568
+  },
+  "network_boundary_warning": {
+    "count": 24,
+    "proportion": 0.24,
+    "ci95_low": 0.16691325556948772,
+    "ci95_high": 0.33232336349814473
+  },
+  "terminal_pattern_counts": {
+    "0000": 59,
+    "0001": 2,
+    "0011": 6,
+    "0100": 2,
+    "0111": 1,
+    "1000": 3,
+    "1011": 5,
+    "1100": 3,
+    "1101": 2,
+    "1110": 3,
+    "1111": 14
+  },
+  "requested_replicates": 100,
+  "loci_per_replicate": 20,
+  "population_process": {
+    "model": "wright_fisher"
+  }
+}

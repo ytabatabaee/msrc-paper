@@ -1,0 +1,81 @@
+{
+  "attempted_replicates": 100,
+  "accepted_replicates": 100,
+  "acceptance_rate": 1.0,
+  "asymmetry_threshold": 0.05,
+  "persistent_polymorphism": {
+    "count": 0,
+    "proportion": 0.0,
+    "ci95_low": 3.469446951953614e-18,
+    "ci95_high": 0.03699349820698568
+  },
+  "two_two_terminal_pattern": {
+    "count": 14,
+    "proportion": 0.14,
+    "ci95_low": 0.08526343659939134,
+    "ci95_high": 0.22137188210963837
+  },
+  "asymmetric_quartet_distribution": {
+    "count": 1,
+    "proportion": 0.01,
+    "ci95_low": 0.0017674320641406505,
+    "ci95_high": 0.054486196178705315
+  },
+  "discordant_topology_dominant": {
+    "count": 0,
+    "proportion": 0.0,
+    "ci95_low": 3.469446951953614e-18,
+    "ci95_high": 0.03699349820698568
+  },
+  "mechanistically_discordant_two_two": {
+    "count": 0,
+    "proportion": 0.0,
+    "ci95_low": 3.469446951953614e-18,
+    "ci95_high": 0.03699349820698568
+  },
+  "statistically_supported_off_arm": {
+    "count": 0,
+    "proportion": 0.0,
+    "ci95_low": 3.469446951953614e-18,
+    "ci95_high": 0.03699349820698568
+  },
+  "network_representable": {
+    "count": 83,
+    "proportion": 0.83,
+    "ci95_low": 0.7445199523239887,
+    "ci95_high": 0.8910643388594006
+  },
+  "network_aic_preferred": {
+    "count": 0,
+    "proportion": 0.0,
+    "ci95_low": 3.469446951953614e-18,
+    "ci95_high": 0.03699349820698568
+  },
+  "network_strongly_preferred": {
+    "count": 0,
+    "proportion": 0.0,
+    "ci95_low": 3.469446951953614e-18,
+    "ci95_high": 0.03699349820698568
+  },
+  "network_boundary_warning": {
+    "count": 99,
+    "proportion": 0.99,
+    "ci95_low": 0.9455138038212946,
+    "ci95_high": 0.9982325679358593
+  },
+  "terminal_pattern_counts": {
+    "0000": 38,
+    "0011": 5,
+    "0111": 2,
+    "1011": 1,
+    "1100": 9,
+    "1101": 2,
+    "1110": 1,
+    "1111": 42
+  },
+  "requested_replicates": 100,
+  "loci_per_replicate": 20,
+  "population_process": {
+    "model": "wright_fisher"
+  }
+}

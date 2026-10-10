@@ -1,0 +1,86 @@
+{
+  "attempted_replicates": 100,
+  "accepted_replicates": 100,
+  "acceptance_rate": 1.0,
+  "asymmetry_threshold": 0.05,
+  "persistent_polymorphism": {
+    "count": 33,
+    "proportion": 0.33,
+    "ci95_low": 0.24563122734128034,
+    "ci95_high": 0.4269465620490947
+  },
+  "two_two_terminal_pattern": {
+    "count": 8,
+    "proportion": 0.08,
+    "ci95_low": 0.041093461484380624,
+    "ci95_high": 0.14998107700948735
+  },
+  "asymmetric_quartet_distribution": {
+    "count": 66,
+    "proportion": 0.66,
+    "ci95_low": 0.5627772885472463,
+    "ci95_high": 0.7453847920265183
+  },
+  "discordant_topology_dominant": {
+    "count": 25,
+    "proportion": 0.25,
+    "ci95_low": 0.17545211362287672,
+    "ci95_high": 0.34304463548061603
+  },
+  "mechanistically_discordant_two_two": {
+    "count": 4,
+    "proportion": 0.04,
+    "ci95_low": 0.01566330399154762,
+    "ci95_high": 0.0983707143588792
+  },
+  "statistically_supported_off_arm": {
+    "count": 5,
+    "proportion": 0.05,
+    "ci95_low": 0.02154367915436796,
+    "ci95_high": 0.11175046923191913
+  },
+  "network_representable": {
+    "count": 96,
+    "proportion": 0.96,
+    "ci95_low": 0.9016292856411208,
+    "ci95_high": 0.9843366960084523
+  },
+  "network_aic_preferred": {
+    "count": 2,
+    "proportion": 0.02,
+    "ci95_low": 0.00550196755016235,
+    "ci95_high": 0.07001179072854388
+  },
+  "network_strongly_preferred": {
+    "count": 0,
+    "proportion": 0.0,
+    "ci95_low": 3.469446951953614e-18,
+    "ci95_high": 0.03699349820698568
+  },
+  "network_boundary_warning": {
+    "count": 16,
+    "proportion": 0.16,
+    "ci95_low": 0.10095288488804782,
+    "ci95_high": 0.24420269389270244
+  },
+  "terminal_pattern_counts": {
+    "0000": 74,
+    "0010": 3,
+    "0011": 2,
+    "0100": 2,
+    "0110": 2,
+    "0111": 3,
+    "1000": 1,
+    "1001": 1,
+    "1010": 1,
+    "1100": 2,
+    "1101": 3,
+    "1110": 1,
+    "1111": 5
+  },
+  "requested_replicates": 100,
+  "loci_per_replicate": 20,
+  "population_process": {
+    "model": "wright_fisher"
+  }
+}

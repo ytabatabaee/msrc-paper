@@ -1,0 +1,8 @@
+{
+  "cells": 36,
+  "expected_primary_cells": 32,
+  "short_branch_controls": 4,
+  "bootstrap_replicates": 2000,
+  "max_decomposition_difference": 2.220446049250313e-16,
+  "all_decompositions_reconstruct": true
+}

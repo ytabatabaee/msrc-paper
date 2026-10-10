@@ -1,0 +1,23 @@
+{
+  "repository_url": "https://github.com/ytabatabaee/msrc-sim.git",
+  "git_commit": "f5157d2c64068eb32e0eabfe9bec629c28a404f9",
+  "package_version": "0.8.8",
+  "master_seed": 20261020,
+  "primary_cells": 32,
+  "short_branch_controls": 4,
+  "histories_per_cell": 100,
+  "loci_per_history": 20,
+  "smoke_histories_per_cell": 3,
+  "smoke_loci_per_history": 10,
+  "ne": [20, 100],
+  "tau": [0.5, 2.0],
+  "short_tau": 0.1,
+  "origin_fraction": [0.25, 0.75],
+  "initial_copy_fraction": [0.2, 0.5],
+  "cross_arrangement_fraction": [0.1, 1.0],
+  "persistence_target_branches": ["A", "B"],
+  "conditioning_mode": "none",
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 20261021,
+  "simulator_source_modified": false
+}

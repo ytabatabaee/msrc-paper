@@ -1,0 +1,47 @@
+mode: replicate_experiment
+seed: 1352476431
+population_process:
+  model: wright_fisher
+species_tree:
+  newick: ((1:40,2:40)A:80,(3:40,4:40)B:80)ROOT;
+  time_units: generations
+  root_extension: 40
+  default_effective_population_size: 20
+rearrangement:
+  id: inv_1
+  type: inversion
+  origin_branch: ROOT
+  origin_time_from_branch_start: 30
+  initial_copy_count: 20
+  selection:
+    model: genic
+    coefficient: 0.0
+recombination:
+  baseline_rate: 0.02
+  effective_cross_arrangement_fraction: 0.1
+sampling:
+  samples_per_species: 1
+conditioning:
+  mode: none
+experiment:
+  replicates: 100
+  loci_per_replicate: 20
+  asymmetry_threshold: 0.05
+  persistence_target_branches:
+  - A
+  - B
+output:
+  directory: simulations/quartet/mechanistic/datasets/raw/pilot2/ne20_tau2_orig0p75_copy0p5_cross0p1
+  record_resolved_config: true
+experiment_metadata:
+  experiment: mechanistic_pilot2
+  cell_id: ne20_tau2_orig0p75_copy0p5_cross0p1
+  internal_branch_coalescent_units: 2.0
+  internal_branch_generations: 80
+  origin_fraction_of_root_extension: 0.75
+  initial_copy_fraction: 0.5
+  cross_arrangement_fraction: 0.1
+  persistence_target_definition: both daughter ancestral branches A and B end segregating
+  unconditional: true
+  short_branch_control: false
+  smoke: false

@@ -1,0 +1,88 @@
+{
+  "attempted_replicates": 100,
+  "accepted_replicates": 100,
+  "acceptance_rate": 1.0,
+  "asymmetry_threshold": 0.05,
+  "persistent_polymorphism": {
+    "count": 54,
+    "proportion": 0.54,
+    "ci95_low": 0.44264860323368227,
+    "ci95_high": 0.6343919169097589
+  },
+  "two_two_terminal_pattern": {
+    "count": 30,
+    "proportion": 0.3,
+    "ci95_low": 0.2189488529493276,
+    "ci95_high": 0.3958485463334666
+  },
+  "asymmetric_quartet_distribution": {
+    "count": 39,
+    "proportion": 0.39,
+    "ci95_low": 0.3001687400639441,
+    "ci95_high": 0.4879698295415926
+  },
+  "discordant_topology_dominant": {
+    "count": 5,
+    "proportion": 0.05,
+    "ci95_low": 0.02154367915436796,
+    "ci95_high": 0.11175046923191913
+  },
+  "mechanistically_discordant_two_two": {
+    "count": 5,
+    "proportion": 0.05,
+    "ci95_low": 0.02154367915436796,
+    "ci95_high": 0.11175046923191913
+  },
+  "statistically_supported_off_arm": {
+    "count": 7,
+    "proportion": 0.07,
+    "ci95_low": 0.03431926106727268,
+    "ci95_high": 0.137495147390735
+  },
+  "network_representable": {
+    "count": 78,
+    "proportion": 0.78,
+    "ci95_low": 0.6892964648501421,
+    "ci95_high": 0.8499871761539459
+  },
+  "network_aic_preferred": {
+    "count": 8,
+    "proportion": 0.08,
+    "ci95_low": 0.041093461484380624,
+    "ci95_high": 0.14998107700948735
+  },
+  "network_strongly_preferred": {
+    "count": 1,
+    "proportion": 0.01,
+    "ci95_low": 0.0017674320641406505,
+    "ci95_high": 0.054486196178705315
+  },
+  "network_boundary_warning": {
+    "count": 54,
+    "proportion": 0.54,
+    "ci95_low": 0.44264860323368227,
+    "ci95_high": 0.6343919169097589
+  },
+  "terminal_pattern_counts": {
+    "0000": 19,
+    "0001": 3,
+    "0010": 6,
+    "0011": 12,
+    "0100": 2,
+    "0110": 2,
+    "0111": 2,
+    "1000": 8,
+    "1001": 2,
+    "1010": 1,
+    "1011": 5,
+    "1100": 13,
+    "1101": 4,
+    "1110": 2,
+    "1111": 19
+  },
+  "requested_replicates": 100,
+  "loci_per_replicate": 20,
+  "population_process": {
+    "model": "wright_fisher"
+  }
+}

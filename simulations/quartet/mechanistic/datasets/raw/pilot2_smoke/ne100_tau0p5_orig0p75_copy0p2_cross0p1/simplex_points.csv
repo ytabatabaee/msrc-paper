@@ -1,0 +1,4 @@
+replicate_id,q1,q2,q3,simplex_x,simplex_y,terminal_pattern,q2_minus_q3,dominant_topology,distance_to_nearest_msc_arm,off_arm_difference,off_arm_p_value,network_representable,off_arm_supported,network_aic_preferred,network_strongly_preferred,best_network_boundary_warning,model_geometry_classification,model_evidence_classification,model_classification
+0,0.7,0.1,0.2,0.2,0.17320508075688773,0000,-0.1,0,0.07071067811865477,-0.1,0.5570558144094062,True,False,False,False,False,network_interior_well_parameterized,off_arm_not_supported,network_interior_well_parameterized
+1,0.7,0.3,0.0,0.3,0.0,1101,0.3,0,0.21213203435596426,0.3,0.038433930236781745,True,True,True,False,True,network_interior_boundary_warning,network_weakly_preferred,network_interior_boundary_warning
+2,1.0,0.0,0.0,0.0,0.0,1100,0.0,0,0.0,0.0,1.0,True,False,False,False,True,single_tree_msc_arm,off_arm_not_supported,single_tree_msc_arm

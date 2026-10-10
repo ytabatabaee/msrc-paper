@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/Users/ytabatabaee/opt/anaconda3/bin/msrc-sim-replicates",
+    "--config",
+    "/Users/ytabatabaee/Desktop/msrc-paper/simulations/quartet/mechanistic/datasets/configs/pilot2/short_ne100_tau0p1_orig0p25_copy0p2_cross0p1.yaml"
+  ],
+  "config": "simulations/quartet/mechanistic/datasets/configs/pilot2/short_ne100_tau0p1_orig0p25_copy0p2_cross0p1.yaml",
+  "config_sha256": "e976c122e9915bb8d4598df69da82eae517e4865a3290a2856147dc2bbf841d7",
+  "seed": 3180425288,
+  "runtime_seconds": 290.13931833000015,
+  "return_code": 0,
+  "stdout": "Wrote simulations/quartet/mechanistic/datasets/raw/pilot2/short_ne100_tau0p1_orig0p25_copy0p2_cross0p1\nAccepted 100 of 100 attempts\n",
+  "stderr": "",
+  "executable": "/Users/ytabatabaee/opt/anaconda3/bin/msrc-sim-replicates"
+}

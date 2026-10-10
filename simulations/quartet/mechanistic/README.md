@@ -45,3 +45,19 @@ independent loci. Figures A–D are exported separately as
 `mechanistic_scenario`, `mechanistic_unconditional_probabilities`,
 `mechanistic_quartet_bias_map`, and `mechanistic_conditional_vs_unconditional`;
 `mechanistic_quartet_simplex` is retained as a supplementary diagnostic.
+
+Experiment 2B uses separate `pilot2` directories and is reproducible with:
+
+```text
+/Users/ytabatabaee/opt/anaconda3/bin/python simulations/quartet/mechanistic/analysis/scripts/06_generate_mechanistic_pilot2.py --smoke
+/Users/ytabatabaee/opt/anaconda3/bin/python simulations/quartet/mechanistic/analysis/scripts/07_run_mechanistic_pilot2.py --smoke --workers 4
+/Users/ytabatabaee/opt/anaconda3/bin/python simulations/quartet/mechanistic/analysis/scripts/06_generate_mechanistic_pilot2.py
+/Users/ytabatabaee/opt/anaconda3/bin/python simulations/quartet/mechanistic/analysis/scripts/07_run_mechanistic_pilot2.py --workers 4
+/Users/ytabatabaee/opt/anaconda3/bin/python simulations/quartet/mechanistic/analysis/scripts/08_process_mechanistic_pilot2.py
+MPLCONFIGDIR=/private/tmp/msrc-mpl /Users/ytabatabaee/opt/anaconda3/bin/python simulations/quartet/mechanistic/analysis/scripts/09_plot_mechanistic_pilot2.py
+/Users/ytabatabaee/opt/anaconda3/bin/python simulations/quartet/mechanistic/analysis/tests/test_mechanistic_pilot2.py
+```
+
+See `analysis/results/MECHANISTIC_PILOT2_RESULTS.md` for the persistence
+definition, mutually exclusive history categories, bootstrap method, and
+suppression comparisons.
