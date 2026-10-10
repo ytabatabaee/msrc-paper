@@ -42,6 +42,12 @@ population size. The public replicate API records quartet counts, terminal
 patterns, root-end status, and per-replicate diagnostics. The public CLI writes
 these records without requiring any analysis-side population-genetic model.
 
+The replicate summary exports topology counts and indices rather than one
+Newick gene tree per locus. The smoke validation therefore checks the expected
+taxon set through the species-tree configuration and validates the exported
+quartet topology counts; a future tree-export study would need to call the
+lower-level genealogy API directly.
+
 The recombination parameter is `baseline_rate` together with
 `effective_cross_arrangement_fraction`; the backward implementation uses their
 product `rho`. A fraction of 1.0 is the no-suppression control and 0.1 is the
@@ -49,8 +55,9 @@ strong-suppression pilot condition. This is the implemented parameterization;
 the pilot does not introduce a `suppression = 1-m` parameter.
 
 The package also exposes `simulate_msc_genealogy`, which is used for matched
-ordinary MSC controls on the same species tree. For a four-taxon balanced tree
-with internal length `t=g/(2 Ne)`, the control expectation is
+ordinary MSC controls on the same species tree. For the balanced tree used
+here, each daughter ancestral branch has length `g`, and the two branches
+contribute to the effective unrooted length `t=g/Ne`; the control expectation is
 `P(Q_S)=1-(2/3)exp(-t)` and `P(Q_A)=P(Q_O)=(1/3)exp(-t)`. The control runner
 compares observed frequencies with this expectation and Monte Carlo standard
 errors.

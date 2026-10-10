@@ -43,4 +43,5 @@ The completed pilot contains 72 configurations, 12 independent histories per
 configuration, and 20 loci per history. Matched MSC controls contain 20,000
 independent loci. Figures A–D are exported separately as
 `mechanistic_scenario`, `mechanistic_unconditional_probabilities`,
-`mechanistic_quartet_simplex`, and `mechanistic_quartet_bias_map`.
+`mechanistic_quartet_bias_map`, and `mechanistic_conditional_vs_unconditional`;
+`mechanistic_quartet_simplex` is retained as a supplementary diagnostic.

@@ -13,8 +13,10 @@ results are not interpreted as a full MSRC species-tree inconsistency result.
 
 The `datasets/` tree contains frozen configs, raw simulator outputs, and
 normalized tables. The `analysis/` tree contains drivers, validation results,
-figures, and tests. The mechanistic WF/Moran experiment is planned but is not
-run by this study.
+figures, and tests. Experiment 2 is implemented separately under
+`quartet/mechanistic/` as a validated, deliberately modest unconditional
+Wright–Fisher pilot. It does not overwrite these conditional outputs or impose
+terminal arrangement pattern `1010`.
 
 The combined main-paper figure is
 `analysis/figures/conditional_quartet_main_panel.{png,pdf}`. It contains the

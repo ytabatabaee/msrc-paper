@@ -78,14 +78,17 @@ The processed unconditional summaries are in
 contributions are in `datasets/processed/mechanistic_pattern_contributions.tsv`.
 The MSC comparison is in `datasets/processed/msc_control_validation.tsv`.
 Figures A–D are separate diagnostic figures: `mechanistic_scenario`,
-`mechanistic_unconditional_probabilities`, `mechanistic_quartet_simplex`, and
-`mechanistic_quartet_bias_map`, each as PNG and PDF.
+`mechanistic_unconditional_probabilities`, `mechanistic_quartet_bias_map`, and
+`mechanistic_conditional_vs_unconditional`, each as PNG and PDF. The pilot
+simplex is retained as the supplementary `mechanistic_quartet_simplex` figure.
 
-The scenario figure uses a saved ROOT-origin pilot history as the illustrative
+The scenario figure uses a ROOT-origin pilot history as the illustrative
 history and labels the terminal arrangement as sampled rather than imposed.
-The probability and bias figures use independent-replicate uncertainty. The
-simplex summarizes the pilot distributions; it is not the exact conditional
-simplex from Experiment 1.
+The probability and bias figures use independent-replicate uncertainty. Figure
+D compares unconditional `Q_A` with `Q_A | 1010` only where the terminal
+pattern was observed; it does not condition the primary pilot. The simplex
+summarizes the pilot distributions and is not the exact conditional simplex
+from Experiment 1.
 
 ## Follow-up
 

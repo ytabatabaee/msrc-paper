@@ -52,7 +52,7 @@ def main():
     for r in controls:
         assert max(abs(float(r[k])) for k in ("z_species", "z_alt", "z_other")) < 4
 
-    for name in ("mechanistic_scenario", "mechanistic_unconditional_probabilities", "mechanistic_quartet_simplex", "mechanistic_quartet_bias_map"):
+    for name in ("mechanistic_scenario", "mechanistic_unconditional_probabilities", "mechanistic_quartet_simplex", "mechanistic_quartet_bias_map", "mechanistic_conditional_vs_unconditional"):
         assert (BASE / "analysis/figures" / f"{name}.png").stat().st_size > 1000
         assert (BASE / "analysis/figures" / f"{name}.pdf").stat().st_size > 1000
     assert all(float(r["delta_alt_species"]) < 0 for r in processed)

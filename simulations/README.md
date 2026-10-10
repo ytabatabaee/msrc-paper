@@ -15,4 +15,7 @@ The planned progression is:
 6. Linked-window and pseudo-replication analysis.
 
 The first experiment is under `quartet/` and uses the conditional simulator
-mode. `msrc-paper` does not vendor or duplicate the simulator implementation.
+mode. The mechanistic Wright–Fisher pilot is under
+`quartet/mechanistic/`; it uses unconditional `msrc-sim-replicates` histories,
+matched MSC controls, and independent-replicate uncertainty. `msrc-paper` does
+not vendor or duplicate the simulator implementation.
